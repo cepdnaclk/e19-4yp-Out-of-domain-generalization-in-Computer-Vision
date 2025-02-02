@@ -1,7 +1,6 @@
 ___
-# DELETE THIS INSTRUCTIONS AND ADD A SHORT INTRODUCTION ABOUT YOUR PROJECT
-___
+# Out of domain generalisation in Computer Vision
+__
 
-## Please refer the instructions in below URL:
+This project will explore out of domain generalisation problem wr.t computer vision models. 
 
-https://projects.ce.pdn.ac.lk/docs/how-to-add-a-project
