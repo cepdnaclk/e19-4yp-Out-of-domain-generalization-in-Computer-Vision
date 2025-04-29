@@ -10,17 +10,17 @@ from open_clip.factory import HF_HUB_PREFIX, _MODEL_CONFIGS
 
 # Load the model (same as before)
 def load_biomedclip():
-    # Download the model and config files
-    hf_hub_download(
-        repo_id="microsoft/BiomedCLIP-PubMedBERT_256-vit_base_patch16_224",
-        filename="open_clip_pytorch_model.bin",
-        local_dir="checkpoints"
-    )
-    hf_hub_download(
-        repo_id="microsoft/BiomedCLIP-PubMedBERT_256-vit_base_patch16_224",
-        filename="open_clip_config.json",
-        local_dir="checkpoints"
-    )
+    # # Download the model and config files
+    # hf_hub_download(
+    #     repo_id="microsoft/BiomedCLIP-PubMedBERT_256-vit_base_patch16_224",
+    #     filename="open_clip_pytorch_model.bin",
+    #     local_dir="checkpoints"
+    # )
+    # hf_hub_download(
+    #     repo_id="microsoft/BiomedCLIP-PubMedBERT_256-vit_base_patch16_224",
+    #     filename="open_clip_config.json",
+    #     local_dir="checkpoints"
+    # )
 
     # Load the model and config files
     model_name = "biomedclip_local"
@@ -168,7 +168,7 @@ def process_camelyon_data(metadata_csv, patches_dir, output_csv, batch_size=32):
 
 if __name__ == "__main__":
     # Configure paths
-    metadata_csv = "metadata.csv"  # path to your metadata file
+    metadata_csv = "/home/E19_FYP_Domain_Gen_Data/metadata.csv"  # path to your metadata file
     patches_dir = "/home/E19_FYP_Domain_Gen_Data/patches"       # path to your patches directory
     output_csv = "biomedclip_results.csv"
     
