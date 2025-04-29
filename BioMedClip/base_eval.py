@@ -86,7 +86,6 @@ def get_similarity_scores(model, preprocess, tokenizer, device, image_paths, pos
 
 # Function to extract coordinates from filename
 def extract_coordinates(filename):
-    # Example filename: "patient_004_node_4_x_3328_y_21792.png"
     parts = filename.split('_')
     try:
         x = int(parts[-3])
@@ -167,9 +166,8 @@ def process_camelyon_data(metadata_csv, patches_dir, output_csv, batch_size=32):
                 f.flush()  # Ensure data is written regularly
 
 if __name__ == "__main__":
-    # Configure paths
-    metadata_csv = "/home/E19_FYP_Domain_Gen_Data/metadata.csv"  # path to your metadata file
-    patches_dir = "/home/E19_FYP_Domain_Gen_Data/patches"       # path to your patches directory
+    metadata_csv = "/home/E19_FYP_Domain_Gen_Data/metadata.csv" 
+    patches_dir = "/home/E19_FYP_Domain_Gen_Data/patches"       
     output_csv = "biomedclip_results.csv"
     
     # Run processing
