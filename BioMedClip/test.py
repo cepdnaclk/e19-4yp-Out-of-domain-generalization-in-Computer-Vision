@@ -7,10 +7,9 @@ from tqdm import tqdm
 from huggingface_hub import hf_hub_download
 from open_clip import create_model_and_transforms, get_tokenizer
 from open_clip.factory import HF_HUB_PREFIX, _MODEL_CONFIGS
-import warnings
+
 def load_biomedclip():
-    # Load the model and config files
-    # # Download the model and config files
+    # Download the model and config files
     # hf_hub_download(
     #     repo_id="microsoft/BiomedCLIP-PubMedBERT_256-vit_base_patch16_224",
     #     filename="open_clip_pytorch_model.bin",
@@ -21,6 +20,8 @@ def load_biomedclip():
     #     filename="open_clip_config.json",
     #     local_dir="checkpoints"
     # )
+
+    # Load the model and config files
     model_name = "biomedclip_local"
 
     with open("checkpoints/open_clip_config.json", "r") as f:
@@ -81,19 +82,16 @@ def get_similarity_scores(model, preprocess, tokenizer, device, image_paths, pos
     
     return similarity.cpu().numpy(), valid_paths
 
-def extract_patch_info(filename):
-    """Extract patient, node, x, y from filename"""
+def extract_coordinates(filename):
     parts = filename.split('_')
     try:
-        patient = int(parts[2])  # patient_004 -> 4
-        node = int(parts[4])     # node_4 -> 4
-        x = int(parts[-3])       # x_3328 -> 3328
-        y = int(parts[-1].split('.')[0])  # y_21792.png -> 21792
-        return patient, node, x, y
+        x = int(parts[-3])
+        y = int(parts[-1].split('.')[0])
+        return x, y
     except:
-        return None, None, None, None
+        return None, None
 
-def process_camelyon_data(metadata_csv, patches_dir, output_dir, batch_size=512):
+def process_camelyon_data(metadata_csv, patches_dir, output_dir, batch_size=32):
     # Load model
     model, preprocess, tokenizer, device = load_biomedclip()
     
@@ -101,20 +99,18 @@ def process_camelyon_data(metadata_csv, patches_dir, output_dir, batch_size=512)
     positive_prompt = "This is an image of a tumor"
     negative_prompt = "Tumor is not present in this image"
     
-    # Read metadata and create composite key lookup
-    metadata_lookup = {}
+    # Read metadata and create coordinate lookup with center information
+    coord_to_info = {}
     with open(metadata_csv, 'r') as f:
         reader = csv.DictReader(f)
         for row in reader:
             try:
-                patient = int(row['patient'])
-                node = int(row['node'])
                 x = int(row['x_coord'])
                 y = int(row['y_coord'])
-                key = (patient, node, x, y)
-                metadata_lookup[key] = {
+                center = int(row['center'])
+                coord_to_info[(x, y)] = {
                     'tumor': int(row['tumor']),
-                    'center': int(row['center'])
+                    'center': center
                 }
             except:
                 continue
@@ -122,11 +118,11 @@ def process_camelyon_data(metadata_csv, patches_dir, output_dir, batch_size=512)
     # Create output directory if it doesn't exist
     os.makedirs(output_dir, exist_ok=True)
     
-    # Initialize CSV writers for each center (0-4)
+    # Initialize CSV writers for each center
     center_writers = {}
     center_files = {}
     
-    for center in range(5):
+    for center in range(5):  # Centers 0-4
         center_csv = os.path.join(output_dir, f'center_{center}_results.csv')
         center_files[center] = open(center_csv, 'w', newline='')
         writer = csv.writer(center_files[center])
@@ -139,6 +135,7 @@ def process_camelyon_data(metadata_csv, patches_dir, output_dir, batch_size=512)
     for patient_folder in tqdm(patient_folders, desc="Processing patients"):
         patient_path = os.path.join(patches_dir, patient_folder)
         image_files = [f for f in os.listdir(patient_path) if f.endswith('.png') or f.endswith('.jpg')]
+        
         # Process in batches
         for i in range(0, len(image_files), batch_size):
             batch_files = image_files[i:i+batch_size]
@@ -156,18 +153,18 @@ def process_camelyon_data(metadata_csv, patches_dir, output_dir, batch_size=512)
             # Write results for each image in batch
             for j, img_path in enumerate(valid_paths):
                 filename = os.path.basename(img_path)
-                patient, node, x, y = extract_patch_info(filename)
-                
-                
-                if None in (patient, node, x, y):
+                x, y = extract_coordinates(filename)
+                print(f"x{x} y{y}")
+                exit()
+                if x is None or y is None:
                     continue
                 
-                # Get ground truth and center info using composite key
-                key = (patient, node, x, y)
-                info = metadata_lookup.get(key, {'tumor': -1, 'center': -1})
+                # Get ground truth and center info
+                info = coord_to_info.get((x, y), {'tumor': -1, 'center': -1})
                 ground_truth = info['tumor']
                 center = info['center']
-                # Skip if center is invalid (not 0-4)
+                
+                # Skip if center is invalid
                 if center not in center_writers:
                     continue
                 
@@ -191,8 +188,6 @@ def process_camelyon_data(metadata_csv, patches_dir, output_dir, batch_size=512)
     print(f"Results saved to {output_dir} with separate files for each center")
 
 if __name__ == "__main__":
-    warnings.filterwarnings("ignore")
-
     # Configure paths
     metadata_csv = "/home/E19_FYP_Domain_Gen_Data/metadata.csv"  
     patches_dir = "/home/E19_FYP_Domain_Gen_Data/patches"      
