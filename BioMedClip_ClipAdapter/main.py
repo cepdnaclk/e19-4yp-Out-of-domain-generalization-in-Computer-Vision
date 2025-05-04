@@ -20,7 +20,8 @@ def main():
         # 'search_alpha_ca': False,      # Whether to search for best alpha
         'cache_dir': "./cache",        # Directory to save adapter checkpoints
         'WARMUP_EPOCH': 5,             # Warmup epochs for scheduler
-        'WARMUP_CONS_LR': 1e-5,        # Constant LR during warmup
+        'WARMUP_CONS_LR': 1e-5,   
+        'load_pre_feat': False          
 }
 
     cache_dir = "caches"

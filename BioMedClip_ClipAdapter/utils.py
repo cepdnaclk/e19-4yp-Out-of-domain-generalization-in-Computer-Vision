@@ -40,6 +40,8 @@ def pre_load_features(cfg, split, clip_model, loader):
         features = torch.load(cfg['cache_dir'] + "/" + split + "_f.pt")
         labels = torch.load(cfg['cache_dir'] + "/" + split + "_l.pt")
 
+    return features, labels
+
 
 
 def biomedclip_classifier(classnames, positive_prompt, negative_prompt, clip_model):
