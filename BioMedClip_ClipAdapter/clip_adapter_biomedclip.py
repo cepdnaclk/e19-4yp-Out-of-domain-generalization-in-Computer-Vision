@@ -111,11 +111,11 @@ class ClipAdapter_BiomedCLIP():
         #scheduler = torch.optim.lr_scheduler.CosineAnnealingLR(optimizer, self.cfg['train_epoch'] * len(train_loader), eta_min=1e-5)
         
         optimizer = torch.optim.SGD(clip_ad_model.adapter.parameters(), self.lr)
-        scheduler = torch.optim.lr_scheduler.CosineAnnealingLR(optimizer, self.cfg['train_epoch'])
-        scheduler = ConstantWarmupScheduler(
-                optimizer, scheduler, self.cfg["WARMUP_EPOCH"],
-                self.cfg["WARMUP_CONS_LR"]
-            )
+        # scheduler = torch.optim.lr_scheduler.CosineAnnealingLR(optimizer, self.cfg['train_epoch'])
+        # scheduler = ConstantWarmupScheduler(
+        #         optimizer, scheduler, self.cfg["WARMUP_EPOCH"],
+        #         self.cfg["WARMUP_CONS_LR"]
+        #     )
         
         # Train
         print('\nStart Training procedure')
@@ -146,11 +146,11 @@ class ClipAdapter_BiomedCLIP():
                 optimizer.zero_grad()
                 loss.backward()
                 optimizer.step()
-                scheduler.step()
+                # scheduler.step()
                 
             clip_ad_model.adapter.eval()
-            current_lr = scheduler.get_last_lr()[0]
-            print('LR: {:.6f}, Acc: {:.4f} ({:}/{:}), Loss: {:.4f}'.format(current_lr, correct_samples / all_samples, correct_samples, all_samples, sum(loss_list)/len(loss_list)))
+            # current_lr = scheduler.get_last_lr()[0]
+            print('Acc: {:.4f} ({:}/{:}), Loss: {:.4f}'.format( correct_samples / all_samples, correct_samples, all_samples, sum(loss_list)/len(loss_list)))
             clip_ad_model.eval()
             logits = clip_ad_model(val_features, text_weights, self.alpha)
             acc = cls_acc(logits, val_labels)

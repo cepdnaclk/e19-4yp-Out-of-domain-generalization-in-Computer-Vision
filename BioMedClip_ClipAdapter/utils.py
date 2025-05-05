@@ -37,6 +37,7 @@ def pre_load_features(cfg, split, clip_model, loader):
         torch.save(labels, cfg['cache_dir'] + "/" + split + "_l.pt")
    
     else:
+        print(f"Path:::: {cfg['cache_dir'] + '/' + split + '_f.pt'}")
         features = torch.load(cfg['cache_dir'] + "/" + split + "_f.pt")
         labels = torch.load(cfg['cache_dir'] + "/" + split + "_l.pt")
 
