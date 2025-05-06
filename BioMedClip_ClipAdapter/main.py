@@ -28,21 +28,21 @@ def main():
     os.makedirs(cache_dir, exist_ok=True)
     cfg['cache_dir'] = cache_dir
 
-    # Define cache path for dataloaders
-    dataloader_cache_path = os.path.join(cfg['cache_dir'], 'dataloaders.pt')
+    # # Define cache path for dataloaders
+    # dataloader_cache_path = os.path.join(cfg['cache_dir'], 'dataloaders.pt')
 
-    # Load or create dataloaders
-    if os.path.exists(dataloader_cache_path):
-        print("Loading dataloaders from cache...")
-        train_loader, val_loader, test_loader = torch.load(dataloader_cache_path)
-    else:
-        print("Creating new dataloaders (first run)...")
-        train_loader, val_loader, test_loader = get_dataloaders(
-            metadata_path=cfg['metadata_path'],
-            data_root=cfg['data_path']
-        )
-        torch.save((train_loader, val_loader, test_loader), dataloader_cache_path)
-        print(f"Dataloaders cached to {dataloader_cache_path}")
+    # # Load or create dataloaders
+    # if os.path.exists(dataloader_cache_path):
+    #     print("Loading dataloaders from cache...")
+    #     train_loader, val_loader, test_loader = torch.load(dataloader_cache_path)
+    # else:
+    #     print("Creating new dataloaders (first run)...")
+    train_loader, val_loader, test_loader, id_test_loaders= get_dataloaders(
+        metadata_path=cfg['metadata_path'],
+        data_root=cfg['data_path']
+    )
+        # torch.save((train_loader, val_loader, test_loader), dataloader_cache_path)
+        # print(f"Dataloaders cached to {dataloader_cache_path}")
 
 
 
@@ -59,7 +59,7 @@ def main():
    
     # Textual features
     
-    classnames = ["no tumor", "tumor present"]
+    classnames = ["no tumor", "tumor present"] # Negative , Positive
     positive_prompt = "This is an image of a tumor"
     negative_prompt = "Tumor is not present in this image"
 
@@ -76,20 +76,31 @@ def main():
     print("\nLoading visual features and labels from test set.")
     test_features, test_labels = pre_load_features(
         cfg, "test", clip_model, test_loader)
+    
+    # Pre-load features for all in-distribution test sets
+    id_test_features = {}
+    id_test_labels = {}
 
-    total_acc = 0
-    predictions = []
+    for center_name, loader in id_test_loaders.items():
+        features, labels = pre_load_features(cfg, center_name, clip_model, loader)
+        id_test_features[center_name] = features
+        id_test_labels[center_name] = labels
+
+        total_acc = 0
+        predictions = []
     
     
 
     loss, acc = method.forward(train_loader=train_loader,
                     val_loader=val_loader,
                     test_features=test_features,
+                    id_test_features=id_test_features,
+                    id_test_labels=id_test_labels,
                     test_labels=test_labels,
                     text_weights=text_weights,
                     model=clip_model,
                     classnames=classnames)
-    print(f'Final Accuracy {acc}')
+    # print(f'Final Accuracy {acc}')
 
 
 if __name__ == '__main__':

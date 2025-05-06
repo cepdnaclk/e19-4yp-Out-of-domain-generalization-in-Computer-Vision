@@ -11,24 +11,34 @@ from open_clip import create_model_and_transforms
 from tqdm import tqdm
 import copy
 
-
-
-# 1. Dataset Preparation
 class CamelyonDataset(Dataset):
-    def __init__(self, centers, metadata_path, root_dir, transform=None):
+    def __init__(self, centers, metadata_path, root_dir, transform=None, split=None, include_test=False):
         """
         Args:
-            centers (list): List of center indices to include (e.g., [0,1,2] for training)
+            centers (list): List of center indices to include (e.g., [0,1,2])
             metadata_path (str): Path to metadata.csv
             root_dir (str): Root directory containing center_0 to center_4 folders
             transform (callable, optional): Optional transform to be applied
+            split (int, optional): 0 for train, 1 for test (only for centers 0-2)
+            include_test (bool): Whether to include test split for centers (default False)
         """
         self.metadata = pd.read_csv(metadata_path)
         self.root_dir = root_dir
         self.transform = transform
+        self.centers = centers
         
         # Filter metadata for selected centers
         self.metadata = self.metadata[self.metadata['center'].isin(centers)]
+        
+        # For centers 0-2, we can select train or test splits
+        if split is not None:
+            center_mask = self.metadata['center'].isin([0, 1, 2])
+            if not include_test:
+                # Only get the specified split for centers 0-2
+                self.metadata = self.metadata[(~center_mask) | (self.metadata['split'] == split)]
+            else:
+                # Get all data from centers 0-2 regardless of split
+                pass
         
         # Create mapping from image paths to labels
         self.samples = []
@@ -83,34 +93,44 @@ def get_dataloaders(metadata_path, data_root, batch_size=32):
         normalize
     ])
     
-    # Split centers: 3 train, 1 val, 1 test
-    all_centers = [0, 1, 2, 3, 4]
-    np.random.seed(42)  # For reproducibility
-    # np.random.shuffle(all_centers)
+    # Create datasets according to the specified splits:
+    # - Train: train splits from centers 0,1,2 (split=0)
+    # - ID Test: test splits from centers 0,1,2 (split=1)
+    # - Val: all of center 3 (no split)
+    # - Test: all of center 4 (no split)
     
-    train_centers = all_centers[:3]
-    val_centers = [all_centers[3]]
-    test_centers = [all_centers[4]]
-    
-    print(f"Center split - Train: {train_centers}, Val: {val_centers}, Test: {test_centers}")
-    
-    # Create datasets
+    # Main training set (train splits from centers 0,1,2)
     train_dataset = CamelyonDataset(
-        centers=train_centers,
+        centers=[0, 1, 2],
         metadata_path=metadata_path,
         root_dir=data_root,
-        transform=train_transform
+        transform=train_transform,
+        split=0  # train split
     )
     
+    # In-distribution test sets (test splits from centers 0,1,2)
+    id_test_datasets = {
+        f'id_test_center_{center}': CamelyonDataset(
+            centers=[center],
+            metadata_path=metadata_path,
+            root_dir=data_root,
+            transform=test_transform,
+            split=1  # test split
+        )
+        for center in [0, 1, 2]
+    }
+    
+    # Validation set (all of center 3)
     val_dataset = CamelyonDataset(
-        centers=val_centers,
+        centers=[3],
         metadata_path=metadata_path,
         root_dir=data_root,
         transform=test_transform
     )
     
+    # Test set (all of center 4)
     test_dataset = CamelyonDataset(
-        centers=test_centers,
+        centers=[4],
         metadata_path=metadata_path,
         root_dir=data_root,
         transform=test_transform
@@ -141,4 +161,16 @@ def get_dataloaders(metadata_path, data_root, batch_size=32):
         pin_memory=True
     )
     
-    return train_loader, val_loader, test_loader
+    # Create in-distribution test loaders
+    id_test_loaders = {
+        name: DataLoader(
+            dataset,
+            batch_size=batch_size,
+            shuffle=False,
+            num_workers=4,
+            pin_memory=True
+        )
+        for name, dataset in id_test_datasets.items()
+    }
+    
+    return train_loader, val_loader, test_loader, id_test_loaders

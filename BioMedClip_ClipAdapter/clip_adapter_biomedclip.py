@@ -8,8 +8,7 @@ import numpy as np
 
 from tqdm import tqdm
 from utils import cls_acc
-
-# from torch.optim.lr_scheduler import _LRScheduler
+from sklearn.metrics import accuracy_score, f1_score, precision_score, recall_score
 
 class ClipAdapter_BiomedCLIP():
     '''
@@ -36,6 +35,8 @@ class ClipAdapter_BiomedCLIP():
                 test_labels: torch.tensor,
                 text_weights: torch.tensor,
                 model: nn.Module,
+                id_test_features: torch.tensor,
+                id_test_labels: torch.tensor,
                 classnames):
         """
         inputs:
@@ -59,161 +60,143 @@ class ClipAdapter_BiomedCLIP():
         print('Building custom CLIP')
         model.eval()
         clip_ad_model = CustomCLIP(model)
-        clip_ad_model_val = copy.deepcopy(clip_ad_model)
+        # clip_ad_model_val = copy.deepcopy(clip_ad_model)
         
-        print('Turning off gradients in both the image and the text encoder')
-        for name, param in clip_ad_model.named_parameters():
-            if 'adapter' not in name:
-                param.requires_grad_(False)
+        # New
+        # Load the pre-trained adapter
+        adapter_path = self.cfg['cache_dir'] + "/best_clipAdapterModel.pt"
+        print(f"Loading adapter from: {adapter_path}")
+
+         # Add the Adapter class to safe globals before loading
+        # torch.serialization.add_safe_globals([Adapter])
+    
+        # Load the adapter with weights_only=False (only if you trust the source)
+        clip_ad_model.adapter = torch.load(adapter_path, weights_only=False)
+
+
+        # clip_ad_model.adapter = torch.load(adapter_path)
+        # clip_ad_model.cuda()
+
+
+        # print('Turning off gradients in both the image and the text encoder')
+        # for name, param in clip_ad_model.named_parameters():
+        #     if 'adapter' not in name:
+        #         param.requires_grad_(False)
                 
-        for name, param in clip_ad_model_val.named_parameters():
-            if 'adapter' not in name:
-                param.requires_grad_(False)
+        # for name, param in clip_ad_model_val.named_parameters():
+        #     if 'adapter' not in name:
+        #         param.requires_grad_(False)
         
-        clip_ad_model.cuda()
-        clip_ad_model_val.cuda()
+        # clip_ad_model.cuda()
+        # clip_ad_model_val.cuda()
     
 
-        # Feature Extraction for Validation
-        print("\nExtracting visual features and labels from val set.")
-        val_features, val_labels = [], []
-        with torch.no_grad():
-            for i, (images, target) in enumerate(tqdm(val_loader)):
-                images, target = images.cuda(), target.cuda()
-                with torch.no_grad():
-                    image_features = model.encode_image(images)
-                    image_features /= image_features.norm(dim=-1, keepdim=True)
-                val_features.append(image_features)
-                val_labels.append(target)
-        val_features, val_labels = torch.cat(val_features), torch.cat(val_labels)
-        start_time = time.time() 
-        # # alpha initialization
-        # if cfg['search_alpha_ca']:
-        #     best_acc = 0.0
-        #     print("**** Searching for best initialization of alpha **** \n")
-        #     alpha_list = [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0]
-        #     for init_alpha in alpha_list:
-        #         clip_ad_model_val.adapter = self.search_init_hp(init_alpha, train_loader,clip_ad_model_val, model, text_weights)
-        #         logits = clip_ad_model_val(val_features, text_weights, self.alpha)
-        #         acc = cls_acc(logits, val_labels)
-        #         print(init_alpha)
-        #         print(acc)
-        #         if acc > best_acc:
-        #             best_acc = acc
-        #             alpha = init_alpha
-        #             # adapter = init_adapter
-                    
-        # else:
-        alpha = cfg["alpha_ca"]
-        print(alpha)
+        # # Feature Extraction for Validation
+        # print("\nExtracting visual features and labels from val set.")
+        # val_features, val_labels = [], []
+        # with torch.no_grad():
+        #     for i, (images, target) in enumerate(tqdm(val_loader)):
+        #         images, target = images.cuda(), target.cuda()
+        #         with torch.no_grad():
+        #             image_features = model.encode_image(images)
+        #             image_features /= image_features.norm(dim=-1, keepdim=True)
+        #         val_features.append(image_features)
+        #         val_labels.append(target)
+        # val_features, val_labels = torch.cat(val_features), torch.cat(val_labels)
+        # start_time = time.time() 
+       
+        # alpha = cfg["alpha_ca"]
+        # print(alpha)
 
-        #optimizer = torch.optim.SGD(clip_ad_model.adapter.parameters(), self.lr)
-        #scheduler = torch.optim.lr_scheduler.CosineAnnealingLR(optimizer, self.cfg['train_epoch'] * len(train_loader), eta_min=1e-5)
         
-        optimizer = torch.optim.SGD(clip_ad_model.adapter.parameters(), self.lr)
-        # scheduler = torch.optim.lr_scheduler.CosineAnnealingLR(optimizer, self.cfg['train_epoch'])
-        # scheduler = ConstantWarmupScheduler(
-        #         optimizer, scheduler, self.cfg["WARMUP_EPOCH"],
-        #         self.cfg["WARMUP_CONS_LR"]
-        #     )
+        # optimizer = torch.optim.SGD(clip_ad_model.adapter.parameters(), self.lr)
         
-        # Train
-        print('\nStart Training procedure')
+        # # Train
+        # print('\nStart Training procedure')
            
-        best_acc, best_epoch = 0.0, 0
-        for train_idx in range(self.cfg['train_epoch']):
-            # Train
-            clip_ad_model.adapter.train()
-            correct_samples, all_samples = 0, 0
-            loss_list = []
-            print('Train Epoch: {:} / {:}'.format(train_idx, self.cfg['train_epoch']))
+        # best_acc, best_epoch = 0.0, 0
+        # for train_idx in range(self.cfg['train_epoch']):
+        #     # Train
+        #     clip_ad_model.adapter.train()
+        #     correct_samples, all_samples = 0, 0
+        #     loss_list = []
+        #     print('Train Epoch: {:} / {:}'.format(train_idx, self.cfg['train_epoch']))
 
-            for i, (images, target) in enumerate(tqdm(train_loader)):
-                images, target = images.cuda(), target.cuda()
-                with torch.no_grad():
-                    image_features = model.encode_image(images)
-                    image_features /= image_features.norm(dim=-1, keepdim=True)
+        #     for i, (images, target) in enumerate(tqdm(train_loader)):
+        #         images, target = images.cuda(), target.cuda()
+        #         with torch.no_grad():
+        #             image_features = model.encode_image(images)
+        #             image_features /= image_features.norm(dim=-1, keepdim=True)
 
-                logits = clip_ad_model(image_features, text_weights, alpha)
+        #         logits = clip_ad_model(image_features, text_weights, alpha)
 
-                loss = F.cross_entropy(logits, target)
+        #         loss = F.cross_entropy(logits, target)
 
-                acc = cls_acc(logits, target)
-                correct_samples += acc / 100 * len(logits)
-                all_samples += len(logits)
-                loss_list.append(loss.item())
+        #         acc = cls_acc(logits, target)
+        #         correct_samples += acc / 100 * len(logits)
+        #         all_samples += len(logits)
+        #         loss_list.append(loss.item())
 
-                optimizer.zero_grad()
-                loss.backward()
-                optimizer.step()
-                # scheduler.step()
+        #         optimizer.zero_grad()
+        #         loss.backward()
+        #         optimizer.step()
+        #         # scheduler.step()
                 
-            clip_ad_model.adapter.eval()
-            # current_lr = scheduler.get_last_lr()[0]
-            print('Acc: {:.4f} ({:}/{:}), Loss: {:.4f}'.format( correct_samples / all_samples, correct_samples, all_samples, sum(loss_list)/len(loss_list)))
-            clip_ad_model.eval()
-            logits = clip_ad_model(val_features, text_weights, self.alpha)
-            acc = cls_acc(logits, val_labels)
+        #     clip_ad_model.adapter.eval()
+        #     # current_lr = scheduler.get_last_lr()[0]
+        #     print('Acc: {:.4f} ({:}/{:}), Loss: {:.4f}'.format( correct_samples / all_samples, correct_samples, all_samples, sum(loss_list)/len(loss_list)))
+        #     clip_ad_model.eval()
+        #     logits = clip_ad_model(val_features, text_weights, self.alpha)
+        #     acc = cls_acc(logits, val_labels)
             
-            print("**** Clip-Adapter's val accuracy: {:.4f}. ****\n".format(acc))
-            if acc > best_acc:
-                best_acc = acc
-                best_epoch = train_idx
-                torch.save(clip_ad_model.adapter, self.cfg['cache_dir'] + "/best_clipAdapterModel.pt")
-        # Evaluation
-        print("Total time = {:.4f}".format(time.time()-start_time))
-        # clip_ad_model.adapter = torch.load(self.cfg['cache_dir'] + "/best_clipA_" + str(self.cfg['shots']) + "shots.pt")
+        #     print("**** Clip-Adapter's val accuracy: {:.4f}. ****\n".format(acc))
+        #     if acc > best_acc:
+        #         best_acc = acc
+        #         best_epoch = train_idx
+        #         torch.save(clip_ad_model.adapter, self.cfg['cache_dir'] + "/best_clipAdapterModel.pt")
+        # # Evaluation
+        # print("Total time = {:.4f}".format(time.time()-start_time))
+        # # clip_ad_model.adapter = torch.load(self.cfg['cache_dir'] + "/best_clipA_" + str(self.cfg['shots']) + "shots.pt")
         
-        print('\nStart evaluation on test set')
+        print('\nStart evaluation on test sets')
         clip_ad_model.eval()
-        logits_test = clip_ad_model(test_features, text_weights, self.alpha) 
+        # # logits_test = clip_ad_model(test_features, text_weights, self.alpha) 
 
-        acc_test = np.mean(logits_test.argmax(dim=1).cpu().numpy() ==  test_labels.cpu().numpy())*100.0
+        # # acc_test = np.mean(logits_test.argmax(dim=1).cpu().numpy() ==  test_labels.cpu().numpy())*100.0
 
-        return loss, acc_test
 
-    def search_init_hp(self, alpha, val_loader, clip_ad_model, model, text_weights):
-        optimizer = torch.optim.SGD(clip_ad_model.adapter.parameters(), self.lr)
-        # scheduler = torch.optim.lr_scheduler.CosineAnnealingLR(optimizer, self.cfg['train_epoch'])
-        # scheduler = ConstantWarmupScheduler(
-        #         optimizer, scheduler, self.cfg["WARMUP_EPOCH"],
-        #         self.cfg["WARMUP_CONS_LR"]
-        #     )    
-        # Train
-        print('\nStart Training procedure')
 
-        best_acc, best_epoch = 0.0, 0
-        clip_ad_model.adapter.train()
-        for train_idx in range(self.cfg['train_epoch']):
-            # Train
+        # Newly Added
+        # Evaluate main test set (center 4)
+        print("\nEvaluating main test set (center 4):")
+        logits_test = clip_ad_model(test_features, text_weights, self.alpha)
+        preds_test = logits_test.argmax(dim=1).cpu().numpy()
+        labels_test = test_labels.cpu().numpy()
+
+        print(f"Accuracy: {accuracy_score(labels_test, preds_test)*100:.2f}%")
+        print(f"F1: {f1_score(labels_test, preds_test)*100:.2f}%")
+        print(f"Precision: {precision_score(labels_test, preds_test)*100:.2f}%")
+        print(f"Recall: {recall_score(labels_test, preds_test)*100:.2f}%")
+
+        # Evaluate each in-distribution test set (centers 0-2)
+        for i in range(3):
+            center_name = f'id_test_center_{i}'
+            print(f"\nEvaluating {center_name}:")
             
-            correct_samples, all_samples = 0, 0
-            loss_list = []
-            print('Train Epoch: {:} / {:}'.format(train_idx, self.cfg['train_epoch']))
+            features = id_test_features[center_name]
+            labels = id_test_labels[center_name]
+            
+            logits = clip_ad_model(features, text_weights, self.alpha)
+            preds = logits.argmax(dim=1).cpu().numpy()
+            labels = labels.cpu().numpy()
+            
+            print(f"Accuracy: {accuracy_score(labels, preds)*100:.2f}%")
+            print(f"F1: {f1_score(labels, preds)*100:.2f}%")
+            print(f"Precision: {precision_score(labels, preds)*100:.2f}%")
+            print(f"Recall: {recall_score(labels, preds)*100:.2f}%")
 
-            for i, (images, target) in enumerate(tqdm(val_loader)):
-                images, target = images.cuda(), target.cuda()
-                with torch.no_grad():
-                    image_features = model.encode_image(images)
-                    image_features /= image_features.norm(dim=-1, keepdim=True)
+        return 100, 100
 
-                logits = clip_ad_model(image_features, text_weights, self.alpha)
-
-                loss = F.cross_entropy(logits, target)
-
-                # acc = cls_acc(logits, target)
-                # correct_samples += acc / 100 * len(logits)
-                # all_samples += len(logits)
-                # loss_list.append(loss.item())
-
-                optimizer.zero_grad()
-                loss.backward()
-                optimizer.step()
-                # scheduler.step()
-        # Eval
-        clip_ad_model.adapter.eval()
-
-        return clip_ad_model.adapter
 
     
 class Adapter(nn.Module):
@@ -251,50 +234,3 @@ class CustomCLIP(nn.Module):
         logits = logit_scale * image_features @ text_features
 
         return logits
-# class _BaseWarmupScheduler(_LRScheduler):
-
-#     def __init__(
-#         self,
-#         optimizer,
-#         successor,
-#         warmup_epoch,
-#         last_epoch=-1,
-#         verbose=False
-#     ):
-#         self.successor = successor
-#         self.warmup_epoch = warmup_epoch
-#         super().__init__(optimizer, last_epoch, verbose)
-
-#     def get_lr(self):
-#         raise NotImplementedError
-
-#     def step(self, epoch=None):
-#         if self.last_epoch >= self.warmup_epoch:
-#             self.successor.step(epoch)
-#             self._last_lr = self.successor.get_last_lr()
-#         else:
-#             super().step(epoch)
-                
-
-# class ConstantWarmupScheduler(_BaseWarmupScheduler):
-
-#     def __init__(
-#         self,
-#         optimizer,
-#         successor,
-#         warmup_epoch,
-#         cons_lr,
-#         last_epoch=-1,
-#         verbose=False
-#     ):
-#         self.cons_lr = cons_lr
-#         super().__init__(
-#             optimizer, successor, warmup_epoch, last_epoch, verbose
-#         )
-
-#     def get_lr(self):
-#         if self.last_epoch >= self.warmup_epoch:
-#             return self.successor.get_last_lr()
-#         return [self.cons_lr for _ in self.base_lrs]
-
-
