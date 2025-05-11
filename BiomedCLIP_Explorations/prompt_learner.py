@@ -276,20 +276,32 @@ def main():
         shuffle=False, num_workers=NUM_WORKERS
     )
 
-    # precompute image features
-    print("Precomputing image features …")
-    all_img_feats = []
-    all_img_labels = []
-    with torch.no_grad():
-        for imgs, labels in tqdm(train_loader, desc="Precompute Feats"):
-            imgs = imgs.to(DEVICE)
-            feats = model.encode_image(imgs)                    # (B, D)
-            feats = feats / feats.norm(dim=1, keepdim=True)
-            all_img_feats.append(feats.cpu())
-            all_img_labels.append(labels)
-    # Stack into tensors on CPU
-    all_img_feats = torch.cat(all_img_feats, dim=0)  # (N, D)
-    all_img_labels = torch.cat(all_img_labels, dim=0)  # (N,)
+    # ——— Cache/load precomputed features ———
+    cache_path = "cached_image_feats.pt"
+    if os.path.exists(cache_path):
+        print(f"Loading cached image features from {cache_path}")
+        data = torch.load(cache_path)
+        all_img_feats, all_img_labels = data["feats"], data["labels"]
+    else:
+        print("Precomputing image features …")
+        all_img_feats = []
+        all_img_labels = []
+        with torch.no_grad():
+            for imgs, labels in tqdm(train_loader, desc="Precompute Feats"):
+                imgs = imgs.to(DEVICE)
+                feats = model.encode_image(imgs)                    # (B, D)
+                feats = feats / feats.norm(dim=1, keepdim=True)
+                all_img_feats.append(feats.cpu())
+                all_img_labels.append(labels)
+        all_img_feats = torch.cat(all_img_feats, dim=0)   # (N, D)
+        all_img_labels = torch.cat(all_img_labels, dim=0)  # (N,)
+
+        # Save to cache
+        print(f"Saving cached features to {cache_path}")
+        torch.save(
+            {"feats": all_img_feats, "labels": all_img_labels},
+            cache_path
+        )
 
     pq = PriorityQueue(max_capacity=40)
     prompt_llm = ""
