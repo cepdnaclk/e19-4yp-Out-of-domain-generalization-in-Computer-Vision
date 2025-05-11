@@ -99,18 +99,18 @@ def get_prompt_pairs(prompt_template: Tuple[str, str], content: str, client, max
         prompt = prompt_template[0] + "\n" + prompt_template[1] + \
             "\n" + content + "\n" + prompt_template[2]
     for attempt in range(1, max_retries + 1):
-        response = client.generate_content(prompt)
-        raw = response.text
-
-        # 1) extract the python block
-        m = re.search(r'```python\s*(.*?)\s*```', raw, re.S)
-        code = m.group(1) if m else raw
-
-        # 2) normalize all literals to double-quoted form
-        code = _force_double_quotes(code)
-
-        # 3) parse and extract
         try:
+            response = client.generate_content(prompt)
+            raw = response.text
+
+            # 1) extract the python block
+            m = re.search(r'```python\s*(.*?)\s*```', raw, re.S)
+            code = m.group(1) if m else raw
+
+            # 2) normalize all literals to double-quoted form
+            code = _force_double_quotes(code)
+
+            # 3) parse and extract
             tree = ast.parse(code)
             prompts_list = None
             for node in tree.body:
