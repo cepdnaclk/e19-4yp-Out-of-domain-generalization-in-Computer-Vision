@@ -126,7 +126,7 @@ def main():
 
     df = metadata_df[metadata_df.split == 1].copy()
     centers_ds = []
-    for i in range(3):
+    for i in range(4):
         centers_ds.append(BiomedCLIPDataset(df[df.center == i], preprocess))
 
     # 3. Generate embeddings and store them for each center
@@ -153,8 +153,8 @@ def main():
                 all_feats.append(feats.cpu())
                 all_labels.append(labels.cpu())
 
-        centers_features[i] = torch.cat(all_feats).numpy()
-        centers_labels[i] = torch.cat(all_labels).numpy()
+        centers_features[i] = torch.cat(all_feats)
+        centers_labels[i] = torch.cat(all_labels)
 
     # load adapter
     adapter = Adapter(dim=512).to(DEVICE)
