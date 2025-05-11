@@ -91,37 +91,54 @@ def _force_double_quotes(code: str) -> str:
     return tokenize.untokenize(new_tokens)
 
 
-def get_prompt_pairs(prompt_template: Tuple[str, str], content: str, client) -> List[Tuple[str, str]]:
+def get_prompt_pairs(prompt_template: Tuple[str, str], content: str, client, max_retries=10) -> List[Tuple[str, str]]:
 
     if content == "":
         prompt = prompt_template[0] + "\n" + prompt_template[2]
     else:
         prompt = prompt_template[0] + "\n" + prompt_template[1] + \
             "\n" + content + "\n" + prompt_template[2]
-    response = client.generate_content(prompt)
-    raw = response.text
+    for attempt in range(1, max_retries + 1):
+        response = client.generate_content(prompt)
+        raw = response.text
 
-    # 1) extract the python block
-    m = re.search(r'```python\s*(.*?)\s*```', raw, re.S)
-    code = m.group(1) if m else raw
+        # 1) extract the python block
+        m = re.search(r'```python\s*(.*?)\s*```', raw, re.S)
+        code = m.group(1) if m else raw
 
-    # 2) normalize all literals to double-quoted form
-    code = _force_double_quotes(code)
+        # 2) normalize all literals to double-quoted form
+        code = _force_double_quotes(code)
 
-    # 3) parse and extract
-    tree = ast.parse(code)
-    prompts_list = None
-    for node in tree.body:
-        if isinstance(node, ast.Assign) and any(
-            isinstance(t, ast.Name) and t.id == 'prompts' for t in node.targets
-        ):
-            prompts_list = ast.literal_eval(node.value)
-            break
+        # 3) parse and extract
+        try:
+            tree = ast.parse(code)
+            prompts_list = None
+            for node in tree.body:
+                if (
+                    isinstance(node, ast.Assign)
+                    and any(isinstance(t, ast.Name) and t.id == 'prompts' for t in node.targets)
+                ):
+                    prompts_list = ast.literal_eval(node.value)
+                    break
 
-    prompts: List[Tuple[str, str]] = prompts_list  # type: ignore
-    print(f"Loaded {len(prompts)} prompt-pairs.")
-    print("First pair:", prompts[0])
-    return prompts
+            if not isinstance(prompts_list, list):
+                raise ValueError("`prompts` is not a list")
+
+            prompts: List[Tuple[str, str]] = prompts_list  # type: ignore
+            print(f"Loaded {len(prompts)} prompt-pairs.")
+            print("First pair:", prompts[0])
+            return prompts
+
+        except Exception as e:
+            print(
+                f"[Warning] get_prompt_pairs parse error on attempt {attempt}/{max_retries}: {e}")
+            if attempt == max_retries:
+                raise RuntimeError(
+                    "Failed to parse prompts after multiple attempts") from e
+            # otherwise, retry immediately
+
+    # Should never reach here
+    raise RuntimeError("Unreachable")
 
 
 def evaluate_prompt_pair(
