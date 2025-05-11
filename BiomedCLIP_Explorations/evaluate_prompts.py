@@ -183,3 +183,7 @@ def main():
         print(evaluate_prompt_pair_with_adapter(
             negative_prompt, positive_prompt, centers_features[i], centers_labels[i], model, tokenizer, adapter)
         )
+
+
+if __name__ == "__main__":
+    main()
