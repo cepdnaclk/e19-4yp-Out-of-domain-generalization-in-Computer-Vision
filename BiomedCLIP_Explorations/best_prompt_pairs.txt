@@ -1,0 +1,662 @@
+Iteration 40:
+('central region lacks infiltration of surrounding tissues', 'central region demonstrates invasive growth patterns'), Score: 0.8504
+('central region shows mature plasma cells', 'central region contains increased numbers of immature or atypical plasma cells'), Score: 0.8328
+('central region lacks Reed-Sternberg-like cells', 'central region contains large cells with bilobed or multilobed nuclei and prominent nucleoli'), Score: 0.8150
+('central region lacks significant nuclear pleomorphism', 'central region exhibits marked nuclear pleomorphism'), Score: 0.7751
+('central region lacks atypical mitotic figures', 'central region contains abnormal mitotic figures'), Score: 0.7725
+('central region shows a low proliferation index (e.g., Ki-67)', 'central region shows a high proliferation index (e.g., Ki-67)'), Score: 0.7679
+('central region shows minimal mitotic activity', 'central region exhibits frequent mitotic figures'), Score: 0.7544
+('central region shows a reactive lymphoid hyperplasia pattern', 'central region exhibits a neoplastic lymphoid proliferation pattern'), Score: 0.7417
+('central region shows a normal ratio of different cell types', 'central region exhibits an abnormal ratio of different cell types'), Score: 0.7391
+('central region lacks large lymphoid cells with basophilic cytoplasm', 'central region contains large lymphoid cells with deeply basophilic cytoplasm'), Score: 0.7280
+('central region shows intact basement membranes', 'central region exhibits disrupted basement membranes'), Score: 0.7255
+('central region lacks evidence of clonal B-cell or T-cell populations (if molecular data is considered)', 'central region suggests a clonal B-cell or T-cell population (if molecular data is considered)'), Score: 0.7250
+('central region shows small, uniform lymphocytes', 'central region contains a mixture of small and large, atypical lymphocytes'), Score: 0.7046
+('central region displays a normal pattern of antigen expression (if immunohistochemistry is considered)', 'central region shows aberrant or loss of antigen expression (if immunohistochemistry is considered)'), Score: 0.7020
+('central region has inconspicuous nucleoli', 'central region possesses prominent, multiple nucleoli'), Score: 0.7004
+('central region has a normal stromal component', 'central region shows altered or desmoplastic stroma'), Score: 0.6991
+('central region lacks large, irregular nuclei', 'central region contains numerous large, pleomorphic nuclei'), Score: 0.6871
+('central region shows normal endothelial lining of sinuses', 'central region exhibits atypical cells adhering to or replacing the sinusoidal lining'), Score: 0.6801
+('central region shows a preserved germinal center', 'central region shows an absent or distorted germinal center'), Score: 0.6735
+('central region displays fine nuclear chromatin', 'central region exhibits vesicular or open nuclear chromatin'), Score: 0.6484
+('central region displays a normal interfollicular region', 'central region shows expansion of the interfollicular region by atypical cells'), Score: 0.6426
+('central region has a normal distribution of lymphocytes', 'central region shows an abnormal distribution or clustering of lymphocytes'), Score: 0.6306
+('central region lacks sinusoidal infiltration', 'central region shows infiltration of sinuses by atypical cells'), Score: 0.6191
+('central region lacks evidence of emperipolesis', 'central region shows emperipolesis (lymphocytes within other cells)'), Score: 0.6108
+('central region shows loosely packed cells with abundant cytoplasm', 'central region shows densely packed cells with high nuclear-to-cytoplasmic ratio'), Score: 0.5982
+('central region lacks multinucleated giant cells', 'central region contains multinucleated giant cells'), Score: 0.5959
+('central region lacks capsular invasion', 'central region demonstrates invasion of the lymph node capsule'), Score: 0.5956
+('central region lacks prominent cytoplasmic vacuoles', 'central region contains cells with prominent cytoplasmic vacuoles'), Score: 0.5863
+('central region shows well-formed lymphatic channels', 'central region exhibits obstruction or distortion of lymphatic channels'), Score: 0.5769
+('central region lacks cells with irregular nuclear contours', 'central region shows cells with cleaved, notched, or convoluted nuclei'), Score: 0.5551
+('central region lacks granulomas', 'central region contains granulomatous inflammation'), Score: 0.5540
+('central region displays a normal pattern of cell adhesion', 'central region shows loss of cell adhesion or discohesion'), Score: 0.5468
+('central region lacks fibrosis', 'central region shows increased fibrosis or sclerosis'), Score: 0.5374
+('central region shows no perinodal extension', 'central region exhibits tumor extension beyond the lymph node capsule'), Score: 0.5272
+('central region shows delicate reticulin fibers', 'central region exhibits a disrupted reticulin fiber network'), Score: 0.5252
+('central region lacks a starry-sky pattern', 'central region shows a starry-sky pattern (macrophages with ingested debris)'), Score: 0.5200
+('central region has a low cellular density overall', 'central region shows high cellular density overall'), Score: 0.5190
+('central region shows no evidence of amyloid deposition', 'central region displays amyloid deposition'), Score: 0.5077
+('central region displays evenly distributed chromatin', 'central region shows coarse or clumped chromatin'), Score: 0.5030
+('central region lacks significant edema', 'central region shows stromal edema'), Score: 0.5024
+
+Iteration 40:
+('Central region lacks the presence of lipophages (lipid-laden macrophages).', 'Central region contains lipophages.'), Score: 0.8474
+('Central region shows predominantly small, uniform lymphocytes with round nuclei and scant cytoplasm.', 'Central region exhibits large, pleomorphic cells with irregular nuclei, prominent nucleoli, and variable cytoplasm.'), Score: 0.8276
+('Central region displays a consistent nuclear size and shape across the majority of cells.', 'Central region shows significant variation in nuclear size and shape (anisokaryosis and pleomorphism).'), Score: 0.8147
+('Central region presents a normal number of plasma cells and eosinophils.', 'Central region shows an increased number of plasma cells or eosinophils, potentially indicating an inflammatory response to tumor.'), Score: 0.8120
+('Central region shows no evidence of necrosis or apoptotic bodies.', 'Central region contains areas of cellular necrosis or numerous apoptotic bodies.'), Score: 0.7934
+('Central region shows small, mature lymphocytes with condensed chromatin.', 'Central region displays cells with vesicular chromatin and one or more prominent nucleoli.'), Score: 0.7875
+('Central region has a delicate network of reticulin fibers supporting the lymphoid cells.', 'Central region demonstrates a disrupted or absent reticulin network due to cellular infiltration.'), Score: 0.7786
+('Central region presents a high nuclear-to-cytoplasmic ratio in the constituent cells, all appearing similar.', 'Central region shows cells with variable nuclear-to-cytoplasmic ratios and significant cellular pleomorphism.'), Score: 0.7357
+('Central region vasculature is thin-walled and lacks abnormal features.', 'Central region shows thick-walled vessels or evidence of tumor emboli.'), Score: 0.7180
+('Central region lacks the presence of atypical stromal cells.', 'Central region contains atypical stromal cells, potentially indicating tumor-stromal interactions.'), Score: 0.7066
+('Central region is characterized by a clear demarcation between the mantle zone and the germinal center.', 'Central region lacks distinct zonal architecture and shows a monotonous population of cells.'), Score: 0.7049
+('Central region lacks mitotic figures or shows very few normal mitoses.', 'Central region contains numerous abnormal and atypical mitotic figures.'), Score: 0.6946
+('Central region lacks evidence of vascular proliferation.', 'Central region shows evidence of increased vascular proliferation (angiogenesis).'), Score: 0.6909
+('Central region displays a well-maintained basement membrane in relevant structures.', 'Central region shows disruption or thickening of basement membranes.'), Score: 0.6534
+('Central region shows a normal arrangement of collagen fibers.', 'Central region exhibits abnormal deposition or arrangement of collagen fibers.'), Score: 0.6520
+('Central region shows a normal spatial relationship between different cell types.', 'Central region exhibits an abnormal spatial relationship or clustering of specific cell types.'), Score: 0.6458
+('Central region displays a uniform staining intensity of the nuclei.', 'Central region exhibits variability in nuclear staining intensity (hyperchromasia/hypochromasia).'), Score: 0.6396
+('Central region shows a consistent staining pattern with H&E, indicating uniform cellular components.', 'Central region exhibits areas of hyperchromasia or hypochromasia, suggesting cellular heterogeneity.'), Score: 0.6359
+('Central region vasculature appears as small, inconspicuous capillaries.', 'Central region shows increased vascularity with potentially abnormal or dilated vessels.'), Score: 0.6237
+('Central region lacks evidence of capsular invasion (if capsule is present in the patch).', 'Central region shows evidence of tumor cells invading the lymph node capsule.'), Score: 0.6232
+('Central region lacks the formation of syncytia (multinucleated giant cells).', 'Central region contains syncytia or multinucleated giant cells.'), Score: 0.6162
+('Central region shows no evidence of emperipolesis (lymphocytes within other cells).', 'Central region displays emperipolesis, where lymphocytes are seen within other cells.'), Score: 0.6093
+('Central region shows no evidence of fibrosis or sclerosis.', 'Central region contains increased fibrous connective tissue (fibrosis or sclerosis).'), Score: 0.6093
+('Central region lacks the presence of amyloid deposition.', 'Central region contains amyloid deposition.'), Score: 0.6029
+('Central region displays a normal pattern of nerve fibers (if present in the patch).', 'Central region shows evidence of nerve fiber invasion by tumor cells (neurotropism).'), Score: 0.5881
+('Central region shows a normal pattern of lymphatic sinuses.', 'Central region reveals dilated or obliterated lymphatic sinuses due to cellular infiltration.'), Score: 0.5879
+('Central region presents a regular and organized pattern of cell distribution.', 'Central region shows an irregular and disorganized pattern of cell distribution with potential clustering.'), Score: 0.5870
+('Central region lacks the presence of foreign material or artifacts that could mimic tumor.', 'Central region contains foreign material or artifacts that could be mistaken for tumor cells.'), Score: 0.5805
+('Central region lacks the presence of micrometastases or small clusters of tumor cells.', 'Central region contains micrometastases or small clusters of tumor cells.'), Score: 0.5610
+('Central region lacks the presence of granulomas.', 'Central region contains granulomas.'), Score: 0.5592
+('Central region lacks the presence of mast cells in abnormal numbers or locations.', 'Central region contains an increased number of mast cells or mast cells in unusual locations.'), Score: 0.5550
+('Central region has a smooth and rounded contour of lymphoid follicles.', 'Central region shows irregular or disrupted contours of lymphoid structures.'), Score: 0.5533
+('Central region lacks the presence of abnormal pigment deposition.', 'Central region contains abnormal pigment deposition, such as anthracotic pigment in unusual locations.'), Score: 0.5475
+('Central region lacks evidence of infiltration into surrounding tissues.', 'Central region shows evidence of cellular infiltration beyond the normal follicular boundaries.'), Score: 0.5245
+('Central region contains tingible body macrophages within the germinal centers, actively phagocytosing cellular debris.', 'Central region lacks active germinal centers with tingible body macrophages.'), Score: 0.5157
+('Central region lacks the presence of Charcot-Leyden crystals.', 'Central region contains Charcot-Leyden crystals (associated with eosinophil degradation).'), Score: 0.5144
+('Central region shows a normal pattern of antigen presentation cells.', 'Central region exhibits an abnormal distribution or morphology of antigen presentation cells.'), Score: 0.5113
+('Central region displays a dense and regular arrangement of lymphoid follicles with well-defined germinal centers.', 'Central region reveals effacement of normal lymphoid architecture by sheets or clusters of atypical cells.'), Score: 0.5096
+('Central region displays a normal pattern of extracellular matrix components.', 'Central region shows alterations in the extracellular matrix components.'), Score: 0.5069
+('Central region shows a normal pattern of follicular dendritic cell meshwork (if discernible).', 'Central region exhibits a disrupted or absent follicular dendritic cell meshwork.'), Score: 0.5045
+
+Iteration 30:
+('small, mature lymphocytes', 'large, immature-appearing cells'), Score: 0.8518
+('evenly distributed lymphocytes', 'dense clusters or sheets of atypical cells'), Score: 0.8177
+('uniform, pale cytoplasm', 'pleomorphic cells with high nuclear-to-cytoplasmic ratio'), Score: 0.8067
+('absence of atypical plasma cells', 'presence of increased or atypical plasma cells'), Score: 0.7925
+('mantle zone with small lymphocytes', 'expansion or absence of the mantle zone with atypical cells'), Score: 0.7433
+('preserved capsule and subcapsular sinus', 'invasion or breach of the capsule and subcapsular sinus'), Score: 0.7343
+('mantle cells are uniform and small', 'mantle cells are large or show cytologic atypia'), Score: 0.7335
+('sinuses with few or no atypical cells', 'sinuses infiltrated by atypical cells'), Score: 0.6570
+('smooth nuclear membranes', 'irregular or lobated nuclear membranes'), Score: 0.6437
+('single, small nucleolus if present', 'large or multiple nucleoli'), Score: 0.6367
+('no evidence of perineural invasion', 'evidence of tumor cells surrounding or invading nerves'), Score: 0.6274
+('normal distribution of high endothelial venules (HEVs)', 'abnormal distribution or morphology of HEVs'), Score: 0.6233
+('clear demarcation of tissue compartments', 'disruption of normal tissue architecture'), Score: 0.6138
+('vessels are thin-walled and regular', 'vessels are thick-walled or irregular'), Score: 0.6076
+('cytoplasm stains uniformly', 'cytoplasmic staining is variable or granular'), Score: 0.5993
+('presence of collagen fibers in the stroma', 'altered or absent collagen fibers in the stroma'), Score: 0.5713
+('orderly arrangement of cells', 'disorganized or haphazard arrangement of cells'), Score: 0.5704
+('sinusoidal lining cells are flat and regular', 'sinusoidal lining cells are enlarged or atypical'), Score: 0.5609
+('regular nuclear shape and size', 'irregular nuclear contours and chromatin patterns'), Score: 0.5576
+('stroma is delicate and sparse', 'stroma is dense or reactive'), Score: 0.5483
+('absence of Reed-Sternberg-like cells', 'presence of Reed-Sternberg-like cells'), Score: 0.5452
+('low cellularity, abundant stromal tissue', 'high cellularity, scant stromal tissue'), Score: 0.5450
+('normal mitotic rate', 'increased mitotic rate'), Score: 0.5414
+('well-defined lymphoid follicles', 'poorly defined or absent lymphoid follicles'), Score: 0.5371
+('absence of granulomas', 'presence of granulomas'), Score: 0.5358
+('single, centrally located nuclei', 'multiple or eccentrically located nuclei'), Score: 0.5282
+('no evidence of angioinvasion', 'evidence of tumor cells within or attached to blood vessels'), Score: 0.5154
+('marginal zone is inconspicuous or normal', 'marginal zone is expanded or contains atypical cells'), Score: 0.5099
+('no evidence of invasion into adjacent tissues', 'evidence of infiltration or invasion'), Score: 0.5049
+('inconspicuous nucleoli', 'prominent or multiple nucleoli'), Score: 0.5016
+
+Iteration 40:
+('lymphocytes: small and mature', 'cells: large and immature'), Score: 0.8619
+('sinuses are free of atypical cells', 'atypical cells permeate the sinuses'), Score: 0.8613
+('lymphocytes distributed evenly', 'atypical cells in dense sheets'), Score: 0.8595
+('small, mature lymphocytes', 'large, immature-appearing cells'), Score: 0.8518
+('uniform distribution of lymphocytes', 'atypical cells forming dense clusters'), Score: 0.8425
+('clear sinuses, no atypical cells', 'atypical cells present within sinuses'), Score: 0.8289
+('mature lymphocytes are small', 'immature-appearing cells are large'), Score: 0.8217
+('small, mature lymphocytes present', 'large, immature cells dominate'), Score: 0.8197
+('evenly distributed lymphocytes', 'dense clusters or sheets of atypical cells'), Score: 0.8177
+('lymphocytes are small in mantle zone', 'mantle zone shows atypical cell expansion'), Score: 0.8092
+('uniform, pale cytoplasm', 'pleomorphic cells with high nuclear-to-cytoplasmic ratio'), Score: 0.8067
+('consistent, pale cytoplasm in cells', 'pleomorphic cells with high N:C ratio'), Score: 0.7973
+('absence of atypical plasma cells', 'presence of increased or atypical plasma cells'), Score: 0.7925
+('evenly spread small lymphocytes', 'dense groups of atypical cells'), Score: 0.7617
+('mature, small lymphocytes seen', 'immature, large cells observed'), Score: 0.7506
+('uniform, small mantle cell population', 'mantle cells show large size or atypia'), Score: 0.7486
+('mantle zone shows small lymphocytes', 'atypical cells expand or replace mantle zone'), Score: 0.7443
+('mantle zone with small lymphocytes', 'expansion or absence of the mantle zone with atypical cells'), Score: 0.7433
+('preserved capsule and subcapsular sinus', 'invasion or breach of the capsule and subcapsular sinus'), Score: 0.7343
+('mantle cells are uniform and small', 'mantle cells are large or show cytologic atypia'), Score: 0.7335
+('small lymphocytes, even spread', 'atypical cells, clustered densely'), Score: 0.7307
+('lack of abnormal plasma cells', 'presence of increased abnormal plasma cells'), Score: 0.7219
+('no signs of atypical plasma cells', 'atypical plasma cells are elevated'), Score: 0.7212
+('a small, single nucleolus may be present', 'nucleoli are large and/or multiple'), Score: 0.7198
+('evenly located small lymphocytes', 'atypical cells in dense formations'), Score: 0.7074
+('small, similar appearing mantle cells', 'mantle cells with large or unusual features'), Score: 0.6792
+('nuclei have smooth boundaries', 'irregularly shaped nuclear membranes'), Score: 0.6681
+('pale, uniform cytoplasm observed', 'cells show diverse forms, large nuclei'), Score: 0.6643
+('cells with uniform pale cytoplasm', 'pleomorphic cells, prominent nuclei'), Score: 0.6627
+('sinuses with few or no atypical cells', 'sinuses infiltrated by atypical cells'), Score: 0.6570
+('atypical plasma cells: absent', 'atypical plasma cells: increased'), Score: 0.6520
+('mantle cells: uniform and small size', 'mantle cells: large or cytologically atypical'), Score: 0.6478
+('smooth nuclear membranes', 'irregular or lobated nuclear membranes'), Score: 0.6437
+('mantle zone with typical lymphocytes', 'atypical cells affect mantle zone structure'), Score: 0.6380
+('single, small nucleolus if present', 'large or multiple nucleoli'), Score: 0.6367
+('nuclear membranes are smooth', 'nuclear membranes show irregularities'), Score: 0.6356
+('no evidence of perineural invasion', 'evidence of tumor cells surrounding or invading nerves'), Score: 0.6274
+('smoothly outlined nuclei', 'nuclei with lobated or irregular edges'), Score: 0.6242
+('normal distribution of high endothelial venules (HEVs)', 'abnormal distribution or morphology of HEVs'), Score: 0.6233
+('small mature lymphoid cells', 'large immature looking cells'), Score: 0.6166
+
+Iteration 40:
+('lymphocytes distributed in an even manner', 'atypical cells forming dense clusters or sheets'), Score: 0.8654
+('lymphocytes: small and mature', 'cells: large and immature'), Score: 0.8619
+('sinuses are free of atypical cells', 'atypical cells permeate the sinuses'), Score: 0.8613
+('lymphocytes lack prominent nucleoli', 'cells show prominent nucleoli'), Score: 0.8596
+('lymphocytes distributed evenly', 'atypical cells in dense sheets'), Score: 0.8595
+('mature lymphocytes are characteristically small', 'immature-appearing cells are characteristically large'), Score: 0.8551
+('small, mature lymphocytes', 'large, immature-appearing cells'), Score: 0.8518
+('lymphocytes: small, mature appearance', 'cells: large, immature morphology'), Score: 0.8515
+('uniform distribution of lymphocytes', 'atypical cells forming dense clusters'), Score: 0.8425
+('no evidence of tumor invasion of nerves', 'tumor cells are seen surrounding or invading nerves'), Score: 0.8354
+('cells show uniform, pale cytoplasm', 'cells are pleomorphic with high nuclear/cytoplasmic ratio'), Score: 0.8333
+('mantle zone shows small, typical lymphocytes', 'atypical cells expand or replace the mantle zone'), Score: 0.8311
+('clear sinuses, no atypical cells', 'atypical cells present within sinuses'), Score: 0.8289
+('mature lymphocytes are small', 'immature-appearing cells are large'), Score: 0.8217
+('small, mature lymphocytes present', 'large, immature cells dominate'), Score: 0.8197
+('evenly distributed lymphocytes', 'dense clusters or sheets of atypical cells'), Score: 0.8177
+('a small, single nucleolus may be visible', 'nucleoli are large in size and/or multiple in number'), Score: 0.8143
+('lymphocytes are small in mantle zone', 'mantle zone shows atypical cell expansion'), Score: 0.8092
+('uniform, pale cytoplasm', 'pleomorphic cells with high nuclear-to-cytoplasmic ratio'), Score: 0.8067
+('single, small nucleolus if discernible', 'nucleoli are large and/or multiple within nuclei'), Score: 0.8012
+('lymphocytes small within the mantle zone', 'atypical cell expansion in the mantle zone'), Score: 0.8010
+('consistent, pale cytoplasm in cells', 'pleomorphic cells with high N:C ratio'), Score: 0.7973
+('absence of atypical plasma cells', 'presence of increased or atypical plasma cells'), Score: 0.7925
+('mantle zone shows typical lymphocyte population', 'atypical cells disrupt mantle zone architecture'), Score: 0.7844
+('lymphocytes evenly spread out', 'atypical cells form dense aggregates'), Score: 0.7808
+('nuclei exhibit smooth boundaries', 'nuclear membranes show irregular shapes'), Score: 0.7748
+('mature lymphocytes are small', 'immature cells appear large'), Score: 0.7617
+('evenly spread small lymphocytes', 'dense groups of atypical cells'), Score: 0.7617
+('small lymphocytes are evenly distributed', 'atypical cells form dense groups'), Score: 0.7593
+('uniform lymphocyte distribution', 'atypical cells in tightly packed groups'), Score: 0.7568
+('nuclei have smoothly defined outlines', 'nuclei show lobated or irregular borders'), Score: 0.7516
+('mature, small lymphocytes seen', 'immature, large cells observed'), Score: 0.7506
+('no evidence of necrosis', 'foci of necrosis are observed'), Score: 0.7505
+('uniform, small mantle cell population', 'mantle cells show large size or atypia'), Score: 0.7486
+('mantle zone shows small lymphocytes', 'atypical cells expand or replace mantle zone'), Score: 0.7443
+('mantle zone with small lymphocytes', 'expansion or absence of the mantle zone with atypical cells'), Score: 0.7433
+('preserved capsule and subcapsular sinus', 'invasion or breach of the capsule and subcapsular sinus'), Score: 0.7343
+('mantle cells are uniform and small', 'mantle cells are large or show cytologic atypia'), Score: 0.7335
+('small lymphocytes, even spread', 'atypical cells, clustered densely'), Score: 0.7307
+('small, mature lymphocytes are observed', 'large, immature cells are prominent'), Score: 0.7254
+
+Iteration 40:
+('lymphocytes are small and mature', 'cells appear large and immature'), Score: 0.8845
+('nucleoli not prominent in lymphocytes', 'prominent nucleoli in atypical cells'), Score: 0.8764
+('cytoplasm is uniformly pale in lymphocytes', 'cytoplasm is variable and nuclear-to-cytoplasmic ratio is high in tumor cells'), Score: 0.8673
+('lymphocytes distributed in an even manner', 'atypical cells forming dense clusters or sheets'), Score: 0.8654
+('capsule and subcapsular sinus are intact', 'capsule and subcapsular sinus show signs of invasion or breach'), Score: 0.8633
+('lymphocytes: small and mature', 'cells: large and immature'), Score: 0.8619
+('lymphocytes distributed in an even manner', 'atypical cells forming dense aggregates or sheets'), Score: 0.8616
+('sinuses are free of atypical cells', 'atypical cells permeate the sinuses'), Score: 0.8613
+('lymphocytes lack prominent nucleoli', 'cells show prominent nucleoli'), Score: 0.8596
+('lymphocytes distributed evenly', 'atypical cells in dense sheets'), Score: 0.8595
+('mature lymphocytes are characteristically small', 'immature-appearing cells are characteristically large'), Score: 0.8551
+('lymphocytes lack prominent nucleoli', 'cells display distinct nucleoli'), Score: 0.8536
+('small, mature lymphocytes', 'large, immature-appearing cells'), Score: 0.8518
+('lymphocytes: small, mature appearance', 'cells: large, immature morphology'), Score: 0.8515
+('uniform distribution of lymphocytes', 'atypical cells forming dense clusters'), Score: 0.8425
+('lymphocytes are spread out evenly', 'atypical cells form densely packed clusters'), Score: 0.8379
+('no evidence of tumor invasion of nerves', 'tumor cells are seen surrounding or invading nerves'), Score: 0.8354
+('mantle zone is composed of small lymphocytes', 'atypical cells expand and replace the normal mantle zone'), Score: 0.8346
+('typical small lymphocytes in mantle zone', 'atypical cells efface the mantle zone'), Score: 0.8335
+('cells show uniform, pale cytoplasm', 'cells are pleomorphic with high nuclear/cytoplasmic ratio'), Score: 0.8333
+('even distribution of lymphocytes', 'dense sheets of atypical cells'), Score: 0.8323
+('small, mature lymphocytes present', 'large, immature cells are dominant'), Score: 0.8318
+('mantle zone shows small, typical lymphocytes', 'atypical cells expand or replace the mantle zone'), Score: 0.8311
+('clear sinuses, no atypical cells', 'atypical cells present within sinuses'), Score: 0.8289
+('mature lymphocytes are small', 'immature-appearing cells are large'), Score: 0.8217
+('small, mature lymphocytes present', 'large, immature cells dominate'), Score: 0.8197
+('if discernible, nucleolus is single and small', 'nucleoli are large and/or multiple within the nuclei of atypical cells'), Score: 0.8177
+('evenly distributed lymphocytes', 'dense clusters or sheets of atypical cells'), Score: 0.8177
+('a small, single nucleolus may be visible', 'nucleoli are large in size and/or multiple in number'), Score: 0.8143
+('lymphocytes distributed uniformly', 'atypical cells forming tight clusters'), Score: 0.8133
+('lymphocytes are small in mantle zone', 'mantle zone shows atypical cell expansion'), Score: 0.8092
+('uniform, pale cytoplasm', 'pleomorphic cells with high nuclear-to-cytoplasmic ratio'), Score: 0.8067
+('small, mature lymphocytes are present', 'large, immature cells are prominent features'), Score: 0.8065
+('single, small nucleolus if discernible', 'nucleoli are large and/or multiple within nuclei'), Score: 0.8012
+('lymphocytes small within the mantle zone', 'atypical cell expansion in the mantle zone'), Score: 0.8010
+('consistent, pale cytoplasm in cells', 'pleomorphic cells with high N:C ratio'), Score: 0.7973
+('nuclei exhibit smoothly defined boundaries', 'nuclei display lobated or highly irregular borders'), Score: 0.7971
+('absence of atypical plasma cells', 'presence of increased or atypical plasma cells'), Score: 0.7925
+('cells display consistent, pale cytoplasm', 'pleomorphic cells exhibit a high nuclear to cytoplasmic ratio'), Score: 0.7859
+('mantle zone shows typical lymphocyte population', 'atypical cells disrupt mantle zone architecture'), Score: 0.7844
+
+Iteration 40:
+('lymphocytes are small and mature', 'cells appear large and immature'), Score: 0.8845
+('lymphocytes lack prominent nucleoli within their nuclei', 'atypical cells display distinct and often multiple nucleoli'), Score: 0.8832
+('cells display uniform, pale cytoplasm', 'cells are pleomorphic with a high nuclear to cytoplasmic ratio'), Score: 0.8822
+('lymphocytes are typically small and mature', 'atypical cells appear large and immature in size'), Score: 0.8767
+('nucleoli not prominent in lymphocytes', 'prominent nucleoli in atypical cells'), Score: 0.8764
+('lymphocytes distributed in a uniform manner', 'atypical cells form dense aggregates or solid sheets'), Score: 0.8731
+('cytoplasm is uniformly pale in lymphocytes', 'cytoplasm is variable and nuclear-to-cytoplasmic ratio is high in tumor cells'), Score: 0.8673
+('lymphocytes distributed in an even manner', 'atypical cells forming dense clusters or sheets'), Score: 0.8654
+('lymphocyte cytoplasm is uniformly pale', 'tumor cell cytoplasm is variable with a high N/C ratio'), Score: 0.8633
+('capsule and subcapsular sinus are intact', 'capsule and subcapsular sinus show signs of invasion or breach'), Score: 0.8633
+('lymphocytes: small and mature', 'cells: large and immature'), Score: 0.8619
+('lymphocytes distributed in an even manner', 'atypical cells forming dense aggregates or sheets'), Score: 0.8616
+('sinuses are free of atypical cells', 'atypical cells permeate the sinuses'), Score: 0.8613
+('lymphocytes lack prominent nucleoli', 'cells show prominent nucleoli'), Score: 0.8596
+('lymphocytes distributed evenly', 'atypical cells in dense sheets'), Score: 0.8595
+('lymphocytes show an even distribution pattern', 'atypical cells form dense clusters or cohesive sheets'), Score: 0.8571
+('mature lymphocytes are characteristically small', 'immature-appearing cells are characteristically large'), Score: 0.8551
+('lymphocytes lack prominent nucleoli', 'cells display distinct nucleoli'), Score: 0.8536
+('small, mature lymphocytes', 'large, immature-appearing cells'), Score: 0.8518
+('lymphocytes: small, mature appearance', 'cells: large, immature morphology'), Score: 0.8515
+('lymphocytes show round to oval nuclei', 'atypical cells may have irregular or lobated nuclei'), Score: 0.8514
+('lymphocytes with a small, mature appearance', 'cells exhibiting a large, immature morphology'), Score: 0.8465
+('single, small nucleolus is occasionally visible', 'nucleoli are large and/or multiple within the cell nuclei'), Score: 0.8462
+('uniform distribution of lymphocytes', 'atypical cells forming dense clusters'), Score: 0.8425
+('characteristically small, mature lymphocytes are seen', 'characteristically large, immature-appearing cells are noted'), Score: 0.8387
+('lymphocytes are spread out evenly', 'atypical cells form densely packed clusters'), Score: 0.8379
+('no evidence of tumor invasion of nerves', 'tumor cells are seen surrounding or invading nerves'), Score: 0.8354
+('mantle zone is composed of small lymphocytes', 'atypical cells expand and replace the normal mantle zone'), Score: 0.8346
+('typical small lymphocytes in mantle zone', 'atypical cells efface the mantle zone'), Score: 0.8335
+('cells show uniform, pale cytoplasm', 'cells are pleomorphic with high nuclear/cytoplasmic ratio'), Score: 0.8333
+('even distribution of lymphocytes', 'dense sheets of atypical cells'), Score: 0.8323
+('small, mature lymphocytes present', 'large, immature cells are dominant'), Score: 0.8318
+('mantle zone shows small, typical lymphocytes', 'atypical cells expand or replace the mantle zone'), Score: 0.8311
+('small and mature lymphocytes observed', 'large and immature cells are present'), Score: 0.8301
+('the mantle zone is composed of small, typical lymphocytes', 'atypical cells expand and replace the normal mantle zone composition'), Score: 0.8296
+('clear sinuses, no atypical cells', 'atypical cells present within sinuses'), Score: 0.8289
+('lymphocytes lack cytoplasmic projections', 'atypical cells may exhibit cytoplasmic extensions'), Score: 0.8264
+('lymphocytes show an even distribution', 'dense clusters or sheets of atypical cells are seen'), Score: 0.8256
+('mature lymphocytes are small', 'immature-appearing cells are large'), Score: 0.8217
+('small, mature lymphocytes present', 'large, immature cells dominate'), Score: 0.8197
+
+Iteration 40:
+('lymphocytes typically small, mature', 'atypical cells, large and immature'), Score: 0.8859
+('nucleoli typically not prominent in lymphocytes', 'prominent nucleoli in atypical cells typically'), Score: 0.8850
+('lymphocytes are small and mature', 'cells appear large and immature'), Score: 0.8845
+('lymphocytes lack prominent nucleoli within their nuclei', 'atypical cells display distinct and often multiple nucleoli'), Score: 0.8832
+('mature lymphocytes are small', 'cells are large and immature'), Score: 0.8825
+('pale, uniform cytoplasm of lymphocytes', 'variable cytoplasm with high N/C ratio in tumor cells'), Score: 0.8824
+('cells display uniform, pale cytoplasm', 'cells are pleomorphic with a high nuclear to cytoplasmic ratio'), Score: 0.8822
+('no prominent nucleoli in lymphocytes', 'distinct nucleoli in atypical cells'), Score: 0.8810
+('lymphocytes lack prominent nucleoli', 'atypical cells display distinct nucleoli'), Score: 0.8804
+('uniform pale cytoplasm, lymphocytes', 'variable cytoplasm, high N/C, tumor cells'), Score: 0.8785
+('lymphocytes are typically small and mature', 'atypical cells appear large and immature in size'), Score: 0.8767
+('nucleoli not prominent in lymphocytes', 'prominent nucleoli in atypical cells'), Score: 0.8764
+('lymphocytes distributed in a uniform manner', 'atypical cells form dense aggregates or solid sheets'), Score: 0.8731
+('uniform and pale cytoplasm in lymphocytes', 'variable cytoplasm and high N/C ratio in tumor cells'), Score: 0.8720
+('cytoplasm uniformly pale in lymphocytes', 'cytoplasm variable, high N/C in tumor cells'), Score: 0.8698
+('typically small and mature lymphocytes', 'atypical cells appear large and immature'), Score: 0.8688
+('cytoplasm is uniformly pale in lymphocytes', 'cytoplasm is variable and nuclear-to-cytoplasmic ratio is high in tumor cells'), Score: 0.8673
+('even distribution of lymphocytes', 'dense aggregates of atypical cells'), Score: 0.8663
+('lymphocytes distributed in an even manner', 'atypical cells forming dense clusters or sheets'), Score: 0.8654
+('uniform pale cytoplasm in lymphocytes', 'variable cytoplasm, high N/C ratio in tumor cells'), Score: 0.8644
+('prominent nucleoli usually absent in lymphocytes', 'prominent nucleoli usually present in atypical cells'), Score: 0.8643
+('lymphocyte cytoplasm is uniformly pale', 'tumor cell cytoplasm is variable with a high N/C ratio'), Score: 0.8633
+('capsule and subcapsular sinus are intact', 'capsule and subcapsular sinus show signs of invasion or breach'), Score: 0.8633
+('lymphocytes: small and mature', 'cells: large and immature'), Score: 0.8619
+('lymphocytes distributed in an even manner', 'atypical cells forming dense aggregates or sheets'), Score: 0.8616
+('sinuses are free of atypical cells', 'atypical cells permeate the sinuses'), Score: 0.8613
+('lymphocytes show round nuclei', 'tumor cells with irregular nuclei'), Score: 0.8608
+('lymphocytes evenly distributed', 'atypical cells forming dense sheets'), Score: 0.8603
+('lymphocytes lack prominent nucleoli', 'cells show prominent nucleoli'), Score: 0.8596
+('lymphocytes distributed evenly', 'atypical cells in dense sheets'), Score: 0.8595
+('lymphocytes show an even distribution pattern', 'atypical cells form dense clusters or cohesive sheets'), Score: 0.8571
+('small, mature lymphocytes are typical', 'large, immature cells are atypical'), Score: 0.8557
+('mature lymphocytes are characteristically small', 'immature-appearing cells are characteristically large'), Score: 0.8551
+('nucleoli absent in lymphocytes', 'nucleoli present in atypical cells'), Score: 0.8547
+('lymphocytes lack prominent nucleoli', 'cells display distinct nucleoli'), Score: 0.8536
+('lack of prominent nucleoli in lymphocytes', 'presence of prominent nucleoli in atypical cells'), Score: 0.8521
+('small, mature lymphocytes', 'large, immature-appearing cells'), Score: 0.8518
+('lymphocytes: small, mature appearance', 'cells: large, immature morphology'), Score: 0.8515
+('lymphocytes show round to oval nuclei', 'atypical cells may have irregular or lobated nuclei'), Score: 0.8514
+('lymphocytes, no prominent nucleoli', 'atypical cells, prominent nucleoli'), Score: 0.8507
+
+Iteration 40:
+('lymphocytes have a uniform and pale cytoplasm', 'tumor cells have a variable cytoplasm and high N/C ratio'), Score: 0.9029
+('uniform pale cytoplasm of lymphocytes', 'variable cytoplasm and high N/C ratio of tumor cells'), Score: 0.8912
+('lymphocytes exhibit a small, mature appearance', 'cells exhibit a large, immature morphology'), Score: 0.8887
+('lymphocytes typically small, mature', 'atypical cells, large and immature'), Score: 0.8859
+('nucleoli typically not prominent in lymphocytes', 'prominent nucleoli in atypical cells typically'), Score: 0.8850
+('lymphocytes are small and mature', 'cells appear large and immature'), Score: 0.8845
+('lymphocytes lack prominent nucleoli within their nuclei', 'atypical cells display distinct and often multiple nucleoli'), Score: 0.8832
+('mature lymphocytes are small', 'cells are large and immature'), Score: 0.8825
+('pale, uniform cytoplasm of lymphocytes', 'variable cytoplasm with high N/C ratio in tumor cells'), Score: 0.8824
+('small, mature lymphocytes present', 'large, immature atypical cells present'), Score: 0.8823
+('small, mature lymphocytes are commonly seen', 'large, immature atypical cells are commonly observed'), Score: 0.8823
+('cells display uniform, pale cytoplasm', 'cells are pleomorphic with a high nuclear to cytoplasmic ratio'), Score: 0.8822
+('pale uniform cytoplasm, characteristic of lymphocytes', 'variable cytoplasm, high N/C ratio, characteristic of tumor cells'), Score: 0.8819
+('lymphocytes do not show prominent nucleoli', 'cells show distinct nucleoli within their nuclei'), Score: 0.8819
+('lymphocytes display a consistently pale and uniform cytoplasm', 'tumor cells exhibit variable cytoplasm and an elevated N/C ratio'), Score: 0.8816
+('no prominent nucleoli in lymphocytes', 'distinct nucleoli in atypical cells'), Score: 0.8810
+('lymphocytes lack prominent nucleoli', 'atypical cells display distinct nucleoli'), Score: 0.8804
+('uniform pale cytoplasm, lymphocytes', 'variable cytoplasm, high N/C, tumor cells'), Score: 0.8785
+('lymphocytes are typically small and mature', 'atypical cells appear large and immature in size'), Score: 0.8767
+('nucleoli not prominent in lymphocytes', 'prominent nucleoli in atypical cells'), Score: 0.8764
+('the cytoplasm of lymphocytes is typically uniformly pale', 'tumor cell cytoplasm is typically variable with a high N/C ratio'), Score: 0.8736
+('lymphocytes distributed in a uniform manner', 'atypical cells form dense aggregates or solid sheets'), Score: 0.8731
+('lymphocytes with uniform pale cytoplasm', 'tumor cells showing variable cytoplasm, high N/C'), Score: 0.8730
+('uniform and pale cytoplasm in lymphocytes', 'variable cytoplasm and high N/C ratio in tumor cells'), Score: 0.8720
+('typically, lymphocytes are small and mature', 'typically, atypical cells are large and immature'), Score: 0.8700
+('cytoplasm uniformly pale in lymphocytes', 'cytoplasm variable, high N/C in tumor cells'), Score: 0.8698
+('typically small and mature lymphocytes', 'atypical cells appear large and immature'), Score: 0.8688
+('cytoplasm is uniformly pale in lymphocytes', 'cytoplasm is variable and nuclear-to-cytoplasmic ratio is high in tumor cells'), Score: 0.8673
+('lymphocytes are characteristically small and mature', 'atypical cells are characteristically large and immature'), Score: 0.8666
+('even distribution of lymphocytes', 'dense aggregates of atypical cells'), Score: 0.8663
+('lymphocytes distributed in an even manner', 'atypical cells forming dense clusters or sheets'), Score: 0.8654
+('uniform pale cytoplasm in lymphocytes', 'variable cytoplasm, high N/C ratio in tumor cells'), Score: 0.8644
+('prominent nucleoli usually absent in lymphocytes', 'prominent nucleoli usually present in atypical cells'), Score: 0.8643
+('lymphocyte cytoplasm is uniformly pale', 'tumor cell cytoplasm is variable with a high N/C ratio'), Score: 0.8633
+('capsule and subcapsular sinus are intact', 'capsule and subcapsular sinus show signs of invasion or breach'), Score: 0.8633
+('lymphocytes have a low nuclear to cytoplasmic ratio', 'atypical cells have a high nuclear to cytoplasmic ratio'), Score: 0.8624
+('lymphocytes: small and mature', 'cells: large and immature'), Score: 0.8619
+('lymphocytes distributed in an even manner', 'atypical cells forming dense aggregates or sheets'), Score: 0.8616
+('mature lymphocytes are typically small in size', 'immature-looking cells are typically large in size'), Score: 0.8614
+('sinuses are free of atypical cells', 'atypical cells permeate the sinuses'), Score: 0.8613
+
+Iteration 40:
+('lymphocytes have a uniform and pale cytoplasm', 'tumor cells have a variable cytoplasm and high N/C ratio'), Score: 0.9029
+('lymphocytes show uniform, pale cytoplasm', 'tumor cells display variable cytoplasm, high N/C ratio'), Score: 0.8996
+('pale and uniform cytoplasm of lymphocytes', 'high N/C ratio and variable cytoplasm of tumor cells'), Score: 0.8969
+('a uniform pale cytoplasm in lymphocytes', 'a variable cytoplasm and high N/C in tumor cells'), Score: 0.8932
+('uniform pale cytoplasm of lymphocytes', 'variable cytoplasm and high N/C ratio of tumor cells'), Score: 0.8912
+('lymphocytes exhibit a small, mature appearance', 'cells exhibit a large, immature morphology'), Score: 0.8887
+('lymphocytes typically small, mature', 'atypical cells, large and immature'), Score: 0.8859
+('nucleoli typically not prominent in lymphocytes', 'prominent nucleoli in atypical cells typically'), Score: 0.8850
+('lymphocytes are small and mature', 'cells appear large and immature'), Score: 0.8845
+('lymphocytes lack significant anisokaryosis', 'tumor cells often display anisokaryosis'), Score: 0.8839
+('lymphocytes lack prominent nucleoli within their nuclei', 'atypical cells display distinct and often multiple nucleoli'), Score: 0.8832
+('mature lymphocytes are small', 'cells are large and immature'), Score: 0.8825
+('pale, uniform cytoplasm of lymphocytes', 'variable cytoplasm with high N/C ratio in tumor cells'), Score: 0.8824
+('small, mature lymphocytes present', 'large, immature atypical cells present'), Score: 0.8823
+('small, mature lymphocytes are commonly seen', 'large, immature atypical cells are commonly observed'), Score: 0.8823
+('cells display uniform, pale cytoplasm', 'cells are pleomorphic with a high nuclear to cytoplasmic ratio'), Score: 0.8822
+('pale uniform cytoplasm, characteristic of lymphocytes', 'variable cytoplasm, high N/C ratio, characteristic of tumor cells'), Score: 0.8819
+('lymphocytes do not show prominent nucleoli', 'cells show distinct nucleoli within their nuclei'), Score: 0.8819
+('lymphocytes display a consistently pale and uniform cytoplasm', 'tumor cells exhibit variable cytoplasm and an elevated N/C ratio'), Score: 0.8816
+('no prominent nucleoli in lymphocytes', 'distinct nucleoli in atypical cells'), Score: 0.8810
+('lymphocytes lack prominent nucleoli', 'atypical cells display distinct nucleoli'), Score: 0.8804
+('uniform pale cytoplasm, lymphocytes', 'variable cytoplasm, high N/C, tumor cells'), Score: 0.8785
+('lymphocytes are typically small and mature', 'atypical cells appear large and immature in size'), Score: 0.8767
+('nucleoli not prominent in lymphocytes', 'prominent nucleoli in atypical cells'), Score: 0.8764
+('the cytoplasm of lymphocytes is typically uniformly pale', 'tumor cell cytoplasm is typically variable with a high N/C ratio'), Score: 0.8736
+('lymphocytes distributed in a uniform manner', 'atypical cells form dense aggregates or solid sheets'), Score: 0.8731
+('lymphocytes with uniform pale cytoplasm', 'tumor cells showing variable cytoplasm, high N/C'), Score: 0.8730
+('lymphocytes do not exhibit prominent anisocytosis', 'tumor cells frequently show anisocytosis'), Score: 0.8725
+('uniform and pale cytoplasm in lymphocytes', 'variable cytoplasm and high N/C ratio in tumor cells'), Score: 0.8720
+('typically, lymphocytes are small and mature', 'typically, atypical cells are large and immature'), Score: 0.8700
+('cytoplasm uniformly pale in lymphocytes', 'cytoplasm variable, high N/C in tumor cells'), Score: 0.8698
+('lymphocytes are typically non-pleomorphic', 'tumor cells often demonstrate significant pleomorphism'), Score: 0.8689
+('typically small and mature lymphocytes', 'atypical cells appear large and immature'), Score: 0.8688
+('sparse mitotic figures among lymphocytes', 'frequent mitotic figures in tumor cell populations'), Score: 0.8680
+('cytoplasm is uniformly pale in lymphocytes', 'cytoplasm is variable and nuclear-to-cytoplasmic ratio is high in tumor cells'), Score: 0.8673
+('lymphocytes possess a uniform pale cytoplasm', 'tumor cells exhibit a variable cytoplasm and high N/C'), Score: 0.8668
+('lymphocytes are characteristically small and mature', 'atypical cells are characteristically large and immature'), Score: 0.8666
+('mature lymphocytes often present with small size', 'immature atypical cells often show large size'), Score: 0.8664
+('even distribution of lymphocytes', 'dense aggregates of atypical cells'), Score: 0.8663
+('lymphocytes distributed in an even manner', 'atypical cells forming dense clusters or sheets'), Score: 0.8654
+
+Iteration 40:
+('lymphocytes have a uniform and pale cytoplasm', 'tumor cells have a variable cytoplasm and high N/C ratio'), Score: 0.9029
+('lymphocytes show uniform, pale cytoplasm', 'tumor cells display variable cytoplasm, high N/C ratio'), Score: 0.8996
+('pale and uniform cytoplasm of lymphocytes', 'high N/C ratio and variable cytoplasm of tumor cells'), Score: 0.8969
+('lymphocytes are generally small with mature features', 'atypical cells generally appear large with immature features'), Score: 0.8937
+('a uniform pale cytoplasm in lymphocytes', 'a variable cytoplasm and high N/C in tumor cells'), Score: 0.8932
+('mature lymphocytes often present with consistent small size', 'immature atypical cells often show variable large size'), Score: 0.8919
+('uniform pale cytoplasm of lymphocytes', 'variable cytoplasm and high N/C ratio of tumor cells'), Score: 0.8912
+('lymphocytes do not show significant variation in cell size', 'tumor cells frequently show significant variation in cell size'), Score: 0.8893
+('lymphocytes exhibit a small, mature appearance', 'cells exhibit a large, immature morphology'), Score: 0.8887
+('lymphocytes lack prominent pseudopods', 'tumor cells may exhibit pseudopods or cytoplasmic extensions'), Score: 0.8884
+('typically consistent and mature lymphocytes', 'atypical cells appear large and immature typically'), Score: 0.8882
+('lymphocytes typically small, mature', 'atypical cells, large and immature'), Score: 0.8859
+('the cytoplasm of lymphocytes is typically consistently pale', 'tumor cell cytoplasm is typically inconsistent with a high N/C ratio'), Score: 0.8852
+('nucleoli typically not prominent in lymphocytes', 'prominent nucleoli in atypical cells typically'), Score: 0.8850
+('nucleoli not visible in lymphocytes', 'conspicuous nucleoli visible in atypical cells'), Score: 0.8846
+('lymphocytes are small and mature', 'cells appear large and immature'), Score: 0.8845
+('lymphocytes lack significant anisokaryosis', 'tumor cells often display anisokaryosis'), Score: 0.8839
+('lymphocytes lack prominent nucleoli within their nuclei', 'atypical cells display distinct and often multiple nucleoli'), Score: 0.8832
+('mature lymphocytes are small', 'cells are large and immature'), Score: 0.8825
+('pale, uniform cytoplasm of lymphocytes', 'variable cytoplasm with high N/C ratio in tumor cells'), Score: 0.8824
+('small, mature lymphocytes present', 'large, immature atypical cells present'), Score: 0.8823
+('small, mature lymphocytes are commonly seen', 'large, immature atypical cells are commonly observed'), Score: 0.8823
+('cells display uniform, pale cytoplasm', 'cells are pleomorphic with a high nuclear to cytoplasmic ratio'), Score: 0.8822
+('pale uniform cytoplasm, characteristic of lymphocytes', 'variable cytoplasm, high N/C ratio, characteristic of tumor cells'), Score: 0.8819
+('lymphocytes do not show prominent nucleoli', 'cells show distinct nucleoli within their nuclei'), Score: 0.8819
+('lymphocytes display a consistently pale and uniform cytoplasm', 'tumor cells exhibit variable cytoplasm and an elevated N/C ratio'), Score: 0.8816
+('small, mature lymphocytes are typically present', 'large, immature atypical cells are typically present'), Score: 0.8812
+('no prominent nucleoli in lymphocytes', 'distinct nucleoli in atypical cells'), Score: 0.8810
+('lymphocytes lack prominent nucleoli', 'atypical cells display distinct nucleoli'), Score: 0.8804
+('uniform pale cytoplasm, lymphocytes', 'variable cytoplasm, high N/C, tumor cells'), Score: 0.8785
+('consistent pale cytoplasm of lymphocytes', 'variable cytoplasm and high N/C ratio observed in tumor cells'), Score: 0.8774
+('lymphocytes are typically small and mature', 'atypical cells appear large and immature in size'), Score: 0.8767
+('typically, lymphocytes appear small and mature', 'typically, atypical cells appear large and immature'), Score: 0.8766
+('small, mature lymphocytes are frequently observed', 'large, immature atypical cells are frequently observed'), Score: 0.8765
+('pale and consistent cytoplasm of lymphocytes', 'high nuclear/cytoplasmic ratio and variable cytoplasm of tumor cells'), Score: 0.8765
+('nucleoli not prominent in lymphocytes', 'prominent nucleoli in atypical cells'), Score: 0.8764
+('a consistent pale cytoplasm within lymphocytes', 'a variable cytoplasm and high N/C within tumor cells'), Score: 0.8764
+('the cytoplasm of lymphocytes is typically uniformly pale', 'tumor cell cytoplasm is typically variable with a high N/C ratio'), Score: 0.8736
+('lymphocytes do not possess prominent nucleoli', 'atypical cells possess distinct nucleoli within their nuclei'), Score: 0.8732
+('lymphocytes distributed in a uniform manner', 'atypical cells form dense aggregates or solid sheets'), Score: 0.8731
+
+Iteration 40:
+('mature lymphocytes often display consistent small size', 'immature atypical cells often display variable large size'), Score: 0.9030
+('lymphocytes have a uniform and pale cytoplasm', 'tumor cells have a variable cytoplasm and high N/C ratio'), Score: 0.9029
+('lymphocytes show uniform, pale cytoplasm', 'tumor cells display variable cytoplasm, high N/C ratio'), Score: 0.8996
+('lymphocytes show a pale, consistent cytoplasm', 'tumor cells exhibit a variable cytoplasm and high N/C'), Score: 0.8982
+('pale and uniform cytoplasm of lymphocytes', 'high N/C ratio and variable cytoplasm of tumor cells'), Score: 0.8969
+('lymphocytes are generally small with mature features', 'atypical cells generally appear large with immature features'), Score: 0.8937
+('a uniform pale cytoplasm in lymphocytes', 'a variable cytoplasm and high N/C in tumor cells'), Score: 0.8932
+('mature lymphocytes often present with consistent small size', 'immature atypical cells often show variable large size'), Score: 0.8919
+('uniform pale cytoplasm of lymphocytes', 'variable cytoplasm and high N/C ratio of tumor cells'), Score: 0.8912
+('typically, lymphocytes present as small and mature', 'typically, atypical cells present as large and immature'), Score: 0.8897
+('lymphocytes do not show significant variation in cell size', 'tumor cells frequently show significant variation in cell size'), Score: 0.8893
+('lymphocytes exhibit a small, mature appearance', 'cells exhibit a large, immature morphology'), Score: 0.8887
+('pale and uniform cytoplasm in lymphocytes', 'high N/C ratio and variable cytoplasm in tumor cells'), Score: 0.8885
+('lymphocytes lack prominent pseudopods', 'tumor cells may exhibit pseudopods or cytoplasmic extensions'), Score: 0.8884
+('typically consistent and mature lymphocytes', 'atypical cells appear large and immature typically'), Score: 0.8882
+('lymphocytes typically small, mature', 'atypical cells, large and immature'), Score: 0.8859
+('the cytoplasm of lymphocytes is typically consistently pale', 'tumor cell cytoplasm is typically inconsistent with a high N/C ratio'), Score: 0.8852
+('nucleoli typically not prominent in lymphocytes', 'prominent nucleoli in atypical cells typically'), Score: 0.8850
+('nucleoli not visible in lymphocytes', 'conspicuous nucleoli visible in atypical cells'), Score: 0.8846
+('lymphocytes are small and mature', 'cells appear large and immature'), Score: 0.8845
+('lymphocytes typically lack prominent pseudopods', 'tumor cells may show pseudopods or cytoplasmic extensions'), Score: 0.8844
+('lymphocytes lack significant anisokaryosis', 'tumor cells often display anisokaryosis'), Score: 0.8839
+('lymphocytes lack prominent nucleoli within their nuclei', 'atypical cells display distinct and often multiple nucleoli'), Score: 0.8832
+('nucleoli are not prominent within lymphocytes', 'prominent nucleoli are observed within atypical cells'), Score: 0.8825
+('mature lymphocytes are small', 'cells are large and immature'), Score: 0.8825
+('pale, uniform cytoplasm of lymphocytes', 'variable cytoplasm with high N/C ratio in tumor cells'), Score: 0.8824
+('small, mature lymphocytes present', 'large, immature atypical cells present'), Score: 0.8823
+('small, mature lymphocytes are commonly seen', 'large, immature atypical cells are commonly observed'), Score: 0.8823
+('cells display uniform, pale cytoplasm', 'cells are pleomorphic with a high nuclear to cytoplasmic ratio'), Score: 0.8822
+('lymphocytes do not show prominent nucleoli', 'cells show distinct nucleoli within their nuclei'), Score: 0.8819
+('pale uniform cytoplasm, characteristic of lymphocytes', 'variable cytoplasm, high N/C ratio, characteristic of tumor cells'), Score: 0.8819
+('lymphocytes: lack significant variation in nuclear size', 'tumor cells: often display significant anisokaryosis'), Score: 0.8817
+('lymphocytes display a consistently pale and uniform cytoplasm', 'tumor cells exhibit variable cytoplasm and an elevated N/C ratio'), Score: 0.8816
+('small, mature lymphocytes are typically present', 'large, immature atypical cells are typically present'), Score: 0.8812
+('no prominent nucleoli in lymphocytes', 'distinct nucleoli in atypical cells'), Score: 0.8810
+('lymphocytes lack prominent nucleoli', 'atypical cells display distinct nucleoli'), Score: 0.8804
+('cells display a pale and uniform cytoplasm', 'cells are pleomorphic with an elevated nuclear to cytoplasmic ratio'), Score: 0.8796
+('small, mature lymphocytes are present', 'large, immature atypical cells are present'), Score: 0.8795
+('lymphocytes lack prominent cytoplasmic vacuoles', 'tumor cells may contain prominent cytoplasmic vacuoles'), Score: 0.8785
+('uniform pale cytoplasm, lymphocytes', 'variable cytoplasm, high N/C, tumor cells'), Score: 0.8785
+
+Iteration 40:
+('lymphocytes: typically small and mature', 'atypical cells: typically large and immature with high N/C'), Score: 0.9077
+('mature lymphocytes often display consistent small size', 'immature atypical cells often display variable large size'), Score: 0.9030
+('lymphocytes have a uniform and pale cytoplasm', 'tumor cells have a variable cytoplasm and high N/C ratio'), Score: 0.9029
+('lymphocytes show uniform, pale cytoplasm', 'tumor cells display variable cytoplasm, high N/C ratio'), Score: 0.8996
+('lymphocytes show a pale, consistent cytoplasm', 'tumor cells exhibit a variable cytoplasm and high N/C'), Score: 0.8982
+('pale and uniform cytoplasm of lymphocytes', 'high N/C ratio and variable cytoplasm of tumor cells'), Score: 0.8969
+('small size is consistent in mature lymphocytes', 'large size is variable in immature atypical cells'), Score: 0.8966
+('lymphocytes are generally small with mature features', 'atypical cells generally appear large with immature features'), Score: 0.8937
+('a uniform pale cytoplasm in lymphocytes', 'a variable cytoplasm and high N/C in tumor cells'), Score: 0.8932
+('consistent small size of mature lymphocytes', 'variable large size of immature atypical cells'), Score: 0.8926
+('mature lymphocytes often present with consistent small size', 'immature atypical cells often show variable large size'), Score: 0.8919
+('uniform pale cytoplasm of lymphocytes', 'variable cytoplasm and high N/C ratio of tumor cells'), Score: 0.8912
+('typically, lymphocytes present as small and mature', 'typically, atypical cells present as large and immature'), Score: 0.8897
+('lymphocytes do not show significant variation in cell size', 'tumor cells frequently show significant variation in cell size'), Score: 0.8893
+('lymphocytes exhibit a small, mature appearance', 'cells exhibit a large, immature morphology'), Score: 0.8887
+('pale and uniform cytoplasm in lymphocytes', 'high N/C ratio and variable cytoplasm in tumor cells'), Score: 0.8885
+('lymphocytes lack prominent pseudopods', 'tumor cells may exhibit pseudopods or cytoplasmic extensions'), Score: 0.8884
+('typically consistent and mature lymphocytes', 'atypical cells appear large and immature typically'), Score: 0.8882
+('lymphocytes typically small, mature', 'atypical cells, large and immature'), Score: 0.8859
+('the cytoplasm of lymphocytes is typically consistently pale', 'tumor cell cytoplasm is typically inconsistent with a high N/C ratio'), Score: 0.8852
+('mature lymphocytes lack prominent cytoplasmic features', 'immature tumor cells may display vacuoles or other cytoplasmic inclusions'), Score: 0.8851
+('nucleoli typically not prominent in lymphocytes', 'prominent nucleoli in atypical cells typically'), Score: 0.8850
+('nucleoli not visible in lymphocytes', 'conspicuous nucleoli visible in atypical cells'), Score: 0.8846
+('lymphocytes are small and mature', 'cells appear large and immature'), Score: 0.8845
+('lymphocytes typically lack prominent pseudopods', 'tumor cells may show pseudopods or cytoplasmic extensions'), Score: 0.8844
+('lymphocytes lack significant anisokaryosis', 'tumor cells often display anisokaryosis'), Score: 0.8839
+('lymphocytes lack prominent nucleoli within their nuclei', 'atypical cells display distinct and often multiple nucleoli'), Score: 0.8832
+('nucleoli are not prominent within lymphocytes', 'prominent nucleoli are observed within atypical cells'), Score: 0.8825
+('mature lymphocytes are small', 'cells are large and immature'), Score: 0.8825
+('often consistent small size in mature lymphocytes', 'often variable large size in immature atypical cells'), Score: 0.8824
+('pale, uniform cytoplasm of lymphocytes', 'variable cytoplasm with high N/C ratio in tumor cells'), Score: 0.8824
+('small, mature lymphocytes present', 'large, immature atypical cells present'), Score: 0.8823
+('small, mature lymphocytes are commonly seen', 'large, immature atypical cells are commonly observed'), Score: 0.8823
+('cells display uniform, pale cytoplasm', 'cells are pleomorphic with a high nuclear to cytoplasmic ratio'), Score: 0.8822
+('lymphocytes do not show prominent nucleoli', 'cells show distinct nucleoli within their nuclei'), Score: 0.8819
+('pale uniform cytoplasm, characteristic of lymphocytes', 'variable cytoplasm, high N/C ratio, characteristic of tumor cells'), Score: 0.8819
+('lymphocytes typically show a lack of multinucleation', 'tumor cells may exhibit multinucleated forms'), Score: 0.8819
+('lymphocytes: lack significant variation in nuclear size', 'tumor cells: often display significant anisokaryosis'), Score: 0.8817
+('lymphocytes display a consistently pale and uniform cytoplasm', 'tumor cells exhibit variable cytoplasm and an elevated N/C ratio'), Score: 0.8816
+('consistent small size and round nuclei define mature lymphocytes', 'variable large size and irregular nuclei are features of immature tumor cells'), Score: 0.8815
+
+Iteration 40:
+('lymphocytes: typically small and mature', 'atypical cells: typically large and immature with high N/C'), Score: 0.9077
+('mature lymphocytes often display consistent small size', 'immature atypical cells often display variable large size'), Score: 0.9030
+('lymphocytes have a uniform and pale cytoplasm', 'tumor cells have a variable cytoplasm and high N/C ratio'), Score: 0.9029
+('lymphocytes display consistent pale and uniform cytoplasm', 'tumor cells exhibit variable cytoplasm and a high N/C ratio'), Score: 0.9020
+('lymphocytes: small, mature cells', 'atypical cells: large, immature with high N/C'), Score: 0.9014
+('small, mature lymphocytes observed', 'large, immature atypical cells observed with high N/C'), Score: 0.9010
+('lymphocytes show uniform, pale cytoplasm', 'tumor cells display variable cytoplasm, high N/C ratio'), Score: 0.8996
+('lymphocytes show a pale, consistent cytoplasm', 'tumor cells exhibit a variable cytoplasm and high N/C'), Score: 0.8982
+('mature lymphocytes often feature consistent small size', 'immature atypical cells often present variable large size'), Score: 0.8971
+('pale and uniform cytoplasm of lymphocytes', 'high N/C ratio and variable cytoplasm of tumor cells'), Score: 0.8969
+('small size is consistent in mature lymphocytes', 'large size is variable in immature atypical cells'), Score: 0.8966
+('small, mature lymphocytes are commonly present', 'large, immature atypical cells are commonly seen with high N/C'), Score: 0.8945
+('lymphocytes are generally small with mature features', 'atypical cells generally appear large with immature features'), Score: 0.8937
+('a uniform pale cytoplasm in lymphocytes', 'a variable cytoplasm and high N/C in tumor cells'), Score: 0.8932
+('consistent small size of mature lymphocytes', 'variable large size of immature atypical cells'), Score: 0.8926
+('lymphocytes display small, mature characteristics', 'tumor cells display large, immature characteristics and high N/C'), Score: 0.8922
+('mature lymphocytes often present with consistent small size', 'immature atypical cells often show variable large size'), Score: 0.8919
+('typically consistent mature lymphocytes', 'atypical cells typically large and immature'), Score: 0.8919
+('uniform pale cytoplasm of lymphocytes', 'variable cytoplasm and high N/C ratio of tumor cells'), Score: 0.8912
+('typically, lymphocytes present as small and mature', 'typically, atypical cells present as large and immature'), Score: 0.8897
+('lymphocytes do not show significant variation in cell size', 'tumor cells frequently show significant variation in cell size'), Score: 0.8893
+('lymphocytes exhibit a small, mature appearance', 'cells exhibit a large, immature morphology'), Score: 0.8887
+('pale and uniform cytoplasm in lymphocytes', 'high N/C ratio and variable cytoplasm in tumor cells'), Score: 0.8885
+('lymphocytes lack prominent pseudopods', 'tumor cells may exhibit pseudopods or cytoplasmic extensions'), Score: 0.8884
+('typically consistent and mature lymphocytes', 'atypical cells appear large and immature typically'), Score: 0.8882
+('typically, lymphocytes are small and mature', 'typically, atypical cells are large and immature with high N/C'), Score: 0.8873
+('lymphocytes typically small, mature', 'atypical cells, large and immature'), Score: 0.8859
+('the cytoplasm of lymphocytes is typically consistently pale', 'tumor cell cytoplasm is typically inconsistent with a high N/C ratio'), Score: 0.8852
+('mature lymphocytes lack prominent cytoplasmic features', 'immature tumor cells may display vacuoles or other cytoplasmic inclusions'), Score: 0.8851
+('nucleoli typically not prominent in lymphocytes', 'prominent nucleoli in atypical cells typically'), Score: 0.8850
+('mature lymphocytes are typically small', 'tumor cells are typically large and immature with high N/C'), Score: 0.8847
+('mature lymphocytes lack significant cytoplasmic inclusions', 'immature tumor cells may exhibit cytoplasmic vacuoles or inclusions'), Score: 0.8846
+('nucleoli not visible in lymphocytes', 'conspicuous nucleoli visible in atypical cells'), Score: 0.8846
+('lymphocytes are small and mature', 'cells appear large and immature'), Score: 0.8845
+('lymphocytes typically lack prominent pseudopods', 'tumor cells may show pseudopods or cytoplasmic extensions'), Score: 0.8844
+('lymphocytes lack significant anisokaryosis', 'tumor cells often display anisokaryosis'), Score: 0.8839
+('lymphocytes lack prominent nucleoli within their nuclei', 'atypical cells display distinct and often multiple nucleoli'), Score: 0.8832
+('nucleoli are not a prominent feature of lymphocytes', 'prominent nucleoli are a notable feature of atypical cells'), Score: 0.8830
+('consistent small size and round nuclei in mature lymphocytes', 'variable large size and irregular nuclei in immature tumor cells'), Score: 0.8829
+('nucleoli are not prominent within lymphocytes', 'prominent nucleoli are observed within atypical cells'), Score: 0.8825
+
+Iteration 40:
+('lymphocytes: typically small and mature', 'atypical cells: typically large and immature with high N/C'), Score: 0.9077
+('mature lymphocytes: lack prominent cytoplasmic features', 'immature tumor cells: may display cytoplasmic inclusions'), Score: 0.9034
+('mature lymphocytes often display consistent small size', 'immature atypical cells often display variable large size'), Score: 0.9030
+('lymphocytes show pale, consistent cytoplasm', 'tumor cells exhibit variable cytoplasm and high N/C'), Score: 0.9030
+('lymphocytes have a uniform and pale cytoplasm', 'tumor cells have a variable cytoplasm and high N/C ratio'), Score: 0.9029
+('lymphocytes show uniform pale cytoplasm', 'tumor cells display variable cytoplasm, high N/C'), Score: 0.9020
+('lymphocytes display consistent pale and uniform cytoplasm', 'tumor cells exhibit variable cytoplasm and a high N/C ratio'), Score: 0.9020
+('lymphocytes: small, mature cells', 'atypical cells: large, immature with high N/C'), Score: 0.9014
+('mature lymphocytes typically small', 'tumor cells typically large, immature with high N/C'), Score: 0.9012
+('small, mature lymphocytes observed', 'large, immature atypical cells observed with high N/C'), Score: 0.9010
+('lymphocytes show uniform, pale cytoplasm', 'tumor cells display variable cytoplasm, high N/C ratio'), Score: 0.8996
+('lymphocytes show a pale, consistent cytoplasm', 'tumor cells exhibit a variable cytoplasm and high N/C'), Score: 0.8982
+('lymphocytes show minimal nuclear pleomorphism', 'tumor cells often exhibit significant nuclear pleomorphism'), Score: 0.8973
+('mature lymphocytes often feature consistent small size', 'immature atypical cells often present variable large size'), Score: 0.8971
+('pale and uniform cytoplasm of lymphocytes', 'high N/C ratio and variable cytoplasm of tumor cells'), Score: 0.8969
+('small size is consistent in mature lymphocytes', 'large size is variable in immature atypical cells'), Score: 0.8966
+('lymphocytes: lack prominent pseudopods', 'tumor cells: may exhibit pseudopods'), Score: 0.8954
+('pale uniform cytoplasm of lymphocytes', 'high N/C, variable cytoplasm of tumor cells'), Score: 0.8950
+('small, mature lymphocytes are commonly present', 'large, immature atypical cells are commonly seen with high N/C'), Score: 0.8945
+('lymphocytes typically show a low nuclear density', 'tumor regions often present with high cellular density'), Score: 0.8940
+('lymphocytes are generally small with mature features', 'atypical cells generally appear large with immature features'), Score: 0.8937
+('size is consistent in mature lymphocytes', 'size varies in immature atypical cells'), Score: 0.8933
+('a uniform pale cytoplasm in lymphocytes', 'a variable cytoplasm and high N/C in tumor cells'), Score: 0.8932
+('consistent small size of mature lymphocytes', 'variable large size of immature atypical cells'), Score: 0.8926
+('lymphocytes display small, mature characteristics', 'tumor cells display large, immature characteristics and high N/C'), Score: 0.8922
+('mature lymphocytes often present with consistent small size', 'immature atypical cells often show variable large size'), Score: 0.8919
+('typically consistent mature lymphocytes', 'atypical cells typically large and immature'), Score: 0.8919
+('uniform pale cytoplasm of lymphocytes', 'variable cytoplasm and high N/C ratio of tumor cells'), Score: 0.8912
+('small, mature lymphocytes seen', 'large, immature atypical cells seen with high N/C'), Score: 0.8904
+('typically, lymphocytes present as small and mature', 'typically, atypical cells present as large and immature'), Score: 0.8897
+('lymphocytes do not show significant variation in cell size', 'tumor cells frequently show significant variation in cell size'), Score: 0.8893
+('nucleoli not prominent within lymphocytes', 'prominent nucleoli observed within atypical cells'), Score: 0.8892
+('lymphocytes: typically small, mature', 'atypical cells: typically large, immature with high N/C ratio'), Score: 0.8891
+('lymphocytes exhibit a small, mature appearance', 'cells exhibit a large, immature morphology'), Score: 0.8887
+('pale and uniform cytoplasm in lymphocytes', 'high N/C ratio and variable cytoplasm in tumor cells'), Score: 0.8885
+('lymphocytes lack prominent pseudopods', 'tumor cells may exhibit pseudopods or cytoplasmic extensions'), Score: 0.8884
+('typically consistent and mature lymphocytes', 'atypical cells appear large and immature typically'), Score: 0.8882
+('typically, lymphocytes are small and mature', 'typically, atypical cells are large and immature with high N/C'), Score: 0.8873
+('lymphocytes: uniform pale cytoplasm', 'tumor cells: variable cytoplasm, high N/C'), Score: 0.8872
+('nucleoli: not a prominent feature of lymphocytes', 'prominent nucleoli: notable feature of atypical cells'), Score: 0.8861
+
+Iteration 40:
+('lymphocytes: typically small and mature', 'atypical cells: typically large and immature with high N/C'), Score: 0.9077
+('uniform pale cytoplasm of lymphocytes is noted', 'variable cytoplasm and high N/C ratio of tumor cells is noted'), Score: 0.9073
+('small, mature lymphocytes are commonly observed', 'large, immature atypical cells are commonly observed with high N/C'), Score: 0.9072
+('lymphocytes lack significant intercellular space', 'tumor cells may exhibit increased intercellular space'), Score: 0.9057
+('mature lymphocytes: lack prominent cytoplasmic features', 'immature tumor cells: may display cytoplasmic inclusions'), Score: 0.9034
+('mature lymphocytes often display consistent small size', 'immature atypical cells often display variable large size'), Score: 0.9030
+('lymphocytes show pale, consistent cytoplasm', 'tumor cells exhibit variable cytoplasm and high N/C'), Score: 0.9030
+('lymphocytes have a uniform and pale cytoplasm', 'tumor cells have a variable cytoplasm and high N/C ratio'), Score: 0.9029
+('lymphocytes show uniform, pale cytoplasm', 'tumor cells display variable cytoplasm and high N/C ratio'), Score: 0.9025
+('lymphocytes show uniform pale cytoplasm', 'tumor cells display variable cytoplasm, high N/C'), Score: 0.9020
+('lymphocytes display consistent pale and uniform cytoplasm', 'tumor cells exhibit variable cytoplasm and a high N/C ratio'), Score: 0.9020
+('lymphocytes: small, mature cells', 'atypical cells: large, immature with high N/C'), Score: 0.9014
+('mature lymphocytes typically small', 'tumor cells typically large, immature with high N/C'), Score: 0.9012
+('small, mature lymphocytes observed', 'large, immature atypical cells observed with high N/C'), Score: 0.9010
+('a uniform and pale cytoplasm in lymphocytes is seen', 'a variable cytoplasm and high N/C in tumor cells is seen'), Score: 0.9003
+('lymphocytes show uniform, pale cytoplasm', 'tumor cells display variable cytoplasm, high N/C ratio'), Score: 0.8996
+('pale and uniform cytoplasm of lymphocytes is typical', 'high N/C ratio and variable cytoplasm of tumor cells is typical'), Score: 0.8990
+('lymphocytes show a pale, consistent cytoplasm', 'tumor cells exhibit a variable cytoplasm and high N/C'), Score: 0.8982
+('pale and uniform cytoplasm in lymphocytes is observed', 'high N/C ratio and variable cytoplasm in tumor cells is observed'), Score: 0.8974
+('lymphocytes show minimal nuclear pleomorphism', 'tumor cells often exhibit significant nuclear pleomorphism'), Score: 0.8973
+('mature lymphocytes often feature consistent small size', 'immature atypical cells often present variable large size'), Score: 0.8971
+('pale and uniform cytoplasm of lymphocytes', 'high N/C ratio and variable cytoplasm of tumor cells'), Score: 0.8969
+('small size is consistent in mature lymphocytes', 'large size is variable in immature atypical cells'), Score: 0.8966
+('typically consistent mature lymphocytes present', 'atypical cells typically large and immature present'), Score: 0.8958
+('lymphocytes: lack prominent pseudopods', 'tumor cells: may exhibit pseudopods'), Score: 0.8954
+('pale uniform cytoplasm in lymphocytes is characteristic', 'high N/C and variable cytoplasm in tumor cells is characteristic'), Score: 0.8953
+('pale uniform cytoplasm of lymphocytes', 'high N/C, variable cytoplasm of tumor cells'), Score: 0.8950
+('typically consistent and mature lymphocytes are seen', 'atypical cells appear large and immature typically'), Score: 0.8949
+('typically lymphocytes are small and mature in appearance', 'typically atypical cells are large and immature with high N/C'), Score: 0.8945
+('small, mature lymphocytes are commonly present', 'large, immature atypical cells are commonly seen with high N/C'), Score: 0.8945
+('lymphocytes often show a smooth nuclear contour', 'tumor cells may show irregular or notched nuclear contours'), Score: 0.8941
+('lymphocytes typically show a low nuclear density', 'tumor regions often present with high cellular density'), Score: 0.8940
+('lymphocytes are generally small with mature features', 'atypical cells generally appear large with immature features'), Score: 0.8937
+('size is consistent in mature lymphocytes', 'size varies in immature atypical cells'), Score: 0.8933
+('a uniform pale cytoplasm in lymphocytes', 'a variable cytoplasm and high N/C in tumor cells'), Score: 0.8932
+('consistent small size of mature lymphocytes', 'variable large size of immature atypical cells'), Score: 0.8926
+('lymphocytes display small, mature characteristics', 'tumor cells display large, immature characteristics and high N/C'), Score: 0.8922
+('mature lymphocytes often present with consistent small size', 'immature atypical cells often show variable large size'), Score: 0.8919
+('typically consistent mature lymphocytes', 'atypical cells typically large and immature'), Score: 0.8919
+('uniform pale cytoplasm of lymphocytes', 'variable cytoplasm and high N/C ratio of tumor cells'), Score: 0.8912
+
