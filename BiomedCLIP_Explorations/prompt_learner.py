@@ -23,6 +23,7 @@ import heapq
 from typing import Tuple, List, Optional
 
 # os.environ['CUDA_VISIBLE_DEVICES'] = '1'
+torch.multiprocessing.set_sharing_strategy('file_system')
 
 # 1. Paths & constants
 METADATA_CSV = "/home/E19_FYP_Domain_Gen_Data/metadata.csv"
