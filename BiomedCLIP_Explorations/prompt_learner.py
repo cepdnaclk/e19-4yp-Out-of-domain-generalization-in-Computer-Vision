@@ -73,17 +73,20 @@ def append_filename_and_filepath(df):
 def _force_double_quotes(code: str) -> str:
     """
     Rewrites every Python string-literal in `code` to use double-quotes,
-    escaping only backslashes and interior double-quotes.
+    properly handling apostrophes and other special characters.
     """
     tokens = tokenize.generate_tokens(io.StringIO(code).readline)
     new_tokens = []
     for toknum, tokval, start, end, line in tokens:
         if toknum == tokenize.STRING:
-            # Evaluate the literal to get its true value
+            # Get the actual string value
             value = ast.literal_eval(tokval)
-            # Wrap in double-quotes and escape interior backslashes and quotes
-            safe = value.replace('\\', '\\\\').replace('"', '\\"')
-            tokval = f'"{safe}"'
+
+            # Create a new string literal with double quotes
+            # Properly escape any double quotes or backslashes in the string
+            # This automatically handles escaping correctly
+            tokval = json.dumps(value)
+
         new_tokens.append((toknum, tokval))
     return tokenize.untokenize(new_tokens)
 
