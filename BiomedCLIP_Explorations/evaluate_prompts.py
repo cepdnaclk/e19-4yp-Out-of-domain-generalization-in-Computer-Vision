@@ -21,14 +21,14 @@ from sklearn.metrics import (
 from tqdm import tqdm
 import heapq
 from typing import Tuple, List, Optional
-from BiomedCLIP_Explorations.prompt_learner import (
+from prompt_learner import (
     BiomedCLIPDataset,
     append_filename_and_filepath,
     evaluate_prompt_pair,
     PriorityQueue,
     load_initial_prompts
 )
-from BiomedCLIP_Explorations.train_adapter import (Adapter, cosine_dist)
+from train_adapter import (Adapter, cosine_dist)
 
 
 # os.environ['CUDA_VISIBLE_DEVICES'] = '1'
