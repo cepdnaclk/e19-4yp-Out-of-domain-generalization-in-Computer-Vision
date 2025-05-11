@@ -182,17 +182,25 @@ def evaluate_prompt_pair(
 
 
 PromptPair = Tuple[str, str]
+InitialItem = Tuple[PromptPair, float]
 
 
 class PriorityQueue:
-    def __init__(self, max_capacity: int = 10):
+    # type: ignore
+    def __init__(self, max_capacity: int = 10, initial: Optional[List[Tuple[PromptPair, float]]] = None):
+
         self.max_capacity: int = max_capacity
         # Store (score, prompt_pair); min-heap root is the lowest score.
-        self._heap: List[Tuple[float, PromptPair]] = []
+        self._heap: List[Tuple[float, PromptPair]] = []  # type: ignore
         # Track negative prompts for O(1) membership checks
         self._neg_set: set[str] = set()
 
-    def insert(self, prompt_pair: PromptPair, score: float) -> None:
+        # If the user passed some initial prompt‐pairs, insert them now:
+        if initial is not None:
+            for prompt_pair, score in initial:
+                self.insert(prompt_pair, score)
+
+    def insert(self, prompt_pair: PromptPair, score: float) -> None:  # type: ignore
         negative = prompt_pair[1]
         # Skip if negative prompt already exists
         if negative in self._neg_set:
@@ -233,6 +241,43 @@ class PriorityQueue:
     def __str__(self) -> str:
         ordered = sorted(self._heap, key=lambda x: x[0], reverse=True)
         return str([(pair, score) for score, pair in ordered])
+
+
+def load_initial_prompts(path: str) -> List[InitialItem]:
+    """
+    Reads a text file where each line is of the form:
+      1. ('neg', 'pos'), Score: 0.9364
+    and returns a list of ((neg, pos), score) tuples.
+    """
+    initial: List[InitialItem] = []
+    line_re = re.compile(r"""
+        ^\s*\d+\.       # leading index and dot
+        \s*(\(.+\))     # group(1): the tuple literal "('neg','pos')"
+        \s*,\s*Score:\s*
+        ([0-9]+\.[0-9]+)  # group(2): the floating score
+        """, re.VERBOSE)
+
+    with open(path, 'r') as f:
+        for line in f:
+            m = line_re.match(line)
+            if not m:
+                continue
+            pair_literal, score_str = m.groups()
+            try:
+                prompt_pair = ast.literal_eval(pair_literal)
+                score = float(score_str)
+                # validate
+                if (
+                    isinstance(prompt_pair, tuple)
+                    and len(prompt_pair) == 2
+                    and all(isinstance(s, str) for s in prompt_pair)
+                ):
+                    initial.append((prompt_pair, score))
+            except Exception:
+                # skip malformed lines
+                continue
+
+    return initial
 
 
 def main():
@@ -324,12 +369,17 @@ def main():
                         """,
                        """Only give the output as python code in the format - prompts: list[tuple[negative: str, positive: str]]"""]
 
-    pq = PriorityQueue(max_capacity=40)
+    initial_list = load_initial_prompts("selected_prompts.txt")
+    pq = PriorityQueue(max_capacity=40, initial=initial_list)
     prompt_llm = ""
     for j in range(100):
         prompts = get_prompt_pairs(prompt_template, prompt_llm, client)
 
-        for i, (negative_prompt, positive_prompt) in enumerate(prompts):
+        for i, prompt_pair in enumerate(prompts):
+            if len(prompt_pair) != 2:
+                print(f"Invalid prompt pair: {prompt_pair}")
+                continue
+            negative_prompt, positive_prompt = prompt_pair
             results = evaluate_prompt_pair(
                 negative_prompt, positive_prompt, all_img_feats, all_img_labels, model, tokenizer)
             pq.insert((negative_prompt, positive_prompt), results['accuracy'])
