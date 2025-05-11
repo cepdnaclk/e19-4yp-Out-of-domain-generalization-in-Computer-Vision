@@ -326,7 +326,7 @@ def main():
 
     pq = PriorityQueue(max_capacity=40)
     prompt_llm = ""
-    for i in range(100):
+    for j in range(100):
         prompts = get_prompt_pairs(prompt_template, prompt_llm, client)
 
         for i, (negative_prompt, positive_prompt) in enumerate(prompts):
@@ -344,7 +344,7 @@ def main():
 
         # Save the best prompt pairs to a file
         with open("best_prompt_pairs.txt", "a") as f:
-            f.write(f"Iteration {i+1}:\n")
+            f.write(f"Iteration {j+1}:\n")
             for prompt_pair, score in top_n:
                 f.write(f"{prompt_pair}, Score: {score:.4f}\n")
             f.write("\n")
