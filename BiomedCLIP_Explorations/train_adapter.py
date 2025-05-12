@@ -230,9 +230,10 @@ def main():
         centers_labels[i] = torch.cat(all_labels).numpy()
 
     # train and save the adapter
+    epochs = 1000
     adapter = train_adapter(centers_features[0:3], centers_labels[0:3], device=DEVICE,
-                            lr=1e-3, batch_size=32, epochs=50)
-    torch.save(adapter.state_dict(), 'adapter_weights.pth')
+                            lr=1e-3, batch_size=32, epochs=epochs)
+    torch.save(adapter.state_dict(), f'adapter_weights_e{epochs}.pth')
 
 
 if __name__ == "__main__":

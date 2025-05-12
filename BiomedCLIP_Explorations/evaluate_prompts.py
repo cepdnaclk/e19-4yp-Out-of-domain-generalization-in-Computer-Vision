@@ -26,7 +26,8 @@ from prompt_learner import (
     append_filename_and_filepath,
     evaluate_prompt_pair,
     PriorityQueue,
-    load_initial_prompts
+    load_initial_prompts,
+    evaluate_prompt_pair_with_adapter,
 )
 from train_adapter import (Adapter, cosine_dist)
 
@@ -44,57 +45,6 @@ CONTEXT_LENGTH = 256
 BATCH_SIZE = 32
 NUM_WORKERS = 4
 DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-
-
-def evaluate_prompt_pair_with_adapter(
-    negative_prompt,
-    positive_prompt,
-    image_feats: torch.Tensor,    # (N, D), precomputed
-    image_labels: torch.Tensor,   # (N,)
-    model,
-    tokenizer,
-    adapter,
-):
-
-    # 2. Encode & adapt text prompts
-    # --------------------------------
-    text_inputs = tokenizer(
-        [negative_prompt, positive_prompt],
-        context_length=CONTEXT_LENGTH
-    ).to(DEVICE)
-
-    with torch.no_grad():
-        text_feats = model.encode_text(text_inputs)          # (2, D)
-        text_feats = text_feats / text_feats.norm(dim=1, keepdim=True)
-        text_feats = adapter(text_feats)                     # adapt
-        text_feats = text_feats / text_feats.norm(dim=1, keepdim=True)
-
-        logit_scale = model.logit_scale.exp()
-
-        # move image feats to DEVICE for one matrix multiply
-        feats = image_feats.to(DEVICE)                        # (N, D)
-        labels = image_labels.to(DEVICE)
-
-        # adapter network
-        feats = adapter(feats)                     # adapt
-        # (N,)
-        feats = feats / feats.norm(dim=1, keepdim=True)
-
-        # compute all logits at once: (N, 2)
-        logits = logit_scale * (feats @ text_feats.t())
-        probs = logits.softmax(dim=1)
-        preds = logits.argmax(dim=1)
-
-        y_pred = preds.cpu().numpy()
-        y_prob = probs[:, 0].cpu().numpy()    # tumor-class prob
-        y_true = labels.cpu().numpy()
-
-    acc = accuracy_score(y_true, y_pred)
-    auc = roc_auc_score(y_true, y_prob)
-    cm = confusion_matrix(y_true, y_pred)
-    report = classification_report(y_true, y_pred, digits=4)
-
-    return {'accuracy': acc, 'auc': auc, 'cm': cm, 'report': report}
 
 
 def main():

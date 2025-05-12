@@ -21,7 +21,7 @@ from sklearn.metrics import (
 from tqdm import tqdm
 import heapq
 from typing import Tuple, List, Optional
-
+from train_adapter import (Adapter)
 # os.environ['CUDA_VISIBLE_DEVICES'] = '1'
 torch.multiprocessing.set_sharing_strategy('file_system')
 
@@ -181,6 +181,57 @@ def evaluate_prompt_pair(
     return {'accuracy': acc, 'auc': auc, 'cm': cm, 'report': report}
 
 
+def evaluate_prompt_pair_with_adapter(
+    negative_prompt,
+    positive_prompt,
+    image_feats: torch.Tensor,    # (N, D), precomputed
+    image_labels: torch.Tensor,   # (N,)
+    model,
+    tokenizer,
+    adapter,
+):
+
+    # 2. Encode & adapt text prompts
+    # --------------------------------
+    text_inputs = tokenizer(
+        [negative_prompt, positive_prompt],
+        context_length=CONTEXT_LENGTH
+    ).to(DEVICE)
+
+    with torch.no_grad():
+        text_feats = model.encode_text(text_inputs)          # (2, D)
+        text_feats = text_feats / text_feats.norm(dim=1, keepdim=True)
+        text_feats = adapter(text_feats)                     # adapt
+        text_feats = text_feats / text_feats.norm(dim=1, keepdim=True)
+
+        logit_scale = model.logit_scale.exp()
+
+        # move image feats to DEVICE for one matrix multiply
+        feats = image_feats.to(DEVICE)                        # (N, D)
+        labels = image_labels.to(DEVICE)
+
+        # adapter network
+        feats = adapter(feats)                     # adapt
+        # (N,)
+        feats = feats / feats.norm(dim=1, keepdim=True)
+
+        # compute all logits at once: (N, 2)
+        logits = logit_scale * (feats @ text_feats.t())
+        probs = logits.softmax(dim=1)
+        preds = logits.argmax(dim=1)
+
+        y_pred = preds.cpu().numpy()
+        y_prob = probs[:, 0].cpu().numpy()    # tumor-class prob
+        y_true = labels.cpu().numpy()
+
+    acc = accuracy_score(y_true, y_pred)
+    auc = roc_auc_score(y_true, y_prob)
+    cm = confusion_matrix(y_true, y_pred)
+    report = classification_report(y_true, y_pred, digits=4)
+
+    return {'accuracy': acc, 'auc': auc, 'cm': cm, 'report': report}
+
+
 PromptPair = Tuple[str, str]
 InitialItem = Tuple[PromptPair, float]
 
@@ -321,6 +372,12 @@ def main():
 
     model = model.to(DEVICE).eval()
 
+    # load adapter
+    adapter = Adapter(dim=512).to(DEVICE)
+    adapter.load_state_dict(torch.load(
+        "adapter_weights.pth", map_location=DEVICE))
+    adapter.eval()
+
     # 7. Prepare DataLoader for test set
     train_ds = BiomedCLIPDataset(train_df, preprocess)
     train_loader = DataLoader(
@@ -355,9 +412,9 @@ def main():
             cache_path
         )
 
-    cookies = {"__Secure-1PSIDCC": "AKEyXzUWq3W2znlM7t-7wO5icZPzPk9qzaPCHyu4VuMfLzsGLgb_AfpwrjlgGOUy0VyvBFBnzbgv",
+    cookies = {"__Secure-1PSIDCC": "AKEyXzUpjTf0aWHnjBMeh8bfaPDsPLddTxqc6onNdWfFmjl_rDLtw5xGl0FbR7lyHgeJq0sHvj9s",
                "__Secure-1PSID": "g.a000wgh5UnikS3MgaQbBrwOks9wXRHcyaiqgzL7KBndo7ATWBrvTvN6kCDnqXfkOnfemJj4mqwACgYKAUsSARQSFQHGX2MiEu55NtUIn8L5nXEYQqrQXxoVAUF8yKpFS3_FRjjcqH7w1bMYkAeZ0076",
-               "__Secure-1PSIDTS": "sidts-CjIBjplskEKAKiBDMn-FrkpebRa8-0sO65Z_Ci8l7MSKfWi2nsN0So1EubADcHUutuPpEhAA",
+               "__Secure-1PSIDTS": "sidts-CjIBjplskC9p3O6Qn1iIJIAJ2JjDroT-2k3IR1c6tJtmiKP3LVtpjMGTYvulIvfiDUKUJxAA",
                }  # Cookies may vary by account or region. Consider sending the entire cookie file.
 
     client = Gemini(auto_cookies=False, cookies=cookies)
@@ -383,8 +440,8 @@ def main():
                 print(f"Invalid prompt pair: {prompt_pair}")
                 continue
             negative_prompt, positive_prompt = prompt_pair
-            results = evaluate_prompt_pair(
-                negative_prompt, positive_prompt, all_img_feats, all_img_labels, model, tokenizer)
+            results = evaluate_prompt_pair_with_adapter(
+                negative_prompt, positive_prompt, all_img_feats, all_img_labels, model, tokenizer, adapter)
             pq.insert((negative_prompt, positive_prompt), results['accuracy'])
 
         n = 40
