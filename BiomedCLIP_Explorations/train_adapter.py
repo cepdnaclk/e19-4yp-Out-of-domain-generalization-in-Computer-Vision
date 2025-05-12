@@ -15,10 +15,7 @@ from torch.utils.data import Dataset, DataLoader
 from tqdm import tqdm
 import numpy as np
 import torch.nn.functional as F
-from prompt_learner import (
-    BiomedCLIPDataset,
-    append_filename_and_filepath,
-)
+
 # 1. Paths & constants
 METADATA_CSV = "/home/E19_FYP_Domain_Gen_Data/metadata.csv"
 PATCHES_DIR = "/home/E19_FYP_Domain_Gen_Data/patches"
@@ -237,4 +234,8 @@ def main():
 
 
 if __name__ == "__main__":
+    from prompt_learner import (
+        BiomedCLIPDataset,
+        append_filename_and_filepath,
+    )
     main()

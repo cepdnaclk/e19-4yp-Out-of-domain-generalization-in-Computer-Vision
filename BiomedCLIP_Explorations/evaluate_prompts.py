@@ -21,15 +21,6 @@ from sklearn.metrics import (
 from tqdm import tqdm
 import heapq
 from typing import Tuple, List, Optional
-from prompt_learner import (
-    BiomedCLIPDataset,
-    append_filename_and_filepath,
-    evaluate_prompt_pair,
-    PriorityQueue,
-    load_initial_prompts,
-    evaluate_prompt_pair_with_adapter,
-)
-from train_adapter import (Adapter, cosine_dist)
 
 
 # os.environ['CUDA_VISIBLE_DEVICES'] = '1'
@@ -136,4 +127,14 @@ def main():
 
 
 if __name__ == "__main__":
+    from prompt_learner import (
+        BiomedCLIPDataset,
+        append_filename_and_filepath,
+        evaluate_prompt_pair,
+        PriorityQueue,
+        load_initial_prompts,
+        evaluate_prompt_pair_with_adapter,
+    )
+    from train_adapter import (Adapter, cosine_dist)
+
     main()

@@ -21,7 +21,6 @@ from sklearn.metrics import (
 from tqdm import tqdm
 import heapq
 from typing import Tuple, List, Optional
-from train_adapter import (Adapter)
 # os.environ['CUDA_VISIBLE_DEVICES'] = '1'
 torch.multiprocessing.set_sharing_strategy('file_system')
 
@@ -461,4 +460,5 @@ def main():
 
 
 if __name__ == "__main__":
+    from train_adapter import (Adapter)
     main()
