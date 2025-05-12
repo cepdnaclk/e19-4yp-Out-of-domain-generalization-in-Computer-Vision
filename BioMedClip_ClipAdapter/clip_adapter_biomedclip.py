@@ -60,103 +60,105 @@ class ClipAdapter_BiomedCLIP():
         print('Building custom CLIP')
         model.eval()
         clip_ad_model = CustomCLIP(model)
-        # clip_ad_model_val = copy.deepcopy(clip_ad_model)
+        clip_ad_model_val = copy.deepcopy(clip_ad_model)
         
-        # New
-        # Load the pre-trained adapter
-        adapter_path = self.cfg['cache_dir'] + "/best_clipAdapterModel.pt"
-        print(f"Loading adapter from: {adapter_path}")
+        # # New - For load and TEst -  Start
+        # # Load the pre-trained adapter
+        # adapter_path = self.cfg['cache_dir'] + "/best_clipAdapterModel.pt"
+        # print(f"Loading adapter from: {adapter_path}")
 
-         # Add the Adapter class to safe globals before loading
-        # torch.serialization.add_safe_globals([Adapter])
+        #  # Add the Adapter class to safe globals before loading
+        # # torch.serialization.add_safe_globals([Adapter])
     
-        # Load the adapter with weights_only=False (only if you trust the source)
-        clip_ad_model.adapter = torch.load(adapter_path, weights_only=False)
-
+        # # Load the adapter with weights_only=False (only if you trust the source)
+        # clip_ad_model.adapter = torch.load(adapter_path, weights_only=False)
 
         # clip_ad_model.adapter = torch.load(adapter_path)
         # clip_ad_model.cuda()
+        # # New - For load and TEst -  End
 
 
-        # print('Turning off gradients in both the image and the text encoder')
-        # for name, param in clip_ad_model.named_parameters():
-        #     if 'adapter' not in name:
-        #         param.requires_grad_(False)
+
+
+        print('Turning off gradients in both the image and the text encoder')
+        for name, param in clip_ad_model.named_parameters():
+            if 'adapter' not in name:
+                param.requires_grad_(False)
                 
-        # for name, param in clip_ad_model_val.named_parameters():
-        #     if 'adapter' not in name:
-        #         param.requires_grad_(False)
+        for name, param in clip_ad_model_val.named_parameters():
+            if 'adapter' not in name:
+                param.requires_grad_(False)
         
-        # clip_ad_model.cuda()
-        # clip_ad_model_val.cuda()
+        clip_ad_model.cuda()
+        clip_ad_model_val.cuda()
     
 
-        # # Feature Extraction for Validation
-        # print("\nExtracting visual features and labels from val set.")
-        # val_features, val_labels = [], []
-        # with torch.no_grad():
-        #     for i, (images, target) in enumerate(tqdm(val_loader)):
-        #         images, target = images.cuda(), target.cuda()
-        #         with torch.no_grad():
-        #             image_features = model.encode_image(images)
-        #             image_features /= image_features.norm(dim=-1, keepdim=True)
-        #         val_features.append(image_features)
-        #         val_labels.append(target)
-        # val_features, val_labels = torch.cat(val_features), torch.cat(val_labels)
-        # start_time = time.time() 
+        # Feature Extraction for Validation
+        print("\nExtracting visual features and labels from val set.")
+        val_features, val_labels = [], []
+        with torch.no_grad():
+            for i, (images, target) in enumerate(tqdm(val_loader)):
+                images, target = images.cuda(), target.cuda()
+                with torch.no_grad():
+                    image_features = model.encode_image(images)
+                    image_features /= image_features.norm(dim=-1, keepdim=True)
+                val_features.append(image_features)
+                val_labels.append(target)
+        val_features, val_labels = torch.cat(val_features), torch.cat(val_labels)
+        start_time = time.time() 
        
-        # alpha = cfg["alpha_ca"]
-        # print(alpha)
+        alpha = cfg["alpha_ca"]
+        print(alpha)
 
         
-        # optimizer = torch.optim.SGD(clip_ad_model.adapter.parameters(), self.lr)
+        optimizer = torch.optim.SGD(clip_ad_model.adapter.parameters(), self.lr)
         
-        # # Train
-        # print('\nStart Training procedure')
+        # Train
+        print('\nStart Training procedure')
            
-        # best_acc, best_epoch = 0.0, 0
-        # for train_idx in range(self.cfg['train_epoch']):
-        #     # Train
-        #     clip_ad_model.adapter.train()
-        #     correct_samples, all_samples = 0, 0
-        #     loss_list = []
-        #     print('Train Epoch: {:} / {:}'.format(train_idx, self.cfg['train_epoch']))
+        best_acc, best_epoch = 0.0, 0
+        for train_idx in range(self.cfg['train_epoch']):
+            # Train
+            clip_ad_model.adapter.train()
+            correct_samples, all_samples = 0, 0
+            loss_list = []
+            print('Train Epoch: {:} / {:}'.format(train_idx, self.cfg['train_epoch']))
 
-        #     for i, (images, target) in enumerate(tqdm(train_loader)):
-        #         images, target = images.cuda(), target.cuda()
-        #         with torch.no_grad():
-        #             image_features = model.encode_image(images)
-        #             image_features /= image_features.norm(dim=-1, keepdim=True)
+            for i, (images, target) in enumerate(tqdm(train_loader)):
+                images, target = images.cuda(), target.cuda()
+                with torch.no_grad():
+                    image_features = model.encode_image(images)
+                    image_features /= image_features.norm(dim=-1, keepdim=True)
 
-        #         logits = clip_ad_model(image_features, text_weights, alpha)
+                logits = clip_ad_model(image_features, text_weights, alpha)
 
-        #         loss = F.cross_entropy(logits, target)
+                loss = F.cross_entropy(logits, target)
 
-        #         acc = cls_acc(logits, target)
-        #         correct_samples += acc / 100 * len(logits)
-        #         all_samples += len(logits)
-        #         loss_list.append(loss.item())
+                acc = cls_acc(logits, target)
+                correct_samples += acc / 100 * len(logits)
+                all_samples += len(logits)
+                loss_list.append(loss.item())
 
-        #         optimizer.zero_grad()
-        #         loss.backward()
-        #         optimizer.step()
-        #         # scheduler.step()
+                optimizer.zero_grad()
+                loss.backward()
+                optimizer.step()
+                # scheduler.step()
                 
-        #     clip_ad_model.adapter.eval()
-        #     # current_lr = scheduler.get_last_lr()[0]
-        #     print('Acc: {:.4f} ({:}/{:}), Loss: {:.4f}'.format( correct_samples / all_samples, correct_samples, all_samples, sum(loss_list)/len(loss_list)))
-        #     clip_ad_model.eval()
-        #     logits = clip_ad_model(val_features, text_weights, self.alpha)
-        #     acc = cls_acc(logits, val_labels)
+            clip_ad_model.adapter.eval()
+            # current_lr = scheduler.get_last_lr()[0]
+            print('Acc: {:.4f} ({:}/{:}), Loss: {:.4f}'.format( correct_samples / all_samples, correct_samples, all_samples, sum(loss_list)/len(loss_list)))
+            clip_ad_model.eval()
+            logits = clip_ad_model(val_features, text_weights, self.alpha)
+            acc = cls_acc(logits, val_labels)
             
-        #     print("**** Clip-Adapter's val accuracy: {:.4f}. ****\n".format(acc))
-        #     if acc > best_acc:
-        #         best_acc = acc
-        #         best_epoch = train_idx
-        #         torch.save(clip_ad_model.adapter, self.cfg['cache_dir'] + "/best_clipAdapterModel.pt")
-        # # Evaluation
-        # print("Total time = {:.4f}".format(time.time()-start_time))
-        # # clip_ad_model.adapter = torch.load(self.cfg['cache_dir'] + "/best_clipA_" + str(self.cfg['shots']) + "shots.pt")
+            print("**** Clip-Adapter's val accuracy: {:.4f}. ****\n".format(acc))
+            if acc > best_acc:
+                best_acc = acc
+                best_epoch = train_idx
+                torch.save(clip_ad_model.adapter, self.cfg['cache_dir'] + "/best_clipAdapterModel.pt")
+        # Evaluation
+        print("Total time = {:.4f}".format(time.time()-start_time))
+        # clip_ad_model.adapter = torch.load(self.cfg['cache_dir'] + "/best_clipA_" + str(self.cfg['shots']) + "shots.pt")
         
         print('\nStart evaluation on test sets')
         clip_ad_model.eval()
@@ -194,7 +196,7 @@ class ClipAdapter_BiomedCLIP():
             print(f"F1: {f1_score(labels, preds)*100:.2f}%")
             print(f"Precision: {precision_score(labels, preds)*100:.2f}%")
             print(f"Recall: {recall_score(labels, preds)*100:.2f}%")
-
+        # Return dummy values for acc and loss
         return 100, 100
 
 
