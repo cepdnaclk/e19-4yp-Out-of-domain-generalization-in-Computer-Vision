@@ -234,8 +234,7 @@ class CoOpTrainer:
             lr=self.lr
         )
 
-    def train(self, train_loader, val_loader, test_features, test_labels,id_test_features,
-                    id_test_labels):
+    def train(self, train_loader, val_loader,test_loader,id_test_loaders):
         """Main training loop"""
         best_acc = 0.0
         
@@ -286,7 +285,7 @@ class CoOpTrainer:
         
         # Final evaluation
         self.model.load_state_dict(torch.load('best_coop_model.pth'))
-        test_acc = self.evaluate_test(test_features, test_labels, text_weights)
+        test_acc = self.evaluate_test(test_loader=test_loader,id_test_loaders=id_test_loaders)
         return best_acc, test_acc
 
     def evaluate(self, loader):
@@ -304,31 +303,50 @@ class CoOpTrainer:
         
         return total_correct / total_samples * 100
 
-    def evaluate_test(self, test_features, test_labels, text_weights):
-        """Evaluate on test set with pre-extracted features"""
-        self.model.eval()
+    def evaluate_test(self, test_loader, id_test_loaders):
+        """Evaluate on test sets using data loaders
         
-        with torch.no_grad():
-            # If using pre-computed features
-            test_features = test_features.to(self.device)
-            test_labels = test_labels.to(self.device)
+        Args:
+            test_loader: DataLoader for main test set (center 4)
+            id_test_loaders: Dict of DataLoaders for in-distribution test sets (centers 0-2)
+        """
+        self.model.eval()
+        results = {}
+        
+        # Helper function to evaluate a single loader
+        def _eval_loader(loader, name="test"):
+            total_correct = 0
+            total_samples = 0
+            all_preds = []
+            all_labels = []
             
-            # Get text features (if needed)
-            text_features = text_weights.to(self.device)
+            with torch.no_grad():
+                for images, labels in tqdm(loader, desc=f"Evaluating {name}"):
+                    images, labels = images.to(self.device), labels.to(self.device)
+                    
+                    # Forward pass (uses optimized prompts internally)
+                    logits = self.model(images)
+                    preds = logits.argmax(dim=1)
+                    
+                    total_correct += (preds == labels).sum().item()
+                    total_samples += labels.size(0)
+                    all_preds.extend(preds.cpu().numpy())
+                    all_labels.extend(labels.cpu().numpy())
             
-            # Normalize features
-            image_features = test_features / test_features.norm(dim=-1, keepdim=True)
-            text_features = text_features / text_features.norm(dim=-1, keepdim=True)
-            
-            # Calculate logits
-            logit_scale = self.model.logit_scale.exp()
-            logits = logit_scale * image_features @ text_features.t()
-            
-            preds = logits.argmax(dim=1)
-            acc = accuracy_score(test_labels.cpu().numpy(), preds.cpu().numpy()) * 100
-            f1 = f1_score(test_labels.cpu().numpy(), preds.cpu().numpy()) * 100
-            
-            print(f"\nTest Accuracy: {acc:.2f}%")
-            print(f"Test F1 Score: {f1:.2f}%")
-            
-        return acc
+            acc = total_correct / total_samples * 100
+            f1 = f1_score(all_labels, all_preds, average='binary') * 100
+            return acc, f1
+        
+        # Evaluate main test set (center 4)
+        test_acc, test_f1 = _eval_loader(test_loader, "main_test")
+        results['main_test'] = {'accuracy': test_acc, 'f1': test_f1}
+        print(f"\nMain Test Accuracy: {test_acc:.2f}% | F1: {test_f1:.2f}%")
+        
+        # Evaluate in-distribution test sets (centers 0-2)
+        if id_test_loaders:
+            for center_name, loader in id_test_loaders.items():
+                acc, f1 = _eval_loader(loader, center_name)
+                results[center_name] = {'accuracy': acc, 'f1': f1}
+                print(f"{center_name} Accuracy: {acc:.2f}% | F1: {f1:.2f}%")
+        
+        return results
