@@ -102,12 +102,11 @@ def main():
     loss, acc = method.train(train_loader=train_loader,
                     val_loader=val_loader,
                     test_features=test_features,
+                    test_labels=test_labels,
                     id_test_features=id_test_features,
                     id_test_labels=id_test_labels,
-                    test_labels=test_labels,
-                    # text_weights=text_weights,
                     model=clip_model,
-                    classnames=classnames)
+                    classnames=cfg)
     # print(f'Final Accuracy {acc}')
 
 
