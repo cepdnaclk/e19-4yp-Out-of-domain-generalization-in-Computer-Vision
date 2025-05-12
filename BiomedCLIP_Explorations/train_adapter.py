@@ -15,7 +15,10 @@ from torch.utils.data import Dataset, DataLoader
 from tqdm import tqdm
 import numpy as np
 import torch.nn.functional as F
-
+from prompt_learner import (
+    BiomedCLIPDataset,
+    append_filename_and_filepath,
+)
 # 1. Paths & constants
 METADATA_CSV = "/home/E19_FYP_Domain_Gen_Data/metadata.csv"
 PATCHES_DIR = "/home/E19_FYP_Domain_Gen_Data/patches"
@@ -50,38 +53,6 @@ class Adapter(nn.Module):
 def cosine_dist(x, y):
     # returns 1 − cosine_similarity, so smaller means more similar
     return 1.0 - F.cosine_similarity(x, y, dim=1)
-
-
-class BiomedCLIPDataset(Dataset):
-    def __init__(self, df, preprocess):
-        self.filepaths = df["filepath"].tolist()
-        self.labels = df["tumor"].astype(int).tolist()
-        self.preproc = preprocess
-
-    def __len__(self):
-        return len(self.filepaths)
-
-    def __getitem__(self, idx):
-        img = Image.open(self.filepaths[idx]).convert("RGB")
-        img = self.preproc(img)           # yields a torch.Tensor (C,H,W)
-        label = torch.tensor(self.labels[idx], dtype=torch.long)
-        return img, label
-
-
-def append_filename_and_filepath(df):
-    df["filename"] = df.apply(
-        lambda r: f"patch_patient_{r.patient:03d}_node_{r.node}_x_{r.x_coord}_y_{r.y_coord}.png",
-        axis=1
-    )
-    df["filepath"] = df.apply(
-        lambda r: os.path.join(
-            PATCHES_DIR,
-            f"patient_{r.patient:03d}_node_{r.node}",
-            r.filename
-        ),
-        axis=1
-    )
-    return df
 
 
 class FeatureTripletDataset(Dataset):

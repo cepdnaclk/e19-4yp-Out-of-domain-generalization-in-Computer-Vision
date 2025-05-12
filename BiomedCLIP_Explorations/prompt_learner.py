@@ -362,7 +362,7 @@ def main():
 
     client = Gemini(auto_cookies=False, cookies=cookies)
 
-    prompt_template = ["""Give me 50 textual descriptions pairs of visual discriminative features to identify whether the central region of an histopathological image patch contains tumor tissue or not. The patch is extracted from an H&E‑stained whole‑slide image of a lymph node section.""",
+    prompt_template = ["""Give 50 textual descriptions pairs of visual discriminative features to identify whether the central region of an histopathological image patch contains tumor tissue or not. The patch is extracted from an H&E‑stained whole‑slide image of a lymph node section.""",
                        """Here are the best performing pairs. You should aim to get higher scores. Each description should be about 5-20 words.
                         1-10: Generate the first 10 pairs exploring variations of the top 1 (best) given. Remove certain words, add words, change order and generate variations.
                         11-20: Generate 10 pairs using the top 10, explore additional knowledge and expand on it. 
