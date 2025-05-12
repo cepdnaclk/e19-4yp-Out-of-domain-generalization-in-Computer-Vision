@@ -282,7 +282,6 @@ def load_initial_prompts(path: str) -> List[InitialItem]:
 
 def main():
     random_state = 42
-    shots = 16
 
     # 2. Load metadata and filter center=0
     metadata_df = pd.read_csv(METADATA_CSV, index_col=0)
@@ -293,10 +292,14 @@ def main():
                     (metadata_df['center'] == 0)],
         metadata_df[(metadata_df['tumor'] == 0) &
                     (metadata_df['center'] == 0)],
-        # metadata_df[(metadata_df['tumor'] == 1) & (metadata_df['center'] == 1)].sample(n=shots, random_state=random_state),
-        # metadata_df[(metadata_df['tumor'] == 0) & (metadata_df['center'] == 1)].sample(n=shots, random_state=random_state),
-        # metadata_df[(metadata_df['tumor'] == 1) & (metadata_df['center'] == 2)].sample(n=shots, random_state=random_state),
-        # metadata_df[(metadata_df['tumor'] == 0) & (metadata_df['center'] == 2)].sample(n=shots, random_state=random_state),
+        metadata_df[(metadata_df['tumor'] == 1) &
+                    (metadata_df['center'] == 1)],
+        metadata_df[(metadata_df['tumor'] == 0) &
+                    (metadata_df['center'] == 1)],
+        metadata_df[(metadata_df['tumor'] == 1) &
+                    (metadata_df['center'] == 2)],
+        metadata_df[(metadata_df['tumor'] == 0) &
+                    (metadata_df['center'] == 2)],
     ]).reset_index(drop=True)
 
     # Load BiomedCLIP model + tokenizer + preprocess
