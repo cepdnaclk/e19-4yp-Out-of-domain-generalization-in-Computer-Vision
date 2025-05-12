@@ -221,11 +221,11 @@ class CoOpTrainer:
             if "prompt_learner" not in name:
                 param.requires_grad_(False)
 
-        # Only optimize prompt learner parameters
-        self.optimizer = torch.optim.AdamW(
-            [p for n, p in self.model.named_parameters() if 'prompt_learner' in n],
-            lr=self.lr
-        )
+        # # Only optimize prompt learner parameters
+        # self.optimizer = torch.optim.AdamW(
+        #     [p for n, p in self.model.named_parameters() if 'prompt_learner' in n],
+        #     lr=self.lr
+        # )
 
         # Alternatively
         # 4. Set up optimizer ONLY for prompt learner
@@ -234,7 +234,8 @@ class CoOpTrainer:
             lr=self.lr
         )
 
-    def train(self, train_loader, val_loader, test_features, test_labels, text_weights):
+    def train(self, train_loader, val_loader, test_features, test_labels,id_test_features,
+                    id_test_labels):
         """Main training loop"""
         best_acc = 0.0
         
