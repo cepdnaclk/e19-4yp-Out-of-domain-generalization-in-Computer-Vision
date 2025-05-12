@@ -1,0 +1,5 @@
+*.log
+*.pyc
+/_pycache__
+/caches
+/deprecated
