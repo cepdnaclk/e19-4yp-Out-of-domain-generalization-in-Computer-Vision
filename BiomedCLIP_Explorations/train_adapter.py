@@ -231,7 +231,7 @@ def main():
 
     # train and save the adapter
     adapter = train_adapter(centers_features[0:3], centers_labels[0:3], device=DEVICE,
-                            lr=1e-3, batch_size=32, epochs=2000)
+                            lr=1e-3, batch_size=32, epochs=100)
     torch.save(adapter.state_dict(), 'adapter_weights.pth')
 
 
