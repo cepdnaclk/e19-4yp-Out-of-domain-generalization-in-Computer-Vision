@@ -57,15 +57,35 @@ class FeatureTripletDataset(Dataset):
         # define epoch length as total possible anchors
         return sum(self.lengths)
 
+    # def __getitem__(self, idx):  # idx ignored for random sampling
+    #     # Sample a class with at least 2 samples
+    #     cls = random.choice([c for c, l in enumerate(self.lengths) if l >= 2])
+    #     n_samples = self.lengths[cls]
+    #     a_idx, p_idx = random.sample(range(n_samples), 2)
+    #     anchor = self.features[cls][a_idx]
+    #     positive = self.features[cls][p_idx]
+
+    #     # Sample negative class and sample
+    #     neg_cls = random.choice(
+    #         [c for c in range(self.num_classes) if c != cls])
+    #     neg_idx = random.randrange(self.lengths[neg_cls])
+    #     negative = self.features[neg_cls][neg_idx]
+
+    #     return anchor, positive, negative
+
     def __getitem__(self, idx):  # idx ignored for random sampling
         # Sample a class with at least 2 samples
         cls = random.choice([c for c, l in enumerate(self.lengths) if l >= 2])
         n_samples = self.lengths[cls]
-        a_idx, p_idx = random.sample(range(n_samples), 2)
-        anchor = self.features[cls][a_idx]
+
+        # Always use the first feature as anchor
+        anchor = self.features[cls][0]
+
+        # Sample a different index in the same class for positive (excluding index 0)
+        p_idx = random.choice(range(1, n_samples))
         positive = self.features[cls][p_idx]
 
-        # Sample negative class and sample
+        # Sample a negative class and sample
         neg_cls = random.choice(
             [c for c in range(self.num_classes) if c != cls])
         neg_idx = random.randrange(self.lengths[neg_cls])
@@ -115,7 +135,7 @@ def train_adapter(
 
     adapter = Adapter(dim).to(device)
     loss_fn = nn.TripletMarginWithDistanceLoss(
-        margin=1.0, distance_function=cosine_dist, reduction='mean')
+        margin=0.2, distance_function=cosine_dist, reduction='mean')
     optimizer = optim.Adam(adapter.parameters(), lr=lr)
 
     adapter.train()
@@ -130,7 +150,8 @@ def train_adapter(
             out_p = adapter(positive)
             out_n = adapter(negative)
 
-            loss = loss_fn(out_a, out_p, out_n)
+            loss = loss_fn(out_a, out_p, out_n) + \
+                cosine_dist(out_a, anchor).mean()
             optimizer.zero_grad()
             loss.backward()
             optimizer.step()
@@ -189,6 +210,11 @@ def main():
         'a tapestry',
         'an illustration',
         'a caricature',
+        'a real world object',
+        'a digital image',
+        'a real image',
+        'a hyper-realistic image',
+        'a realistic photo',
 
     ]
 
