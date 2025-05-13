@@ -411,9 +411,9 @@ def main():
         # cache_path
         # )
 
-    cookies = {"__Secure-1PSIDCC": "AKEyXzUpjTf0aWHnjBMeh8bfaPDsPLddTxqc6onNdWfFmjl_rDLtw5xGl0FbR7lyHgeJq0sHvj9s",
+    cookies = {"__Secure-1PSIDCC": "AKEyXzWk2mrPQ4_m0py-kRqIpAY7QhdU65GmPx_cm9w1fgRN1BF83to-8FOTAFsKYfCDfztZQCZC",
                "__Secure-1PSID": "g.a000wgh5UnikS3MgaQbBrwOks9wXRHcyaiqgzL7KBndo7ATWBrvTvN6kCDnqXfkOnfemJj4mqwACgYKAUsSARQSFQHGX2MiEu55NtUIn8L5nXEYQqrQXxoVAUF8yKpFS3_FRjjcqH7w1bMYkAeZ0076",
-               "__Secure-1PSIDTS": "sidts-CjIBjplskC9p3O6Qn1iIJIAJ2JjDroT-2k3IR1c6tJtmiKP3LVtpjMGTYvulIvfiDUKUJxAA",
+               "__Secure-1PSIDTS": "sidts-CjIBjplskPZcjCfp8w0D-fezjU81ThNmKR2IUwlzGCovwbHxyl00AzC_VM1djjdW02CQTRAA",
                }  # Cookies may vary by account or region. Consider sending the entire cookie file.
 
     client = Gemini(auto_cookies=False, cookies=cookies)
