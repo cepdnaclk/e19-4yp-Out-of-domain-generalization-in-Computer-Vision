@@ -83,7 +83,7 @@ def cosine_dist(x, y):
 
 def train_adapter(
     text_features, device='cuda',
-    lr=1e-3, batch_size=256, epochs=10,
+    lr=1e-3, batch_size=32, epochs=10,
     num_workers=0
 ):
     """
@@ -115,7 +115,7 @@ def train_adapter(
 
     adapter = Adapter(dim).to(device)
     loss_fn = nn.TripletMarginWithDistanceLoss(
-        margin=0.2, distance_function=cosine_dist, reduction='mean')
+        margin=1.0, distance_function=cosine_dist, reduction='mean')
     optimizer = optim.Adam(adapter.parameters(), lr=lr)
 
     adapter.train()
@@ -187,31 +187,126 @@ def main():
         'a tapestry',
         'an illustration',
         'a caricature',
+        'an art piece',
+        'a magazine cover',
+        'a cave painting',
+        'a street mural',
+        'a billboard',
+        'a toy replica',
+        'a postage stamp',
+        'a video game screenshot',
+        'a storybook page',
+        'a comic book frame',
+        'a documentary still',
+        'a museum exhibit',
+        'a flipbook animation',
+        'a trading card image',
+        'a movie poster',
+        'a shadow puppet',
+        'a wall decal',
+        'a ceramic tile painting',
+        'a sand sculpture',
+        'a chalk drawing',
+        'a holographic image',
+        'a paper cutout',
+        'a sticker',
+        'a foam model',
+        'a canvas print',
+        'a T-shirt graphic',
+        'a painting',
+        'an oil painting',
+        'a watercolor painting',
+        'an acrylic painting',
+        'a gouache painting',
+        'a tempera painting',
+        'a fresco',
+        'a mural',
+        'a canvas painting',
+        'a panel painting',
+        'a pastel drawing',
+        'a charcoal sketch',
+        'a pencil drawing',
+        'an ink illustration',
+        'a mixed-media collage',
+        'a tapestry',
+        'an embroidered textile',
+        'a quilted textile',
+        'a wood carving',
+        'a stone sculpture',
+        'a clay sculpture',
+        'a ceramic sculpture',
+        'a glass sculpture',
+        'a metalwork piece',
+        'an ice sculpture',
+        'a sand sculpture',
+        'an installation piece',
+        'a performance art still',
+        'a neon art piece',
+        'a street graffiti piece',
+        'a stencil graffiti',
+        'a sticker art piece',
+        'a collage artwork',
+        'a mosaic artwork',
+        'a paper cut-out',
+        'a linocut print',
+        'a woodcut print',
+        'a screen print',
+        'an abstract painting',
+        'a realistic artwork',
+        'a minimalist piece',
+        'an expressionist canvas',
+        'an impressionist scene',
+        'a surrealist vision',
+        'a cubist composition',
+        'a pop-art print',
+        'a baroque tableau',
+        'a rococo detail',
+        'an art nouveau design',
+        'an art deco poster',
+        'a futurist study',
+        'a constructivist piece',
+        'a brutalist sketch',
+        'a neoclassical scene',
+        'an orientalist painting',
+        'a vaporwave graphic',
+        'a low-poly model',
+        'a digital glitch art',
+        'a panorama',
+        'a portrait',
+        'a landscape',
+        'a macro shot',
+        'a micro shot',
+        'a fisheye view',
+        'a wide-angle photo',
+        'a telephoto capture',
+        'a tilt-shift frame',
+        'a bokeh photograph',
+        'a split-screen still',
+        'a diptych',
+        'a triptych',
+        'a sequential panel',
+        'a looping animation',
+        'a stop-motion frame',
+        'a multi-exposure image',
+        'an infrared shot',
+        'an ultraviolet image',
+        'a collage',
+        'a caricature',
+        'a chronophotograph',
+        'a cinemagraph',
+        'an anamorphic art piece',
+        'a stereoscopic image',
+        'a lenticular print',
+        'a shadow graph',
+        'a silhouette cut-out',
+        'a conceptual art piece',
+        'a found-object photograph',
+        'a mixed-reality capture',
+        'an everyday snapshot',
+        'an editorial illustration',
+        'a botanical illustration',
+        'a zoological illustration',
     ]
-
-    # Components to generate new domain phrases
-    materials = ['watercolor', 'oil', 'charcoal', 'ink',
-                 'pastel', 'digital', 'acrylic', 'graphite', 'chalk']
-    styles = ['abstract', 'realistic', 'minimalist', 'expressionist',
-              'impressionist', 'surrealist', 'cubist', 'geometric', 'pop-art']
-    formats = ['panorama', 'portrait', 'landscape', 'macro',
-               'micro', 'aerial', 'fisheye', 'wide-angle', 'time-lapse']
-    subtypes = ['illustration', 'rendering', 'blueprint',
-                'schematic', 'map', 'chart', 'poster', 'collage', 'mosaic']
-
-    # Components to generate new domain phrases
-    materials = ['watercolor', 'oil', 'charcoal', 'ink',
-                 'pastel', 'digital', 'acrylic', 'graphite', 'chalk']
-    styles = ['abstract', 'realistic', 'minimalist', 'expressionist',
-              'impressionist', 'surrealist', 'cubist', 'geometric', 'pop-art']
-    formats = ['panorama', 'portrait', 'landscape', 'macro',
-               'micro', 'aerial', 'fisheye', 'wide-angle', 'time-lapse']
-    subtypes = ['illustration', 'rendering', 'blueprint',
-                'schematic', 'map', 'chart', 'poster', 'collage', 'mosaic']
-
-    # Expand domains to ~1000 phrases
-    for style, material, subtype in itertools.product(styles, materials, subtypes):
-        domains.append(f"a {style} {material} {subtype}")
 
     print(f"Number of domains: {len(domains)}")
     print(f"Domains: {domains}")
