@@ -185,40 +185,17 @@ def main():
     classes = [c.lower().strip() for c in classes]
     print(f"Number of classes: {len(classes)}")
 
-    domains = [
-        'a photo',
-        'a painting',
-        'a sculpture',
-        'a drawing',
-        'a cartoon',
-        'a sketch',
-        'a diagram',
-        'a model',
-        'a figure',
-        'a photograph',
-        'a mural',
-        'a fresco',
-        'a lithograph',
-        'an etching',
-        'a print',
-        'a poster',
-        'a mixed-media piece',
-        'a textile',
-        'an animation',
-        'a 3D model',
-        'a collage',
-        'a tapestry',
-        'an illustration',
-        'a caricature',
-        'a real world object',
-        'a digital image',
-        'a real image',
-        'a hyper-realistic image',
-        'a realistic photo',
+    domains_set = set()
 
+    # Original domains (cleaned and lowercased, without articles for initial set population)
+    original_domains_raw = [
+        'photo', 'painting', 'sculpture', 'drawing', 'cartoon', 'sketch', 'diagram', 'model', 'figure',
+        'photograph', 'mural', 'fresco', 'lithograph', 'etching', 'print', 'poster', 'mixed-media piece',
+        'textile', 'animation', '3d model', 'collage', 'tapestry', 'illustration', 'caricature',
+        'real world object', 'digital image', 'real image', 'hyper-realistic image', 'realistic photo',
     ]
+    domains_set.update(original_domains_raw)
 
-    # Components to generate new domain phrases
     materials = ['watercolor', 'oil', 'charcoal', 'ink',
                  'pastel', 'digital', 'acrylic', 'graphite', 'chalk']
     styles = ['abstract', 'realistic', 'minimalist', 'expressionist',
@@ -228,11 +205,81 @@ def main():
     subtypes = ['illustration', 'rendering', 'blueprint',
                 'schematic', 'map', 'chart', 'poster', 'collage', 'mosaic']
 
+    # User's combinations: style x material x subtype
     for style, material, subtype in itertools.product(styles, materials, subtypes):
-        domains.append(f"a {style} {material} {subtype}")
+        domains_set.add(f"{style} {material} {subtype}".lower().strip())
 
+    # New single terms
+    new_single_terms_raw = [
+        'x-ray', 'mri', 'scan', 'icon', 'symbol', 'screenshot',
+        'still frame', 'microscopic image', 'thermal image', 'engineering drawing',
+        'concept art', 'technical illustration', 'study sketch', 'line drawing',
+        'silhouette', 'wireframe model',
+    ]
+    domains_set.update(new_single_terms_raw)
+
+    # Combinations: style + subtype
+    for style, subtype in itertools.product(styles, subtypes):
+        domains_set.add(f"{style} {subtype}".lower().strip())
+
+    # Combinations: material + subtype
+    for material, subtype in itertools.product(materials, subtypes):
+        domains_set.add(f"{material} {subtype}".lower().strip())
+
+    # Combinations: style + format
+    for style, format in itertools.product(styles, formats):
+        domains_set.add(f"{style} {format}".lower().strip())
+
+    # Combinations: material + format
+    for material, format in itertools.product(materials, formats):
+        domains_set.add(f"{material} {format}".lower().strip())
+
+    # Combinations: format + subtype
+    for format, subtype in itertools.product(formats, subtypes):
+        domains_set.add(f"{format} {subtype}".lower().strip())
+
+    # Add subtypes and materials and styles as standalone if they make sense
+    domains_set.update(subtypes)
+    domains_set.update(materials)
+    domains_set.update(styles)
+
+    # Function to add correct article
+
+    def add_article(phrase):
+        if not phrase:
+            return phrase
+
+        # Specific cases that start with a vowel sound or are acronyms
+        an_exceptions = ['x-ray', 'mri', 'icon', 'etching', 'animation', 'illustration', 'abstract',
+                         'expressionist', 'impressionist', 'oil', 'acrylic', 'ink', 'aerial',
+                         'engineering drawing']
+
+        # Check the first word of the phrase
+        first_word = phrase.split()[0]
+
+        if first_word in an_exceptions or phrase.split()[0][0] in 'aeiou':
+            # Special handling for words that start with 'a' but sound like 'a' (e.g. 'a unique') - not handled perfectly here
+            # For simplicity with the given lists, primarily rely on the first letter or exception list
+            # example word starting with 'u' vowel letter but consonant sound
+            if phrase.startswith('uni'):
+                return f"a {phrase}"
+            return f"an {phrase}"
+        else:
+            return f"a {phrase}"
+
+    # Add articles to all unique phrases
+    # Filter out any potential empty strings
+    final_domains_with_articles = sorted(
+        [add_article(d) for d in domains_set if d])
+
+    # Final list (using set again just in case article addition created duplicates, although unlikely with this logic)
+    domains = sorted(list(set(final_domains_with_articles)))
+
+    # print("domains = [")
+    # for i, domain in enumerate(domains):
+    #     print(f"    '{domain}',")
+    # print("]")
     print(f"Number of domains: {len(domains)}")
-    print(f"Domains: {domains}")
 
     # Initialize storage for text features
     text_features = {cls: None for cls in classes}
