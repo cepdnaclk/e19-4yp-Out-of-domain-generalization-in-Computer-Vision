@@ -7,6 +7,7 @@ from torchvision import datasets, transforms, models
 from torchvision.transforms import ToTensor
 from tqdm import tqdm
 import deeplake
+from torch import nn
 
 from sklearn.metrics import (
     accuracy_score,
@@ -14,6 +15,20 @@ from sklearn.metrics import (
     classification_report,
     roc_auc_score
 )
+
+
+class Adapter(nn.Module):
+    def __init__(self, dim, hidden_dim=512):
+        super().__init__()
+        self.net = nn.Sequential(
+            nn.Linear(dim, hidden_dim),
+            nn.ReLU(inplace=True),
+            nn.Linear(hidden_dim, dim),
+        )
+        self.norm = nn.LayerNorm(dim)
+
+    def forward(self, x):
+        return self.norm(x + self.net(x))
 
 
 def evaluate_clip_prompts(
@@ -118,13 +133,15 @@ def main():
     tokenizer = AutoTokenizer.from_pretrained("openai/clip-vit-base-patch32")
     processor = AutoProcessor.from_pretrained("openai/clip-vit-base-patch32")
     device = "cuda" if torch.cuda.is_available() else "cpu"
+    print(f"Using device: {device}")
+
     model.to(device)
     model.eval()
 
-    adapter = torch.load("adapter.pth")
-    adapter.to(device)
+    adapter = Adapter(dim=512).to(device)
+    adapter.load_state_dict(torch.load(
+        "adapter.pth", map_location=device))
     adapter.eval()
-
     print("=== Loading PACS Dataset ===")
     ds = deeplake.load("hub://activeloop/pacs-test")
 
