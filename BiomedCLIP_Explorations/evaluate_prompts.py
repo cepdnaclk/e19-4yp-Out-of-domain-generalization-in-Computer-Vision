@@ -67,7 +67,7 @@ def main():
 
     df = metadata_df[metadata_df.split == 1].copy()
     centers_ds = []
-    for i in range(5):
+    for i in range(4):
         centers_ds.append(BiomedCLIPDataset(df[df.center == i], preprocess))
 
     # 3. Generate embeddings and store them for each center
@@ -119,19 +119,19 @@ def main():
         results = evaluate_prompt_pair(
             negative_prompt, positive_prompt, centers_features[i], centers_labels[i], model, tokenizer)
 
-        print(f"Accuracy: {results['accuracy']}")
-        print(f"ROC AUC: {results['roc_auc']}")
-        print(f"Confusion Matrix:\n{results['confusion_matrix']}")
-        print(f"Classification Report:\n{results['classification_report']}")
+        print(f"Accuracy: {results['acc']}")
+        print(f"ROC AUC: {results['auc']}")
+        print(f"Confusion Matrix:\n{results['cm']}")
+        print(f"Classification Report:\n{results['report']}")
 
         print("With adapter:")
         results = evaluate_prompt_pair_with_adapter(
             negative_prompt, positive_prompt, centers_features[i], centers_labels[i], model, tokenizer, adapter)
 
-        print(f"Accuracy: {results['accuracy']}")
-        print(f"ROC AUC: {results['roc_auc']}")
-        print(f"Confusion Matrix:\n{results['confusion_matrix']}")
-        print(f"Classification Report:\n{results['classification_report']}")
+        print(f"Accuracy: {results['acc']}")
+        print(f"ROC AUC: {results['auc']}")
+        print(f"Confusion Matrix:\n{results['cm']}")
+        print(f"Classification Report:\n{results['report']}")
         print("Done evaluating center", i)
 
 
