@@ -308,6 +308,48 @@ def main():
         'a zoological illustration',
     ]
 
+    sketch_variants = [
+        'a rough sketch',
+        'a preliminary sketch',
+        'a quick sketch',
+        'a thumbnail sketch',
+        'a gesture drawing',
+        'a contour drawing',
+        'an outline drawing',
+        'a study sketch',
+        'a concept sketch',
+        'a doodle',
+        'a scribble',
+        'a scrawl',
+        'a rough draft sketch',
+        'a field sketch',
+        'an urban sketch',
+        'a site sketch',
+        'an on-location sketch',
+        'a storyboard sketch',
+        'a line art drawing',
+        'a pen-and-ink sketch',
+        'a charcoal sketch',
+        'a chalk sketch',
+        'a pastel sketch',
+        'a digital sketch',
+        'a wireframe sketch',
+        'a thumbnail study',
+        'a miniature sketch',
+        'a cartoon sketch',
+        'a figure sketch',
+        'a compositional sketch',
+        'a gesture study',
+        'a shape study',
+        'a perspective sketch',
+        'a value sketch',
+        'a color study sketch',
+        'a tonal sketch',
+        'an underdrawing sketch',
+    ]
+
+    domains += sketch_variants
+
     print(f"Number of domains: {len(domains)}")
     print(f"Domains: {domains}")
 
