@@ -7,6 +7,7 @@ from torchvision import datasets, transforms, models
 from torchvision.transforms import ToTensor, Compose, Resize, ToTensor
 from tqdm import tqdm
 from torch import nn
+from torch.utils.data import DataLoader
 
 from sklearn.metrics import (
     accuracy_score,
@@ -19,15 +20,30 @@ from datasets import load_dataset
 import numpy as np
 
 
-def load_pacs_dataset(domain="sketch", split="test"):
-    print(
-        f"Loading PACS dataset from Hugging Face: domain={domain}, split={split}")
-    dataset = load_dataset("flwrlabs/pacs", split=split)
+# --- Helper: build a DataLoader for a single domain ---
+def build_pacs_loader(processor, domain, split='train', batch_size=128, num_workers=4):
+    # 1) Load HF PACS and filter to this domain
+    ds = load_dataset("flwrlabs/pacs", split=split)
+    ds = ds.filter(lambda ex: ex['domain'] == domain)
 
-    # Filter by domain
-    dataset = dataset.filter(lambda example: example['domain'] == domain)
+    # 2) Define a transform + collate_fn
+    image_transform = Compose([
+        Resize((224, 224)),
+    ])
 
-    return dataset
+    def collate_fn(batch):
+        # apply the PIL transform, gather labels
+        images = [image_transform(ex['image']).convert("RGB") for ex in batch]
+        labels = torch.tensor([ex['label'] for ex in batch], dtype=torch.long)
+        # tokenize / preprocess images in one go
+        inputs = processor(images=images, return_tensors="pt", padding=True)
+        return inputs, labels
+
+    # 3) Wrap in DataLoader
+    return DataLoader(
+        ds, batch_size=batch_size, shuffle=False,
+        num_workers=num_workers, collate_fn=collate_fn
+    )
 
 
 class Adapter(nn.Module):
@@ -56,11 +72,9 @@ def evaluate_clip_prompts(
     Returns accuracy, auc per class vs rest, confusion matrix, and classification report.
     """
     device = next(model.parameters()).device
-    # prepare text prompts
-    prompts = [
-        f"a photo of {cls.replace('a ', '').replace('an ', '')}" for cls in classes]
+
     text_inputs = processor(
-        text=prompts, return_tensors="pt", padding=True).to(device)
+        text=classes, return_tensors="pt", padding=True).to(device)
     with torch.no_grad():
         text_feats = model.get_text_features(**text_inputs)  # (C, D)
         text_feats = text_feats / text_feats.norm(dim=1, keepdim=True)
@@ -103,10 +117,9 @@ def evaluate_clip_with_adapter(
     Same as evaluate_clip_prompts, but applies adapter to both text and image features.
     """
     device = next(model.parameters()).device
-    prompts = [
-        f"a photo of {cls.replace('a ', '').replace('an ', '')}" for cls in classes]
+
     text_inputs = processor(
-        text=prompts, return_tensors="pt", padding=True).to(device)
+        text=classes, return_tensors="pt", padding=True).to(device)
     with torch.no_grad():
         # text side
         text_feats = model.get_text_features(**text_inputs)  # (C, D)
@@ -162,9 +175,8 @@ def main():
         Resize((224, 224)),  # CLIP default input size
     ])
 
-    # In main() replace DeepLake part with:
     print("=== Loading PACS Dataset (Hugging Face) ===")
-    dataset = load_pacs_dataset(domain="sketch", split="test")
+    dataset = load_dataset("flwrlabs/pacs", split='train')
 
     print("Precomputing Image Features...")
     all_feats = []
@@ -180,53 +192,48 @@ def main():
         'a person'
     ]
 
-    # Create label to class mapping
-    label2class = {i: cls for i, cls in enumerate(classes)}
+    # Domains in PACS
+    domains = ['photo', 'art_painting', 'cartoon', 'sketch']
 
-    model.eval()
-    with torch.no_grad():
-        for example in tqdm(dataset, desc="Processing PACS Samples"):
-            image = image_transform(example["image"]).convert("RGB")
-            label = example["label"]
+    for domain in domains:
+        print(f"\n=== Processing domain: {domain} ===")
+        loader = build_pacs_loader(
+            processor, domain, split='train', batch_size=128)
 
-            inputs = processor(images=image, return_tensors="pt").to(device)
-            feats = model.get_image_features(**inputs)
-            feats = feats / feats.norm(dim=-1, keepdim=True)
+        # 1) Precompute all image features & labels in this domain
+        all_feats = []
+        all_labels = []
+        with torch.no_grad():
+            for inputs, labels in tqdm(loader, desc=f"Extracting feats [{domain}]"):
+                inputs = {k: v.to(device) for k, v in inputs.items()}
+                feats = model.get_image_features(**inputs)
+                feats = feats / feats.norm(dim=-1, keepdim=True)
+                all_feats.append(feats.cpu())
+                all_labels.append(labels)
 
-            all_feats.append(feats.cpu())
-            all_labels.append(torch.tensor(label).cpu())
+        image_feats = torch.cat(all_feats, dim=0)
+        image_labels = torch.cat(all_labels, dim=0)
 
-    image_feats = torch.cat(all_feats, dim=0)  # (N, D)
-    image_labels = torch.stack(all_labels, dim=0)  # (N,)
+        # 2) Zero-shot CLIP (no adapter)
+        results_no_adapter = evaluate_clip_prompts(
+            image_feats=image_feats,
+            image_labels=image_labels,
+            model=model,
+            processor=processor,
+            classes=classes
+        )
+        print(f"[{domain}] Zero-Shot Accuracy: {results_no_adapter['accuracy']:.4f}  AUC: {results_no_adapter['auc']:.4f}")
 
-    results_no_adapter = evaluate_clip_prompts(
-        image_feats=image_feats,
-        image_labels=image_labels,
-        model=model,
-        processor=processor,
-        classes=classes
-    )
-
-    print("=== Zero-Shot CLIP (no adapter) ===")
-    print(f"Accuracy: {results_no_adapter['accuracy']:.4f}")
-    print(f"AUC (OvR): {results_no_adapter['auc']:.4f}")
-    print("Confusion Matrix:\n", results_no_adapter['cm'])
-    print("Classification Report:\n", results_no_adapter['report'])
-
-    results_with_adapter = evaluate_clip_with_adapter(
-        image_feats=image_feats,
-        image_labels=image_labels,
-        model=model,
-        processor=processor,
-        adapter=adapter,
-        classes=classes
-    )
-
-    print("\n=== Zero-Shot CLIP + Adapter ===")
-    print(f"Accuracy: {results_with_adapter['accuracy']:.4f}")
-    print(f"AUC (OvR): {results_with_adapter['auc']:.4f}")
-    print("Confusion Matrix:\n", results_with_adapter['cm'])
-    print("Classification Report:\n", results_with_adapter['report'])
+        # 3) Zero-shot CLIP + Adapter
+        results_with_adapter = evaluate_clip_with_adapter(
+            image_feats=image_feats,
+            image_labels=image_labels,
+            model=model,
+            processor=processor,
+            adapter=adapter,
+            classes=classes
+        )
+        print(f"[{domain}] Adapter Accuracy:  {results_with_adapter['accuracy']:.4f}  AUC: {results_with_adapter['auc']:.4f}")
 
 
 if __name__ == "__main__":
