@@ -340,7 +340,7 @@ def main():
     # text_features['a dog'] is a tensor of size (len(domains), feature_dim)
 
     print({cls: feats.shape for cls, feats in text_features.items()})
-    adapter = train_adapter(text_features, device='cuda')
+    adapter = train_adapter(text_features, device='cuda', epochs=40)
     torch.save(adapter.state_dict(), "adapter.pth")
 
     # visualization
