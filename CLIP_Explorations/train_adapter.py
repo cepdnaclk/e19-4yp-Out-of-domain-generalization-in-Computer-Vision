@@ -199,120 +199,19 @@ def main():
     subtypes = ['illustration', 'rendering', 'blueprint',
                 'schematic', 'map', 'chart', 'poster', 'collage', 'mosaic']
 
-    # --- Start of New Domain Expansion Logic ---
+    # Components to generate new domain phrases
+    materials = ['watercolor', 'oil', 'charcoal', 'ink',
+                 'pastel', 'digital', 'acrylic', 'graphite', 'chalk']
+    styles = ['abstract', 'realistic', 'minimalist', 'expressionist',
+              'impressionist', 'surrealist', 'cubist', 'geometric', 'pop-art']
+    formats = ['panorama', 'portrait', 'landscape', 'macro',
+               'micro', 'aerial', 'fisheye', 'wide-angle', 'time-lapse']
+    subtypes = ['illustration', 'rendering', 'blueprint',
+                'schematic', 'map', 'chart', 'poster', 'collage', 'mosaic']
 
-    # Store already added domains to avoid duplicates if categories overlap
-    # Initialize with existing domains to avoid adding them again if generated
-    existing_phrases = set(domains)
-
-    # Target number of domains (can be adjusted)
-    TARGET_DOMAIN_COUNT = 20000  # You had 1009, we can aim for something similar or more
-
-    # Combination 1: Style + Material + Subtype (as you had)
-    for style, material, subtype_item in itertools.product(styles, materials, subtypes):
-        if len(existing_phrases) >= TARGET_DOMAIN_COUNT:
-            break
-        phrase = f"a {style} {material} {subtype_item}"
-        if phrase not in existing_phrases:
-            domains.append(phrase)
-            existing_phrases.add(phrase)
-    if len(existing_phrases) >= TARGET_DOMAIN_COUNT:
-        print(f"Reached target after Style + Material + Subtype combinations.")
-
-    # Combination 2: Style + Material + Format
-    if len(existing_phrases) < TARGET_DOMAIN_COUNT:
-        for style, material, format_item in itertools.product(styles, materials, formats):
-            if len(existing_phrases) >= TARGET_DOMAIN_COUNT:
-                break
-            phrase = f"a {style} {material} {format_item}"
-            if phrase not in existing_phrases:
-                domains.append(phrase)
-                existing_phrases.add(phrase)
-        if len(existing_phrases) >= TARGET_DOMAIN_COUNT:
-            print(f"Reached target after Style + Material + Format combinations.")
-
-    # Combination 3: Style + Subtype + Format
-    if len(existing_phrases) < TARGET_DOMAIN_COUNT:
-        for style, subtype_item, format_item in itertools.product(styles, subtypes, formats):
-            if len(existing_phrases) >= TARGET_DOMAIN_COUNT:
-                break
-            # slightly different phrasing for variety
-            phrase = f"a {style} {subtype_item} in {format_item} format"
-            if phrase not in existing_phrases:
-                domains.append(phrase)
-                existing_phrases.add(phrase)
-        if len(existing_phrases) >= TARGET_DOMAIN_COUNT:
-            print(f"Reached target after Style + Subtype + Format combinations.")
-
-    # Combination 4: Material + Subtype + Format
-    if len(existing_phrases) < TARGET_DOMAIN_COUNT:
-        for material, subtype_item, format_item in itertools.product(materials, subtypes, formats):
-            if len(existing_phrases) >= TARGET_DOMAIN_COUNT:
-                break
-            # alternative phrasing
-            phrase = f"a {material} {subtype_item} ({format_item})"
-            if phrase not in existing_phrases:
-                domains.append(phrase)
-                existing_phrases.add(phrase)
-        if len(existing_phrases) >= TARGET_DOMAIN_COUNT:
-            print(f"Reached target after Material + Subtype + Format combinations.")
-
-    # Combination 5: Style + Format
-    if len(existing_phrases) < TARGET_DOMAIN_COUNT:
-        for style, format_item in itertools.product(styles, formats):
-            if len(existing_phrases) >= TARGET_DOMAIN_COUNT:
-                break
-            phrase = f"a {style} {format_item}"
-            if phrase not in existing_phrases:
-                domains.append(phrase)
-                existing_phrases.add(phrase)
-        if len(existing_phrases) >= TARGET_DOMAIN_COUNT:
-            print(f"Reached target after Style + Format combinations.")
-
-    # Combination 6: Material + Subtype
-    if len(existing_phrases) < TARGET_DOMAIN_COUNT:
-        for material, subtype_item in itertools.product(materials, subtypes):
-            if len(existing_phrases) >= TARGET_DOMAIN_COUNT:
-                break
-            phrase = f"a {material} {subtype_item}"
-            if phrase not in existing_phrases:
-                domains.append(phrase)
-                existing_phrases.add(phrase)
-        if len(existing_phrases) >= TARGET_DOMAIN_COUNT:
-            print(f"Reached target after Material + Subtype combinations.")
-
-    # Combination 7: Style + Material (often a painting or drawing implicitly)
-    if len(existing_phrases) < TARGET_DOMAIN_COUNT:
-        for style, material in itertools.product(styles, materials):
-            if len(existing_phrases) >= TARGET_DOMAIN_COUNT:
-                break
-            phrase = f"a {style} {material} piece"
-            if phrase not in existing_phrases:
-                domains.append(phrase)
-                existing_phrases.add(phrase)
-        if len(existing_phrases) >= TARGET_DOMAIN_COUNT:
-            print(f"Reached target after Style + Material combinations.")
-
-    # Combination 8: Adding "detailed" or "simple" prefix to some combinations
-    adjectives = ["detailed", "simple", "complex", "minimal"]
-    if len(existing_phrases) < TARGET_DOMAIN_COUNT:
-        # Example: Adjective + Style + Material + Subtype
-        # Taking a slice of products to avoid excessive computation if target is close
-        temp_products = list(itertools.product(styles, materials, subtypes))[:(
-            TARGET_DOMAIN_COUNT - len(existing_phrases)) * 2 // len(adjectives) + 1]  # Heuristic limit
-        for adj in adjectives:
-            if len(existing_phrases) >= TARGET_DOMAIN_COUNT:
-                break
-            for style, material, subtype_item in temp_products:
-                if len(existing_phrases) >= TARGET_DOMAIN_COUNT:
-                    break
-                phrase = f"a {adj} {style} {material} {subtype_item}"
-                if phrase not in existing_phrases:
-                    domains.append(phrase)
-                    existing_phrases.add(phrase)
-        if len(existing_phrases) >= TARGET_DOMAIN_COUNT:
-            print(
-                f"Reached target after Adjective + Style + Material + Subtype combinations.")
+    # Expand domains to ~1000 phrases
+    for style, material, subtype in itertools.product(styles, materials, subtypes):
+        domains.append(f"a {style} {material} {subtype}")
 
     print(f"Number of domains: {len(domains)}")
     print(f"Domains: {domains}")
