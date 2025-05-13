@@ -405,11 +405,11 @@ def main():
         all_img_labels = torch.cat(all_img_labels, dim=0)  # (N,)
 
         # Save to cache
-        print(f"Saving cached features to {cache_path}")
-        torch.save(
-            {"feats": all_img_feats, "labels": all_img_labels},
-            cache_path
-        )
+        # print(f"Saving cached features to {cache_path}")
+        # torch.save(
+        # {"feats": all_img_feats, "labels": all_img_labels},
+        # cache_path
+        # )
 
     cookies = {"__Secure-1PSIDCC": "AKEyXzUpjTf0aWHnjBMeh8bfaPDsPLddTxqc6onNdWfFmjl_rDLtw5xGl0FbR7lyHgeJq0sHvj9s",
                "__Secure-1PSID": "g.a000wgh5UnikS3MgaQbBrwOks9wXRHcyaiqgzL7KBndo7ATWBrvTvN6kCDnqXfkOnfemJj4mqwACgYKAUsSARQSFQHGX2MiEu55NtUIn8L5nXEYQqrQXxoVAUF8yKpFS3_FRjjcqH7w1bMYkAeZ0076",
