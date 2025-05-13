@@ -404,3 +404,7 @@ def main():
     plt.show()
     plt.savefig("pca_text_features_adapter.png")
     plt.close()
+
+
+if __name__ == "__main__":
+    main()
