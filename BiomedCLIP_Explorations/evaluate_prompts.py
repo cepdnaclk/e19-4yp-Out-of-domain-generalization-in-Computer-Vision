@@ -119,7 +119,7 @@ def main():
         results = evaluate_prompt_pair(
             negative_prompt, positive_prompt, centers_features[i], centers_labels[i], model, tokenizer)
 
-        print(f"Accuracy: {results['acc']}")
+        print(f"Accuracy: {results['accuracy']}")
         print(f"ROC AUC: {results['auc']}")
         print(f"Confusion Matrix:\n{results['cm']}")
         print(f"Classification Report:\n{results['report']}")
@@ -128,7 +128,7 @@ def main():
         results = evaluate_prompt_pair_with_adapter(
             negative_prompt, positive_prompt, centers_features[i], centers_labels[i], model, tokenizer, adapter)
 
-        print(f"Accuracy: {results['acc']}")
+        print(f"Accuracy: {results['accuracy']}")
         print(f"ROC AUC: {results['auc']}")
         print(f"Confusion Matrix:\n{results['cm']}")
         print(f"Classification Report:\n{results['report']}")
