@@ -172,106 +172,36 @@ def main():
         'a diagram',
         'a model',
         'a figure',
-        'a clipart',
+        'a photograph',
+        'a mural',
+        'a fresco',
+        'a lithograph',
+        'an etching',
+        'a print',
+        'a poster',
+        'a mixed-media piece',
+        'a textile',
+        'an animation',
+        'a 3D model',
+        'a collage',
+        'a tapestry',
+        'an illustration',
+        'a caricature',
+
     ]
 
-    synonyms_photo = [
-        'photograph',
-        'snapshot',
-        'picture',
-        'image',
-        'pic',
-        'shot',
-        'capture',
-        'still',
-        'print',
-        'slide',
-        'exposure',
-        'negative',
-        'digital image',
-        'film still',
-        'Polaroid',
-        'candid shot',
-        'studio portrait',
-        'wildlife photograph',
-        'aerial photo',
-        'underwater photo'
-    ]
+    # Components to generate new domain phrases
+    materials = ['watercolor', 'oil', 'charcoal', 'ink',
+                 'pastel', 'digital', 'acrylic', 'graphite', 'chalk']
+    styles = ['abstract', 'realistic', 'minimalist', 'expressionist',
+              'impressionist', 'surrealist', 'cubist', 'geometric', 'pop-art']
+    formats = ['panorama', 'portrait', 'landscape', 'macro',
+               'micro', 'aerial', 'fisheye', 'wide-angle', 'time-lapse']
+    subtypes = ['illustration', 'rendering', 'blueprint',
+                'schematic', 'map', 'chart', 'poster', 'collage', 'mosaic']
 
-    # Synonyms for “art_painting”
-    synonyms_art_painting = [
-        'painting',
-        'canvas work',
-        'oil painting',
-        'watercolor',
-        'acrylic painting',
-        'gouache',
-        'tempera',
-        'mural',
-        'fresco',
-        'portrait painting',
-        'landscape painting',
-        'abstract painting',
-        'expressionist piece',
-        'impressionist painting',
-        'figurative painting',
-        'masterpiece',
-        'panel painting',
-        'mixed-media painting',
-        'encaustic painting',
-        'miniature painting'
-    ]
-
-    # Synonyms for “cartoon”
-    synonyms_cartoon = [
-        'comic',
-        'animation',
-        'animated short',
-        'comic strip',
-        'caricature',
-        'doodle',
-        'toon',
-        'cel animation',
-        'flipbook drawing',
-        'animated film',
-        'comic illustration',
-        'editorial cartoon',
-        'satirical cartoon',
-        'manga panel',
-        'anime cel',
-        'motion cartoon',
-        'graphic cartoon',
-        'comic art',
-        'storyboard frame',
-        'sketch comedy drawing'
-    ]
-
-    # Synonyms for “sketch”
-    synonyms_sketch = [
-        'drawing',
-        'doodle',
-        'outline',
-        'draft',
-        'rough draft',
-        'thumbnail sketch',
-        'gesture drawing',
-        'contour drawing',
-        'pencil study',
-        'charcoal study',
-        'wireframe sketch',
-        'preliminary drawing',
-        'field sketch',
-        'concept sketch',
-        'thumbnail study',
-        'scribble',
-        'scrawl',
-        'underdrawing',
-        'value study',
-        'compositional sketch'
-    ]
-
-    domains += synonyms_art_painting + synonyms_photo + \
-        synonyms_cartoon + synonyms_sketch
+    for style, material, subtype in itertools.product(styles, materials, subtypes):
+        domains.append(f"a {style} {material} {subtype}")
 
     print(f"Number of domains: {len(domains)}")
     print(f"Domains: {domains}")
