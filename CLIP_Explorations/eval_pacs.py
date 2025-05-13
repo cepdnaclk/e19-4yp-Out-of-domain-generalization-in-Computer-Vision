@@ -4,9 +4,8 @@ from PIL import Image
 import requests
 import itertools
 from torchvision import datasets, transforms, models
-from torchvision.transforms import ToTensor
+from torchvision.transforms import ToTensor, Compose, Resize, ToTensor
 from tqdm import tqdm
-import deeplake
 from torch import nn
 
 from sklearn.metrics import (
@@ -15,6 +14,20 @@ from sklearn.metrics import (
     classification_report,
     roc_auc_score
 )
+
+from datasets import load_dataset
+import numpy as np
+
+
+def load_pacs_dataset(domain="sketch", split="test"):
+    print(
+        f"Loading PACS dataset from Hugging Face: domain={domain}, split={split}")
+    dataset = load_dataset("flwrlabs/pacs", split=split)
+
+    # Filter by domain
+    dataset = dataset.filter(lambda example: example['domain'] == domain)
+
+    return dataset
 
 
 class Adapter(nn.Module):
@@ -143,23 +156,20 @@ def main():
         "adapter.pth", map_location=device))
     adapter.eval()
     print("=== Loading PACS Dataset ===")
-    ds = deeplake.load("hub://activeloop/pacs-test")
 
-    print("=== Loading Images ===")
-    loader = ds.pytorch(
-        batch_size=128,
-        shuffle=False,
-        num_workers=0,
-        # Specify decoding images as PIL objects
-        decode_method={'images': 'pil'},
-        # Keep transforms=None or only specify for other tensors if needed
-        # Or simply remove if only images/labels/domains are loaded
-        transforms={'labels': None, 'domains': None},
-    )
+    # Add transformation for PIL images
+    image_transform = Compose([
+        Resize((224, 224)),  # CLIP default input size
+    ])
+
+    # In main() replace DeepLake part with:
+    print("=== Loading PACS Dataset (Hugging Face) ===")
+    dataset = load_pacs_dataset(domain="sketch", split="test")
 
     print("Precomputing Image Features...")
     all_feats = []
     all_labels = []
+
     classes = [
         'a dog',
         'an elephant',
@@ -170,33 +180,32 @@ def main():
         'a person'
     ]
 
+    # Create label to class mapping
+    label2class = {i: cls for i, cls in enumerate(classes)}
+
     model.eval()
     with torch.no_grad():
-        for batch in tqdm(loader, desc="Processing Batches"):
-            # use the correct keys
-            images = batch["images"]      # PIL.Image list of length B
-            labels = batch["labels"]      # torch.Tensor of shape (B,)
+        for example in tqdm(dataset, desc="Processing PACS Samples"):
+            image = image_transform(example["image"]).convert("RGB")
+            label = example["label"]
 
-            # CLIP preprocessing + feature extraction
-            inputs = processor(images=images, return_tensors="pt").to(device)
-            feats = model.get_image_features(**inputs)      # (B, D)
+            inputs = processor(images=image, return_tensors="pt").to(device)
+            feats = model.get_image_features(**inputs)
             feats = feats / feats.norm(dim=-1, keepdim=True)
 
             all_feats.append(feats.cpu())
-            all_labels.append(labels.cpu())
+            all_labels.append(torch.tensor(label).cpu())
 
-            # Stack into single tensors
-            image_feats = torch.cat(all_feats,  dim=0)  # (N, D)
-            image_labels = torch.cat(all_labels, dim=0)  # (N,)
+    image_feats = torch.cat(all_feats, dim=0)  # (N, D)
+    image_labels = torch.stack(all_labels, dim=0)  # (N,)
 
-            # 3) Evaluate CLIP zero-shot (no adapter)
-            results_no_adapter = evaluate_clip_prompts(
-                image_feats=image_feats,
-                image_labels=image_labels,
-                model=model,
-                processor=processor,
-                classes=classes
-            )
+    results_no_adapter = evaluate_clip_prompts(
+        image_feats=image_feats,
+        image_labels=image_labels,
+        model=model,
+        processor=processor,
+        classes=classes
+    )
 
     print("=== Zero-Shot CLIP (no adapter) ===")
     print(f"Accuracy: {results_no_adapter['accuracy']:.4f}")
