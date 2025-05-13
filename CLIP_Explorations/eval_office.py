@@ -25,7 +25,7 @@ def build_pacs_loader(processor, domain, split='train', batch_size=128, num_work
     # 1) Load HF PACS and filter to this domain
     ds = load_dataset("flwrlabs/office-home", split=split)
     # print unique domains
-    print(ds.unique('domain'))
+    # print(ds.unique('domain'))
     ds = ds.filter(lambda ex: ex['domain'] == domain)
 
     # 2) Define a transform + collate_fn
@@ -182,8 +182,7 @@ def main():
     classes = [c.lower().strip() for c in classes]
 
     # Domains in Office-Home
-    domains = ['art_painting', 'clipart', 'product', 'real_world']
-
+    domains = ['Art', 'Clipart', 'Product', 'Real World']
     for domain in domains:
         print(f"\n=== Processing domain: {domain} ===")
         loader = build_pacs_loader(
