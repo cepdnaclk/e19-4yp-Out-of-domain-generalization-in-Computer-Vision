@@ -133,8 +133,8 @@ def evaluate_clip_with_adapter(
         # image side
         feats = image_feats.to(device).float()
         feats = feats / feats.norm(dim=1, keepdim=True)
-        feats = adapter(feats)
-        feats = feats / feats.norm(dim=1, keepdim=True)
+        # feats = adapter(feats)
+        # feats = feats / feats.norm(dim=1, keepdim=True)
 
         logit_scale = model.logit_scale.exp()
         logits = logit_scale * feats @ text_feats.t()      # (N, C)
