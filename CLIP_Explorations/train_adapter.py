@@ -115,7 +115,7 @@ def train_adapter(
 
     adapter = Adapter(dim).to(device)
     loss_fn = nn.TripletMarginWithDistanceLoss(
-        margin=1.0, distance_function=cosine_dist, reduction='mean')
+        margin=0.2, distance_function=cosine_dist, reduction='mean')
     optimizer = optim.Adam(adapter.parameters(), lr=lr)
 
     adapter.train()
@@ -237,7 +237,8 @@ def main():
     # text_features['a dog'] is a tensor of size (len(domains), feature_dim)
 
     print({cls: feats.shape for cls, feats in text_features.items()})
-    adapter = train_adapter(text_features, device='cuda', epochs=40)
+    adapter = train_adapter(text_features, device='cuda',
+                            epochs=40, batch_size=128)
     torch.save(adapter.state_dict(), "adapter.pth")
 
     # visualization
