@@ -135,7 +135,7 @@ def train_adapter(
 
     adapter = Adapter(dim).to(device)
     loss_fn = nn.TripletMarginWithDistanceLoss(
-        margin=0.2, distance_function=cosine_dist, reduction='mean')
+        margin=1.0, distance_function=cosine_dist, reduction='mean')
     optimizer = optim.Adam(adapter.parameters(), lr=lr)
 
     adapter.train()
