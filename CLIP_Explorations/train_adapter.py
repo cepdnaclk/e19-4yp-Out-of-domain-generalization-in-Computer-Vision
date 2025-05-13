@@ -115,7 +115,7 @@ def train_adapter(
 
     adapter = Adapter(dim).to(device)
     loss_fn = nn.TripletMarginWithDistanceLoss(
-        margin=0.2, distance_function=cosine_dist, reduction='mean')
+        margin=1.0, distance_function=cosine_dist, reduction='mean')
     optimizer = optim.Adam(adapter.parameters(), lr=lr)
 
     adapter.train()
@@ -192,18 +192,18 @@ def main():
 
     ]
 
-    # Components to generate new domain phrases
-    materials = ['watercolor', 'oil', 'charcoal', 'ink',
-                 'pastel', 'digital', 'acrylic', 'graphite', 'chalk']
-    styles = ['abstract', 'realistic', 'minimalist', 'expressionist',
-              'impressionist', 'surrealist', 'cubist', 'geometric', 'pop-art']
-    formats = ['panorama', 'portrait', 'landscape', 'macro',
-               'micro', 'aerial', 'fisheye', 'wide-angle', 'time-lapse']
-    subtypes = ['illustration', 'rendering', 'blueprint',
-                'schematic', 'map', 'chart', 'poster', 'collage', 'mosaic']
+    # # Components to generate new domain phrases
+    # materials = ['watercolor', 'oil', 'charcoal', 'ink',
+    #              'pastel', 'digital', 'acrylic', 'graphite', 'chalk']
+    # styles = ['abstract', 'realistic', 'minimalist', 'expressionist',
+    #           'impressionist', 'surrealist', 'cubist', 'geometric', 'pop-art']
+    # formats = ['panorama', 'portrait', 'landscape', 'macro',
+    #            'micro', 'aerial', 'fisheye', 'wide-angle', 'time-lapse']
+    # subtypes = ['illustration', 'rendering', 'blueprint',
+    #             'schematic', 'map', 'chart', 'poster', 'collage', 'mosaic']
 
-    for style, material, subtype in itertools.product(styles, materials, subtypes):
-        domains.append(f"a {style} {material} {subtype}")
+    # for style, material, subtype in itertools.product(styles, materials, subtypes):
+    #     domains.append(f"a {style} {material} {subtype}")
 
     print(f"Number of domains: {len(domains)}")
     print(f"Domains: {domains}")
