@@ -72,7 +72,7 @@ def evaluate_clip_prompts(
     Returns accuracy, auc per class vs rest, confusion matrix, and classification report.
     """
     device = next(model.parameters()).device
-    prompts = [f"a sketch of {c}" for c in classes]
+    prompts = [f"a photo of {c}" for c in classes]
     text_inputs = processor(
         text=prompts, return_tensors="pt", padding=True).to(device)
     with torch.no_grad():
@@ -117,7 +117,7 @@ def evaluate_clip_with_adapter(
     Same as evaluate_clip_prompts, but applies adapter to both text and image features.
     """
     device = next(model.parameters()).device
-    prompts = [f"a sketch of {c}" for c in classes]
+    prompts = [f"a photo of {c}" for c in classes]
 
     text_inputs = processor(
         text=prompts, return_tensors="pt", padding=True).to(device)
