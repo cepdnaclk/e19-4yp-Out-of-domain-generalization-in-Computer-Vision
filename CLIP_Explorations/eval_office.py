@@ -24,6 +24,8 @@ import numpy as np
 def build_pacs_loader(processor, domain, split='train', batch_size=128, num_workers=4):
     # 1) Load HF PACS and filter to this domain
     ds = load_dataset("flwrlabs/office-home", split=split)
+    # print unique domains
+    print(ds.unique('domain'))
     ds = ds.filter(lambda ex: ex['domain'] == domain)
 
     # 2) Define a transform + collate_fn
