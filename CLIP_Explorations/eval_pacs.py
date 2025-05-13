@@ -201,3 +201,7 @@ def main():
     print(f"AUC (OvR): {results_with_adapter['auc']:.4f}")
     print("Confusion Matrix:\n", results_with_adapter['cm'])
     print("Classification Report:\n", results_with_adapter['report'])
+
+
+if __name__ == "__main__":
+    main()
