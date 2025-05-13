@@ -168,15 +168,6 @@ def main():
     adapter.load_state_dict(torch.load(
         "adapter.pth", map_location=device))
     adapter.eval()
-    print("=== Loading PACS Dataset ===")
-
-    # Add transformation for PIL images
-    image_transform = Compose([
-        Resize((224, 224)),  # CLIP default input size
-    ])
-
-    print("=== Loading PACS Dataset (Hugging Face) ===")
-    dataset = load_dataset("flwrlabs/pacs", split='train')
 
     print("Precomputing Image Features...")
     all_feats = []
