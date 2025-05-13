@@ -67,7 +67,7 @@ def main():
 
     df = metadata_df[metadata_df.split == 1].copy()
     centers_ds = []
-    for i in range(4):
+    for i in range(5):
         centers_ds.append(BiomedCLIPDataset(df[df.center == i], preprocess))
 
     # 3. Generate embeddings and store them for each center
@@ -116,14 +116,23 @@ def main():
     for i, ds in enumerate(centers_ds):
         print(f"Evaluating center {i}...")
         print("Without adapter:")
-        print(evaluate_prompt_pair(
+        results = evaluate_prompt_pair(
             negative_prompt, positive_prompt, centers_features[i], centers_labels[i], model, tokenizer)
-        )
+
+        print(f"Accuracy: {results['accuracy']}")
+        print(f"ROC AUC: {results['roc_auc']}")
+        print(f"Confusion Matrix:\n{results['confusion_matrix']}")
+        print(f"Classification Report:\n{results['classification_report']}")
 
         print("With adapter:")
-        print(evaluate_prompt_pair_with_adapter(
+        results = evaluate_prompt_pair_with_adapter(
             negative_prompt, positive_prompt, centers_features[i], centers_labels[i], model, tokenizer, adapter)
-        )
+
+        print(f"Accuracy: {results['accuracy']}")
+        print(f"ROC AUC: {results['roc_auc']}")
+        print(f"Confusion Matrix:\n{results['confusion_matrix']}")
+        print(f"Classification Report:\n{results['classification_report']}")
+        print("Done evaluating center", i)
 
 
 if __name__ == "__main__":
