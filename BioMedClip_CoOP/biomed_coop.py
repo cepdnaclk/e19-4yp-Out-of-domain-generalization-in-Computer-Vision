@@ -5,7 +5,9 @@ from tqdm import tqdm
 from torch.cuda.amp import GradScaler, autocast
 from sklearn.metrics import accuracy_score, f1_score
 from open_clip import create_model_from_pretrained, get_tokenizer
-
+from open_clip import create_model_and_transforms
+import json
+from open_clip.factory import HF_HUB_PREFIX, _MODEL_CONFIGS
 class TextEncoder(nn.Module):
     def __init__(self, biomedclip_model):
         super().__init__()
@@ -13,9 +15,7 @@ class TextEncoder(nn.Module):
         self.dtype = biomedclip_model.text.transformer.dtype
 
     def forward(self, prompts,tokenized_prompts):
-
-        x = self.model.encode_text(prompts,True,tokenized_prompts)
-
+        x = self.model.encode_text(prompts,True,tokenized_prompts) #original
         return x
 
 
@@ -23,12 +23,12 @@ class PromptLearner(nn.Module):
     def __init__(self, cfg,classnames, biomedclip_model):
         super().__init__()
         n_cls = len(classnames)
-        n_ctx = cfg.TRAINER.COOP.N_CTX
-        ctx_init = cfg.TRAINER.COOP.CTX_INIT
+        n_ctx = cfg["N_CTX"]
+        ctx_init = cfg["CTX_INIT"]
         dtype = biomedclip_model.text.transformer.dtype
         ctx_dim = 768
-        clip_imsize = 224
-        cfg_imsize = cfg.INPUT.SIZE[0]
+        # clip_imsize = 224
+        # cfg_imsize = cfg.INPUT.SIZE[0]
         self.tokenizer = get_tokenizer('hf-hub:microsoft/BiomedCLIP-PubMedBERT_256-vit_base_patch16_224')
 
         if ctx_init:
@@ -45,7 +45,7 @@ class PromptLearner(nn.Module):
         else:
 
             # random initialization
-            if cfg.TRAINER.COOP.CSC:
+            if cfg["CSC"]:
                 print("Initializing class-specific contexts")
                 ctx_vectors = torch.empty(n_cls, n_ctx, ctx_dim, dtype=dtype)
             else:
@@ -77,7 +77,7 @@ class PromptLearner(nn.Module):
         self.n_ctx = n_ctx
         self.tokenized_prompts = tokenized_prompts  # torch.Tensor
         self.name_lens = name_lens
-        self.class_token_position = cfg.TRAINER.COOP.CLASS_TOKEN_POSITION
+        self.class_token_position = cfg["CLASS_TOKEN_POSITION"]
 
     def forward(self):
         ctx = self.ctx
@@ -96,6 +96,7 @@ class PromptLearner(nn.Module):
                 ],
                 dim=1,
             )
+            print(f"prompts shape inside of prompts learner: {prompts.shape}")
 
         elif self.class_token_position == "middle":
             half_n_ctx = self.n_ctx // 2
@@ -161,7 +162,9 @@ class CustomCLIP(nn.Module):
 
         prompts = self.prompt_learner()
         tokenized_prompts = self.tokenized_prompts
-        text_features = self.text_encoder(prompts,tokenized_prompts)
+        print(f"IN CUSTOM CLIP: {prompts.shape} {tokenized_prompts.shape}")
+        text_features = self.text_encoder(prompts,tokenized_prompts) #original
+        # text_features = self.text_encoder(tokenized_prompts) # my 1
 
         image_features = image_features / image_features.norm(dim=-1, keepdim=True)
         text_features = text_features / text_features.norm(dim=-1, keepdim=True)
@@ -194,7 +197,24 @@ class CoOpTrainer:
     def build_model(self, classnames):
         """Initialize BiomedCLIP model with CoOp prompt learning"""
         print("Loading BiomedCLIP model...")
-        model, _ = create_model_from_pretrained('hf-hub:microsoft/BiomedCLIP-PubMedBERT_256-vit_base_patch16_224')
+        # model, _ = create_model_from_pretrained('hf-hub:microsoft/BiomedCLIP-PubMedBERT_256-vit_base_patch16_224')
+        model_name = "biomedclip_local"
+        # model, _ = create_model_from_pretrained('hf-hub:microsoft/BiomedCLIP-PubMedBERT_256-vit_base_patch16_224')
+        with open("/home/e19094/FYP/e19-4yp-Out-of-domain-generalization-in-Computer-Vision/BioMedClip_Base_Eval/checkpoints/open_clip_config.json", "r") as f:
+            config = json.load(f)
+            model_cfg = config["model_cfg"]
+            preprocess_cfg = config["preprocess_cfg"]
+
+        if (not model_name.startswith(HF_HUB_PREFIX)
+            and model_name not in _MODEL_CONFIGS
+            and config is not None):
+            _MODEL_CONFIGS[model_name] = model_cfg
+
+        model, _, preprocess = create_model_and_transforms(
+            model_name="biomedclip_local",
+            pretrained="/home/e19094/FYP/e19-4yp-Out-of-domain-generalization-in-Computer-Vision/BioMedClip_Base_Eval/checkpoints/open_clip_pytorch_model.bin",
+            **{f"image_{k}": v for k, v in preprocess_cfg.items()},
+        )
         
          # 1. Put BiomedCLIP in eval mode FIRST
         model = model.eval()  # <-- This freezes the base model
@@ -203,14 +223,11 @@ class CoOpTrainer:
         print("Building custom CLIP with CoOp...")
         self.model = CustomCLIP(
             cfg={
-                'TRAINER': {
-                    'COOP': {
-                        'N_CTX': self.n_ctx,
-                        'CLASS_TOKEN_POSITION': self.class_token_position,
-                        'CSC': self.csc
-                    }
-                },
-                'classnames': classnames
+                'N_CTX': self.n_ctx,
+                'CLASS_TOKEN_POSITION': self.class_token_position,
+                'CSC': self.csc,
+                'classnames': classnames,
+                'CTX_INIT':False
             },
             classnames=classnames,
             biomedclip_model=model
