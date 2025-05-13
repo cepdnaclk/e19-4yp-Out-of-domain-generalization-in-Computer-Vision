@@ -14,9 +14,13 @@ class TextEncoder(nn.Module):
         self.model = biomedclip_model
         self.dtype = biomedclip_model.text.transformer.dtype
 
-    def forward(self, prompts,tokenized_prompts):
-        x = self.model.encode_text(prompts,True,tokenized_prompts) #original
+    def forward(self, prompts,normalize=False):
+        x = self.model.encode_text(text=prompts,normalize=True) #original
+        # x = self.model.encode_text(tokenized_prompts=tokenized_prompts) #edited
+
+
         return x
+
 
 
 class PromptLearner(nn.Module):
@@ -162,9 +166,9 @@ class CustomCLIP(nn.Module):
 
         prompts = self.prompt_learner()
         tokenized_prompts = self.tokenized_prompts
-        print(f"IN CUSTOM CLIP: {prompts.shape} {tokenized_prompts.shape}")
-        text_features = self.text_encoder(prompts,tokenized_prompts) #original
-        # text_features = self.text_encoder(tokenized_prompts) # my 1
+        # prompts = prompts.unsqueeze(0) # add batch dimension
+        # text_features = self.text_encoder(prompts,tokenized_prompts) #original
+        text_features = self.text_encoder(prompts=tokenized_prompts) # my 1
 
         image_features = image_features / image_features.norm(dim=-1, keepdim=True)
         text_features = text_features / text_features.norm(dim=-1, keepdim=True)
@@ -233,6 +237,11 @@ class CoOpTrainer:
             biomedclip_model=model
         ).to(self.device)
         
+        # After building model
+        print("Trainable parameters:")
+        for name, param in self.model.named_parameters():
+            if param.requires_grad:
+                print(name, param.shape)
         # 3. Explicitly freeze non-prompt-learner parameters
         for name, param in self.model.named_parameters():
             if "prompt_learner" not in name:
