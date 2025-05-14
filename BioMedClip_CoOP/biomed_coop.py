@@ -4,19 +4,24 @@ import torch.nn.functional as F
 from tqdm import tqdm
 from torch.cuda.amp import GradScaler, autocast
 from sklearn.metrics import accuracy_score, f1_score
-from open_clip import create_model_from_pretrained, get_tokenizer
-from open_clip import create_model_and_transforms
+# from open_clip import create_model_from_pretrained, get_tokenizer
+# from open_clip import create_model_and_transforms
+from open_clip.src.open_clip import create_model_and_transforms, get_tokenizer
+
 import json
-from open_clip.factory import HF_HUB_PREFIX, _MODEL_CONFIGS
+from open_clip.src.open_clip.factory import HF_HUB_PREFIX, _MODEL_CONFIGS
 class TextEncoder(nn.Module):
     def __init__(self, biomedclip_model):
         super().__init__()
         self.model = biomedclip_model
         self.dtype = biomedclip_model.text.transformer.dtype
 
-    def forward(self, prompts,normalize=False):
-        x = self.model.encode_text(text=prompts,normalize=True) #original
-        # x = self.model.encode_text(tokenized_prompts=tokenized_prompts) #edited
+    def forward(self, prompts,tokenized_prompts):
+        # print(f"prompts shape inside of text encoder: {prompts.shape} and prompts[:2] shape: {prompts[:,:,0].squeeze(-1).shape}")
+        # print(f"prompts shape look like inside of text encoder: {prompts.shape}")
+        # x = self.model.encode_text(text=prompts,normalize=True) #original
+        # x = self.model.encode_text(prompts,prompts) #edited
+        x = self.model.encode_text(prompts,True,tokenized_prompts)
 
 
         return x
@@ -147,7 +152,7 @@ class PromptLearner(nn.Module):
 
         else:
             raise ValueError
-
+        # print(f"prompts look like inside of prompts learner: {prompts}")
         return prompts
 
 
@@ -167,8 +172,8 @@ class CustomCLIP(nn.Module):
         prompts = self.prompt_learner()
         tokenized_prompts = self.tokenized_prompts
         # prompts = prompts.unsqueeze(0) # add batch dimension
-        # text_features = self.text_encoder(prompts,tokenized_prompts) #original
-        text_features = self.text_encoder(prompts=tokenized_prompts) # my 1
+        text_features = self.text_encoder(prompts,tokenized_prompts) #original
+        # text_features = self.text_encoder(prompts=prompts) # my 1
 
         image_features = image_features / image_features.norm(dim=-1, keepdim=True)
         text_features = text_features / text_features.norm(dim=-1, keepdim=True)
@@ -237,11 +242,11 @@ class CoOpTrainer:
             biomedclip_model=model
         ).to(self.device)
         
-        # After building model
-        print("Trainable parameters:")
-        for name, param in self.model.named_parameters():
-            if param.requires_grad:
-                print(name, param.shape)
+        # # After building model
+        # print("Trainable parameters:")
+        # for name, param in self.model.named_parameters():
+        #     if param.requires_grad:
+        #         print(name, param.shape)
         # 3. Explicitly freeze non-prompt-learner parameters
         for name, param in self.model.named_parameters():
             if "prompt_learner" not in name:
