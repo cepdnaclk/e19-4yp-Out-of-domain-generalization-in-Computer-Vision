@@ -7,7 +7,7 @@ from torch.utils.data import Dataset, DataLoader
 from torchvision import transforms
 from PIL import Image
 import numpy as np
-from open_clip import create_model_and_transforms
+# from open_clip import create_model_and_transforms
 from tqdm import tqdm
 import copy
 

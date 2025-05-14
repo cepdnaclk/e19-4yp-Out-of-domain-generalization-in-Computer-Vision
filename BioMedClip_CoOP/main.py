@@ -2,7 +2,7 @@ import os
 import time
 
 from utils import *
-from open_clip import create_model_from_pretrained
+# from open_clip import create_model_from_pretrained
 from biomed_coop import CoOpTrainer
 
 from data import get_dataloaders

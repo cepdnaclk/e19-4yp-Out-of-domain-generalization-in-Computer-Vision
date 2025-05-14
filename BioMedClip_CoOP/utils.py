@@ -4,7 +4,9 @@ import yaml
 from ast import literal_eval
 from tqdm import tqdm
 from typing import Dict, List
-from open_clip import get_tokenizer
+# from open_clip import get_tokenizer
+from open_clip.src.open_clip import get_tokenizer
+
 
 
 import torch
