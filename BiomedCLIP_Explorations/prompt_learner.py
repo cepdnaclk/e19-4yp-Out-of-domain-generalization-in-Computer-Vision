@@ -428,8 +428,9 @@ def main():
                         """,
                        """Only give the output as python code in the format - prompts: list[tuple[negative: str, positive: str]]"""]
 
-    initial_list = load_initial_prompts("selected_prompts.txt")
-    pq = PriorityQueue(max_capacity=40, initial=initial_list)
+    # initial_list = load_initial_prompts("selected_prompts.txt")
+    # pq = PriorityQueue(max_capacity=40, initial=initial_list)
+    pq = PriorityQueue(max_capacity=40)
     prompt_llm = ""
     for j in range(100):
         prompts = get_prompt_pairs(prompt_template, prompt_llm, client)
