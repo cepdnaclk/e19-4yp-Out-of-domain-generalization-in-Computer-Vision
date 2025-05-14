@@ -411,9 +411,9 @@ def main():
         # cache_path
         # )
 
-    cookies = {"__Secure-1PSIDCC": "AKEyXzWk2mrPQ4_m0py-kRqIpAY7QhdU65GmPx_cm9w1fgRN1BF83to-8FOTAFsKYfCDfztZQCZC",
-               "__Secure-1PSID": "g.a000wgh5UnikS3MgaQbBrwOks9wXRHcyaiqgzL7KBndo7ATWBrvTvN6kCDnqXfkOnfemJj4mqwACgYKAUsSARQSFQHGX2MiEu55NtUIn8L5nXEYQqrQXxoVAUF8yKpFS3_FRjjcqH7w1bMYkAeZ0076",
-               "__Secure-1PSIDTS": "sidts-CjIBjplskPZcjCfp8w0D-fezjU81ThNmKR2IUwlzGCovwbHxyl00AzC_VM1djjdW02CQTRAA",
+    cookies = {"__Secure-1PSIDCC": "AKEyXzWMPmcNhgayq-7gjqXMSV3YGookxqouu0ZLHX8JZWVGFzjgWzBiAWW2X8hYJPD865XHAdvD",
+               "__Secure-1PSID": "g.a000wwh5UiM6vHBmQvqhHseMhF6_mr9jspo_ZAFHdjMQUasP6txUTb0cSrMG71Az6iQkj8cqHgACgYKAT8SARQSFQHGX2MiGBe9Ylqi01h-CYlK7kNrghoVAUF8yKqGAyQGcgqYNN_XAESFbDbH0076",
+               "__Secure-1PSIDTS": "sidts-CjIBjplskNnVzKi6fOSwlbjsWTKSAtMQ3ZVUKupLJpQkXlMarY1qeRWznMWl-94mvFeyXxAA",
                }  # Cookies may vary by account or region. Consider sending the entire cookie file.
 
     client = Gemini(auto_cookies=False, cookies=cookies)
@@ -439,7 +439,7 @@ def main():
                 print(f"Invalid prompt pair: {prompt_pair}")
                 continue
             negative_prompt, positive_prompt = prompt_pair
-            results = evaluate_prompt_pair_with_adapter(
+            results = evaluate_prompt_pair(
                 negative_prompt, positive_prompt, all_img_feats, all_img_labels, model, tokenizer, adapter)
             pq.insert((negative_prompt, positive_prompt), results['accuracy'])
 
