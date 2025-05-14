@@ -38,6 +38,74 @@ NUM_WORKERS = 4
 DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 
+def evaluate_ensemble_prompts_with_adapter(
+    pq, n,
+    image_feats: torch.Tensor,    # (N, D), precomputed
+    image_labels: torch.Tensor,   # (N,), precomputed
+    model, tokenizer, adapter
+):
+    # Define your lists of negative and positive prompts
+    top_n = pq.get_best_n(n)
+    negative_prompts = [prompt[0][0] for prompt in top_n]
+    positive_prompts = [prompt[0][1] for prompt in top_n]
+
+    all_prompts = negative_prompts + positive_prompts
+    text_inputs = tokenizer(
+        all_prompts, context_length=CONTEXT_LENGTH).to(DEVICE)
+
+    with torch.no_grad():
+        text_feats = model.encode_text(text_inputs)  # (num_prompts, D)
+        text_feats = text_feats / text_feats.norm(dim=1, keepdim=True)
+        text_feats = adapter(text_feats)                     # adapt
+        text_feats = text_feats / text_feats.norm(dim=1, keepdim=True)
+
+        # Separate features for negative and positive prompts
+        # (num_neg_prompts, D)
+        neg_text_feats = text_feats[:len(negative_prompts)]
+        # (num_pos_prompts, D)
+        pos_text_feats = text_feats[len(negative_prompts):]
+
+        # Compute ensemble features by averaging
+        ensemble_neg_feat = neg_text_feats.mean(dim=0, keepdim=True)  # (1, D)
+        ensemble_pos_feat = pos_text_feats.mean(dim=0, keepdim=True)  # (1, D)
+
+        # Combine ensemble features for classification
+        ensemble_text_feats = torch.cat(
+            [ensemble_neg_feat, ensemble_pos_feat], dim=0)  # (2, D)
+
+        logit_scale = model.logit_scale.exp()
+
+        # Use precomputed image_feats and image_labels
+        img_feats = image_feats.to(DEVICE)
+        img_feats = adapter(img_feats)
+        img_feats = img_feats / img_feats.norm(dim=1, keepdim=True)
+
+        logits = logit_scale * (img_feats @ ensemble_text_feats.t())  # (N, 2)
+        probs = logits.softmax(dim=1)                                # (N, 2)
+        preds = logits.argmax(dim=1)                                 # (N,)
+
+        tumor_probs = probs[:, 1].cpu()
+        y_pred = preds.cpu().numpy()
+        y_prob = tumor_probs.numpy()
+        y_true = image_labels.cpu().numpy()
+
+    # 10. Compute & print metrics
+    acc = accuracy_score(y_true, y_pred)
+    cm = confusion_matrix(y_true, y_pred)
+    report = classification_report(
+        y_true, y_pred, digits=4, target_names=['non-tumor', 'tumor'])
+    auc = roc_auc_score(y_true, y_prob)
+
+    # print(f"\nTest Accuracy (Ensemble):     {acc:.4f}")
+    # print(f"ROC AUC (Ensemble):           {auc:.4f}")
+    # print("\nConfusion Matrix (Ensemble):")
+    # print(cm)
+    # print("\nClassification Report (Ensemble):")
+    # print(report)
+
+    return {'accuracy': acc, 'auc': auc, 'cm': cm, 'report': report}
+
+
 def main():
     # 1. Load model and preprocess
     with open(CONFIG_PATH, "r") as f:
@@ -133,6 +201,15 @@ def main():
         print(f"Confusion Matrix:\n{results['cm']}")
         print(f"Classification Report:\n{results['report']}")
         print("Done evaluating center", i)
+
+        results = evaluate_ensemble_prompts_with_adapter(
+            pq, 20,
+            centers_features[i], centers_labels[i], model, tokenizer, adapter)
+        print(f"Accuracy (Ensemble): {results['accuracy']}")
+        print(f"ROC AUC (Ensemble): {results['auc']}")
+        print(f"Confusion Matrix (Ensemble):\n{results['cm']}")
+        print(f"Classification Report (Ensemble):\n{results['report']}")
+    #
 
 
 if __name__ == "__main__":
