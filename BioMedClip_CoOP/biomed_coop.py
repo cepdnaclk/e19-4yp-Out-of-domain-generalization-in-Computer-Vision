@@ -105,7 +105,6 @@ class PromptLearner(nn.Module):
                 ],
                 dim=1,
             )
-            print(f"prompts shape inside of prompts learner: {prompts.shape}")
 
         elif self.class_token_position == "middle":
             half_n_ctx = self.n_ctx // 2
@@ -188,10 +187,10 @@ class CoOpTrainer:
     def __init__(self, args):
         self.args = args
         self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-        
+        print(f"Using device: {self.device}")
         # Training parameters
         self.lr = args.get('lr', 0.002)
-        self.epochs = args.get('train_epoch', 50)
+        self.epochs = args.get('train_epoch', 100)
         self.batch_size = args.get('batch_size', 32)
         
         # Precision settings
@@ -268,7 +267,7 @@ class CoOpTrainer:
     def train(self, train_loader, val_loader,test_loader,id_test_loaders):
         """Main training loop"""
         best_acc = 0.0
-        
+        # print(f"device {self.device}")
         for epoch in range(self.epochs):
             # Training phase
             self.model.train()
