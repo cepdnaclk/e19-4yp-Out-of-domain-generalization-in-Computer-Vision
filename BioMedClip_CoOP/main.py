@@ -65,7 +65,7 @@ def main():
     'data_path': '/home/E19_FYP_Domain_Gen_Data/organized_by_center',
     # Basic training parameters
     'lr': 0.002,                    # Learning rate
-    'train_epoch': 50,              # Number of training epochs
+    'train_epoch': 100,              # Number of training epochs
     'batch_size': 32,               # Batch size
     
     # Precision and hardware
@@ -124,6 +124,8 @@ def main():
 
    
     print("Building model...")
+    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    print(f"Using device in Main: {device}")
     trainer = CoOpTrainer(args=args)
     
     trainer.build_model(args['classnames'])  
