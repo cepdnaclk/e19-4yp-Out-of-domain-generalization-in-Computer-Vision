@@ -16,6 +16,9 @@ import numpy as np
 # import clip
 from transformers import AutoTokenizer
 
+import os
+from slack_sdk import WebClient
+from dotenv import load_dotenv
 
 tokenizer = get_tokenizer('hf-hub:microsoft/BiomedCLIP-PubMedBERT_256-vit_base_patch16_224')
 
@@ -77,3 +80,43 @@ def cls_acc(output, target, topk=1):
     acc = float(correct[: topk].reshape(-1).float().sum(0, keepdim=True).cpu().numpy())
     acc = 100 * acc / target.shape[0]
     return acc
+
+
+
+def send_slack_message(message: str) -> None:
+    """
+    Send a message to a Slack channel.
+    
+    Args:
+        channel (str): The channel to send the message to (e.g., "#general" or "FYP")
+        message (str): The message text to send
+        username (str, optional): The display name for the bot. Defaults to "Bot User".
+    
+    Raises:
+        ValueError: If SLACK_TOKEN is not found in environment variables
+        Exception: For any Slack API errors
+    """
+    # Load environment variables from .env file
+    load_dotenv()
+    
+    # Get Slack token from environment variables
+    slack_token = os.getenv("SLACK_BOT_TOKEN")
+    if not slack_token:
+        raise ValueError("SLACK_TOKEN not found in environment variables")
+    
+    try:
+        # Initialize WebClient with token
+        client = WebClient(token=slack_token)
+        
+        # Send message
+        response = client.chat_postMessage(
+            channel="FYP",
+            text=message,
+            username="Bot User"
+        )
+        
+        return response
+        
+    except Exception as e:
+        print(f"Error sending message to Slack: {e}")
+        raise
