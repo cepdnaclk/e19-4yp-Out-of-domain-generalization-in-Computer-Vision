@@ -22,45 +22,9 @@ def load_dataloader(path):
 
 
 def main():
-    print("Starting CoOp-BiomedCLIP...")
    
-    # cfg = {
-    # 'metadata_path': '/home/E19_FYP_Domain_Gen_Data/metadata.csv',
-    # 'data_path': '/home/E19_FYP_Domain_Gen_Data/organized_by_center',
-    # 'MODEL': {
-    #     'BACKBONE': {
-    #         'NAME': 'BiomedCLIP-PubMedBERT_256-vit_base_patch16_224'
-    #     },
-    #     'INIT_WEIGHTS': None  # Path to pretrained weights if available
-    # },
-    # 'INPUT': {
-    #     'SIZE': (224, 224)  # Must match BiomedCLIP's expected input size
-    # },
-    # 'TRAINER': {
-    #     'COOP': {
-    #         'PREC': "amp",  # Can be "fp16", "fp32", or "amp"
-    #         'N_CTX': 4,     # Number of context tokens to learn
-    #         'CTX_INIT': "", # Initial context words (e.g., "a photo of a")
-    #         'CSC': False,   # Class-specific context (False for generic context)
-    #         'CLASS_TOKEN_POSITION': "end"  # "end", "middle", or "front"
-    #     }
-    # },
-    # 'OPTIM': {
-    #     'NAME': 'adamw',    # Optimizer name
-    #     'LR': 0.002,        # Learning rate
-    #     'MAX_EPOCH': 50,    # Total training epochs
-    #     'WEIGHT_DECAY': 0.0005,  # Weight decay
-    #     'LR_SCHEDULER': 'cosine',  # Learning rate scheduler
-    #     'WARMUP_EPOCH': 5,  # Warmup epochs
-    #     'WARMUP_TYPE': 'linear',
-    #     'WARMUP_CONS_LR': True
-    # },
-    # 'DATASET': {
-    #     'CLASSNAMES':  ["no tumor", "tumor present"]  # Your binary class names
-    # }
-    # }
-
     args = {
+    'keyword': 'class_specific',          # Keyword for saving model
     'metadata_path': '/home/E19_FYP_Domain_Gen_Data/metadata.csv',
     'data_path': '/home/E19_FYP_Domain_Gen_Data/organized_by_center',
     # Basic training parameters
@@ -74,7 +38,7 @@ def main():
     # CoOp-specific parameters
     'n_ctx': 4,                     # Number of context tokens (X X X X)
     'class_token_position': 'end',  # Position of class token: 'end', 'middle', or 'front'
-    'csc': False,                   # Class-specific context (False for generic context)
+    'csc': True,                   # Class-specific context (False for generic context)
     
     # (Optional) Advanced parameters
     'weight_decay': 0.0005,         # L2 regularization
@@ -86,6 +50,9 @@ def main():
     'shots': None                   # Number of shots (if using few-shot)
     }
 
+
+    print(f"Starting CoOp-BiomedCLIP... KeyWord: {args['keyword']}")
+    send_slack_message(f"Starting CoOp-BiomedCLIP... KeyWord: {args['keyword']}")
 
     cache_dir = "caches"
     os.makedirs(cache_dir, exist_ok=True)
@@ -115,12 +82,7 @@ def main():
         print("Dataloaders saved to cache.")
 
     
-    # print("Creating dataloaders...")
-    # train_loader, val_loader, test_loader, id_test_loaders= get_dataloaders(
-    #     metadata_path=args['metadata_path'],
-    #     data_root=args['data_path']
-    # )
-    # print("Finished Creating dataloaders...")
+    
 
    
     print("Building model...")
