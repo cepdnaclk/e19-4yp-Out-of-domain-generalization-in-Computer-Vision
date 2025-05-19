@@ -1,10 +1,10 @@
 ## Setup Instructions
 
 Follow these steps to set up and run the project:
-
 # Download Dataset
 
 Download the dataset using the follwing link.
+https://www.kaggle.com/datasets/mahdibonab/camelyon17/data
 
 Update the path of the dataset in the main file in the following line
     'data_path': '{Data Path}/patches',
