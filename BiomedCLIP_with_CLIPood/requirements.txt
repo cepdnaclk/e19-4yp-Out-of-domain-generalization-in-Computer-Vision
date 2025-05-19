@@ -1,0 +1,11 @@
+torch==2.2.0
+torchvision==0.17.0
+torchaudio==2.2.0
+wilds
+git+https://github.com/mlfoundations/open_clip.git
+huggingface_hub
+ftfy
+regex
+tqdm
+numpy
+scikit-learn
