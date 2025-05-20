@@ -51,8 +51,7 @@ class CamelyonDataset(Dataset):
             label = int(row['tumor'])
             
             img_name = f"patch_patient_{patient}_node_{node}_x_{x_coord}_y_{y_coord}.png"
-            img_path = os.path.join(root_dir, f"center_{center}", img_name)
-            
+            img_path = os.path.join(root_dir, f"patient_{patient}_node_{node}", img_name)
             if os.path.exists(img_path):  # Only add if file exists
                 self.samples.append((img_path, label))
 

@@ -26,7 +26,8 @@ def main():
     args = {
     'keyword': 'class_specific',          # Keyword for saving model
     'metadata_path': '/home/E19_FYP_Domain_Gen_Data/metadata.csv',
-    'data_path': '/home/E19_FYP_Domain_Gen_Data/organized_by_center',
+    'organized_data_path': '/home/E19_FYP_Domain_Gen_Data/organized_by_center',
+    'data_path': '/home/E19_FYP_Domain_Gen_Data/patches',
     # Basic training parameters
     'lr': 0.002,                    # Learning rate
     'train_epoch': 100,              # Number of training epochs
