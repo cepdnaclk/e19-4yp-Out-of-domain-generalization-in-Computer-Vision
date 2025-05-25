@@ -239,6 +239,7 @@ def main():
         **{f"image_{k}": v for k, v in preproc_cfg.items()}
     )
 
+    print("Device:", DEVICE)
     model.to(DEVICE).eval()
 
     random_state = 42
@@ -298,6 +299,12 @@ def main():
             text_emb = text_emb / text_emb.norm(dim=-1, keepdim=True)
             text_embeddings.append(text_emb.cpu().numpy())
     text_embeddings = np.stack(text_embeddings)  # [2, D]
+
+    # all features, labels, centers, text should be in GPU memory
+    all_feats = torch.from_numpy(all_feats).float().to(DEVICE)
+    all_labels = torch.from_numpy(all_labels).long().to(DEVICE)
+    all_centers = torch.from_numpy(all_centers).long().to(DEVICE)
+    text_embeddings = torch.from_numpy(text_embeddings).float().to(DEVICE)
 
     # For the original center-to-center triplets:
     # base_dataset = FeatureTripletDataset(all_feats, all_labels, all_centers)
