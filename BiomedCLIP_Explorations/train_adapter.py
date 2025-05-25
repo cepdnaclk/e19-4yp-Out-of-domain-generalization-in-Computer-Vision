@@ -23,8 +23,8 @@ CONFIG_PATH = "../BioMedClip/checkpoints/open_clip_config.json"
 WEIGHTS_PATH = "../BioMedClip/checkpoints/open_clip_pytorch_model.bin"
 MODEL_NAME = "biomedclip_local"
 CONTEXT_LENGTH = 256
-BATCH_SIZE = 256
-NUM_WORKERS = 4
+BATCH_SIZE = 32
+NUM_WORKERS = 8
 
 # os.environ['CUDA_VISIBLE_DEVICES'] = '1'
 DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
@@ -263,7 +263,7 @@ def main():
         print(f"Extracting features for center {i}...")
 
         loader = DataLoader(ds, batch_size=BATCH_SIZE, shuffle=False,
-                            num_workers=NUM_WORKERS, pin_memory=True)
+                            num_workers=NUM_WORKERS, pin_memory=True, prefetch_factor=2 if DEVICE.type == 'cuda' else 0)
 
         all_feats = []
         all_labels = []
@@ -271,13 +271,13 @@ def main():
         with torch.no_grad():
             for imgs, labels in tqdm(loader, desc=f"Center {i}", unit="batch"):
                 imgs = imgs.to(DEVICE, non_blocking=True)
-                labels = labels.to(DEVICE, non_blocking=True)
+                # labels = labels.to(DEVICE, non_blocking=True)
 
                 feats = model.encode_image(imgs)
                 feats = feats / feats.norm(dim=-1, keepdim=True)
 
                 all_feats.append(feats.cpu())
-                all_labels.append(labels.cpu())
+                all_labels.append(labels)  # labels are already on CPU
 
         centers_features[i] = torch.cat(all_feats).numpy()
         centers_labels[i] = torch.cat(all_labels).numpy()
