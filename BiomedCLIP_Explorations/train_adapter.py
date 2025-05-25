@@ -28,9 +28,13 @@ NUM_WORKERS = 4
 
 # os.environ['CUDA_VISIBLE_DEVICES'] = '1'
 DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-
+PROMPTS = (
+    'Small mature lymphocytes centrally show no indication of active replication.', 'Large immature cells centrally demonstrate ongoing active replication.'
+)
 
 # ------------------ Adapter Definition ------------------
+
+
 class Adapter(nn.Module):
     def __init__(self, dim, hidden_dim=512):
         super().__init__()
@@ -107,61 +111,112 @@ class FeatureTripletDataset(Dataset):
         )
 
 
+class FeatureTripletDataset__AnchoredToPrompts(Dataset):
+    def __init__(self, features: np.ndarray, labels: np.ndarray, text_embeddings: np.ndarray):
+        """
+        features: np.array [N, D]
+        labels:   np.array [N]
+        text_embeddings: np.array [2, D] (neg_prompt, pos_prompt)
+        """
+        self.features = features
+        self.labels = labels
+        self.text_embeddings = text_embeddings
+
+        # Precompute indices by label
+        self.by_label = {
+            0: np.where(labels == 0)[0],
+            1: np.where(labels == 1)[0]
+        }
+        # total samples
+        self.n = features.shape[0]
+
+    def __len__(self):
+        return self.n
+
+    def __getitem__(self, idx):
+        # Determine anchor class from the feature label at idx
+        anchor_label = int(self.labels[idx])
+        # Anchor is the corresponding text embedding
+        anchor = self.text_embeddings[anchor_label]
+
+        # Positive: a feature of the same class
+        pos_indices = self.by_label[anchor_label]
+        pos_idx = np.random.choice(pos_indices)
+        positive = self.features[pos_idx]
+
+        # Negative: a feature of the opposite class
+        neg_label = 1 - anchor_label
+        neg_indices = self.by_label[neg_label]
+        neg_idx = np.random.choice(neg_indices)
+        negative = self.features[neg_idx]
+
+        # Convert to torch tensors
+        return (
+            torch.from_numpy(anchor).float(),
+            torch.from_numpy(positive).float(),
+            torch.from_numpy(negative).float()
+        )
+
+
 # ------------------ Training Loop ------------------
 
 
 def train_adapter(
-    centers_features, centers_labels, device='cuda',
-    lr=1e-3, batch_size=128, epochs=20
-):
-    # Prepare concatenated arrays
-    feats = np.concatenate(centers_features)          # [N, D]
-    labels = np.concatenate(centers_labels)           # [N]
-    centers = np.concatenate(
-        [[i] * len(f) for i, f in enumerate(centers_features)]
-    )
+    dataset: torch.utils.data.Dataset,
+    device: str = 'cuda',
+    lr: float = 1e-3,
+    batch_size: int = 128,
+    epochs: int = 20
+) -> Adapter:
+    """
+    Train an Adapter using a triplet dataset of (anchor, positive, negative).
 
-    dataset = FeatureTripletDataset(feats, labels, centers)
+    Args:
+        dataset: any Dataset that yields (anchor, positive, negative) triples.
+        device: 'cuda' or 'cpu'.
+        lr: learning rate.
+        batch_size: batch size.
+        epochs: number of epochs.
+
+    Returns:
+        The trained Adapter module.
+    """
     loader = DataLoader(dataset, batch_size=batch_size,
-                        shuffle=True, num_workers=4)
+                        shuffle=True, num_workers=NUM_WORKERS)
 
-    dim = feats.shape[1]
+    # Peek one batch to infer embedding dimension
+    anchor_example, _, _ = next(iter(loader))
+    dim = anchor_example.shape[1]
+
     adapter = Adapter(dim).to(device)
     triplet_loss_fn = nn.TripletMarginWithDistanceLoss(
-        margin=0.2, distance_function=cosine_dist, reduction='mean')
-    # triplet_loss_fn = nn.TripletMarginLoss(margin=1.0)
+        margin=0.2,
+        distance_function=cosine_dist,
+        reduction='mean'
+    )
     optimizer = optim.Adam(adapter.parameters(), lr=lr)
 
     adapter.train()
-    for epoch in range(epochs):
-        total_loss = 0.0
-        for anchor, positive, negative in tqdm(loader, desc=f"Epoch {epoch+1}"):
-            # Move to device
+    for epoch in range(1, epochs+1):
+        running_loss = 0.0
+        for anchor, positive, negative in tqdm(loader, desc=f"Epoch {epoch}/{epochs}"):
             anchor = anchor.to(device)
             positive = positive.to(device)
             negative = negative.to(device)
 
-            # Forward pass through adapter
             out_a = adapter(anchor)
             out_p = adapter(positive)
             out_n = adapter(negative)
 
-            # Triplet loss: align same-class across domains
-            L_trip = triplet_loss_fn(out_a, out_p, out_n)
-
-            # Euclidean loss: preserve original center-0 content
-            # L_euc  = cosine_dist(out_a, anchor).mean()
-
-            # Combine losses
-            loss = L_trip
+            loss = triplet_loss_fn(out_a, out_p, out_n)
             optimizer.zero_grad()
             loss.backward()
             optimizer.step()
 
-            total_loss += loss.item()
+            running_loss += loss.item()
 
-        avg_loss = total_loss / len(loader)
-        print(f"Epoch {epoch+1} — avg loss: {avg_loss:.4f}")
+        avg = running_loss / len(loader)
+        print(f"Epoch {epoch}/{epochs} — avg loss: {avg:.4f}")
 
     return adapter
 
@@ -226,11 +281,37 @@ def main():
         centers_features[i] = torch.cat(all_feats).numpy()
         centers_labels[i] = torch.cat(all_labels).numpy()
 
-    # train and save the adapter
-    epochs = 1000
-    adapter = train_adapter(centers_features[0:3], centers_labels[0:3], device=DEVICE,
+    # Prepare concatenated arrays
+    all_feats = np.concatenate(centers_features)          # [N, D]
+    all_labels = np.concatenate(centers_labels)           # [N]
+    all_centers = np.concatenate(
+        [[i] * len(f) for i, f in enumerate(centers_features)]
+    )
+
+    # generate text embeddings for prompts
+    text_embeddings = []
+    for prompt in PROMPTS:
+        text = tokenizer(prompt, context_length=CONTEXT_LENGTH, truncate=True)
+        text = text.to(DEVICE)
+        with torch.no_grad():
+            text_emb = model.encode_text(text)
+            text_emb = text_emb / text_emb.norm(dim=-1, keepdim=True)
+            text_embeddings.append(text_emb.cpu().numpy())
+    text_embeddings = np.stack(text_embeddings)  # [2, D]
+
+    # For the original center-to-center triplets:
+    # base_dataset = FeatureTripletDataset(all_feats, all_labels, all_centers)
+    # adapter = train_adapter(base_dataset, device=DEVICE, lr=1e-3, batch_size=32, epochs=100)
+
+    # For the prompt-anchored triplets:
+    epochs = 100
+    prompt_dataset = FeatureTripletDataset__AnchoredToPrompts(
+        all_feats, all_labels, text_embeddings)
+    adapter = train_adapter(prompt_dataset, device=DEVICE,
                             lr=1e-3, batch_size=32, epochs=epochs)
-    torch.save(adapter.state_dict(), f'adapter_weights_e{epochs}.pth')
+
+    torch.save(adapter.state_dict(),
+               f'adapter_weights_text_anchored_e{epochs}.pth')
 
 
 if __name__ == "__main__":
