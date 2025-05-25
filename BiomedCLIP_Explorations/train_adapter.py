@@ -23,7 +23,7 @@ CONFIG_PATH = "../BioMedClip/checkpoints/open_clip_config.json"
 WEIGHTS_PATH = "../BioMedClip/checkpoints/open_clip_pytorch_model.bin"
 MODEL_NAME = "biomedclip_local"
 CONTEXT_LENGTH = 256
-BATCH_SIZE = 32
+BATCH_SIZE = 256
 NUM_WORKERS = 8
 
 # os.environ['CUDA_VISIBLE_DEVICES'] = '1'
@@ -292,7 +292,7 @@ def main():
     # generate text embeddings for prompts
     text_embeddings = []
     for prompt in PROMPTS:
-        text = tokenizer(prompt, context_length=CONTEXT_LENGTH, truncate=True)
+        text = tokenizer(prompt, context_length=CONTEXT_LENGTH)
         text = text.to(DEVICE)
         with torch.no_grad():
             text_emb = model.encode_text(text)
