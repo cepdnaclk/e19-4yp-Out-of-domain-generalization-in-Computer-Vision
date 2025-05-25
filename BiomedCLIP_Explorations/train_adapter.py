@@ -17,14 +17,14 @@ import numpy as np
 import torch.nn.functional as F
 
 # 1. Paths & constants
-METADATA_CSV = "/home/E19_FYP_Domain_Gen_Data/metadata.csv"
-PATCHES_DIR = "/home/E19_FYP_Domain_Gen_Data/patches"
+METADATA_CSV = "/storage/projects3/e19-fyp-out-of-domain-gen-in-cv/camelyon17WILDS/metadata.csv"
+PATCHES_DIR = "/storage/projects3/e19-fyp-out-of-domain-gen-in-cv/camelyon17WILDS/patches"
 CONFIG_PATH = "../BioMedClip/checkpoints/open_clip_config.json"
 WEIGHTS_PATH = "../BioMedClip/checkpoints/open_clip_pytorch_model.bin"
 MODEL_NAME = "biomedclip_local"
 CONTEXT_LENGTH = 256
-BATCH_SIZE = 64
-NUM_WORKERS = 0
+BATCH_SIZE = 256
+NUM_WORKERS = 4
 
 # os.environ['CUDA_VISIBLE_DEVICES'] = '1'
 DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
