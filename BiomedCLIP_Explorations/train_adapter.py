@@ -250,7 +250,7 @@ def main():
 
     train_df = metadata_df[metadata_df.split == 0].copy()
     centers_ds = []
-    for i in range(3):
+    for i in range(1):  # Change to 1 to use only center 0
         centers_ds.append(BiomedCLIPDataset(
             train_df[train_df.center == i], preprocess))
 
