@@ -24,7 +24,7 @@ WEIGHTS_PATH = "../BioMedClip/checkpoints/open_clip_pytorch_model.bin"
 MODEL_NAME = "biomedclip_local"
 CONTEXT_LENGTH = 256
 BATCH_SIZE = 64
-NUM_WORKERS = 4
+NUM_WORKERS = 0
 
 # os.environ['CUDA_VISIBLE_DEVICES'] = '1'
 DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
