@@ -4,3 +4,4 @@
 /caches
 /deprecated
 /open_clip
+*.env
