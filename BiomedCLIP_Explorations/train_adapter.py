@@ -24,8 +24,8 @@ WEIGHTS_PATH = "../BioMedClip/checkpoints/open_clip_pytorch_model.bin"
 CACHE_PATH = "cached"
 MODEL_NAME = "biomedclip_local"
 CONTEXT_LENGTH = 256
-BATCH_SIZE = 256
-NUM_WORKERS = 8
+BATCH_SIZE = 64
+NUM_WORKERS = 4
 
 # os.environ['CUDA_VISIBLE_DEVICES'] = '1'
 DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
@@ -271,7 +271,7 @@ def main():
         print(f"Extracting features for center {i}...")
 
         loader = DataLoader(ds, batch_size=BATCH_SIZE, shuffle=False,
-                            num_workers=NUM_WORKERS, pin_memory=True, prefetch_factor=2 if DEVICE.type == 'cuda' else 0)
+                            num_workers=NUM_WORKERS, pin_memory=True, prefetch_factor=2)
 
         all_feats = []
         all_labels = []
