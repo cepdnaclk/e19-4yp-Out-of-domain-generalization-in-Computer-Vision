@@ -17,11 +17,10 @@ import numpy as np
 import torch.nn.functional as F
 
 # 1. Paths & constants
-METADATA_CSV = "/storage/projects3/e19-fyp-out-of-domain-gen-in-cv/camelyon17WILDS/metadata.csv"
-PATCHES_DIR = "/storage/projects3/e19-fyp-out-of-domain-gen-in-cv/camelyon17WILDS/patches"
+METADATA_CSV = "/home/E19_FYP_Domain_Gen_Data/metadata.csv"
+PATCHES_DIR = "/home/E19_FYP_Domain_Gen_Data/patches"
 CONFIG_PATH = "../BioMedClip/checkpoints/open_clip_config.json"
 WEIGHTS_PATH = "../BioMedClip/checkpoints/open_clip_pytorch_model.bin"
-CACHE_PATH = "cached"
 MODEL_NAME = "biomedclip_local"
 CONTEXT_LENGTH = 256
 BATCH_SIZE = 64
@@ -240,8 +239,10 @@ def main():
         **{f"image_{k}": v for k, v in preproc_cfg.items()}
     )
 
-    print("Device:", DEVICE)
     model.to(DEVICE).eval()
+
+    random_state = 42
+    # samples = 2048
 
     # 2. Load metadata and filter center=0
     metadata_df = pd.read_csv(METADATA_CSV, index_col=0)
@@ -257,17 +258,7 @@ def main():
     centers_features = [[] for _ in range(len(centers_ds))]
     centers_labels = [[] for _ in range(len(centers_ds))]
 
-    os.makedirs(f"{CACHE_PATH}/centers", exist_ok=True)
     for i, ds in enumerate(centers_ds):
-        feature_path = f"{CACHE_PATH}/centers/center{i}_features.npy"
-        label_path = f"{CACHE_PATH}/centers/center{i}_labels.npy"
-
-        if os.path.exists(feature_path) and os.path.exists(label_path):
-            print(f"Loading cached features for center {i}...")
-            centers_features[i] = np.load(feature_path)
-            centers_labels[i] = np.load(label_path)
-            continue
-
         print(f"Extracting features for center {i}...")
 
         loader = DataLoader(ds, batch_size=BATCH_SIZE, shuffle=False,
@@ -279,17 +270,16 @@ def main():
         with torch.no_grad():
             for imgs, labels in tqdm(loader, desc=f"Center {i}", unit="batch"):
                 imgs = imgs.to(DEVICE, non_blocking=True)
+                labels = labels.to(DEVICE, non_blocking=True)
+
                 feats = model.encode_image(imgs)
                 feats = feats / feats.norm(dim=-1, keepdim=True)
 
                 all_feats.append(feats.cpu())
-                all_labels.append(labels)  # labels are already on CPU
+                all_labels.append(labels.cpu())
 
         centers_features[i] = torch.cat(all_feats).numpy()
         centers_labels[i] = torch.cat(all_labels).numpy()
-
-        np.save(feature_path, centers_features[i])
-        np.save(label_path, centers_labels[i])
 
     # Prepare concatenated arrays
     all_feats = np.concatenate(centers_features)          # [N, D]
@@ -301,19 +291,13 @@ def main():
     # generate text embeddings for prompts
     text_embeddings = []
     for prompt in PROMPTS:
-        text = tokenizer(prompt, context_length=CONTEXT_LENGTH)
+        text = tokenizer(prompt, context_length=CONTEXT_LENGTH, truncate=True)
         text = text.to(DEVICE)
         with torch.no_grad():
             text_emb = model.encode_text(text)
             text_emb = text_emb / text_emb.norm(dim=-1, keepdim=True)
             text_embeddings.append(text_emb.cpu().numpy())
     text_embeddings = np.stack(text_embeddings)  # [2, D]
-
-    # all features, labels, centers, text should be in GPU memory
-    all_feats = torch.from_numpy(all_feats).float().to(DEVICE)
-    all_labels = torch.from_numpy(all_labels).long().to(DEVICE)
-    all_centers = torch.from_numpy(all_centers).long().to(DEVICE)
-    text_embeddings = torch.from_numpy(text_embeddings).float().to(DEVICE)
 
     # For the original center-to-center triplets:
     # base_dataset = FeatureTripletDataset(all_feats, all_labels, all_centers)
