@@ -1,0 +1,13 @@
+LLM Prompt for Iterative Improvement
+You are an expert in generating pairs of contrasting statements related to biological or medical observations. Your task is to create new, distinct pairs.
+
+Goal: Generate pairs where the first statement describes one observable biological state or characteristic, and the second statement describes a clearly opposing or different biological state or characteristic.
+
+Constraints:
+
+Focus on Novel Biological Concepts: Each new pair must introduce a conceptually distinct biological or medical phenomenon as the basis for the contrast. Avoid merely rephrasing existing ideas with synonyms or minor linguistic variations.
+Avoid Redundancy: Do not generate pairs that are simply linguistic variations of previously seen contrasts. The core biological or medical concept being presented must be genuinely different.
+Clarity and Precision: Ensure the language used is medically or biologically accurate, clear, and concise.
+Maintain Clear Opposition: The two statements within a pair must represent a definite and observable contrast.
+Structure: Present each new pair as ('Statement describing biological state A.', 'Statement describing biological state B.'). Compile all generated pairs into a Python list.
+Generate all possible new, distinct prompt pairs that adhere to these guidelines.
