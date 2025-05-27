@@ -21,6 +21,7 @@ METADATA_CSV = "/storage/projects3/e19-fyp-out-of-domain-gen-in-cv/camelyon17WIL
 PATCHES_DIR = "/storage/projects3/e19-fyp-out-of-domain-gen-in-cv/camelyon17WILDS/patches"
 CONFIG_PATH = "../BioMedClip/checkpoints/open_clip_config.json"
 WEIGHTS_PATH = "../BioMedClip/checkpoints/open_clip_pytorch_model.bin"
+CACHE_PATH = "cached"
 MODEL_NAME = "biomedclip_local"
 CONTEXT_LENGTH = 256
 BATCH_SIZE = 256
@@ -242,9 +243,6 @@ def main():
     print("Device:", DEVICE)
     model.to(DEVICE).eval()
 
-    random_state = 42
-    # samples = 2048
-
     # 2. Load metadata and filter center=0
     metadata_df = pd.read_csv(METADATA_CSV, index_col=0)
     metadata_df = append_filename_and_filepath(metadata_df)
@@ -259,7 +257,17 @@ def main():
     centers_features = [[] for _ in range(len(centers_ds))]
     centers_labels = [[] for _ in range(len(centers_ds))]
 
+    os.makedirs(f"{CACHE_PATH}/centers", exist_ok=True)
     for i, ds in enumerate(centers_ds):
+        feature_path = f"{CACHE_PATH}/centers/center{i}_features.npy"
+        label_path = f"{CACHE_PATH}/centers/center{i}_labels.npy"
+
+        if os.path.exists(feature_path) and os.path.exists(label_path):
+            print(f"Loading cached features for center {i}...")
+            centers_features[i] = np.load(feature_path)
+            centers_labels[i] = np.load(label_path)
+            continue
+
         print(f"Extracting features for center {i}...")
 
         loader = DataLoader(ds, batch_size=BATCH_SIZE, shuffle=False,
@@ -271,8 +279,6 @@ def main():
         with torch.no_grad():
             for imgs, labels in tqdm(loader, desc=f"Center {i}", unit="batch"):
                 imgs = imgs.to(DEVICE, non_blocking=True)
-                # labels = labels.to(DEVICE, non_blocking=True)
-
                 feats = model.encode_image(imgs)
                 feats = feats / feats.norm(dim=-1, keepdim=True)
 
@@ -281,6 +287,9 @@ def main():
 
         centers_features[i] = torch.cat(all_feats).numpy()
         centers_labels[i] = torch.cat(all_labels).numpy()
+
+        np.save(feature_path, centers_features[i])
+        np.save(label_path, centers_labels[i])
 
     # Prepare concatenated arrays
     all_feats = np.concatenate(centers_features)          # [N, D]
