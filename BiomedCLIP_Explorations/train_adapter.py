@@ -271,7 +271,7 @@ def main():
         print(f"Extracting features for center {i}...")
 
         loader = DataLoader(ds, batch_size=BATCH_SIZE, shuffle=False,
-                            num_workers=NUM_WORKERS, pin_memory=True, prefetch_factor=2)
+                            num_workers=NUM_WORKERS, pin_memory=True)
 
         all_feats = []
         all_labels = []
