@@ -1,0 +1,14 @@
+LLM Prompt for Iterative Improvement
+You are an expert in linguistic variation and stylistic refinement. Your task is to generate new pairs of statements based on an existing medical concept.
+
+Goal: Take a core medical contrast and rephrase it in multiple distinct linguistic styles. Focus on varying sentence structure, vocabulary, tone, and emphasis while preserving the exact same core medical concept.
+
+Constraints:
+
+Preserve Core Medical Concept: The fundamental biological or medical meaning of the contrast must remain identical across all generated pairs. Do not introduce new medical concepts or variations in the scientific facts.
+Maximize Linguistic Diversity: Explore different ways to express the same idea. Think about using active/passive voice, varying sentence length, different descriptive adjectives/adverbs, and alternative phrasings.
+Avoid Conceptual Redundancy: While the concept is constant, the way it's expressed should be genuinely different in each pair.
+Clarity and Precision: Despite stylistic changes, the meaning must remain clear and unambiguous.
+Structure: Present each new pair as ('Statement with linguistic style A.', 'Statement with linguistic style B.'). Compile all generated pairs into a Python list.
+
+Generate as many new, distinct prompt pairs as possible that adhere to these guidelines.
