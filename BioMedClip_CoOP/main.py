@@ -31,7 +31,7 @@ def main():
     # Basic training parameters
     'lr': 0.002,                    # Learning rate
     'train_epoch': 100,              # Number of training epochs
-    'batch_size': 32,               # Batch size
+    'batch_size': 64,               # Batch size
     
     # Precision and hardware
     'precision': 'amp',             # 'fp16', 'fp32', or 'amp' (recommended)
@@ -73,7 +73,8 @@ def main():
         print("Creating dataloaders...")
         train_loader, val_loader, test_loader, id_test_loaders= get_dataloaders(
             metadata_path=args['metadata_path'],
-            data_root=args['data_path']
+            data_root=args['data_path'],
+            batch_size=args['batch_size'],
         )
         print("Finished Creating dataloaders...")
         save_dataloader(train_loader, os.path.join(cache_dir, 'train_loader.pkl'))
