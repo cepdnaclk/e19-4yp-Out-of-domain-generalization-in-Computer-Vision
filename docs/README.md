@@ -3,13 +3,13 @@ layout: home
 permalink: index.html
 
 # Please update this with your repository name and title
-repository-name: eYY-4yp-project-template
-title: Enhancing Domain Generalization in Medical Imaging using Prompt Optimization
+repository-name: e19-4yp-Out-of-domain-generalization-in-Computer-Vision
+title: Out of Domain Generalization in Medical Imaging via Vision Language Models
 ---
 
 [comment]: # "This is the standard layout for the project, but you can clean this and use your own template"
 
-# Enhancing Domain Generalization in Medical Imaging using Prompt Optimization
+# Out of Domain Generalization in Medical Imaging via Vision Language Models
 
 #### Team
 
