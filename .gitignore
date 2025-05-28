@@ -1,5 +1,6 @@
 /BioMedClip
 *.out
 /BiomedCLIP_Explorations/cached_image_feats.pt
+/BiomedCLIP_Explorations/cached/
 *.pth
 *.env

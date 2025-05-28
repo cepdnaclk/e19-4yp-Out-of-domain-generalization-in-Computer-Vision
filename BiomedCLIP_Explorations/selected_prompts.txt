@@ -1,40 +1,40 @@
-1. ('Central cell nuclei have small, single nucleoli.', 'Central cell nuclei exhibit large, multiple, or prominent nucleoli.'), Score: 0.9882
-2. ('Central cell nuclei contain small, single nucleoli.', 'Central cell nuclei contain large, multiple, or prominent nucleoli.'), Score: 0.9881
-3. ('Quiescent central cells exhibit small nucleoli.', 'Actively dividing central cells exhibit large nucleoli.'), Score: 0.9880
-4. ('Central cells possess small nucleoli.', 'Central cells display large nucleoli.'), Score: 0.9880
-5. ('Small nucleoli in central lymphoid cells.', 'Large nucleoli in central tumor cells.'), Score: 0.9879
-6. ('Central lymphocytes are uniform and still.', 'Central cells are pleomorphic and dividing.'), Score: 0.9879
-7. ('Small nucleoli are observed within the central cells.', 'Large nucleoli are observed within the central cells.'), Score: 0.9879
-8. ('The central cells contain nucleoli of small dimensions.', 'The central cells contain nucleoli of large dimensions.'), Score: 0.9879
-9. ('The central cells have nucleoli that are small.', 'The central cells have nucleoli that are large.'), Score: 0.9879
-10. ('Small nucleoli are consistently found in the central cells.', 'Large nucleoli are consistently found in the central cells.'), Score: 0.9879
-11. ('Small nucleoli are found in central cells.', 'Large nucleoli are found in central cells.'), Score: 0.9879
-12. ('Nuclei of central cells show small nucleoli.', 'Nuclei of central cells show large nucleoli.'), Score: 0.9879
-13. ('Small, central nucleoli within the nuclei of central cells.', 'Large, peripheral nucleoli within the nuclei of central cells.'), Score: 0.9878
-14. ('The nucleoli of the central cells are small in size.', 'The nucleoli of the central cells are large in size.'), Score: 0.9878
-15. ('Small, distinct nucleoli in central cells.', 'Large, conspicuous nucleoli in central cells.'), Score: 0.9878
-16. ('Cytoplasm of central cells is scant with small nucleoli.', 'Cytoplasm of central cells is abundant with large nucleoli.'), Score: 0.9878
-17. ('Nucleoli in central cells are small and singular.', 'Nucleoli in central cells are large and multiple.'), Score: 0.9878
-18. ('Small nucleoli in nuclei of central cells.', 'Large, often multiple nucleoli in nuclei of central cells.'), Score: 0.9878
-19. ('Small nucleoli are observed in the central cellular components.', 'Large nucleoli are observed in the central cellular components.'), Score: 0.9878
-20. ('The central cells exhibit a low nuclear-to-cytoplasmic ratio and small nucleoli.', 'The central cells exhibit a high nuclear-to-cytoplasmic ratio and large nucleoli.'), Score: 0.9878
-21. ('Small, single nucleoli in the central cellular components.', 'Large, multiple nucleoli in the central cellular components.'), Score: 0.9878
-22. ('Central cell nuclei show small single nucleoli.', 'Central cell nuclei show large multiple prominent nucleoli.'), Score: 0.9878
-23. ('Small, central nucleoli within the nuclei of the central area.', 'Large, often multiple nucleoli within the nuclei of the central area.'), Score: 0.9878
-24. ('Nucleoli in central cells are small and one per nucleus.', 'Nucleoli in central cells are large and more than one per nucleus.'), Score: 0.9878
-25. ('The nucleoli within central cells appear small.', 'The nucleoli within central cells appear large.'), Score: 0.9878
-26. ('Small nucleoli centrally suggest low proliferation.', 'Large nucleoli centrally suggest rapid proliferation.'), Score: 0.9878
-27. ('Small nucleoli in the central cell nuclei.', 'Large nucleoli in the central cell nuclei.'), Score: 0.9878
-28. ('Small nucleoli in central cell nuclei.', 'Large nucleoli in central cell nuclei.'), Score: 0.9878
-29. ('Small and singular nucleoli within central cells.', 'Large and often multiple nucleoli within central cells.'), Score: 0.9878
-30. ('The central cells have small nucleoli.', 'The central cells have large nucleoli.'), Score: 0.9877
-31. ('Central nuclei contain small, distinct nucleoli.', 'Central nuclei contain large, conspicuous nucleoli.'), Score: 0.9877
-32. ('Minute nucleoli in central lymphoid cells.', 'Giant nucleoli in central tumor cells.'), Score: 0.9877
-33. ('Compact, small nucleoli in the central cells.', 'Diffuse, large nucleoli in the central cells.'), Score: 0.9877
-34. ('Central cell nucleoli appear to be small.', 'Central cell nucleoli appear to be large.'), Score: 0.9877
-35. ('The presence of small nucleoli in central cells suggests slow growth.', 'The presence of large nucleoli in central cells suggests rapid growth.'), Score: 0.9877
-36. ('Small nucleoli in the central region suggest a low proliferative index.', 'Large nucleoli in the central region suggest a high proliferative index.'), Score: 0.9877
-37. ('Small nucleoli are present within central cells.', 'Large nucleoli are present within central cells.'), Score: 0.9876
-38. ('Nucleoli in central cells are small and single.', 'Nucleoli in central cells are large and prominent.'), Score: 0.9876
-39. ('Central cells contain nucleoli of small dimensions.', 'Central cells contain nucleoli of large dimensions.'), Score: 0.9876
-40. ('Small, central nucleoli within central cell nuclei.', 'Large, peripheral nucleoli within central cell nuclei.'), Score: 0.9876
+('Small mature lymphocytes centrally show no indication of active replication.', 'Large immature cells centrally demonstrate ongoing active replication.'), Score: 0.9364
+('Small, mature lymphocytes centrally show no active processes of chromosome separation.', 'Large, immature cells centrally demonstrate active processes of chromosome separation.'), Score: 0.9364
+('Central small mature lymphocytes do not exhibit active replication signs.', 'Central large immature cells exhibit ongoing active replication signs.'), Score: 0.9364
+('No signs of active replication in central small mature lymphocytes.', 'Clear signs of ongoing active replication in central large immature cells.'), Score: 0.9356
+('Small, mature lymphocytes centrally show no active DNA synthesis or cell division events.', 'Large, immature cells centrally demonstrate active DNA synthesis and cell division events.'), Score: 0.9351
+('No active replication in central small mature lymphocytes observed.', 'Ongoing active replication in central large immature cells observed.'), Score: 0.9350
+('Central small mature lymphocytes do not exhibit signs of active replication.', 'Central large immature cells exhibit clear signs of ongoing active replication.'), Score: 0.9349
+('Small, mature lymphocytes centrally show no active process of cell enlargement.', 'Large, immature cells centrally demonstrate ongoing active process of cell enlargement.'), Score: 0.9347
+('Small, mature lymphocytes centrally show no indication of active replication.', 'Large, immature cells centrally demonstrate ongoing active replication.'), Score: 0.9343
+('Small, mature lymphocytes centrally show no active stages of cell division.', 'Large, immature cells centrally demonstrate ongoing active stages of cell division.'), Score: 0.9343
+('Central small mature lymphocytes do not exhibit active replication.', 'Central large immature cells exhibit ongoing active replication.'), Score: 0.9342
+('Small, mature lymphocytes centrally show no indication of active cell replication.', 'Large, immature cells centrally demonstrate active and ongoing cell replication.'), Score: 0.9335
+('Central small mature lymphocytes show no active replication signs.', 'Central large immature cells show ongoing active replication signs.'), Score: 0.9333
+('Small, mature lymphocytes centrally show no active steps of DNA replication.', 'Large, immature cells centrally demonstrate active steps of DNA replication.'), Score: 0.9333
+('Small, mature lymphocytes centrally show no active phases of DNA replication.', 'Large, immature cells centrally demonstrate active phases of DNA replication.'), Score: 0.9332
+('No active replication observed in central small mature lymphocytes.', 'Active replication ongoing in central large immature cells is evident.'), Score: 0.9331
+('Small, mature lymphocytes centrally show no active replication events.', 'Large, immature cells centrally demonstrate ongoing active replication events.'), Score: 0.9330
+('Small, mature lymphocytes centrally show no active replication phases.', 'Large, immature cells centrally demonstrate ongoing active replication phases.'), Score: 0.9326
+('Small, mature lymphocytes centrally show no active cell division stages.', 'Large, immature cells centrally demonstrate ongoing active cell division stages.'), Score: 0.9326
+('Small, mature lymphocytes centrally show no evidence of cellular division processes.', 'Large, immature cells centrally display clear evidence of ongoing cellular division processes.'), Score: 0.9325
+('Mature small lymphocytes centrally show no signs of active replication.', 'Immature large cells centrally demonstrate ongoing active replication.'), Score: 0.9325
+('Small mature lymphocytes centrally indicate no active cell replication.', 'Large immature cells centrally indicate active ongoing cell replication.'), Score: 0.9324
+('Small, mature lymphocytes centrally show no active phases of cellular enlargement.', 'Large, immature cells centrally demonstrate active phases of cellular enlargement.'), Score: 0.9322
+('Small mature lymphocytes centrally indicate no active replication.', 'Large immature cells centrally indicate ongoing active replication.'), Score: 0.9321
+('Small, mature lymphocytes centrally show no active replication stages.', 'Large, immature cells centrally demonstrate ongoing active replication stages.'), Score: 0.9321
+('Small, mature lymphocytes centrally show no active cellular division.', 'Large, immature cells centrally demonstrate ongoing active cellular division.'), Score: 0.9319
+('Central small mature lymphocytes do not show active replication events.', 'Central large immature cells demonstrate ongoing active replication events.'), Score: 0.9318
+('Small, mature lymphocytes centrally show no active processes of cellular enlargement or division.', 'Large, immature cells centrally demonstrate active processes of cellular enlargement and division.'), Score: 0.9317
+('Small, mature lymphocytes centrally show no active processes of cellular enlargement.', 'Large, immature cells centrally demonstrate active processes of cellular enlargement.'), Score: 0.9317
+('Central small mature lymphocytes show no active replication.', 'Central large immature cells show active replication ongoing.'), Score: 0.9314
+('Central small mature lymphocytes show no active replication.', 'Central large immature cells show ongoing active replication.'), Score: 0.9310
+('Small mature lymphocytes centrally lack active replication signs.', 'Large immature cells centrally show ongoing active replication signs.'), Score: 0.9310
+('Small, mature lymphocytes centrally: no active division observed.', 'Large, immature cells centrally: ongoing active division present.'), Score: 0.9309
+('Central small mature lymphocytes do not exhibit active cell replication.', 'Central large immature cells exhibit active and ongoing cell replication.'), Score: 0.9309
+('No evidence of active replication in central small mature lymphocytes.', 'Clear evidence of ongoing active replication in central large immature cells.'), Score: 0.9308
+('Small, mature lymphocytes centrally show no indication of cellular replication.', 'Large, immature cells centrally demonstrate active and ongoing cellular replication.'), Score: 0.9308
+('Small, mature lymphocytes centrally lack indication of cell replication.', 'Large, immature cells centrally show ongoing active cell replication.'), Score: 0.9308
+('Small, mature lymphocytes centrally show no active processes of cell division.', 'Large, immature cells centrally demonstrate active processes of cell division.'), Score: 0.9307
+('Small, mature lymphocytes centrally lack indication of cellular replication.', 'Large, immature cells centrally show ongoing active cellular replication.'), Score: 0.9306
+('Small, mature lymphocytes centrally show no active phases of the cell cycle.', 'Large, immature cells centrally demonstrate active phases of the cell cycle.'), Score: 0.9304

@@ -168,7 +168,7 @@ def main():
     # load adapter
     adapter = Adapter(dim=512).to(DEVICE)
     adapter.load_state_dict(torch.load(
-        "adapter_weights.pth", map_location=DEVICE))
+        "adapter_weights_text_anchored_e100.pth", map_location=DEVICE))
     adapter.eval()
 
     initial_list = load_initial_prompts("selected_prompts.txt")
@@ -201,32 +201,32 @@ def main():
         print(f"Confusion Matrix:\n{results['cm']}")
         print(f"Classification Report:\n{results['report']}")
 
-        print("Evaluating ensemble prompts n = 5...")
-        results = evaluate_ensemble_prompts_with_adapter(
-            pq, 5,
-            centers_features[i], centers_labels[i], model, tokenizer, adapter)
-        print(f"Accuracy (Ensemble): {results['accuracy']}")
-        print(f"ROC AUC (Ensemble): {results['auc']}")
-        print(f"Confusion Matrix (Ensemble):\n{results['cm']}")
-        print(f"Classification Report (Ensemble):\n{results['report']}")
+        # print("Evaluating ensemble prompts n = 5...")
+        # results = evaluate_ensemble_prompts_with_adapter(
+        #     pq, 5,
+        #     centers_features[i], centers_labels[i], model, tokenizer, adapter)
+        # print(f"Accuracy (Ensemble): {results['accuracy']}")
+        # print(f"ROC AUC (Ensemble): {results['auc']}")
+        # print(f"Confusion Matrix (Ensemble):\n{results['cm']}")
+        # print(f"Classification Report (Ensemble):\n{results['report']}")
 
-        print("Evaluating ensemble prompts n = 10...")
-        results = evaluate_ensemble_prompts_with_adapter(
-            pq, 10,
-            centers_features[i], centers_labels[i], model, tokenizer, adapter)
-        print(f"Accuracy (Ensemble): {results['accuracy']}")
-        print(f"ROC AUC (Ensemble): {results['auc']}")
-        print(f"Confusion Matrix (Ensemble):\n{results['cm']}")
-        print(f"Classification Report (Ensemble):\n{results['report']}")
+        # print("Evaluating ensemble prompts n = 10...")
+        # results = evaluate_ensemble_prompts_with_adapter(
+        #     pq, 10,
+        #     centers_features[i], centers_labels[i], model, tokenizer, adapter)
+        # print(f"Accuracy (Ensemble): {results['accuracy']}")
+        # print(f"ROC AUC (Ensemble): {results['auc']}")
+        # print(f"Confusion Matrix (Ensemble):\n{results['cm']}")
+        # print(f"Classification Report (Ensemble):\n{results['report']}")
 
-        print("Evaluating ensemble prompts n = 40...")
-        results = evaluate_ensemble_prompts_with_adapter(
-            pq, 40,
-            centers_features[i], centers_labels[i], model, tokenizer, adapter)
-        print(f"Accuracy (Ensemble): {results['accuracy']}")
-        print(f"ROC AUC (Ensemble): {results['auc']}")
-        print(f"Confusion Matrix (Ensemble):\n{results['cm']}")
-        print(f"Classification Report (Ensemble):\n{results['report']}")
+        # print("Evaluating ensemble prompts n = 40...")
+        # results = evaluate_ensemble_prompts_with_adapter(
+        #     pq, 40,
+        #     centers_features[i], centers_labels[i], model, tokenizer, adapter)
+        # print(f"Accuracy (Ensemble): {results['accuracy']}")
+        # print(f"ROC AUC (Ensemble): {results['auc']}")
+        # print(f"Confusion Matrix (Ensemble):\n{results['cm']}")
+        # print(f"Classification Report (Ensemble):\n{results['report']}")
 
         print("Done evaluating center", i)
 
