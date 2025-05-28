@@ -67,7 +67,7 @@ class CamelyonDataset(Dataset):
             
         return image, torch.tensor(label, dtype=torch.long)
 
-def get_dataloaders(metadata_path, data_root, batch_size=32):
+def get_dataloaders(metadata_path, data_root, batch_size):
     # BiomedCLIP uses same normalization as CLIP
     normalize = transforms.Normalize(
         mean=(0.48145466, 0.4578275, 0.40821073),
