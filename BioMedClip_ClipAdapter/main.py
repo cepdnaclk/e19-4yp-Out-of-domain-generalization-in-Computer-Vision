@@ -60,8 +60,13 @@ def main():
     # Textual features
     
     classnames = ["no tumor", "tumor present"] # Negative , Positive
-    positive_prompt = "This is an image of a tumor"
-    negative_prompt = "Tumor is not present in this image"
+    # positive_prompt = "This is an image of a tumor"
+    # negative_prompt = "Tumor is not present in this image"
+
+    positive_prompt = "Large immature cells centrally demonstrate ongoing active replication"
+    negative_prompt = "Small mature lymphocytes centrally show no indication of active replication"
+
+
 
     text_weights = biomedclip_classifier(
     classnames=classnames,
