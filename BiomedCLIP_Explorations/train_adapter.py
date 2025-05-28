@@ -299,15 +299,21 @@ def main():
     )
 
     # generate text embeddings for prompts
+    # generate text embeddings for prompts
     text_embeddings = []
     for prompt in PROMPTS:
-        text = tokenizer(prompt, context_length=CONTEXT_LENGTH)
-        text = text.to(DEVICE)
+        text = tokenizer(prompt, context_length=CONTEXT_LENGTH).to(DEVICE)
         with torch.no_grad():
-            text_emb = model.encode_text(text)
-            text_emb = text_emb / text_emb.norm(dim=-1, keepdim=True)
-            text_embeddings.append(text_emb.cpu().numpy())
-    text_embeddings = np.stack(text_embeddings)  # [2, D]
+            # shape: (1, D)
+            emb = model.encode_text(text)
+            # still (1, D)
+            emb = emb / emb.norm(dim=-1, keepdim=True)
+        # grab the single-vector out of the batch and move it to CPU
+        vec = emb[0].cpu().numpy()                                   # now (D,)
+        text_embeddings.append(vec)
+
+    # stack into a (2, D)
+    text_embeddings = np.stack(text_embeddings)
 
     # all features, labels, centers, text should be in the GPU memory
     # all_feats = torch.from_numpy(all_feats).float()
