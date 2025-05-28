@@ -7,7 +7,7 @@ import argparse
 import numpy as np
 
 from tqdm import tqdm
-from utils import cls_acc
+from utils import cls_acc,send_slack_message
 from sklearn.metrics import accuracy_score, f1_score, precision_score, recall_score
 
 class ClipAdapter_BiomedCLIP():
@@ -115,6 +115,7 @@ class ClipAdapter_BiomedCLIP():
         
         # Train
         print('\nStart Training procedure')
+        send_slack_message("Start Training...")
            
         best_acc, best_epoch = 0.0, 0
         for train_idx in range(self.cfg['train_epoch']):
@@ -123,6 +124,7 @@ class ClipAdapter_BiomedCLIP():
             correct_samples, all_samples = 0, 0
             loss_list = []
             print('Train Epoch: {:} / {:}'.format(train_idx, self.cfg['train_epoch']))
+            send_slack_message(f"Train Epoch: {train_idx} / {self.cfg['train_epoch']}")
 
             for i, (images, target) in enumerate(tqdm(train_loader)):
                 images, target = images.cuda(), target.cuda()
@@ -161,6 +163,7 @@ class ClipAdapter_BiomedCLIP():
         # clip_ad_model.adapter = torch.load(self.cfg['cache_dir'] + "/best_clipA_" + str(self.cfg['shots']) + "shots.pt")
         
         print('\nStart evaluation on test sets')
+        send_slack_message("Start Evaluation...")
         clip_ad_model.eval()
         # # logits_test = clip_ad_model(test_features, text_weights, self.alpha) 
 
@@ -171,12 +174,15 @@ class ClipAdapter_BiomedCLIP():
         # Newly Added
         # Evaluate main test set (center 4)
         print("\nEvaluating main test set (center 4):")
+        send_slack_message("Evaluating main test set (center 4)...")
         logits_test = clip_ad_model(test_features, text_weights, self.alpha)
         preds_test = logits_test.argmax(dim=1).cpu().numpy()
         labels_test = test_labels.cpu().numpy()
 
         print(f"Accuracy: {accuracy_score(labels_test, preds_test)*100:.2f}%")
+        send_slack_message(f"Accuracy: {accuracy_score(labels_test, preds_test)*100:.2f}%")
         print(f"F1: {f1_score(labels_test, preds_test)*100:.2f}%")
+        send_slack_message(f"F1: {f1_score(labels_test, preds_test)*100:.2f}%")
         print(f"Precision: {precision_score(labels_test, preds_test)*100:.2f}%")
         print(f"Recall: {recall_score(labels_test, preds_test)*100:.2f}%")
 
@@ -193,7 +199,9 @@ class ClipAdapter_BiomedCLIP():
             labels = labels.cpu().numpy()
             
             print(f"Accuracy: {accuracy_score(labels, preds)*100:.2f}%")
+            send_slack_message(f"Accuracy: {accuracy_score(labels, preds)*100:.2f}%")
             print(f"F1: {f1_score(labels, preds)*100:.2f}%")
+            send_slack_message(f"F1: {f1_score(labels, preds)*100:.2f}%")
             print(f"Precision: {precision_score(labels, preds)*100:.2f}%")
             print(f"Recall: {recall_score(labels, preds)*100:.2f}%")
         # Return dummy values for acc and loss
