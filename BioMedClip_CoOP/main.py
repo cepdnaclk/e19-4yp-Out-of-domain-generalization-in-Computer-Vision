@@ -73,7 +73,8 @@ def main():
         print("Creating dataloaders...")
         train_loader, val_loader, test_loader, id_test_loaders= get_dataloaders(
             metadata_path=args['metadata_path'],
-            data_root=args['data_path']
+            data_root=args['data_path'],
+            batch_size=args['batch_size'],
         )
         print("Finished Creating dataloaders...")
         save_dataloader(train_loader, os.path.join(cache_dir, 'train_loader.pkl'))
