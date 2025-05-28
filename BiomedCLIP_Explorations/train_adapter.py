@@ -309,11 +309,11 @@ def main():
             text_embeddings.append(text_emb.cpu().numpy())
     text_embeddings = np.stack(text_embeddings)  # [2, D]
 
-    # all features, labels, centers, text should be in GPU memory
-    all_feats = torch.from_numpy(all_feats).float().to(DEVICE)
-    all_labels = torch.from_numpy(all_labels).long().to(DEVICE)
-    all_centers = torch.from_numpy(all_centers).long().to(DEVICE)
-    text_embeddings = torch.from_numpy(text_embeddings).float().to(DEVICE)
+    # all features, labels, centers, text should be in the GPU memory
+    # all_feats = torch.from_numpy(all_feats).float()
+    # all_labels = torch.from_numpy(all_labels).long()
+    # all_centers = torch.from_numpy(all_centers).long()
+    # text_embeddings = torch.from_numpy(text_embeddings).float()
 
     # For the original center-to-center triplets:
     # base_dataset = FeatureTripletDataset(all_feats, all_labels, all_centers)
