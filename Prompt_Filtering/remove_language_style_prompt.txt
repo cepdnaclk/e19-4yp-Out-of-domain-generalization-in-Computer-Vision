@@ -10,4 +10,4 @@ Avoid Redundancy: Do not generate pairs that are simply linguistic variations of
 Clarity and Precision: Ensure the language used is medically or biologically accurate, clear, and concise.
 Maintain Clear Opposition: The two statements within a pair must represent a definite and observable contrast.
 Structure: Present each new pair as ('Statement describing biological state A.', 'Statement describing biological state B.'). Compile all generated pairs into a Python list.
-Generate all possible new, distinct prompt pairs that adhere to these guidelines.
+
