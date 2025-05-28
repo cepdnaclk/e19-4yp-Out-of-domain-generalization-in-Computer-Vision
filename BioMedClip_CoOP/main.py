@@ -31,7 +31,7 @@ def main():
     # Basic training parameters
     'lr': 0.002,                    # Learning rate
     'train_epoch': 100,              # Number of training epochs
-    'batch_size': 32,               # Batch size
+    'batch_size': 64,               # Batch size
     
     # Precision and hardware
     'precision': 'amp',             # 'fp16', 'fp32', or 'amp' (recommended)
