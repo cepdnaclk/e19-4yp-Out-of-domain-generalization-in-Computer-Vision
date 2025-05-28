@@ -24,7 +24,7 @@ WEIGHTS_PATH = "../BioMedClip/checkpoints/open_clip_pytorch_model.bin"
 CACHE_PATH = "cached"
 MODEL_NAME = "biomedclip_local"
 CONTEXT_LENGTH = 256
-BATCH_SIZE = 64
+BATCH_SIZE = 256
 NUM_WORKERS = 4
 
 # os.environ['CUDA_VISIBLE_DEVICES'] = '1'
@@ -324,7 +324,7 @@ def main():
     prompt_dataset = FeatureTripletDataset__AnchoredToPrompts(
         all_feats, all_labels, text_embeddings)
     adapter = train_adapter(prompt_dataset, device=DEVICE,
-                            lr=1e-3, batch_size=32, epochs=epochs)
+                            lr=1e-3, batch_size=128, epochs=epochs)
 
     torch.save(adapter.state_dict(),
                f'adapter_weights_text_anchored_e{epochs}.pth')
