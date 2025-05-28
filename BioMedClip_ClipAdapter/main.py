@@ -10,7 +10,7 @@ from data import get_dataloaders
 
 def main():
     print("Starting ClipAdapter-BiomedCLIP...")
-   
+    send_slack_message("Starting ClipAdapter-BiomedCLIP...")
     cfg = {
         'metadata_path': '/storage/projects3/e19-fyp-out-of-domain-gen-in-cv/camelyon17WILDS/metadata.csv',
         'data_path': '/storage/projects3/e19-fyp-out-of-domain-gen-in-cv/camelyon17WILDS/organized_by_center',
