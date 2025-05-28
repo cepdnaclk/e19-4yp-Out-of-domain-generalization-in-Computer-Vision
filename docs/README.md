@@ -4,23 +4,23 @@ permalink: index.html
 
 # Please update this with your repository name and title
 repository-name: eYY-4yp-project-template
-title:
+title: Enhancing Domain Generalization in Medical Imaging using Prompt Optimization
 ---
 
 [comment]: # "This is the standard layout for the project, but you can clean this and use your own template"
 
-# Project Title
+# Enhancing Domain Generalization in Medical Imaging using Prompt Optimization
 
 #### Team
 
-- eNumber, Name, [email](mailto:name@email.com)
-- eNumber, Name, [email](mailto:name@email.com)
-- eNumber, Name, [email](mailto:name@email.com)
+- E/19/094, Eashwara M., [email](mailto:e19094@eng.pdn.ac.lk)  
+- E/19/372, Silva A.K.M, [email](mailto:e19372@eng.pdn.ac.lk)  
+- E/19/408, Ubayasiri S.J, [email](mailto:e19408@eng.pdn.ac.lk)
 
 #### Supervisors
 
-- Name, [email](mailto:name@eng.pdn.ac.lk)
-- Name, [email](mailto:name@eng.pdn.ac.lk)
+- Dr. Damayanthi Herath, [email](mailto:damayanthiherath@eng.pdn.ac.lk)  
+- Dr. Ruwan Tennakoon, [email](mailto:ruwan.tennakoon@rmit.edu.au)
 
 #### Table of content
 
@@ -44,15 +44,56 @@ This is a sample image, to show how to add images to your page. To learn more op
 
 ## Abstract
 
+This research addresses domain generalization challenges in medical imaging using BiomedCLIP as the baseline model, a vision-language model optimized via advanced prompting strategies. We propose an automatic prompting method that improves interpretability and generalization through iterative feedback to large language models (LLMs), specifically adapting prompts for disease classification tasks from histopathological images.
+
+---
+
 ## Related works
 
+Vision-language models (VLMs) such as CLIP and BiomedCLIP have shown great promise in biomedical tasks, with models like BiomedCoOp and XCoOp introducing domain-specific prompt learning. However, many lack interpretability and rely on single static LLM outputs. Our method builds on these by integrating iterative feedback for prompt refinement, improving both robustness and transparency in clinical tasks.
+
+---
 ## Methodology
 
-## Experiment Setup and Implementation
+We use BiomedCLIP as our base and apply a series of prompt optimization techniques to enhance out-of-domain generalization. The methodology includes:
+
+### Preprocessing
+
+- **Cleaning**: File integrity checks and metadata validation  
+- **Normalization**: Standardizing pixel values  
+- **Resizing**: Images resized to 224×224 pixels  
+- **Standardization**: Label unification and demographic balancing  
+- **Splitting**: Domain-generalization-based data split
+
+### Prompt Optimization
+
+An LLM-driven prompt generation framework starts with an initial set of prompts from Gemini. Using performance scores, prompts are iteratively refined to improve classification. The process includes:
+
+- Prompt diversity strategies inspired by evolutionary algorithms  
+- Scoring and feedback loops  
+- Final prompts remain human-readable, improving interpretability
+
+### CLIP Fine-Tuning Techniques
+
+Three strategies are explored and compared:
+- **Prompt Tuning**: CoOp, CoCoOp  
+- **OOD Fine-Tuning**: CLIPood strategy  
+- **Adapter Layers**: Task-specific feature learning
+
+### Validation Strategy
+
+Model performance is validated both in-domain and out-of-domain using accuracy, F1-score, AUC, and OOD metrics.
+
+---
 
 ## Results and Analysis
 
 ## Conclusion
+
+The integration of iterative, interpretable prompt generation using LLMs significantly improves the domain generalization capabilities of vision-language models in medical imaging. The approach offers a path forward for deploying robust and explainable AI tools in clinical settings.
+
+---
+
 
 ## Publications
 [//]: # "Note: Uncomment each once you uploaded the files to the repository"
