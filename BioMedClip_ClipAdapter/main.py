@@ -12,8 +12,8 @@ def main():
     print("Starting ClipAdapter-BiomedCLIP...")
    
     cfg = {
-        'metadata_path': '/home/E19_FYP_Domain_Gen_Data/metadata.csv',
-        'data_path': '/home/E19_FYP_Domain_Gen_Data/organized_by_center',
+        'metadata_path': '/storage/projects3/e19-fyp-out-of-domain-gen-in-cv/camelyon17WILDS/metadata.csv',
+        'data_path': '/storage/projects3/e19-fyp-out-of-domain-gen-in-cv/camelyon17WILDS/organized_by_center',
         'lr': 0.001,                   # Learning rate
         'train_epoch': 100,            # Number of training epochs
         'alpha_ca': 0.5,               # Initial alpha value for CLIP-Adapter
