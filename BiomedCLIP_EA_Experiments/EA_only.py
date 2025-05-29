@@ -19,9 +19,9 @@ def main():
     # 3. load initial prompts (optional)
     # initial_prompts = util.load_initial_prompts()
 
-    cookies = {"__Secure-1PSIDCC": "AKEyXzUkdzTgdWltqO-1xRw2uJMoNBqwR30csbB_EY2c1_djzZom0wnpGl5_5Xw0iMIxmTvMlmGe",
+    cookies = {"__Secure-1PSIDCC": "AKEyXzUqRjIED_nVsfkjfc4gCNP8gZVlIJSgP9nvYOwyyInbBLfR9fDrYFKJr4X_XrCYp5H1OVt4",
                "__Secure-1PSID": "g.a000xAh5UmC2BgFDEL7ifghVXxgaGkKxUI_E7SU8c6KeTfk4KXuyOMwOCWull1Ay_77sjDJF-QACgYKAR4SARQSFQHGX2MiOcqyvE84Gino-n2jvqMh-BoVAUF8yKqEYwQ1MWNHeeRQHWA3kX7b0076",
-               "__Secure-1PSIDTS": "sidts-CjIB5H03PwVKjQxiHbhjR-qoC_1JT6qB78YRhZ8xrfBVYFArWcdzVLe5YQTW42gI15NRpBAA",
+               "__Secure-1PSIDTS": "sidts-CjIB5H03P9NCn7cjO4YMFZj55r7pAOOhothT61h_hlTVUqzmlIZyTh6qFSgvHDb1LFGbshAA",
                }  # Cookies may vary by account or region. Consider sending the entire cookie file.
 
     client = Gemini(auto_cookies=False, cookies=cookies)
