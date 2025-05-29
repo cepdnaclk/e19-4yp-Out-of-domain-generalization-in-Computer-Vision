@@ -427,38 +427,95 @@ class PriorityQueue:
         ordered = sorted(self._heap, key=lambda x: x[0], reverse=True)
         return str([(pair, score) for score, pair in ordered])
 
+    # def get_roulette_wheel_selection(self, n: int) -> List[Tuple[PromptPair, float]]:
+    #     """
+    #     Perform roulette-wheel (fitness-proportional) selection without replacement.
+
+    #     Args:
+    #         n: number of items to select.
+
+    #     Returns:
+    #         A list of up to n (prompt_pair, score) tuples,
+    #         selected without replacement according to fitness weights.
+    #     """
+    #     # Work on a temporary copy of the heap data
+    #     pool = list(self._heap)  # each element is (score, prompt_pair)
+    #     total_fitness = sum(score for score, _ in pool)
+    #     selected: List[Tuple[PromptPair, float]] = []
+
+    #     # Don't request more than available
+    #     n = min(n, len(pool))
+
+    #     for _ in range(n):
+    #         # Normalize weights and pick one
+    #         r = random.random() * total_fitness
+    #         cum = 0.0
+    #         for idx, (score, pair) in enumerate(pool):
+    #             cum += score
+    #             if cum >= r:
+    #                 # select this individual
+    #                 selected.append((pair, score))
+    #                 # remove it from pool & update total fitness
+    #                 total_fitness -= score
+    #                 pool.pop(idx)
+    #                 break
+
+    #     return selected
+
+    def _normalize_to_0_100(self, scores: List[float]) -> List[int]:
+        """
+        Linearly scale `scores` so that the minimum becomes 0,
+        the maximum becomes 100, then round each to an int.
+        If all scores are identical, they all map to 100.
+        """
+        if not scores:
+            return []
+
+        mn, mx = min(scores), max(scores)
+        if mx == mn:
+            return [100] * len(scores)
+
+        out = []
+        for s in scores:
+            scaled = (s - mn) / (mx - mn) * 100
+            out.append(int(round(scaled)))
+        return out
+
     def get_roulette_wheel_selection(self, n: int) -> List[Tuple[PromptPair, float]]:
         """
-        Perform roulette-wheel (fitness-proportional) selection without replacement.
+        Perform roulette‐wheel (fitness‐proportional) selection without replacement,
+        but first normalize raw scores to ints 0–100.
 
         Args:
-            n: number of items to select.
+            n: how many items to select.
 
         Returns:
-            A list of up to n (prompt_pair, score) tuples,
-            selected without replacement according to fitness weights.
+            A list of up to n (prompt_pair, original_score) tuples.
         """
-        # Work on a temporary copy of the heap data
-        pool = list(self._heap)  # each element is (score, prompt_pair)
-        total_fitness = sum(score for score, _ in pool)
+        pool = list(self._heap)  # [(score, pair), …]
+        raw_scores = [s for s, _ in pool]
+        weights = self._normalize_to_0_100(raw_scores)
+        total_w = sum(weights)
         selected: List[Tuple[PromptPair, float]] = []
 
-        # Don't request more than available
+        # clamp n
         n = min(n, len(pool))
-
         for _ in range(n):
-            # Normalize weights and pick one
-            r = random.random() * total_fitness
-            cum = 0.0
-            for idx, (score, pair) in enumerate(pool):
-                cum += score
-                if cum >= r:
-                    # select this individual
-                    selected.append((pair, score))
-                    # remove it from pool & update total fitness
-                    total_fitness -= score
-                    pool.pop(idx)
-                    break
+            if total_w == 0:
+                # fallback to uniform selection
+                idx = random.randrange(len(pool))
+            else:
+                r = random.randrange(total_w)
+                cum = 0
+                for idx, w in enumerate(weights):
+                    cum += w
+                    if cum > r:
+                        break
+
+            score, pair = pool.pop(idx)
+            selected.append((pair, score))
+            # remove that weight & adjust total
+            total_w -= weights.pop(idx)
 
         return selected
 

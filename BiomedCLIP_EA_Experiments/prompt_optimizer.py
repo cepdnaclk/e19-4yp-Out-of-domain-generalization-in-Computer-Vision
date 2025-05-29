@@ -68,14 +68,18 @@ def main():
                 continue
             negative_prompt, positive_prompt = prompt_pair
             results = util.evaluate_prompt_pair(
-                negative_prompt, positive_prompt, centers_features[0], centers_labels[0], model, tokenizer)
+                negative_prompt, positive_prompt, all_feats, all_labels, model, tokenizer)
 
             pq.insert((negative_prompt, positive_prompt), results['accuracy'])
 
         n = 10
         print(f"\nCurrent Top {n} prompt pairs:")
         selected_prompts = pq.get_roulette_wheel_selection(10)
-        # top_n = pq.get_best_n(n)
+        # reverse the order to set it to acsending order: Recency Bias
+        selected_prompts = sorted(
+            selected_prompts, key=lambda x: x[1], reverse=True)
+
+        # Prepare the content for the meta prompt
         prompt_content = f"Current Top {n} prompt pairs:\n"
         for i, (prompt_pair, score) in enumerate(selected_prompts):
             print(f"{i+1}. {prompt_pair}, Score: {score:.4f}")
