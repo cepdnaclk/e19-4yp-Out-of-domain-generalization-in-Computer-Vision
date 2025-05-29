@@ -222,3 +222,17 @@ def evaluate_prompt_pair(
     cm = confusion_matrix(y_true, y_pred)
     report = classification_report(y_true, y_pred, digits=4)
     return {'accuracy': acc, 'auc': auc, 'cm': cm, 'report': report}
+
+
+
+
+import ast
+
+def convert_string_to_tuples(input_string):
+    
+    try:
+        data = ast.literal_eval(input_string)  # Safely evaluate the string as a Python list
+        tuple_list = [tuple(pair) for pair in data]  # Convert each sublist to a tuple
+        return tuple_list
+    except (SyntaxError, ValueError) as e:
+        raise ValueError(f"Invalid input string format: {e}")
