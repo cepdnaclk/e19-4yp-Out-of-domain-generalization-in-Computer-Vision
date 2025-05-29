@@ -51,7 +51,8 @@ def main():
 
     client = Gemini(auto_cookies=False, cookies=cookies)
 
-    meta_init_prompt = "Give 50 textual descriptions pairs of visual discriminative features to identify whether the central region of an histopathological image patch contains tumor tissue or not. The patch is extracted from an H&E‑stained whole‑slide image of a lymph node section"
+    meta_init_prompt = """Give 50 textual descriptions pairs of visual discriminative features to identify whether the central region of an histopathological image patch contains tumor tissue or not. The patch is extracted from an H&E‑stained whole‑slide image of a lymph node section.
+                        Only give the output as [(negative prompt,positive prompt),...]"""
     META_PROMPT_TEMPLATE = """\
             Please follow the instruction step-by-step to generate a better prompt pair.
 
