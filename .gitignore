@@ -4,3 +4,4 @@
 /BiomedCLIP_Explorations/cached/
 *.pth
 *.env
+*.pyc
