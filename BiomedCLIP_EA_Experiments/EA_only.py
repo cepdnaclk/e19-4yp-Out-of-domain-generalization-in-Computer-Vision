@@ -50,10 +50,10 @@ def main():
             prompts = util.get_prompt_pairs(
                 meta_init_prompt, client)
         else:
-            prompts = util.get_prompt_pairs(
-                meta_prompt, client, parse_func=util.extract_and_parse_prompt_tuple)
+            prompts = [util.get_prompt_pairs(
+                meta_prompt, client, parse_func=util.extract_and_parse_prompt_tuple)]  # wrapped in a list to make it a list of prompt pairs
 
-        for i, prompt_pair in enumerate([prompts]):
+        for i, prompt_pair in enumerate(prompts):
             if len(prompt_pair) != 2:
                 print(f"Invalid prompt pair: {prompt_pair}")
                 continue
