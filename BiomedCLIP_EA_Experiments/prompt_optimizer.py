@@ -1,68 +1,85 @@
-from util import *
+from typing import List
+import util
 from gemini import Gemini
+import torch
+import numpy as np
 
 
 def main():
-    # load model from util
-    model, preprocess, tokenizer = load_clip_model()
+   # 1. load model, process, and tokenizer
+    model, preprocess, tokenizer = util.load_clip_model()
+    print("Model, preprocess, and tokenizer loaded successfully.")
 
-    # load features and labels 
-    centers_features,centers_labels = extract_center_embeddings(model=model, preprocess=preprocess)
-    
-    # Configure Gemini
-    cookies = {"__Secure-1PSIDCC": "8WqUIAmsCWWrmWr-/AqzGpTdQDEvsWgOSP",
-               "__Secure-1PSID": "g.a000xAhtcFFJw-Pe2SfxFzHOJXUMClrKicX6q_b7mFELwJZbSoGutGYNkxA8kyX1FZpLmh29jwACgYKAXESARASFQHGX2Mi7J2NGrnruG68cQI02g7H6BoVAUF8yKqFxE1MZio3JvWDuqqc2aS90076",
-               "__Secure-1PSIDTS": "AKEyXzW9DtAugRds_seZfS4OUpDvWkPzJFmyEjYz-Ytr-zQpaQ_8j4Ujce8w5aN4HjfI7Erxnmae",
+    # 2. load dataset
+    # 1) Unpack—annotate what extract_center_embeddings returns
+    centers_features: List[np.ndarray]
+    centers_labels:   List[np.ndarray]
+    centers_features, centers_labels = util.extract_center_embeddings(
+        model=model,
+        preprocess=preprocess,
+        num_centers=1,  # trained only on center 0
+    )
+
+    # 2) Concatenate and convert—annotate the resulting tensors
+    all_feats: torch.Tensor = torch.from_numpy(
+        np.concatenate(centers_features, axis=0)
+    ).float()   # shape: (N_total, D), dtype=torch.float32
+
+    all_labels: torch.Tensor = torch.from_numpy(
+        np.concatenate(centers_labels, axis=0)
+    ).long()    # shape: (N_total,), dtype=torch.int64
+
+    print("Center embeddings extracted successfully.")
+
+    # 3. load initial prompts (optional)
+    # initial_prompts = util.load_initial_prompts()
+
+    cookies = {"__Secure-1PSIDCC": "AKEyXzX1aCY8foMEFMurdSLozUiiA_r4aBcLnLoo13-vumWKdYrsdYEQCZdmX5rkgNovsvRocX81",
+               "__Secure-1PSID": "g.a000xAh5UmC2BgFDEL7ifghVXxgaGkKxUI_E7SU8c6KeTfk4KXuyOMwOCWull1Ay_77sjDJF-QACgYKAR4SARQSFQHGX2MiOcqyvE84Gino-n2jvqMh-BoVAUF8yKqEYwQ1MWNHeeRQHWA3kX7b0076",
+               "__Secure-1PSIDTS": "sidts-CjIB5H03P0fnbJt4Crq1Kylg6t2fsOt3QPZmJZ2G6Za5F-Ab6Jsqd9AHN7TDaJmOzrXnPBAA",
                }  # Cookies may vary by account or region. Consider sending the entire cookie file.
 
     client = Gemini(auto_cookies=False, cookies=cookies)
-
+    print("Gemini client initialized successfully.")
 
     # Configure the prompt templates
-    meta_prompt_template_initial = """Give 50 textual descriptions pairs of visual discriminative features to identify whether the central region of an histopathological image patch contains tumor tissue or not. The patch is extracted from an H&E‑stained whole‑slide image of a lymph node section.
-                                    Each description should be about 5-20 words.
-                                    Only give the output as [(negative prompt,positive prompt),...]"""
-                       
+    meta_init_prompt = """Give 50 textual descriptions pairs of visual discriminative features to identify whether the central region of an histopathological image patch contains tumor tissue or not. The patch is extracted from an H&E‑stained whole‑slide image of a lymph node section. Only give the output as python code in the format - prompts: list[tuple[negative: str, positive: str]]"""
 
-    meta_prompt_template = """Give 50 textual descriptions pairs of visual discriminative features to identify whether the central region of an histopathological image patch contains tumor tissue or not. The patch is extracted from an H&E‑stained whole‑slide image of a lymph node section.
-                       Each description should be about 5-20 words.
-                       Only give the output as [(negative prompt,positive prompt).
-                       Here are the best performing pairs. You should aim to get higher scores.
-                       {content}
-                       """
-    
-                       
-                       
-    
+    meta_prompt_template = """The task is to generate textual descriptions pairs of visual discriminative features to identify whether the central region of an histopathological image patch contains tumor tissue or not. The patch is extracted from an H&E‑stained whole‑slide image of a lymph node section.
+    Here are the best performing pairs in acsending order. High scores indicate higher quality visual discriminative features.
+    {content}
+    Write 10 new prompt pairs that is different from the old ones and has a score as high as possible. 
+    Only give the output as python code in the format - prompts: list[tuple[negative: str, positive: str]]
+    """
 
     # Optimization loop
-    pq = PriorityQueue(max_capacity=1000)
-    prompt_llm = ""
+    pq = util.PriorityQueue(max_capacity=1000)
+    prompt_content = ""
     for j in range(100):
-        if j==0:
-            prompts = get_prompt_pairs(meta_prompt_template_initial, client)
+        if j == 0:
+            prompts = util.get_prompt_pairs(meta_init_prompt, client)
         else:
-            prompts = get_prompt_pairs(meta_prompt_template.format(content=prompt_llm), client)
+            prompts = util.get_prompt_pairs(
+                meta_prompt_template.format(content=prompt_content), client)
 
         for i, prompt_pair in enumerate(prompts):
             if len(prompt_pair) != 2:
                 print(f"Invalid prompt pair: {prompt_pair}")
                 continue
             negative_prompt, positive_prompt = prompt_pair
-            results = evaluate_prompt_pair(
+            results = util.evaluate_prompt_pair(
                 negative_prompt, positive_prompt, centers_features[0], centers_labels[0], model, tokenizer)
-            
-            
+
             pq.insert((negative_prompt, positive_prompt), results['accuracy'])
 
         n = 10
         print(f"\nCurrent Top {n} prompt pairs:")
         selected_prompts = pq.get_roulette_wheel_selection(10)
         # top_n = pq.get_best_n(n)
-        prompt_llm = f"Current Top {n} prompt pairs:\n"
+        prompt_content = f"Current Top {n} prompt pairs:\n"
         for i, (prompt_pair, score) in enumerate(selected_prompts):
             print(f"{i+1}. {prompt_pair}, Score: {score:.4f}")
-            prompt_llm += f"{i+1}. {prompt_pair}, Score: {score:.4f}\n"
+            prompt_content += f"{i+1}. {prompt_pair}, Score: {score:.4f}\n"
 
         # Save the best prompt pairs to a file
         with open("selected_prompt_pairs.txt", "a") as f:
@@ -71,9 +88,9 @@ def main():
                 f.write(f"{prompt_pair}, Score: {score:.4f}\n")
             f.write("\n")
 
-
-
-
+        # print the average score of the top n prompts
+        print(
+            f"Iteration {j+1}: mean accuracy of top 10: {pq.get_average_score(10)}.\n")
 
 
 if __name__ == "__main__":
