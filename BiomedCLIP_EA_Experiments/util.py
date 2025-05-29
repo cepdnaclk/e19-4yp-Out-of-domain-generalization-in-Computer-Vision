@@ -1,6 +1,8 @@
 import heapq
+import tokenize
+import io
 import random
-from typing import List, Optional, Tuple
+from typing import Any, List, Optional, Tuple
 import re
 import torch
 import ast
@@ -232,54 +234,140 @@ def evaluate_prompt_pair(
     return {'accuracy': acc, 'auc': auc, 'cm': cm, 'report': report}
 
 
-def convert_string_to_list_of_tuples(input_string):
+def _force_double_quotes(code: str) -> str:
+    """
+    Rewrites every Python string-literal in `code` to use double-quotes,
+    properly handling apostrophes and other special characters.
+    """
+    tokens = tokenize.generate_tokens(io.StringIO(code).readline)
+    new_tokens = []
+    for toknum, tokval, start, end, line in tokens:
+        if toknum == tokenize.STRING:
+            # Get the actual string value
+            value = ast.literal_eval(tokval)
 
+            # Create a new string literal with double quotes
+            # Properly escape any double quotes or backslashes in the string
+            # This automatically handles escaping correctly
+            tokval = json.dumps(value)
+
+        new_tokens.append((toknum, tokval))
+    return tokenize.untokenize(new_tokens)
+
+
+def extract_and_parse_prompt_list(code: str) -> List[Tuple[str, str]]:
+    """
+    From a string of Python code, finds the first occurrence of
+        = [ ... ]
+    and parses that bracketed literal into a List[Tuple[str,str]].
+
+    Raises:
+        ValueError if no list literal is found or it’s malformed.
+    """
+    # 1) grab everything from the first '=' up to the matching ']'
+    m = re.search(r'=\s*(\[\s*[\s\S]*?\])', code)
+    if not m:
+        raise ValueError("No list literal found after an '=' in the code")
+    list_str = m.group(1)
+
+    # 2) safely evaluate it (only literals)
     try:
-        # Safely evaluate the string as a Python list
-        data = ast.literal_eval(input_string)
-        # Convert each sublist to a tuple
-        tuple_list = [tuple(pair) for pair in data]
-        return tuple_list
+        data: Any = ast.literal_eval(list_str)
     except (SyntaxError, ValueError) as e:
-        raise ValueError(f"Invalid input string format: {e}")
+        raise ValueError(f"Malformed list literal: {e}")
+
+    # 3) validate shape
+    if not isinstance(data, list) or not all(
+        isinstance(item, (list, tuple)) and len(item) == 2 for item in data
+    ):
+        raise ValueError(
+            "Parsed object is not a list of 2-element lists/tuples")
+
+    # 4) convert to List[Tuple[str,str]]
+    return [(str(a), str(b)) for a, b in data]
 
 
-def get_prompt_pairs(
-    prompt: str,
-    client,
-    parse_func: Callable = convert_string_to_list_of_tuples,
-    max_retries: int = 10
-) -> List[Tuple[str, str]]:
+def extract_and_parse_prompt_tuple(code: str) -> Tuple[str, str]:
     """
-    Query the client for a list of prompt-pairs, expected back
-    as a literal Python list-of-pairs string (e.g. "[['neg','pos'], ...]").
-    Retries up to `max_retries` times on parse errors.
+    From a string of Python code, finds the first literal tuple of two strings
+    (e.g. ("neg prompt","pos prompt")) and returns it as (str, str).
+
+    Raises:
+        ValueError if no suitable 2-element string tuple is found.
     """
+    # Parse into an AST
+    tree = ast.parse(code)
+
+    # Walk the tree looking for a Tuple node with exactly two string constants
+    for node in ast.walk(tree):
+        if isinstance(node, ast.Tuple) and len(node.elts) == 2:
+            a, b = node.elts
+            if (
+                isinstance(a, ast.Constant) and isinstance(a.value, str)
+                and isinstance(b, ast.Constant) and isinstance(b.value, str)
+            ):
+                return (a.value, b.value)
+
+    raise ValueError("No 2-element string tuple found in code")
+
+
+def _force_double_quotes(code: str) -> str:
+    """
+    Rewrites every Python string-literal in `code` to use double-quotes,
+    properly handling apostrophes and other special characters.
+    """
+    tokens = tokenize.generate_tokens(io.StringIO(code).readline)
+    new_tokens = []
+    for toknum, tokval, start, end, line in tokens:
+        if toknum == tokenize.STRING:
+            # Get the actual string value
+            value = ast.literal_eval(tokval)
+
+            # Create a new string literal with double quotes
+            # Properly escape any double quotes or backslashes in the string
+            # This automatically handles escaping correctly
+            tokval = json.dumps(value)
+
+        new_tokens.append((toknum, tokval))
+    return tokenize.untokenize(new_tokens)
+
+
+def get_prompt_pairs(prompt, client, parse_func=extract_and_parse_prompt_list,  max_retries=10) -> List[Tuple[str, str]]:
     for attempt in range(1, max_retries + 1):
-        response = client.generate_content(prompt)
-        raw = response.text.strip()
-
-        # Print first 100 chars
-        print(f"Raw response on attempt {attempt}: {raw[:100]}...")
-        # Strip any code-block fences ``` ... ```
-        m = re.search(r'```\\s*(.*?)\\s*```', raw, re.S)
-        list_str = m.group(1) if m else raw
-
         try:
-            prompts = parse_func(list_str)
+            response = client.generate_content(prompt)
+            raw = response.text
+            # print(f"Raw response on attempt {attempt}: {raw}...")
+
+            # 1) extract the python block
+
+            m = re.search(r'```python\s*([\s\S]*?)\s*```', raw)
+            if not m:
+                raise ValueError("No ```python ... ``` block found")
+            code = m.group(1)
+
+            # 2) normalize all literals to double-quoted form
+            code = _force_double_quotes(code)
+
+            # print(f"Normalized code on attempt {attempt}: {code}...")
+
+            # 3) convert the string to a list of tuples
+            prompts_list = parse_func(code)
+            prompts: List[Tuple[str, str]] = prompts_list
             print(f"Loaded {len(prompts)} prompt-pairs.")
             print("First pair:", prompts[0])
             return prompts
 
-        except ValueError as e:
+        except Exception as e:
             print(
-                f"[Warning] parse error on attempt {attempt}/{max_retries}: {e}")
+                f"[Warning] get_prompt_pairs parse error on attempt {attempt}/{max_retries}: {e}")
             if attempt == max_retries:
                 raise RuntimeError(
-                    "Failed to parse prompt-pairs after multiple attempts")
+                    "Failed to parse prompts after multiple attempts") from e
+            # otherwise, retry immediately
 
-    # This should never happen
-    raise RuntimeError("Unreachable in get_prompt_pairs")
+    # Should never reach here
+    raise RuntimeError("Unreachable")
 
 
 class PriorityQueue:

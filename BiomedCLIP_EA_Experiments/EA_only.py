@@ -6,33 +6,6 @@ import ast
 from typing import List, Any
 
 
-def extract_bracketed_content(text: str) -> str:
-    """
-    Extracts the first top-level bracketed expression from `text`.
-
-    E.g. given:
-        "... Final Prompt Pair:\n[ [\"a\",\"b\"], [\"c\",\"d\"] ]\n"
-    returns:
-        '[ ["a","b"], ["c","d"] ]'
-
-    Raises:
-        ValueError if no bracketed expression is found.
-    """
-    # This regex looks for a '[' followed by anything until the matching ']' at the same nesting level.
-    # Simplest: grab from the first '[' to the last ']' in the string.
-    text = text.strip()
-    # print(f"Extracting bracketed content from: {text}")
-    start = text.find('[')
-    end = text.rfind(']')
-    if start == -1 or end == -1 or end <= start:
-        raise ValueError("No bracketed content found")
-    return text[start:end+1]
-
-
-def parse_func(input_string: str) -> List[List[Any]]:
-    return util.convert_string_to_list_of_tuples(extract_bracketed_content(input_string))
-
-
 def main():
     # 1. load model, process, and tokenizer
     model, preprocess, tokenizer = util.load_clip_model()
@@ -75,9 +48,9 @@ def main():
                 meta_init_prompt, client)
         else:
             prompts = util.get_prompt_pairs(
-                meta_prompt, client, parse_func=parse_func)
+                meta_prompt, client, parse_func=util.extract_and_parse_prompt_tuple)
 
-        for i, prompt_pair in enumerate(prompts):
+        for i, prompt_pair in enumerate([prompts]):
             if len(prompt_pair) != 2:
                 print(f"Invalid prompt pair: {prompt_pair}")
                 continue
