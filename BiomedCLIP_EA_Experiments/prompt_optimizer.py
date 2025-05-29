@@ -34,7 +34,7 @@ def main():
     # 3. load initial prompts (optional)
     # initial_prompts = util.load_initial_prompts()
 
-    cookies = {"__Secure-1PSIDCC": "AKEyXzX1aCY8foMEFMurdSLozUiiA_r4aBcLnLoo13-vumWKdYrsdYEQCZdmX5rkgNovsvRocX81",
+    cookies = {"__Secure-1PSIDCC": "AKEyXzWImW7ZW8nGJygJoo09vKDW1dJKNZSdLQIwa-CISmsnaJT5zjat8JepvXLnn3GA3rHMTvvi",
                "__Secure-1PSID": "g.a000xAh5UmC2BgFDEL7ifghVXxgaGkKxUI_E7SU8c6KeTfk4KXuyOMwOCWull1Ay_77sjDJF-QACgYKAR4SARQSFQHGX2MiOcqyvE84Gino-n2jvqMh-BoVAUF8yKqEYwQ1MWNHeeRQHWA3kX7b0076",
                "__Secure-1PSIDTS": "sidts-CjIB5H03P0fnbJt4Crq1Kylg6t2fsOt3QPZmJZ2G6Za5F-Ab6Jsqd9AHN7TDaJmOzrXnPBAA",
                }  # Cookies may vary by account or region. Consider sending the entire cookie file.
