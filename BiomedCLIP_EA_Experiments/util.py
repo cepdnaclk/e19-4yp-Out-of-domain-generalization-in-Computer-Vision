@@ -1,5 +1,5 @@
 import random
-from typing import List, Tuple
+from typing import List, Optional, Tuple
 import re
 import torch
 import ast
@@ -109,7 +109,7 @@ def load_clip_model(
     )
 
     model = model.to(device).eval()
-    return model, preprocess
+    return model, preprocess, tokenizer
 
 
 def extract_center_embeddings(
