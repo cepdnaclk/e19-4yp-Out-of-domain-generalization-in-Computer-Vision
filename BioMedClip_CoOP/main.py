@@ -24,10 +24,10 @@ def load_dataloader(path):
 def main():
    
     args = {
-    'keyword': 'class_specific',          # Keyword for saving model
-    'metadata_path': '/home/E19_FYP_Domain_Gen_Data/metadata.csv',
-    'organized_data_path': '/home/E19_FYP_Domain_Gen_Data/organized_by_center',
-    'data_path': '/home/E19_FYP_Domain_Gen_Data/patches',
+    'keyword': 'class_specific',   
+    'metadata_path': '/storage/projects3/e19-fyp-out-of-domain-gen-in-cv/camelyon17WILDS/metadata.csv',
+    'organized_data_path': '/storage/projects3/e19-fyp-out-of-domain-gen-in-cv/camelyon17WILDS/organized_by_center',
+    'data_path': '/storage/projects3/e19-fyp-out-of-domain-gen-in-cv/camelyon17WILDS/patches',
     # Basic training parameters
     'lr': 0.002,                    # Learning rate
     'train_epoch': 100,              # Number of training epochs

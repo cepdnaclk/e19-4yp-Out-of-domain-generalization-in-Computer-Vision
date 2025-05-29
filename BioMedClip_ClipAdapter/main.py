@@ -10,10 +10,10 @@ from data import get_dataloaders
 
 def main():
     print("Starting ClipAdapter-BiomedCLIP...")
-   
+    send_slack_message("Starting ClipAdapter-BiomedCLIP...")
     cfg = {
-        'metadata_path': '/home/E19_FYP_Domain_Gen_Data/metadata.csv',
-        'data_path': '/home/E19_FYP_Domain_Gen_Data/organized_by_center',
+        'metadata_path': '/storage/projects3/e19-fyp-out-of-domain-gen-in-cv/camelyon17WILDS/metadata.csv',
+        'data_path': '/storage/projects3/e19-fyp-out-of-domain-gen-in-cv/camelyon17WILDS/organized_by_center',
         'lr': 0.001,                   # Learning rate
         'train_epoch': 100,            # Number of training epochs
         'alpha_ca': 0.5,               # Initial alpha value for CLIP-Adapter
@@ -60,8 +60,13 @@ def main():
     # Textual features
     
     classnames = ["no tumor", "tumor present"] # Negative , Positive
-    positive_prompt = "This is an image of a tumor"
-    negative_prompt = "Tumor is not present in this image"
+    # positive_prompt = "This is an image of a tumor"
+    # negative_prompt = "Tumor is not present in this image"
+
+    positive_prompt = "Large immature cells centrally demonstrate ongoing active replication"
+    negative_prompt = "Small mature lymphocytes centrally show no indication of active replication"
+
+
 
     text_weights = biomedclip_classifier(
     classnames=classnames,

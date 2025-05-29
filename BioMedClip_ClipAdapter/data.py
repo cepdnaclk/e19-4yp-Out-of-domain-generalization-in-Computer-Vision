@@ -101,7 +101,8 @@ def get_dataloaders(metadata_path, data_root, batch_size=32):
     
     # Main training set (train splits from centers 0,1,2)
     train_dataset = CamelyonDataset(
-        centers=[0, 1, 2],
+        # Modified to only include center 0 for training
+        centers=[0],
         metadata_path=metadata_path,
         root_dir=data_root,
         transform=train_transform,
