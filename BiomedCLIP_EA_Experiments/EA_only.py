@@ -20,6 +20,8 @@ def extract_bracketed_content(text: str) -> str:
     """
     # This regex looks for a '[' followed by anything until the matching ']' at the same nesting level.
     # Simplest: grab from the first '[' to the last ']' in the string.
+    text = text.strip()
+    print(f"Extracting bracketed content from: {text}")
     start = text.find('[')
     end = text.rfind(']')
     if start == -1 or end == -1 or end <= start:
