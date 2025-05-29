@@ -369,3 +369,40 @@ class PriorityQueue:
                     break
 
         return selected
+
+
+def load_initial_prompts(path: str) -> List[InitialItem]:
+    """
+    Reads a text file where each line is of the form:
+      1. ('neg', 'pos'), Score: 0.9364
+    and returns a list of ((neg, pos), score) tuples.
+    """
+    initial: List[InitialItem] = []
+    line_re = re.compile(r"""
+        ^\s*\d+\.       # leading index and dot
+        \s*(\(.+\))     # group(1): the tuple literal "('neg','pos')"
+        \s*,\s*Score:\s*
+        ([0-9]+\.[0-9]+)  # group(2): the floating score
+        """, re.VERBOSE)
+
+    with open(path, 'r') as f:
+        for line in f:
+            m = line_re.match(line)
+            if not m:
+                continue
+            pair_literal, score_str = m.groups()
+            try:
+                prompt_pair = ast.literal_eval(pair_literal)
+                score = float(score_str)
+                # validate
+                if (
+                    isinstance(prompt_pair, tuple)
+                    and len(prompt_pair) == 2
+                    and all(isinstance(s, str) for s in prompt_pair)
+                ):
+                    initial.append((prompt_pair, score))
+            except Exception:
+                # skip malformed lines
+                continue
+
+    return initial
