@@ -1,3 +1,4 @@
+import heapq
 import random
 from typing import List, Optional, Tuple
 import re
