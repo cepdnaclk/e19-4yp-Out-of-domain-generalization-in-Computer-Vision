@@ -86,9 +86,10 @@ def main():
             prompt_content += f"{i+1}. {prompt_pair}, Score: {score:.4f}\n"
 
         # Save the best prompt pairs to a file
-        with open("selected_prompt_pairs.txt", "a") as f:
+        top_prompts = pq.get_best(n)
+        with open("opt_only_pairs.txt", "a") as f:
             f.write(f"Iteration {j+1}:\n")
-            for prompt_pair, score in selected_prompts:
+            for prompt_pair, score in top_prompts:
                 f.write(f"{prompt_pair}, Score: {score:.4f}\n")
             f.write("\n")
 
