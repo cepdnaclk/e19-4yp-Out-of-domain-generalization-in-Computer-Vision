@@ -78,7 +78,7 @@ def main():
             results = util.evaluate_prompt_pair(
                 negative_prompt, positive_prompt, all_feats, all_labels, model, tokenizer)
             print(
-                f"Iteration {j+1}, Prompt Pair {i+1}: {negative_prompt}, {positive_prompt}, Accuracy: {results['accuracy']:.4f}")
+                f"Iteration {j+1}, New Prompt Pair {i+1}: {negative_prompt}, {positive_prompt}, Accuracy: {results['accuracy']:.4f}")
             pq.insert((negative_prompt, positive_prompt), results['accuracy'])
 
         n = 2
@@ -96,6 +96,9 @@ def main():
             for prompt_pair, score in roulette:
                 f.write(f"{prompt_pair}, Score: {score:.4f}\n")
             f.write("\n")
+
+        print(
+            f"Iteration {j+1}: mean accuracy of top 10: {pq.get_average_score(10)}.\n")
 
 
 if __name__ == "__main__":

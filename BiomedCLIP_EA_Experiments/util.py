@@ -462,6 +462,19 @@ class PriorityQueue:
 
         return selected
 
+    def get_average_score(self, top_n) -> float:
+        """
+        Calculate the average score of the top n items in the queue.
+        If there are fewer than n items, it averages all available.
+        """
+        if not self._heap:
+            return 0.0
+        top_items = self.get_best_n(top_n)
+        if not top_items:
+            return 0.0
+        total_score = sum(score for _, score in top_items)
+        return total_score / len(top_items)
+
 
 def load_initial_prompts(path: str) -> List[InitialItem]:
     """
