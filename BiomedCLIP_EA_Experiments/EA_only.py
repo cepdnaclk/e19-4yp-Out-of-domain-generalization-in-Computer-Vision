@@ -9,10 +9,12 @@ from typing import List, Any
 def main():
     # 1. load model, process, and tokenizer
     model, preprocess, tokenizer = util.load_clip_model()
+    print("Model, preprocess, and tokenizer loaded successfully.")
 
     # 2. load dataset
     centers_features, centers_labels = util.extract_center_embeddings(
         model=model, preprocess=preprocess)
+    print("Center embeddings extracted successfully.")
 
     # 3. load initial prompts (optional)
     # initial_prompts = util.load_initial_prompts()
@@ -23,7 +25,9 @@ def main():
                }  # Cookies may vary by account or region. Consider sending the entire cookie file.
 
     client = Gemini(auto_cookies=False, cookies=cookies)
+    print("Gemini client initialized successfully.")
 
+    # 4. Define the meta prompt and template
     meta_init_prompt = """Give 50 textual descriptions pairs of visual discriminative features to identify whether the central region of an histopathological image patch contains tumor tissue or not. The patch is extracted from an H&E‑stained whole‑slide image of a lymph node section.
                         Only give the output as [(negative prompt,positive prompt),...]"""
     META_PROMPT_TEMPLATE = """\
@@ -34,7 +38,7 @@ def main():
             Prompt Pair 1: {pair1}
             Prompt Pair 2: {pair2}
 
-            2. Mutate the prompt generated in Step 1 and generate a final prompt pair in brackets [[], []]
+            2. Mutate the prompt generated in Step 1 and generate a final prompt pair in a python tuple (str, str)
     """
 
     # initial_list = load_initial_prompts("selected_prompts.txt")
