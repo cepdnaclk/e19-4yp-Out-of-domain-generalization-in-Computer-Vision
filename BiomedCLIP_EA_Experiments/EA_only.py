@@ -1,9 +1,10 @@
 import util
 from gemini import Gemini
-
+import torch
 import re
 import ast
 from typing import List, Any
+import numpy as np
 
 
 def main():
@@ -12,8 +13,24 @@ def main():
     print("Model, preprocess, and tokenizer loaded successfully.")
 
     # 2. load dataset
+    # 1) Unpack—annotate what extract_center_embeddings returns
+    centers_features: List[np.ndarray]
+    centers_labels:   List[np.ndarray]
     centers_features, centers_labels = util.extract_center_embeddings(
-        model=model, preprocess=preprocess)
+        model=model,
+        preprocess=preprocess,
+        num_centers=1,  # trained only on center 0
+    )
+
+    # 2) Concatenate and convert—annotate the resulting tensors
+    all_feats: torch.Tensor = torch.from_numpy(
+        np.concatenate(centers_features, axis=0)
+    ).float()   # shape: (N_total, D), dtype=torch.float32
+
+    all_labels: torch.Tensor = torch.from_numpy(
+        np.concatenate(centers_labels, axis=0)
+    ).long()    # shape: (N_total,), dtype=torch.int64
+
     print("Center embeddings extracted successfully.")
 
     # 3. load initial prompts (optional)
@@ -59,7 +76,7 @@ def main():
                 continue
             negative_prompt, positive_prompt = prompt_pair
             results = util.evaluate_prompt_pair(
-                negative_prompt, positive_prompt, centers_features[0], centers_labels[0], model, tokenizer)
+                negative_prompt, positive_prompt, all_feats, all_labels, model, tokenizer)
             pq.insert((negative_prompt, positive_prompt), results['accuracy'])
 
         n = 2
