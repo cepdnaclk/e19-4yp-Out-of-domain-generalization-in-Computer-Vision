@@ -1,4 +1,8 @@
+import random
+from typing import List, Tuple
+import re
 import torch
+import ast
 from torch.utils.data import Dataset, DataLoader
 from sklearn.metrics import (
     accuracy_score,
@@ -16,6 +20,7 @@ from open_clip.factory import HF_HUB_PREFIX, _MODEL_CONFIGS
 import json
 from tqdm import tqdm
 
+
 # 1. Paths & constants
 METADATA_CSV = "/home/E19_FYP_Domain_Gen_Data/metadata.csv"
 PATCHES_DIR = "/home/E19_FYP_Domain_Gen_Data/patches"
@@ -27,6 +32,8 @@ CONTEXT_LENGTH = 256
 BATCH_SIZE = 32
 NUM_WORKERS = 4
 DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+PromptPair = Tuple[str, str]
+InitialItem = Tuple[PromptPair, float]
 
 
 class BiomedCLIPDataset(Dataset):
@@ -224,15 +231,141 @@ def evaluate_prompt_pair(
     return {'accuracy': acc, 'auc': auc, 'cm': cm, 'report': report}
 
 
+def convert_string_to_list_of_tuples(input_string):
 
-
-import ast
-
-def convert_string_to_tuples(input_string):
-    
     try:
-        data = ast.literal_eval(input_string)  # Safely evaluate the string as a Python list
-        tuple_list = [tuple(pair) for pair in data]  # Convert each sublist to a tuple
+        # Safely evaluate the string as a Python list
+        data = ast.literal_eval(input_string)
+        # Convert each sublist to a tuple
+        tuple_list = [tuple(pair) for pair in data]
         return tuple_list
     except (SyntaxError, ValueError) as e:
         raise ValueError(f"Invalid input string format: {e}")
+
+
+def get_prompt_pairs(
+    prompt: str,
+    client,
+    max_retries: int = 10
+) -> List[Tuple[str, str]]:
+    """
+    Query the client for a list of prompt-pairs, expected back
+    as a literal Python list-of-pairs string (e.g. "[['neg','pos'], ...]").
+    Retries up to `max_retries` times on parse errors.
+    """
+    for attempt in range(1, max_retries + 1):
+        response = client.generate_content(prompt)
+        raw = response.text.strip()
+
+        # Strip any code-block fences ``` ... ```
+        m = re.search(r'```\\s*(.*?)\\s*```', raw, re.S)
+        list_str = m.group(1) if m else raw
+
+        try:
+            prompts = convert_string_to_list_of_tuples(list_str)
+            print(f"Loaded {len(prompts)} prompt-pairs.")
+            print("First pair:", prompts[0])
+            return prompts
+
+        except ValueError as e:
+            print(
+                f"[Warning] parse error on attempt {attempt}/{max_retries}: {e}")
+            if attempt == max_retries:
+                raise RuntimeError(
+                    "Failed to parse prompt-pairs after multiple attempts")
+
+    # This should never happen
+    raise RuntimeError("Unreachable in get_prompt_pairs")
+
+
+class PriorityQueue:
+    # type: ignore
+    def __init__(self, max_capacity: int = 10, initial: Optional[List[Tuple[PromptPair, float]]] = None):
+
+        self.max_capacity: int = max_capacity
+        # Store (score, prompt_pair); min-heap root is the lowest score.
+        self._heap: List[Tuple[float, PromptPair]] = []  # type: ignore
+        # Track negative prompts for O(1) membership checks
+        self._neg_set: set[str] = set()
+
+        # If the user passed some initial prompt-pairs, insert them now:
+        if initial is not None:
+            for prompt_pair, score in initial:
+                self.insert(prompt_pair, score)
+
+    def insert(self, prompt_pair: PromptPair, score: float) -> None:  # type: ignore
+        negative = prompt_pair[1]
+        # Skip if negative prompt already exists
+        if negative in self._neg_set:
+            return
+        # Skip low scores
+        if score < 0.5:
+            return
+
+        if len(self._heap) < self.max_capacity:
+            # Add new entry
+            heapq.heappush(self._heap, (score, prompt_pair))
+            self._neg_set.add(negative)
+        else:
+            # Only replace if new score beats the current minimum
+            if score > self._heap[0][0]:
+                # Replace smallest entry, capturing the popped item
+                old_score, old_pair = heapq.heapreplace(
+                    self._heap, (score, prompt_pair))
+                # Update negative-prompt set
+                self._neg_set.remove(old_pair[1])
+                self._neg_set.add(negative)
+
+    def get_best(self) -> Optional[Tuple[PromptPair, float]]:
+        if not self._heap:
+            return None
+        best_score, best_pair = max(self._heap, key=lambda x: x[0])
+        return best_pair, best_score
+
+    def get_best_n(self, n: int) -> List[Tuple[PromptPair, float]]:
+        if n <= 0:
+            return []
+        top_n = sorted(self._heap, key=lambda x: x[0], reverse=True)[:n]
+        return [(pair, score) for score, pair in top_n]
+
+    def __len__(self) -> int:
+        return len(self._heap)
+
+    def __str__(self) -> str:
+        ordered = sorted(self._heap, key=lambda x: x[0], reverse=True)
+        return str([(pair, score) for score, pair in ordered])
+
+    def get_roulette_wheel_selection(self, n: int) -> List[Tuple[PromptPair, float]]:
+        """
+        Perform roulette-wheel (fitness-proportional) selection without replacement.
+
+        Args:
+            n: number of items to select.
+
+        Returns:
+            A list of up to n (prompt_pair, score) tuples,
+            selected without replacement according to fitness weights.
+        """
+        # Work on a temporary copy of the heap data
+        pool = list(self._heap)  # each element is (score, prompt_pair)
+        total_fitness = sum(score for score, _ in pool)
+        selected: List[Tuple[PromptPair, float]] = []
+
+        # Don't request more than available
+        n = min(n, len(pool))
+
+        for _ in range(n):
+            # Normalize weights and pick one
+            r = random.random() * total_fitness
+            cum = 0.0
+            for idx, (score, pair) in enumerate(pool):
+                cum += score
+                if cum >= r:
+                    # select this individual
+                    selected.append((pair, score))
+                    # remove it from pool & update total fitness
+                    total_fitness -= score
+                    pool.pop(idx)
+                    break
+
+        return selected
