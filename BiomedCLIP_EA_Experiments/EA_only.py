@@ -85,7 +85,7 @@ def main():
         meta_prompt = META_PROMPT_TEMPLATE.format(
             pair1=roulette[0], pair2=roulette[1])
 
-        for i, (prompt_pair, score) in enumerate(meta_prompt):
+        for i, (prompt_pair, score) in enumerate(roulette):
             print(f"{i+1}. {prompt_pair}, Score: {score:.4f}")
 
         # Save the best prompt pairs to a file
