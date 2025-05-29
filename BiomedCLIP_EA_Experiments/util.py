@@ -246,6 +246,7 @@ def convert_string_to_list_of_tuples(input_string):
 def get_prompt_pairs(
     prompt: str,
     client,
+    parse_func: Callable = convert_string_to_list_of_tuples,
     max_retries: int = 10
 ) -> List[Tuple[str, str]]:
     """
@@ -262,7 +263,7 @@ def get_prompt_pairs(
         list_str = m.group(1) if m else raw
 
         try:
-            prompts = convert_string_to_list_of_tuples(list_str)
+            prompts = parse_func(list_str)
             print(f"Loaded {len(prompts)} prompt-pairs.")
             print("First pair:", prompts[0])
             return prompts
