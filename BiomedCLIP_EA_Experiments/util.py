@@ -70,10 +70,10 @@ def append_filename_and_filepath(df):
 
 
 def load_clip_model(
-    config_path: str,
-    model_name: str,
-    weights_path: str,
-    device: torch.device,
+    config_path: str = CONFIG_PATH,
+    model_name: str = MODEL_NAME,
+    weights_path: str = WEIGHTS_PATH,
+    device: torch.device = DEVICE,
 ) -> Tuple[torch.nn.Module, Callable]:
     """
     Load a CLIP model and its preprocessing pipeline from a JSON config.
