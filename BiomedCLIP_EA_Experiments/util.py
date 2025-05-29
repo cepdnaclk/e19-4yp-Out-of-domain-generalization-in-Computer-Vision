@@ -468,11 +468,11 @@ class PriorityQueue:
         mn, mx = min(raw_scores), max(raw_scores)
 
         if mx == mn:
-            # everyone identical → give all 100
-            norm_scores = [100] * len(raw_scores)
+            # everyone identical → give all 90
+            norm_scores = [90] * len(raw_scores)
         else:
             norm_scores = [
-                int(round((s - mn) / (mx - mn) * 100))
+                int(round((s - mn) / (mx - mn) * (90 - 10) + 10))
                 for s in raw_scores
             ]
 
