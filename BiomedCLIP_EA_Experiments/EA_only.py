@@ -77,6 +77,8 @@ def main():
             negative_prompt, positive_prompt = prompt_pair
             results = util.evaluate_prompt_pair(
                 negative_prompt, positive_prompt, all_feats, all_labels, model, tokenizer)
+            print(
+                f"Iteration {j+1}, Prompt Pair {i+1}: {negative_prompt}, {positive_prompt}, Accuracy: {results['accuracy']:.4f}")
             pq.insert((negative_prompt, positive_prompt), results['accuracy'])
 
         n = 2
