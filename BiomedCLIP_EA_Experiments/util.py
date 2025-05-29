@@ -150,9 +150,9 @@ def extract_center_embeddings(
         for i in range(num_centers)
     ]
 
-    centers_features: List[torch.Tensor] = [np.zeros()
+    centers_features: List[torch.Tensor] = [[]
                                             for _ in range(num_centers)]
-    centers_labels:   List[torch.Tensor] = [np.zeros()
+    centers_labels:   List[torch.Tensor] = [[]
                                             for _ in range(num_centers)]
 
     os.makedirs(f"{CACHE_PATH}/centers", exist_ok=True)
