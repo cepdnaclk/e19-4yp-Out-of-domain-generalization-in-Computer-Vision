@@ -42,7 +42,7 @@ def main():
         if j==0:
             prompts = get_prompt_pairs(meta_prompt_template_initial, client)
         else:
-            prompts = get_prompt_pairs(meta_prompt_template, client)
+            prompts = get_prompt_pairs(meta_prompt_template.format(content=prompt_llm), client)
 
         for i, prompt_pair in enumerate(prompts):
             if len(prompt_pair) != 2:
