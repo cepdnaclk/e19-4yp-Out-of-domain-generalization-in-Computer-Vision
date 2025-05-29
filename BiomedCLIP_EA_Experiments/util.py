@@ -259,6 +259,8 @@ def get_prompt_pairs(
         response = client.generate_content(prompt)
         raw = response.text.strip()
 
+        # Print first 100 chars
+        print(f"Raw response on attempt {attempt}: {raw[:100]}...")
         # Strip any code-block fences ``` ... ```
         m = re.search(r'```\\s*(.*?)\\s*```', raw, re.S)
         list_str = m.group(1) if m else raw
