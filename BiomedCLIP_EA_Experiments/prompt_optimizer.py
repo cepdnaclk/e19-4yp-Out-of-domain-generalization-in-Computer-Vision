@@ -7,9 +7,20 @@ from typing import List
 import util
 import torch
 import numpy as np
-
+import os 
 
 def main():
+    # Name the experiment we are currently running
+    experiment_name = "Experiment 1"
+    print(f"Running {experiment_name}...")
+
+    # Create experiment results directory
+    results_dir = "experiment_results"
+    os.makedirs(results_dir, exist_ok=True)
+
+    # Create filename with experiment name
+    results_filename = os.path.join(results_dir, f"{experiment_name}_opt_pairs.txt")
+
    # 1. load model, process, and tokenizer
     model, preprocess, tokenizer = util.load_clip_model()
     print("Model, preprocess, and tokenizer loaded successfully.")
@@ -86,7 +97,7 @@ def main():
 
         # Save the best prompt pairs to a file
         top_prompts = pq.get_best_n(n)
-        with open("opt_only_pairs.txt", "a") as f:
+        with open(results_filename, "a") as f:
             f.write(f"Iteration {j+1}:\n")
             for prompt_pair, score in top_prompts:
                 f.write(f"{prompt_pair}, Score: {score:.4f}\n")
