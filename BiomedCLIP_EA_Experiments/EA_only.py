@@ -1,3 +1,7 @@
+"""
+ Evolutionary Algorithm (GA) Only - No Scores for optimization
+"""
+
 import util
 from gemini import Gemini
 import torch
@@ -91,9 +95,10 @@ def main():
             print(f"{i+1}. {prompt_pair}, Score: {score:.4f}")
 
         # Save the best prompt pairs to a file
+        top_prompts = pq.get_best_n(10)
         with open("EA_only.txt", "a") as f:
             f.write(f"Iteration {j+1}:\n")
-            for prompt_pair, score in roulette:
+            for prompt_pair, score in top_prompts:
                 f.write(f"{prompt_pair}, Score: {score:.4f}\n")
             f.write("\n")
 

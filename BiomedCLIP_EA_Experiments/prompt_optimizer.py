@@ -1,3 +1,7 @@
+"""
+Optimization Only - No Evolutionary Algorithm (EA) - Prompt Optimization Script
+"""
+
 from typing import List
 import util
 from gemini import Gemini
@@ -74,7 +78,7 @@ def main():
 
         n = 10
         print(f"\nCurrent Top {n} prompt pairs:")
-        selected_prompts = pq.get_roulette_wheel_selection(10)
+        selected_prompts = pq.get_roulette_wheel_selection(n)
         # reverse the order to set it to acsending order: Recency Bias
         selected_prompts = sorted(
             selected_prompts, key=lambda x: x[1], reverse=True)
