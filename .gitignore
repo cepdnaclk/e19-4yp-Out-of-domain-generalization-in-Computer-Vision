@@ -5,3 +5,4 @@
 *.pth
 *.env
 *.pyc
+/BiomedCLIP_EA_Experiments/API_KEY.py

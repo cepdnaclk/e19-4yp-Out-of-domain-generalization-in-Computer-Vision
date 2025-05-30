@@ -1,9 +1,9 @@
 """
  Evolutionary Algorithm (GA) Only - No Scores for optimization
 """
-
+from API_KEY import GEMINI_API_KEY
+from google import genai
 import util
-from gemini import Gemini
 import torch
 import re
 import ast
@@ -40,12 +40,7 @@ def main():
     # 3. load initial prompts (optional)
     # initial_prompts = util.load_initial_prompts()
 
-    cookies = {"__Secure-1PSIDCC": "AKEyXzVd2DR_25Mx1PvPfridhpZTEPmtIDTBLs5lKPWfwW8yXxlwLPi5BymNdcu3dEPRQfRaobkz",
-               "__Secure-1PSID": "g.a000xAh5UmC2BgFDEL7ifghVXxgaGkKxUI_E7SU8c6KeTfk4KXuyOMwOCWull1Ay_77sjDJF-QACgYKAR4SARQSFQHGX2MiOcqyvE84Gino-n2jvqMh-BoVAUF8yKqEYwQ1MWNHeeRQHWA3kX7b0076",
-               "__Secure-1PSIDTS": "sidts-CjIB5H03PzevD1hlmYN9-oznbt0xzSQzUm1VqQmIpUf0TNbG-aqjQ9tKu5GjGa6_CoONYhAA",
-               }  # Cookies may vary by account or region. Consider sending the entire cookie file.
-
-    client = Gemini(auto_cookies=False, cookies=cookies)
+    client = genai.Client(api_key=GEMINI_API_KEY)
     print("Gemini client initialized successfully.")
 
     # 4. Define the meta prompt and template

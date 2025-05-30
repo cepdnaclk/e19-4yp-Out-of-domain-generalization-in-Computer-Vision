@@ -335,7 +335,8 @@ def _force_double_quotes(code: str) -> str:
 def get_prompt_pairs(prompt, client, parse_func=extract_and_parse_prompt_list,  max_retries=10) -> List[Tuple[str, str]]:
     for attempt in range(1, max_retries + 1):
         try:
-            response = client.generate_content(prompt)
+            response = client.models.generate_content(
+                model="gemini-2.0-flash", contents=prompt)
             raw = response.text
             # print(f"Raw response on attempt {attempt}: {raw}...")
 
