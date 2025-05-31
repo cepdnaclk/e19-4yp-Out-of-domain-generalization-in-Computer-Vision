@@ -67,7 +67,7 @@ def main():
     # Optimization loop
     pq = util.PriorityQueue(max_capacity=1000)
     prompt_content = ""
-    for j in range(100):
+    for j in range(1000):
         if j == 0:
             prompts = util.get_prompt_pairs(meta_init_prompt, client)
         else:
@@ -97,13 +97,14 @@ def main():
             print(f"{i+1}. {prompt_pair}, Score: {score:.4f}")
             prompt_content += f"{i+1}. {prompt_pair}, Score: {score:.4f}\n"
 
-        # Save the best prompt pairs to a file
-        top_prompts = pq.get_best_n(n)
-        with open(results_filename, "a") as f:
-            f.write(f"Iteration {j+1}:\n")
-            for prompt_pair, score in top_prompts:
-                f.write(f"{prompt_pair}, Score: {score:.4f}\n")
-            f.write("\n")
+        # Save the best prompt pairs to a file, every 20 iterations
+        if (j + 1) % 20 == 0 or j == 0:
+            top_prompts = pq.get_best_n(1000)
+            with open(results_filename, "a") as f:
+                f.write(f"Iteration {j+1}:\n")
+                for prompt_pair, score in top_prompts:
+                    f.write(f"{prompt_pair}, Score: {score:.4f}\n")
+                f.write("\n")
 
         # print the average score of the top n prompts
         print(
