@@ -336,7 +336,7 @@ def get_prompt_pairs(prompt, client, parse_func=extract_and_parse_prompt_list,  
     for attempt in range(1, max_retries + 1):
         try:
             response = client.models.generate_content(
-                model="gemini-2.0-flash", contents=prompt)
+                model="gemma-3-27b-it", contents=prompt)
             raw = response.text
             # print(f"Raw response on attempt {attempt}: {raw}...")
 
