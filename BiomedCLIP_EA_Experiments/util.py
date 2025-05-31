@@ -2,7 +2,7 @@ import heapq
 import tokenize
 import io
 import random
-from typing import Any, List, Optional, Tuple
+from typing import Any, List, Optional, Set, Tuple
 import re
 import torch
 import ast
@@ -378,8 +378,9 @@ class PriorityQueue:
         self.max_capacity: int = max_capacity
         # Store (score, prompt_pair); min-heap root is the lowest score.
         self._heap: List[Tuple[float, PromptPair]] = []  # type: ignore
-        # Track negative prompts for O(1) membership checks
-        # self._neg_set: set[str] = set()
+
+        # Track prompts for O(1) membership checks
+        self._set: Set[PromptPair] = set()
 
         # If the user passed some initial prompt-pairs, insert them now:
         if initial is not None:
@@ -387,28 +388,26 @@ class PriorityQueue:
                 self.insert(prompt_pair, score)
 
     def insert(self, prompt_pair: PromptPair, score: float) -> None:  # type: ignore
-        # TODO: Implement a set to track duplicates
-        # negative = prompt_pair[1]
-        # Skip if negative prompt already exists
-        # if negative in self._neg_set:
-        # return
+        # Skip if prompt pair already exists
+        if prompt_pair in self._set:
+            return
         # Skip low scores
-        if score < 0.5:
+        if score < 0.6:
             return
 
         if len(self._heap) < self.max_capacity:
             # Add new entry
             heapq.heappush(self._heap, (score, prompt_pair))
-            # self._neg_set.add(negative)
+            self._set.add(prompt_pair)
         else:
             # Only replace if new score beats the current minimum
             if score > self._heap[0][0]:
                 # Replace smallest entry, capturing the popped item
                 old_score, old_pair = heapq.heapreplace(
                     self._heap, (score, prompt_pair))
-                # Update negative-prompt set
-                # self._neg_set.remove(old_pair[1])
-                # self._neg_set.add(negative)
+                # Update prompt set
+                self._set.remove(old_pair)
+                self._set.add(prompt_pair)
 
     def get_best(self) -> Optional[Tuple[PromptPair, float]]:
         if not self._heap:
