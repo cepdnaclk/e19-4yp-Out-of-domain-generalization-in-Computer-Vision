@@ -7,11 +7,12 @@ from typing import List
 import util
 import torch
 import numpy as np
-import os 
+import os
+
 
 def main():
     # Name the experiment we are currently running
-    experiment_name = "Experiment 1"
+    experiment_name = "Experiment-2-fixed-ascending"
     print(f"Running {experiment_name}...")
 
     # Create experiment results directory
@@ -19,7 +20,8 @@ def main():
     os.makedirs(results_dir, exist_ok=True)
 
     # Create filename with experiment name
-    results_filename = os.path.join(results_dir, f"{experiment_name}_opt_pairs.txt")
+    results_filename = os.path.join(
+        results_dir, f"{experiment_name}_opt_pairs.txt")
 
    # 1. load model, process, and tokenizer
     model, preprocess, tokenizer = util.load_clip_model()
@@ -86,8 +88,8 @@ def main():
         print(f"\nCurrent Top {n} prompt pairs:")
         selected_prompts = pq.get_roulette_wheel_selection(n)
         # reverse the order to set it to acsending order: Recency Bias
-        selected_prompts = sorted(
-            selected_prompts, key=lambda x: x[1], reverse=True)
+        # selected_prompts = sorted(
+        #     selected_prompts, key=lambda x: x[1], reverse=True)
 
         # Prepare the content for the meta prompt
         prompt_content = f"Current Top {n} prompt pairs:\n"
