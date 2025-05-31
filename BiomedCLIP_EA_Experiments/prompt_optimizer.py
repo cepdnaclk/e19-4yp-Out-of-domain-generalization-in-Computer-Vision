@@ -88,8 +88,7 @@ def main():
         print(f"\nCurrent Top {n} prompt pairs:")
         selected_prompts = pq.get_roulette_wheel_selection(n)
         # reverse the order to set it to acsending order: Recency Bias
-        # selected_prompts = sorted(
-        #     selected_prompts, key=lambda x: x[1], reverse=True)
+        selected_prompts = selected_prompts[::-1]
 
         # Prepare the content for the meta prompt
         prompt_content = f"Current Top {n} prompt pairs:\n"
