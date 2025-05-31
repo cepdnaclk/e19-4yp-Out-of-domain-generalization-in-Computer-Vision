@@ -12,7 +12,7 @@ import os
 
 def main():
     # Name the experiment we are currently running
-    experiment_name = "Experiment-2-fixed-ascending"
+    experiment_name = "Experiment-2-descending"
     print(f"Running {experiment_name}...")
 
     # Create experiment results directory
@@ -58,7 +58,7 @@ def main():
     meta_init_prompt = """Give 50 textual descriptions pairs of visual discriminative features to identify whether the central region of an histopathological image patch contains tumor tissue or not. The patch is extracted from an H&E‑stained whole‑slide image of a lymph node section. Only give the output as python code in the format - prompts: list[tuple[negative: str, positive: str]]"""
 
     meta_prompt_template = """The task is to generate textual descriptions pairs of visual discriminative features to identify whether the central region of an histopathological image patch contains tumor tissue or not. The patch is extracted from an H&E‑stained whole‑slide image of a lymph node section.
-    Here are the best performing pairs in acsending order. High scores indicate higher quality visual discriminative features.
+    Here are the best performing pairs in descending order. High scores indicate higher quality visual discriminative features.
     {content}
     Write 10 new prompt pairs that is different from the old ones and has a score as high as possible. 
     Only give the output as python code in the format - prompts: list[tuple[negative: str, positive: str]]
@@ -88,7 +88,8 @@ def main():
         print(f"\nCurrent Top {n} prompt pairs:")
         selected_prompts = pq.get_roulette_wheel_selection(n)
         # reverse the order to set it to acsending order: Recency Bias
-        selected_prompts = selected_prompts[::-1]
+        selected_prompts = sorted(
+            selected_prompts, key=lambda x: x[1], reverse=True)
 
         # Prepare the content for the meta prompt
         prompt_content = f"Current Top {n} prompt pairs:\n"
