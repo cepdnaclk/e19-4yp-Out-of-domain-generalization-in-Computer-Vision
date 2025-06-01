@@ -14,7 +14,7 @@ import os
 
 def main():
     # Name the experiment we are currently running
-    experiment_name = "Experiment-3-top-10"
+    experiment_name = "Experiment-4-Roulette_40_iterations_100"
     print(f"Running {experiment_name}...")
 
     # Create experiment results directory
@@ -69,7 +69,7 @@ def main():
     # Optimization loop
     pq = util.PriorityQueue(max_capacity=1000)
     prompt_content = ""
-    for j in range(1000):
+    for j in range(100):
         if j == 0:
             prompts = util.get_prompt_pairs(meta_init_prompt, client)
         else:
@@ -86,10 +86,10 @@ def main():
 
             pq.insert((negative_prompt, positive_prompt), results['accuracy'])
 
-        n = 10
+        n = 40
         print(f"\nCurrent Top {n} prompt pairs:")
-        # selected_prompts = pq.get_roulette_wheel_selection(n)
-        selected_prompts = pq.get_best_n(n)
+        selected_prompts = pq.get_roulette_wheel_selection(n)
+        # selected_prompts = pq.get_best_n(n)
         # reverse the order to set it to acsending order: Recency Bias
         selected_prompts = sorted(
             selected_prompts, key=lambda x: x[1], reverse=True)
