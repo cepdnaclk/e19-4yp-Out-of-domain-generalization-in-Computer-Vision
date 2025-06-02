@@ -67,7 +67,7 @@ def main():
             Prompt Pair 1: {pair1}
             Prompt Pair 2: {pair2}
 
-            2. Mutate the prompt generated in Step 1 keeping the word count under 20 for each pair and generate a final prompt pair in a python tuple (str, str)
+            2. Mutate the prompt generated in Step 1 keeping the word count under 20 for each prompt and generate a final prompt pair in a python tuple (str, str)
     """
 
     # initial_list = load_initial_prompts("selected_prompts.txt")
