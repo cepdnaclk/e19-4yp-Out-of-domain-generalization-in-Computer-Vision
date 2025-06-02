@@ -14,7 +14,7 @@ import os
 
 def main():
     # Name the experiment we are currently running
-    experiment_name = "Experiment-4-roulette_40_100_iter"
+    experiment_name = "Experiment-4-roulette_40_1000_iter"
     print(f"Running {experiment_name}...")
 
     # Create experiment results directory
@@ -69,7 +69,7 @@ def main():
     # Optimization loop
     pq = util.PriorityQueue(max_capacity=1000)
     prompt_content = ""
-    for j in range(100):
+    for j in range(1000):
         if j == 0:
             prompts = util.get_prompt_pairs(meta_init_prompt, client)
         else:
