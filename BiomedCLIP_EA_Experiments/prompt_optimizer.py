@@ -14,7 +14,7 @@ import os
 
 def main():
     # Name the experiment we are currently running
-    experiment_name = "Experiment-4-roulette_40_1000_iter"
+    experiment_name = "Experiment-5-roulette_40_1000_iter"
     print(f"Running {experiment_name}...")
 
     # Create experiment results directory
