@@ -1,5 +1,5 @@
 """
- Evolutionary Algorithm (GA) Only - No Scores for optimization
+ Evolutionary Algorithm (GA) Only with Problem Description- No Scores for optimization
 """
 from API_KEY import GEMINI_API_KEY
 from google import genai
@@ -14,7 +14,7 @@ import os
 
 def main():
     # Name the experiment we are currently running
-    experiment_name = "EA-Only-Experiment-1"
+    experiment_name = "EA-Only-with-pd-Experiment-1"
     print(f"Running {experiment_name}...")
 
     # Create experiment results directory
@@ -59,7 +59,8 @@ def main():
     # 4. Define the meta prompt and template
     meta_init_prompt = """Give 50 textual descriptions pairs of visual discriminative features to identify whether the central region of an histopathological image patch contains tumor tissue or not. The patch is extracted from an H&E‑stained whole‑slide image of a lymph node section. Only give the output as python code in the format - prompts: list[tuple[negative: str, positive: str]]"""
     META_PROMPT_TEMPLATE = """\
-            Please follow the instruction step-by-step to generate a better prompt pair.
+            The task is to generate a textual descriptions pair of visual discriminative features to identify whether the central region of an histopathological image patch contains tumor tissue or not. The patch is extracted from an H&E‑stained whole‑slide image of a lymph node section.
+            Please follow the instruction step-by-step to generate a better prompt pair for the above task.
 
             1. Cross over the following prompts and generate a new prompt:
 
