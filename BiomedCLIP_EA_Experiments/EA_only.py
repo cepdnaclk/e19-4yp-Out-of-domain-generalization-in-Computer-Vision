@@ -94,7 +94,7 @@ def main():
             pq.insert((negative_prompt, positive_prompt), results['accuracy'])
 
         n = 2
-        print(f"\Selectd {n} prompt pairs:")
+        print(f"Selected {n} prompt pairs:")
         roulette = pq.get_roulette_wheel_selection(n)
         meta_prompt = META_PROMPT_TEMPLATE.format(
             pair1=roulette[0], pair2=roulette[1])

@@ -1,7 +1,9 @@
 """
 Optimization Only - No Evolutionary Algorithm (EA) - Prompt Optimization Script
 """
+# from API_KEY import GEMINI_API_KEY
 from API_KEY import GEMINI_API_KEY
+
 from google import genai
 from typing import List
 import util
@@ -12,7 +14,7 @@ import os
 
 def main():
     # Name the experiment we are currently running
-    experiment_name = "Experiment-2-descending"
+    experiment_name = "Experiment-4-roulette_40_1000_iter"
     print(f"Running {experiment_name}...")
 
     # Create experiment results directory
@@ -84,9 +86,10 @@ def main():
 
             pq.insert((negative_prompt, positive_prompt), results['accuracy'])
 
-        n = 10
+        n = 40
         print(f"\nCurrent Top {n} prompt pairs:")
         selected_prompts = pq.get_roulette_wheel_selection(n)
+        # selected_prompts = pq.get_best_n(n)
         # reverse the order to set it to acsending order: Recency Bias
         selected_prompts = sorted(
             selected_prompts, key=lambda x: x[1], reverse=True)
@@ -95,7 +98,7 @@ def main():
         prompt_content = f"Current Top {n} prompt pairs:\n"
         for i, (prompt_pair, score) in enumerate(selected_prompts):
             print(f"{i+1}. {prompt_pair}, Score: {score:.4f}")
-            prompt_content += f"{i+1}. {prompt_pair}, Score: {score:.4f}\n"
+            prompt_content += f"{i+1}. {prompt_pair}, Score: {int(score)}\n"
 
         # Save the best prompt pairs to a file, every 20 iterations
         if (j + 1) % 20 == 0 or j == 0:
