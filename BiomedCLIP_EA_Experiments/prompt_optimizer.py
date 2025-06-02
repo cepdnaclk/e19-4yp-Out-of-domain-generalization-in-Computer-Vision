@@ -14,7 +14,7 @@ import os
 
 def main():
     # Name the experiment we are currently running
-    experiment_name = "Experiment-5-roulette_40_1000_iter"
+    experiment_name = "Experiment-6-top_10_1000_iter"
     print(f"Running {experiment_name}...")
 
     # Create experiment results directory
@@ -86,10 +86,10 @@ def main():
 
             pq.insert((negative_prompt, positive_prompt), results['accuracy'])
 
-        n = 40
+        n = 10
         print(f"\nCurrent Top {n} prompt pairs:")
-        selected_prompts = pq.get_roulette_wheel_selection(n)
-        # selected_prompts = pq.get_best_n(n)
+        # selected_prompts = pq.get_roulette_wheel_selection(n)
+        selected_prompts = pq.get_best_n(n)
         # reverse the order to set it to acsending order: Recency Bias
         selected_prompts = sorted(
             selected_prompts, key=lambda x: x[1], reverse=True)
