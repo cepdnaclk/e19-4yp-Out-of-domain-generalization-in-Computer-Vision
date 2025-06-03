@@ -1,0 +1,122 @@
+Previous pair: 
+    1. ('No evidence of perineural invasion.', 'Evidence of perineural invasion by tumor cells.'), Score: 0.8754
+    2. ('No prominent nucleoli.', 'Prominent, large, and irregular nucleoli.'), Score: 0.8727
+    3. ('No evidence of epithelial cells.', 'Presence of epithelial cells.'), Score: 0.8594
+    4. ('Cells are arranged in a normal lymphoid pattern.', 'Cells are arranged in sheets, nests, or irregular patterns.'), Score: 0.8561
+    5. ('No evidence of plasmacytoid differentiation.', 'Evidence of plasmacytoid differentiation.'), Score: 0.8524
+    6. ('No evidence of giant cells.', 'Presence of multinucleated giant cells.'), Score: 0.8448
+    7. ('No evidence of apoptosis.', 'Presence of apoptosis.'), Score: 0.8401
+    8. ('No evidence of lymphoid aggregates.', 'Presence of lymphoid aggregates.'), Score: 0.8272
+    9. ('No evidence of clear cell morphology.', 'Presence of clear cell morphology.'), Score: 0.8205
+    10. ('No evidence of lobular structures.', 'Presence of lobular structures.'), Score: 0.8163
+
+Resulting pairs:
+1. Write 10 new prompt pairs that are different from the old ones and has a score as high as possible. 
+    ('Cells exhibit uniform size and shape.', 'Cells exhibit marked pleomorphism (variation in size and shape).'),
+    ('No mitoses are observed.', 'Frequent mitoses are observed.'),
+    ('No evidence of necrosis.', 'Presence of tumor necrosis.'),
+    ('Stroma is sparse and delicate.', 'Stroma is dense and desmoplastic.'),
+    ('Lymphocytes are small and mature-appearing.', 'Lymphocytes are large and atypical.'),
+    ('No evidence of angiolymphatic invasion.', 'Evidence of angiolymphatic invasion by tumor cells.'),
+    ('No increased mitotic activity.', 'Increased mitotic activity with atypical mitotic figures.'),
+    ('No loss of nuclear polarity.', 'Loss of nuclear polarity.'),
+    ('No chromatin clumping.', 'Hyperchromatic nuclei with coarse chromatin clumping.'),
+    ('No evidence of tumor infiltrating lymphocytes.', 'Presence of tumor infiltrating lymphocytes.')
+Observation: Both language style and medical concepts 
+
+2. Write 10 new prompt pairs that are similar to the high scoring pairs.
+    ('No evidence of mitotic figures.', 'Presence of frequent mitotic figures.'),
+    ('No evidence of necrosis.', 'Presence of tumor necrosis.'),
+    ('No evidence of angiolymphatic invasion.', 'Evidence of angiolymphatic invasion by tumor cells.'),
+    ('No evidence of atypical mitosis.', 'Presence of atypical mitotic figures.'),
+    ('No evidence of fibrosis.', 'Presence of dense stromal fibrosis.'),
+    ('No evidence of pleomorphism.', 'Presence of marked cellular pleomorphism.'),
+    ('No evidence of tumor infiltrating lymphocytes.', 'Presence of abundant tumor infiltrating lymphocytes.'),
+    ('No evidence of extracellular mucin.', 'Presence of abundant extracellular mucin.'),
+    ('No evidence of desmoplastic reaction.', 'Presence of a prominent desmoplastic reaction.'),
+    ('No evidence of ductal differentiation.', 'Evidence of ductal differentiation.')
+Observation: language structure is preserved while medical concepts are changed. All prompts follow the language structure of top performing pair
+
+3. Write 10 new prompt pairs with different language structures without changing the concepts.
+    ('Perineural invasion is absent.', 'Tumor cells show perineural invasion.'),
+    ('Nucleoli are inconspicuous.', 'Nucleoli are large, prominent, and irregular.'),
+    ('Epithelial cells are not identified.', 'Epithelial cells are present.'),
+    ('Lymphoid architecture is preserved.', 'Cells display sheet-like, nested, or disorganized growth.'),
+    ('Plasmacytoid features are not observed.', 'Plasmacytoid differentiation is evident.'),
+    ('Giant cells are not seen.', 'Multinucleated giant cells are identified.'),
+    ('Apoptosis is not present.', 'Apoptotic bodies are visible.'),
+    ('Lymphoid aggregates are absent.', 'Lymphoid aggregates are present.'),
+    ('Cells do not exhibit clear cytoplasm.', 'Cells demonstrate clear cell characteristics.'),
+    ('Lobular architecture is not apparent.', 'Lobular structures are observed.')
+
+4. Write 10 new prompt pairs with different language styles without changing the concepts.
+    ('Perineural invasion is absent.', 'Tumor cells demonstrate perineural invasion.'),
+    ('Nucleoli are inconspicuous.', 'Nucleoli are large, irregular, and easily visible.'),
+    ('Epithelial cells are not identified.', 'Epithelial cells are present within the tissue.'),
+    ('Lymphoid architecture is preserved.', 'Disordered cellular arrangement; sheets, nests, or irregular patterns are observed.'),
+    ('No plasmacytoid features are seen.', 'Plasmacytoid differentiation is evident.'),
+    ('Giant cells are not observed.', 'Multinucleated giant cells are identified.'),
+    ('Apoptosis is not present.', 'Apoptotic bodies are visible.'),
+    ('Lymphoid aggregates are absent.', 'Distinct lymphoid aggregates are present.'),
+    ('Cells do not exhibit clear cytoplasm.', 'Cells display clear cell morphology.'),
+    ('Lobular architecture is not apparent.', 'Lobular structures are readily identifiable.')
+
+5. Write 10 new prompt pairs with different medical concepts to make the score as high as possible.
+    ('No evidence of mitotic activity.', 'Increased mitotic activity with atypical mitoses.'),
+    ('No evidence of necrosis.', 'Presence of tumor necrosis.'),
+    ('No evidence of angiolymphatic invasion.', 'Evidence of angiolymphatic invasion by tumor cells.'),
+    ('No evidence of fibrosis.', 'Presence of dense stromal fibrosis.'),
+    ('No evidence of atypical lymphocytes.', 'Presence of atypical lymphocytes with irregular nuclei.'),
+    ('No evidence of reactive hyperplasia.', 'Evidence of reactive hyperplasia with polymorphic lymphoid population.'),
+    ('No evidence of sinusoidal pattern.', 'Presence of a sinusoidal growth pattern.'),
+    ('No evidence of tumor infiltrating lymphocytes.', 'Abundant tumor infiltrating lymphocytes.'),
+    ('No evidence of extracellular mucin.', 'Presence of abundant extracellular mucin.'),
+    ('No evidence of ductal differentiation.', 'Evidence of ductal differentiation.')
+
+6. Write 10 new prompt pairs with the same language style with different medical concepts.
+    ('No evidence of mitotic figures.', 'Presence of frequent mitotic figures.'),
+    ('No evidence of necrosis.', 'Presence of tumor necrosis.'),
+    ('No evidence of angiolymphatic invasion.', 'Evidence of angiolymphatic invasion by tumor cells.'),
+    ('No evidence of fibrosis.', 'Presence of dense stromal fibrosis.'),
+    ('No evidence of atypical mitotic figures.', 'Presence of atypical mitotic figures.'),
+    ('No evidence of ductal structures.', 'Presence of ductal structures.'),
+    ('No evidence of inflammatory infiltrate.', 'Presence of a prominent inflammatory infiltrate.'),
+    ('No evidence of sinusoidal pattern.', 'Presence of a sinusoidal growth pattern.'),
+    ('No evidence of extracellular mucin.', 'Presence of abundant extracellular mucin.'),
+    ('No evidence of tumor budding.', 'Presence of single-cell tumor budding.')
+
+7. Write 10 new prompt pairs with different language style and same medical concepts. Each pair should have distinct language style.
+    ('Lymphocytes exhibit typical morphology.', 'Atypical lymphocytes with irregular nuclear features are observed.'),
+    ('The tissue architecture is preserved and organized.', 'Disrupted tissue architecture with loss of normal structure.'),
+    ('No atypical mitoses are identified.', 'Presence of atypical mitotic figures.'),
+    ('Cells lack significant pleomorphism.', 'Marked cellular pleomorphism is present.'),
+    ('The nuclei are uniform in size and shape.', 'Nuclear size and shape are highly variable.'),
+    ('No discernible tumor cell nests are seen.', 'Tumor cells are arranged in distinct nests or clusters.'),
+    ('The stroma is unremarkable.', 'Desmoplastic reaction with abundant collagenous stroma.'),
+    ('No evidence of necrosis is present.', 'Areas of tumor necrosis are identified.'),
+    ('Immunocytes are not readily apparent.', 'Increased number of immunocytes, potentially plasma cells.'),
+    ('The cellularity is within normal limits.', 'Increased cellularity due to infiltration of tumor cells.')
+
+8. Write 10 new prompt pairs by combining multiple medical concepts.
+    ('Small, uniform lymphocytes with condensed chromatin.', 'Large, pleomorphic lymphocytes with vesicular chromatin and irregular nuclear contours.'),
+    ('No mitoses observed.', 'Frequent mitoses with atypical mitotic figures.'),
+    ('No necrosis or karyorrhexis.', 'Extensive necrosis with karyorrhexis and cellular debris.'),
+    ('Normal follicular architecture with distinct mantle and marginal zones.', 'Disrupted follicular architecture with loss of polarity and effacement of normal structures.'),
+    ('No atypical cells infiltrating surrounding tissues.', 'Atypical cells infiltrating surrounding tissues, disrupting normal architecture.'),
+    ('No evidence of angiolymphatic invasion.', 'Evidence of angiolymphatic invasion by tumor cells.'),
+    ('No increased mitotic activity.', 'Increased mitotic activity with abnormal spindle formation.'),
+    ('No prominent inflammatory infiltrate.', 'Prominent inflammatory infiltrate with atypical lymphoid cells.'),
+    ('No evidence of fibrosis or desmoplasia.', 'Extensive fibrosis and desmoplasia surrounding tumor cells.'),
+    ('Cells exhibit normal nuclear-to-cytoplasmic ratio.', 'Cells exhibit high nuclear-to-cytoplasmic ratio with irregular nuclei.')
+
+9. Write 10 new prompt pairs by combining multiple medical concepts only from the above prompts to make the score as high as possible.
+    ('No prominent nucleoli and no evidence of plasmacytoid differentiation.', 'Prominent, large, and irregular nucleoli with evidence of plasmacytoid differentiation.'),
+    ('Cells are arranged in a normal lymphoid pattern with no evidence of epithelial cells.', 'Cells are arranged in sheets, nests, or irregular patterns with presence of epithelial cells.'),
+    ('No evidence of apoptosis and no evidence of giant cells.', 'Presence of apoptosis and presence of multinucleated giant cells.'),
+    ('No evidence of perineural invasion and cells are arranged in a normal lymphoid pattern.', 'Evidence of perineural invasion by tumor cells and cells are arranged in sheets, nests, or irregular patterns.'),
+    ('No evidence of clear cell morphology and no evidence of lobular structures.', 'Presence of clear cell morphology and presence of lobular structures.'),
+    ('No evidence of plasmacytoid differentiation and no evidence of giant cells.', 'Evidence of plasmacytoid differentiation and presence of multinucleated giant cells.'),
+    ('No prominent nucleoli and no evidence of lymphoid aggregates.', 'Prominent, large, and irregular nucleoli and presence of lymphoid aggregates.'),
+    ('No evidence of epithelial cells and no evidence of apoptosis.', 'Presence of epithelial cells and presence of apoptosis.'),
+    ('Cells are arranged in a normal lymphoid pattern and no evidence of clear cell morphology.', 'Cells are arranged in sheets, nests, or irregular patterns and presence of clear cell morphology.'),
+    ('No evidence of perineural invasion and no evidence of lobular structures.', 'Evidence of perineural invasion by tumor cells and presence of lobular structures.')

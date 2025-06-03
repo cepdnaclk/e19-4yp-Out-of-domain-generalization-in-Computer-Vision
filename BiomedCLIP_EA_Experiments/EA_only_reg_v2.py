@@ -56,7 +56,7 @@ def main():
     client = genai.Client(api_key=GEMINI_API_KEY)
     print("Gemini client initialized successfully.")
 
-    # 4. Define the meta prompt and template
+    # 4. Define the meta prompt and template (Here the exempler pair is swapped)
     meta_init_prompt = """Give 50 textual descriptions pairs of visual discriminative features to identify whether the central region of an histopathological image patch contains tumor tissue or not. \
                 The patch is extracted from an H&E‑stained whole‑slide image of a lymph node section. \
                 Following exemplar shows how to write the prompt pair: \
