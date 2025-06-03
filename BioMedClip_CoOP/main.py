@@ -24,7 +24,7 @@ def load_dataloader(path):
 def main():
    
     args = {
-    'keyword': 'class_specific',   
+    'keyword': 'Universal_Trained on Center 0',   
     'metadata_path': '/storage/projects3/e19-fyp-out-of-domain-gen-in-cv/camelyon17WILDS/metadata.csv',
     'organized_data_path': '/storage/projects3/e19-fyp-out-of-domain-gen-in-cv/camelyon17WILDS/organized_by_center',
     'data_path': '/storage/projects3/e19-fyp-out-of-domain-gen-in-cv/camelyon17WILDS/patches',
@@ -39,7 +39,7 @@ def main():
     # CoOp-specific parameters
     'n_ctx': 4,                     # Number of context tokens (X X X X)
     'class_token_position': 'end',  # Position of class token: 'end', 'middle', or 'front'
-    'csc': True,                   # Class-specific context (False for generic context)
+    'csc': False,                   # Class-specific context (False for generic context)
     
     # (Optional) Advanced parameters
     'weight_decay': 0.0005,         # L2 regularization
