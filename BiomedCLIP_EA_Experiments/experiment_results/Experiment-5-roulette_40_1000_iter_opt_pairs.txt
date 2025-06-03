@@ -1,0 +1,944 @@
+Iteration 1:
+('No evidence of reactive hyperplasia.', 'Features of reactive hyperplasia with atypical cells.'), Score: 0.8641
+('No evidence of perineural invasion.', 'Perineural invasion by tumor cells.'), Score: 0.8631
+('No evidence of tumor cell clusters.', 'Presence of tumor cell clusters with loss of normal architecture.'), Score: 0.8579
+('Normal lymphatic vessels.', 'Dilated lymphatic vessels with tumor emboli.'), Score: 0.8551
+('Lymphocytes with small, dense nuclei and scant cytoplasm.', 'Large, pleomorphic cells with prominent nucleoli and abundant cytoplasm.'), Score: 0.8215
+('No evidence of tumor-associated macrophages (TAMs).', 'Presence of TAMs with abundant cytoplasm.'), Score: 0.8215
+('Small, reactive germinal centers.', 'Large, atypical germinal centers with irregular shapes.'), Score: 0.8153
+('Uniform distribution of lymphocytes.', 'Heterogeneous cell population with areas of necrosis.'), Score: 0.7997
+('No evidence of calcification.', 'Presence of calcification with amorphous deposits.'), Score: 0.7974
+('No prominent nucleoli.', 'Prominent, large nucleoli.'), Score: 0.7910
+('Absence of giant cells.', 'Presence of multinucleated giant cells.'), Score: 0.7809
+('Lymphocytes with clear cytoplasm.', 'Cells with granular or vacuolated cytoplasm.'), Score: 0.7809
+('Normal immune cell infiltrate.', 'Atypical immune cell infiltrate with abnormal distribution.'), Score: 0.7796
+('Lymphocytes with round nuclei.', 'Cells with elongated or irregular nuclei.'), Score: 0.7596
+('Absence of atypical cells.', 'Presence of atypical cells with bizarre morphology.'), Score: 0.7451
+('Normal nuclear size.', 'Increased nuclear size (nuclear pleomorphism).'), Score: 0.6989
+('No evidence of necrosis.', 'Areas of extensive necrosis with karyorrhexis.'), Score: 0.6856
+('Small, uniform nuclei.', 'Large, pleomorphic nuclei with variable staining.'), Score: 0.6786
+('No evidence of apoptosis.', 'Increased apoptosis with fragmented nuclei.'), Score: 0.6743
+('Lymphocytes with high N/C ratio.', 'Cells with low N/C ratio and abundant cytoplasm.'), Score: 0.6676
+('No evidence of angiolymphatic invasion.', 'Angiolymphatic invasion by tumor cells.'), Score: 0.6631
+('Normal nuclear shape.', 'Abnormal nuclear shape with lobulation or clefts.'), Score: 0.6515
+('Thin, delicate sinusoidal capillaries.', 'Thick-walled, irregular capillaries with increased vascularity.'), Score: 0.6511
+('Normal cell arrangement.', 'Disorganized cell arrangement with loss of polarity.'), Score: 0.6392
+('Scant mitotic activity.', 'Increased mitotic activity with atypical mitotic figures.'), Score: 0.6260
+('Normal follicular architecture with distinct germinal centers.', 'Disrupted follicular architecture with effacement of normal structures.'), Score: 0.6124
+('Normal cell morphology.', 'Atypical cell morphology with bizarre features.'), Score: 0.6099
+('No evidence of fibrosis.', 'Extensive fibrosis with collagen deposition.'), Score: 0.6004
+
+Iteration 20:
+('No evidence of tumor cells with a single nucleolus.', 'Tumor cells with multiple or irregularly shaped nucleoli.'), Score: 0.9140
+('No evidence of tumor cells with a low nuclear-to-cytoplasmic ratio.', 'Tumor cells with a high nuclear-to-cytoplasmic ratio.'), Score: 0.9063
+('No evidence of tumor cells with bubbly chromatin.', 'Tumor cells displaying bubbly chromatin.'), Score: 0.9033
+('No evidence of prominent lymphoid cuffing.', 'Prominent lymphoid cuffing around tumor nests.'), Score: 0.9028
+('No evidence of prominent eosinophilic granules.', 'Abundant eosinophilic granules within tumor cells.'), Score: 0.9008
+('No evidence of tumor cells with intranuclear inclusions.', 'Tumor cells containing prominent intranuclear inclusions.'), Score: 0.8960
+('No evidence of mitotic figures.', 'Frequent mitotic figures, some atypical.'), Score: 0.8942
+('No evidence of tumor cells with a high mitotic index.', 'High mitotic index with frequent and abnormal mitotic figures.'), Score: 0.8942
+('No evidence of tumor cells with high mitotic activity.', 'High mitotic activity with numerous dividing tumor cells.'), Score: 0.8895
+('No evidence of tumor cells with a lack of prominent vascularity.', 'Tumor cells associated with increased vascularity and angiogenesis.'), Score: 0.8889
+('No evidence of tumor cells forming rosettes.', 'Tumor cells arranged in characteristic rosettes.'), Score: 0.8864
+('No evidence of tumor cells with smooth nuclear membranes.', 'Tumor cells with irregular, crenated nuclear membranes.'), Score: 0.8832
+('No evidence of tumor cells with a normal expression of PD-L1.', 'Tumor cells with high PD-L1 expression.'), Score: 0.8830
+('No evidence of tumor cells with prominent nucleolus.', 'Tumor cells with large, irregular, and prominent nucleoli.'), Score: 0.8829
+('No evidence of tumor cells with a regular nuclear shape.', 'Tumor cells with irregular nuclear contours and lobulations.'), Score: 0.8816
+('No evidence of prominent eosinophilic granules.', 'Abundant eosinophilic cytoplasmic granules.'), Score: 0.8807
+('No evidence of tumor cells with bubbly chromatin.', 'Tumor cells displaying bubbly chromatin with prominent nucleoli.'), Score: 0.8806
+('No evidence of tumor cells with a lack of mitotic activity.', 'Tumor cells exhibiting frequent and atypical mitotic figures.'), Score: 0.8797
+('No evidence of tumor cells with a regular nuclear-to-cytoplasmic ratio.', 'Tumor cells displaying an increased nuclear-to-cytoplasmic ratio.'), Score: 0.8792
+('No evidence of tumor cells with a normal nuclear to cytoplasmic ratio.', 'Tumor cells with a markedly increased nuclear to cytoplasmic ratio.'), Score: 0.8789
+('No evidence of tumor cells with prominent chromatin clumping.', 'Tumor cells exhibiting coarse, irregular chromatin clumping.'), Score: 0.8786
+('No evidence of tumor cells with a normal vasculature.', 'Tumor cells associated with abnormal, tortuous, and proliferative vasculature.'), Score: 0.8754
+('No evidence of tumor cells with a low nuclear-to-cytoplasmic ratio.', 'Tumor cells displaying a high nuclear-to-cytoplasmic ratio.'), Score: 0.8737
+('No evidence of tumor cells with a normal expression of E-cadherin.', 'Tumor cells with loss of E-cadherin expression.'), Score: 0.8719
+('No evidence of emperipolesis.', 'Emperipolesis observed within tumor cells.'), Score: 0.8704
+('No evidence of prominent Golgi apparatus.', 'Prominent Golgi apparatus visible within tumor cells.'), Score: 0.8701
+('No evidence of tumor cells with a high nuclear-to-cytoplasmic ratio.', 'Tumor cells with a markedly increased nuclear-to-cytoplasmic ratio.'), Score: 0.8689
+('No evidence of tumor cells with plasmacytoid features.', 'Tumor cells exhibiting plasmacytoid differentiation.'), Score: 0.8674
+('No evidence of tumor cells with a uniform staining intensity.', 'Tumor cells exhibiting heterogeneous staining intensity.'), Score: 0.8662
+('No evidence of reactive hyperplasia.', 'Features of reactive hyperplasia with atypical cells.'), Score: 0.8641
+('No evidence of tumor cells with smooth nuclear membranes.', 'Tumor cells exhibiting irregular, folded nuclear membranes.'), Score: 0.8639
+('No evidence of perineural invasion.', 'Perineural invasion by tumor cells.'), Score: 0.8631
+('No evidence of tumor cells with prominent vascularity.', 'Tumor nests exhibiting prominent vascularity and angiogenesis.'), Score: 0.8596
+('No evidence of tumor cells with uniform size and shape.', 'Tumor cells exhibiting significant pleomorphism and variability in size and shape.'), Score: 0.8589
+('No evidence of tumor cells with a normal chromatin pattern.', 'Tumor cells with a coarse, clumped chromatin pattern.'), Score: 0.8583
+('No evidence of tumor cell clusters.', 'Presence of tumor cell clusters with loss of normal architecture.'), Score: 0.8579
+('No evidence of tumor cells with a low proliferative index (Ki-67).', 'Tumor cells with a high proliferative index (Ki-67).'), Score: 0.8568
+('Normal lymphatic vessels.', 'Dilated lymphatic vessels with tumor emboli.'), Score: 0.8551
+('No evidence of tumor cells with uniform size and shape.', 'Tumor cells exhibiting significant size and shape variability (pleomorphism).'), Score: 0.8519
+('No evidence of tumor cells with smooth nuclear membranes.', 'Tumor cells with irregular, folded, or crenated nuclear membranes.'), Score: 0.8513
+('No evidence of tumor cells with a normal expression of HER2.', 'Tumor cells with overexpression of HER2.'), Score: 0.8513
+('No evidence of tumor cells exhibiting prominent eosinophilic granules.', 'Tumor cells displaying abundant eosinophilic granular bodies.'), Score: 0.8489
+('No evidence of tumor cells with intact Golgi apparatus.', 'Tumor cells with a disrupted or absent Golgi apparatus.'), Score: 0.8479
+('No evidence of tumor cells with uniform nuclear size and shape.', 'Tumor cells exhibiting significant pleomorphism in nuclear size and shape.'), Score: 0.8440
+('No evidence of emperipolesis.', 'Emperipolesis with intact cells within other cells.'), Score: 0.8433
+('No evidence of tumor cells with a normal mitotic index.', 'Elevated mitotic index with frequent mitotic figures.'), Score: 0.8431
+('No evidence of tumor cells with a clear Golgi apparatus.', 'Tumor cells with a prominent and atypical Golgi apparatus.'), Score: 0.8385
+('No evidence of tumor cells with uniform size and shape.', 'Tumor cells exhibiting significant pleomorphism in size and shape.'), Score: 0.8315
+('No evidence of tumor infiltrating lymphocytes (TILs).', 'Abundant tumor infiltrating lymphocytes (TILs) surrounding tumor nests.'), Score: 0.8283
+('No evidence of tumor cells with a well-defined cytoplasm.', 'Tumor cells with a poorly defined or indistinct cytoplasm.'), Score: 0.8272
+('No evidence of plasmacytoid differentiation.', 'Plasmacytoid differentiation with cytoplasmic inclusions.'), Score: 0.8270
+('No evidence of tumor cells with a symmetric nuclear division.', 'Tumor cells exhibiting asymmetric nuclear division.'), Score: 0.8233
+('Lymphocytes with small, dense nuclei and scant cytoplasm.', 'Large, pleomorphic cells with prominent nucleoli and abundant cytoplasm.'), Score: 0.8215
+('No evidence of tumor-associated macrophages (TAMs).', 'Presence of TAMs with abundant cytoplasm.'), Score: 0.8215
+('No evidence of tumor cells with a typical apoptotic rate.', 'Increased apoptotic rate with frequent apoptotic bodies.'), Score: 0.8193
+('No evidence of tumor cells with a lack of desmoplastic reaction.', 'Tumor cells surrounded by a prominent desmoplastic reaction.'), Score: 0.8185
+('No evidence of tumor cells with a normal expression of cytokeratins.', 'Tumor cells with aberrant cytokeratin expression patterns.'), Score: 0.8165
+('Small, reactive germinal centers.', 'Large, atypical germinal centers with irregular shapes.'), Score: 0.8153
+('No evidence of tumor cells with a normal amount of cytoplasm.', 'Tumor cells with abundant, eosinophilic cytoplasm containing vacuoles.'), Score: 0.8132
+('No evidence of epithelial-myoepithelial cell differentiation.', 'Presence of epithelial-myoepithelial cell differentiation.'), Score: 0.8123
+('No evidence of tumor cells with a normal amount of heterochromatin.', 'Tumor cells with decreased heterochromatin and increased euchromatin.'), Score: 0.8034
+('No evidence of tumor cells with a normal expression of Ki-67.', 'Tumor cells with high Ki-67 expression indicating proliferation.'), Score: 0.8029
+('No evidence of epithelioid granulomas.', 'Presence of epithelioid granulomas with multinucleated giant cells.'), Score: 0.8015
+('No evidence of tumor cells with a symmetric appearance.', 'Tumor cells displaying marked asymmetry in shape and size.'), Score: 0.8004
+('Uniform distribution of lymphocytes.', 'Heterogeneous cell population with areas of necrosis.'), Score: 0.7997
+('No evidence of tumor cells with a normal morphology.', 'Tumor cells displaying bizarre, multinucleated, or ring-like morphology.'), Score: 0.7995
+('No evidence of calcification.', 'Presence of calcification with amorphous deposits.'), Score: 0.7974
+('No evidence of plasmacytoid differentiation.', 'Plasmacytoid differentiation with eccentric nuclei and abundant cytoplasm.'), Score: 0.7972
+('No evidence of atypical mitoses.', 'Atypical mitoses with tripolar or multipolar spindles.'), Score: 0.7964
+('No evidence of tumor cells with a symmetric nuclear division.', 'Tumor cells undergoing asymmetric nuclear division.'), Score: 0.7962
+('Normal stromal collagen.', 'Desmoplastic reaction with dense, hyalinized collagen.'), Score: 0.7914
+('No prominent nucleoli.', 'Prominent, large nucleoli.'), Score: 0.7910
+('No evidence of plasma cell differentiation.', 'Plasma cell differentiation with Dutcher bodies.'), Score: 0.7902
+('No evidence of prominent stromal edema.', 'Significant stromal edema with myxoid change.'), Score: 0.7881
+('No evidence of tumor cells with a normal chromatin distribution.', 'Tumor cells with hyperchromatic nuclei and irregular chromatin distribution.'), Score: 0.7877
+('No evidence of signet ring cells.', 'Signet ring cells with cytoplasmic mucin displacing the nucleus.'), Score: 0.7874
+('No evidence of tumor cells with a well-defined basement membrane.', 'Tumor cells invading through the basement membrane.'), Score: 0.7862
+('No evidence of tumor cells with a normal expression of p53.', 'Tumor cells with aberrant p53 expression.'), Score: 0.7842
+('No evidence of spindle cell morphology.', 'Spindle cell morphology with elongated nuclei.'), Score: 0.7831
+('No evidence of prominent stromal desmoplasia.', 'Dense stromal desmoplasia surrounding tumor nests.'), Score: 0.7819
+('Lymphocytes with clear cytoplasm.', 'Cells with granular or vacuolated cytoplasm.'), Score: 0.7809
+('Absence of giant cells.', 'Presence of multinucleated giant cells.'), Score: 0.7809
+('Normal immune cell infiltrate.', 'Atypical immune cell infiltrate with abnormal distribution.'), Score: 0.7796
+('No evidence of tumor cells with well-defined cell boundaries.', 'Tumor cells with poorly defined, overlapping cell boundaries.'), Score: 0.7784
+('No evidence of tumor cells forming solid sheets.', 'Tumor cells arranged in a solid sheet-like growth pattern.'), Score: 0.7757
+('No evidence of tumor cells with a defined cytoplasmic border.', 'Tumor cells with ill-defined or indistinct cytoplasmic borders.'), Score: 0.7731
+('No evidence of tumor cells with condensed chromatin.', 'Tumor cells exhibiting finely dispersed or vesicular chromatin.'), Score: 0.7713
+('No evidence of tumor cells with a normal expression of Ki-67.', 'Tumor cells exhibiting high Ki-67 proliferation index.'), Score: 0.7676
+('No evidence of tumor cells with nuclear grooves.', 'Tumor cells exhibiting nuclear grooves and indentations.'), Score: 0.7636
+('No evidence of syncytial growth pattern.', 'Syncytial growth pattern with loss of individual cell boundaries.'), Score: 0.7611
+('Lymphocytes with round nuclei.', 'Cells with elongated or irregular nuclei.'), Score: 0.7596
+('No evidence of clear cell change.', 'Clear cell change with glycogen-rich cytoplasm.'), Score: 0.7589
+('No evidence of tumor associated macrophages (TAMs).', 'Increased number of tumor associated macrophages (TAMs) infiltrating the stroma.'), Score: 0.7573
+('No evidence of perivascular pseudorosettes.', 'Perivascular pseudorosettes with tumor cells arranged around vessels.'), Score: 0.7571
+('No evidence of tumor cells with a distinct cell border.', 'Tumor cells with ill-defined, smudged cell borders.'), Score: 0.7535
+('Absence of atypical cells.', 'Presence of atypical cells with bizarre morphology.'), Score: 0.7451
+('No evidence of tumor cells with prominent cell borders.', 'Loss of cell borders with poorly defined cell boundaries.'), Score: 0.7443
+('No evidence of tumor cells with a normal expression of E-cadherin.', 'Tumor cells exhibiting loss of E-cadherin expression at cell borders.'), Score: 0.7433
+('No evidence of tumor cells with a normal apoptotic rate.', 'Increased apoptotic rate with frequent apoptotic bodies.'), Score: 0.7400
+('No evidence of tumor cells with a regular chromatin distribution.', 'Tumor cells with hyperchromatic nuclei and irregular chromatin distribution.'), Score: 0.7395
+('No evidence of ductal differentiation.', 'Presence of ductal structures within the tumor.'), Score: 0.7365
+('No evidence of tumor cells with a normal amount of cytoplasm.', 'Tumor cells with decreased cytoplasm (pyknosis).'), Score: 0.7363
+('No evidence of tumor cells with normal polarity.', 'Tumor cells displaying loss of polarity and architectural distortion.'), Score: 0.7338
+('No evidence of tumor cells with inconspicuous nucleoli.', 'Tumor cells with multiple, prominent, and distinct nucleoli.'), Score: 0.7337
+('No evidence of tumor cells with a normal apoptotic rate.', 'Tumor cells exhibiting increased apoptosis and cellular debris.'), Score: 0.7293
+('No evidence of tumor cells with a normal spindle shape.', 'Tumor cells exhibiting a sarcomatoid or atypical spindle cell morphology.'), Score: 0.7282
+('No evidence of pseudoinclusions.', 'Intracytoplasmic pseudoinclusions.'), Score: 0.7245
+('No evidence of sinusoidal pattern.', 'Sinusoidal growth pattern with tumor cells lining vascular spaces.'), Score: 0.7225
+('No evidence of pagetoid spread.', 'Pagetoid spread of tumor cells into the epidermis.'), Score: 0.7129
+('No evidence of ductal differentiation.', 'Presence of ductal differentiation with luminal structures.'), Score: 0.7115
+('No evidence of tumor cells with a normal mitotic count.', 'Numerous atypical mitotic figures, including tripolar and multipolar spindles.'), Score: 0.7094
+('No evidence of tumor cells with a normal expression of cell adhesion molecules.', 'Tumor cells with decreased expression of E-cadherin and increased expression of N-cadherin.'), Score: 0.7077
+('No evidence of tumor cells with prominent cell borders.', 'Tumor cells with indistinct or blurred cell borders.'), Score: 0.7074
+('No evidence of tumor cells with a cribriform pattern.', 'Tumor cells arranged in a cribriform pattern with sieve-like spaces.'), Score: 0.7062
+('No evidence of tumor cells with inconspicuous nucleoli.', 'Tumor cells with large, prominent, and multiple nucleoli.'), Score: 0.7032
+('No evidence of tumor cells with a normal expression of p53.', 'Tumor cells demonstrating aberrant p53 expression and nuclear accumulation.'), Score: 0.7030
+('No evidence of tumor cells with a lack of necrosis.', 'Tumor cells exhibiting areas of necrosis and cellular debris.'), Score: 0.7030
+('No evidence of tumor cells with a normal size.', 'Tumor cells that are significantly enlarged compared to normal cells.'), Score: 0.7020
+('No evidence of hobnail morphology.', 'Hobnail morphology with enlarged, flattened nuclei.'), Score: 0.7004
+('Normal nuclear size.', 'Increased nuclear size (nuclear pleomorphism).'), Score: 0.6989
+('No evidence of tumor cells with a normal apoptotic index.', 'Increased apoptotic index with frequent apoptotic bodies.'), Score: 0.6979
+('No evidence of extracellular matrix degradation.', 'Extracellular matrix degradation with collagenolysis and stromal desmoplasia.'), Score: 0.6954
+('No evidence of tumor cells with a bland chromatin pattern.', 'Tumor cells with a hyperchromatic and clumped chromatin pattern.'), Score: 0.6926
+('No evidence of tumor cells with a normal mitotic rate.', 'Increased mitotic activity with atypical mitotic figures.'), Score: 0.6892
+('No evidence of tumor cells with a regular nuclear envelope.', 'Tumor cells with deeply invaginated or vesicular nuclei.'), Score: 0.6881
+('No evidence of necrosis.', 'Areas of extensive necrosis with karyorrhexis.'), Score: 0.6856
+('No evidence of tumor cells with a symmetric arrangement of chromatin.', 'Tumor cells with asymmetric chromatin distribution.'), Score: 0.6834
+('No evidence of ductal carcinoma in situ (DCIS).', 'Presence of ductal carcinoma in situ (DCIS) with comedo necrosis.'), Score: 0.6829
+('Small, uniform nuclei.', 'Large, pleomorphic nuclei with variable staining.'), Score: 0.6786
+('No evidence of hobnail morphology.', 'Hobnail morphology with tumor cells exhibiting a flattened, tumor cell shape.'), Score: 0.6779
+('No evidence of prominent inflammatory infiltrate.', 'Brisk inflammatory infiltrate with plasma cells and eosinophils.'), Score: 0.6746
+('No evidence of apoptosis.', 'Increased apoptosis with fragmented nuclei.'), Score: 0.6743
+('Lymphocytes with high N/C ratio.', 'Cells with low N/C ratio and abundant cytoplasm.'), Score: 0.6676
+('No evidence of lymphovascular invasion.', 'Lymphovascular invasion with tumor cells within lymphatic or blood vessels.'), Score: 0.6643
+('No evidence of angiolymphatic invasion.', 'Angiolymphatic invasion by tumor cells.'), Score: 0.6631
+('No significant nuclear atypia.', 'Marked nuclear pleomorphism and hyperchromasia.'), Score: 0.6601
+('No evidence of tumor cells with a well-defined cytoplasm.', 'Tumor cells with scant, poorly defined cytoplasm.'), Score: 0.6561
+('No evidence of tumor cells with halo formation.', 'Tumor cells surrounded by a clear halo due to artifact or edema.'), Score: 0.6558
+('Normal nuclear shape.', 'Abnormal nuclear shape with lobulation or clefts.'), Score: 0.6515
+('Thin, delicate sinusoidal capillaries.', 'Thick-walled, irregular capillaries with increased vascularity.'), Score: 0.6511
+('No evidence of tumor cells with a clear, defined Golgi apparatus.', 'Tumor cells with a poorly defined or absent Golgi apparatus.'), Score: 0.6510
+('Normal medullary cords.', 'Expansion of medullary cords by atypical cells.'), Score: 0.6493
+('No evidence of tumor cell palisading.', 'Tumor cell palisading around necrotic areas.'), Score: 0.6438
+('No evidence of tumor cells with palisading necrosis.', 'Tumor cells exhibiting palisading necrosis.'), Score: 0.6433
+('Normal cell arrangement.', 'Disorganized cell arrangement with loss of polarity.'), Score: 0.6392
+('No evidence of intravascular tumor aggregates.', 'Intravascular tumor aggregates obstructing vessels.'), Score: 0.6390
+('No evidence of perivascular lymphocytic infiltrate.', 'Prominent perivascular lymphocytic infiltrate.'), Score: 0.6345
+('No evidence of tumor-associated fibrosis.', 'Dense tumor-associated fibrosis with collagenization.'), Score: 0.6342
+('Lymphocytes with mature morphology.', 'Immunoblasts and plasmablasts present.'), Score: 0.6313
+('No evidence of extracellular mucin.', 'Extracellular mucin pools surrounding tumor cells.'), Score: 0.6302
+('No evidence of tumor cells with a normal number of chromosomes.', 'Tumor cells exhibiting aneuploidy and chromosomal instability.'), Score: 0.6264
+('Scant mitotic activity.', 'Increased mitotic activity with atypical mitotic figures.'), Score: 0.6260
+('Small, round nuclei with smooth contours.', 'Large, irregular nuclei with notched contours.'), Score: 0.6230
+('No evidence of tumor cells with a uniform growth pattern.', 'Tumor cells displaying a chaotic and infiltrative growth pattern.'), Score: 0.6212
+('No evidence of tumor cells with a normal level of oxidative stress.', 'Tumor cells with increased oxidative stress and reactive oxygen species (ROS) production.'), Score: 0.6125
+('No evidence of tumor cells with a normal vascular pattern.', 'Tumor cells inducing angiogenesis and forming abnormal vascular networks.'), Score: 0.6125
+('Normal follicular architecture with distinct germinal centers.', 'Disrupted follicular architecture with effacement of normal structures.'), Score: 0.6124
+('No evidence of tumor cells with a lack of inflammatory infiltrate.', 'Prominent inflammatory infiltrate surrounding tumor cells.'), Score: 0.6122
+('Normal cell morphology.', 'Atypical cell morphology with bizarre features.'), Score: 0.6099
+('No evidence of angiolymphatic invasion.', 'Angiolymphatic invasion with tumor cells within lymphatic and blood vessels.'), Score: 0.6084
+('No evidence of sinusoidal involvement.', 'Tumor cells infiltrating the sinusoids.'), Score: 0.6064
+('No evidence of angiolymphatic invasion.', 'Angiolymphatic invasion with tumor cells within lymphatic vessels.'), Score: 0.6016
+('No evidence of tumor cells with a loss of polarity.', 'Tumor cells demonstrating a complete loss of normal cellular polarity.'), Score: 0.6007
+('No evidence of tumor cells expressing mucin.', 'Tumor cells demonstrating strong mucin positivity.'), Score: 0.6007
+('No evidence of fibrosis.', 'Extensive fibrosis with collagen deposition.'), Score: 0.6004
+
+Iteration 40:
+('No evidence of tumor cells with a normal expression of PD-1.', 'Tumor cells with downregulation of PD-1 expression.'), Score: 0.9218
+('No evidence of tumor cells with a single nucleolus.', 'Tumor cells with multiple or irregularly shaped nucleoli.'), Score: 0.9140
+('No evidence of tumor cells with a low nuclear-to-cytoplasmic ratio.', 'Tumor cells with a high nuclear-to-cytoplasmic ratio.'), Score: 0.9063
+('No evidence of tumor cells with a normal expression of beta-catenin.', 'Tumor cells with nuclear beta-catenin accumulation.'), Score: 0.9050
+('No evidence of tumor cells with bubbly chromatin.', 'Tumor cells displaying bubbly chromatin.'), Score: 0.9033
+('No evidence of tumor cells with a normal expression of E-cadherin.', 'Tumor cells with reduced or absent E-cadherin expression.'), Score: 0.9032
+('No evidence of prominent lymphoid cuffing.', 'Prominent lymphoid cuffing around tumor nests.'), Score: 0.9028
+('No evidence of tumor cells with a lack of giant cell formation.', 'Tumor cells exhibiting giant cell formation (multinucleated cells).'), Score: 0.9012
+('No evidence of prominent eosinophilic granules.', 'Abundant eosinophilic granules within tumor cells.'), Score: 0.9008
+('No evidence of tumor cells with a normal expression of cytokeratins.', 'Tumor cells with aberrant or loss of cytokeratin expression.'), Score: 0.8995
+('No evidence of tumor cells with a normal nuclear-to-cytoplasmic ratio.', 'Tumor cells with a high nuclear-to-cytoplasmic ratio.'), Score: 0.8965
+('No evidence of tumor cells with intranuclear inclusions.', 'Tumor cells containing prominent intranuclear inclusions.'), Score: 0.8960
+('No evidence of tumor cells with a clear nucleolus.', 'Tumor cells with large, irregular, and multiple nucleoli.'), Score: 0.8944
+('No evidence of tumor cells with a high mitotic index.', 'High mitotic index with frequent and abnormal mitotic figures.'), Score: 0.8942
+('No evidence of mitotic figures.', 'Frequent mitotic figures, some atypical.'), Score: 0.8942
+('No evidence of tumor cells with a normal nuclear shape.', 'Tumor cells exhibiting irregular nuclear contours.'), Score: 0.8940
+('No evidence of tumor cells with a normal morphology of the nucleolus.', 'Tumor cells with large, irregular, and prominent nucleoli.'), Score: 0.8934
+('No evidence of tumor cells with a normal nucleolus.', 'Tumor cells exhibiting prominent, multiple nucleoli.'), Score: 0.8927
+('No evidence of tumor cells with a normal nucleoplasmic ratio.', 'Tumor cells with a high nucleoplasmic ratio (large nucleus relative to cytoplasm).'), Score: 0.8902
+('No evidence of tumor cells with high mitotic activity.', 'High mitotic activity with numerous dividing tumor cells.'), Score: 0.8895
+('No evidence of tumor cells with a lack of prominent vascularity.', 'Tumor cells associated with increased vascularity and angiogenesis.'), Score: 0.8889
+('No evidence of tumor cells with a normal expression of p53.', 'Tumor cells with aberrant p53 expression or mutation.'), Score: 0.8879
+('No evidence of tumor cells forming rosettes.', 'Tumor cells arranged in characteristic rosettes.'), Score: 0.8864
+('No evidence of tumor cells with a normal expression of PAX8.', 'Tumor cells with aberrant or loss of PAX8 expression.'), Score: 0.8850
+('No evidence of tumor cells with a normal number of nucleoli.', 'Tumor cells with multiple, prominent nucleoli.'), Score: 0.8837
+('No evidence of tumor cells with a normal size of nucleoli.', 'Tumor cells with large, atypical nucleoli.'), Score: 0.8834
+('No evidence of tumor cells with smooth nuclear membranes.', 'Tumor cells with irregular, crenated nuclear membranes.'), Score: 0.8832
+('No evidence of tumor cells with a normal expression of PD-L1.', 'Tumor cells with high PD-L1 expression.'), Score: 0.8830
+('No evidence of tumor cells with prominent nucleolus.', 'Tumor cells with large, irregular, and prominent nucleoli.'), Score: 0.8829
+('No evidence of tumor cells with a normal size and shape.', 'Tumor cells exhibiting marked anisocytosis and pleomorphism.'), Score: 0.8822
+('No evidence of tumor cells with a low proliferative rate.', 'Tumor cells demonstrating a high proliferative rate with numerous mitotic figures.'), Score: 0.8822
+('No evidence of tumor cells with a normal expression of CD10.', 'Tumor cells with loss of CD10 expression.'), Score: 0.8817
+('No evidence of tumor cells with a regular nuclear shape.', 'Tumor cells with irregular nuclear contours and lobulations.'), Score: 0.8816
+('No evidence of tumor cells with a normal mitotic activity.', 'Tumor cells exhibiting frequent and atypical mitotic figures.'), Score: 0.8812
+('No evidence of tumor cells with a normal mitotic spindle.', 'Tumor cells with a multipolar mitotic spindle.'), Score: 0.8809
+('No evidence of prominent eosinophilic granules.', 'Abundant eosinophilic cytoplasmic granules.'), Score: 0.8807
+('No evidence of tumor cells with bubbly chromatin.', 'Tumor cells displaying bubbly chromatin with prominent nucleoli.'), Score: 0.8806
+('No evidence of tumor cells with a lack of mitotic activity.', 'Tumor cells exhibiting frequent and atypical mitotic figures.'), Score: 0.8797
+('No evidence of tumor cells with a regular nuclear outline.', 'Tumor cells with lobulated or irregular nuclear outlines.'), Score: 0.8794
+('No evidence of tumor cells with a regular nuclear-to-cytoplasmic ratio.', 'Tumor cells displaying an increased nuclear-to-cytoplasmic ratio.'), Score: 0.8792
+('No evidence of tumor cells with a normal amount of cytoplasm.', 'Tumor cells with a reduced amount of cytoplasm.'), Score: 0.8791
+('No evidence of tumor cells with a normal nuclear to cytoplasmic ratio.', 'Tumor cells with a markedly increased nuclear to cytoplasmic ratio.'), Score: 0.8789
+('No evidence of tumor cells with prominent chromatin clumping.', 'Tumor cells exhibiting coarse, irregular chromatin clumping.'), Score: 0.8786
+('No evidence of tumor cells with a lack of prominent nucleoli.', 'Tumor cells with large, multiple, and prominent nucleoli.'), Score: 0.8759
+('No evidence of tumor cells with a normal vasculature.', 'Tumor cells associated with abnormal, tortuous, and proliferative vasculature.'), Score: 0.8754
+('No evidence of tumor cells with a low nuclear-to-cytoplasmic ratio.', 'Tumor cells displaying a high nuclear-to-cytoplasmic ratio.'), Score: 0.8737
+('No evidence of tumor cells with a normal expression of p53.', 'Tumor cells with aberrant p53 expression, indicating genomic instability.'), Score: 0.8732
+('No evidence of tumor cells with a normal expression of E-cadherin.', 'Tumor cells with loss of E-cadherin expression.'), Score: 0.8719
+('No evidence of tumor cells with a normal nucleolus-to-nucleus ratio.', 'Tumor cells with an increased nucleolus-to-nucleus ratio.'), Score: 0.8712
+('No evidence of tumor cells with a normal size and shape.', 'Tumor cells displaying significant pleomorphism in size and shape.'), Score: 0.8704
+('No evidence of emperipolesis.', 'Emperipolesis observed within tumor cells.'), Score: 0.8704
+('No evidence of prominent Golgi apparatus.', 'Prominent Golgi apparatus visible within tumor cells.'), Score: 0.8701
+('No evidence of tumor cells with a normal size and shape.', 'Tumor cells displaying marked variation in size and shape (pleomorphism).'), Score: 0.8694
+('No evidence of tumor cells with a normal expression of EGFR.', 'Tumor cells with overexpression of EGFR.'), Score: 0.8694
+('No evidence of tumor cells with a high nuclear-to-cytoplasmic ratio.', 'Tumor cells with a markedly increased nuclear-to-cytoplasmic ratio.'), Score: 0.8689
+('No evidence of tumor cells with plasmacytoid features.', 'Tumor cells exhibiting plasmacytoid differentiation.'), Score: 0.8674
+('No evidence of tumor cells with a normal mitotic activity.', 'Tumor cells showing frequent and abnormal mitoses.'), Score: 0.8674
+('No evidence of tumor cells with a normal expression of HER2.', 'Tumor cells with overexpression of HER2, suggesting a potential therapeutic target.'), Score: 0.8664
+('No evidence of tumor cells with a uniform staining intensity.', 'Tumor cells exhibiting heterogeneous staining intensity.'), Score: 0.8662
+('No evidence of tumor cells with a uniform cell size.', 'Tumor cells exhibiting significant variation in cell size (anisocytosis).'), Score: 0.8661
+('No evidence of tumor cells with a normal number of nucleoli.', 'Tumor cells with multiple, large, and prominent nucleoli.'), Score: 0.8657
+('No evidence of tumor cells with a symmetric nuclear division.', 'Tumor cells displaying asymmetric or abnormal mitotic division.'), Score: 0.8651
+('No evidence of reactive hyperplasia.', 'Features of reactive hyperplasia with atypical cells.'), Score: 0.8641
+('No evidence of tumor cells with smooth nuclear membranes.', 'Tumor cells exhibiting irregular, folded nuclear membranes.'), Score: 0.8639
+('No evidence of perineural invasion.', 'Perineural invasion by tumor cells.'), Score: 0.8631
+('No evidence of tumor cells with a regular nuclear-to-cytoplasmic ratio.', 'Tumor cells with a markedly increased nuclear-to-cytoplasmic ratio.'), Score: 0.8613
+('No evidence of tumor cells with a lack of prominent nucleoli.', 'Tumor cells with large, prominent, and multiple nucleoli.'), Score: 0.8606
+('No evidence of tumor cells with prominent vascularity.', 'Tumor nests exhibiting prominent vascularity and angiogenesis.'), Score: 0.8596
+('No evidence of tumor cells with uniform size and shape.', 'Tumor cells exhibiting significant pleomorphism and variability in size and shape.'), Score: 0.8589
+('No evidence of tumor cells with a normal chromatin pattern.', 'Tumor cells with a coarse, clumped chromatin pattern.'), Score: 0.8583
+('No evidence of tumor cell clusters.', 'Presence of tumor cell clusters with loss of normal architecture.'), Score: 0.8579
+('No evidence of tumor cells with a normal nuclear-to-cytoplasmic ratio.', 'Tumor cells with a markedly increased nuclear-to-cytoplasmic ratio.'), Score: 0.8576
+('No evidence of tumor cells with a low proliferative index (Ki-67).', 'Tumor cells with a high proliferative index (Ki-67).'), Score: 0.8568
+('No evidence of tumor cells with a normal expression of BCL-2.', 'Tumor cells with increased BCL-2 expression, indicative of apoptosis resistance.'), Score: 0.8563
+('Normal lymphatic vessels.', 'Dilated lymphatic vessels with tumor emboli.'), Score: 0.8551
+('No evidence of tumor cells with a normal expression of CD44.', 'Tumor cells with increased CD44 expression indicating stem cell properties.'), Score: 0.8549
+('No evidence of tumor cells with a consistent cell size.', 'Tumor cells demonstrating significant variation in cell size (anisocytosis).'), Score: 0.8544
+('No evidence of tumor cells with a normal expression of CD44.', 'Tumor cells with increased CD44 expression indicating stem cell-like properties.'), Score: 0.8534
+('No evidence of tumor cells with a symmetric nuclear shape.', 'Tumor cells exhibiting nuclear asymmetry and irregular contours.'), Score: 0.8523
+('No evidence of tumor cells with uniform size and shape.', 'Tumor cells exhibiting significant size and shape variability (pleomorphism).'), Score: 0.8519
+('No evidence of tumor cells with a normal expression of HER2.', 'Tumor cells with overexpression of HER2.'), Score: 0.8513
+('No evidence of tumor cells with smooth nuclear membranes.', 'Tumor cells with irregular, folded, or crenated nuclear membranes.'), Score: 0.8513
+('No evidence of tumor cells exhibiting prominent eosinophilic granules.', 'Tumor cells displaying abundant eosinophilic granular bodies.'), Score: 0.8489
+('No evidence of tumor cells with intact Golgi apparatus.', 'Tumor cells with a disrupted or absent Golgi apparatus.'), Score: 0.8479
+('No evidence of tumor cells with normal cell adhesion.', 'Tumor cells displaying loss of cell adhesion and increased invasiveness.'), Score: 0.8458
+('No evidence of tumor cells with uniform nuclear size and shape.', 'Tumor cells exhibiting significant pleomorphism in nuclear size and shape.'), Score: 0.8440
+('No evidence of emperipolesis.', 'Emperipolesis with intact cells within other cells.'), Score: 0.8433
+('No evidence of tumor cells with uniform staining intensity.', 'Tumor cells exhibiting heterogeneous staining intensity.'), Score: 0.8431
+('No evidence of tumor cells with a normal mitotic index.', 'Elevated mitotic index with frequent mitotic figures.'), Score: 0.8431
+('No evidence of tumor cells with a normal chromatin distribution.', 'Tumor cells with unevenly distributed, condensed chromatin.'), Score: 0.8428
+('No evidence of tumor cells with a normal amount of cytoplasm.', 'Tumor cells with abundant, eosinophilic cytoplasm.'), Score: 0.8395
+('No evidence of tumor cells with a normal cytoplasmic border.', 'Tumor cells with ill-defined or absent cytoplasmic borders.'), Score: 0.8388
+('No evidence of tumor cells with a clear Golgi apparatus.', 'Tumor cells with a prominent and atypical Golgi apparatus.'), Score: 0.8385
+('No evidence of tumor cells with a normal cell size.', 'Tumor cells displaying significant variation in cell size (anisocytosis).'), Score: 0.8318
+('No evidence of tumor cells with uniform size and shape.', 'Tumor cells exhibiting significant pleomorphism in size and shape.'), Score: 0.8315
+('No evidence of tumor cells with a normal morphology of the cytoplasm.', 'Tumor cells with cytoplasm containing vacuoles or inclusions.'), Score: 0.8311
+('No evidence of tumor cells with evenly distributed chromatin.', 'Tumor cells with coarse, irregularly distributed chromatin.'), Score: 0.8295
+('No evidence of tumor cells with a normal expression of mismatch repair proteins.', 'Tumor cells with loss of mismatch repair protein expression.'), Score: 0.8295
+('No evidence of tumor cells with a normal mitotic count.', 'Tumor cells with a markedly elevated mitotic count.'), Score: 0.8291
+('No evidence of tumor cells with a normal expression of CD20.', 'Tumor cells with loss of CD20 expression.'), Score: 0.8288
+('No evidence of tumor cells with a normal expression of ALK.', 'Tumor cells with ALK rearrangement or overexpression.'), Score: 0.8288
+('No evidence of tumor infiltrating lymphocytes (TILs).', 'Abundant tumor infiltrating lymphocytes (TILs) surrounding tumor nests.'), Score: 0.8283
+('No evidence of tumor cells with a well-defined cytoplasm.', 'Tumor cells with a poorly defined or indistinct cytoplasm.'), Score: 0.8272
+('No evidence of plasmacytoid differentiation.', 'Plasmacytoid differentiation with cytoplasmic inclusions.'), Score: 0.8270
+('No evidence of tumor cells with a lack of fibrosis.', 'Tumor cells associated with extensive desmoplastic reaction and fibrosis.'), Score: 0.8243
+('No evidence of tumor cells with a normal cell polarity.', 'Tumor cells exhibiting loss of cell polarity and architectural disarray.'), Score: 0.8242
+('No evidence of tumor cells with a normal expression of p53.', 'Tumor cells with aberrant p53 expression and nuclear accumulation.'), Score: 0.8242
+('No evidence of tumor cells with a normal expression of E-cadherin.', 'Tumor cells with loss of E-cadherin expression at cell borders.'), Score: 0.8240
+('No evidence of tumor cells with a regular nuclear outline.', 'Tumor cells with irregular, lobulated, or spiculated nuclear contours.'), Score: 0.8235
+('No evidence of tumor cells with a symmetric nuclear division.', 'Tumor cells exhibiting asymmetric nuclear division.'), Score: 0.8233
+('No evidence of tumor cells with a clear cytoplasm.', 'Tumor cells with a dense, granular cytoplasm.'), Score: 0.8225
+('Lymphocytes with small, dense nuclei and scant cytoplasm.', 'Large, pleomorphic cells with prominent nucleoli and abundant cytoplasm.'), Score: 0.8215
+('No evidence of tumor-associated macrophages (TAMs).', 'Presence of TAMs with abundant cytoplasm.'), Score: 0.8215
+('No evidence of tumor cells with a normal nuclear shape.', 'Tumor cells with nuclei exhibiting deep indentations and grooves.'), Score: 0.8212
+('No evidence of tumor cells with a normal chromatin distribution pattern.', 'Tumor cells with a vesicular chromatin pattern.'), Score: 0.8198
+('No evidence of tumor cells with a typical apoptotic rate.', 'Increased apoptotic rate with frequent apoptotic bodies.'), Score: 0.8193
+('No evidence of tumor cells with a lack of desmoplastic reaction.', 'Tumor cells surrounded by a prominent desmoplastic reaction.'), Score: 0.8185
+('No evidence of tumor cells with a normal expression of cytokeratins.', 'Tumor cells with aberrant cytokeratin expression patterns.'), Score: 0.8165
+('No evidence of tumor cells with a uniform cell population.', 'Tumor cells exhibiting significant cellular heterogeneity.'), Score: 0.8160
+('No evidence of tumor cells with a normal mitotic index.', 'Tumor cells with a markedly elevated mitotic index.'), Score: 0.8160
+('No evidence of tumor cells with a lack of apoptosis.', 'Tumor cells undergoing frequent apoptosis with apoptotic bodies.'), Score: 0.8158
+('No evidence of tumor cells with a regular chromatin pattern.', 'Tumor cells with coarse, clumped chromatin.'), Score: 0.8155
+('Small, reactive germinal centers.', 'Large, atypical germinal centers with irregular shapes.'), Score: 0.8153
+('No evidence of tumor cells with a normal staining intensity.', 'Tumor cells exhibiting intense and heterogeneous staining.'), Score: 0.8142
+('No evidence of tumor cells with a normal amount of cytoplasm.', 'Tumor cells with abundant, eosinophilic cytoplasm containing vacuoles.'), Score: 0.8132
+('No evidence of tumor cells with a normal expression of p63.', 'Tumor cells with loss of p63 expression.'), Score: 0.8127
+('No evidence of epithelial-myoepithelial cell differentiation.', 'Presence of epithelial-myoepithelial cell differentiation.'), Score: 0.8123
+('No evidence of tumor cells with a normal vascular pattern.', 'Tumor cells surrounded by glomeruloid vascular structures.'), Score: 0.8115
+('No evidence of tumor cells with a consistent staining intensity.', 'Tumor cells displaying heterogeneous staining intensity.'), Score: 0.8108
+('No evidence of tumor cells with a normal nuclear shape.', 'Tumor cells with lobulated or convoluted nuclear shapes.'), Score: 0.8085
+('No evidence of tumor cells with a lack of emperipolesis.', 'Tumor cells displaying emperipolesis (intracellular lymphocytes).'), Score: 0.8074
+('No evidence of tumor cells with a low proliferation index (Ki-67).', 'Tumor cells with a high proliferation index (Ki-67) indicating rapid growth.'), Score: 0.8039
+('No evidence of tumor cells with a normal amount of heterochromatin.', 'Tumor cells with decreased heterochromatin and increased euchromatin.'), Score: 0.8034
+('No evidence of tumor cells with a normal expression of Ki-67.', 'Tumor cells with high Ki-67 expression indicating proliferation.'), Score: 0.8029
+('No evidence of epithelioid granulomas.', 'Presence of epithelioid granulomas with multinucleated giant cells.'), Score: 0.8015
+('No evidence of tumor cells with a normal expression of Ki-67.', 'Tumor cells with high Ki-67 expression indicating high proliferation.'), Score: 0.8009
+('No evidence of tumor cells with a symmetric appearance.', 'Tumor cells displaying marked asymmetry in shape and size.'), Score: 0.8004
+('Uniform distribution of lymphocytes.', 'Heterogeneous cell population with areas of necrosis.'), Score: 0.7997
+('No evidence of tumor cells with a normal morphology.', 'Tumor cells displaying bizarre, multinucleated, or ring-like morphology.'), Score: 0.7995
+('No evidence of calcification.', 'Presence of calcification with amorphous deposits.'), Score: 0.7974
+('No evidence of plasmacytoid differentiation.', 'Plasmacytoid differentiation with eccentric nuclei and abundant cytoplasm.'), Score: 0.7972
+('No evidence of tumor cells with a normal size and shape of the nucleus.', 'Tumor cells with enlarged, hyperchromatic nuclei and irregular shapes.'), Score: 0.7967
+('No evidence of tumor cells with uniform cell size.', 'Tumor cells exhibiting significant pleomorphism in cell size.'), Score: 0.7964
+('No evidence of atypical mitoses.', 'Atypical mitoses with tripolar or multipolar spindles.'), Score: 0.7964
+('No evidence of tumor cells with a normal chromatin distribution.', 'Tumor cells exhibiting vesicular chromatin with prominent nucleoli.'), Score: 0.7964
+('No evidence of tumor cells with a normal chromatin pattern.', 'Tumor cells with a finely granular chromatin pattern.'), Score: 0.7964
+('No evidence of tumor cells with a symmetric nuclear division.', 'Tumor cells undergoing asymmetric nuclear division.'), Score: 0.7962
+('No evidence of tumor cells with a regular chromatin distribution.', 'Tumor cells with a vesicular chromatin pattern and prominent nucleoli.'), Score: 0.7949
+('No evidence of tumor cells with a normal expression of p53.', 'Tumor cells with aberrant p53 expression (e.g., overexpression, loss of function).'), Score: 0.7932
+('No evidence of tumor cells with a normal expression of Ki-67.', 'Tumor cells with a high Ki-67 proliferation index.'), Score: 0.7932
+('Normal stromal collagen.', 'Desmoplastic reaction with dense, hyalinized collagen.'), Score: 0.7914
+('No prominent nucleoli.', 'Prominent, large nucleoli.'), Score: 0.7910
+('No evidence of plasma cell differentiation.', 'Plasma cell differentiation with Dutcher bodies.'), Score: 0.7902
+('No evidence of tumor cells with a normal mitotic activity.', 'Increased mitotic activity with atypical mitotic figures.'), Score: 0.7901
+('No evidence of prominent stromal edema.', 'Significant stromal edema with myxoid change.'), Score: 0.7881
+('No evidence of tumor cells with a normal expression of HER2.', 'Tumor cells with HER2 overexpression or amplification.'), Score: 0.7881
+('No evidence of tumor cells with a normal chromatin distribution.', 'Tumor cells with hyperchromatic nuclei and irregular chromatin distribution.'), Score: 0.7877
+('No evidence of signet ring cells.', 'Signet ring cells with cytoplasmic mucin displacing the nucleus.'), Score: 0.7874
+('No evidence of tumor cells with a well-defined basement membrane.', 'Tumor cells invading through the basement membrane.'), Score: 0.7862
+('No evidence of tumor cells with a normal expression of p53.', 'Tumor cells with aberrant p53 expression.'), Score: 0.7842
+('No evidence of tumor cells with a normal expression of E-cadherin.', 'Tumor cells with loss of E-cadherin expression and disruption of cell-cell adhesion.'), Score: 0.7839
+('No evidence of tumor cells with a lack of necrosis.', 'Tumor cells exhibiting extensive areas of necrosis.'), Score: 0.7836
+('No evidence of tumor cells with a normal mitotic count.', 'Elevated mitotic count with frequent mitotic figures.'), Score: 0.7831
+('No evidence of spindle cell morphology.', 'Spindle cell morphology with elongated nuclei.'), Score: 0.7831
+('No evidence of prominent stromal desmoplasia.', 'Dense stromal desmoplasia surrounding tumor nests.'), Score: 0.7819
+('Lymphocytes with clear cytoplasm.', 'Cells with granular or vacuolated cytoplasm.'), Score: 0.7809
+('Absence of giant cells.', 'Presence of multinucleated giant cells.'), Score: 0.7809
+('Normal immune cell infiltrate.', 'Atypical immune cell infiltrate with abnormal distribution.'), Score: 0.7796
+('No evidence of tumor cells with a lack of angiosis.', 'Tumor cells surrounded by numerous, newly formed blood vessels (angiogenesis).'), Score: 0.7789
+('No evidence of tumor cells with well-defined cell boundaries.', 'Tumor cells with poorly defined, overlapping cell boundaries.'), Score: 0.7784
+('No evidence of tumor cells with a defined growth pattern.', 'Tumor cells forming solid sheets or nests with loss of normal glandular architecture.'), Score: 0.7779
+('No evidence of tumor cells forming solid sheets.', 'Tumor cells arranged in a solid sheet-like growth pattern.'), Score: 0.7757
+('No evidence of tumor cells with a defined cytoplasmic border.', 'Tumor cells with ill-defined or indistinct cytoplasmic borders.'), Score: 0.7731
+('No evidence of tumor cells with condensed chromatin.', 'Tumor cells exhibiting finely dispersed or vesicular chromatin.'), Score: 0.7713
+('No evidence of tumor cells with a normal chromatin distribution.', 'Tumor cells with dense, irregular chromatin clumping.'), Score: 0.7679
+('No evidence of tumor cells with a normal expression of Ki-67.', 'Tumor cells exhibiting high Ki-67 proliferation index.'), Score: 0.7676
+('No evidence of tumor cells with a symmetric nuclear shape.', 'Tumor cells with asymmetric nuclear shapes and indentations.'), Score: 0.7658
+('No evidence of tumor cells with nuclear grooves.', 'Tumor cells exhibiting nuclear grooves and indentations.'), Score: 0.7636
+('No evidence of syncytial growth pattern.', 'Syncytial growth pattern with loss of individual cell boundaries.'), Score: 0.7611
+('Lymphocytes with round nuclei.', 'Cells with elongated or irregular nuclei.'), Score: 0.7596
+('No evidence of clear cell change.', 'Clear cell change with glycogen-rich cytoplasm.'), Score: 0.7589
+('No evidence of tumor cells with a normal expression of Ki-67.', 'Tumor cells with high Ki-67 expression indicating rapid proliferation.'), Score: 0.7588
+('No evidence of tumor associated macrophages (TAMs).', 'Increased number of tumor associated macrophages (TAMs) infiltrating the stroma.'), Score: 0.7573
+('No evidence of perivascular pseudorosettes.', 'Perivascular pseudorosettes with tumor cells arranged around vessels.'), Score: 0.7571
+('No evidence of tumor cells with a normal expression of vimentin.', 'Tumor cells with increased vimentin expression indicating epithelial-mesenchymal transition.'), Score: 0.7569
+('No evidence of tumor cells with intact cell borders.', 'Tumor cells with poorly defined, smudged cell borders.'), Score: 0.7563
+('No evidence of tumor cells with a lack of nuclear pseudoinclusions.', 'Tumor cells containing prominent nuclear pseudoinclusions.'), Score: 0.7540
+('No evidence of tumor cells with a distinct cell border.', 'Tumor cells with ill-defined, smudged cell borders.'), Score: 0.7535
+('No evidence of tumor cells with a defined cell boundary.', 'Tumor cells with poorly defined or overlapping cell boundaries.'), Score: 0.7523
+('No evidence of tumor cells with a normal mitotic figure.', 'Tumor cells exhibiting bizarre or atypical mitotic figures.'), Score: 0.7506
+('Absence of atypical cells.', 'Presence of atypical cells with bizarre morphology.'), Score: 0.7451
+('No evidence of tumor cells with a normal level of anisokaryosis.', 'Tumor cells exhibiting significant anisokaryosis (variation in nuclear size and shape).'), Score: 0.7445
+('No evidence of tumor cells with prominent cell borders.', 'Loss of cell borders with poorly defined cell boundaries.'), Score: 0.7443
+('No evidence of tumor cells with a normal expression of E-cadherin.', 'Tumor cells exhibiting loss of E-cadherin expression at cell borders.'), Score: 0.7433
+('No evidence of tumor cells with a normal stromal reaction.', 'Tumor cells inducing a prominent desmoplastic stromal reaction.'), Score: 0.7425
+('No evidence of tumor cells with a normal expression of CD45.', 'Tumor cells lacking CD45 expression, differentiating them from hematopoietic cells.'), Score: 0.7406
+('No evidence of tumor cells with a normal apoptotic rate.', 'Increased apoptotic rate with frequent apoptotic bodies.'), Score: 0.7400
+('No evidence of tumor cells with a regular chromatin distribution.', 'Tumor cells with hyperchromatic nuclei and irregular chromatin distribution.'), Score: 0.7395
+('No evidence of tumor cells with a normal chromatin texture.', 'Tumor cells with coarsely granular chromatin.'), Score: 0.7388
+('No evidence of tumor cells with a smooth nuclear membrane.', 'Tumor cells with irregular, folded, or crenated nuclear membranes.'), Score: 0.7386
+('No evidence of ductal differentiation.', 'Presence of ductal structures within the tumor.'), Score: 0.7365
+('No evidence of tumor cells with a normal amount of cytoplasm.', 'Tumor cells with decreased cytoplasm (pyknosis).'), Score: 0.7363
+('No evidence of tumor cells with intact cell borders.', 'Tumor cells with poorly defined or indistinct cell borders.'), Score: 0.7362
+('No evidence of tumor cells with normal polarity.', 'Tumor cells displaying loss of polarity and architectural distortion.'), Score: 0.7338
+('No evidence of tumor cells with inconspicuous nucleoli.', 'Tumor cells with multiple, prominent, and distinct nucleoli.'), Score: 0.7337
+('No evidence of tumor cells with a normal chromatin distribution.', 'Tumor cells with clumped, hyperchromatic chromatin.'), Score: 0.7313
+('No evidence of tumor cells with a normal vascular supply.', 'Tumor cells associated with increased angiogenesis and vascular density.'), Score: 0.7302
+('No evidence of tumor cells with a normal apoptotic rate.', 'Tumor cells exhibiting increased apoptosis and cellular debris.'), Score: 0.7293
+('No evidence of tumor cells with a normal cell border.', 'Tumor cells with poorly defined, irregular, or infiltrative cell borders.'), Score: 0.7288
+('No evidence of tumor cells with a normal spindle shape.', 'Tumor cells exhibiting a sarcomatoid or atypical spindle cell morphology.'), Score: 0.7282
+('No evidence of tumor cells with a normal growth pattern.', 'Tumor cells forming disorganized nests and sheets.'), Score: 0.7253
+('No evidence of pseudoinclusions.', 'Intracytoplasmic pseudoinclusions.'), Score: 0.7245
+('No evidence of tumor cells with a normal expression of vimentin.', 'Tumor cells with increased vimentin expression, indicating epithelial-mesenchymal transition (EMT).'), Score: 0.7245
+('No evidence of tumor cells with a uniform cell size.', 'Tumor cells exhibiting significant pleomorphism in cell size.'), Score: 0.7240
+('No evidence of sinusoidal pattern.', 'Sinusoidal growth pattern with tumor cells lining vascular spaces.'), Score: 0.7225
+('No evidence of pagetoid spread.', 'Pagetoid spread of tumor cells into the epidermis.'), Score: 0.7129
+('No evidence of ductal differentiation.', 'Presence of ductal differentiation with luminal structures.'), Score: 0.7115
+('No evidence of tumor cells with a normal growth pattern.', 'Tumor cells exhibiting an infiltrative growth pattern.'), Score: 0.7109
+('No evidence of tumor cells with a normal mitotic count.', 'Numerous atypical mitotic figures, including tripolar and multipolar spindles.'), Score: 0.7094
+('No evidence of tumor cells with a normal expression of PD-L1.', 'Tumor cells with high PD-L1 expression indicating immune evasion.'), Score: 0.7092
+('No evidence of tumor cells with a normal expression of cell adhesion molecules.', 'Tumor cells with decreased expression of E-cadherin and increased expression of N-cadherin.'), Score: 0.7077
+('No evidence of tumor cells with prominent cell borders.', 'Tumor cells with indistinct or blurred cell borders.'), Score: 0.7074
+('No evidence of tumor cells with a normal expression of hormone receptors.', 'Tumor cells with loss or altered expression of hormone receptors (e.g., ER, PR).'), Score: 0.7070
+('No evidence of tumor cells with a cribriform pattern.', 'Tumor cells arranged in a cribriform pattern with sieve-like spaces.'), Score: 0.7062
+('No evidence of tumor cells with inconspicuous nucleoli.', 'Tumor cells with large, prominent, and multiple nucleoli.'), Score: 0.7032
+('No evidence of tumor cells with a normal expression of p53.', 'Tumor cells demonstrating aberrant p53 expression and nuclear accumulation.'), Score: 0.7030
+('No evidence of tumor cells with a lack of necrosis.', 'Tumor cells exhibiting areas of necrosis and cellular debris.'), Score: 0.7030
+('No evidence of tumor cells with a normal size.', 'Tumor cells that are significantly enlarged compared to normal cells.'), Score: 0.7020
+('No evidence of tumor cells with a normal chromatin texture.', 'Tumor cells with a vesicular chromatin pattern.'), Score: 0.7005
+('No evidence of hobnail morphology.', 'Hobnail morphology with enlarged, flattened nuclei.'), Score: 0.7004
+('Normal nuclear size.', 'Increased nuclear size (nuclear pleomorphism).'), Score: 0.6989
+('No evidence of tumor cells with a normal apoptotic index.', 'Increased apoptotic index with frequent apoptotic bodies.'), Score: 0.6979
+('No evidence of extracellular matrix degradation.', 'Extracellular matrix degradation with collagenolysis and stromal desmoplasia.'), Score: 0.6954
+('No evidence of tumor cells with a bland chromatin pattern.', 'Tumor cells with a hyperchromatic and clumped chromatin pattern.'), Score: 0.6926
+('No evidence of tumor cells with evenly distributed chromatin.', 'Tumor cells exhibiting coarse, clumped, or hyperchromatic chromatin.'), Score: 0.6914
+('No evidence of tumor cells with a normal mitotic rate.', 'Increased mitotic activity with atypical mitotic figures.'), Score: 0.6892
+('No evidence of tumor cells with a regular nuclear envelope.', 'Tumor cells with deeply invaginated or vesicular nuclei.'), Score: 0.6881
+('No evidence of tumor cells with a clear cytoplasm.', 'Tumor cells with abundant eosinophilic cytoplasm.'), Score: 0.6866
+('No evidence of necrosis.', 'Areas of extensive necrosis with karyorrhexis.'), Score: 0.6856
+('No evidence of tumor cells with a symmetric arrangement of chromatin.', 'Tumor cells with asymmetric chromatin distribution.'), Score: 0.6834
+('No evidence of tumor cells with a well-defined cell membrane.', 'Tumor cells with a poorly defined or absent cell membrane.'), Score: 0.6831
+('No evidence of ductal carcinoma in situ (DCIS).', 'Presence of ductal carcinoma in situ (DCIS) with comedo necrosis.'), Score: 0.6829
+('No evidence of tumor cells with a normal chromatin texture.', 'Tumor cells with a finely granular chromatin texture.'), Score: 0.6799
+('No evidence of tumor cells with a normal expression of cytokeratins.', 'Tumor cells with strong and diffuse cytokeratin expression.'), Score: 0.6788
+('Small, uniform nuclei.', 'Large, pleomorphic nuclei with variable staining.'), Score: 0.6786
+('No evidence of hobnail morphology.', 'Hobnail morphology with tumor cells exhibiting a flattened, tumor cell shape.'), Score: 0.6779
+('No evidence of tumor cells with a normal expression of vimentin.', 'Tumor cells with increased vimentin expression indicating mesenchymal differentiation.'), Score: 0.6776
+('No evidence of tumor cells with a normal expression of PD-L1.', 'Tumor cells with high PD-L1 expression, indicating potential immune evasion.'), Score: 0.6773
+('No evidence of tumor cells with a uniform growth pattern.', 'Tumor cells exhibiting a disorganized and infiltrative growth pattern.'), Score: 0.6751
+('No evidence of tumor cells with a typical growth pattern.', 'Tumor cells displaying an infiltrative growth pattern.'), Score: 0.6748
+('No evidence of prominent inflammatory infiltrate.', 'Brisk inflammatory infiltrate with plasma cells and eosinophils.'), Score: 0.6746
+('No evidence of tumor cells with a clear cytoplasm.', 'Tumor cells with abundant, eosinophilic cytoplasm.'), Score: 0.6746
+('No evidence of apoptosis.', 'Increased apoptosis with fragmented nuclei.'), Score: 0.6743
+('No evidence of tumor cells with a uniform growth pattern.', 'Tumor cells exhibiting a disorganized, infiltrative growth pattern.'), Score: 0.6699
+('Lymphocytes with high N/C ratio.', 'Cells with low N/C ratio and abundant cytoplasm.'), Score: 0.6676
+('No evidence of tumor cells with a normal expression of CD68.', 'Tumor cells surrounded by increased CD68+ macrophages.'), Score: 0.6644
+('No evidence of lymphovascular invasion.', 'Lymphovascular invasion with tumor cells within lymphatic or blood vessels.'), Score: 0.6643
+('No evidence of tumor cells with a normal stromal response.', 'Tumor cells inducing a prominent desmoplastic stromal reaction.'), Score: 0.6635
+('No evidence of angiolymphatic invasion.', 'Angiolymphatic invasion by tumor cells.'), Score: 0.6631
+('No evidence of tumor cells with a lack of perineural invasion.', 'Tumor cells exhibiting perineural invasion (infiltration around nerves).'), Score: 0.6613
+('No significant nuclear atypia.', 'Marked nuclear pleomorphism and hyperchromasia.'), Score: 0.6601
+('No evidence of tumor cells with a normal nuclear shape.', 'Tumor cells displaying bizarre nuclear shapes and multinucleation.'), Score: 0.6586
+('No evidence of tumor cells with a smooth nuclear membrane.', 'Tumor cells with an irregular, folded, or crenated nuclear membrane.'), Score: 0.6583
+('No evidence of tumor cells with a cohesive cell arrangement.', 'Tumor cells exhibiting loss of cohesion and single-cell invasion.'), Score: 0.6573
+('No evidence of tumor cells with a well-defined cytoplasm.', 'Tumor cells with scant, poorly defined cytoplasm.'), Score: 0.6561
+('No evidence of tumor cells with halo formation.', 'Tumor cells surrounded by a clear halo due to artifact or edema.'), Score: 0.6558
+('Normal nuclear shape.', 'Abnormal nuclear shape with lobulation or clefts.'), Score: 0.6515
+('Thin, delicate sinusoidal capillaries.', 'Thick-walled, irregular capillaries with increased vascularity.'), Score: 0.6511
+('No evidence of tumor cells with a clear, defined Golgi apparatus.', 'Tumor cells with a poorly defined or absent Golgi apparatus.'), Score: 0.6510
+('No evidence of tumor cells with a smooth nuclear membrane.', 'Tumor cells with deeply folded or convoluted nuclear membranes.'), Score: 0.6500
+('Normal medullary cords.', 'Expansion of medullary cords by atypical cells.'), Score: 0.6493
+('No evidence of tumor cells with a regular arrangement.', 'Tumor cells growing in disorganized sheets or clusters.'), Score: 0.6475
+('No evidence of tumor cells with a uniform growth pattern.', 'Tumor cells displaying a disorganized and infiltrative growth pattern.'), Score: 0.6473
+('No evidence of tumor cells with a normal stromal cellularity.', 'Tumor cells embedded in a highly cellular stroma with increased fibroblast density.'), Score: 0.6470
+('No evidence of tumor cells with intact cell junctions.', 'Tumor cells displaying disrupted cell junctions and loss of intercellular adhesion.'), Score: 0.6465
+('No evidence of tumor cells with a uniform growth pattern.', 'Tumor cells displaying a disorganized, infiltrative growth pattern.'), Score: 0.6442
+('No evidence of tumor cells with a normal stromal response.', 'Tumor cells inducing a desmoplastic stromal reaction.'), Score: 0.6438
+('No evidence of tumor cell palisading.', 'Tumor cell palisading around necrotic areas.'), Score: 0.6438
+('No evidence of tumor cells with palisading necrosis.', 'Tumor cells exhibiting palisading necrosis.'), Score: 0.6433
+('No evidence of tumor cells with a normal expression of CD68.', 'Tumor cells associated with increased CD68+ macrophages.'), Score: 0.6423
+('Normal cell arrangement.', 'Disorganized cell arrangement with loss of polarity.'), Score: 0.6392
+('No evidence of intravascular tumor aggregates.', 'Intravascular tumor aggregates obstructing vessels.'), Score: 0.6390
+('No evidence of tumor cells with a lack of giant cells.', 'Presence of multinucleated giant cells within the tumor microenvironment.'), Score: 0.6390
+('No evidence of tumor cells with a regular chromatin pattern.', 'Tumor cells with coarse, clumped, or hyperchromatic chromatin.'), Score: 0.6385
+('No evidence of perivascular lymphocytic infiltrate.', 'Prominent perivascular lymphocytic infiltrate.'), Score: 0.6345
+('No evidence of tumor-associated fibrosis.', 'Dense tumor-associated fibrosis with collagenization.'), Score: 0.6342
+('Lymphocytes with mature morphology.', 'Immunoblasts and plasmablasts present.'), Score: 0.6313
+('No evidence of extracellular mucin.', 'Extracellular mucin pools surrounding tumor cells.'), Score: 0.6302
+('No evidence of tumor cells with a typical growth pattern.', 'Tumor cells forming solid sheets, nests, or cords with effacement of normal architecture.'), Score: 0.6269
+('No evidence of tumor cells with a normal number of chromosomes.', 'Tumor cells exhibiting aneuploidy and chromosomal instability.'), Score: 0.6264
+('Scant mitotic activity.', 'Increased mitotic activity with atypical mitotic figures.'), Score: 0.6260
+('Small, round nuclei with smooth contours.', 'Large, irregular nuclei with notched contours.'), Score: 0.6230
+('No evidence of tumor cells with a uniform growth pattern.', 'Tumor cells displaying a chaotic and infiltrative growth pattern.'), Score: 0.6212
+('No evidence of tumor cells with a normal expression of PD-L1.', 'Tumor cells with high PD-L1 expression, potentially responsive to immunotherapy.'), Score: 0.6184
+('No evidence of tumor cells with a normal staining intensity.', 'Tumor cells exhibiting intense staining for relevant markers.'), Score: 0.6169
+('No evidence of tumor cells with a normal inflammatory infiltrate.', 'Prominent lymphocytic infiltrate surrounding tumor cells.'), Score: 0.6137
+('No evidence of tumor cells with a normal level of oxidative stress.', 'Tumor cells with increased oxidative stress and reactive oxygen species (ROS) production.'), Score: 0.6125
+('No evidence of tumor cells with a normal vascular pattern.', 'Tumor cells inducing angiogenesis and forming abnormal vascular networks.'), Score: 0.6125
+('Normal follicular architecture with distinct germinal centers.', 'Disrupted follicular architecture with effacement of normal structures.'), Score: 0.6124
+('No evidence of tumor cells with a lack of inflammatory infiltrate.', 'Prominent inflammatory infiltrate surrounding tumor cells.'), Score: 0.6122
+('Normal cell morphology.', 'Atypical cell morphology with bizarre features.'), Score: 0.6099
+('No evidence of tumor cells with a typical staining pattern for Ki-67.', 'Tumor cells with a markedly increased Ki-67 labeling index.'), Score: 0.6094
+('No evidence of angiolymphatic invasion.', 'Angiolymphatic invasion with tumor cells within lymphatic and blood vessels.'), Score: 0.6084
+('No evidence of tumor cells with a normal mitotic figure morphology.', 'Tumor cells with multipolar spindles or atypical mitotic figures.'), Score: 0.6066
+('No evidence of sinusoidal involvement.', 'Tumor cells infiltrating the sinusoids.'), Score: 0.6064
+('No evidence of tumor cells with a normal stromal reaction.', 'Tumor cells inducing a prominent desmoplastic stromal reaction with collagen deposition.'), Score: 0.6059
+('No evidence of angiolymphatic invasion.', 'Angiolymphatic invasion with tumor cells within lymphatic vessels.'), Score: 0.6016
+('No evidence of tumor cells with a loss of polarity.', 'Tumor cells demonstrating a complete loss of normal cellular polarity.'), Score: 0.6007
+('No evidence of tumor cells expressing mucin.', 'Tumor cells demonstrating strong mucin positivity.'), Score: 0.6007
+('No evidence of fibrosis.', 'Extensive fibrosis with collagen deposition.'), Score: 0.6004
+
+Iteration 60:
+('No evidence of tumor cells with a normal expression of PD-1.', 'Tumor cells with downregulation of PD-1 expression.'), Score: 0.9218
+('No evidence of tumor cells with a lack of giant cells.', 'Tumor cells associated with multinucleated giant cells.'), Score: 0.9195
+('No evidence of tumor cells with a single nucleolus.', 'Tumor cells with multiple or irregularly shaped nucleoli.'), Score: 0.9140
+('No evidence of tumor cells with a low nuclear-to-cytoplasmic ratio.', 'Tumor cells with a high nuclear-to-cytoplasmic ratio.'), Score: 0.9063
+('No evidence of tumor cells with a normal expression of SATB1.', 'Tumor cells with loss of SATB1 expression.'), Score: 0.9062
+('No evidence of tumor cells with a normal expression of beta-catenin.', 'Tumor cells with nuclear beta-catenin accumulation.'), Score: 0.9050
+('No evidence of tumor cells with a normal expression of E-cadherin.', 'Tumor cells with loss of E-cadherin expression and epithelial-mesenchymal transition (EMT).'), Score: 0.9047
+('No evidence of tumor cells with bubbly chromatin.', 'Tumor cells displaying bubbly chromatin.'), Score: 0.9033
+('No evidence of tumor cells with a normal expression of E-cadherin.', 'Tumor cells with reduced or absent E-cadherin expression.'), Score: 0.9032
+('No evidence of prominent lymphoid cuffing.', 'Prominent lymphoid cuffing around tumor nests.'), Score: 0.9028
+('No evidence of tumor cells with a lack of giant cell formation.', 'Tumor cells exhibiting giant cell formation (multinucleated cells).'), Score: 0.9012
+('No evidence of tumor cells with a normal expression of S100.', 'Tumor cells with loss of S100 expression.'), Score: 0.9010
+('No evidence of tumor cells with a normal expression of PD1.', 'Tumor cells with downregulation of PD1 expression.'), Score: 0.9008
+('No evidence of prominent eosinophilic granules.', 'Abundant eosinophilic granules within tumor cells.'), Score: 0.9008
+('No evidence of tumor cells with a normal expression of cytokeratins.', 'Tumor cells with aberrant or loss of cytokeratin expression.'), Score: 0.8995
+('No evidence of tumor cells with a normal expression of beta-catenin.', 'Tumor cells with nuclear accumulation of beta-catenin.'), Score: 0.8974
+('No evidence of tumor cells with a normal nuclear-to-cytoplasmic ratio.', 'Tumor cells with a high nuclear-to-cytoplasmic ratio.'), Score: 0.8965
+('No evidence of tumor cells with intranuclear inclusions.', 'Tumor cells containing prominent intranuclear inclusions.'), Score: 0.8960
+('No evidence of tumor cells with a normal expression of SOX10.', 'Tumor cells with loss of SOX10 expression.'), Score: 0.8952
+('No evidence of tumor cells with a lack of mitotic figures.', 'Tumor cells displaying frequent and atypical mitotic figures.'), Score: 0.8952
+('No evidence of tumor cells with a clear nucleolus.', 'Tumor cells with large, irregular, and multiple nucleoli.'), Score: 0.8944
+('No evidence of mitotic figures.', 'Frequent mitotic figures, some atypical.'), Score: 0.8942
+('No evidence of tumor cells with a high mitotic index.', 'High mitotic index with frequent and abnormal mitotic figures.'), Score: 0.8942
+('No evidence of tumor cells with a normal nuclear shape.', 'Tumor cells exhibiting irregular nuclear contours.'), Score: 0.8940
+('No evidence of tumor cells with a normal morphology of the nucleolus.', 'Tumor cells with large, irregular, and prominent nucleoli.'), Score: 0.8934
+('No evidence of tumor cells with a normal nucleolus.', 'Tumor cells exhibiting prominent, multiple nucleoli.'), Score: 0.8927
+('No evidence of tumor cells with a lack of prominent vascularity.', 'Tumor cells associated with increased and abnormal vascularity (angiogenesis).'), Score: 0.8905
+('No evidence of tumor cells with a normal expression of c-MYC.', 'Tumor cells with c-MYC amplification and overexpression.'), Score: 0.8904
+('No evidence of tumor cells with a normal nucleoplasmic ratio.', 'Tumor cells with a high nucleoplasmic ratio (large nucleus relative to cytoplasm).'), Score: 0.8902
+('No evidence of tumor cells with uniform morphology.', 'Tumor cells exhibiting significant morphological heterogeneity.'), Score: 0.8902
+('No evidence of tumor cells with high mitotic activity.', 'High mitotic activity with numerous dividing tumor cells.'), Score: 0.8895
+('No evidence of tumor cells with a lack of prominent vascularity.', 'Tumor cells associated with increased vascularity and angiogenesis.'), Score: 0.8889
+('No evidence of tumor cells with a normal expression of Epithelial Membrane Antigen (EMA).', 'Tumor cells with aberrant or increased EMA expression.'), Score: 0.8885
+('No evidence of tumor cells with a normal expression of p53.', 'Tumor cells with aberrant p53 expression or mutation.'), Score: 0.8879
+('No evidence of tumor cells forming rosettes.', 'Tumor cells arranged in characteristic rosettes.'), Score: 0.8864
+('No evidence of tumor cells with a normal expression of PAX8.', 'Tumor cells with aberrant or loss of PAX8 expression.'), Score: 0.8850
+('No evidence of tumor cells with a typical apoptotic rate.', 'Tumor cells with decreased apoptosis and increased cell survival.'), Score: 0.8839
+('No evidence of tumor cells with a normal number of nucleoli.', 'Tumor cells with multiple, prominent nucleoli.'), Score: 0.8837
+('No evidence of tumor cells with a normal size of nucleoli.', 'Tumor cells with large, atypical nucleoli.'), Score: 0.8834
+('No evidence of tumor cells with smooth nuclear membranes.', 'Tumor cells with irregular, crenated nuclear membranes.'), Score: 0.8832
+('No evidence of tumor cells with a normal expression of PD-L1.', 'Tumor cells with high PD-L1 expression.'), Score: 0.8830
+('No evidence of tumor cells with prominent nucleolus.', 'Tumor cells with large, irregular, and prominent nucleoli.'), Score: 0.8829
+('No evidence of tumor cells with a normal size and shape.', 'Tumor cells exhibiting marked anisocytosis and pleomorphism.'), Score: 0.8822
+('No evidence of tumor cells with a low proliferative rate.', 'Tumor cells demonstrating a high proliferative rate with numerous mitotic figures.'), Score: 0.8822
+('No evidence of tumor cells with a normal expression of CD10.', 'Tumor cells with loss of CD10 expression.'), Score: 0.8817
+('No evidence of tumor cells with a regular nuclear shape.', 'Tumor cells with irregular nuclear contours and lobulations.'), Score: 0.8816
+('No evidence of tumor cells with a normal mitotic activity.', 'Tumor cells exhibiting frequent and atypical mitotic figures.'), Score: 0.8812
+('No evidence of tumor cells with a normal mitotic spindle.', 'Tumor cells with a multipolar mitotic spindle.'), Score: 0.8809
+('No evidence of prominent eosinophilic granules.', 'Abundant eosinophilic cytoplasmic granules.'), Score: 0.8807
+('No evidence of tumor cells with bubbly chromatin.', 'Tumor cells displaying bubbly chromatin with prominent nucleoli.'), Score: 0.8806
+('No evidence of tumor cells with a normal nuclear-to-cytoplasmic ratio.', 'Tumor cells exhibiting a high nuclear-to-cytoplasmic ratio.'), Score: 0.8799
+('No evidence of tumor cells with a lack of mitotic activity.', 'Tumor cells exhibiting frequent and atypical mitotic figures.'), Score: 0.8797
+('No evidence of tumor cells with a regular nuclear outline.', 'Tumor cells with lobulated or irregular nuclear outlines.'), Score: 0.8794
+('No evidence of tumor cells with a regular nuclear-to-cytoplasmic ratio.', 'Tumor cells displaying an increased nuclear-to-cytoplasmic ratio.'), Score: 0.8792
+('No evidence of tumor cells with a normal amount of cytoplasm.', 'Tumor cells with a reduced amount of cytoplasm.'), Score: 0.8791
+('No evidence of tumor cells with a normal nuclear to cytoplasmic ratio.', 'Tumor cells with a markedly increased nuclear to cytoplasmic ratio.'), Score: 0.8789
+('No evidence of tumor cells with prominent chromatin clumping.', 'Tumor cells exhibiting coarse, irregular chromatin clumping.'), Score: 0.8786
+('No evidence of tumor cells with a normal cell-to-cell adhesion.', 'Tumor cells displaying reduced cell-to-cell adhesion and detachment.'), Score: 0.8786
+('No evidence of tumor cells with a normal expression of EGFR.', 'Tumor cells with EGFR overexpression and activation.'), Score: 0.8777
+('No evidence of tumor cells with a lack of prominent nucleoli.', 'Tumor cells with large, multiple, and prominent nucleoli.'), Score: 0.8759
+('No evidence of tumor cells with intact cell borders.', 'Tumor cells exhibiting loss of cell-cell adhesion and irregular borders.'), Score: 0.8759
+('No evidence of tumor cells with a normal expression of PAX8.', 'Tumor cells with loss of PAX8 expression.'), Score: 0.8759
+('No evidence of tumor cells with a normal vasculature.', 'Tumor cells associated with abnormal, tortuous, and proliferative vasculature.'), Score: 0.8754
+('No evidence of tumor cells with a normal expression of cytokeratins.', 'Tumor cells with aberrant or reduced cytokeratin expression.'), Score: 0.8749
+('No evidence of tumor cells with a normal amount of mitotic activity.', 'Tumor cells with frequent and abnormal mitoses.'), Score: 0.8742
+('No evidence of tumor cells with a low nuclear-to-cytoplasmic ratio.', 'Tumor cells displaying a high nuclear-to-cytoplasmic ratio.'), Score: 0.8737
+('No evidence of tumor cells with a normal expression of CD44.', 'Tumor cells with increased CD44 expression, indicating stem cell properties.'), Score: 0.8734
+('No evidence of tumor cells with a normal expression of p53.', 'Tumor cells with aberrant p53 expression, indicating genomic instability.'), Score: 0.8732
+('No evidence of tumor cells with a normal expression of EGFR.', 'Tumor cells with EGFR overexpression.'), Score: 0.8721
+('No evidence of tumor cells with a normal expression of E-cadherin.', 'Tumor cells with loss of E-cadherin expression.'), Score: 0.8719
+('No evidence of tumor cells with a normal expression of androgen receptor.', 'Tumor cells with increased androgen receptor expression.'), Score: 0.8716
+('No evidence of tumor cells with a normal nucleolus-to-nucleus ratio.', 'Tumor cells with an increased nucleolus-to-nucleus ratio.'), Score: 0.8712
+('No evidence of tumor cells with a normal expression of PTEN.', 'Tumor cells with loss of PTEN expression.'), Score: 0.8711
+('No evidence of emperipolesis.', 'Emperipolesis observed within tumor cells.'), Score: 0.8704
+('No evidence of tumor cells with a normal size and shape.', 'Tumor cells displaying significant pleomorphism in size and shape.'), Score: 0.8704
+('No evidence of tumor cells with a normal cell polarity.', 'Tumor cells displaying loss of cell polarity and architectural disarray.'), Score: 0.8702
+('No evidence of prominent Golgi apparatus.', 'Prominent Golgi apparatus visible within tumor cells.'), Score: 0.8701
+('No evidence of tumor cells with a normal expression of PAX5.', 'Tumor cells with loss of PAX5 expression.'), Score: 0.8699
+('No evidence of tumor cells with a normal size and shape.', 'Tumor cells displaying marked variation in size and shape (pleomorphism).'), Score: 0.8694
+('No evidence of tumor cells with a normal expression of EGFR.', 'Tumor cells with overexpression of EGFR.'), Score: 0.8694
+('No evidence of tumor cells with a high nuclear-to-cytoplasmic ratio.', 'Tumor cells with a markedly increased nuclear-to-cytoplasmic ratio.'), Score: 0.8689
+('No evidence of tumor cells with a normal expression of SOX10.', 'Tumor cells with SOX10 overexpression.'), Score: 0.8689
+('No evidence of tumor cells with a normal expression of MSH2.', 'Tumor cells with loss of MSH2 expression.'), Score: 0.8684
+('No evidence of tumor cells with a normal mitotic activity.', 'Tumor cells showing frequent and abnormal mitoses.'), Score: 0.8674
+('No evidence of tumor cells with plasmacytoid features.', 'Tumor cells exhibiting plasmacytoid differentiation.'), Score: 0.8674
+('No evidence of tumor cells with a normal expression of HER2.', 'Tumor cells with overexpression of HER2, suggesting a potential therapeutic target.'), Score: 0.8664
+('No evidence of tumor cells with a uniform staining intensity.', 'Tumor cells exhibiting heterogeneous staining intensity.'), Score: 0.8662
+('No evidence of tumor cells with a uniform cell size.', 'Tumor cells exhibiting significant variation in cell size (anisocytosis).'), Score: 0.8661
+('No evidence of tumor cells with a normal number of nucleoli.', 'Tumor cells with multiple, large, and prominent nucleoli.'), Score: 0.8657
+('No evidence of tumor cells with a normal expression of HIF-1α.', 'Tumor cells with increased HIF-1α expression, indicating hypoxia.'), Score: 0.8652
+('No evidence of tumor cells with a symmetric nuclear division.', 'Tumor cells displaying asymmetric or abnormal mitotic division.'), Score: 0.8651
+('No evidence of tumor cells with a normal size.', 'Tumor cells displaying marked pleomorphism in size and shape.'), Score: 0.8649
+('No evidence of tumor cells with a normal expression of BCL2.', 'Tumor cells with BCL2 overexpression, inhibiting apoptosis.'), Score: 0.8649
+('No evidence of reactive hyperplasia.', 'Features of reactive hyperplasia with atypical cells.'), Score: 0.8641
+('No evidence of tumor cells with smooth nuclear membranes.', 'Tumor cells exhibiting irregular, folded nuclear membranes.'), Score: 0.8639
+('No evidence of perineural invasion.', 'Perineural invasion by tumor cells.'), Score: 0.8631
+('No evidence of tumor cells with a normal expression of CD20.', 'Tumor cells with reduced or absent CD20 expression.'), Score: 0.8618
+('No evidence of tumor cells with a regular nuclear-to-cytoplasmic ratio.', 'Tumor cells with a markedly increased nuclear-to-cytoplasmic ratio.'), Score: 0.8613
+('No evidence of tumor cells with a normal cytoplasmic to nuclear ratio.', 'Tumor cells with a markedly increased cytoplasmic to nuclear ratio.'), Score: 0.8609
+('No evidence of tumor cells with a lack of prominent nucleoli.', 'Tumor cells with large, prominent, and multiple nucleoli.'), Score: 0.8606
+('No evidence of tumor cells with a normal expression of cytokeratin.', 'Tumor cells with aberrant cytokeratin expression patterns.'), Score: 0.8596
+('No evidence of tumor cells with prominent vascularity.', 'Tumor nests exhibiting prominent vascularity and angiogenesis.'), Score: 0.8596
+('No evidence of tumor cells with uniform size and shape.', 'Tumor cells exhibiting significant pleomorphism and variability in size and shape.'), Score: 0.8589
+('No evidence of tumor cells with a normal chromatin pattern.', 'Tumor cells with a coarse, clumped chromatin pattern.'), Score: 0.8583
+('No evidence of tumor cell clusters.', 'Presence of tumor cell clusters with loss of normal architecture.'), Score: 0.8579
+('No evidence of tumor cells with a normal nuclear-to-cytoplasmic ratio.', 'Tumor cells with a markedly increased nuclear-to-cytoplasmic ratio.'), Score: 0.8576
+('No evidence of tumor cells with a normal expression of cytokeratins.', 'Tumor cells with aberrant or diffuse cytokeratin expression.'), Score: 0.8573
+('No evidence of tumor cells with a low proliferative index (Ki-67).', 'Tumor cells with a high proliferative index (Ki-67).'), Score: 0.8568
+('No evidence of tumor cells with a normal expression of BCL-2.', 'Tumor cells with increased BCL-2 expression, indicative of apoptosis resistance.'), Score: 0.8563
+('Normal lymphatic vessels.', 'Dilated lymphatic vessels with tumor emboli.'), Score: 0.8551
+('No evidence of tumor cells with a normal expression of CD44.', 'Tumor cells with increased CD44 expression indicating stem cell properties.'), Score: 0.8549
+('No evidence of tumor cells with a normal expression of E-cadherin.', 'Tumor cells with reduced or absent E-cadherin expression at cell borders.'), Score: 0.8549
+('No evidence of tumor cells with a consistent cell size.', 'Tumor cells demonstrating significant variation in cell size (anisocytosis).'), Score: 0.8544
+('No evidence of tumor cells with a normal expression of CD44.', 'Tumor cells with increased CD44 expression indicating stem cell-like properties.'), Score: 0.8534
+('No evidence of tumor cells with a normal expression of MLH1.', 'Tumor cells with loss of MLH1 expression.'), Score: 0.8526
+('No evidence of tumor cells with a symmetric nuclear shape.', 'Tumor cells exhibiting nuclear asymmetry and irregular contours.'), Score: 0.8523
+('No evidence of tumor cells with uniform size and shape.', 'Tumor cells exhibiting significant size and shape variability (pleomorphism).'), Score: 0.8519
+('No evidence of tumor cells with a normal expression of HER2.', 'Tumor cells with overexpression of HER2.'), Score: 0.8513
+('No evidence of tumor cells with smooth nuclear membranes.', 'Tumor cells with irregular, folded, or crenated nuclear membranes.'), Score: 0.8513
+('No evidence of tumor cells exhibiting prominent eosinophilic granules.', 'Tumor cells displaying abundant eosinophilic granular bodies.'), Score: 0.8489
+('No evidence of tumor cells with intact Golgi apparatus.', 'Tumor cells with a disrupted or absent Golgi apparatus.'), Score: 0.8479
+('No evidence of tumor cells with a normal expression of PD-L1.', 'Tumor cells with increased PD-L1 expression.'), Score: 0.8473
+('No evidence of tumor cells with a normal cell adhesion.', 'Tumor cells exhibiting loss of cell adhesion and increased detachment.'), Score: 0.8466
+('No evidence of tumor cells with a normal expression of E-cadherin.', 'Tumor cells with loss of E-cadherin expression and membranous staining.'), Score: 0.8463
+('No evidence of tumor cells with normal cell adhesion.', 'Tumor cells displaying loss of cell adhesion and increased invasiveness.'), Score: 0.8458
+('No evidence of tumor cells with a normal chromatin pattern.', 'Tumor cells with coarse, clumped chromatin.'), Score: 0.8450
+('No evidence of tumor cells with a normal expression of Programmed cell death ligand 1.', 'Tumor cells with high PD-L1 expression, indicating immune checkpoint activation.'), Score: 0.8450
+('No evidence of tumor cells with a normal expression of SMAD4.', 'Tumor cells with loss of SMAD4 expression.'), Score: 0.8443
+('No evidence of tumor cells with a normal expression of EGFR.', 'Tumor cells with EGFR overexpression or amplification.'), Score: 0.8440
+('No evidence of tumor cells with uniform nuclear size and shape.', 'Tumor cells exhibiting significant pleomorphism in nuclear size and shape.'), Score: 0.8440
+('No evidence of emperipolesis.', 'Emperipolesis with intact cells within other cells.'), Score: 0.8433
+('No evidence of tumor cells with uniform staining intensity.', 'Tumor cells exhibiting heterogeneous staining intensity.'), Score: 0.8431
+('No evidence of tumor cells with a normal mitotic index.', 'Elevated mitotic index with frequent mitotic figures.'), Score: 0.8431
+('No evidence of tumor cells with a normal chromatin distribution.', 'Tumor cells with unevenly distributed, condensed chromatin.'), Score: 0.8428
+('No evidence of tumor cells with a normal expression of p63.', 'Tumor cells with increased p63 expression.'), Score: 0.8420
+('No evidence of tumor cells with a normal expression of p53.', 'Tumor cells with mutant p53 expression and nuclear accumulation.'), Score: 0.8418
+('No evidence of tumor cells with a normal amount of cytoplasm.', 'Tumor cells with abundant, eosinophilic cytoplasm.'), Score: 0.8395
+('No evidence of tumor cells with a normal cytoplasmic border.', 'Tumor cells with ill-defined or absent cytoplasmic borders.'), Score: 0.8388
+('No evidence of tumor cells with a clear Golgi apparatus.', 'Tumor cells with a prominent and atypical Golgi apparatus.'), Score: 0.8385
+('No evidence of tumor cells with normal CD3 expression.', 'Tumor cells infiltrating and disrupting normal CD3+ T cell populations.'), Score: 0.8376
+('No evidence of tumor cells with a lack of necrosis.', 'Tumor cells with areas of central necrosis.'), Score: 0.8355
+('No evidence of tumor cells with a normal expression of progesterone receptor.', 'Tumor cells with loss of progesterone receptor expression.'), Score: 0.8326
+('No evidence of tumor cells with a normal cell size.', 'Tumor cells displaying significant variation in cell size (anisocytosis).'), Score: 0.8318
+('No evidence of tumor cells with uniform size and shape.', 'Tumor cells exhibiting significant pleomorphism in size and shape.'), Score: 0.8315
+('No evidence of tumor cells with a normal morphology of the cytoplasm.', 'Tumor cells with cytoplasm containing vacuoles or inclusions.'), Score: 0.8311
+('No evidence of tumor cells with a normal expression of AR.', 'Tumor cells with increased AR expression.'), Score: 0.8310
+('No evidence of tumor cells with a normal expression of mismatch repair proteins.', 'Tumor cells with loss of mismatch repair protein expression.'), Score: 0.8295
+('No evidence of tumor cells with evenly distributed chromatin.', 'Tumor cells with coarse, irregularly distributed chromatin.'), Score: 0.8295
+('No evidence of tumor cells with a normal expression of S100.', 'Tumor cells with positive S100 staining, suggestive of a specific lineage.'), Score: 0.8291
+('No evidence of tumor cells with a normal mitotic count.', 'Tumor cells with a markedly elevated mitotic count.'), Score: 0.8291
+('No evidence of tumor cells with a normal expression of CD20.', 'Tumor cells with loss of CD20 expression.'), Score: 0.8288
+('No evidence of tumor cells with a normal expression of ALK.', 'Tumor cells with ALK rearrangement or overexpression.'), Score: 0.8288
+('No evidence of tumor cells with a normal morphology of the surrounding stroma.', 'Tumor cells inducing a swirling, fascicular stromal pattern.'), Score: 0.8285
+('No evidence of tumor infiltrating lymphocytes (TILs).', 'Abundant tumor infiltrating lymphocytes (TILs) surrounding tumor nests.'), Score: 0.8283
+('No evidence of tumor cells with a normal expression of S100.', 'Tumor cells with S100 protein overexpression.'), Score: 0.8283
+('No evidence of tumor cells with a well-defined cytoplasm.', 'Tumor cells with a poorly defined or indistinct cytoplasm.'), Score: 0.8272
+('No evidence of plasmacytoid differentiation.', 'Plasmacytoid differentiation with cytoplasmic inclusions.'), Score: 0.8270
+('No evidence of tumor cells with a normal expression of E-cadherin.', 'Tumor cells with loss of E-cadherin expression, indicating EMT.'), Score: 0.8247
+('No evidence of tumor cells with a lack of fibrosis.', 'Tumor cells associated with extensive desmoplastic reaction and fibrosis.'), Score: 0.8243
+('No evidence of tumor cells with a normal cell polarity.', 'Tumor cells exhibiting loss of cell polarity and architectural disarray.'), Score: 0.8242
+('No evidence of tumor cells with a normal expression of p53.', 'Tumor cells with aberrant p53 expression and nuclear accumulation.'), Score: 0.8242
+('No evidence of tumor cells with a normal expression of E-cadherin.', 'Tumor cells with loss of E-cadherin expression at cell borders.'), Score: 0.8240
+('No evidence of tumor cells with a regular nuclear outline.', 'Tumor cells with irregular, lobulated, or spiculated nuclear contours.'), Score: 0.8235
+('No evidence of tumor cells with a symmetric nuclear division.', 'Tumor cells exhibiting asymmetric nuclear division.'), Score: 0.8233
+('No evidence of tumor cells with a normal apoptotic rate.', 'Tumor cells with decreased apoptosis and increased cell survival.'), Score: 0.8232
+('No evidence of tumor cells with a normal expression of CD3.', 'Tumor cells with loss of CD3 expression.'), Score: 0.8230
+('No evidence of tumor cells with a normal expression of Galectin-3.', 'Tumor cells with increased Galectin-3 expression.'), Score: 0.8228
+('No evidence of tumor cells with a normal expression of Ki67.', 'Tumor cells with a heterogeneous Ki67 staining pattern.'), Score: 0.8228
+('No evidence of tumor cells with a clear cytoplasm.', 'Tumor cells with a dense, granular cytoplasm.'), Score: 0.8225
+('Lymphocytes with small, dense nuclei and scant cytoplasm.', 'Large, pleomorphic cells with prominent nucleoli and abundant cytoplasm.'), Score: 0.8215
+('No evidence of tumor-associated macrophages (TAMs).', 'Presence of TAMs with abundant cytoplasm.'), Score: 0.8215
+('No evidence of tumor cells with a normal nuclear shape.', 'Tumor cells with nuclei exhibiting deep indentations and grooves.'), Score: 0.8212
+('No evidence of tumor cells with a normal chromatin distribution pattern.', 'Tumor cells with a vesicular chromatin pattern.'), Score: 0.8198
+('No evidence of tumor cells with a lack of emperipolesis.', 'Tumor cells demonstrating emperipolesis (intracellular inclusion of other cells).'), Score: 0.8193
+('No evidence of tumor cells with a typical apoptotic rate.', 'Increased apoptotic rate with frequent apoptotic bodies.'), Score: 0.8193
+('No evidence of tumor cells with a normal chromatin pattern.', 'Tumor cells with coarse, clumped, or vesicular chromatin.'), Score: 0.8192
+('No evidence of tumor cells with a normal expression of ER.', 'Tumor cells with increased ER expression.'), Score: 0.8187
+('No evidence of tumor cells with a lack of desmoplastic reaction.', 'Tumor cells surrounded by a prominent desmoplastic reaction.'), Score: 0.8185
+('No evidence of tumor cells with a normal expression of AR.', 'Tumor cells with AR overexpression.'), Score: 0.8183
+('No evidence of tumor cells with a normal expression of cytokeratins.', 'Tumor cells with aberrant cytokeratin expression patterns.'), Score: 0.8165
+('No evidence of tumor cells with normal chromatin distribution.', 'Tumor cells with coarse, clumped chromatin.'), Score: 0.8163
+('No evidence of tumor cells with a uniform cell population.', 'Tumor cells exhibiting significant cellular heterogeneity.'), Score: 0.8160
+('No evidence of tumor cells with a normal mitotic index.', 'Tumor cells with a markedly elevated mitotic index.'), Score: 0.8160
+('No evidence of tumor cells with a lack of apoptosis.', 'Tumor cells undergoing frequent apoptosis with apoptotic bodies.'), Score: 0.8158
+('No evidence of tumor cells with a regular chromatin pattern.', 'Tumor cells with coarse, clumped chromatin.'), Score: 0.8155
+('Small, reactive germinal centers.', 'Large, atypical germinal centers with irregular shapes.'), Score: 0.8153
+('No evidence of tumor cells with a normal staining intensity.', 'Tumor cells exhibiting intense and heterogeneous staining.'), Score: 0.8142
+('No evidence of tumor cells with a normal chromatin pattern.', 'Tumor cells exhibiting coarse, clumped chromatin.'), Score: 0.8142
+('No evidence of tumor cells with a normal amount of cytoplasm.', 'Tumor cells with abundant, eosinophilic cytoplasm containing vacuoles.'), Score: 0.8132
+('No evidence of tumor cells with a normal mitotic figure.', 'Tumor cells exhibiting atypical or tripolar mitotic figures.'), Score: 0.8130
+('No evidence of tumor cells with a normal expression of p63.', 'Tumor cells with loss of p63 expression.'), Score: 0.8127
+('No evidence of epithelial-myoepithelial cell differentiation.', 'Presence of epithelial-myoepithelial cell differentiation.'), Score: 0.8123
+('No evidence of tumor cells with a normal vascular pattern.', 'Tumor cells surrounded by glomeruloid vascular structures.'), Score: 0.8115
+('No evidence of tumor cells with a consistent staining intensity.', 'Tumor cells displaying heterogeneous staining intensity.'), Score: 0.8108
+('No evidence of tumor cells with a normal expression of HER2.', 'Tumor cells with HER2 amplification and overexpression.'), Score: 0.8105
+('No evidence of tumor cells with a normal nuclear shape.', 'Tumor cells with lobulated or convoluted nuclear shapes.'), Score: 0.8085
+('No evidence of tumor cells with a lack of emperipolesis.', 'Tumor cells displaying emperipolesis (intracellular lymphocytes).'), Score: 0.8074
+('No evidence of tumor cells with a normal expression of PD-L1.', 'Tumor cells with high PD-L1 expression, indicating potential immunotherapy response.'), Score: 0.8067
+('No evidence of tumor cells with a normal expression of p53.', 'Tumor cells with p53 mutations and aberrant expression.'), Score: 0.8067
+('No evidence of tumor cells with a normal expression of EGFR.', 'Tumor cells with EGFR overexpression and membranous staining.'), Score: 0.8044
+('No evidence of tumor cells with a low proliferation index (Ki-67).', 'Tumor cells with a high proliferation index (Ki-67) indicating rapid growth.'), Score: 0.8039
+('No evidence of tumor cells with a normal amount of heterochromatin.', 'Tumor cells with decreased heterochromatin and increased euchromatin.'), Score: 0.8034
+('No evidence of tumor cells with a defined cell border.', 'Tumor cells with poorly defined or indistinct cell borders.'), Score: 0.8030
+('No evidence of tumor cells with a normal expression of Ki-67.', 'Tumor cells with high Ki-67 expression indicating proliferation.'), Score: 0.8029
+('No evidence of tumor cells with a normal expression of HER2.', 'Tumor cells with HER2 overexpression.'), Score: 0.8020
+('No evidence of epithelioid granulomas.', 'Presence of epithelioid granulomas with multinucleated giant cells.'), Score: 0.8015
+('No evidence of tumor cells with a normal expression of Ki-67.', 'Tumor cells with high Ki-67 expression indicating high proliferation.'), Score: 0.8009
+('No evidence of tumor cells with a symmetric appearance.', 'Tumor cells displaying marked asymmetry in shape and size.'), Score: 0.8004
+('Uniform distribution of lymphocytes.', 'Heterogeneous cell population with areas of necrosis.'), Score: 0.7997
+('No evidence of tumor cells with a normal morphology.', 'Tumor cells displaying bizarre, multinucleated, or ring-like morphology.'), Score: 0.7995
+('No evidence of calcification.', 'Presence of calcification with amorphous deposits.'), Score: 0.7974
+('No evidence of plasmacytoid differentiation.', 'Plasmacytoid differentiation with eccentric nuclei and abundant cytoplasm.'), Score: 0.7972
+('No evidence of tumor cells with a normal size and shape of the nucleus.', 'Tumor cells with enlarged, hyperchromatic nuclei and irregular shapes.'), Score: 0.7967
+('No evidence of tumor cells with uniform cell size.', 'Tumor cells exhibiting significant pleomorphism in cell size.'), Score: 0.7964
+('No evidence of atypical mitoses.', 'Atypical mitoses with tripolar or multipolar spindles.'), Score: 0.7964
+('No evidence of tumor cells with a normal chromatin distribution.', 'Tumor cells exhibiting vesicular chromatin with prominent nucleoli.'), Score: 0.7964
+('No evidence of tumor cells with a normal chromatin pattern.', 'Tumor cells with a finely granular chromatin pattern.'), Score: 0.7964
+('No evidence of tumor cells with a symmetric nuclear division.', 'Tumor cells undergoing asymmetric nuclear division.'), Score: 0.7962
+('No evidence of tumor cells with a regular chromatin distribution.', 'Tumor cells with a vesicular chromatin pattern and prominent nucleoli.'), Score: 0.7949
+('No evidence of tumor cells with a normal staining intensity.', 'Tumor cells displaying intense and heterogeneous staining.'), Score: 0.7942
+('No evidence of tumor cells with a normal expression of p53.', 'Tumor cells with aberrant p53 expression (e.g., overexpression, loss of function).'), Score: 0.7932
+('No evidence of tumor cells with a normal expression of Ki-67.', 'Tumor cells with a high Ki-67 proliferation index.'), Score: 0.7932
+('Normal stromal collagen.', 'Desmoplastic reaction with dense, hyalinized collagen.'), Score: 0.7914
+('No prominent nucleoli.', 'Prominent, large nucleoli.'), Score: 0.7910
+('No evidence of plasma cell differentiation.', 'Plasma cell differentiation with Dutcher bodies.'), Score: 0.7902
+('No evidence of tumor cells with a normal mitotic activity.', 'Increased mitotic activity with atypical mitotic figures.'), Score: 0.7901
+('No evidence of tumor cells with a normal expression of D2-40.', 'Tumor cells with loss of D2-40 expression.'), Score: 0.7894
+('No evidence of tumor cells with a normal expression of BOB1.', 'Tumor cells with aberrant BOB1 expression.'), Score: 0.7894
+('No evidence of prominent stromal edema.', 'Significant stromal edema with myxoid change.'), Score: 0.7881
+('No evidence of tumor cells with a normal expression of HER2.', 'Tumor cells with HER2 overexpression or amplification.'), Score: 0.7881
+('No evidence of tumor cells with a normal chromatin distribution.', 'Tumor cells with hyperchromatic nuclei and irregular chromatin distribution.'), Score: 0.7877
+('No evidence of signet ring cells.', 'Signet ring cells with cytoplasmic mucin displacing the nucleus.'), Score: 0.7874
+('No evidence of tumor cells with a well-defined basement membrane.', 'Tumor cells invading through the basement membrane.'), Score: 0.7862
+('No evidence of tumor cells with a normal expression of p53.', 'Tumor cells with aberrant p53 expression.'), Score: 0.7842
+('No evidence of tumor cells with a normal expression of RB1.', 'Tumor cells with loss of RB1 expression.'), Score: 0.7839
+('No evidence of tumor cells with a normal expression of E-cadherin.', 'Tumor cells with loss of E-cadherin expression and disruption of cell-cell adhesion.'), Score: 0.7839
+('No evidence of tumor cells with a lack of necrosis.', 'Tumor cells exhibiting extensive areas of necrosis.'), Score: 0.7836
+('No evidence of tumor cells with a normal mitotic count.', 'Elevated mitotic count with frequent mitotic figures.'), Score: 0.7831
+('No evidence of spindle cell morphology.', 'Spindle cell morphology with elongated nuclei.'), Score: 0.7831
+('No evidence of prominent stromal desmoplasia.', 'Dense stromal desmoplasia surrounding tumor nests.'), Score: 0.7819
+('Lymphocytes with clear cytoplasm.', 'Cells with granular or vacuolated cytoplasm.'), Score: 0.7809
+('Absence of giant cells.', 'Presence of multinucleated giant cells.'), Score: 0.7809
+('Normal immune cell infiltrate.', 'Atypical immune cell infiltrate with abnormal distribution.'), Score: 0.7796
+('No evidence of tumor cells with a lack of angiosis.', 'Tumor cells surrounded by numerous, newly formed blood vessels (angiogenesis).'), Score: 0.7789
+('No evidence of tumor cells with well-defined cell boundaries.', 'Tumor cells with poorly defined, overlapping cell boundaries.'), Score: 0.7784
+('No evidence of tumor cells with a defined growth pattern.', 'Tumor cells forming solid sheets or nests with loss of normal glandular architecture.'), Score: 0.7779
+('No evidence of tumor cells with a regular nuclear envelope.', 'Tumor cells with a thickened and irregular nuclear envelope.'), Score: 0.7777
+('No evidence of tumor cells with a normal expression of vimentin.', 'Tumor cells with increased vimentin expression, indicative of epithelial-mesenchymal transition.'), Score: 0.7766
+('No evidence of tumor cells with a normal expression of Vimentin.', 'Tumor cells with increased Vimentin expression, indicative of epithelial-mesenchymal transition.'), Score: 0.7766
+('No evidence of tumor cells forming solid sheets.', 'Tumor cells arranged in a solid sheet-like growth pattern.'), Score: 0.7757
+('No evidence of tumor cells with a normal expression of fascin.', 'Tumor cells with increased fascin expression at the invasive front.'), Score: 0.7746
+('No evidence of tumor cells with a lack of angiolymphatic invasion.', 'Tumor cells demonstrating angiolymphatic invasion.'), Score: 0.7731
+('No evidence of tumor cells with a defined cytoplasmic border.', 'Tumor cells with ill-defined or indistinct cytoplasmic borders.'), Score: 0.7731
+('No evidence of tumor cells with a normal expression of Ki-67.', 'Tumor cells with high Ki-67 proliferation index.'), Score: 0.7729
+('No evidence of tumor cells with condensed chromatin.', 'Tumor cells exhibiting finely dispersed or vesicular chromatin.'), Score: 0.7713
+('No evidence of tumor cells with a normal expression of HER2.', 'Tumor cells with HER2 amplification/overexpression.'), Score: 0.7696
+('No evidence of tumor cells with a normal expression of c-Myc.', 'Tumor cells with increased c-Myc expression, indicating increased proliferation.'), Score: 0.7686
+('No evidence of tumor cells with a normal chromatin distribution.', 'Tumor cells with dense, irregular chromatin clumping.'), Score: 0.7679
+('No evidence of tumor cells with a normal expression of Ki-67.', 'Tumor cells exhibiting high Ki-67 proliferation index.'), Score: 0.7676
+('No evidence of tumor cells with a symmetric nuclear shape.', 'Tumor cells with asymmetric nuclear shapes and indentations.'), Score: 0.7658
+('No evidence of tumor cells with nuclear grooves.', 'Tumor cells exhibiting nuclear grooves and indentations.'), Score: 0.7636
+('No evidence of tumor cells with a normal apoptotic rate.', 'Tumor cells with increased apoptosis and cellular debris.'), Score: 0.7624
+('No evidence of tumor cells with a normal expression of vimentin.', 'Tumor cells with increased vimentin expression, indicative of mesenchymal transition.'), Score: 0.7623
+('No evidence of syncytial growth pattern.', 'Syncytial growth pattern with loss of individual cell boundaries.'), Score: 0.7611
+('Lymphocytes with round nuclei.', 'Cells with elongated or irregular nuclei.'), Score: 0.7596
+('No evidence of tumor cells with a normal expression of PAX8.', 'Tumor cells with positive PAX8 staining, suggestive of a specific origin.'), Score: 0.7591
+('No evidence of clear cell change.', 'Clear cell change with glycogen-rich cytoplasm.'), Score: 0.7589
+('No evidence of tumor cells with a normal expression of Ki-67.', 'Tumor cells with high Ki-67 expression indicating rapid proliferation.'), Score: 0.7588
+('No evidence of tumor cells with a regular nuclear shape.', 'Tumor cells exhibiting bizarre nuclear shapes and hyperchromasia.'), Score: 0.7578
+('No evidence of tumor associated macrophages (TAMs).', 'Increased number of tumor associated macrophages (TAMs) infiltrating the stroma.'), Score: 0.7573
+('No evidence of perivascular pseudorosettes.', 'Perivascular pseudorosettes with tumor cells arranged around vessels.'), Score: 0.7571
+('No evidence of tumor cells with a normal expression of vimentin.', 'Tumor cells with increased vimentin expression indicating epithelial-mesenchymal transition.'), Score: 0.7569
+('No evidence of tumor cells with intact cell borders.', 'Tumor cells with poorly defined, smudged cell borders.'), Score: 0.7563
+('No evidence of tumor cells with a lack of nuclear pseudoinclusions.', 'Tumor cells containing prominent nuclear pseudoinclusions.'), Score: 0.7540
+('No evidence of tumor cells with a distinct cell border.', 'Tumor cells with ill-defined, smudged cell borders.'), Score: 0.7535
+('No evidence of tumor cells with a defined cell boundary.', 'Tumor cells with poorly defined or overlapping cell boundaries.'), Score: 0.7523
+('No evidence of tumor cells with a normal expression of vimentin.', 'Tumor cells with increased vimentin expression, suggesting mesenchymal transition.'), Score: 0.7521
+('No evidence of tumor cells with a normal mitotic figure.', 'Tumor cells exhibiting bizarre or atypical mitotic figures.'), Score: 0.7506
+('Absence of atypical cells.', 'Presence of atypical cells with bizarre morphology.'), Score: 0.7451
+('No evidence of tumor cells with a normal level of anisokaryosis.', 'Tumor cells exhibiting significant anisokaryosis (variation in nuclear size and shape).'), Score: 0.7445
+('No evidence of tumor cells with prominent cell borders.', 'Loss of cell borders with poorly defined cell boundaries.'), Score: 0.7443
+('No evidence of tumor cells with a normal expression of PMS2.', 'Tumor cells with loss of PMS2 expression.'), Score: 0.7440
+('No evidence of tumor cells with a normal expression of E-cadherin.', 'Tumor cells exhibiting loss of E-cadherin expression at cell borders.'), Score: 0.7433
+('No evidence of tumor cells with a normal mitotic figure.', 'Tumor cells displaying bizarre or atypical mitotic figures.'), Score: 0.7433
+('No evidence of tumor cells with a normal stromal reaction.', 'Tumor cells inducing a prominent desmoplastic stromal reaction.'), Score: 0.7425
+('No evidence of tumor cells with a normal expression of CD45.', 'Tumor cells lacking CD45 expression, differentiating them from hematopoietic cells.'), Score: 0.7406
+('No evidence of tumor cells with a normal apoptotic rate.', 'Increased apoptotic rate with frequent apoptotic bodies.'), Score: 0.7400
+('No evidence of tumor cells with a regular chromatin distribution.', 'Tumor cells with hyperchromatic nuclei and irregular chromatin distribution.'), Score: 0.7395
+('No evidence of tumor cells with a normal chromatin texture.', 'Tumor cells with coarsely granular chromatin.'), Score: 0.7388
+('No evidence of tumor cells with a smooth nuclear membrane.', 'Tumor cells with irregular, folded, or crenated nuclear membranes.'), Score: 0.7386
+('No evidence of ductal differentiation.', 'Presence of ductal structures within the tumor.'), Score: 0.7365
+('No evidence of tumor cells with a normal amount of cytoplasm.', 'Tumor cells with decreased cytoplasm (pyknosis).'), Score: 0.7363
+('No evidence of tumor cells with intact cell borders.', 'Tumor cells with poorly defined or indistinct cell borders.'), Score: 0.7362
+('No evidence of tumor cells with normal polarity.', 'Tumor cells displaying loss of polarity and architectural distortion.'), Score: 0.7338
+('No evidence of tumor cells with inconspicuous nucleoli.', 'Tumor cells with multiple, prominent, and distinct nucleoli.'), Score: 0.7337
+('No evidence of tumor cells with a normal chromatin distribution.', 'Tumor cells with clumped, hyperchromatic chromatin.'), Score: 0.7313
+('No evidence of tumor cells with a normal vascular supply.', 'Tumor cells associated with increased angiogenesis and vascular density.'), Score: 0.7302
+('No evidence of tumor cells with a normal expression of CD31.', 'Tumor cells associated with increased CD31+ microvessels.'), Score: 0.7297
+('No evidence of tumor cells with a normal apoptotic rate.', 'Tumor cells exhibiting increased apoptosis and cellular debris.'), Score: 0.7293
+('No evidence of tumor cells with a normal cell border.', 'Tumor cells with poorly defined, irregular, or infiltrative cell borders.'), Score: 0.7288
+('No evidence of tumor cells with a normal expression of vimentin.', 'Tumor cells with increased vimentin expression, indicating mesenchymal differentiation.'), Score: 0.7285
+('No evidence of tumor cells with a normal spindle shape.', 'Tumor cells exhibiting a sarcomatoid or atypical spindle cell morphology.'), Score: 0.7282
+('No evidence of tumor cells with a normal growth pattern.', 'Tumor cells forming disorganized nests and sheets.'), Score: 0.7253
+('No evidence of tumor cells with a normal expression of MUM1.', 'Tumor cells with increased MUM1 expression.'), Score: 0.7253
+('No evidence of pseudoinclusions.', 'Intracytoplasmic pseudoinclusions.'), Score: 0.7245
+('No evidence of tumor cells with a normal expression of vimentin.', 'Tumor cells with increased vimentin expression, indicating epithelial-mesenchymal transition (EMT).'), Score: 0.7245
+('No evidence of tumor cells with a uniform cell size.', 'Tumor cells exhibiting significant pleomorphism in cell size.'), Score: 0.7240
+('No evidence of sinusoidal pattern.', 'Sinusoidal growth pattern with tumor cells lining vascular spaces.'), Score: 0.7225
+('No evidence of tumor cells with a normal expression of PAX8.', 'Tumor cells with aberrant PAX8 expression.'), Score: 0.7200
+('No evidence of tumor cells with a normal expression of S100.', 'Tumor cells with positive S100 expression.'), Score: 0.7157
+('No evidence of tumor cells with a normal expression of Ki67 index.', 'Tumor cells with a very high Ki67 index (>80%).'), Score: 0.7157
+('No evidence of tumor cells with a normal expression of estrogen receptor.', 'Tumor cells with loss of estrogen receptor expression.'), Score: 0.7147
+('No evidence of pagetoid spread.', 'Pagetoid spread of tumor cells into the epidermis.'), Score: 0.7129
+('No evidence of tumor cells with a normal expression of MLH1.', 'Tumor cells with loss of MLH1 expression, indicative of mismatch repair deficiency.'), Score: 0.7127
+('No evidence of ductal differentiation.', 'Presence of ductal differentiation with luminal structures.'), Score: 0.7115
+('No evidence of tumor cells with a normal growth pattern.', 'Tumor cells exhibiting an infiltrative growth pattern.'), Score: 0.7109
+('No evidence of tumor cells with a normal expression of CD45.', 'Tumor cells lacking CD45 expression, differentiating them from lymphocytes.'), Score: 0.7107
+('No evidence of tumor cells with a normal mitotic count.', 'Numerous atypical mitotic figures, including tripolar and multipolar spindles.'), Score: 0.7094
+('No evidence of tumor cells with a normal expression of PD-L1.', 'Tumor cells with high PD-L1 expression indicating immune evasion.'), Score: 0.7092
+('No evidence of tumor cells with a normal expression of cell adhesion molecules.', 'Tumor cells with decreased expression of E-cadherin and increased expression of N-cadherin.'), Score: 0.7077
+('No evidence of tumor cells with prominent cell borders.', 'Tumor cells with indistinct or blurred cell borders.'), Score: 0.7074
+('No evidence of tumor cells with a normal expression of hormone receptors.', 'Tumor cells with loss or altered expression of hormone receptors (e.g., ER, PR).'), Score: 0.7070
+('No evidence of tumor cells with a cribriform pattern.', 'Tumor cells arranged in a cribriform pattern with sieve-like spaces.'), Score: 0.7062
+('No evidence of tumor cells with a uniform growth pattern.', 'Tumor cells exhibiting disorganized and infiltrative growth.'), Score: 0.7055
+('No evidence of tumor cells with inconspicuous nucleoli.', 'Tumor cells with large, prominent, and multiple nucleoli.'), Score: 0.7032
+('No evidence of tumor cells with a normal expression of p53.', 'Tumor cells demonstrating aberrant p53 expression and nuclear accumulation.'), Score: 0.7030
+('No evidence of tumor cells with a lack of necrosis.', 'Tumor cells exhibiting areas of necrosis and cellular debris.'), Score: 0.7030
+('No evidence of tumor cells with a normal expression of Galectin-3.', 'Tumor cells with increased Galectin-3 expression, associated with immune suppression.'), Score: 0.7027
+('No evidence of tumor cells with a normal size.', 'Tumor cells that are significantly enlarged compared to normal cells.'), Score: 0.7020
+('No evidence of tumor cells with a normal chromatin texture.', 'Tumor cells with a vesicular chromatin pattern.'), Score: 0.7005
+('No evidence of hobnail morphology.', 'Hobnail morphology with enlarged, flattened nuclei.'), Score: 0.7004
+('No evidence of tumor cells with a normal expression of CD8.', 'Tumor cells with a sparse CD8+ T cell infiltrate.'), Score: 0.6992
+('Normal nuclear size.', 'Increased nuclear size (nuclear pleomorphism).'), Score: 0.6989
+('No evidence of tumor cells with a normal apoptotic index.', 'Increased apoptotic index with frequent apoptotic bodies.'), Score: 0.6979
+('No evidence of extracellular matrix degradation.', 'Extracellular matrix degradation with collagenolysis and stromal desmoplasia.'), Score: 0.6954
+('No evidence of tumor cells with a normal sinusoidal architecture.', 'Tumor cells disrupting the normal sinusoidal architecture.'), Score: 0.6944
+('No evidence of tumor cells with a normal expression of PR.', 'Tumor cells with increased PR expression.'), Score: 0.6941
+('No evidence of tumor cells with a bland chromatin pattern.', 'Tumor cells with a hyperchromatic and clumped chromatin pattern.'), Score: 0.6926
+('No evidence of tumor cells with evenly distributed chromatin.', 'Tumor cells exhibiting coarse, clumped, or hyperchromatic chromatin.'), Score: 0.6914
+('No evidence of tumor cells with a normal expression of CD3.', 'Tumor cells surrounded by a sparse CD3+ T-cell infiltrate.'), Score: 0.6912
+('No evidence of tumor cells with a normal mitotic rate.', 'Increased mitotic activity with atypical mitotic figures.'), Score: 0.6892
+('No evidence of tumor cells with a normal expression of SMA.', 'Tumor cells with increased SMA expression, indicating myofibroblastic differentiation.'), Score: 0.6891
+('No evidence of tumor cells with a regular nuclear envelope.', 'Tumor cells with deeply invaginated or vesicular nuclei.'), Score: 0.6881
+('No evidence of tumor cells with a clear cytoplasm.', 'Tumor cells with abundant eosinophilic cytoplasm.'), Score: 0.6866
+('No evidence of necrosis.', 'Areas of extensive necrosis with karyorrhexis.'), Score: 0.6856
+('No evidence of tumor cells with a regular nuclear membrane.', 'Tumor cells with irregular or undulating nuclear membranes.'), Score: 0.6841
+('No evidence of tumor cells with a symmetric arrangement of chromatin.', 'Tumor cells with asymmetric chromatin distribution.'), Score: 0.6834
+('No evidence of tumor cells with a normal expression of SMA.', 'Tumor cells with increased SMA expression indicating myofibroblastic differentiation.'), Score: 0.6831
+('No evidence of tumor cells with a well-defined cell membrane.', 'Tumor cells with a poorly defined or absent cell membrane.'), Score: 0.6831
+('No evidence of ductal carcinoma in situ (DCIS).', 'Presence of ductal carcinoma in situ (DCIS) with comedo necrosis.'), Score: 0.6829
+('No evidence of tumor cells with a normal chromatin texture.', 'Tumor cells with a finely granular chromatin texture.'), Score: 0.6799
+('No evidence of tumor cells with a normal expression of SMA.', 'Tumor cells with increased SMA expression, indicative of myofibroblastic differentiation.'), Score: 0.6799
+('No evidence of tumor cells with a normal expression of cytokeratins.', 'Tumor cells with strong and diffuse cytokeratin expression.'), Score: 0.6788
+('Small, uniform nuclei.', 'Large, pleomorphic nuclei with variable staining.'), Score: 0.6786
+('No evidence of hobnail morphology.', 'Hobnail morphology with tumor cells exhibiting a flattened, tumor cell shape.'), Score: 0.6779
+('No evidence of tumor cells with a normal expression of vimentin.', 'Tumor cells with increased vimentin expression indicating mesenchymal differentiation.'), Score: 0.6776
+('No evidence of tumor cells with a normal expression of PD-L1.', 'Tumor cells with high PD-L1 expression, indicating potential immune evasion.'), Score: 0.6773
+('No evidence of tumor cells with a uniform growth pattern.', 'Tumor cells exhibiting a disorganized and infiltrative growth pattern.'), Score: 0.6751
+('No evidence of tumor cells with a typical growth pattern.', 'Tumor cells displaying an infiltrative growth pattern.'), Score: 0.6748
+('No evidence of prominent inflammatory infiltrate.', 'Brisk inflammatory infiltrate with plasma cells and eosinophils.'), Score: 0.6746
+('No evidence of tumor cells with a clear cytoplasm.', 'Tumor cells with abundant, eosinophilic cytoplasm.'), Score: 0.6746
+('No evidence of apoptosis.', 'Increased apoptosis with fragmented nuclei.'), Score: 0.6743
+('No evidence of tumor cells with a uniform growth pattern.', 'Tumor cells exhibiting a disorganized, infiltrative growth pattern.'), Score: 0.6699
+('Lymphocytes with high N/C ratio.', 'Cells with low N/C ratio and abundant cytoplasm.'), Score: 0.6676
+('No evidence of tumor cells with a normal expression of CD68.', 'Tumor cells surrounded by increased CD68+ macrophages.'), Score: 0.6644
+('No evidence of lymphovascular invasion.', 'Lymphovascular invasion with tumor cells within lymphatic or blood vessels.'), Score: 0.6643
+('No evidence of tumor cells with a normal stromal response.', 'Tumor cells inducing a prominent desmoplastic stromal reaction.'), Score: 0.6635
+('No evidence of angiolymphatic invasion.', 'Angiolymphatic invasion by tumor cells.'), Score: 0.6631
+('No evidence of tumor cells with a lack of perineural invasion.', 'Tumor cells exhibiting perineural invasion (infiltration around nerves).'), Score: 0.6613
+('No significant nuclear atypia.', 'Marked nuclear pleomorphism and hyperchromasia.'), Score: 0.6601
+('No evidence of tumor cells with a normal expression of chromogranin A.', 'Tumor cells with positive chromogranin A staining, supporting neuroendocrine origin.'), Score: 0.6588
+('No evidence of tumor cells with a normal nuclear shape.', 'Tumor cells displaying bizarre nuclear shapes and multinucleation.'), Score: 0.6586
+('No evidence of tumor cells with a smooth nuclear membrane.', 'Tumor cells with an irregular, folded, or crenated nuclear membrane.'), Score: 0.6583
+('No evidence of tumor cells with a cohesive cell arrangement.', 'Tumor cells exhibiting loss of cohesion and single-cell invasion.'), Score: 0.6573
+('No evidence of tumor cells with a well-defined cytoplasm.', 'Tumor cells with scant, poorly defined cytoplasm.'), Score: 0.6561
+('No evidence of tumor cells with halo formation.', 'Tumor cells surrounded by a clear halo due to artifact or edema.'), Score: 0.6558
+('Normal nuclear shape.', 'Abnormal nuclear shape with lobulation or clefts.'), Score: 0.6515
+('Thin, delicate sinusoidal capillaries.', 'Thick-walled, irregular capillaries with increased vascularity.'), Score: 0.6511
+('No evidence of tumor cells with a clear, defined Golgi apparatus.', 'Tumor cells with a poorly defined or absent Golgi apparatus.'), Score: 0.6510
+('No evidence of tumor cells with a smooth nuclear membrane.', 'Tumor cells with deeply folded or convoluted nuclear membranes.'), Score: 0.6500
+('Normal medullary cords.', 'Expansion of medullary cords by atypical cells.'), Score: 0.6493
+('No evidence of tumor cells with a regular arrangement.', 'Tumor cells growing in disorganized sheets or clusters.'), Score: 0.6475
+('No evidence of tumor cells with a uniform growth pattern.', 'Tumor cells displaying a disorganized and infiltrative growth pattern.'), Score: 0.6473
+('No evidence of tumor cells with a normal stromal cellularity.', 'Tumor cells embedded in a highly cellular stroma with increased fibroblast density.'), Score: 0.6470
+('No evidence of tumor cells with intact cell junctions.', 'Tumor cells displaying disrupted cell junctions and loss of intercellular adhesion.'), Score: 0.6465
+('No evidence of tumor cells with a normal expression of PD1.', 'Tumor cells with high PD1 expression, indicating potential immune evasion.'), Score: 0.6453
+('No evidence of tumor cells with a uniform growth pattern.', 'Tumor cells displaying a disorganized, infiltrative growth pattern.'), Score: 0.6442
+('No evidence of tumor cells with a normal stromal response.', 'Tumor cells inducing a desmoplastic stromal reaction.'), Score: 0.6438
+('No evidence of tumor cell palisading.', 'Tumor cell palisading around necrotic areas.'), Score: 0.6438
+('No evidence of tumor cells with palisading necrosis.', 'Tumor cells exhibiting palisading necrosis.'), Score: 0.6433
+('No evidence of tumor cells with a normal expression of CD68.', 'Tumor cells associated with increased CD68+ macrophages.'), Score: 0.6423
+('Normal cell arrangement.', 'Disorganized cell arrangement with loss of polarity.'), Score: 0.6392
+('No evidence of intravascular tumor aggregates.', 'Intravascular tumor aggregates obstructing vessels.'), Score: 0.6390
+('No evidence of tumor cells with a lack of giant cells.', 'Presence of multinucleated giant cells within the tumor microenvironment.'), Score: 0.6390
+('No evidence of tumor cells with a regular chromatin pattern.', 'Tumor cells with coarse, clumped, or hyperchromatic chromatin.'), Score: 0.6385
+('No evidence of tumor cells with a normal expression of MLH1/MSH2/MSH6.', 'Tumor cells with loss of MLH1, MSH2, or MSH6 expression, indicating microsatellite instability.'), Score: 0.6362
+('No evidence of tumor cells with a normal expression of SOX10.', 'Tumor cells with aberrant SOX10 expression.'), Score: 0.6357
+('No evidence of perivascular lymphocytic infiltrate.', 'Prominent perivascular lymphocytic infiltrate.'), Score: 0.6345
+('No evidence of tumor-associated fibrosis.', 'Dense tumor-associated fibrosis with collagenization.'), Score: 0.6342
+('No evidence of tumor cells with a clear cytoplasm.', 'Tumor cells with abundant eosinophilic or basophilic cytoplasm.'), Score: 0.6332
+('No evidence of tumor cells with a normal expression of SOX10.', 'Tumor cells with positive SOX10 staining, suggestive of a specific lineage.'), Score: 0.6315
+('Lymphocytes with mature morphology.', 'Immunoblasts and plasmablasts present.'), Score: 0.6313
+('No evidence of extracellular mucin.', 'Extracellular mucin pools surrounding tumor cells.'), Score: 0.6302
+('No evidence of tumor cells with a normal expression of S100.', 'Tumor cells with positive S100 staining, indicating neuroendocrine differentiation.'), Score: 0.6295
+('No evidence of tumor cells with a typical growth pattern.', 'Tumor cells forming solid sheets, nests, or cords with effacement of normal architecture.'), Score: 0.6269
+('No evidence of tumor cells with a normal number of chromosomes.', 'Tumor cells exhibiting aneuploidy and chromosomal instability.'), Score: 0.6264
+('Scant mitotic activity.', 'Increased mitotic activity with atypical mitotic figures.'), Score: 0.6260
+('Small, round nuclei with smooth contours.', 'Large, irregular nuclei with notched contours.'), Score: 0.6230
+('No evidence of tumor cells with a uniform growth pattern.', 'Tumor cells displaying a chaotic and infiltrative growth pattern.'), Score: 0.6212
+('No evidence of tumor cells with a normal stromal response.', 'Tumor cells eliciting a prominent desmoplastic stromal reaction.'), Score: 0.6192
+('No evidence of tumor cells with a normal expression of PD-L1.', 'Tumor cells with high PD-L1 expression, potentially responsive to immunotherapy.'), Score: 0.6184
+('No evidence of tumor cells with a normal expression of PTEN.', 'Tumor cells with PTEN loss or mutation.'), Score: 0.6174
+('No evidence of tumor cells with a normal staining intensity.', 'Tumor cells exhibiting intense staining for relevant markers.'), Score: 0.6169
+('No evidence of tumor cells with a regular nuclear envelope.', 'Tumor cells with a deeply invaginated or irregular nuclear envelope.'), Score: 0.6157
+('No evidence of tumor cells with a normal inflammatory infiltrate.', 'Prominent lymphocytic infiltrate surrounding tumor cells.'), Score: 0.6137
+('No evidence of tumor cells with a normal level of oxidative stress.', 'Tumor cells with increased oxidative stress and reactive oxygen species (ROS) production.'), Score: 0.6125
+('No evidence of tumor cells with a normal vascular pattern.', 'Tumor cells inducing angiogenesis and forming abnormal vascular networks.'), Score: 0.6125
+('Normal follicular architecture with distinct germinal centers.', 'Disrupted follicular architecture with effacement of normal structures.'), Score: 0.6124
+('No evidence of tumor cells with a lack of inflammatory infiltrate.', 'Prominent inflammatory infiltrate surrounding tumor cells.'), Score: 0.6122
+('No evidence of tumor cells with a normal expression of EGFR.', 'Tumor cells with EGFR amplification.'), Score: 0.6105
+('No evidence of tumor cells with a normal stromal reaction.', 'Tumor cells inducing a desmoplastic stromal reaction with abundant collagen deposition.'), Score: 0.6102
+('Normal cell morphology.', 'Atypical cell morphology with bizarre features.'), Score: 0.6099
+('No evidence of tumor cells with a typical staining pattern for Ki-67.', 'Tumor cells with a markedly increased Ki-67 labeling index.'), Score: 0.6094
+('No evidence of tumor cells with a normal expression of cytokeratins.', 'Tumor cells exhibiting aberrant cytokeratin expression patterns.'), Score: 0.6094
+('No evidence of angiolymphatic invasion.', 'Angiolymphatic invasion with tumor cells within lymphatic and blood vessels.'), Score: 0.6084
+('No evidence of tumor cells with a normal expression of S100.', 'Tumor cells with aberrant S100 expression.'), Score: 0.6071
+('No evidence of tumor cells with a normal mitotic figure morphology.', 'Tumor cells with multipolar spindles or atypical mitotic figures.'), Score: 0.6066
+('No evidence of sinusoidal involvement.', 'Tumor cells infiltrating the sinusoids.'), Score: 0.6064
+('No evidence of tumor cells with a normal stromal reaction.', 'Tumor cells inducing a prominent desmoplastic stromal reaction with collagen deposition.'), Score: 0.6059
+('No evidence of angiolymphatic invasion.', 'Angiolymphatic invasion with tumor cells within lymphatic vessels.'), Score: 0.6016
+('No evidence of tumor cells with a loss of polarity.', 'Tumor cells demonstrating a complete loss of normal cellular polarity.'), Score: 0.6007
+('No evidence of tumor cells expressing mucin.', 'Tumor cells demonstrating strong mucin positivity.'), Score: 0.6007
+('No evidence of fibrosis.', 'Extensive fibrosis with collagen deposition.'), Score: 0.6004
+
