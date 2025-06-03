@@ -22,7 +22,7 @@ from open_clip import create_model_and_transforms, get_tokenizer
 from open_clip.factory import HF_HUB_PREFIX, _MODEL_CONFIGS
 import json
 from tqdm import tqdm
-
+import time
 
 # 1. Paths & constants
 METADATA_CSV = "/storage/projects3/e19-fyp-out-of-domain-gen-in-cv/camelyon17WILDS/metadata.csv"
@@ -363,6 +363,9 @@ def get_prompt_pairs(prompt, client, parse_func=extract_and_parse_prompt_list,  
         except Exception as e:
             print(
                 f"[Warning] get_prompt_pairs parse error on attempt {attempt}/{max_retries}: {e}")
+            # sleep for 2 secs per attempt
+            time.sleep(2 * attempt)  # exponential backoff
+
             if attempt == max_retries:
                 raise RuntimeError(
                     "Failed to parse prompts after multiple attempts") from e
