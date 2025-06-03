@@ -1,5 +1,5 @@
 """
- Evolutionary Algorithm (GA) Only with regularization- With pd- No Scores for optimization
+ Evolutionary Algorithm (GA) Only with regularization- No pd- No Scores for optimization
 """
 from API_KEY import GEMINI_API_KEY
 from google import genai
@@ -57,11 +57,13 @@ def main():
     print("Gemini client initialized successfully.")
 
     # 4. Define the meta prompt and template
-    meta_init_prompt = """Give 50 textual descriptions pairs of visual discriminative features to identify whether the central region of an histopathological image patch contains tumor tissue or not. The patch is extracted from an H&E‑stained whole‑slide image of a lymph node section. Only give the output as python code in the format - prompts: list[tuple[negative: str, positive: str]]"""
+    meta_init_prompt = """Give 50 textual descriptions pairs of visual discriminative features to identify whether the central region of an histopathological image patch contains tumor tissue or not. \
+                The patch is extracted from an H&E‑stained whole‑slide image of a lymph node section. \
+                Following exemplar shows how to write the prompt pair: \
+                    ("This is an image of a tumor", "Tumor is not present in this image") \
+                Only give the output as python code in the format - prompts: list[tuple[negative: str, positive: str]]"""
     META_PROMPT_TEMPLATE = """\
-            The task is to generate a textual descriptions pair of visual discriminative features to identify whether the central region of an histopathological image patch contains tumor tissue or not. The patch is extracted from an H&E‑stained whole‑slide image of a lymph node section.
             Please follow the instruction step-by-step to generate a better prompt pair for the above task.
-
             1. Cross over the following prompts and generate a new prompt:
 
             Prompt Pair 1: {pair1}
