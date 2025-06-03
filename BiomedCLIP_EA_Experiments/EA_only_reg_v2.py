@@ -14,7 +14,7 @@ import os
 
 def main():
     # Name the experiment we are currently running
-    experiment_name = "EA-Only-with-pd-Experiment-1"
+    experiment_name = "EA-Only-reg-with-exemplar"
     print(f"Running {experiment_name}...")
 
     # Create experiment results directory
