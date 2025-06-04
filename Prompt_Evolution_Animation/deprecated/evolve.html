@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sentence Evolution Animation</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: white;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .controls {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            background: rgba(255, 255, 255, 0.2);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            border-color: rgba(255, 255, 255, 0.5);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .iteration-display {
+            text-align: center;
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            font-weight: bold;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+        }
+
+        .sentences-container {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 20px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            position: relative;
+            min-height: 700px;
+            height: 700px;
+            overflow: hidden;
+        }
+
+        .sentence-item {
+            display: flex;
+            align-items: center;
+            padding: 12px 18px;
+            margin: 6px 0;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 12px;
+            border-left: 4px solid #00ff88;
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            position: absolute;
+            width: calc(100% - 40px);
+            backdrop-filter: blur(5px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            height: 60px;
+        }
+
+        .sentence-item.entering {
+            opacity: 0;
+            transform: translateX(100px) scale(0.9);
+        }
+
+        .sentence-item.exiting {
+            opacity: 0;
+            transform: translateX(-100px) scale(0.9);
+        }
+
+        .rank {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-right: 15px;
+            min-width: 30px;
+            text-align: center;
+            color: #00ff88;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+        }
+
+        .sentence-text {
+            flex: 1;
+            font-size: 14px;
+            line-height: 1.4;
+            margin-right: 15px;
+        }
+
+        .score {
+            font-weight: bold;
+            font-size: 16px;
+            color: #ffeb3b;
+            background: rgba(0,0,0,0.2);
+            padding: 5px 10px;
+            border-radius: 20px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 6px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 3px;
+            margin: 20px 0;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #00ff88, #00d4ff);
+            border-radius: 3px;
+            transition: width 0.3s ease;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+
+        .sentence-item:hover {
+            transform: translateX(5px) scale(1.02);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+            
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .sentence-text {
+                font-size: 12px;
+            }
+            
+            .controls {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🔬 Sentence Evolution Viewer</h1>
+            <p>Watch how sentences evolve and compete through iterations</p>
+        </div>
+        
+        <div class="controls">
+            <button class="btn" onclick="startAnimation()">▶️ Start Animation</button>
+            <button class="btn" onclick="pauseAnimation()">⏸️ Pause</button>
+            <button class="btn" onclick="resetAnimation()">🔄 Reset</button>
+            <button class="btn" onclick="nextIteration()">⏭️ Next</button>
+            <button class="btn" onclick="prevIteration()">⏮️ Previous</button>
+        </div>
+        
+        <div class="iteration-display">
+            <span id="currentIteration">Iteration 1</span>
+        </div>
+        
+        <div class="progress-bar">
+            <div class="progress-fill" id="progressFill"></div>
+        </div>
+        
+        <div class="sentences-container" id="sentencesContainer">
+        </div>
+    </div>
+
+    <script>
+        // Sample data - replace with your actual iteration data
+        const iterationData = [
+            // Iteration 1
+            [
+                {text: "No evidence of perineural invasion.No evidence of perineural invasion.No evidence of perineural invasion.No evidence of perineural invasion.No evidence of perineural invasion.No evidence of perineural invasion.No evidence of perineural invasion.No evidence of perineural invasion.", score: 0.8754},
+                {text: "No prominent nucleoli.", score: 0.8727},
+                {text: "No evidence of epithelial cells.", score: 0.8594},
+                {text: "Cells are arranged in a normal lymphoid pattern.", score: 0.8561},
+                {text: "No evidence of plasmacytoid differentiation.", score: 0.8524},
+                {text: "No evidence of giant cells.", score: 0.8448},
+                {text: "No evidence of apoptosis.", score: 0.8401},
+                {text: "No evidence of lymphoid aggregates.", score: 0.8272},
+                {text: "No evidence of clear cell morphology.", score: 0.8205},
+                {text: "No evidence of lobular structures.", score: 0.8163}
+            ],
+            // Iteration 2 - some changes
+            [
+                {text: "Evidence of perineural invasion by tumor cells.", score: 0.8954},
+                {text: "No prominent nucleoli.", score: 0.8727},
+                {text: "Presence of epithelial cells.", score: 0.8694},
+                {text: "Cells are arranged in sheets, nests, or irregular patterns.", score: 0.8661},
+                {text: "No evidence of plasmacytoid differentiation.", score: 0.8524},
+                {text: "Presence of multinucleated giant cells.", score: 0.8448},
+                {text: "Presence of apoptosis.", score: 0.8401},
+                {text: "No evidence of lymphoid aggregates.", score: 0.8272},
+                {text: "Presence of clear cell morphology.", score: 0.8205},
+                {text: "No evidence of lobular structures.", score: 0.8163}
+            ],
+            // Iteration 3 - more changes
+            [
+                {text: "Evidence of perineural invasion by tumor cells.", score: 0.9154},
+                {text: "Prominent, large, and irregular nucleoli.", score: 0.8927},
+                {text: "Presence of epithelial cells.", score: 0.8794},
+                {text: "Cells are arranged in sheets, nests, or irregular patterns.", score: 0.8761},
+                {text: "Evidence of plasmacytoid differentiation.", score: 0.8624},
+                {text: "Presence of multinucleated giant cells.", score: 0.8548},
+                {text: "Presence of apoptosis.", score: 0.8501},
+                {text: "Presence of lymphoid aggregates.", score: 0.8372},
+                {text: "Presence of clear cell morphology.", score: 0.8305},
+                {text: "Presence of lobular structures.", score: 0.8263}
+            ],
+            // Iteration 4 - further evolution
+            [
+                {text: "Evidence of perineural invasion by tumor cells.", score: 0.9254},
+                {text: "Prominent, large, and irregular nucleoli.", score: 0.9027},
+                {text: "Presence of epithelial cells.", score: 0.8894},
+                {text: "Cells are arranged in sheets, nests, or irregular patterns.", score: 0.8861},
+                {text: "Evidence of plasmacytoid differentiation.", score: 0.8724},
+                {text: "Presence of multinucleated giant cells.", score: 0.8648},
+                {text: "Large, atypical germinal centers with irregular shapes.", score: 0.8553},
+                {text: "Presence of apoptosis.", score: 0.8501},
+                {text: "Presence of lymphoid aggregates.", score: 0.8472},
+                {text: "Presence of clear cell morphology.", score: 0.8405}
+            ]
+        ];
+
+        let currentIterationIndex = 0;
+        let animationInterval;
+        let isAnimating = false;
+
+        function displayIteration(index) {
+            const container = document.getElementById('sentencesContainer');
+            const iterationDisplay = document.getElementById('currentIteration');
+            const progressFill = document.getElementById('progressFill');
+            
+            // Update iteration display
+            iterationDisplay.textContent = `Iteration ${index + 1}`;
+            
+            // Update progress bar
+            const progress = ((index + 1) / iterationData.length) * 100;
+            progressFill.style.width = `${progress}%`;
+            
+            // Get existing items
+            const existingItems = Array.from(container.children);
+            const newData = iterationData[index];
+            
+            // Create a map of existing sentences for comparison
+            const existingMap = new Map();
+            existingItems.forEach((item, idx) => {
+                const text = item.querySelector('.sentence-text').textContent;
+                existingMap.set(text, {element: item, oldIndex: idx});
+            });
+            
+            // Animate out items that are no longer in top 10
+            existingItems.forEach(item => {
+                const text = item.querySelector('.sentence-text').textContent;
+                const stillExists = newData.some(sentence => sentence.text === text);
+                if (!stillExists) {
+                    item.classList.add('exiting');
+                    setTimeout(() => {
+                        if (item.parentNode) {
+                            item.parentNode.removeChild(item);
+                        }
+                    }, 600);
+                }
+            });
+            
+            // Position and animate items
+            newData.forEach((sentence, newIndex) => {
+                const yPosition = newIndex * 65; // Reduced spacing to fit better
+                let item = existingMap.get(sentence.text)?.element;
+                
+                if (item) {
+                    // Existing item - animate to new position
+                    item.style.top = `${yPosition}px`;
+                    item.querySelector('.rank').textContent = `#${newIndex + 1}`;
+                    item.querySelector('.score').textContent = sentence.score.toFixed(4);
+                    item.classList.remove('entering', 'exiting');
+                } else {
+                    // New item - create and animate in
+                    item = createSentenceItem(sentence, newIndex, yPosition);
+                    container.appendChild(item);
+                    
+                    // Trigger entering animation
+                    setTimeout(() => {
+                        item.classList.remove('entering');
+                    }, 50);
+                }
+            });
+        }
+
+        function createSentenceItem(sentence, index, yPosition) {
+            const item = document.createElement('div');
+            item.className = 'sentence-item entering';
+            item.style.top = `${yPosition}px`;
+            
+            item.innerHTML = `
+                <div class="rank">#${index + 1}</div>
+                <div class="sentence-text">${sentence.text}</div>
+                <div class="score">${sentence.score.toFixed(4)}</div>
+            `;
+            
+            return item;
+        }
+
+        function startAnimation() {
+            if (isAnimating) return;
+            
+            isAnimating = true;
+            animationInterval = setInterval(() => {
+                currentIterationIndex++;
+                if (currentIterationIndex >= iterationData.length) {
+                    currentIterationIndex = 0;
+                }
+                displayIteration(currentIterationIndex);
+            }, 2000); // Change iteration every 2 seconds
+        }
+
+        function pauseAnimation() {
+            isAnimating = false;
+            if (animationInterval) {
+                clearInterval(animationInterval);
+                animationInterval = null;
+            }
+        }
+
+        function resetAnimation() {
+            pauseAnimation();
+            currentIterationIndex = 0;
+            displayIteration(currentIterationIndex);
+        }
+
+        function nextIteration() {
+            pauseAnimation();
+            currentIterationIndex = (currentIterationIndex + 1) % iterationData.length;
+            displayIteration(currentIterationIndex);
+        }
+
+        function prevIteration() {
+            pauseAnimation();
+            currentIterationIndex = currentIterationIndex === 0 ? iterationData.length - 1 : currentIterationIndex - 1;
+            displayIteration(currentIterationIndex);
+        }
+
+        // Initialize with first iteration
+        displayIteration(0);
+    </script>
+</body>
+</html>
