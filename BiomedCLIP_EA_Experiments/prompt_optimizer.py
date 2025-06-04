@@ -72,7 +72,7 @@ def get_prompt_template(iteration_num: int, prompt_content: str) -> str:
 
 def main():
     # Name the experiment we are currently running
-    experiment_name = "Experiment-7-all_in_one-optimization"
+    experiment_name = "Experiment-8-all_in_one-optimization_max_capacity_100"
     print(f"Running {experiment_name}...")
 
     # Create experiment results directory
@@ -129,7 +129,7 @@ def main():
 
 
     # Optimization loop
-    pq = util.PriorityQueue(max_capacity=1000)
+    pq = util.PriorityQueue(max_capacity=100)
     prompt_content = ""
 
     # Variable to track current instruction phase
@@ -163,7 +163,7 @@ def main():
         # Prepare the content for the meta prompt
         prompt_content = f"Current Top {n} prompt pairs:\n"
         for i, (prompt_pair, score) in enumerate(selected_prompts):
-            print(f"{i+1}. {prompt_pair}, Score: {score:.4f}")
+            print(f"{i+1}. {prompt_pair}, Score: {int(score)}")
             prompt_content += f"{i+1}. {prompt_pair}, Score: {int(score)}\n"
 
         # Save the best prompt pairs to a file, every 20 iterations
