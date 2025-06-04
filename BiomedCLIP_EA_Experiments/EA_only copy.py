@@ -59,47 +59,26 @@ def main():
 
     # 4. Define the meta prompt and template
     meta_init_prompt = """Give 50 textual descriptions pairs of visual discriminative features to identify whether the central region of an histopathological image patch contains tumor tissue or not. The patch is extracted from an H&E‑stained whole‑slide image of a lymph node section. Only give the output as python code in the format - prompts: list[tuple[negative: str, positive: str]]"""
-    META_PROMPT_TEMPLATE = """The task is to generate textual descriptions pairs of visual discriminative features to identify whether the central region of an histopathological image patch contains tumor tissue or not. The patch is extracted from an H&E‑stained whole‑slide image of a lymph node section.
-            Here are the best performing pairs in descending order. High scores indicate higher quality visual discriminative features.
-                {content}
-                {specific_instruction} 
-            Only give the output as python code in the format - prompts: list[tuple[negative: str, positive: str]]
-        """
-    instruction_list = {
-        "default": "Write 10 new prompt pairs that is different from the old ones and has a score as high as possible.",
-        "combination": "Write 10 new prompt pairs by combining multiple medical concepts only from the above prompts to make the score as high as possible.",
-        "language_variation": "Write 10 new prompt pairs with different language style and same medical concepts. Each pair should have distinct language style.",
-        "slight_changes":"Write 10 new prompt pairs similar to the above pairs only making slight changes to the language style to make the score as high as possible."
-    }
+    combination_prompt = """Here are the best performing pairs in descending order. High scores indicate higher quality visual discriminative features.
+                    Current Top 10 prompt pairs:{prompt_pairs}
+                Write 20 new prompt pairs as follows to make the score as high as possible:
+                    1-10 by combining multiple medical concepts only from the above prompts 
+                    11-20 with different language style and same medical concepts. Each pair should have distinct language style.
+                Only give the output as python code in the format - prompts: list[tuple[negative: str, positive: str]]"""
+
 
     # initial_list = load_initial_prompts("selected_prompts.txt")
     # pq = PriorityQueue(max_capacity=40, initial=initial_list)
     pq = util.PriorityQueue(max_capacity=1000)
 
     meta_prompt = ""
-    for j in range(200):
+    for j in range(1000):
         if j == 0:
             prompts = util.get_prompt_pairs(
                 meta_init_prompt, client)
-        elif j < 10:
-            specific_instruction = instruction_list["default"]
+        else:
             prompts = [util.get_prompt_pairs(
                 meta_prompt, client, parse_func=util.extract_and_parse_prompt_tuple)]  # wrapped in a list to make it a list of prompt pairs
-
-        elif j < 20:
-            specific_instruction = instruction_list["combination"]
-            prompts = [util.get_prompt_pairs(
-                meta_prompt, client, parse_func=util.extract_and_parse_prompt_tuple)]
-
-        elif j < 30:
-            specific_instruction = instruction_list["language_variation"]
-            prompts = [util.get_prompt_pairs(
-                meta_prompt, client, parse_func=util.extract_and_parse_prompt_tuple)]
-
-        else:
-            specific_instruction = instruction_list["slight_changes"]
-            prompts = [util.get_prompt_pairs(
-                meta_prompt, client, parse_func=util.extract_and_parse_prompt_tuple)]
 
         for i, prompt_pair in enumerate(prompts):
             if len(prompt_pair) != 2:
@@ -112,13 +91,11 @@ def main():
                 f"Iteration {j+1}, New Prompt Pair {i+1}: {negative_prompt}, {positive_prompt}, Accuracy: {results['accuracy']:.4f}")
             pq.insert((negative_prompt, positive_prompt), results['accuracy'])
 
-        n = 10
+        n = 2
         print(f"Selected {n} prompt pairs:")
         roulette = pq.get_roulette_wheel_selection(n)
         meta_prompt = META_PROMPT_TEMPLATE.format(
-            content="\n".join([f"{pair[0]}, {pair[1]}" for pair, _ in roulette]),
-            specific_instruction=instruction_list["default"]
-        )
+            pair1=roulette[0], pair2=roulette[1])
 
         for i, (prompt_pair, score) in enumerate(roulette):
             print(f"{i+1}. {prompt_pair}, Score: {score:.4f}")
