@@ -120,3 +120,16 @@ Observation: language structure is preserved while medical concepts are changed.
     ('No evidence of epithelial cells and no evidence of apoptosis.', 'Presence of epithelial cells and presence of apoptosis.'),
     ('Cells are arranged in a normal lymphoid pattern and no evidence of clear cell morphology.', 'Cells are arranged in sheets, nests, or irregular patterns and presence of clear cell morphology.'),
     ('No evidence of perineural invasion and no evidence of lobular structures.', 'Evidence of perineural invasion by tumor cells and presence of lobular structures.')
+
+10. Write 10 new prompt pairs similar to the above pairs only making slight changes to the language style to make the score as high as possible.
+
+    ('Absence of perineural invasion and intact normal lobular architecture.', 'Perineural invasion identified and disrupted lobular architecture present.'),
+    ('Nucleoli are inconspicuous and no plasmacytoid features are observed.', 'Large, irregular nucleoli are prominent with plasmacytoid differentiation evident.'),
+    ('Lymphocytes exhibit a typical, organized pattern without epithelial cells.', 'Cells display atypical arrangements in sheets or nests, with epithelial cells present.'),
+    ('No apoptotic bodies are seen and epithelial cells are absent.', 'Apoptotic cells are identified and epithelial cells are present.'),
+    ('Perineural invasion is not present and lymphoid architecture is preserved.', 'Tumor cells invade perineural spaces and lymphoid architecture is disrupted.'),
+    ('Nucleoli are small and unremarkable, lacking lymphoid aggregates.', 'Nucleoli are large and irregular, with prominent lymphoid aggregates.'),
+    ('No plasmacytoid differentiation and giant cells are not identified.', 'Plasmacytoid differentiation is observed and multinucleated giant cells are present.'),
+    ('Apoptosis is absent and no giant cells are seen.', 'Apoptosis is present and multinucleated giant cells are identified.'),
+    ('Cells maintain a normal lymphoid arrangement and clear cell morphology is not present.', 'Cells are arranged in atypical patterns and clear cell morphology is observed.'),
+    ('Clear cell morphology is absent and lobular structures are intact.', 'Clear cell morphology is present and lobular structures are disrupted.')

@@ -1,0 +1,2053 @@
+Iteration 1:
+('Absence of mitotic figures.', 'Frequent mitotic figures, including atypical forms.'), Score: 0.8746
+('Normal lymphoid follicles with distinct mantle and germinal center zones.', 'Disrupted follicular architecture with loss of polarity and irregular germinal centers.'), Score: 0.8360
+('Scant stromal fibrosis with delicate collagen fibers.', 'Dense stromal fibrosis with thick collagen bundles and increased cellularity.'), Score: 0.8296
+('No evidence of tumor cell nests.', 'Tumor cell nests.'), Score: 0.8296
+('Absence of atypical cells.', 'Presence of atypical cells.'), Score: 0.8291
+('No evidence of perineural invasion.', 'Perineural invasion.'), Score: 0.8267
+('Uniform nuclear staining.', 'Heterogeneous nuclear staining.'), Score: 0.7957
+('Absence of giant cells.', 'Presence of multinucleated giant cells.'), Score: 0.7809
+('No evidence of necrosis.', 'Presence of tumor necrosis with karyorrhexis and cellular debris.'), Score: 0.7626
+('Small, round, blue cells.', 'Large, irregular, atypical cells.'), Score: 0.7357
+('No evidence of angiolymphatic invasion.', 'Angiolymphatic invasion.'), Score: 0.7222
+('No evidence of invasion.', 'Evidence of invasion into surrounding tissues.'), Score: 0.7195
+('Lymphocytes with high nucleus-to-cytoplasm ratio and scant cytoplasm.', 'Large, atypical cells with abundant eosinophilic cytoplasm and prominent nucleoli.'), Score: 0.7174
+('No significant nuclear atypia.', 'Marked nuclear atypia with bizarre shapes and sizes.'), Score: 0.7099
+('Normal stromal cells.', 'Atypical stromal cells.'), Score: 0.7009
+('No hemorrhage.', 'Presence of hemorrhage within the tissue.'), Score: 0.6897
+('Normal immune cell infiltrate.', 'Increased or atypical immune cell infiltrate.'), Score: 0.6738
+('Uniform cell size and shape.', 'Pleomorphic cell size and shape.'), Score: 0.6666
+('No evidence of granuloma formation.', 'Granuloma formation.'), Score: 0.6606
+('No prominent nucleoli.', 'Prominent nucleoli.'), Score: 0.6342
+('Normal nuclear-cytoplasmic ratio.', 'Increased nuclear-cytoplasmic ratio.'), Score: 0.6340
+('No evidence of apoptosis.', 'Increased apoptosis or programmed cell death.'), Score: 0.6287
+('Normal cell morphology.', 'Atypical cell morphology.'), Score: 0.6220
+
+Iteration 2:
+('Absence of mitotic figures.', 'Frequent mitotic figures, including atypical forms.'), Score: 0.8746
+('Normal lymphoid follicles with distinct mantle and germinal center zones.', 'Disrupted follicular architecture with loss of polarity and irregular germinal centers.'), Score: 0.8360
+('No evidence of tumor cell nests.', 'Tumor cell nests.'), Score: 0.8296
+('Scant stromal fibrosis with delicate collagen fibers.', 'Dense stromal fibrosis with thick collagen bundles and increased cellularity.'), Score: 0.8296
+('Absence of atypical cells.', 'Presence of atypical cells.'), Score: 0.8291
+('No evidence of perineural invasion.', 'Perineural invasion.'), Score: 0.8267
+('Uniform nuclear staining.', 'Heterogeneous nuclear staining.'), Score: 0.7957
+('Absence of giant cells.', 'Presence of multinucleated giant cells.'), Score: 0.7809
+('No evidence of necrosis.', 'Presence of tumor necrosis with karyorrhexis and cellular debris.'), Score: 0.7626
+('Small, round, blue cells.', 'Large, irregular, atypical cells.'), Score: 0.7357
+('Uniform nuclei, typical ratio.', 'Atypical nuclei, high ratio.'), Score: 0.7288
+('No evidence of angiolymphatic invasion.', 'Angiolymphatic invasion.'), Score: 0.7222
+('No evidence of invasion.', 'Evidence of invasion into surrounding tissues.'), Score: 0.7195
+('Lymphocytes with high nucleus-to-cytoplasm ratio and scant cytoplasm.', 'Large, atypical cells with abundant eosinophilic cytoplasm and prominent nucleoli.'), Score: 0.7174
+('No significant nuclear atypia.', 'Marked nuclear atypia with bizarre shapes and sizes.'), Score: 0.7099
+('Normal stromal cells.', 'Atypical stromal cells.'), Score: 0.7009
+('No hemorrhage.', 'Presence of hemorrhage within the tissue.'), Score: 0.6897
+('Normal immune cell infiltrate.', 'Increased or atypical immune cell infiltrate.'), Score: 0.6738
+('Uniform cell size and shape.', 'Pleomorphic cell size and shape.'), Score: 0.6666
+('No evidence of granuloma formation.', 'Granuloma formation.'), Score: 0.6606
+('No prominent nucleoli.', 'Prominent nucleoli.'), Score: 0.6342
+('Normal nuclear-cytoplasmic ratio.', 'Increased nuclear-cytoplasmic ratio.'), Score: 0.6340
+('No evidence of apoptosis.', 'Increased apoptosis or programmed cell death.'), Score: 0.6287
+('Normal cell morphology.', 'Atypical cell morphology.'), Score: 0.6220
+
+Iteration 3:
+('Absence of mitotic figures.', 'Frequent mitotic figures, including atypical forms.'), Score: 0.8746
+('Normal lymphoid follicles with distinct mantle and germinal center zones.', 'Disrupted follicular architecture with loss of polarity and irregular germinal centers.'), Score: 0.8360
+('No evidence of tumor cell nests.', 'Tumor cell nests.'), Score: 0.8296
+('Scant stromal fibrosis with delicate collagen fibers.', 'Dense stromal fibrosis with thick collagen bundles and increased cellularity.'), Score: 0.8296
+('Absence of atypical cells.', 'Presence of atypical cells.'), Score: 0.8291
+('No evidence of perineural invasion.', 'Perineural invasion.'), Score: 0.8267
+('No nuclear atypia observed.', 'Distinct tumor cell nests are present.'), Score: 0.8165
+('Uniform nuclear staining.', 'Heterogeneous nuclear staining.'), Score: 0.7957
+('Absence of giant cells.', 'Presence of multinucleated giant cells.'), Score: 0.7809
+('No evidence of necrosis.', 'Presence of tumor necrosis with karyorrhexis and cellular debris.'), Score: 0.7626
+('Small, round, blue cells.', 'Large, irregular, atypical cells.'), Score: 0.7357
+('Uniform nuclei, typical ratio.', 'Atypical nuclei, high ratio.'), Score: 0.7288
+('No evidence of angiolymphatic invasion.', 'Angiolymphatic invasion.'), Score: 0.7222
+('No evidence of invasion.', 'Evidence of invasion into surrounding tissues.'), Score: 0.7195
+('Lymphocytes with high nucleus-to-cytoplasm ratio and scant cytoplasm.', 'Large, atypical cells with abundant eosinophilic cytoplasm and prominent nucleoli.'), Score: 0.7174
+('No significant nuclear atypia.', 'Marked nuclear atypia with bizarre shapes and sizes.'), Score: 0.7099
+('Normal stromal cells.', 'Atypical stromal cells.'), Score: 0.7009
+('No hemorrhage.', 'Presence of hemorrhage within the tissue.'), Score: 0.6897
+('Normal immune cell infiltrate.', 'Increased or atypical immune cell infiltrate.'), Score: 0.6738
+('Uniform cell size and shape.', 'Pleomorphic cell size and shape.'), Score: 0.6666
+('No evidence of granuloma formation.', 'Granuloma formation.'), Score: 0.6606
+('No prominent nucleoli.', 'Prominent nucleoli.'), Score: 0.6342
+('Normal nuclear-cytoplasmic ratio.', 'Increased nuclear-cytoplasmic ratio.'), Score: 0.6340
+('No evidence of apoptosis.', 'Increased apoptosis or programmed cell death.'), Score: 0.6287
+('Normal cell morphology.', 'Atypical cell morphology.'), Score: 0.6220
+
+Iteration 4:
+('Absence of mitotic figures.', 'Frequent mitotic figures, including atypical forms.'), Score: 0.8746
+('Normal lymphoid follicles with distinct mantle and germinal center zones.', 'Disrupted follicular architecture with loss of polarity and irregular germinal centers.'), Score: 0.8360
+('No evidence of tumor cell nests.', 'Tumor cell nests.'), Score: 0.8296
+('Scant stromal fibrosis with delicate collagen fibers.', 'Dense stromal fibrosis with thick collagen bundles and increased cellularity.'), Score: 0.8296
+('Absence of atypical cells.', 'Presence of atypical cells.'), Score: 0.8291
+('No evidence of perineural invasion.', 'Perineural invasion.'), Score: 0.8267
+('No nuclear atypia observed.', 'Distinct tumor cell nests are present.'), Score: 0.8165
+('Uniform nuclear staining.', 'Heterogeneous nuclear staining.'), Score: 0.7957
+('Absence of giant cells.', 'Presence of multinucleated giant cells.'), Score: 0.7809
+('No evidence of necrosis.', 'Presence of tumor necrosis with karyorrhexis and cellular debris.'), Score: 0.7626
+('Small, round, blue cells.', 'Large, irregular, atypical cells.'), Score: 0.7357
+('Uniform nuclei, typical ratio.', 'Atypical nuclei, high ratio.'), Score: 0.7288
+('No evidence of angiolymphatic invasion.', 'Angiolymphatic invasion.'), Score: 0.7222
+('No evidence of invasion.', 'Evidence of invasion into surrounding tissues.'), Score: 0.7195
+('Lymphocytes with high nucleus-to-cytoplasm ratio and scant cytoplasm.', 'Large, atypical cells with abundant eosinophilic cytoplasm and prominent nucleoli.'), Score: 0.7174
+('No significant nuclear atypia.', 'Marked nuclear atypia with bizarre shapes and sizes.'), Score: 0.7099
+('Normal stromal cells.', 'Atypical stromal cells.'), Score: 0.7009
+('No hemorrhage.', 'Presence of hemorrhage within the tissue.'), Score: 0.6897
+('Normal immune cell infiltrate.', 'Increased or atypical immune cell infiltrate.'), Score: 0.6738
+('Uniform cell size and shape.', 'Pleomorphic cell size and shape.'), Score: 0.6666
+('No evidence of granuloma formation.', 'Granuloma formation.'), Score: 0.6606
+('No prominent nucleoli.', 'Prominent nucleoli.'), Score: 0.6342
+('Normal nuclear-cytoplasmic ratio.', 'Increased nuclear-cytoplasmic ratio.'), Score: 0.6340
+('No evidence of apoptosis.', 'Increased apoptosis or programmed cell death.'), Score: 0.6287
+('Normal cell morphology.', 'Atypical cell morphology.'), Score: 0.6220
+
+Iteration 5:
+('Absence of mitotic figures.', 'Frequent mitotic figures, including atypical forms.'), Score: 0.8746
+('Normal lymphoid follicles with distinct mantle and germinal center zones.', 'Disrupted follicular architecture with loss of polarity and irregular germinal centers.'), Score: 0.8360
+('No evidence of tumor cell nests.', 'Tumor cell nests.'), Score: 0.8296
+('Scant stromal fibrosis with delicate collagen fibers.', 'Dense stromal fibrosis with thick collagen bundles and increased cellularity.'), Score: 0.8296
+('Absence of atypical cells.', 'Presence of atypical cells.'), Score: 0.8291
+('No evidence of perineural invasion.', 'Perineural invasion.'), Score: 0.8267
+('No nuclear atypia observed.', 'Distinct tumor cell nests are present.'), Score: 0.8165
+('Uniform nuclear staining.', 'Heterogeneous nuclear staining.'), Score: 0.7957
+('Absence of giant cells.', 'Presence of multinucleated giant cells.'), Score: 0.7809
+('No evidence of necrosis.', 'Presence of tumor necrosis with karyorrhexis and cellular debris.'), Score: 0.7626
+('Small, round, blue cells.', 'Large, irregular, atypical cells.'), Score: 0.7357
+('Uniform nuclei, typical ratio.', 'Atypical nuclei, high ratio.'), Score: 0.7288
+('No evidence of angiolymphatic invasion.', 'Angiolymphatic invasion.'), Score: 0.7222
+('No evidence of invasion.', 'Evidence of invasion into surrounding tissues.'), Score: 0.7195
+('Lymphocytes with high nucleus-to-cytoplasm ratio and scant cytoplasm.', 'Large, atypical cells with abundant eosinophilic cytoplasm and prominent nucleoli.'), Score: 0.7174
+('No significant nuclear atypia.', 'Marked nuclear atypia with bizarre shapes and sizes.'), Score: 0.7099
+('Normal stromal cells.', 'Atypical stromal cells.'), Score: 0.7009
+('No hemorrhage.', 'Presence of hemorrhage within the tissue.'), Score: 0.6897
+('Normal cellular morphology and arrangement.', 'Evidence of atypical cellular features.'), Score: 0.6754
+('Normal immune cell infiltrate.', 'Increased or atypical immune cell infiltrate.'), Score: 0.6738
+('Uniform cell size and shape.', 'Pleomorphic cell size and shape.'), Score: 0.6666
+('No evidence of granuloma formation.', 'Granuloma formation.'), Score: 0.6606
+('No prominent nucleoli.', 'Prominent nucleoli.'), Score: 0.6342
+('Normal nuclear-cytoplasmic ratio.', 'Increased nuclear-cytoplasmic ratio.'), Score: 0.6340
+('No evidence of apoptosis.', 'Increased apoptosis or programmed cell death.'), Score: 0.6287
+('Normal cell morphology.', 'Atypical cell morphology.'), Score: 0.6220
+
+Iteration 6:
+('Absence of mitotic figures.', 'Frequent mitotic figures, including atypical forms.'), Score: 0.8746
+('Normal lymphoid follicles with distinct mantle and germinal center zones.', 'Disrupted follicular architecture with loss of polarity and irregular germinal centers.'), Score: 0.8360
+('No evidence of tumor cell nests.', 'Tumor cell nests.'), Score: 0.8296
+('Scant stromal fibrosis with delicate collagen fibers.', 'Dense stromal fibrosis with thick collagen bundles and increased cellularity.'), Score: 0.8296
+('Absence of atypical cells.', 'Presence of atypical cells.'), Score: 0.8291
+('No evidence of perineural invasion.', 'Perineural invasion.'), Score: 0.8267
+('No nuclear atypia observed.', 'Distinct tumor cell nests are present.'), Score: 0.8165
+('Uniform nuclear staining.', 'Heterogeneous nuclear staining.'), Score: 0.7957
+('Absence of giant cells.', 'Presence of multinucleated giant cells.'), Score: 0.7809
+('Normal cells, low mitotic rate.', 'Atypical cells, high mitotic rate.'), Score: 0.7806
+('No evidence of necrosis.', 'Presence of tumor necrosis with karyorrhexis and cellular debris.'), Score: 0.7626
+('Small, round, blue cells.', 'Large, irregular, atypical cells.'), Score: 0.7357
+('Uniform nuclei, typical ratio.', 'Atypical nuclei, high ratio.'), Score: 0.7288
+('No evidence of angiolymphatic invasion.', 'Angiolymphatic invasion.'), Score: 0.7222
+('No evidence of invasion.', 'Evidence of invasion into surrounding tissues.'), Score: 0.7195
+('Lymphocytes with high nucleus-to-cytoplasm ratio and scant cytoplasm.', 'Large, atypical cells with abundant eosinophilic cytoplasm and prominent nucleoli.'), Score: 0.7174
+('No significant nuclear atypia.', 'Marked nuclear atypia with bizarre shapes and sizes.'), Score: 0.7099
+('Normal stromal cells.', 'Atypical stromal cells.'), Score: 0.7009
+('No hemorrhage.', 'Presence of hemorrhage within the tissue.'), Score: 0.6897
+('Normal cellular morphology and arrangement.', 'Evidence of atypical cellular features.'), Score: 0.6754
+('Normal immune cell infiltrate.', 'Increased or atypical immune cell infiltrate.'), Score: 0.6738
+('Uniform cell size and shape.', 'Pleomorphic cell size and shape.'), Score: 0.6666
+('No evidence of granuloma formation.', 'Granuloma formation.'), Score: 0.6606
+('No prominent nucleoli.', 'Prominent nucleoli.'), Score: 0.6342
+('Normal nuclear-cytoplasmic ratio.', 'Increased nuclear-cytoplasmic ratio.'), Score: 0.6340
+('No evidence of apoptosis.', 'Increased apoptosis or programmed cell death.'), Score: 0.6287
+('Normal cell morphology.', 'Atypical cell morphology.'), Score: 0.6220
+
+Iteration 7:
+('Absence of mitotic figures.', 'Frequent mitotic figures, including atypical forms.'), Score: 0.8746
+('Normal lymphoid follicles with distinct mantle and germinal center zones.', 'Disrupted follicular architecture with loss of polarity and irregular germinal centers.'), Score: 0.8360
+('No evidence of tumor cell nests.', 'Tumor cell nests.'), Score: 0.8296
+('Scant stromal fibrosis with delicate collagen fibers.', 'Dense stromal fibrosis with thick collagen bundles and increased cellularity.'), Score: 0.8296
+('Absence of atypical cells.', 'Presence of atypical cells.'), Score: 0.8291
+('No evidence of perineural invasion.', 'Perineural invasion.'), Score: 0.8267
+('No nuclear atypia observed.', 'Distinct tumor cell nests are present.'), Score: 0.8165
+('Uniform nuclear staining.', 'Heterogeneous nuclear staining.'), Score: 0.7957
+('Absence of giant cells.', 'Presence of multinucleated giant cells.'), Score: 0.7809
+('Normal cells, low mitotic rate.', 'Atypical cells, high mitotic rate.'), Score: 0.7806
+('No evidence of necrosis.', 'Presence of tumor necrosis with karyorrhexis and cellular debris.'), Score: 0.7626
+('Small, round, blue cells.', 'Large, irregular, atypical cells.'), Score: 0.7357
+('Uniform nuclei, typical ratio.', 'Atypical nuclei, high ratio.'), Score: 0.7288
+('No evidence of angiolymphatic invasion.', 'Angiolymphatic invasion.'), Score: 0.7222
+('No evidence of invasion.', 'Evidence of invasion into surrounding tissues.'), Score: 0.7195
+('Lymphocytes with high nucleus-to-cytoplasm ratio and scant cytoplasm.', 'Large, atypical cells with abundant eosinophilic cytoplasm and prominent nucleoli.'), Score: 0.7174
+('No significant nuclear atypia.', 'Marked nuclear atypia with bizarre shapes and sizes.'), Score: 0.7099
+('Normal stromal cells.', 'Atypical stromal cells.'), Score: 0.7009
+('No hemorrhage.', 'Presence of hemorrhage within the tissue.'), Score: 0.6897
+('Normal cellular morphology and arrangement.', 'Evidence of atypical cellular features.'), Score: 0.6754
+('Normal immune cell infiltrate.', 'Increased or atypical immune cell infiltrate.'), Score: 0.6738
+('Uniform cell size and shape.', 'Pleomorphic cell size and shape.'), Score: 0.6666
+('No evidence of granuloma formation.', 'Granuloma formation.'), Score: 0.6606
+('No prominent nucleoli.', 'Prominent nucleoli.'), Score: 0.6342
+('Normal nuclear-cytoplasmic ratio.', 'Increased nuclear-cytoplasmic ratio.'), Score: 0.6340
+('No evidence of apoptosis.', 'Increased apoptosis or programmed cell death.'), Score: 0.6287
+('Normal cell morphology.', 'Atypical cell morphology.'), Score: 0.6220
+
+Iteration 8:
+('Absence of mitotic figures.', 'Frequent mitotic figures, including atypical forms.'), Score: 0.8746
+('Normal lymphoid follicles with distinct mantle and germinal center zones.', 'Disrupted follicular architecture with loss of polarity and irregular germinal centers.'), Score: 0.8360
+('No evidence of tumor cell nests.', 'Tumor cell nests.'), Score: 0.8296
+('Scant stromal fibrosis with delicate collagen fibers.', 'Dense stromal fibrosis with thick collagen bundles and increased cellularity.'), Score: 0.8296
+('Absence of atypical cells.', 'Presence of atypical cells.'), Score: 0.8291
+('No evidence of perineural invasion.', 'Perineural invasion.'), Score: 0.8267
+('No nuclear atypia observed.', 'Distinct tumor cell nests are present.'), Score: 0.8165
+('Uniform nuclear staining.', 'Heterogeneous nuclear staining.'), Score: 0.7957
+('Absence of giant cells.', 'Presence of multinucleated giant cells.'), Score: 0.7809
+('Normal cells, low mitotic rate.', 'Atypical cells, high mitotic rate.'), Score: 0.7806
+('No evidence of necrosis.', 'Presence of tumor necrosis with karyorrhexis and cellular debris.'), Score: 0.7626
+('Small, round, blue cells.', 'Large, irregular, atypical cells.'), Score: 0.7357
+('Uniform nuclei, typical ratio.', 'Atypical nuclei, high ratio.'), Score: 0.7288
+('No tumor cell nests identified.', 'Distinct tumor cell nests are visible.'), Score: 0.7267
+('No evidence of angiolymphatic invasion.', 'Angiolymphatic invasion.'), Score: 0.7222
+('No evidence of invasion.', 'Evidence of invasion into surrounding tissues.'), Score: 0.7195
+('Lymphocytes with high nucleus-to-cytoplasm ratio and scant cytoplasm.', 'Large, atypical cells with abundant eosinophilic cytoplasm and prominent nucleoli.'), Score: 0.7174
+('No significant nuclear atypia.', 'Marked nuclear atypia with bizarre shapes and sizes.'), Score: 0.7099
+('Normal stromal cells.', 'Atypical stromal cells.'), Score: 0.7009
+('No hemorrhage.', 'Presence of hemorrhage within the tissue.'), Score: 0.6897
+('Normal cellular morphology and arrangement.', 'Evidence of atypical cellular features.'), Score: 0.6754
+('Normal immune cell infiltrate.', 'Increased or atypical immune cell infiltrate.'), Score: 0.6738
+('Uniform cell size and shape.', 'Pleomorphic cell size and shape.'), Score: 0.6666
+('No evidence of granuloma formation.', 'Granuloma formation.'), Score: 0.6606
+('No prominent nucleoli.', 'Prominent nucleoli.'), Score: 0.6342
+('Normal nuclear-cytoplasmic ratio.', 'Increased nuclear-cytoplasmic ratio.'), Score: 0.6340
+('No evidence of apoptosis.', 'Increased apoptosis or programmed cell death.'), Score: 0.6287
+('Normal cell morphology.', 'Atypical cell morphology.'), Score: 0.6220
+
+Iteration 9:
+('Absence of mitotic figures.', 'Frequent mitotic figures, including atypical forms.'), Score: 0.8746
+('Normal lymphoid follicles with distinct mantle and germinal center zones.', 'Disrupted follicular architecture with loss of polarity and irregular germinal centers.'), Score: 0.8360
+('No evidence of tumor cell nests.', 'Tumor cell nests.'), Score: 0.8296
+('Scant stromal fibrosis with delicate collagen fibers.', 'Dense stromal fibrosis with thick collagen bundles and increased cellularity.'), Score: 0.8296
+('Absence of atypical cells.', 'Presence of atypical cells.'), Score: 0.8291
+('No evidence of perineural invasion.', 'Perineural invasion.'), Score: 0.8267
+('No nuclear atypia observed.', 'Distinct tumor cell nests are present.'), Score: 0.8165
+('Uniform nuclear staining.', 'Heterogeneous nuclear staining.'), Score: 0.7957
+('Absence of giant cells.', 'Presence of multinucleated giant cells.'), Score: 0.7809
+('Normal cells, low mitotic rate.', 'Atypical cells, high mitotic rate.'), Score: 0.7806
+('No evidence of necrosis.', 'Presence of tumor necrosis with karyorrhexis and cellular debris.'), Score: 0.7626
+('Small, round, blue cells.', 'Large, irregular, atypical cells.'), Score: 0.7357
+('Uniform nuclei, typical ratio.', 'Atypical nuclei, high ratio.'), Score: 0.7288
+('No tumor cell nests identified.', 'Distinct tumor cell nests are visible.'), Score: 0.7267
+('No evidence of angiolymphatic invasion.', 'Angiolymphatic invasion.'), Score: 0.7222
+('No evidence of invasion.', 'Evidence of invasion into surrounding tissues.'), Score: 0.7195
+('Lymphocytes with high nucleus-to-cytoplasm ratio and scant cytoplasm.', 'Large, atypical cells with abundant eosinophilic cytoplasm and prominent nucleoli.'), Score: 0.7174
+('No significant nuclear atypia.', 'Marked nuclear atypia with bizarre shapes and sizes.'), Score: 0.7099
+('Normal stromal cells.', 'Atypical stromal cells.'), Score: 0.7009
+('No hemorrhage.', 'Presence of hemorrhage within the tissue.'), Score: 0.6897
+('Normal cellular morphology and arrangement.', 'Evidence of atypical cellular features.'), Score: 0.6754
+('Normal immune cell infiltrate.', 'Increased or atypical immune cell infiltrate.'), Score: 0.6738
+('Uniform cell size and shape.', 'Pleomorphic cell size and shape.'), Score: 0.6666
+('No evidence of granuloma formation.', 'Granuloma formation.'), Score: 0.6606
+('No prominent nucleoli.', 'Prominent nucleoli.'), Score: 0.6342
+('Normal nuclear-cytoplasmic ratio.', 'Increased nuclear-cytoplasmic ratio.'), Score: 0.6340
+('No evidence of apoptosis.', 'Increased apoptosis or programmed cell death.'), Score: 0.6287
+('Normal cell morphology.', 'Atypical cell morphology.'), Score: 0.6220
+
+Iteration 10:
+('Absence of mitotic figures.', 'Frequent mitotic figures, including atypical forms.'), Score: 0.8746
+('Normal lymphoid follicles with distinct mantle and germinal center zones.', 'Disrupted follicular architecture with loss of polarity and irregular germinal centers.'), Score: 0.8360
+('No evidence of tumor cell nests.', 'Tumor cell nests.'), Score: 0.8296
+('Scant stromal fibrosis with delicate collagen fibers.', 'Dense stromal fibrosis with thick collagen bundles and increased cellularity.'), Score: 0.8296
+('Absence of atypical cells.', 'Presence of atypical cells.'), Score: 0.8291
+('No evidence of perineural invasion.', 'Perineural invasion.'), Score: 0.8267
+('No nuclear atypia observed.', 'Distinct tumor cell nests are present.'), Score: 0.8165
+('Uniform nuclear staining.', 'Heterogeneous nuclear staining.'), Score: 0.7957
+('Absence of giant cells.', 'Presence of multinucleated giant cells.'), Score: 0.7809
+('Normal cells, low mitotic rate.', 'Atypical cells, high mitotic rate.'), Score: 0.7806
+('No evidence of necrosis.', 'Presence of tumor necrosis with karyorrhexis and cellular debris.'), Score: 0.7626
+('Small, round, blue cells.', 'Large, irregular, atypical cells.'), Score: 0.7357
+('Uniform nuclei, typical ratio.', 'Atypical nuclei, high ratio.'), Score: 0.7288
+('No tumor cell nests identified.', 'Distinct tumor cell nests are visible.'), Score: 0.7267
+('No evidence of angiolymphatic invasion.', 'Angiolymphatic invasion.'), Score: 0.7222
+('No evidence of invasion.', 'Evidence of invasion into surrounding tissues.'), Score: 0.7195
+('Lymphocytes with high nucleus-to-cytoplasm ratio and scant cytoplasm.', 'Large, atypical cells with abundant eosinophilic cytoplasm and prominent nucleoli.'), Score: 0.7174
+('No significant nuclear atypia.', 'Marked nuclear atypia with bizarre shapes and sizes.'), Score: 0.7099
+('Normal stromal cells.', 'Atypical stromal cells.'), Score: 0.7009
+('No hemorrhage.', 'Presence of hemorrhage within the tissue.'), Score: 0.6897
+('Normal cellular morphology and arrangement.', 'Evidence of atypical cellular features.'), Score: 0.6754
+('Normal immune cell infiltrate.', 'Increased or atypical immune cell infiltrate.'), Score: 0.6738
+('Uniform cell size and shape.', 'Pleomorphic cell size and shape.'), Score: 0.6666
+('No evidence of granuloma formation.', 'Granuloma formation.'), Score: 0.6606
+('No prominent nucleoli.', 'Prominent nucleoli.'), Score: 0.6342
+('Normal nuclear-cytoplasmic ratio.', 'Increased nuclear-cytoplasmic ratio.'), Score: 0.6340
+('No evidence of apoptosis.', 'Increased apoptosis or programmed cell death.'), Score: 0.6287
+('Normal cell morphology.', 'Atypical cell morphology.'), Score: 0.6220
+('Low grade cells, sparse collagen.', 'High grade cells, abundant collagen.'), Score: 0.6174
+
+Iteration 11:
+('Absence of mitotic figures.', 'Frequent mitotic figures, including atypical forms.'), Score: 0.8746
+('Normal lymphoid follicles with distinct mantle and germinal center zones.', 'Disrupted follicular architecture with loss of polarity and irregular germinal centers.'), Score: 0.8360
+('No evidence of tumor cell nests.', 'Tumor cell nests.'), Score: 0.8296
+('Scant stromal fibrosis with delicate collagen fibers.', 'Dense stromal fibrosis with thick collagen bundles and increased cellularity.'), Score: 0.8296
+('Absence of atypical cells.', 'Presence of atypical cells.'), Score: 0.8291
+('No evidence of perineural invasion.', 'Perineural invasion.'), Score: 0.8267
+('No nuclear atypia observed.', 'Distinct tumor cell nests are present.'), Score: 0.8165
+('Uniform nuclear staining.', 'Heterogeneous nuclear staining.'), Score: 0.7957
+('Absence of giant cells.', 'Presence of multinucleated giant cells.'), Score: 0.7809
+('Normal cells, low mitotic rate.', 'Atypical cells, high mitotic rate.'), Score: 0.7806
+('No evidence of necrosis.', 'Presence of tumor necrosis with karyorrhexis and cellular debris.'), Score: 0.7626
+('Small, round, blue cells.', 'Large, irregular, atypical cells.'), Score: 0.7357
+('Uniform nuclei, typical ratio.', 'Atypical nuclei, high ratio.'), Score: 0.7288
+('No tumor cell nests identified.', 'Distinct tumor cell nests are visible.'), Score: 0.7267
+('No evidence of angiolymphatic invasion.', 'Angiolymphatic invasion.'), Score: 0.7222
+('No evidence of invasion.', 'Evidence of invasion into surrounding tissues.'), Score: 0.7195
+('Lymphocytes with high nucleus-to-cytoplasm ratio and scant cytoplasm.', 'Large, atypical cells with abundant eosinophilic cytoplasm and prominent nucleoli.'), Score: 0.7174
+('No significant nuclear atypia.', 'Marked nuclear atypia with bizarre shapes and sizes.'), Score: 0.7099
+('Normal stromal cells.', 'Atypical stromal cells.'), Score: 0.7009
+('No hemorrhage.', 'Presence of hemorrhage within the tissue.'), Score: 0.6897
+('Normal cellular morphology and arrangement.', 'Evidence of atypical cellular features.'), Score: 0.6754
+('Normal immune cell infiltrate.', 'Increased or atypical immune cell infiltrate.'), Score: 0.6738
+('Uniform cell size and shape.', 'Pleomorphic cell size and shape.'), Score: 0.6666
+('No evidence of granuloma formation.', 'Granuloma formation.'), Score: 0.6606
+('No prominent nucleoli.', 'Prominent nucleoli.'), Score: 0.6342
+('Normal nuclear-cytoplasmic ratio.', 'Increased nuclear-cytoplasmic ratio.'), Score: 0.6340
+('No evidence of apoptosis.', 'Increased apoptosis or programmed cell death.'), Score: 0.6287
+('Normal cell morphology.', 'Atypical cell morphology.'), Score: 0.6220
+('Low grade cells, sparse collagen.', 'High grade cells, abundant collagen.'), Score: 0.6174
+
+Iteration 12:
+('Absence of mitotic figures.', 'Frequent mitotic figures, including atypical forms.'), Score: 0.8746
+('Normal lymphoid follicles with distinct mantle and germinal center zones.', 'Disrupted follicular architecture with loss of polarity and irregular germinal centers.'), Score: 0.8360
+('No evidence of tumor cell nests.', 'Tumor cell nests.'), Score: 0.8296
+('Scant stromal fibrosis with delicate collagen fibers.', 'Dense stromal fibrosis with thick collagen bundles and increased cellularity.'), Score: 0.8296
+('Absence of atypical cells.', 'Presence of atypical cells.'), Score: 0.8291
+('No evidence of perineural invasion.', 'Perineural invasion.'), Score: 0.8267
+('No nuclear atypia observed.', 'Distinct tumor cell nests are present.'), Score: 0.8165
+('Uniform nuclear staining.', 'Heterogeneous nuclear staining.'), Score: 0.7957
+('Absence of giant cells.', 'Presence of multinucleated giant cells.'), Score: 0.7809
+('Normal cells, low mitotic rate.', 'Atypical cells, high mitotic rate.'), Score: 0.7806
+('No evidence of necrosis.', 'Presence of tumor necrosis with karyorrhexis and cellular debris.'), Score: 0.7626
+('Small, round, blue cells.', 'Large, irregular, atypical cells.'), Score: 0.7357
+('Uniform nuclei, typical ratio.', 'Atypical nuclei, high ratio.'), Score: 0.7288
+('No tumor cell nests identified.', 'Distinct tumor cell nests are visible.'), Score: 0.7267
+('No evidence of angiolymphatic invasion.', 'Angiolymphatic invasion.'), Score: 0.7222
+('No evidence of invasion.', 'Evidence of invasion into surrounding tissues.'), Score: 0.7195
+('Lymphocytes with high nucleus-to-cytoplasm ratio and scant cytoplasm.', 'Large, atypical cells with abundant eosinophilic cytoplasm and prominent nucleoli.'), Score: 0.7174
+('No significant nuclear atypia.', 'Marked nuclear atypia with bizarre shapes and sizes.'), Score: 0.7099
+('Normal stromal cells.', 'Atypical stromal cells.'), Score: 0.7009
+('No hemorrhage.', 'Presence of hemorrhage within the tissue.'), Score: 0.6897
+('Normal cellular morphology and arrangement.', 'Evidence of atypical cellular features.'), Score: 0.6754
+('Normal immune cell infiltrate.', 'Increased or atypical immune cell infiltrate.'), Score: 0.6738
+('Uniform cell size and shape.', 'Pleomorphic cell size and shape.'), Score: 0.6666
+('No evidence of granuloma formation.', 'Granuloma formation.'), Score: 0.6606
+('No prominent nucleoli.', 'Prominent nucleoli.'), Score: 0.6342
+('Normal nuclear-cytoplasmic ratio.', 'Increased nuclear-cytoplasmic ratio.'), Score: 0.6340
+('No evidence of apoptosis.', 'Increased apoptosis or programmed cell death.'), Score: 0.6287
+('Normal cell morphology.', 'Atypical cell morphology.'), Score: 0.6220
+('Low grade cells, sparse collagen.', 'High grade cells, abundant collagen.'), Score: 0.6174
+
+Iteration 13:
+('Absence of mitotic figures.', 'Frequent mitotic figures, including atypical forms.'), Score: 0.8746
+('No evidence of atypical cells.', 'Atypical cells forming tumor nests are seen.'), Score: 0.8652
+('Normal lymphoid follicles with distinct mantle and germinal center zones.', 'Disrupted follicular architecture with loss of polarity and irregular germinal centers.'), Score: 0.8360
+('No evidence of tumor cell nests.', 'Tumor cell nests.'), Score: 0.8296
+('Scant stromal fibrosis with delicate collagen fibers.', 'Dense stromal fibrosis with thick collagen bundles and increased cellularity.'), Score: 0.8296
+('Absence of atypical cells.', 'Presence of atypical cells.'), Score: 0.8291
+('No evidence of perineural invasion.', 'Perineural invasion.'), Score: 0.8267
+('No nuclear atypia observed.', 'Distinct tumor cell nests are present.'), Score: 0.8165
+('Uniform nuclear staining.', 'Heterogeneous nuclear staining.'), Score: 0.7957
+('Absence of giant cells.', 'Presence of multinucleated giant cells.'), Score: 0.7809
+('Normal cells, low mitotic rate.', 'Atypical cells, high mitotic rate.'), Score: 0.7806
+('No evidence of necrosis.', 'Presence of tumor necrosis with karyorrhexis and cellular debris.'), Score: 0.7626
+('Small, round, blue cells.', 'Large, irregular, atypical cells.'), Score: 0.7357
+('Uniform nuclei, typical ratio.', 'Atypical nuclei, high ratio.'), Score: 0.7288
+('No tumor cell nests identified.', 'Distinct tumor cell nests are visible.'), Score: 0.7267
+('No evidence of angiolymphatic invasion.', 'Angiolymphatic invasion.'), Score: 0.7222
+('No evidence of invasion.', 'Evidence of invasion into surrounding tissues.'), Score: 0.7195
+('Lymphocytes with high nucleus-to-cytoplasm ratio and scant cytoplasm.', 'Large, atypical cells with abundant eosinophilic cytoplasm and prominent nucleoli.'), Score: 0.7174
+('No significant nuclear atypia.', 'Marked nuclear atypia with bizarre shapes and sizes.'), Score: 0.7099
+('Normal stromal cells.', 'Atypical stromal cells.'), Score: 0.7009
+('No hemorrhage.', 'Presence of hemorrhage within the tissue.'), Score: 0.6897
+('Normal cellular morphology and arrangement.', 'Evidence of atypical cellular features.'), Score: 0.6754
+('Normal immune cell infiltrate.', 'Increased or atypical immune cell infiltrate.'), Score: 0.6738
+('Uniform cell size and shape.', 'Pleomorphic cell size and shape.'), Score: 0.6666
+('No evidence of granuloma formation.', 'Granuloma formation.'), Score: 0.6606
+('No prominent nucleoli.', 'Prominent nucleoli.'), Score: 0.6342
+('Normal nuclear-cytoplasmic ratio.', 'Increased nuclear-cytoplasmic ratio.'), Score: 0.6340
+('No evidence of apoptosis.', 'Increased apoptosis or programmed cell death.'), Score: 0.6287
+('Normal cell morphology.', 'Atypical cell morphology.'), Score: 0.6220
+('Low grade cells, sparse collagen.', 'High grade cells, abundant collagen.'), Score: 0.6174
+
+Iteration 14:
+('Absence of mitotic figures.', 'Frequent mitotic figures, including atypical forms.'), Score: 0.8746
+('No evidence of atypical cells.', 'Atypical cells forming tumor nests are seen.'), Score: 0.8652
+('Normal lymphoid follicles with distinct mantle and germinal center zones.', 'Disrupted follicular architecture with loss of polarity and irregular germinal centers.'), Score: 0.8360
+('No evidence of tumor cell nests.', 'Tumor cell nests.'), Score: 0.8296
+('Scant stromal fibrosis with delicate collagen fibers.', 'Dense stromal fibrosis with thick collagen bundles and increased cellularity.'), Score: 0.8296
+('Absence of atypical cells.', 'Presence of atypical cells.'), Score: 0.8291
+('No evidence of perineural invasion.', 'Perineural invasion.'), Score: 0.8267
+('No nuclear atypia observed.', 'Distinct tumor cell nests are present.'), Score: 0.8165
+('Uniform nuclear staining.', 'Heterogeneous nuclear staining.'), Score: 0.7957
+('Absence of giant cells.', 'Presence of multinucleated giant cells.'), Score: 0.7809
+('Normal cells, low mitotic rate.', 'Atypical cells, high mitotic rate.'), Score: 0.7806
+('No evidence of necrosis.', 'Presence of tumor necrosis with karyorrhexis and cellular debris.'), Score: 0.7626
+('Small, round, blue cells.', 'Large, irregular, atypical cells.'), Score: 0.7357
+('Uniform nuclei, typical ratio.', 'Atypical nuclei, high ratio.'), Score: 0.7288
+('No tumor cell nests identified.', 'Distinct tumor cell nests are visible.'), Score: 0.7267
+('No evidence of angiolymphatic invasion.', 'Angiolymphatic invasion.'), Score: 0.7222
+('No evidence of invasion.', 'Evidence of invasion into surrounding tissues.'), Score: 0.7195
+('Lymphocytes with high nucleus-to-cytoplasm ratio and scant cytoplasm.', 'Large, atypical cells with abundant eosinophilic cytoplasm and prominent nucleoli.'), Score: 0.7174
+('No significant nuclear atypia.', 'Marked nuclear atypia with bizarre shapes and sizes.'), Score: 0.7099
+('Normal stromal cells.', 'Atypical stromal cells.'), Score: 0.7009
+('No hemorrhage.', 'Presence of hemorrhage within the tissue.'), Score: 0.6897
+('Normal cellular morphology and arrangement.', 'Evidence of atypical cellular features.'), Score: 0.6754
+('Normal immune cell infiltrate.', 'Increased or atypical immune cell infiltrate.'), Score: 0.6738
+('No tumor necrosis is observed.', 'Tumor necrosis with cellular debris is present.'), Score: 0.6691
+('Uniform cell size and shape.', 'Pleomorphic cell size and shape.'), Score: 0.6666
+('No evidence of granuloma formation.', 'Granuloma formation.'), Score: 0.6606
+('No prominent nucleoli.', 'Prominent nucleoli.'), Score: 0.6342
+('Normal nuclear-cytoplasmic ratio.', 'Increased nuclear-cytoplasmic ratio.'), Score: 0.6340
+('No evidence of apoptosis.', 'Increased apoptosis or programmed cell death.'), Score: 0.6287
+('Normal cell morphology.', 'Atypical cell morphology.'), Score: 0.6220
+('Low grade cells, sparse collagen.', 'High grade cells, abundant collagen.'), Score: 0.6174
+
+Iteration 15:
+('Absence of mitotic figures.', 'Frequent mitotic figures, including atypical forms.'), Score: 0.8746
+('No evidence of atypical cells.', 'Atypical cells forming tumor nests are seen.'), Score: 0.8652
+('Normal lymphoid follicles with distinct mantle and germinal center zones.', 'Disrupted follicular architecture with loss of polarity and irregular germinal centers.'), Score: 0.8360
+('No evidence of tumor cell nests.', 'Tumor cell nests.'), Score: 0.8296
+('Scant stromal fibrosis with delicate collagen fibers.', 'Dense stromal fibrosis with thick collagen bundles and increased cellularity.'), Score: 0.8296
+('Absence of atypical cells.', 'Presence of atypical cells.'), Score: 0.8291
+('No evidence of perineural invasion.', 'Perineural invasion.'), Score: 0.8267
+('No nuclear atypia observed.', 'Distinct tumor cell nests are present.'), Score: 0.8165
+('Uniform nuclear staining.', 'Heterogeneous nuclear staining.'), Score: 0.7957
+('Absence of giant cells.', 'Presence of multinucleated giant cells.'), Score: 0.7809
+('Normal cells, low mitotic rate.', 'Atypical cells, high mitotic rate.'), Score: 0.7806
+('No evidence of necrosis.', 'Presence of tumor necrosis with karyorrhexis and cellular debris.'), Score: 0.7626
+('Small, round, blue cells.', 'Large, irregular, atypical cells.'), Score: 0.7357
+('Uniform nuclei, typical ratio.', 'Atypical nuclei, high ratio.'), Score: 0.7288
+('No tumor cell nests identified.', 'Distinct tumor cell nests are visible.'), Score: 0.7267
+('No evidence of angiolymphatic invasion.', 'Angiolymphatic invasion.'), Score: 0.7222
+('No evidence of invasion.', 'Evidence of invasion into surrounding tissues.'), Score: 0.7195
+('Lymphocytes with high nucleus-to-cytoplasm ratio and scant cytoplasm.', 'Large, atypical cells with abundant eosinophilic cytoplasm and prominent nucleoli.'), Score: 0.7174
+('No significant nuclear atypia.', 'Marked nuclear atypia with bizarre shapes and sizes.'), Score: 0.7099
+('Normal stromal cells.', 'Atypical stromal cells.'), Score: 0.7009
+('No hemorrhage.', 'Presence of hemorrhage within the tissue.'), Score: 0.6897
+('Normal cellular morphology and arrangement.', 'Evidence of atypical cellular features.'), Score: 0.6754
+('Normal immune cell infiltrate.', 'Increased or atypical immune cell infiltrate.'), Score: 0.6738
+('No tumor necrosis is observed.', 'Tumor necrosis with cellular debris is present.'), Score: 0.6691
+('Uniform cell size and shape.', 'Pleomorphic cell size and shape.'), Score: 0.6666
+('No evidence of granuloma formation.', 'Granuloma formation.'), Score: 0.6606
+('No prominent nucleoli.', 'Prominent nucleoli.'), Score: 0.6342
+('Normal nuclear-cytoplasmic ratio.', 'Increased nuclear-cytoplasmic ratio.'), Score: 0.6340
+('No evidence of apoptosis.', 'Increased apoptosis or programmed cell death.'), Score: 0.6287
+('Normal cell morphology.', 'Atypical cell morphology.'), Score: 0.6220
+('Low grade cells, sparse collagen.', 'High grade cells, abundant collagen.'), Score: 0.6174
+
+Iteration 16:
+('Absence of mitotic figures.', 'Frequent mitotic figures, including atypical forms.'), Score: 0.8746
+('No evidence of atypical cells.', 'Atypical cells forming tumor nests are seen.'), Score: 0.8652
+('No tumor nests identified.', 'Distinct tumor nests present.'), Score: 0.8395
+('Normal lymphoid follicles with distinct mantle and germinal center zones.', 'Disrupted follicular architecture with loss of polarity and irregular germinal centers.'), Score: 0.8360
+('No evidence of tumor cell nests.', 'Tumor cell nests.'), Score: 0.8296
+('Scant stromal fibrosis with delicate collagen fibers.', 'Dense stromal fibrosis with thick collagen bundles and increased cellularity.'), Score: 0.8296
+('Absence of atypical cells.', 'Presence of atypical cells.'), Score: 0.8291
+('No evidence of perineural invasion.', 'Perineural invasion.'), Score: 0.8267
+('No nuclear atypia observed.', 'Distinct tumor cell nests are present.'), Score: 0.8165
+('Uniform nuclear staining.', 'Heterogeneous nuclear staining.'), Score: 0.7957
+('Absence of giant cells.', 'Presence of multinucleated giant cells.'), Score: 0.7809
+('Normal cells, low mitotic rate.', 'Atypical cells, high mitotic rate.'), Score: 0.7806
+('No evidence of necrosis.', 'Presence of tumor necrosis with karyorrhexis and cellular debris.'), Score: 0.7626
+('Small, round, blue cells.', 'Large, irregular, atypical cells.'), Score: 0.7357
+('Uniform nuclei, typical ratio.', 'Atypical nuclei, high ratio.'), Score: 0.7288
+('No tumor cell nests identified.', 'Distinct tumor cell nests are visible.'), Score: 0.7267
+('No evidence of angiolymphatic invasion.', 'Angiolymphatic invasion.'), Score: 0.7222
+('No evidence of invasion.', 'Evidence of invasion into surrounding tissues.'), Score: 0.7195
+('Lymphocytes with high nucleus-to-cytoplasm ratio and scant cytoplasm.', 'Large, atypical cells with abundant eosinophilic cytoplasm and prominent nucleoli.'), Score: 0.7174
+('No significant nuclear atypia.', 'Marked nuclear atypia with bizarre shapes and sizes.'), Score: 0.7099
+('Normal stromal cells.', 'Atypical stromal cells.'), Score: 0.7009
+('No hemorrhage.', 'Presence of hemorrhage within the tissue.'), Score: 0.6897
+('Normal cellular morphology and arrangement.', 'Evidence of atypical cellular features.'), Score: 0.6754
+('Normal immune cell infiltrate.', 'Increased or atypical immune cell infiltrate.'), Score: 0.6738
+('No tumor necrosis is observed.', 'Tumor necrosis with cellular debris is present.'), Score: 0.6691
+('Uniform cell size and shape.', 'Pleomorphic cell size and shape.'), Score: 0.6666
+('No evidence of granuloma formation.', 'Granuloma formation.'), Score: 0.6606
+('No prominent nucleoli.', 'Prominent nucleoli.'), Score: 0.6342
+('Normal nuclear-cytoplasmic ratio.', 'Increased nuclear-cytoplasmic ratio.'), Score: 0.6340
+('No evidence of apoptosis.', 'Increased apoptosis or programmed cell death.'), Score: 0.6287
+('Normal cell morphology.', 'Atypical cell morphology.'), Score: 0.6220
+('Low grade cells, sparse collagen.', 'High grade cells, abundant collagen.'), Score: 0.6174
+
+Iteration 17:
+('Absence of mitotic figures.', 'Frequent mitotic figures, including atypical forms.'), Score: 0.8746
+('No evidence of atypical cells.', 'Atypical cells forming tumor nests are seen.'), Score: 0.8652
+('No tumor nests identified.', 'Distinct tumor nests present.'), Score: 0.8395
+('Normal lymphoid follicles with distinct mantle and germinal center zones.', 'Disrupted follicular architecture with loss of polarity and irregular germinal centers.'), Score: 0.8360
+('No evidence of tumor cell nests.', 'Tumor cell nests.'), Score: 0.8296
+('Scant stromal fibrosis with delicate collagen fibers.', 'Dense stromal fibrosis with thick collagen bundles and increased cellularity.'), Score: 0.8296
+('Absence of atypical cells.', 'Presence of atypical cells.'), Score: 0.8291
+('No evidence of perineural invasion.', 'Perineural invasion.'), Score: 0.8267
+('No nuclear atypia observed.', 'Distinct tumor cell nests are present.'), Score: 0.8165
+('Uniform nuclear staining.', 'Heterogeneous nuclear staining.'), Score: 0.7957
+('Absence of giant cells.', 'Presence of multinucleated giant cells.'), Score: 0.7809
+('Normal cells, low mitotic rate.', 'Atypical cells, high mitotic rate.'), Score: 0.7806
+('No evidence of necrosis.', 'Presence of tumor necrosis with karyorrhexis and cellular debris.'), Score: 0.7626
+('Small, round, blue cells.', 'Large, irregular, atypical cells.'), Score: 0.7357
+('Uniform nuclei, typical ratio.', 'Atypical nuclei, high ratio.'), Score: 0.7288
+('No tumor cell nests identified.', 'Distinct tumor cell nests are visible.'), Score: 0.7267
+('No evidence of angiolymphatic invasion.', 'Angiolymphatic invasion.'), Score: 0.7222
+('No evidence of invasion.', 'Evidence of invasion into surrounding tissues.'), Score: 0.7195
+('Lymphocytes with high nucleus-to-cytoplasm ratio and scant cytoplasm.', 'Large, atypical cells with abundant eosinophilic cytoplasm and prominent nucleoli.'), Score: 0.7174
+('No significant nuclear atypia.', 'Marked nuclear atypia with bizarre shapes and sizes.'), Score: 0.7099
+('Normal stromal cells.', 'Atypical stromal cells.'), Score: 0.7009
+('No hemorrhage.', 'Presence of hemorrhage within the tissue.'), Score: 0.6897
+('Normal cellular morphology and arrangement.', 'Evidence of atypical cellular features.'), Score: 0.6754
+('Normal immune cell infiltrate.', 'Increased or atypical immune cell infiltrate.'), Score: 0.6738
+('No tumor necrosis is observed.', 'Tumor necrosis with cellular debris is present.'), Score: 0.6691
+('Uniform cell size and shape.', 'Pleomorphic cell size and shape.'), Score: 0.6666
+('No evidence of granuloma formation.', 'Granuloma formation.'), Score: 0.6606
+('Minimal inflammation and sparse immune cells.', 'Significant inflammation with dense immune cell infiltration.'), Score: 0.6453
+('No prominent nucleoli.', 'Prominent nucleoli.'), Score: 0.6342
+('Normal nuclear-cytoplasmic ratio.', 'Increased nuclear-cytoplasmic ratio.'), Score: 0.6340
+('No evidence of apoptosis.', 'Increased apoptosis or programmed cell death.'), Score: 0.6287
+('Normal cell morphology.', 'Atypical cell morphology.'), Score: 0.6220
+('Low grade cells, sparse collagen.', 'High grade cells, abundant collagen.'), Score: 0.6174
+
+Iteration 18:
+('Absence of mitotic figures.', 'Frequent mitotic figures, including atypical forms.'), Score: 0.8746
+('No evidence of atypical cells.', 'Atypical cells forming tumor nests are seen.'), Score: 0.8652
+('No tumor nests identified.', 'Distinct tumor nests present.'), Score: 0.8395
+('Normal lymphoid follicles with distinct mantle and germinal center zones.', 'Disrupted follicular architecture with loss of polarity and irregular germinal centers.'), Score: 0.8360
+('No evidence of tumor cell nests.', 'Tumor cell nests.'), Score: 0.8296
+('Scant stromal fibrosis with delicate collagen fibers.', 'Dense stromal fibrosis with thick collagen bundles and increased cellularity.'), Score: 0.8296
+('Absence of atypical cells.', 'Presence of atypical cells.'), Score: 0.8291
+('No evidence of perineural invasion.', 'Perineural invasion.'), Score: 0.8267
+('No nuclear atypia observed.', 'Distinct tumor cell nests are present.'), Score: 0.8165
+('Uniform nuclear staining.', 'Heterogeneous nuclear staining.'), Score: 0.7957
+('Absence of giant cells.', 'Presence of multinucleated giant cells.'), Score: 0.7809
+('Normal cells, low mitotic rate.', 'Atypical cells, high mitotic rate.'), Score: 0.7806
+('No evidence of necrosis.', 'Presence of tumor necrosis with karyorrhexis and cellular debris.'), Score: 0.7626
+('Small, round, blue cells.', 'Large, irregular, atypical cells.'), Score: 0.7357
+('Uniform nuclei, typical ratio.', 'Atypical nuclei, high ratio.'), Score: 0.7288
+('No tumor cell nests identified.', 'Distinct tumor cell nests are visible.'), Score: 0.7267
+('No evidence of angiolymphatic invasion.', 'Angiolymphatic invasion.'), Score: 0.7222
+('No evidence of invasion.', 'Evidence of invasion into surrounding tissues.'), Score: 0.7195
+('Lymphocytes with high nucleus-to-cytoplasm ratio and scant cytoplasm.', 'Large, atypical cells with abundant eosinophilic cytoplasm and prominent nucleoli.'), Score: 0.7174
+('No significant nuclear atypia.', 'Marked nuclear atypia with bizarre shapes and sizes.'), Score: 0.7099
+('Normal stromal cells.', 'Atypical stromal cells.'), Score: 0.7009
+('No hemorrhage.', 'Presence of hemorrhage within the tissue.'), Score: 0.6897
+('Normal cellular morphology and arrangement.', 'Evidence of atypical cellular features.'), Score: 0.6754
+('Normal immune cell infiltrate.', 'Increased or atypical immune cell infiltrate.'), Score: 0.6738
+('No tumor necrosis is observed.', 'Tumor necrosis with cellular debris is present.'), Score: 0.6691
+('Uniform cell size and shape.', 'Pleomorphic cell size and shape.'), Score: 0.6666
+('No evidence of granuloma formation.', 'Granuloma formation.'), Score: 0.6606
+('Minimal inflammation and sparse immune cells.', 'Significant inflammation with dense immune cell infiltration.'), Score: 0.6453
+('No prominent nucleoli.', 'Prominent nucleoli.'), Score: 0.6342
+('Normal nuclear-cytoplasmic ratio.', 'Increased nuclear-cytoplasmic ratio.'), Score: 0.6340
+('No evidence of apoptosis.', 'Increased apoptosis or programmed cell death.'), Score: 0.6287
+('Normal cell morphology.', 'Atypical cell morphology.'), Score: 0.6220
+('Low grade cells, sparse collagen.', 'High grade cells, abundant collagen.'), Score: 0.6174
+
+Iteration 19:
+('Absence of mitotic figures.', 'Frequent mitotic figures, including atypical forms.'), Score: 0.8746
+('No evidence of atypical cells.', 'Atypical cells forming tumor nests are seen.'), Score: 0.8652
+('No tumor nests identified.', 'Distinct tumor nests present.'), Score: 0.8395
+('Normal lymphoid follicles with distinct mantle and germinal center zones.', 'Disrupted follicular architecture with loss of polarity and irregular germinal centers.'), Score: 0.8360
+('No evidence of tumor cell nests.', 'Tumor cell nests.'), Score: 0.8296
+('Scant stromal fibrosis with delicate collagen fibers.', 'Dense stromal fibrosis with thick collagen bundles and increased cellularity.'), Score: 0.8296
+('Absence of atypical cells.', 'Presence of atypical cells.'), Score: 0.8291
+('No evidence of perineural invasion.', 'Perineural invasion.'), Score: 0.8267
+('No nuclear atypia observed.', 'Distinct tumor cell nests are present.'), Score: 0.8165
+('Uniform nuclear staining.', 'Heterogeneous nuclear staining.'), Score: 0.7957
+('Absence of giant cells.', 'Presence of multinucleated giant cells.'), Score: 0.7809
+('Normal cells, low mitotic rate.', 'Atypical cells, high mitotic rate.'), Score: 0.7806
+('No evidence of necrosis.', 'Presence of tumor necrosis with karyorrhexis and cellular debris.'), Score: 0.7626
+('Small, round, blue cells.', 'Large, irregular, atypical cells.'), Score: 0.7357
+('Uniform nuclei, typical ratio.', 'Atypical nuclei, high ratio.'), Score: 0.7288
+('No tumor cell nests identified.', 'Distinct tumor cell nests are visible.'), Score: 0.7267
+('No evidence of angiolymphatic invasion.', 'Angiolymphatic invasion.'), Score: 0.7222
+('No evidence of invasion.', 'Evidence of invasion into surrounding tissues.'), Score: 0.7195
+('Lymphocytes with high nucleus-to-cytoplasm ratio and scant cytoplasm.', 'Large, atypical cells with abundant eosinophilic cytoplasm and prominent nucleoli.'), Score: 0.7174
+('No significant nuclear atypia.', 'Marked nuclear atypia with bizarre shapes and sizes.'), Score: 0.7099
+('Normal stromal cells.', 'Atypical stromal cells.'), Score: 0.7009
+('No hemorrhage.', 'Presence of hemorrhage within the tissue.'), Score: 0.6897
+('Normal cellular morphology and arrangement.', 'Evidence of atypical cellular features.'), Score: 0.6754
+('Normal immune cell infiltrate.', 'Increased or atypical immune cell infiltrate.'), Score: 0.6738
+('No tumor necrosis is observed.', 'Tumor necrosis with cellular debris is present.'), Score: 0.6691
+('Uniform cell size and shape.', 'Pleomorphic cell size and shape.'), Score: 0.6666
+('No evidence of granuloma formation.', 'Granuloma formation.'), Score: 0.6606
+('Minimal inflammation and sparse immune cells.', 'Significant inflammation with dense immune cell infiltration.'), Score: 0.6453
+('No prominent nucleoli.', 'Prominent nucleoli.'), Score: 0.6342
+('Normal nuclear-cytoplasmic ratio.', 'Increased nuclear-cytoplasmic ratio.'), Score: 0.6340
+('No evidence of apoptosis.', 'Increased apoptosis or programmed cell death.'), Score: 0.6287
+('Normal cell morphology.', 'Atypical cell morphology.'), Score: 0.6220
+('Low grade cells, sparse collagen.', 'High grade cells, abundant collagen.'), Score: 0.6174
+
+Iteration 20:
+('No necrosis or cellular debris observed.', 'Distinct tumor nests are clearly visible.'), Score: 0.8972
+('Absence of mitotic figures.', 'Frequent mitotic figures, including atypical forms.'), Score: 0.8746
+('No evidence of atypical cells.', 'Atypical cells forming tumor nests are seen.'), Score: 0.8652
+('No tumor nests identified.', 'Distinct tumor nests present.'), Score: 0.8395
+('Normal lymphoid follicles with distinct mantle and germinal center zones.', 'Disrupted follicular architecture with loss of polarity and irregular germinal centers.'), Score: 0.8360
+('No evidence of tumor cell nests.', 'Tumor cell nests.'), Score: 0.8296
+('Scant stromal fibrosis with delicate collagen fibers.', 'Dense stromal fibrosis with thick collagen bundles and increased cellularity.'), Score: 0.8296
+('Absence of atypical cells.', 'Presence of atypical cells.'), Score: 0.8291
+('No evidence of perineural invasion.', 'Perineural invasion.'), Score: 0.8267
+('No nuclear atypia observed.', 'Distinct tumor cell nests are present.'), Score: 0.8165
+('Uniform nuclear staining.', 'Heterogeneous nuclear staining.'), Score: 0.7957
+('Absence of giant cells.', 'Presence of multinucleated giant cells.'), Score: 0.7809
+('Normal cells, low mitotic rate.', 'Atypical cells, high mitotic rate.'), Score: 0.7806
+('No evidence of necrosis.', 'Presence of tumor necrosis with karyorrhexis and cellular debris.'), Score: 0.7626
+('Small, round, blue cells.', 'Large, irregular, atypical cells.'), Score: 0.7357
+('Uniform nuclei, typical ratio.', 'Atypical nuclei, high ratio.'), Score: 0.7288
+('No tumor cell nests identified.', 'Distinct tumor cell nests are visible.'), Score: 0.7267
+('No evidence of angiolymphatic invasion.', 'Angiolymphatic invasion.'), Score: 0.7222
+('No evidence of invasion.', 'Evidence of invasion into surrounding tissues.'), Score: 0.7195
+('Lymphocytes with high nucleus-to-cytoplasm ratio and scant cytoplasm.', 'Large, atypical cells with abundant eosinophilic cytoplasm and prominent nucleoli.'), Score: 0.7174
+('No significant nuclear atypia.', 'Marked nuclear atypia with bizarre shapes and sizes.'), Score: 0.7099
+('Normal stromal cells.', 'Atypical stromal cells.'), Score: 0.7009
+('No hemorrhage.', 'Presence of hemorrhage within the tissue.'), Score: 0.6897
+('Normal cellular morphology and arrangement.', 'Evidence of atypical cellular features.'), Score: 0.6754
+('Normal immune cell infiltrate.', 'Increased or atypical immune cell infiltrate.'), Score: 0.6738
+('No tumor necrosis is observed.', 'Tumor necrosis with cellular debris is present.'), Score: 0.6691
+('Uniform cell size and shape.', 'Pleomorphic cell size and shape.'), Score: 0.6666
+('No evidence of granuloma formation.', 'Granuloma formation.'), Score: 0.6606
+('Minimal inflammation and sparse immune cells.', 'Significant inflammation with dense immune cell infiltration.'), Score: 0.6453
+('No prominent nucleoli.', 'Prominent nucleoli.'), Score: 0.6342
+('Normal nuclear-cytoplasmic ratio.', 'Increased nuclear-cytoplasmic ratio.'), Score: 0.6340
+('No evidence of apoptosis.', 'Increased apoptosis or programmed cell death.'), Score: 0.6287
+('Normal cell morphology.', 'Atypical cell morphology.'), Score: 0.6220
+('Low grade cells, sparse collagen.', 'High grade cells, abundant collagen.'), Score: 0.6174
+
+Iteration 21:
+('No necrosis or cellular debris observed.', 'Distinct tumor nests are clearly visible.'), Score: 0.8972
+('Absence of mitotic figures.', 'Frequent mitotic figures, including atypical forms.'), Score: 0.8746
+('No evidence of atypical cells.', 'Atypical cells forming tumor nests are seen.'), Score: 0.8652
+('Benign cells, normal immune infiltrate.', 'Malignant cells, active immune infiltrate.'), Score: 0.8456
+('No tumor nests identified.', 'Distinct tumor nests present.'), Score: 0.8395
+('Normal lymphoid follicles with distinct mantle and germinal center zones.', 'Disrupted follicular architecture with loss of polarity and irregular germinal centers.'), Score: 0.8360
+('No evidence of tumor cell nests.', 'Tumor cell nests.'), Score: 0.8296
+('Scant stromal fibrosis with delicate collagen fibers.', 'Dense stromal fibrosis with thick collagen bundles and increased cellularity.'), Score: 0.8296
+('Absence of atypical cells.', 'Presence of atypical cells.'), Score: 0.8291
+('No evidence of perineural invasion.', 'Perineural invasion.'), Score: 0.8267
+('No nuclear atypia observed.', 'Distinct tumor cell nests are present.'), Score: 0.8165
+('Uniform nuclear staining.', 'Heterogeneous nuclear staining.'), Score: 0.7957
+('Absence of giant cells.', 'Presence of multinucleated giant cells.'), Score: 0.7809
+('Normal cells, low mitotic rate.', 'Atypical cells, high mitotic rate.'), Score: 0.7806
+('No evidence of necrosis.', 'Presence of tumor necrosis with karyorrhexis and cellular debris.'), Score: 0.7626
+('Small, round, blue cells.', 'Large, irregular, atypical cells.'), Score: 0.7357
+('Uniform nuclei, typical ratio.', 'Atypical nuclei, high ratio.'), Score: 0.7288
+('No tumor cell nests identified.', 'Distinct tumor cell nests are visible.'), Score: 0.7267
+('No evidence of angiolymphatic invasion.', 'Angiolymphatic invasion.'), Score: 0.7222
+('No evidence of invasion.', 'Evidence of invasion into surrounding tissues.'), Score: 0.7195
+('Lymphocytes with high nucleus-to-cytoplasm ratio and scant cytoplasm.', 'Large, atypical cells with abundant eosinophilic cytoplasm and prominent nucleoli.'), Score: 0.7174
+('No significant nuclear atypia.', 'Marked nuclear atypia with bizarre shapes and sizes.'), Score: 0.7099
+('Normal stromal cells.', 'Atypical stromal cells.'), Score: 0.7009
+('No hemorrhage.', 'Presence of hemorrhage within the tissue.'), Score: 0.6897
+('Normal cellular morphology and arrangement.', 'Evidence of atypical cellular features.'), Score: 0.6754
+('Normal immune cell infiltrate.', 'Increased or atypical immune cell infiltrate.'), Score: 0.6738
+('No tumor necrosis is observed.', 'Tumor necrosis with cellular debris is present.'), Score: 0.6691
+('Uniform cell size and shape.', 'Pleomorphic cell size and shape.'), Score: 0.6666
+('No evidence of granuloma formation.', 'Granuloma formation.'), Score: 0.6606
+('Minimal inflammation and sparse immune cells.', 'Significant inflammation with dense immune cell infiltration.'), Score: 0.6453
+('No prominent nucleoli.', 'Prominent nucleoli.'), Score: 0.6342
+('Normal nuclear-cytoplasmic ratio.', 'Increased nuclear-cytoplasmic ratio.'), Score: 0.6340
+('No evidence of apoptosis.', 'Increased apoptosis or programmed cell death.'), Score: 0.6287
+('Normal cell morphology.', 'Atypical cell morphology.'), Score: 0.6220
+('Low grade cells, sparse collagen.', 'High grade cells, abundant collagen.'), Score: 0.6174
+
+Iteration 22:
+('No necrosis or cellular debris observed.', 'Distinct tumor nests are clearly visible.'), Score: 0.8972
+('No nuclear atypia, normal stroma.', 'Tumor cell nests, atypical stroma.'), Score: 0.8970
+('Absence of mitotic figures.', 'Frequent mitotic figures, including atypical forms.'), Score: 0.8746
+('No evidence of atypical cells.', 'Atypical cells forming tumor nests are seen.'), Score: 0.8652
+('Benign cells, normal immune infiltrate.', 'Malignant cells, active immune infiltrate.'), Score: 0.8456
+('No tumor nests identified.', 'Distinct tumor nests present.'), Score: 0.8395
+('Normal lymphoid follicles with distinct mantle and germinal center zones.', 'Disrupted follicular architecture with loss of polarity and irregular germinal centers.'), Score: 0.8360
+('No evidence of tumor cell nests.', 'Tumor cell nests.'), Score: 0.8296
+('Scant stromal fibrosis with delicate collagen fibers.', 'Dense stromal fibrosis with thick collagen bundles and increased cellularity.'), Score: 0.8296
+('Absence of atypical cells.', 'Presence of atypical cells.'), Score: 0.8291
+('No evidence of perineural invasion.', 'Perineural invasion.'), Score: 0.8267
+('No nuclear atypia observed.', 'Distinct tumor cell nests are present.'), Score: 0.8165
+('Uniform nuclear staining.', 'Heterogeneous nuclear staining.'), Score: 0.7957
+('Absence of giant cells.', 'Presence of multinucleated giant cells.'), Score: 0.7809
+('Normal cells, low mitotic rate.', 'Atypical cells, high mitotic rate.'), Score: 0.7806
+('No evidence of necrosis.', 'Presence of tumor necrosis with karyorrhexis and cellular debris.'), Score: 0.7626
+('Small, round, blue cells.', 'Large, irregular, atypical cells.'), Score: 0.7357
+('Uniform nuclei, typical ratio.', 'Atypical nuclei, high ratio.'), Score: 0.7288
+('No tumor cell nests identified.', 'Distinct tumor cell nests are visible.'), Score: 0.7267
+('No evidence of angiolymphatic invasion.', 'Angiolymphatic invasion.'), Score: 0.7222
+('No evidence of invasion.', 'Evidence of invasion into surrounding tissues.'), Score: 0.7195
+('Lymphocytes with high nucleus-to-cytoplasm ratio and scant cytoplasm.', 'Large, atypical cells with abundant eosinophilic cytoplasm and prominent nucleoli.'), Score: 0.7174
+('No significant nuclear atypia.', 'Marked nuclear atypia with bizarre shapes and sizes.'), Score: 0.7099
+('Normal stromal cells.', 'Atypical stromal cells.'), Score: 0.7009
+('No hemorrhage.', 'Presence of hemorrhage within the tissue.'), Score: 0.6897
+('Normal cellular morphology and arrangement.', 'Evidence of atypical cellular features.'), Score: 0.6754
+('Normal immune cell infiltrate.', 'Increased or atypical immune cell infiltrate.'), Score: 0.6738
+('No tumor necrosis is observed.', 'Tumor necrosis with cellular debris is present.'), Score: 0.6691
+('Uniform cell size and shape.', 'Pleomorphic cell size and shape.'), Score: 0.6666
+('No evidence of granuloma formation.', 'Granuloma formation.'), Score: 0.6606
+('Minimal inflammation and sparse immune cells.', 'Significant inflammation with dense immune cell infiltration.'), Score: 0.6453
+('No prominent nucleoli.', 'Prominent nucleoli.'), Score: 0.6342
+('Normal nuclear-cytoplasmic ratio.', 'Increased nuclear-cytoplasmic ratio.'), Score: 0.6340
+('No evidence of apoptosis.', 'Increased apoptosis or programmed cell death.'), Score: 0.6287
+('Normal cell morphology.', 'Atypical cell morphology.'), Score: 0.6220
+('Low grade cells, sparse collagen.', 'High grade cells, abundant collagen.'), Score: 0.6174
+
+Iteration 23:
+('No necrosis or cellular debris observed.', 'Distinct tumor nests are clearly visible.'), Score: 0.8972
+('No nuclear atypia, normal stroma.', 'Tumor cell nests, atypical stroma.'), Score: 0.8970
+('Absence of mitotic figures.', 'Frequent mitotic figures, including atypical forms.'), Score: 0.8746
+('No evidence of atypical cells.', 'Atypical cells forming tumor nests are seen.'), Score: 0.8652
+('Benign cells, normal immune infiltrate.', 'Malignant cells, active immune infiltrate.'), Score: 0.8456
+('No tumor nests identified.', 'Distinct tumor nests present.'), Score: 0.8395
+('Normal lymphoid follicles with distinct mantle and germinal center zones.', 'Disrupted follicular architecture with loss of polarity and irregular germinal centers.'), Score: 0.8360
+('No evidence of tumor cell nests.', 'Tumor cell nests.'), Score: 0.8296
+('Scant stromal fibrosis with delicate collagen fibers.', 'Dense stromal fibrosis with thick collagen bundles and increased cellularity.'), Score: 0.8296
+('Absence of atypical cells.', 'Presence of atypical cells.'), Score: 0.8291
+('No evidence of perineural invasion.', 'Perineural invasion.'), Score: 0.8267
+('No nuclear atypia observed.', 'Distinct tumor cell nests are present.'), Score: 0.8165
+('Uniform nuclear staining.', 'Heterogeneous nuclear staining.'), Score: 0.7957
+('Absence of giant cells.', 'Presence of multinucleated giant cells.'), Score: 0.7809
+('Normal cells, low mitotic rate.', 'Atypical cells, high mitotic rate.'), Score: 0.7806
+('No evidence of necrosis.', 'Presence of tumor necrosis with karyorrhexis and cellular debris.'), Score: 0.7626
+('Small, round, blue cells.', 'Large, irregular, atypical cells.'), Score: 0.7357
+('Uniform nuclei, typical ratio.', 'Atypical nuclei, high ratio.'), Score: 0.7288
+('No tumor cell nests identified.', 'Distinct tumor cell nests are visible.'), Score: 0.7267
+('No evidence of angiolymphatic invasion.', 'Angiolymphatic invasion.'), Score: 0.7222
+('No evidence of invasion.', 'Evidence of invasion into surrounding tissues.'), Score: 0.7195
+('Lymphocytes with high nucleus-to-cytoplasm ratio and scant cytoplasm.', 'Large, atypical cells with abundant eosinophilic cytoplasm and prominent nucleoli.'), Score: 0.7174
+('No significant nuclear atypia.', 'Marked nuclear atypia with bizarre shapes and sizes.'), Score: 0.7099
+('Normal stromal cells.', 'Atypical stromal cells.'), Score: 0.7009
+('No hemorrhage.', 'Presence of hemorrhage within the tissue.'), Score: 0.6897
+('Normal cellular morphology and arrangement.', 'Evidence of atypical cellular features.'), Score: 0.6754
+('Normal immune cell infiltrate.', 'Increased or atypical immune cell infiltrate.'), Score: 0.6738
+('No tumor necrosis is observed.', 'Tumor necrosis with cellular debris is present.'), Score: 0.6691
+('Uniform cell size and shape.', 'Pleomorphic cell size and shape.'), Score: 0.6666
+('No evidence of granuloma formation.', 'Granuloma formation.'), Score: 0.6606
+('Minimal inflammation and sparse immune cells.', 'Significant inflammation with dense immune cell infiltration.'), Score: 0.6453
+('No prominent nucleoli.', 'Prominent nucleoli.'), Score: 0.6342
+('Normal nuclear-cytoplasmic ratio.', 'Increased nuclear-cytoplasmic ratio.'), Score: 0.6340
+('No evidence of apoptosis.', 'Increased apoptosis or programmed cell death.'), Score: 0.6287
+('Normal cell morphology.', 'Atypical cell morphology.'), Score: 0.6220
+('Low grade cells, sparse collagen.', 'High grade cells, abundant collagen.'), Score: 0.6174
+
+Iteration 24:
+('No necrosis or cellular debris observed.', 'Distinct tumor nests are clearly visible.'), Score: 0.8972
+('No nuclear atypia, normal stroma.', 'Tumor cell nests, atypical stroma.'), Score: 0.8970
+('No cellular atypia is present.', 'Significant cellular atypia is observed.'), Score: 0.8834
+('Absence of mitotic figures.', 'Frequent mitotic figures, including atypical forms.'), Score: 0.8746
+('No evidence of atypical cells.', 'Atypical cells forming tumor nests are seen.'), Score: 0.8652
+('Benign cells, normal immune infiltrate.', 'Malignant cells, active immune infiltrate.'), Score: 0.8456
+('No tumor nests identified.', 'Distinct tumor nests present.'), Score: 0.8395
+('Normal lymphoid follicles with distinct mantle and germinal center zones.', 'Disrupted follicular architecture with loss of polarity and irregular germinal centers.'), Score: 0.8360
+('No evidence of tumor cell nests.', 'Tumor cell nests.'), Score: 0.8296
+('Scant stromal fibrosis with delicate collagen fibers.', 'Dense stromal fibrosis with thick collagen bundles and increased cellularity.'), Score: 0.8296
+('Absence of atypical cells.', 'Presence of atypical cells.'), Score: 0.8291
+('No evidence of perineural invasion.', 'Perineural invasion.'), Score: 0.8267
+('No nuclear atypia observed.', 'Distinct tumor cell nests are present.'), Score: 0.8165
+('Uniform nuclear staining.', 'Heterogeneous nuclear staining.'), Score: 0.7957
+('Absence of giant cells.', 'Presence of multinucleated giant cells.'), Score: 0.7809
+('Normal cells, low mitotic rate.', 'Atypical cells, high mitotic rate.'), Score: 0.7806
+('No evidence of necrosis.', 'Presence of tumor necrosis with karyorrhexis and cellular debris.'), Score: 0.7626
+('Small, round, blue cells.', 'Large, irregular, atypical cells.'), Score: 0.7357
+('Uniform nuclei, typical ratio.', 'Atypical nuclei, high ratio.'), Score: 0.7288
+('No tumor cell nests identified.', 'Distinct tumor cell nests are visible.'), Score: 0.7267
+('No evidence of angiolymphatic invasion.', 'Angiolymphatic invasion.'), Score: 0.7222
+('No evidence of invasion.', 'Evidence of invasion into surrounding tissues.'), Score: 0.7195
+('Lymphocytes with high nucleus-to-cytoplasm ratio and scant cytoplasm.', 'Large, atypical cells with abundant eosinophilic cytoplasm and prominent nucleoli.'), Score: 0.7174
+('No significant nuclear atypia.', 'Marked nuclear atypia with bizarre shapes and sizes.'), Score: 0.7099
+('Normal stromal cells.', 'Atypical stromal cells.'), Score: 0.7009
+('No hemorrhage.', 'Presence of hemorrhage within the tissue.'), Score: 0.6897
+('Normal cellular morphology and arrangement.', 'Evidence of atypical cellular features.'), Score: 0.6754
+('Normal immune cell infiltrate.', 'Increased or atypical immune cell infiltrate.'), Score: 0.6738
+('No tumor necrosis is observed.', 'Tumor necrosis with cellular debris is present.'), Score: 0.6691
+('Uniform cell size and shape.', 'Pleomorphic cell size and shape.'), Score: 0.6666
+('No evidence of granuloma formation.', 'Granuloma formation.'), Score: 0.6606
+('Minimal inflammation and sparse immune cells.', 'Significant inflammation with dense immune cell infiltration.'), Score: 0.6453
+('No prominent nucleoli.', 'Prominent nucleoli.'), Score: 0.6342
+('Normal nuclear-cytoplasmic ratio.', 'Increased nuclear-cytoplasmic ratio.'), Score: 0.6340
+('No evidence of apoptosis.', 'Increased apoptosis or programmed cell death.'), Score: 0.6287
+('Normal cell morphology.', 'Atypical cell morphology.'), Score: 0.6220
+('Low grade cells, sparse collagen.', 'High grade cells, abundant collagen.'), Score: 0.6174
+
+Iteration 25:
+('No necrosis or cellular debris observed.', 'Distinct tumor nests are clearly visible.'), Score: 0.8972
+('No nuclear atypia, normal stroma.', 'Tumor cell nests, atypical stroma.'), Score: 0.8970
+('No cellular atypia is present.', 'Significant cellular atypia is observed.'), Score: 0.8834
+('Absence of mitotic figures.', 'Frequent mitotic figures, including atypical forms.'), Score: 0.8746
+('No evidence of atypical cells.', 'Atypical cells forming tumor nests are seen.'), Score: 0.8652
+('Benign cells, normal immune infiltrate.', 'Malignant cells, active immune infiltrate.'), Score: 0.8456
+('No tumor nests identified.', 'Distinct tumor nests present.'), Score: 0.8395
+('Normal lymphoid follicles with distinct mantle and germinal center zones.', 'Disrupted follicular architecture with loss of polarity and irregular germinal centers.'), Score: 0.8360
+('No evidence of tumor cell nests.', 'Tumor cell nests.'), Score: 0.8296
+('Scant stromal fibrosis with delicate collagen fibers.', 'Dense stromal fibrosis with thick collagen bundles and increased cellularity.'), Score: 0.8296
+('Absence of atypical cells.', 'Presence of atypical cells.'), Score: 0.8291
+('No evidence of perineural invasion.', 'Perineural invasion.'), Score: 0.8267
+('No nuclear atypia observed.', 'Distinct tumor cell nests are present.'), Score: 0.8165
+('Uniform nuclear staining.', 'Heterogeneous nuclear staining.'), Score: 0.7957
+('Absence of giant cells.', 'Presence of multinucleated giant cells.'), Score: 0.7809
+('Normal cells, low mitotic rate.', 'Atypical cells, high mitotic rate.'), Score: 0.7806
+('No evidence of necrosis.', 'Presence of tumor necrosis with karyorrhexis and cellular debris.'), Score: 0.7626
+('Small, round, blue cells.', 'Large, irregular, atypical cells.'), Score: 0.7357
+('Uniform nuclei, typical ratio.', 'Atypical nuclei, high ratio.'), Score: 0.7288
+('No tumor cell nests identified.', 'Distinct tumor cell nests are visible.'), Score: 0.7267
+('No evidence of angiolymphatic invasion.', 'Angiolymphatic invasion.'), Score: 0.7222
+('No evidence of invasion.', 'Evidence of invasion into surrounding tissues.'), Score: 0.7195
+('Lymphocytes with high nucleus-to-cytoplasm ratio and scant cytoplasm.', 'Large, atypical cells with abundant eosinophilic cytoplasm and prominent nucleoli.'), Score: 0.7174
+('No significant nuclear atypia.', 'Marked nuclear atypia with bizarre shapes and sizes.'), Score: 0.7099
+('Normal stromal cells.', 'Atypical stromal cells.'), Score: 0.7009
+('No hemorrhage.', 'Presence of hemorrhage within the tissue.'), Score: 0.6897
+('Normal cellular morphology and arrangement.', 'Evidence of atypical cellular features.'), Score: 0.6754
+('Normal immune cell infiltrate.', 'Increased or atypical immune cell infiltrate.'), Score: 0.6738
+('No tumor necrosis is observed.', 'Tumor necrosis with cellular debris is present.'), Score: 0.6691
+('Uniform cell size and shape.', 'Pleomorphic cell size and shape.'), Score: 0.6666
+('No evidence of granuloma formation.', 'Granuloma formation.'), Score: 0.6606
+('Minimal inflammation and sparse immune cells.', 'Significant inflammation with dense immune cell infiltration.'), Score: 0.6453
+('No prominent nucleoli.', 'Prominent nucleoli.'), Score: 0.6342
+('Normal nuclear-cytoplasmic ratio.', 'Increased nuclear-cytoplasmic ratio.'), Score: 0.6340
+('No evidence of apoptosis.', 'Increased apoptosis or programmed cell death.'), Score: 0.6287
+('Normal cell morphology.', 'Atypical cell morphology.'), Score: 0.6220
+('Low grade cells, sparse collagen.', 'High grade cells, abundant collagen.'), Score: 0.6174
+
+Iteration 26:
+('No necrosis or cellular debris observed.', 'Distinct tumor nests are clearly visible.'), Score: 0.8972
+('No nuclear atypia, normal stroma.', 'Tumor cell nests, atypical stroma.'), Score: 0.8970
+('No cellular atypia is present.', 'Significant cellular atypia is observed.'), Score: 0.8834
+('Absence of mitotic figures.', 'Frequent mitotic figures, including atypical forms.'), Score: 0.8746
+('No evidence of atypical cells.', 'Atypical cells forming tumor nests are seen.'), Score: 0.8652
+('Benign cells, normal immune infiltrate.', 'Malignant cells, active immune infiltrate.'), Score: 0.8456
+('No tumor nests identified.', 'Distinct tumor nests present.'), Score: 0.8395
+('Normal lymphoid follicles with distinct mantle and germinal center zones.', 'Disrupted follicular architecture with loss of polarity and irregular germinal centers.'), Score: 0.8360
+('No evidence of tumor cell nests.', 'Tumor cell nests.'), Score: 0.8296
+('Scant stromal fibrosis with delicate collagen fibers.', 'Dense stromal fibrosis with thick collagen bundles and increased cellularity.'), Score: 0.8296
+('Absence of atypical cells.', 'Presence of atypical cells.'), Score: 0.8291
+('No evidence of perineural invasion.', 'Perineural invasion.'), Score: 0.8267
+('No nuclear atypia observed.', 'Distinct tumor cell nests are present.'), Score: 0.8165
+('Uniform nuclear staining.', 'Heterogeneous nuclear staining.'), Score: 0.7957
+('Absence of giant cells.', 'Presence of multinucleated giant cells.'), Score: 0.7809
+('Normal cells, low mitotic rate.', 'Atypical cells, high mitotic rate.'), Score: 0.7806
+('No evidence of necrosis.', 'Presence of tumor necrosis with karyorrhexis and cellular debris.'), Score: 0.7626
+('Small, round, blue cells.', 'Large, irregular, atypical cells.'), Score: 0.7357
+('Uniform nuclei, typical ratio.', 'Atypical nuclei, high ratio.'), Score: 0.7288
+('No tumor cell nests identified.', 'Distinct tumor cell nests are visible.'), Score: 0.7267
+('No evidence of angiolymphatic invasion.', 'Angiolymphatic invasion.'), Score: 0.7222
+('No evidence of invasion.', 'Evidence of invasion into surrounding tissues.'), Score: 0.7195
+('Lymphocytes with high nucleus-to-cytoplasm ratio and scant cytoplasm.', 'Large, atypical cells with abundant eosinophilic cytoplasm and prominent nucleoli.'), Score: 0.7174
+('No significant nuclear atypia.', 'Marked nuclear atypia with bizarre shapes and sizes.'), Score: 0.7099
+('Normal stromal cells.', 'Atypical stromal cells.'), Score: 0.7009
+('No hemorrhage.', 'Presence of hemorrhage within the tissue.'), Score: 0.6897
+('Normal cellular morphology and arrangement.', 'Evidence of atypical cellular features.'), Score: 0.6754
+('Normal immune cell infiltrate.', 'Increased or atypical immune cell infiltrate.'), Score: 0.6738
+('No tumor necrosis is observed.', 'Tumor necrosis with cellular debris is present.'), Score: 0.6691
+('Uniform cell size and shape.', 'Pleomorphic cell size and shape.'), Score: 0.6666
+('No evidence of granuloma formation.', 'Granuloma formation.'), Score: 0.6606
+('Minimal inflammation and sparse immune cells.', 'Significant inflammation with dense immune cell infiltration.'), Score: 0.6453
+('No prominent nucleoli.', 'Prominent nucleoli.'), Score: 0.6342
+('Normal nuclear-cytoplasmic ratio.', 'Increased nuclear-cytoplasmic ratio.'), Score: 0.6340
+('No evidence of apoptosis.', 'Increased apoptosis or programmed cell death.'), Score: 0.6287
+('Normal cell morphology.', 'Atypical cell morphology.'), Score: 0.6220
+('Low grade cells, sparse collagen.', 'High grade cells, abundant collagen.'), Score: 0.6174
+
+Iteration 27:
+('No necrosis or cellular debris observed.', 'Distinct tumor nests are clearly visible.'), Score: 0.8972
+('No nuclear atypia, normal stroma.', 'Tumor cell nests, atypical stroma.'), Score: 0.8970
+('No cellular atypia is present.', 'Significant cellular atypia is observed.'), Score: 0.8834
+('Absence of mitotic figures.', 'Frequent mitotic figures, including atypical forms.'), Score: 0.8746
+('No evidence of atypical cells.', 'Atypical cells forming tumor nests are seen.'), Score: 0.8652
+('Benign cells, normal immune infiltrate.', 'Malignant cells, active immune infiltrate.'), Score: 0.8456
+('No tumor nests identified.', 'Distinct tumor nests present.'), Score: 0.8395
+('Normal lymphoid follicles with distinct mantle and germinal center zones.', 'Disrupted follicular architecture with loss of polarity and irregular germinal centers.'), Score: 0.8360
+('No evidence of tumor cell nests.', 'Tumor cell nests.'), Score: 0.8296
+('Scant stromal fibrosis with delicate collagen fibers.', 'Dense stromal fibrosis with thick collagen bundles and increased cellularity.'), Score: 0.8296
+('Absence of atypical cells.', 'Presence of atypical cells.'), Score: 0.8291
+('No evidence of perineural invasion.', 'Perineural invasion.'), Score: 0.8267
+('No nuclear atypia observed.', 'Distinct tumor cell nests are present.'), Score: 0.8165
+('Uniform nuclear staining.', 'Heterogeneous nuclear staining.'), Score: 0.7957
+('Absence of giant cells.', 'Presence of multinucleated giant cells.'), Score: 0.7809
+('Normal cells, low mitotic rate.', 'Atypical cells, high mitotic rate.'), Score: 0.7806
+('No evidence of necrosis.', 'Presence of tumor necrosis with karyorrhexis and cellular debris.'), Score: 0.7626
+('Small, round, blue cells.', 'Large, irregular, atypical cells.'), Score: 0.7357
+('Uniform nuclei, typical ratio.', 'Atypical nuclei, high ratio.'), Score: 0.7288
+('No tumor cell nests identified.', 'Distinct tumor cell nests are visible.'), Score: 0.7267
+('No evidence of angiolymphatic invasion.', 'Angiolymphatic invasion.'), Score: 0.7222
+('No evidence of invasion.', 'Evidence of invasion into surrounding tissues.'), Score: 0.7195
+('Lymphocytes with high nucleus-to-cytoplasm ratio and scant cytoplasm.', 'Large, atypical cells with abundant eosinophilic cytoplasm and prominent nucleoli.'), Score: 0.7174
+('No significant nuclear atypia.', 'Marked nuclear atypia with bizarre shapes and sizes.'), Score: 0.7099
+('Normal stromal cells.', 'Atypical stromal cells.'), Score: 0.7009
+('No hemorrhage.', 'Presence of hemorrhage within the tissue.'), Score: 0.6897
+('Normal cellular morphology and arrangement.', 'Evidence of atypical cellular features.'), Score: 0.6754
+('Normal immune cell infiltrate.', 'Increased or atypical immune cell infiltrate.'), Score: 0.6738
+('No tumor necrosis is observed.', 'Tumor necrosis with cellular debris is present.'), Score: 0.6691
+('Uniform cell size and shape.', 'Pleomorphic cell size and shape.'), Score: 0.6666
+('No evidence of granuloma formation.', 'Granuloma formation.'), Score: 0.6606
+('Minimal inflammation and sparse immune cells.', 'Significant inflammation with dense immune cell infiltration.'), Score: 0.6453
+('No prominent nucleoli.', 'Prominent nucleoli.'), Score: 0.6342
+('Normal nuclear-cytoplasmic ratio.', 'Increased nuclear-cytoplasmic ratio.'), Score: 0.6340
+('No evidence of apoptosis.', 'Increased apoptosis or programmed cell death.'), Score: 0.6287
+('Normal lymphocytes with typical nuclei and cytoplasm.', 'Atypical cells with necrosis and cellular debris present.'), Score: 0.6234
+('Normal cell morphology.', 'Atypical cell morphology.'), Score: 0.6220
+('Low grade cells, sparse collagen.', 'High grade cells, abundant collagen.'), Score: 0.6174
+
+Iteration 28:
+('No necrosis or cellular debris observed.', 'Distinct tumor nests are clearly visible.'), Score: 0.8972
+('No nuclear atypia, normal stroma.', 'Tumor cell nests, atypical stroma.'), Score: 0.8970
+('No cellular atypia is present.', 'Significant cellular atypia is observed.'), Score: 0.8834
+('Absence of mitotic figures.', 'Frequent mitotic figures, including atypical forms.'), Score: 0.8746
+('No evidence of atypical cells.', 'Atypical cells forming tumor nests are seen.'), Score: 0.8652
+('No evidence of hemorrhage.', 'Tumor cell nests detected.'), Score: 0.8478
+('Benign cells, normal immune infiltrate.', 'Malignant cells, active immune infiltrate.'), Score: 0.8456
+('No tumor nests identified.', 'Distinct tumor nests present.'), Score: 0.8395
+('Normal lymphoid follicles with distinct mantle and germinal center zones.', 'Disrupted follicular architecture with loss of polarity and irregular germinal centers.'), Score: 0.8360
+('No evidence of tumor cell nests.', 'Tumor cell nests.'), Score: 0.8296
+('Scant stromal fibrosis with delicate collagen fibers.', 'Dense stromal fibrosis with thick collagen bundles and increased cellularity.'), Score: 0.8296
+('Absence of atypical cells.', 'Presence of atypical cells.'), Score: 0.8291
+('No evidence of perineural invasion.', 'Perineural invasion.'), Score: 0.8267
+('No nuclear atypia observed.', 'Distinct tumor cell nests are present.'), Score: 0.8165
+('Uniform nuclear staining.', 'Heterogeneous nuclear staining.'), Score: 0.7957
+('Absence of giant cells.', 'Presence of multinucleated giant cells.'), Score: 0.7809
+('Normal cells, low mitotic rate.', 'Atypical cells, high mitotic rate.'), Score: 0.7806
+('No evidence of necrosis.', 'Presence of tumor necrosis with karyorrhexis and cellular debris.'), Score: 0.7626
+('Small, round, blue cells.', 'Large, irregular, atypical cells.'), Score: 0.7357
+('Uniform nuclei, typical ratio.', 'Atypical nuclei, high ratio.'), Score: 0.7288
+('No tumor cell nests identified.', 'Distinct tumor cell nests are visible.'), Score: 0.7267
+('No evidence of angiolymphatic invasion.', 'Angiolymphatic invasion.'), Score: 0.7222
+('No evidence of invasion.', 'Evidence of invasion into surrounding tissues.'), Score: 0.7195
+('Lymphocytes with high nucleus-to-cytoplasm ratio and scant cytoplasm.', 'Large, atypical cells with abundant eosinophilic cytoplasm and prominent nucleoli.'), Score: 0.7174
+('No significant nuclear atypia.', 'Marked nuclear atypia with bizarre shapes and sizes.'), Score: 0.7099
+('Normal stromal cells.', 'Atypical stromal cells.'), Score: 0.7009
+('No hemorrhage.', 'Presence of hemorrhage within the tissue.'), Score: 0.6897
+('Normal cellular morphology and arrangement.', 'Evidence of atypical cellular features.'), Score: 0.6754
+('Normal immune cell infiltrate.', 'Increased or atypical immune cell infiltrate.'), Score: 0.6738
+('No tumor necrosis is observed.', 'Tumor necrosis with cellular debris is present.'), Score: 0.6691
+('Uniform cell size and shape.', 'Pleomorphic cell size and shape.'), Score: 0.6666
+('No evidence of granuloma formation.', 'Granuloma formation.'), Score: 0.6606
+('Minimal inflammation and sparse immune cells.', 'Significant inflammation with dense immune cell infiltration.'), Score: 0.6453
+('No prominent nucleoli.', 'Prominent nucleoli.'), Score: 0.6342
+('Normal nuclear-cytoplasmic ratio.', 'Increased nuclear-cytoplasmic ratio.'), Score: 0.6340
+('No evidence of apoptosis.', 'Increased apoptosis or programmed cell death.'), Score: 0.6287
+('Normal lymphocytes with typical nuclei and cytoplasm.', 'Atypical cells with necrosis and cellular debris present.'), Score: 0.6234
+('Normal cell morphology.', 'Atypical cell morphology.'), Score: 0.6220
+('Low grade cells, sparse collagen.', 'High grade cells, abundant collagen.'), Score: 0.6174
+
+Iteration 29:
+('No necrosis or cellular debris observed.', 'Distinct tumor nests are clearly visible.'), Score: 0.8972
+('No nuclear atypia, normal stroma.', 'Tumor cell nests, atypical stroma.'), Score: 0.8970
+('No cellular atypia is present.', 'Significant cellular atypia is observed.'), Score: 0.8834
+('Absence of mitotic figures.', 'Frequent mitotic figures, including atypical forms.'), Score: 0.8746
+('No evidence of atypical cells.', 'Atypical cells forming tumor nests are seen.'), Score: 0.8652
+('No evidence of hemorrhage.', 'Tumor cell nests detected.'), Score: 0.8478
+('Benign cells, normal immune infiltrate.', 'Malignant cells, active immune infiltrate.'), Score: 0.8456
+('No tumor nests identified.', 'Distinct tumor nests present.'), Score: 0.8395
+('Normal lymphoid follicles with distinct mantle and germinal center zones.', 'Disrupted follicular architecture with loss of polarity and irregular germinal centers.'), Score: 0.8360
+('No evidence of tumor cell nests.', 'Tumor cell nests.'), Score: 0.8296
+('Scant stromal fibrosis with delicate collagen fibers.', 'Dense stromal fibrosis with thick collagen bundles and increased cellularity.'), Score: 0.8296
+('Absence of atypical cells.', 'Presence of atypical cells.'), Score: 0.8291
+('No evidence of perineural invasion.', 'Perineural invasion.'), Score: 0.8267
+('No nuclear atypia observed.', 'Distinct tumor cell nests are present.'), Score: 0.8165
+('No atypical cells or nuclear changes identified.', 'Atypical cells and nuclear changes are present.'), Score: 0.8120
+('Uniform nuclear staining.', 'Heterogeneous nuclear staining.'), Score: 0.7957
+('Absence of giant cells.', 'Presence of multinucleated giant cells.'), Score: 0.7809
+('Normal cells, low mitotic rate.', 'Atypical cells, high mitotic rate.'), Score: 0.7806
+('No evidence of necrosis.', 'Presence of tumor necrosis with karyorrhexis and cellular debris.'), Score: 0.7626
+('Small, round, blue cells.', 'Large, irregular, atypical cells.'), Score: 0.7357
+('Uniform nuclei, typical ratio.', 'Atypical nuclei, high ratio.'), Score: 0.7288
+('No tumor cell nests identified.', 'Distinct tumor cell nests are visible.'), Score: 0.7267
+('No evidence of angiolymphatic invasion.', 'Angiolymphatic invasion.'), Score: 0.7222
+('No evidence of invasion.', 'Evidence of invasion into surrounding tissues.'), Score: 0.7195
+('Lymphocytes with high nucleus-to-cytoplasm ratio and scant cytoplasm.', 'Large, atypical cells with abundant eosinophilic cytoplasm and prominent nucleoli.'), Score: 0.7174
+('No significant nuclear atypia.', 'Marked nuclear atypia with bizarre shapes and sizes.'), Score: 0.7099
+('Normal stromal cells.', 'Atypical stromal cells.'), Score: 0.7009
+('No hemorrhage.', 'Presence of hemorrhage within the tissue.'), Score: 0.6897
+('Normal cellular morphology and arrangement.', 'Evidence of atypical cellular features.'), Score: 0.6754
+('Normal immune cell infiltrate.', 'Increased or atypical immune cell infiltrate.'), Score: 0.6738
+('No tumor necrosis is observed.', 'Tumor necrosis with cellular debris is present.'), Score: 0.6691
+('Uniform cell size and shape.', 'Pleomorphic cell size and shape.'), Score: 0.6666
+('No evidence of granuloma formation.', 'Granuloma formation.'), Score: 0.6606
+('Minimal inflammation and sparse immune cells.', 'Significant inflammation with dense immune cell infiltration.'), Score: 0.6453
+('No prominent nucleoli.', 'Prominent nucleoli.'), Score: 0.6342
+('Normal nuclear-cytoplasmic ratio.', 'Increased nuclear-cytoplasmic ratio.'), Score: 0.6340
+('No evidence of apoptosis.', 'Increased apoptosis or programmed cell death.'), Score: 0.6287
+('Normal lymphocytes with typical nuclei and cytoplasm.', 'Atypical cells with necrosis and cellular debris present.'), Score: 0.6234
+('Normal cell morphology.', 'Atypical cell morphology.'), Score: 0.6220
+('Low grade cells, sparse collagen.', 'High grade cells, abundant collagen.'), Score: 0.6174
+
+Iteration 30:
+('No necrosis or cellular debris observed.', 'Distinct tumor nests are clearly visible.'), Score: 0.8972
+('No nuclear atypia, normal stroma.', 'Tumor cell nests, atypical stroma.'), Score: 0.8970
+('No cellular atypia is present.', 'Significant cellular atypia is observed.'), Score: 0.8834
+('Absence of mitotic figures.', 'Frequent mitotic figures, including atypical forms.'), Score: 0.8746
+('No evidence of atypical cells.', 'Atypical cells forming tumor nests are seen.'), Score: 0.8652
+('No evidence of hemorrhage.', 'Tumor cell nests detected.'), Score: 0.8478
+('Benign cells, normal immune infiltrate.', 'Malignant cells, active immune infiltrate.'), Score: 0.8456
+('No tumor nests identified.', 'Distinct tumor nests present.'), Score: 0.8395
+('Normal lymphoid follicles with distinct mantle and germinal center zones.', 'Disrupted follicular architecture with loss of polarity and irregular germinal centers.'), Score: 0.8360
+('No evidence of tumor cell nests.', 'Tumor cell nests.'), Score: 0.8296
+('Scant stromal fibrosis with delicate collagen fibers.', 'Dense stromal fibrosis with thick collagen bundles and increased cellularity.'), Score: 0.8296
+('Absence of atypical cells.', 'Presence of atypical cells.'), Score: 0.8291
+('No evidence of perineural invasion.', 'Perineural invasion.'), Score: 0.8267
+('No nuclear atypia observed.', 'Distinct tumor cell nests are present.'), Score: 0.8165
+('No atypical cells or nuclear changes identified.', 'Atypical cells and nuclear changes are present.'), Score: 0.8120
+('Uniform nuclear staining.', 'Heterogeneous nuclear staining.'), Score: 0.7957
+('Absence of giant cells.', 'Presence of multinucleated giant cells.'), Score: 0.7809
+('Normal cells, low mitotic rate.', 'Atypical cells, high mitotic rate.'), Score: 0.7806
+('No evidence of necrosis.', 'Presence of tumor necrosis with karyorrhexis and cellular debris.'), Score: 0.7626
+('Small, round, blue cells.', 'Large, irregular, atypical cells.'), Score: 0.7357
+('Uniform nuclei, typical ratio.', 'Atypical nuclei, high ratio.'), Score: 0.7288
+('No tumor cell nests identified.', 'Distinct tumor cell nests are visible.'), Score: 0.7267
+('No evidence of angiolymphatic invasion.', 'Angiolymphatic invasion.'), Score: 0.7222
+('No evidence of invasion.', 'Evidence of invasion into surrounding tissues.'), Score: 0.7195
+('Lymphocytes with high nucleus-to-cytoplasm ratio and scant cytoplasm.', 'Large, atypical cells with abundant eosinophilic cytoplasm and prominent nucleoli.'), Score: 0.7174
+('No significant nuclear atypia.', 'Marked nuclear atypia with bizarre shapes and sizes.'), Score: 0.7099
+('Normal stromal cells.', 'Atypical stromal cells.'), Score: 0.7009
+('No hemorrhage.', 'Presence of hemorrhage within the tissue.'), Score: 0.6897
+('Normal cellular morphology and arrangement.', 'Evidence of atypical cellular features.'), Score: 0.6754
+('Normal immune cell infiltrate.', 'Increased or atypical immune cell infiltrate.'), Score: 0.6738
+('No tumor necrosis is observed.', 'Tumor necrosis with cellular debris is present.'), Score: 0.6691
+('Uniform cell size and shape.', 'Pleomorphic cell size and shape.'), Score: 0.6666
+('No evidence of granuloma formation.', 'Granuloma formation.'), Score: 0.6606
+('Minimal inflammation and sparse immune cells.', 'Significant inflammation with dense immune cell infiltration.'), Score: 0.6453
+('Nucleoli are not easily identified.', 'Large, distinct nucleoli are present.'), Score: 0.6363
+('No prominent nucleoli.', 'Prominent nucleoli.'), Score: 0.6342
+('Normal nuclear-cytoplasmic ratio.', 'Increased nuclear-cytoplasmic ratio.'), Score: 0.6340
+('No evidence of apoptosis.', 'Increased apoptosis or programmed cell death.'), Score: 0.6287
+('Normal lymphocytes with typical nuclei and cytoplasm.', 'Atypical cells with necrosis and cellular debris present.'), Score: 0.6234
+('Normal cell morphology.', 'Atypical cell morphology.'), Score: 0.6220
+('Low grade cells, sparse collagen.', 'High grade cells, abundant collagen.'), Score: 0.6174
+
+Iteration 31:
+('No necrosis or cellular debris observed.', 'Distinct tumor nests are clearly visible.'), Score: 0.8972
+('No nuclear atypia, normal stroma.', 'Tumor cell nests, atypical stroma.'), Score: 0.8970
+('No cellular atypia is present.', 'Significant cellular atypia is observed.'), Score: 0.8834
+('Absence of mitotic figures.', 'Frequent mitotic figures, including atypical forms.'), Score: 0.8746
+('No evidence of atypical cells.', 'Atypical cells forming tumor nests are seen.'), Score: 0.8652
+('No evidence of hemorrhage.', 'Tumor cell nests detected.'), Score: 0.8478
+('Benign cells, normal immune infiltrate.', 'Malignant cells, active immune infiltrate.'), Score: 0.8456
+('No tumor nests identified.', 'Distinct tumor nests present.'), Score: 0.8395
+('Normal lymphoid follicles with distinct mantle and germinal center zones.', 'Disrupted follicular architecture with loss of polarity and irregular germinal centers.'), Score: 0.8360
+('No evidence of tumor cell nests.', 'Tumor cell nests.'), Score: 0.8296
+('Scant stromal fibrosis with delicate collagen fibers.', 'Dense stromal fibrosis with thick collagen bundles and increased cellularity.'), Score: 0.8296
+('Absence of atypical cells.', 'Presence of atypical cells.'), Score: 0.8291
+('No evidence of perineural invasion.', 'Perineural invasion.'), Score: 0.8267
+('No nuclear atypia observed.', 'Distinct tumor cell nests are present.'), Score: 0.8165
+('No atypical cells or nuclear changes identified.', 'Atypical cells and nuclear changes are present.'), Score: 0.8120
+('Uniform nuclear staining.', 'Heterogeneous nuclear staining.'), Score: 0.7957
+('Absence of giant cells.', 'Presence of multinucleated giant cells.'), Score: 0.7809
+('Normal cells, low mitotic rate.', 'Atypical cells, high mitotic rate.'), Score: 0.7806
+('No evidence of necrosis.', 'Presence of tumor necrosis with karyorrhexis and cellular debris.'), Score: 0.7626
+('No evidence of mitosis is identified.', 'Atypical mitotic figures are readily apparent.'), Score: 0.7593
+('Small, round, blue cells.', 'Large, irregular, atypical cells.'), Score: 0.7357
+('Uniform nuclei, typical ratio.', 'Atypical nuclei, high ratio.'), Score: 0.7288
+('No tumor cell nests identified.', 'Distinct tumor cell nests are visible.'), Score: 0.7267
+('No evidence of angiolymphatic invasion.', 'Angiolymphatic invasion.'), Score: 0.7222
+('No evidence of invasion.', 'Evidence of invasion into surrounding tissues.'), Score: 0.7195
+('Lymphocytes with high nucleus-to-cytoplasm ratio and scant cytoplasm.', 'Large, atypical cells with abundant eosinophilic cytoplasm and prominent nucleoli.'), Score: 0.7174
+('No significant nuclear atypia.', 'Marked nuclear atypia with bizarre shapes and sizes.'), Score: 0.7099
+('Normal stromal cells.', 'Atypical stromal cells.'), Score: 0.7009
+('No hemorrhage.', 'Presence of hemorrhage within the tissue.'), Score: 0.6897
+('Normal cellular morphology and arrangement.', 'Evidence of atypical cellular features.'), Score: 0.6754
+('Normal immune cell infiltrate.', 'Increased or atypical immune cell infiltrate.'), Score: 0.6738
+('No tumor necrosis is observed.', 'Tumor necrosis with cellular debris is present.'), Score: 0.6691
+('Uniform cell size and shape.', 'Pleomorphic cell size and shape.'), Score: 0.6666
+('No evidence of granuloma formation.', 'Granuloma formation.'), Score: 0.6606
+('Minimal inflammation and sparse immune cells.', 'Significant inflammation with dense immune cell infiltration.'), Score: 0.6453
+('Nucleoli are not easily identified.', 'Large, distinct nucleoli are present.'), Score: 0.6363
+('No prominent nucleoli.', 'Prominent nucleoli.'), Score: 0.6342
+('Normal nuclear-cytoplasmic ratio.', 'Increased nuclear-cytoplasmic ratio.'), Score: 0.6340
+('No evidence of apoptosis.', 'Increased apoptosis or programmed cell death.'), Score: 0.6287
+('Normal lymphocytes with typical nuclei and cytoplasm.', 'Atypical cells with necrosis and cellular debris present.'), Score: 0.6234
+('Normal cell morphology.', 'Atypical cell morphology.'), Score: 0.6220
+('Low grade cells, sparse collagen.', 'High grade cells, abundant collagen.'), Score: 0.6174
+
+Iteration 32:
+('No necrosis or cellular debris observed.', 'Distinct tumor nests are clearly visible.'), Score: 0.8972
+('No nuclear atypia, normal stroma.', 'Tumor cell nests, atypical stroma.'), Score: 0.8970
+('No cellular atypia is present.', 'Significant cellular atypia is observed.'), Score: 0.8834
+('Cells exhibit uniform size and shape; no necrosis is present.', 'Cells show pleomorphism; tumor nests are clearly visible.'), Score: 0.8812
+('Absence of mitotic figures.', 'Frequent mitotic figures, including atypical forms.'), Score: 0.8746
+('No evidence of atypical cells.', 'Atypical cells forming tumor nests are seen.'), Score: 0.8652
+('No evidence of hemorrhage.', 'Tumor cell nests detected.'), Score: 0.8478
+('Benign cells, normal immune infiltrate.', 'Malignant cells, active immune infiltrate.'), Score: 0.8456
+('No tumor nests identified.', 'Distinct tumor nests present.'), Score: 0.8395
+('Normal lymphoid follicles with distinct mantle and germinal center zones.', 'Disrupted follicular architecture with loss of polarity and irregular germinal centers.'), Score: 0.8360
+('No evidence of tumor cell nests.', 'Tumor cell nests.'), Score: 0.8296
+('Scant stromal fibrosis with delicate collagen fibers.', 'Dense stromal fibrosis with thick collagen bundles and increased cellularity.'), Score: 0.8296
+('Absence of atypical cells.', 'Presence of atypical cells.'), Score: 0.8291
+('No evidence of perineural invasion.', 'Perineural invasion.'), Score: 0.8267
+('No nuclear atypia observed.', 'Distinct tumor cell nests are present.'), Score: 0.8165
+('No atypical cells or nuclear changes identified.', 'Atypical cells and nuclear changes are present.'), Score: 0.8120
+('Uniform nuclear staining.', 'Heterogeneous nuclear staining.'), Score: 0.7957
+('Absence of giant cells.', 'Presence of multinucleated giant cells.'), Score: 0.7809
+('Normal cells, low mitotic rate.', 'Atypical cells, high mitotic rate.'), Score: 0.7806
+('No evidence of necrosis.', 'Presence of tumor necrosis with karyorrhexis and cellular debris.'), Score: 0.7626
+('No evidence of mitosis is identified.', 'Atypical mitotic figures are readily apparent.'), Score: 0.7593
+('Small, round, blue cells.', 'Large, irregular, atypical cells.'), Score: 0.7357
+('Uniform nuclei, typical ratio.', 'Atypical nuclei, high ratio.'), Score: 0.7288
+('No tumor cell nests identified.', 'Distinct tumor cell nests are visible.'), Score: 0.7267
+('No evidence of angiolymphatic invasion.', 'Angiolymphatic invasion.'), Score: 0.7222
+('No evidence of invasion.', 'Evidence of invasion into surrounding tissues.'), Score: 0.7195
+('Lymphocytes with high nucleus-to-cytoplasm ratio and scant cytoplasm.', 'Large, atypical cells with abundant eosinophilic cytoplasm and prominent nucleoli.'), Score: 0.7174
+('No significant nuclear atypia.', 'Marked nuclear atypia with bizarre shapes and sizes.'), Score: 0.7099
+('Normal stromal cells.', 'Atypical stromal cells.'), Score: 0.7009
+('No hemorrhage.', 'Presence of hemorrhage within the tissue.'), Score: 0.6897
+('Normal cellular morphology and arrangement.', 'Evidence of atypical cellular features.'), Score: 0.6754
+('Normal immune cell infiltrate.', 'Increased or atypical immune cell infiltrate.'), Score: 0.6738
+('No tumor necrosis is observed.', 'Tumor necrosis with cellular debris is present.'), Score: 0.6691
+('Uniform cell size and shape.', 'Pleomorphic cell size and shape.'), Score: 0.6666
+('No evidence of granuloma formation.', 'Granuloma formation.'), Score: 0.6606
+('Minimal inflammation and sparse immune cells.', 'Significant inflammation with dense immune cell infiltration.'), Score: 0.6453
+('Nucleoli are not easily identified.', 'Large, distinct nucleoli are present.'), Score: 0.6363
+('No prominent nucleoli.', 'Prominent nucleoli.'), Score: 0.6342
+('Normal nuclear-cytoplasmic ratio.', 'Increased nuclear-cytoplasmic ratio.'), Score: 0.6340
+('No evidence of apoptosis.', 'Increased apoptosis or programmed cell death.'), Score: 0.6287
+('Normal lymphocytes with typical nuclei and cytoplasm.', 'Atypical cells with necrosis and cellular debris present.'), Score: 0.6234
+('Normal cell morphology.', 'Atypical cell morphology.'), Score: 0.6220
+('Low grade cells, sparse collagen.', 'High grade cells, abundant collagen.'), Score: 0.6174
+
+Iteration 33:
+('No necrosis or cellular debris observed.', 'Distinct tumor nests are clearly visible.'), Score: 0.8972
+('No nuclear atypia, normal stroma.', 'Tumor cell nests, atypical stroma.'), Score: 0.8970
+('No cellular atypia is present.', 'Significant cellular atypia is observed.'), Score: 0.8834
+('Cells exhibit uniform size and shape; no necrosis is present.', 'Cells show pleomorphism; tumor nests are clearly visible.'), Score: 0.8812
+('Absence of mitotic figures.', 'Frequent mitotic figures, including atypical forms.'), Score: 0.8746
+('No evidence of atypical cells.', 'Atypical cells forming tumor nests are seen.'), Score: 0.8652
+('Minimal immune response, normal stromal tissue.', 'Strong immune response, abnormal stromal tissue.'), Score: 0.8534
+('No evidence of hemorrhage.', 'Tumor cell nests detected.'), Score: 0.8478
+('Benign cells, normal immune infiltrate.', 'Malignant cells, active immune infiltrate.'), Score: 0.8456
+('No tumor nests identified.', 'Distinct tumor nests present.'), Score: 0.8395
+('Normal lymphoid follicles with distinct mantle and germinal center zones.', 'Disrupted follicular architecture with loss of polarity and irregular germinal centers.'), Score: 0.8360
+('No evidence of tumor cell nests.', 'Tumor cell nests.'), Score: 0.8296
+('Scant stromal fibrosis with delicate collagen fibers.', 'Dense stromal fibrosis with thick collagen bundles and increased cellularity.'), Score: 0.8296
+('Absence of atypical cells.', 'Presence of atypical cells.'), Score: 0.8291
+('No evidence of perineural invasion.', 'Perineural invasion.'), Score: 0.8267
+('No nuclear atypia observed.', 'Distinct tumor cell nests are present.'), Score: 0.8165
+('No atypical cells or nuclear changes identified.', 'Atypical cells and nuclear changes are present.'), Score: 0.8120
+('Uniform nuclear staining.', 'Heterogeneous nuclear staining.'), Score: 0.7957
+('Absence of giant cells.', 'Presence of multinucleated giant cells.'), Score: 0.7809
+('Normal cells, low mitotic rate.', 'Atypical cells, high mitotic rate.'), Score: 0.7806
+('No evidence of necrosis.', 'Presence of tumor necrosis with karyorrhexis and cellular debris.'), Score: 0.7626
+('No evidence of mitosis is identified.', 'Atypical mitotic figures are readily apparent.'), Score: 0.7593
+('Small, round, blue cells.', 'Large, irregular, atypical cells.'), Score: 0.7357
+('Uniform nuclei, typical ratio.', 'Atypical nuclei, high ratio.'), Score: 0.7288
+('No tumor cell nests identified.', 'Distinct tumor cell nests are visible.'), Score: 0.7267
+('No evidence of angiolymphatic invasion.', 'Angiolymphatic invasion.'), Score: 0.7222
+('No evidence of invasion.', 'Evidence of invasion into surrounding tissues.'), Score: 0.7195
+('Lymphocytes with high nucleus-to-cytoplasm ratio and scant cytoplasm.', 'Large, atypical cells with abundant eosinophilic cytoplasm and prominent nucleoli.'), Score: 0.7174
+('No significant nuclear atypia.', 'Marked nuclear atypia with bizarre shapes and sizes.'), Score: 0.7099
+('Normal stromal cells.', 'Atypical stromal cells.'), Score: 0.7009
+('No hemorrhage.', 'Presence of hemorrhage within the tissue.'), Score: 0.6897
+('Normal cellular morphology and arrangement.', 'Evidence of atypical cellular features.'), Score: 0.6754
+('Normal immune cell infiltrate.', 'Increased or atypical immune cell infiltrate.'), Score: 0.6738
+('No tumor necrosis is observed.', 'Tumor necrosis with cellular debris is present.'), Score: 0.6691
+('Uniform cell size and shape.', 'Pleomorphic cell size and shape.'), Score: 0.6666
+('No evidence of granuloma formation.', 'Granuloma formation.'), Score: 0.6606
+('Minimal inflammation and sparse immune cells.', 'Significant inflammation with dense immune cell infiltration.'), Score: 0.6453
+('Nucleoli are not easily identified.', 'Large, distinct nucleoli are present.'), Score: 0.6363
+('No prominent nucleoli.', 'Prominent nucleoli.'), Score: 0.6342
+('Normal nuclear-cytoplasmic ratio.', 'Increased nuclear-cytoplasmic ratio.'), Score: 0.6340
+('No evidence of apoptosis.', 'Increased apoptosis or programmed cell death.'), Score: 0.6287
+('Normal lymphocytes with typical nuclei and cytoplasm.', 'Atypical cells with necrosis and cellular debris present.'), Score: 0.6234
+('Normal cell morphology.', 'Atypical cell morphology.'), Score: 0.6220
+('Low grade cells, sparse collagen.', 'High grade cells, abundant collagen.'), Score: 0.6174
+
+Iteration 34:
+('No necrosis or cellular debris observed.', 'Distinct tumor nests are clearly visible.'), Score: 0.8972
+('No nuclear atypia, normal stroma.', 'Tumor cell nests, atypical stroma.'), Score: 0.8970
+('No cellular atypia is present.', 'Significant cellular atypia is observed.'), Score: 0.8834
+('Cells exhibit uniform size and shape; no necrosis is present.', 'Cells show pleomorphism; tumor nests are clearly visible.'), Score: 0.8812
+('No tumor necrosis is evident.', 'Tumor necrosis with atypical mitosis present.'), Score: 0.8779
+('Absence of mitotic figures.', 'Frequent mitotic figures, including atypical forms.'), Score: 0.8746
+('No evidence of atypical cells.', 'Atypical cells forming tumor nests are seen.'), Score: 0.8652
+('Minimal immune response, normal stromal tissue.', 'Strong immune response, abnormal stromal tissue.'), Score: 0.8534
+('No evidence of hemorrhage.', 'Tumor cell nests detected.'), Score: 0.8478
+('Benign cells, normal immune infiltrate.', 'Malignant cells, active immune infiltrate.'), Score: 0.8456
+('No tumor nests identified.', 'Distinct tumor nests present.'), Score: 0.8395
+('Normal lymphoid follicles with distinct mantle and germinal center zones.', 'Disrupted follicular architecture with loss of polarity and irregular germinal centers.'), Score: 0.8360
+('No evidence of tumor cell nests.', 'Tumor cell nests.'), Score: 0.8296
+('Scant stromal fibrosis with delicate collagen fibers.', 'Dense stromal fibrosis with thick collagen bundles and increased cellularity.'), Score: 0.8296
+('Absence of atypical cells.', 'Presence of atypical cells.'), Score: 0.8291
+('No evidence of perineural invasion.', 'Perineural invasion.'), Score: 0.8267
+('No nuclear atypia observed.', 'Distinct tumor cell nests are present.'), Score: 0.8165
+('No atypical cells or nuclear changes identified.', 'Atypical cells and nuclear changes are present.'), Score: 0.8120
+('Uniform nuclear staining.', 'Heterogeneous nuclear staining.'), Score: 0.7957
+('Absence of giant cells.', 'Presence of multinucleated giant cells.'), Score: 0.7809
+('Normal cells, low mitotic rate.', 'Atypical cells, high mitotic rate.'), Score: 0.7806
+('No evidence of necrosis.', 'Presence of tumor necrosis with karyorrhexis and cellular debris.'), Score: 0.7626
+('No evidence of mitosis is identified.', 'Atypical mitotic figures are readily apparent.'), Score: 0.7593
+('Small, round, blue cells.', 'Large, irregular, atypical cells.'), Score: 0.7357
+('Uniform nuclei, typical ratio.', 'Atypical nuclei, high ratio.'), Score: 0.7288
+('No tumor cell nests identified.', 'Distinct tumor cell nests are visible.'), Score: 0.7267
+('No evidence of angiolymphatic invasion.', 'Angiolymphatic invasion.'), Score: 0.7222
+('No evidence of invasion.', 'Evidence of invasion into surrounding tissues.'), Score: 0.7195
+('Lymphocytes with high nucleus-to-cytoplasm ratio and scant cytoplasm.', 'Large, atypical cells with abundant eosinophilic cytoplasm and prominent nucleoli.'), Score: 0.7174
+('No significant nuclear atypia.', 'Marked nuclear atypia with bizarre shapes and sizes.'), Score: 0.7099
+('Normal stromal cells.', 'Atypical stromal cells.'), Score: 0.7009
+('No hemorrhage.', 'Presence of hemorrhage within the tissue.'), Score: 0.6897
+('Normal cellular morphology and arrangement.', 'Evidence of atypical cellular features.'), Score: 0.6754
+('Normal immune cell infiltrate.', 'Increased or atypical immune cell infiltrate.'), Score: 0.6738
+('No tumor necrosis is observed.', 'Tumor necrosis with cellular debris is present.'), Score: 0.6691
+('Uniform cell size and shape.', 'Pleomorphic cell size and shape.'), Score: 0.6666
+('No evidence of granuloma formation.', 'Granuloma formation.'), Score: 0.6606
+('Minimal inflammation and sparse immune cells.', 'Significant inflammation with dense immune cell infiltration.'), Score: 0.6453
+('Nucleoli are not easily identified.', 'Large, distinct nucleoli are present.'), Score: 0.6363
+('No prominent nucleoli.', 'Prominent nucleoli.'), Score: 0.6342
+('Normal nuclear-cytoplasmic ratio.', 'Increased nuclear-cytoplasmic ratio.'), Score: 0.6340
+('No evidence of apoptosis.', 'Increased apoptosis or programmed cell death.'), Score: 0.6287
+('Normal lymphocytes with typical nuclei and cytoplasm.', 'Atypical cells with necrosis and cellular debris present.'), Score: 0.6234
+('Normal cell morphology.', 'Atypical cell morphology.'), Score: 0.6220
+('Low grade cells, sparse collagen.', 'High grade cells, abundant collagen.'), Score: 0.6174
+
+Iteration 35:
+('No necrosis or cellular debris observed.', 'Distinct tumor nests are clearly visible.'), Score: 0.8972
+('No nuclear atypia, normal stroma.', 'Tumor cell nests, atypical stroma.'), Score: 0.8970
+('No cellular atypia is present.', 'Significant cellular atypia is observed.'), Score: 0.8834
+('Cells exhibit uniform size and shape; no necrosis is present.', 'Cells show pleomorphism; tumor nests are clearly visible.'), Score: 0.8812
+('No tumor necrosis is evident.', 'Tumor necrosis with atypical mitosis present.'), Score: 0.8779
+('Absence of mitotic figures.', 'Frequent mitotic figures, including atypical forms.'), Score: 0.8746
+('No evidence of atypical cells.', 'Atypical cells forming tumor nests are seen.'), Score: 0.8652
+('Minimal immune response, normal stromal tissue.', 'Strong immune response, abnormal stromal tissue.'), Score: 0.8534
+('No evidence of hemorrhage.', 'Tumor cell nests detected.'), Score: 0.8478
+('Benign cells, normal immune infiltrate.', 'Malignant cells, active immune infiltrate.'), Score: 0.8456
+('No tumor nests identified.', 'Distinct tumor nests present.'), Score: 0.8395
+('Normal lymphoid follicles with distinct mantle and germinal center zones.', 'Disrupted follicular architecture with loss of polarity and irregular germinal centers.'), Score: 0.8360
+('No evidence of tumor cell nests.', 'Tumor cell nests.'), Score: 0.8296
+('Scant stromal fibrosis with delicate collagen fibers.', 'Dense stromal fibrosis with thick collagen bundles and increased cellularity.'), Score: 0.8296
+('Absence of atypical cells.', 'Presence of atypical cells.'), Score: 0.8291
+('No evidence of perineural invasion.', 'Perineural invasion.'), Score: 0.8267
+('No nuclear atypia observed.', 'Distinct tumor cell nests are present.'), Score: 0.8165
+('No atypical cells or nuclear changes identified.', 'Atypical cells and nuclear changes are present.'), Score: 0.8120
+('Uniform nuclear staining.', 'Heterogeneous nuclear staining.'), Score: 0.7957
+('Absence of giant cells.', 'Presence of multinucleated giant cells.'), Score: 0.7809
+('Normal cells, low mitotic rate.', 'Atypical cells, high mitotic rate.'), Score: 0.7806
+('No evidence of necrosis.', 'Presence of tumor necrosis with karyorrhexis and cellular debris.'), Score: 0.7626
+('No evidence of mitosis is identified.', 'Atypical mitotic figures are readily apparent.'), Score: 0.7593
+('Small, round, blue cells.', 'Large, irregular, atypical cells.'), Score: 0.7357
+('Uniform nuclei, typical ratio.', 'Atypical nuclei, high ratio.'), Score: 0.7288
+('No tumor cell nests identified.', 'Distinct tumor cell nests are visible.'), Score: 0.7267
+('No evidence of angiolymphatic invasion.', 'Angiolymphatic invasion.'), Score: 0.7222
+('No evidence of invasion.', 'Evidence of invasion into surrounding tissues.'), Score: 0.7195
+('Lymphocytes with high nucleus-to-cytoplasm ratio and scant cytoplasm.', 'Large, atypical cells with abundant eosinophilic cytoplasm and prominent nucleoli.'), Score: 0.7174
+('No significant nuclear atypia.', 'Marked nuclear atypia with bizarre shapes and sizes.'), Score: 0.7099
+('Normal stromal cells.', 'Atypical stromal cells.'), Score: 0.7009
+('No hemorrhage.', 'Presence of hemorrhage within the tissue.'), Score: 0.6897
+('Normal cellular morphology and arrangement.', 'Evidence of atypical cellular features.'), Score: 0.6754
+('Normal immune cell infiltrate.', 'Increased or atypical immune cell infiltrate.'), Score: 0.6738
+('No tumor necrosis is observed.', 'Tumor necrosis with cellular debris is present.'), Score: 0.6691
+('Uniform cell size and shape.', 'Pleomorphic cell size and shape.'), Score: 0.6666
+('No evidence of granuloma formation.', 'Granuloma formation.'), Score: 0.6606
+('Minimal inflammation and sparse immune cells.', 'Significant inflammation with dense immune cell infiltration.'), Score: 0.6453
+('Nucleoli are not easily identified.', 'Large, distinct nucleoli are present.'), Score: 0.6363
+('No prominent nucleoli.', 'Prominent nucleoli.'), Score: 0.6342
+('Normal nuclear-cytoplasmic ratio.', 'Increased nuclear-cytoplasmic ratio.'), Score: 0.6340
+('No evidence of apoptosis.', 'Increased apoptosis or programmed cell death.'), Score: 0.6287
+('Normal lymphocytes with typical nuclei and cytoplasm.', 'Atypical cells with necrosis and cellular debris present.'), Score: 0.6234
+('Normal cell morphology.', 'Atypical cell morphology.'), Score: 0.6220
+('Low grade cells, sparse collagen.', 'High grade cells, abundant collagen.'), Score: 0.6174
+
+Iteration 36:
+('No necrosis or cellular debris observed.', 'Distinct tumor nests are clearly visible.'), Score: 0.8972
+('No nuclear atypia, normal stroma.', 'Tumor cell nests, atypical stroma.'), Score: 0.8970
+('Uniform nuclear staining, no tumor nests identified.', 'Heterogeneous nuclear staining, tumor cell nests visible.'), Score: 0.8954
+('No cellular atypia is present.', 'Significant cellular atypia is observed.'), Score: 0.8834
+('Cells exhibit uniform size and shape; no necrosis is present.', 'Cells show pleomorphism; tumor nests are clearly visible.'), Score: 0.8812
+('No tumor necrosis is evident.', 'Tumor necrosis with atypical mitosis present.'), Score: 0.8779
+('Absence of mitotic figures.', 'Frequent mitotic figures, including atypical forms.'), Score: 0.8746
+('No evidence of atypical cells.', 'Atypical cells forming tumor nests are seen.'), Score: 0.8652
+('Minimal immune response, normal stromal tissue.', 'Strong immune response, abnormal stromal tissue.'), Score: 0.8534
+('No evidence of hemorrhage.', 'Tumor cell nests detected.'), Score: 0.8478
+('Benign cells, normal immune infiltrate.', 'Malignant cells, active immune infiltrate.'), Score: 0.8456
+('No tumor nests identified.', 'Distinct tumor nests present.'), Score: 0.8395
+('Normal lymphoid follicles with distinct mantle and germinal center zones.', 'Disrupted follicular architecture with loss of polarity and irregular germinal centers.'), Score: 0.8360
+('No evidence of tumor cell nests.', 'Tumor cell nests.'), Score: 0.8296
+('Scant stromal fibrosis with delicate collagen fibers.', 'Dense stromal fibrosis with thick collagen bundles and increased cellularity.'), Score: 0.8296
+('Absence of atypical cells.', 'Presence of atypical cells.'), Score: 0.8291
+('No evidence of perineural invasion.', 'Perineural invasion.'), Score: 0.8267
+('No nuclear atypia observed.', 'Distinct tumor cell nests are present.'), Score: 0.8165
+('No atypical cells or nuclear changes identified.', 'Atypical cells and nuclear changes are present.'), Score: 0.8120
+('Uniform nuclear staining.', 'Heterogeneous nuclear staining.'), Score: 0.7957
+('Absence of giant cells.', 'Presence of multinucleated giant cells.'), Score: 0.7809
+('Normal cells, low mitotic rate.', 'Atypical cells, high mitotic rate.'), Score: 0.7806
+('No evidence of necrosis.', 'Presence of tumor necrosis with karyorrhexis and cellular debris.'), Score: 0.7626
+('No evidence of mitosis is identified.', 'Atypical mitotic figures are readily apparent.'), Score: 0.7593
+('Small, round, blue cells.', 'Large, irregular, atypical cells.'), Score: 0.7357
+('Uniform nuclei, typical ratio.', 'Atypical nuclei, high ratio.'), Score: 0.7288
+('No tumor cell nests identified.', 'Distinct tumor cell nests are visible.'), Score: 0.7267
+('No evidence of angiolymphatic invasion.', 'Angiolymphatic invasion.'), Score: 0.7222
+('No evidence of invasion.', 'Evidence of invasion into surrounding tissues.'), Score: 0.7195
+('Lymphocytes with high nucleus-to-cytoplasm ratio and scant cytoplasm.', 'Large, atypical cells with abundant eosinophilic cytoplasm and prominent nucleoli.'), Score: 0.7174
+('No significant nuclear atypia.', 'Marked nuclear atypia with bizarre shapes and sizes.'), Score: 0.7099
+('Normal stromal cells.', 'Atypical stromal cells.'), Score: 0.7009
+('No hemorrhage.', 'Presence of hemorrhage within the tissue.'), Score: 0.6897
+('Normal cellular morphology and arrangement.', 'Evidence of atypical cellular features.'), Score: 0.6754
+('Normal immune cell infiltrate.', 'Increased or atypical immune cell infiltrate.'), Score: 0.6738
+('No tumor necrosis is observed.', 'Tumor necrosis with cellular debris is present.'), Score: 0.6691
+('Uniform cell size and shape.', 'Pleomorphic cell size and shape.'), Score: 0.6666
+('No evidence of granuloma formation.', 'Granuloma formation.'), Score: 0.6606
+('Minimal inflammation and sparse immune cells.', 'Significant inflammation with dense immune cell infiltration.'), Score: 0.6453
+('Nucleoli are not easily identified.', 'Large, distinct nucleoli are present.'), Score: 0.6363
+('No prominent nucleoli.', 'Prominent nucleoli.'), Score: 0.6342
+('Normal nuclear-cytoplasmic ratio.', 'Increased nuclear-cytoplasmic ratio.'), Score: 0.6340
+('No evidence of apoptosis.', 'Increased apoptosis or programmed cell death.'), Score: 0.6287
+('Normal lymphocytes with typical nuclei and cytoplasm.', 'Atypical cells with necrosis and cellular debris present.'), Score: 0.6234
+('Normal cell morphology.', 'Atypical cell morphology.'), Score: 0.6220
+('Low grade cells, sparse collagen.', 'High grade cells, abundant collagen.'), Score: 0.6174
+
+Iteration 37:
+('No necrosis or cellular debris observed.', 'Distinct tumor nests are clearly visible.'), Score: 0.8972
+('No nuclear atypia, normal stroma.', 'Tumor cell nests, atypical stroma.'), Score: 0.8970
+('Uniform nuclear staining, no tumor nests identified.', 'Heterogeneous nuclear staining, tumor cell nests visible.'), Score: 0.8954
+('No cellular atypia is present.', 'Significant cellular atypia is observed.'), Score: 0.8834
+('Cells exhibit uniform size and shape; no necrosis is present.', 'Cells show pleomorphism; tumor nests are clearly visible.'), Score: 0.8812
+('No tumor necrosis is evident.', 'Tumor necrosis with atypical mitosis present.'), Score: 0.8779
+('Absence of mitotic figures.', 'Frequent mitotic figures, including atypical forms.'), Score: 0.8746
+('No evidence of atypical cells.', 'Atypical cells forming tumor nests are seen.'), Score: 0.8652
+('Minimal immune response, normal stromal tissue.', 'Strong immune response, abnormal stromal tissue.'), Score: 0.8534
+('No evidence of hemorrhage.', 'Tumor cell nests detected.'), Score: 0.8478
+('Benign cells, normal immune infiltrate.', 'Malignant cells, active immune infiltrate.'), Score: 0.8456
+('No tumor nests identified.', 'Distinct tumor nests present.'), Score: 0.8395
+('Normal lymphoid follicles with distinct mantle and germinal center zones.', 'Disrupted follicular architecture with loss of polarity and irregular germinal centers.'), Score: 0.8360
+('Scant stromal fibrosis with delicate collagen fibers.', 'Dense stromal fibrosis with thick collagen bundles and increased cellularity.'), Score: 0.8296
+('No evidence of tumor cell nests.', 'Tumor cell nests.'), Score: 0.8296
+('Absence of atypical cells.', 'Presence of atypical cells.'), Score: 0.8291
+('No evidence of perineural invasion.', 'Perineural invasion.'), Score: 0.8267
+('No nuclear atypia observed.', 'Distinct tumor cell nests are present.'), Score: 0.8165
+('No atypical cells or nuclear changes identified.', 'Atypical cells and nuclear changes are present.'), Score: 0.8120
+('Uniform nuclear staining.', 'Heterogeneous nuclear staining.'), Score: 0.7957
+('Absence of giant cells.', 'Presence of multinucleated giant cells.'), Score: 0.7809
+('Normal cells, low mitotic rate.', 'Atypical cells, high mitotic rate.'), Score: 0.7806
+('No evidence of necrosis.', 'Presence of tumor necrosis with karyorrhexis and cellular debris.'), Score: 0.7626
+('No evidence of mitosis is identified.', 'Atypical mitotic figures are readily apparent.'), Score: 0.7593
+('Small, round, blue cells.', 'Large, irregular, atypical cells.'), Score: 0.7357
+('Uniform nuclei, typical ratio.', 'Atypical nuclei, high ratio.'), Score: 0.7288
+('No tumor cell nests identified.', 'Distinct tumor cell nests are visible.'), Score: 0.7267
+('No evidence of angiolymphatic invasion.', 'Angiolymphatic invasion.'), Score: 0.7222
+('No evidence of invasion.', 'Evidence of invasion into surrounding tissues.'), Score: 0.7195
+('Lymphocytes with high nucleus-to-cytoplasm ratio and scant cytoplasm.', 'Large, atypical cells with abundant eosinophilic cytoplasm and prominent nucleoli.'), Score: 0.7174
+('No significant nuclear atypia.', 'Marked nuclear atypia with bizarre shapes and sizes.'), Score: 0.7099
+('Normal stromal cells.', 'Atypical stromal cells.'), Score: 0.7009
+('No hemorrhage.', 'Presence of hemorrhage within the tissue.'), Score: 0.6897
+('Normal cellular morphology and arrangement.', 'Evidence of atypical cellular features.'), Score: 0.6754
+('Normal immune cell infiltrate.', 'Increased or atypical immune cell infiltrate.'), Score: 0.6738
+('Normal cells with typical nuclei and cytoplasm.', 'Atypical cells with enlarged nuclei and irregular cytoplasm.'), Score: 0.6738
+('No tumor necrosis is observed.', 'Tumor necrosis with cellular debris is present.'), Score: 0.6691
+('Uniform cell size and shape.', 'Pleomorphic cell size and shape.'), Score: 0.6666
+('No evidence of granuloma formation.', 'Granuloma formation.'), Score: 0.6606
+('Minimal inflammation and sparse immune cells.', 'Significant inflammation with dense immune cell infiltration.'), Score: 0.6453
+('Nucleoli are not easily identified.', 'Large, distinct nucleoli are present.'), Score: 0.6363
+('No prominent nucleoli.', 'Prominent nucleoli.'), Score: 0.6342
+('Normal nuclear-cytoplasmic ratio.', 'Increased nuclear-cytoplasmic ratio.'), Score: 0.6340
+('No evidence of apoptosis.', 'Increased apoptosis or programmed cell death.'), Score: 0.6287
+('Normal lymphocytes with typical nuclei and cytoplasm.', 'Atypical cells with necrosis and cellular debris present.'), Score: 0.6234
+('Normal cell morphology.', 'Atypical cell morphology.'), Score: 0.6220
+('Low grade cells, sparse collagen.', 'High grade cells, abundant collagen.'), Score: 0.6174
+
+Iteration 38:
+('No necrosis or cellular debris observed.', 'Distinct tumor nests are clearly visible.'), Score: 0.8972
+('No nuclear atypia, normal stroma.', 'Tumor cell nests, atypical stroma.'), Score: 0.8970
+('Uniform nuclear staining, no tumor nests identified.', 'Heterogeneous nuclear staining, tumor cell nests visible.'), Score: 0.8954
+('No cellular atypia is present.', 'Significant cellular atypia is observed.'), Score: 0.8834
+('Cells exhibit uniform size and shape; no necrosis is present.', 'Cells show pleomorphism; tumor nests are clearly visible.'), Score: 0.8812
+('No tumor necrosis is evident.', 'Tumor necrosis with atypical mitosis present.'), Score: 0.8779
+('Absence of mitotic figures.', 'Frequent mitotic figures, including atypical forms.'), Score: 0.8746
+('No evidence of atypical cells.', 'Atypical cells forming tumor nests are seen.'), Score: 0.8652
+('Minimal immune response, normal stromal tissue.', 'Strong immune response, abnormal stromal tissue.'), Score: 0.8534
+('No evidence of hemorrhage.', 'Tumor cell nests detected.'), Score: 0.8478
+('Benign cells, normal immune infiltrate.', 'Malignant cells, active immune infiltrate.'), Score: 0.8456
+('No tumor nests identified.', 'Distinct tumor nests present.'), Score: 0.8395
+('Normal lymphoid follicles with distinct mantle and germinal center zones.', 'Disrupted follicular architecture with loss of polarity and irregular germinal centers.'), Score: 0.8360
+('No evidence of tumor cell nests.', 'Tumor cell nests.'), Score: 0.8296
+('Scant stromal fibrosis with delicate collagen fibers.', 'Dense stromal fibrosis with thick collagen bundles and increased cellularity.'), Score: 0.8296
+('Absence of atypical cells.', 'Presence of atypical cells.'), Score: 0.8291
+('No evidence of perineural invasion.', 'Perineural invasion.'), Score: 0.8267
+('No nuclear atypia observed.', 'Distinct tumor cell nests are present.'), Score: 0.8165
+('No atypical cells or nuclear changes identified.', 'Atypical cells and nuclear changes are present.'), Score: 0.8120
+('Uniform nuclear staining.', 'Heterogeneous nuclear staining.'), Score: 0.7957
+('Absence of giant cells.', 'Presence of multinucleated giant cells.'), Score: 0.7809
+('Normal cells, low mitotic rate.', 'Atypical cells, high mitotic rate.'), Score: 0.7806
+('No evidence of necrosis.', 'Presence of tumor necrosis with karyorrhexis and cellular debris.'), Score: 0.7626
+('No evidence of mitosis is identified.', 'Atypical mitotic figures are readily apparent.'), Score: 0.7593
+('Small, round, blue cells.', 'Large, irregular, atypical cells.'), Score: 0.7357
+('Uniform nuclei, typical ratio.', 'Atypical nuclei, high ratio.'), Score: 0.7288
+('No tumor cell nests identified.', 'Distinct tumor cell nests are visible.'), Score: 0.7267
+('No evidence of angiolymphatic invasion.', 'Angiolymphatic invasion.'), Score: 0.7222
+('No evidence of invasion.', 'Evidence of invasion into surrounding tissues.'), Score: 0.7195
+('Lymphocytes with high nucleus-to-cytoplasm ratio and scant cytoplasm.', 'Large, atypical cells with abundant eosinophilic cytoplasm and prominent nucleoli.'), Score: 0.7174
+('No significant nuclear atypia.', 'Marked nuclear atypia with bizarre shapes and sizes.'), Score: 0.7099
+('Normal stromal cells.', 'Atypical stromal cells.'), Score: 0.7009
+('No hemorrhage.', 'Presence of hemorrhage within the tissue.'), Score: 0.6897
+('Normal cellular morphology and arrangement.', 'Evidence of atypical cellular features.'), Score: 0.6754
+('Normal immune cell infiltrate.', 'Increased or atypical immune cell infiltrate.'), Score: 0.6738
+('Normal cells with typical nuclei and cytoplasm.', 'Atypical cells with enlarged nuclei and irregular cytoplasm.'), Score: 0.6738
+('No tumor necrosis is observed.', 'Tumor necrosis with cellular debris is present.'), Score: 0.6691
+('Uniform cell size and shape.', 'Pleomorphic cell size and shape.'), Score: 0.6666
+('No evidence of granuloma formation.', 'Granuloma formation.'), Score: 0.6606
+('Minimal inflammation and sparse immune cells.', 'Significant inflammation with dense immune cell infiltration.'), Score: 0.6453
+('Nucleoli are not easily identified.', 'Large, distinct nucleoli are present.'), Score: 0.6363
+('No prominent nucleoli.', 'Prominent nucleoli.'), Score: 0.6342
+('Normal nuclear-cytoplasmic ratio.', 'Increased nuclear-cytoplasmic ratio.'), Score: 0.6340
+('No evidence of apoptosis.', 'Increased apoptosis or programmed cell death.'), Score: 0.6287
+('Normal lymphocytes with typical nuclei and cytoplasm.', 'Atypical cells with necrosis and cellular debris present.'), Score: 0.6234
+('Normal cell morphology.', 'Atypical cell morphology.'), Score: 0.6220
+('Low grade cells, sparse collagen.', 'High grade cells, abundant collagen.'), Score: 0.6174
+('No tumor necrosis is visible.', 'Tumor cells are clearly present.'), Score: 0.6026
+
+Iteration 39:
+('No necrosis or cellular debris observed.', 'Distinct tumor nests are clearly visible.'), Score: 0.8972
+('No nuclear atypia, normal stroma.', 'Tumor cell nests, atypical stroma.'), Score: 0.8970
+('Uniform nuclear staining, no tumor nests identified.', 'Heterogeneous nuclear staining, tumor cell nests visible.'), Score: 0.8954
+('No cellular atypia is present.', 'Significant cellular atypia is observed.'), Score: 0.8834
+('Cells exhibit uniform size and shape; no necrosis is present.', 'Cells show pleomorphism; tumor nests are clearly visible.'), Score: 0.8812
+('No tumor necrosis is evident.', 'Tumor necrosis with atypical mitosis present.'), Score: 0.8779
+('Absence of mitotic figures.', 'Frequent mitotic figures, including atypical forms.'), Score: 0.8746
+('No evidence of atypical cells.', 'Atypical cells forming tumor nests are seen.'), Score: 0.8652
+('Minimal immune response, normal stromal tissue.', 'Strong immune response, abnormal stromal tissue.'), Score: 0.8534
+('No tumor necrosis or mitotic figures are identified.', 'Atypical mitotic figures and tumor necrosis are present.'), Score: 0.8486
+('No evidence of hemorrhage.', 'Tumor cell nests detected.'), Score: 0.8478
+('Benign cells, normal immune infiltrate.', 'Malignant cells, active immune infiltrate.'), Score: 0.8456
+('No tumor nests identified.', 'Distinct tumor nests present.'), Score: 0.8395
+('Normal lymphoid follicles with distinct mantle and germinal center zones.', 'Disrupted follicular architecture with loss of polarity and irregular germinal centers.'), Score: 0.8360
+('No evidence of tumor cell nests.', 'Tumor cell nests.'), Score: 0.8296
+('Scant stromal fibrosis with delicate collagen fibers.', 'Dense stromal fibrosis with thick collagen bundles and increased cellularity.'), Score: 0.8296
+('Absence of atypical cells.', 'Presence of atypical cells.'), Score: 0.8291
+('No evidence of perineural invasion.', 'Perineural invasion.'), Score: 0.8267
+('No nuclear atypia observed.', 'Distinct tumor cell nests are present.'), Score: 0.8165
+('No atypical cells or nuclear changes identified.', 'Atypical cells and nuclear changes are present.'), Score: 0.8120
+('Uniform nuclear staining.', 'Heterogeneous nuclear staining.'), Score: 0.7957
+('Absence of giant cells.', 'Presence of multinucleated giant cells.'), Score: 0.7809
+('Normal cells, low mitotic rate.', 'Atypical cells, high mitotic rate.'), Score: 0.7806
+('No evidence of necrosis.', 'Presence of tumor necrosis with karyorrhexis and cellular debris.'), Score: 0.7626
+('No evidence of mitosis is identified.', 'Atypical mitotic figures are readily apparent.'), Score: 0.7593
+('Small, round, blue cells.', 'Large, irregular, atypical cells.'), Score: 0.7357
+('Uniform nuclei, typical ratio.', 'Atypical nuclei, high ratio.'), Score: 0.7288
+('No tumor cell nests identified.', 'Distinct tumor cell nests are visible.'), Score: 0.7267
+('No evidence of angiolymphatic invasion.', 'Angiolymphatic invasion.'), Score: 0.7222
+('No evidence of invasion.', 'Evidence of invasion into surrounding tissues.'), Score: 0.7195
+('Lymphocytes with high nucleus-to-cytoplasm ratio and scant cytoplasm.', 'Large, atypical cells with abundant eosinophilic cytoplasm and prominent nucleoli.'), Score: 0.7174
+('No significant nuclear atypia.', 'Marked nuclear atypia with bizarre shapes and sizes.'), Score: 0.7099
+('Normal stromal cells.', 'Atypical stromal cells.'), Score: 0.7009
+('No hemorrhage.', 'Presence of hemorrhage within the tissue.'), Score: 0.6897
+('Normal cellular morphology and arrangement.', 'Evidence of atypical cellular features.'), Score: 0.6754
+('Normal immune cell infiltrate.', 'Increased or atypical immune cell infiltrate.'), Score: 0.6738
+('Normal cells with typical nuclei and cytoplasm.', 'Atypical cells with enlarged nuclei and irregular cytoplasm.'), Score: 0.6738
+('No tumor necrosis is observed.', 'Tumor necrosis with cellular debris is present.'), Score: 0.6691
+('Uniform cell size and shape.', 'Pleomorphic cell size and shape.'), Score: 0.6666
+('No evidence of granuloma formation.', 'Granuloma formation.'), Score: 0.6606
+('Minimal inflammation and sparse immune cells.', 'Significant inflammation with dense immune cell infiltration.'), Score: 0.6453
+('Nucleoli are not easily identified.', 'Large, distinct nucleoli are present.'), Score: 0.6363
+('No prominent nucleoli.', 'Prominent nucleoli.'), Score: 0.6342
+('Normal nuclear-cytoplasmic ratio.', 'Increased nuclear-cytoplasmic ratio.'), Score: 0.6340
+('No evidence of apoptosis.', 'Increased apoptosis or programmed cell death.'), Score: 0.6287
+('Normal lymphocytes with typical nuclei and cytoplasm.', 'Atypical cells with necrosis and cellular debris present.'), Score: 0.6234
+('Normal cell morphology.', 'Atypical cell morphology.'), Score: 0.6220
+('Low grade cells, sparse collagen.', 'High grade cells, abundant collagen.'), Score: 0.6174
+('No tumor necrosis is visible.', 'Tumor cells are clearly present.'), Score: 0.6026
+
+Iteration 40:
+('No necrosis or cellular debris observed.', 'Distinct tumor nests are clearly visible.'), Score: 0.8972
+('No nuclear atypia, normal stroma.', 'Tumor cell nests, atypical stroma.'), Score: 0.8970
+('Uniform nuclear staining, no tumor nests identified.', 'Heterogeneous nuclear staining, tumor cell nests visible.'), Score: 0.8954
+('No cellular atypia is present.', 'Significant cellular atypia is observed.'), Score: 0.8834
+('Cells exhibit uniform size and shape; no necrosis is present.', 'Cells show pleomorphism; tumor nests are clearly visible.'), Score: 0.8812
+('No tumor necrosis is evident.', 'Tumor necrosis with atypical mitosis present.'), Score: 0.8779
+('Absence of mitotic figures.', 'Frequent mitotic figures, including atypical forms.'), Score: 0.8746
+('No evidence of atypical cells.', 'Atypical cells forming tumor nests are seen.'), Score: 0.8652
+('Minimal immune response, normal stromal tissue.', 'Strong immune response, abnormal stromal tissue.'), Score: 0.8534
+('No tumor necrosis or mitotic figures are identified.', 'Atypical mitotic figures and tumor necrosis are present.'), Score: 0.8486
+('No evidence of hemorrhage.', 'Tumor cell nests detected.'), Score: 0.8478
+('Benign cells, normal immune infiltrate.', 'Malignant cells, active immune infiltrate.'), Score: 0.8456
+('No tumor nests identified.', 'Distinct tumor nests present.'), Score: 0.8395
+('Normal lymphoid follicles with distinct mantle and germinal center zones.', 'Disrupted follicular architecture with loss of polarity and irregular germinal centers.'), Score: 0.8360
+('No evidence of tumor cell nests.', 'Tumor cell nests.'), Score: 0.8296
+('Scant stromal fibrosis with delicate collagen fibers.', 'Dense stromal fibrosis with thick collagen bundles and increased cellularity.'), Score: 0.8296
+('Absence of atypical cells.', 'Presence of atypical cells.'), Score: 0.8291
+('No evidence of perineural invasion.', 'Perineural invasion.'), Score: 0.8267
+('No nuclear atypia observed.', 'Distinct tumor cell nests are present.'), Score: 0.8165
+('No atypical cells or nuclear changes identified.', 'Atypical cells and nuclear changes are present.'), Score: 0.8120
+('Uniform nuclear staining.', 'Heterogeneous nuclear staining.'), Score: 0.7957
+('Absence of giant cells.', 'Presence of multinucleated giant cells.'), Score: 0.7809
+('Normal cells, low mitotic rate.', 'Atypical cells, high mitotic rate.'), Score: 0.7806
+('No atypical cells or vascular invasion seen.', 'Atypical cells and vascular invasion present.'), Score: 0.7683
+('No evidence of necrosis.', 'Presence of tumor necrosis with karyorrhexis and cellular debris.'), Score: 0.7626
+('No evidence of mitosis is identified.', 'Atypical mitotic figures are readily apparent.'), Score: 0.7593
+('Small, round, blue cells.', 'Large, irregular, atypical cells.'), Score: 0.7357
+('Uniform nuclei, typical ratio.', 'Atypical nuclei, high ratio.'), Score: 0.7288
+('No tumor cell nests identified.', 'Distinct tumor cell nests are visible.'), Score: 0.7267
+('No evidence of angiolymphatic invasion.', 'Angiolymphatic invasion.'), Score: 0.7222
+('No evidence of invasion.', 'Evidence of invasion into surrounding tissues.'), Score: 0.7195
+('Lymphocytes with high nucleus-to-cytoplasm ratio and scant cytoplasm.', 'Large, atypical cells with abundant eosinophilic cytoplasm and prominent nucleoli.'), Score: 0.7174
+('No significant nuclear atypia.', 'Marked nuclear atypia with bizarre shapes and sizes.'), Score: 0.7099
+('Normal stromal cells.', 'Atypical stromal cells.'), Score: 0.7009
+('No hemorrhage.', 'Presence of hemorrhage within the tissue.'), Score: 0.6897
+('Normal cellular morphology and arrangement.', 'Evidence of atypical cellular features.'), Score: 0.6754
+('Normal immune cell infiltrate.', 'Increased or atypical immune cell infiltrate.'), Score: 0.6738
+('Normal cells with typical nuclei and cytoplasm.', 'Atypical cells with enlarged nuclei and irregular cytoplasm.'), Score: 0.6738
+('No tumor necrosis is observed.', 'Tumor necrosis with cellular debris is present.'), Score: 0.6691
+('Uniform cell size and shape.', 'Pleomorphic cell size and shape.'), Score: 0.6666
+('No evidence of granuloma formation.', 'Granuloma formation.'), Score: 0.6606
+('Minimal inflammation and sparse immune cells.', 'Significant inflammation with dense immune cell infiltration.'), Score: 0.6453
+('Nucleoli are not easily identified.', 'Large, distinct nucleoli are present.'), Score: 0.6363
+('No prominent nucleoli.', 'Prominent nucleoli.'), Score: 0.6342
+('Normal nuclear-cytoplasmic ratio.', 'Increased nuclear-cytoplasmic ratio.'), Score: 0.6340
+('No evidence of apoptosis.', 'Increased apoptosis or programmed cell death.'), Score: 0.6287
+('Normal lymphocytes with typical nuclei and cytoplasm.', 'Atypical cells with necrosis and cellular debris present.'), Score: 0.6234
+('Normal cell morphology.', 'Atypical cell morphology.'), Score: 0.6220
+('Low grade cells, sparse collagen.', 'High grade cells, abundant collagen.'), Score: 0.6174
+('No tumor necrosis is visible.', 'Tumor cells are clearly present.'), Score: 0.6026
+
+Iteration 41:
+('No necrosis or cellular debris observed.', 'Distinct tumor nests are clearly visible.'), Score: 0.8972
+('No nuclear atypia, normal stroma.', 'Tumor cell nests, atypical stroma.'), Score: 0.8970
+('Uniform nuclear staining, no tumor nests identified.', 'Heterogeneous nuclear staining, tumor cell nests visible.'), Score: 0.8954
+('No cellular atypia is present.', 'Significant cellular atypia is observed.'), Score: 0.8834
+('Cells exhibit uniform size and shape; no necrosis is present.', 'Cells show pleomorphism; tumor nests are clearly visible.'), Score: 0.8812
+('No tumor necrosis is evident.', 'Tumor necrosis with atypical mitosis present.'), Score: 0.8779
+('Absence of mitotic figures.', 'Frequent mitotic figures, including atypical forms.'), Score: 0.8746
+('No evidence of atypical cells.', 'Atypical cells forming tumor nests are seen.'), Score: 0.8652
+('Minimal immune response, normal stromal tissue.', 'Strong immune response, abnormal stromal tissue.'), Score: 0.8534
+('No tumor necrosis or mitotic figures are identified.', 'Atypical mitotic figures and tumor necrosis are present.'), Score: 0.8486
+('No evidence of hemorrhage.', 'Tumor cell nests detected.'), Score: 0.8478
+('Benign cells, normal immune infiltrate.', 'Malignant cells, active immune infiltrate.'), Score: 0.8456
+('No tumor nests identified.', 'Distinct tumor nests present.'), Score: 0.8395
+('Normal lymphoid follicles with distinct mantle and germinal center zones.', 'Disrupted follicular architecture with loss of polarity and irregular germinal centers.'), Score: 0.8360
+('No evidence of tumor cell nests.', 'Tumor cell nests.'), Score: 0.8296
+('Scant stromal fibrosis with delicate collagen fibers.', 'Dense stromal fibrosis with thick collagen bundles and increased cellularity.'), Score: 0.8296
+('Absence of atypical cells.', 'Presence of atypical cells.'), Score: 0.8291
+('No evidence of perineural invasion.', 'Perineural invasion.'), Score: 0.8267
+('No nuclear atypia observed.', 'Distinct tumor cell nests are present.'), Score: 0.8165
+('No atypical cells or nuclear changes identified.', 'Atypical cells and nuclear changes are present.'), Score: 0.8120
+('Uniform nuclear staining.', 'Heterogeneous nuclear staining.'), Score: 0.7957
+('Absence of giant cells.', 'Presence of multinucleated giant cells.'), Score: 0.7809
+('Normal cells, low mitotic rate.', 'Atypical cells, high mitotic rate.'), Score: 0.7806
+('Low mitotic activity.', 'High mitotic activity.'), Score: 0.7683
+('No atypical cells or vascular invasion seen.', 'Atypical cells and vascular invasion present.'), Score: 0.7683
+('No evidence of necrosis.', 'Presence of tumor necrosis with karyorrhexis and cellular debris.'), Score: 0.7626
+('No evidence of mitosis is identified.', 'Atypical mitotic figures are readily apparent.'), Score: 0.7593
+('Small, round, blue cells.', 'Large, irregular, atypical cells.'), Score: 0.7357
+('Uniform nuclei, typical ratio.', 'Atypical nuclei, high ratio.'), Score: 0.7288
+('No tumor cell nests identified.', 'Distinct tumor cell nests are visible.'), Score: 0.7267
+('No evidence of angiolymphatic invasion.', 'Angiolymphatic invasion.'), Score: 0.7222
+('No evidence of invasion.', 'Evidence of invasion into surrounding tissues.'), Score: 0.7195
+('Lymphocytes with high nucleus-to-cytoplasm ratio and scant cytoplasm.', 'Large, atypical cells with abundant eosinophilic cytoplasm and prominent nucleoli.'), Score: 0.7174
+('No significant nuclear atypia.', 'Marked nuclear atypia with bizarre shapes and sizes.'), Score: 0.7099
+('Normal stromal cells.', 'Atypical stromal cells.'), Score: 0.7009
+('No hemorrhage.', 'Presence of hemorrhage within the tissue.'), Score: 0.6897
+('Normal cellular morphology and arrangement.', 'Evidence of atypical cellular features.'), Score: 0.6754
+('Normal immune cell infiltrate.', 'Increased or atypical immune cell infiltrate.'), Score: 0.6738
+('Normal cells with typical nuclei and cytoplasm.', 'Atypical cells with enlarged nuclei and irregular cytoplasm.'), Score: 0.6738
+('No tumor necrosis is observed.', 'Tumor necrosis with cellular debris is present.'), Score: 0.6691
+('Uniform cell size and shape.', 'Pleomorphic cell size and shape.'), Score: 0.6666
+('No evidence of granuloma formation.', 'Granuloma formation.'), Score: 0.6606
+('Minimal inflammation and sparse immune cells.', 'Significant inflammation with dense immune cell infiltration.'), Score: 0.6453
+('Nucleoli are not easily identified.', 'Large, distinct nucleoli are present.'), Score: 0.6363
+('No prominent nucleoli.', 'Prominent nucleoli.'), Score: 0.6342
+('Normal nuclear-cytoplasmic ratio.', 'Increased nuclear-cytoplasmic ratio.'), Score: 0.6340
+('No evidence of apoptosis.', 'Increased apoptosis or programmed cell death.'), Score: 0.6287
+('Normal lymphocytes with typical nuclei and cytoplasm.', 'Atypical cells with necrosis and cellular debris present.'), Score: 0.6234
+('Normal cell morphology.', 'Atypical cell morphology.'), Score: 0.6220
+('Low grade cells, sparse collagen.', 'High grade cells, abundant collagen.'), Score: 0.6174
+('No tumor necrosis is visible.', 'Tumor cells are clearly present.'), Score: 0.6026
+
+Iteration 42:
+('No necrosis or cellular debris observed.', 'Distinct tumor nests are clearly visible.'), Score: 0.8972
+('No nuclear atypia, normal stroma.', 'Tumor cell nests, atypical stroma.'), Score: 0.8970
+('Uniform nuclear staining, no tumor nests identified.', 'Heterogeneous nuclear staining, tumor cell nests visible.'), Score: 0.8954
+('No cellular atypia is present.', 'Significant cellular atypia is observed.'), Score: 0.8834
+('Cells exhibit uniform size and shape; no necrosis is present.', 'Cells show pleomorphism; tumor nests are clearly visible.'), Score: 0.8812
+('No tumor necrosis is evident.', 'Tumor necrosis with atypical mitosis present.'), Score: 0.8779
+('Absence of mitotic figures.', 'Frequent mitotic figures, including atypical forms.'), Score: 0.8746
+('No evidence of atypical cells.', 'Atypical cells forming tumor nests are seen.'), Score: 0.8652
+('Minimal immune response, normal stromal tissue.', 'Strong immune response, abnormal stromal tissue.'), Score: 0.8534
+('No tumor necrosis or mitotic figures are identified.', 'Atypical mitotic figures and tumor necrosis are present.'), Score: 0.8486
+('No evidence of hemorrhage.', 'Tumor cell nests detected.'), Score: 0.8478
+('Benign cells, normal immune infiltrate.', 'Malignant cells, active immune infiltrate.'), Score: 0.8456
+('No tumor nests identified.', 'Distinct tumor nests present.'), Score: 0.8395
+('Normal lymphoid follicles with distinct mantle and germinal center zones.', 'Disrupted follicular architecture with loss of polarity and irregular germinal centers.'), Score: 0.8360
+('No evidence of tumor cell nests.', 'Tumor cell nests.'), Score: 0.8296
+('Scant stromal fibrosis with delicate collagen fibers.', 'Dense stromal fibrosis with thick collagen bundles and increased cellularity.'), Score: 0.8296
+('Absence of atypical cells.', 'Presence of atypical cells.'), Score: 0.8291
+('No evidence of perineural invasion.', 'Perineural invasion.'), Score: 0.8267
+('No nuclear atypia observed.', 'Distinct tumor cell nests are present.'), Score: 0.8165
+('No atypical cells or nuclear changes identified.', 'Atypical cells and nuclear changes are present.'), Score: 0.8120
+('Uniform nuclear staining.', 'Heterogeneous nuclear staining.'), Score: 0.7957
+('Absence of giant cells.', 'Presence of multinucleated giant cells.'), Score: 0.7809
+('Normal cells, low mitotic rate.', 'Atypical cells, high mitotic rate.'), Score: 0.7806
+('Low mitotic activity.', 'High mitotic activity.'), Score: 0.7683
+('No atypical cells or vascular invasion seen.', 'Atypical cells and vascular invasion present.'), Score: 0.7683
+('No evidence of necrosis.', 'Presence of tumor necrosis with karyorrhexis and cellular debris.'), Score: 0.7626
+('No evidence of mitosis is identified.', 'Atypical mitotic figures are readily apparent.'), Score: 0.7593
+('Small, round, blue cells.', 'Large, irregular, atypical cells.'), Score: 0.7357
+('Uniform nuclei, typical ratio.', 'Atypical nuclei, high ratio.'), Score: 0.7288
+('No tumor cell nests identified.', 'Distinct tumor cell nests are visible.'), Score: 0.7267
+('No evidence of angiolymphatic invasion.', 'Angiolymphatic invasion.'), Score: 0.7222
+('No evidence of invasion.', 'Evidence of invasion into surrounding tissues.'), Score: 0.7195
+('Lymphocytes with high nucleus-to-cytoplasm ratio and scant cytoplasm.', 'Large, atypical cells with abundant eosinophilic cytoplasm and prominent nucleoli.'), Score: 0.7174
+('No significant nuclear atypia.', 'Marked nuclear atypia with bizarre shapes and sizes.'), Score: 0.7099
+('Normal stromal cells.', 'Atypical stromal cells.'), Score: 0.7009
+('No hemorrhage.', 'Presence of hemorrhage within the tissue.'), Score: 0.6897
+('Normal cellular morphology and arrangement.', 'Evidence of atypical cellular features.'), Score: 0.6754
+('Normal immune cell infiltrate.', 'Increased or atypical immune cell infiltrate.'), Score: 0.6738
+('Normal cells with typical nuclei and cytoplasm.', 'Atypical cells with enlarged nuclei and irregular cytoplasm.'), Score: 0.6738
+('No tumor necrosis is observed.', 'Tumor necrosis with cellular debris is present.'), Score: 0.6691
+('Uniform cell size and shape.', 'Pleomorphic cell size and shape.'), Score: 0.6666
+('No evidence of granuloma formation.', 'Granuloma formation.'), Score: 0.6606
+('Minimal inflammation and sparse immune cells.', 'Significant inflammation with dense immune cell infiltration.'), Score: 0.6453
+('Nucleoli are not easily identified.', 'Large, distinct nucleoli are present.'), Score: 0.6363
+('No prominent nucleoli.', 'Prominent nucleoli.'), Score: 0.6342
+('Normal nuclear-cytoplasmic ratio.', 'Increased nuclear-cytoplasmic ratio.'), Score: 0.6340
+('No evidence of apoptosis.', 'Increased apoptosis or programmed cell death.'), Score: 0.6287
+('Normal lymphocytes with typical nuclei and cytoplasm.', 'Atypical cells with necrosis and cellular debris present.'), Score: 0.6234
+('Normal cell morphology.', 'Atypical cell morphology.'), Score: 0.6220
+('Low grade cells, sparse collagen.', 'High grade cells, abundant collagen.'), Score: 0.6174
+('No tumor necrosis is visible.', 'Tumor cells are clearly present.'), Score: 0.6026
+
+Iteration 43:
+('No necrosis or cellular debris observed.', 'Distinct tumor nests are clearly visible.'), Score: 0.8972
+('No nuclear atypia, normal stroma.', 'Tumor cell nests, atypical stroma.'), Score: 0.8970
+('Uniform nuclear staining, no tumor nests identified.', 'Heterogeneous nuclear staining, tumor cell nests visible.'), Score: 0.8954
+('No cellular atypia is present.', 'Significant cellular atypia is observed.'), Score: 0.8834
+('Cells exhibit uniform size and shape; no necrosis is present.', 'Cells show pleomorphism; tumor nests are clearly visible.'), Score: 0.8812
+('No tumor necrosis is evident.', 'Tumor necrosis with atypical mitosis present.'), Score: 0.8779
+('Absence of mitotic figures.', 'Frequent mitotic figures, including atypical forms.'), Score: 0.8746
+('No evidence of atypical cells.', 'Atypical cells forming tumor nests are seen.'), Score: 0.8652
+('Minimal immune response, normal stromal tissue.', 'Strong immune response, abnormal stromal tissue.'), Score: 0.8534
+('No tumor necrosis or mitotic figures are identified.', 'Atypical mitotic figures and tumor necrosis are present.'), Score: 0.8486
+('No evidence of hemorrhage.', 'Tumor cell nests detected.'), Score: 0.8478
+('Benign cells, normal immune infiltrate.', 'Malignant cells, active immune infiltrate.'), Score: 0.8456
+('No tumor nests identified.', 'Distinct tumor nests present.'), Score: 0.8395
+('Normal lymphoid follicles with distinct mantle and germinal center zones.', 'Disrupted follicular architecture with loss of polarity and irregular germinal centers.'), Score: 0.8360
+('No evidence of tumor cell nests.', 'Tumor cell nests.'), Score: 0.8296
+('Scant stromal fibrosis with delicate collagen fibers.', 'Dense stromal fibrosis with thick collagen bundles and increased cellularity.'), Score: 0.8296
+('Absence of atypical cells.', 'Presence of atypical cells.'), Score: 0.8291
+('No evidence of perineural invasion.', 'Perineural invasion.'), Score: 0.8267
+('No nuclear atypia observed.', 'Distinct tumor cell nests are present.'), Score: 0.8165
+('No atypical cells or nuclear changes identified.', 'Atypical cells and nuclear changes are present.'), Score: 0.8120
+('Uniform nuclear staining.', 'Heterogeneous nuclear staining.'), Score: 0.7957
+('Absence of giant cells.', 'Presence of multinucleated giant cells.'), Score: 0.7809
+('Normal cells, low mitotic rate.', 'Atypical cells, high mitotic rate.'), Score: 0.7806
+('Low mitotic activity.', 'High mitotic activity.'), Score: 0.7683
+('No atypical cells or vascular invasion seen.', 'Atypical cells and vascular invasion present.'), Score: 0.7683
+('No evidence of necrosis.', 'Presence of tumor necrosis with karyorrhexis and cellular debris.'), Score: 0.7626
+('No evidence of mitosis is identified.', 'Atypical mitotic figures are readily apparent.'), Score: 0.7593
+('Small, round, blue cells.', 'Large, irregular, atypical cells.'), Score: 0.7357
+('Uniform nuclei, typical ratio.', 'Atypical nuclei, high ratio.'), Score: 0.7288
+('No tumor cell nests identified.', 'Distinct tumor cell nests are visible.'), Score: 0.7267
+('No evidence of angiolymphatic invasion.', 'Angiolymphatic invasion.'), Score: 0.7222
+('No evidence of invasion.', 'Evidence of invasion into surrounding tissues.'), Score: 0.7195
+('Lymphocytes with high nucleus-to-cytoplasm ratio and scant cytoplasm.', 'Large, atypical cells with abundant eosinophilic cytoplasm and prominent nucleoli.'), Score: 0.7174
+('No significant nuclear atypia.', 'Marked nuclear atypia with bizarre shapes and sizes.'), Score: 0.7099
+('Normal stromal cells.', 'Atypical stromal cells.'), Score: 0.7009
+('No hemorrhage.', 'Presence of hemorrhage within the tissue.'), Score: 0.6897
+('Normal cellular morphology and arrangement.', 'Evidence of atypical cellular features.'), Score: 0.6754
+('Normal immune cell infiltrate.', 'Increased or atypical immune cell infiltrate.'), Score: 0.6738
+('Normal cells with typical nuclei and cytoplasm.', 'Atypical cells with enlarged nuclei and irregular cytoplasm.'), Score: 0.6738
+('No tumor necrosis is observed.', 'Tumor necrosis with cellular debris is present.'), Score: 0.6691
+('Uniform cell size and shape.', 'Pleomorphic cell size and shape.'), Score: 0.6666
+('No evidence of granuloma formation.', 'Granuloma formation.'), Score: 0.6606
+('Minimal inflammation and sparse immune cells.', 'Significant inflammation with dense immune cell infiltration.'), Score: 0.6453
+('Normal cells with mild immune response.', 'Aggressive cells, significant immune reaction, necrosis.'), Score: 0.6433
+('Nucleoli are not easily identified.', 'Large, distinct nucleoli are present.'), Score: 0.6363
+('No prominent nucleoli.', 'Prominent nucleoli.'), Score: 0.6342
+('Normal nuclear-cytoplasmic ratio.', 'Increased nuclear-cytoplasmic ratio.'), Score: 0.6340
+('No evidence of apoptosis.', 'Increased apoptosis or programmed cell death.'), Score: 0.6287
+('Normal lymphocytes with typical nuclei and cytoplasm.', 'Atypical cells with necrosis and cellular debris present.'), Score: 0.6234
+('Normal cell morphology.', 'Atypical cell morphology.'), Score: 0.6220
+('Low grade cells, sparse collagen.', 'High grade cells, abundant collagen.'), Score: 0.6174
+('No tumor necrosis is visible.', 'Tumor cells are clearly present.'), Score: 0.6026
+
+Iteration 44:
+('No necrosis or cellular debris observed.', 'Distinct tumor nests are clearly visible.'), Score: 0.8972
+('No nuclear atypia, normal stroma.', 'Tumor cell nests, atypical stroma.'), Score: 0.8970
+('Uniform nuclear staining, no tumor nests identified.', 'Heterogeneous nuclear staining, tumor cell nests visible.'), Score: 0.8954
+('No cellular atypia is present.', 'Significant cellular atypia is observed.'), Score: 0.8834
+('Cells exhibit uniform size and shape; no necrosis is present.', 'Cells show pleomorphism; tumor nests are clearly visible.'), Score: 0.8812
+('No tumor necrosis is evident.', 'Tumor necrosis with atypical mitosis present.'), Score: 0.8779
+('Absence of mitotic figures.', 'Frequent mitotic figures, including atypical forms.'), Score: 0.8746
+('No evidence of atypical cells.', 'Atypical cells forming tumor nests are seen.'), Score: 0.8652
+('Minimal immune response, normal stromal tissue.', 'Strong immune response, abnormal stromal tissue.'), Score: 0.8534
+('No tumor necrosis or mitotic figures are identified.', 'Atypical mitotic figures and tumor necrosis are present.'), Score: 0.8486
+('No evidence of hemorrhage.', 'Tumor cell nests detected.'), Score: 0.8478
+('Benign cells, normal immune infiltrate.', 'Malignant cells, active immune infiltrate.'), Score: 0.8456
+('No tumor nests identified.', 'Distinct tumor nests present.'), Score: 0.8395
+('Normal lymphoid follicles with distinct mantle and germinal center zones.', 'Disrupted follicular architecture with loss of polarity and irregular germinal centers.'), Score: 0.8360
+('No evidence of tumor cell nests.', 'Tumor cell nests.'), Score: 0.8296
+('Scant stromal fibrosis with delicate collagen fibers.', 'Dense stromal fibrosis with thick collagen bundles and increased cellularity.'), Score: 0.8296
+('Absence of atypical cells.', 'Presence of atypical cells.'), Score: 0.8291
+('No evidence of perineural invasion.', 'Perineural invasion.'), Score: 0.8267
+('No nuclear atypia observed.', 'Distinct tumor cell nests are present.'), Score: 0.8165
+('No atypical cells or nuclear changes identified.', 'Atypical cells and nuclear changes are present.'), Score: 0.8120
+('Uniform nuclear staining.', 'Heterogeneous nuclear staining.'), Score: 0.7957
+('Absence of giant cells.', 'Presence of multinucleated giant cells.'), Score: 0.7809
+('Normal cells, low mitotic rate.', 'Atypical cells, high mitotic rate.'), Score: 0.7806
+('Low mitotic activity.', 'High mitotic activity.'), Score: 0.7683
+('No atypical cells or vascular invasion seen.', 'Atypical cells and vascular invasion present.'), Score: 0.7683
+('No evidence of necrosis.', 'Presence of tumor necrosis with karyorrhexis and cellular debris.'), Score: 0.7626
+('No evidence of mitosis is identified.', 'Atypical mitotic figures are readily apparent.'), Score: 0.7593
+('Small, round, blue cells.', 'Large, irregular, atypical cells.'), Score: 0.7357
+('Uniform nuclei, typical ratio.', 'Atypical nuclei, high ratio.'), Score: 0.7288
+('No tumor cell nests identified.', 'Distinct tumor cell nests are visible.'), Score: 0.7267
+('No evidence of angiolymphatic invasion.', 'Angiolymphatic invasion.'), Score: 0.7222
+('No evidence of invasion.', 'Evidence of invasion into surrounding tissues.'), Score: 0.7195
+('Lymphocytes with high nucleus-to-cytoplasm ratio and scant cytoplasm.', 'Large, atypical cells with abundant eosinophilic cytoplasm and prominent nucleoli.'), Score: 0.7174
+('No significant nuclear atypia.', 'Marked nuclear atypia with bizarre shapes and sizes.'), Score: 0.7099
+('Normal stromal cells.', 'Atypical stromal cells.'), Score: 0.7009
+('No hemorrhage.', 'Presence of hemorrhage within the tissue.'), Score: 0.6897
+('Normal cellular morphology and arrangement.', 'Evidence of atypical cellular features.'), Score: 0.6754
+('Normal immune cell infiltrate.', 'Increased or atypical immune cell infiltrate.'), Score: 0.6738
+('Normal cells with typical nuclei and cytoplasm.', 'Atypical cells with enlarged nuclei and irregular cytoplasm.'), Score: 0.6738
+('No tumor necrosis is observed.', 'Tumor necrosis with cellular debris is present.'), Score: 0.6691
+('Uniform cell size and shape.', 'Pleomorphic cell size and shape.'), Score: 0.6666
+('No evidence of granuloma formation.', 'Granuloma formation.'), Score: 0.6606
+('Minimal inflammation and sparse immune cells.', 'Significant inflammation with dense immune cell infiltration.'), Score: 0.6453
+('Normal cells with mild immune response.', 'Aggressive cells, significant immune reaction, necrosis.'), Score: 0.6433
+('Nucleoli are not easily identified.', 'Large, distinct nucleoli are present.'), Score: 0.6363
+('No prominent nucleoli.', 'Prominent nucleoli.'), Score: 0.6342
+('Normal nuclear-cytoplasmic ratio.', 'Increased nuclear-cytoplasmic ratio.'), Score: 0.6340
+('No evidence of apoptosis.', 'Increased apoptosis or programmed cell death.'), Score: 0.6287
+('Normal lymphocytes with typical nuclei and cytoplasm.', 'Atypical cells with necrosis and cellular debris present.'), Score: 0.6234
+('Normal cell morphology.', 'Atypical cell morphology.'), Score: 0.6220
+('Low grade cells, sparse collagen.', 'High grade cells, abundant collagen.'), Score: 0.6174
+('Cells appear normal.', 'Atypical cells are visible.'), Score: 0.6167
+('No tumor necrosis is visible.', 'Tumor cells are clearly present.'), Score: 0.6026
+
+Iteration 45:
+('No necrosis or cellular debris observed.', 'Distinct tumor nests are clearly visible.'), Score: 0.8972
+('No nuclear atypia, normal stroma.', 'Tumor cell nests, atypical stroma.'), Score: 0.8970
+('Uniform nuclear staining, no tumor nests identified.', 'Heterogeneous nuclear staining, tumor cell nests visible.'), Score: 0.8954
+('No cellular atypia is present.', 'Significant cellular atypia is observed.'), Score: 0.8834
+('Cells exhibit uniform size and shape; no necrosis is present.', 'Cells show pleomorphism; tumor nests are clearly visible.'), Score: 0.8812
+('No tumor necrosis is evident.', 'Tumor necrosis with atypical mitosis present.'), Score: 0.8779
+('Absence of mitotic figures.', 'Frequent mitotic figures, including atypical forms.'), Score: 0.8746
+('No evidence of atypical cells.', 'Atypical cells forming tumor nests are seen.'), Score: 0.8652
+('Minimal immune response, normal stromal tissue.', 'Strong immune response, abnormal stromal tissue.'), Score: 0.8534
+('No tumor necrosis or mitotic figures are identified.', 'Atypical mitotic figures and tumor necrosis are present.'), Score: 0.8486
+('No evidence of hemorrhage.', 'Tumor cell nests detected.'), Score: 0.8478
+('Benign cells, normal immune infiltrate.', 'Malignant cells, active immune infiltrate.'), Score: 0.8456
+('No tumor nests identified.', 'Distinct tumor nests present.'), Score: 0.8395
+('Normal lymphoid follicles with distinct mantle and germinal center zones.', 'Disrupted follicular architecture with loss of polarity and irregular germinal centers.'), Score: 0.8360
+('No evidence of tumor cell nests.', 'Tumor cell nests.'), Score: 0.8296
+('Scant stromal fibrosis with delicate collagen fibers.', 'Dense stromal fibrosis with thick collagen bundles and increased cellularity.'), Score: 0.8296
+('Absence of atypical cells.', 'Presence of atypical cells.'), Score: 0.8291
+('No evidence of perineural invasion.', 'Perineural invasion.'), Score: 0.8267
+('No nuclear atypia observed.', 'Distinct tumor cell nests are present.'), Score: 0.8165
+('No atypical cells or nuclear changes identified.', 'Atypical cells and nuclear changes are present.'), Score: 0.8120
+('Uniform nuclear staining.', 'Heterogeneous nuclear staining.'), Score: 0.7957
+('Absence of giant cells.', 'Presence of multinucleated giant cells.'), Score: 0.7809
+('Normal cells, low mitotic rate.', 'Atypical cells, high mitotic rate.'), Score: 0.7806
+('Low mitotic activity.', 'High mitotic activity.'), Score: 0.7683
+('No atypical cells or vascular invasion seen.', 'Atypical cells and vascular invasion present.'), Score: 0.7683
+('No evidence of necrosis.', 'Presence of tumor necrosis with karyorrhexis and cellular debris.'), Score: 0.7626
+('No evidence of mitosis is identified.', 'Atypical mitotic figures are readily apparent.'), Score: 0.7593
+('Small, round, blue cells.', 'Large, irregular, atypical cells.'), Score: 0.7357
+('Uniform nuclei, typical ratio.', 'Atypical nuclei, high ratio.'), Score: 0.7288
+('No tumor cell nests identified.', 'Distinct tumor cell nests are visible.'), Score: 0.7267
+('No evidence of angiolymphatic invasion.', 'Angiolymphatic invasion.'), Score: 0.7222
+('No evidence of invasion.', 'Evidence of invasion into surrounding tissues.'), Score: 0.7195
+('Lymphocytes with high nucleus-to-cytoplasm ratio and scant cytoplasm.', 'Large, atypical cells with abundant eosinophilic cytoplasm and prominent nucleoli.'), Score: 0.7174
+('No significant nuclear atypia.', 'Marked nuclear atypia with bizarre shapes and sizes.'), Score: 0.7099
+('Normal stromal cells.', 'Atypical stromal cells.'), Score: 0.7009
+('No hemorrhage.', 'Presence of hemorrhage within the tissue.'), Score: 0.6897
+('Normal cellular morphology and arrangement.', 'Evidence of atypical cellular features.'), Score: 0.6754
+('Normal immune cell infiltrate.', 'Increased or atypical immune cell infiltrate.'), Score: 0.6738
+('Normal cells with typical nuclei and cytoplasm.', 'Atypical cells with enlarged nuclei and irregular cytoplasm.'), Score: 0.6738
+('No tumor necrosis is observed.', 'Tumor necrosis with cellular debris is present.'), Score: 0.6691
+('Uniform cell size and shape.', 'Pleomorphic cell size and shape.'), Score: 0.6666
+('No evidence of granuloma formation.', 'Granuloma formation.'), Score: 0.6606
+('Minimal inflammation and sparse immune cells.', 'Significant inflammation with dense immune cell infiltration.'), Score: 0.6453
+('Normal cells with mild immune response.', 'Aggressive cells, significant immune reaction, necrosis.'), Score: 0.6433
+('Nucleoli are not easily identified.', 'Large, distinct nucleoli are present.'), Score: 0.6363
+('No prominent nucleoli.', 'Prominent nucleoli.'), Score: 0.6342
+('Normal nuclear-cytoplasmic ratio.', 'Increased nuclear-cytoplasmic ratio.'), Score: 0.6340
+('No evidence of apoptosis.', 'Increased apoptosis or programmed cell death.'), Score: 0.6287
+('Normal lymphocytes with typical nuclei and cytoplasm.', 'Atypical cells with necrosis and cellular debris present.'), Score: 0.6234
+('Normal cell morphology.', 'Atypical cell morphology.'), Score: 0.6220
+('Low grade cells, sparse collagen.', 'High grade cells, abundant collagen.'), Score: 0.6174
+('Cells appear normal.', 'Atypical cells are visible.'), Score: 0.6167
+('No tumor necrosis is visible.', 'Tumor cells are clearly present.'), Score: 0.6026
+('Normal tissue, low immune cell count.', 'Abnormal tissue, high immune cell count.'), Score: 0.6001
+
+Iteration 46:
+('No necrosis or cellular debris observed.', 'Distinct tumor nests are clearly visible.'), Score: 0.8972
+('No nuclear atypia, normal stroma.', 'Tumor cell nests, atypical stroma.'), Score: 0.8970
+('Uniform nuclear staining, no tumor nests identified.', 'Heterogeneous nuclear staining, tumor cell nests visible.'), Score: 0.8954
+('No cellular atypia is present.', 'Significant cellular atypia is observed.'), Score: 0.8834
+('Cells exhibit uniform size and shape; no necrosis is present.', 'Cells show pleomorphism; tumor nests are clearly visible.'), Score: 0.8812
+('No tumor necrosis is evident.', 'Tumor necrosis with atypical mitosis present.'), Score: 0.8779
+('Absence of mitotic figures.', 'Frequent mitotic figures, including atypical forms.'), Score: 0.8746
+('No evidence of atypical cells.', 'Atypical cells forming tumor nests are seen.'), Score: 0.8652
+('Minimal immune response, normal stromal tissue.', 'Strong immune response, abnormal stromal tissue.'), Score: 0.8534
+('No tumor necrosis or mitotic figures are identified.', 'Atypical mitotic figures and tumor necrosis are present.'), Score: 0.8486
+('No evidence of hemorrhage.', 'Tumor cell nests detected.'), Score: 0.8478
+('Benign cells, normal immune infiltrate.', 'Malignant cells, active immune infiltrate.'), Score: 0.8456
+('No tumor nests identified.', 'Distinct tumor nests present.'), Score: 0.8395
+('Normal lymphoid follicles with distinct mantle and germinal center zones.', 'Disrupted follicular architecture with loss of polarity and irregular germinal centers.'), Score: 0.8360
+('No evidence of tumor cell nests.', 'Tumor cell nests.'), Score: 0.8296
+('Scant stromal fibrosis with delicate collagen fibers.', 'Dense stromal fibrosis with thick collagen bundles and increased cellularity.'), Score: 0.8296
+('Absence of atypical cells.', 'Presence of atypical cells.'), Score: 0.8291
+('No evidence of perineural invasion.', 'Perineural invasion.'), Score: 0.8267
+('No nuclear atypia observed.', 'Distinct tumor cell nests are present.'), Score: 0.8165
+('No atypical cells or nuclear changes identified.', 'Atypical cells and nuclear changes are present.'), Score: 0.8120
+('Uniform nuclear staining.', 'Heterogeneous nuclear staining.'), Score: 0.7957
+('Absence of giant cells.', 'Presence of multinucleated giant cells.'), Score: 0.7809
+('Normal cells, low mitotic rate.', 'Atypical cells, high mitotic rate.'), Score: 0.7806
+('Low mitotic activity.', 'High mitotic activity.'), Score: 0.7683
+('No atypical cells or vascular invasion seen.', 'Atypical cells and vascular invasion present.'), Score: 0.7683
+('No evidence of necrosis.', 'Presence of tumor necrosis with karyorrhexis and cellular debris.'), Score: 0.7626
+('No evidence of mitosis is identified.', 'Atypical mitotic figures are readily apparent.'), Score: 0.7593
+('Small, round, blue cells.', 'Large, irregular, atypical cells.'), Score: 0.7357
+('Uniform nuclei, typical ratio.', 'Atypical nuclei, high ratio.'), Score: 0.7288
+('No tumor cell nests identified.', 'Distinct tumor cell nests are visible.'), Score: 0.7267
+('Normal cells, no necrosis.', 'Atypical cells, necrosis present.'), Score: 0.7260
+('No evidence of angiolymphatic invasion.', 'Angiolymphatic invasion.'), Score: 0.7222
+('No evidence of invasion.', 'Evidence of invasion into surrounding tissues.'), Score: 0.7195
+('Lymphocytes with high nucleus-to-cytoplasm ratio and scant cytoplasm.', 'Large, atypical cells with abundant eosinophilic cytoplasm and prominent nucleoli.'), Score: 0.7174
+('No significant nuclear atypia.', 'Marked nuclear atypia with bizarre shapes and sizes.'), Score: 0.7099
+('Normal stromal cells.', 'Atypical stromal cells.'), Score: 0.7009
+('No hemorrhage.', 'Presence of hemorrhage within the tissue.'), Score: 0.6897
+('Normal cellular morphology and arrangement.', 'Evidence of atypical cellular features.'), Score: 0.6754
+('Normal immune cell infiltrate.', 'Increased or atypical immune cell infiltrate.'), Score: 0.6738
+('Normal cells with typical nuclei and cytoplasm.', 'Atypical cells with enlarged nuclei and irregular cytoplasm.'), Score: 0.6738
+('No tumor necrosis is observed.', 'Tumor necrosis with cellular debris is present.'), Score: 0.6691
+('Uniform cell size and shape.', 'Pleomorphic cell size and shape.'), Score: 0.6666
+('No evidence of granuloma formation.', 'Granuloma formation.'), Score: 0.6606
+('Minimal inflammation and sparse immune cells.', 'Significant inflammation with dense immune cell infiltration.'), Score: 0.6453
+('Normal cells with mild immune response.', 'Aggressive cells, significant immune reaction, necrosis.'), Score: 0.6433
+('Nucleoli are not easily identified.', 'Large, distinct nucleoli are present.'), Score: 0.6363
+('No prominent nucleoli.', 'Prominent nucleoli.'), Score: 0.6342
+('Normal nuclear-cytoplasmic ratio.', 'Increased nuclear-cytoplasmic ratio.'), Score: 0.6340
+('No evidence of apoptosis.', 'Increased apoptosis or programmed cell death.'), Score: 0.6287
+('Normal lymphocytes with typical nuclei and cytoplasm.', 'Atypical cells with necrosis and cellular debris present.'), Score: 0.6234
+('Normal cell morphology.', 'Atypical cell morphology.'), Score: 0.6220
+('Low grade cells, sparse collagen.', 'High grade cells, abundant collagen.'), Score: 0.6174
+('Cells appear normal.', 'Atypical cells are visible.'), Score: 0.6167
+('No tumor necrosis is visible.', 'Tumor cells are clearly present.'), Score: 0.6026
+('Normal tissue, low immune cell count.', 'Abnormal tissue, high immune cell count.'), Score: 0.6001
+
+Iteration 47:
+('No necrosis or cellular debris observed.', 'Distinct tumor nests are clearly visible.'), Score: 0.8972
+('No nuclear atypia, normal stroma.', 'Tumor cell nests, atypical stroma.'), Score: 0.8970
+('Uniform nuclear staining, no tumor nests identified.', 'Heterogeneous nuclear staining, tumor cell nests visible.'), Score: 0.8954
+('No cellular atypia is present.', 'Significant cellular atypia is observed.'), Score: 0.8834
+('Cells exhibit uniform size and shape; no necrosis is present.', 'Cells show pleomorphism; tumor nests are clearly visible.'), Score: 0.8812
+('No tumor necrosis is evident.', 'Tumor necrosis with atypical mitosis present.'), Score: 0.8779
+('Absence of mitotic figures.', 'Frequent mitotic figures, including atypical forms.'), Score: 0.8746
+('No evidence of atypical cells.', 'Atypical cells forming tumor nests are seen.'), Score: 0.8652
+('Minimal immune response, normal stromal tissue.', 'Strong immune response, abnormal stromal tissue.'), Score: 0.8534
+('No tumor necrosis or mitotic figures are identified.', 'Atypical mitotic figures and tumor necrosis are present.'), Score: 0.8486
+('No evidence of hemorrhage.', 'Tumor cell nests detected.'), Score: 0.8478
+('Benign cells, normal immune infiltrate.', 'Malignant cells, active immune infiltrate.'), Score: 0.8456
+('No tumor nests identified.', 'Distinct tumor nests present.'), Score: 0.8395
+('Normal lymphoid follicles with distinct mantle and germinal center zones.', 'Disrupted follicular architecture with loss of polarity and irregular germinal centers.'), Score: 0.8360
+('No evidence of tumor cell nests.', 'Tumor cell nests.'), Score: 0.8296
+('Scant stromal fibrosis with delicate collagen fibers.', 'Dense stromal fibrosis with thick collagen bundles and increased cellularity.'), Score: 0.8296
+('Absence of atypical cells.', 'Presence of atypical cells.'), Score: 0.8291
+('No evidence of perineural invasion.', 'Perineural invasion.'), Score: 0.8267
+('No nuclear atypia observed.', 'Distinct tumor cell nests are present.'), Score: 0.8165
+('No atypical cells or nuclear changes identified.', 'Atypical cells and nuclear changes are present.'), Score: 0.8120
+('Uniform nuclear staining.', 'Heterogeneous nuclear staining.'), Score: 0.7957
+('Absence of giant cells.', 'Presence of multinucleated giant cells.'), Score: 0.7809
+('Normal cells, low mitotic rate.', 'Atypical cells, high mitotic rate.'), Score: 0.7806
+('Low mitotic activity.', 'High mitotic activity.'), Score: 0.7683
+('No atypical cells or vascular invasion seen.', 'Atypical cells and vascular invasion present.'), Score: 0.7683
+('No evidence of necrosis.', 'Presence of tumor necrosis with karyorrhexis and cellular debris.'), Score: 0.7626
+('No evidence of mitosis is identified.', 'Atypical mitotic figures are readily apparent.'), Score: 0.7593
+('Small, round, blue cells.', 'Large, irregular, atypical cells.'), Score: 0.7357
+('Uniform nuclei, typical ratio.', 'Atypical nuclei, high ratio.'), Score: 0.7288
+('No tumor cell nests identified.', 'Distinct tumor cell nests are visible.'), Score: 0.7267
+('Normal cells, no necrosis.', 'Atypical cells, necrosis present.'), Score: 0.7260
+('No evidence of angiolymphatic invasion.', 'Angiolymphatic invasion.'), Score: 0.7222
+('No evidence of invasion.', 'Evidence of invasion into surrounding tissues.'), Score: 0.7195
+('Lymphocytes with high nucleus-to-cytoplasm ratio and scant cytoplasm.', 'Large, atypical cells with abundant eosinophilic cytoplasm and prominent nucleoli.'), Score: 0.7174
+('No significant nuclear atypia.', 'Marked nuclear atypia with bizarre shapes and sizes.'), Score: 0.7099
+('Normal stromal cells.', 'Atypical stromal cells.'), Score: 0.7009
+('No hemorrhage.', 'Presence of hemorrhage within the tissue.'), Score: 0.6897
+('Normal cellular morphology and arrangement.', 'Evidence of atypical cellular features.'), Score: 0.6754
+('Normal immune cell infiltrate.', 'Increased or atypical immune cell infiltrate.'), Score: 0.6738
+('Normal cells with typical nuclei and cytoplasm.', 'Atypical cells with enlarged nuclei and irregular cytoplasm.'), Score: 0.6738
+('No tumor necrosis is observed.', 'Tumor necrosis with cellular debris is present.'), Score: 0.6691
+('Uniform cell size and shape.', 'Pleomorphic cell size and shape.'), Score: 0.6666
+('No evidence of granuloma formation.', 'Granuloma formation.'), Score: 0.6606
+('Minimal inflammation and sparse immune cells.', 'Significant inflammation with dense immune cell infiltration.'), Score: 0.6453
+('Normal cells with mild immune response.', 'Aggressive cells, significant immune reaction, necrosis.'), Score: 0.6433
+('Nucleoli are not easily identified.', 'Large, distinct nucleoli are present.'), Score: 0.6363
+('No prominent nucleoli.', 'Prominent nucleoli.'), Score: 0.6342
+('Normal nuclear-cytoplasmic ratio.', 'Increased nuclear-cytoplasmic ratio.'), Score: 0.6340
+('No evidence of apoptosis.', 'Increased apoptosis or programmed cell death.'), Score: 0.6287
+('Normal lymphocytes with typical nuclei and cytoplasm.', 'Atypical cells with necrosis and cellular debris present.'), Score: 0.6234
+('Normal cell morphology.', 'Atypical cell morphology.'), Score: 0.6220
+('Low grade cells, sparse collagen.', 'High grade cells, abundant collagen.'), Score: 0.6174
+('Cells appear normal.', 'Atypical cells are visible.'), Score: 0.6167
+('No tumor necrosis is visible.', 'Tumor cells are clearly present.'), Score: 0.6026
+('Normal tissue, low immune cell count.', 'Abnormal tissue, high immune cell count.'), Score: 0.6001
+
+Iteration 48:
+('No necrosis or cellular debris observed.', 'Distinct tumor nests are clearly visible.'), Score: 0.8972
+('No nuclear atypia, normal stroma.', 'Tumor cell nests, atypical stroma.'), Score: 0.8970
+('Uniform nuclear staining, no tumor nests identified.', 'Heterogeneous nuclear staining, tumor cell nests visible.'), Score: 0.8954
+('No cellular atypia is present.', 'Significant cellular atypia is observed.'), Score: 0.8834
+('Cells exhibit uniform size and shape; no necrosis is present.', 'Cells show pleomorphism; tumor nests are clearly visible.'), Score: 0.8812
+('No tumor necrosis is evident.', 'Tumor necrosis with atypical mitosis present.'), Score: 0.8779
+('Absence of mitotic figures.', 'Frequent mitotic figures, including atypical forms.'), Score: 0.8746
+('No evidence of atypical cells.', 'Atypical cells forming tumor nests are seen.'), Score: 0.8652
+('Minimal immune response, normal stromal tissue.', 'Strong immune response, abnormal stromal tissue.'), Score: 0.8534
+('No tumor necrosis or mitotic figures are identified.', 'Atypical mitotic figures and tumor necrosis are present.'), Score: 0.8486
+('No evidence of hemorrhage.', 'Tumor cell nests detected.'), Score: 0.8478
+('Benign cells, normal immune infiltrate.', 'Malignant cells, active immune infiltrate.'), Score: 0.8456
+('No tumor nests identified.', 'Distinct tumor nests present.'), Score: 0.8395
+('Normal lymphoid follicles with distinct mantle and germinal center zones.', 'Disrupted follicular architecture with loss of polarity and irregular germinal centers.'), Score: 0.8360
+('No evidence of tumor cell nests.', 'Tumor cell nests.'), Score: 0.8296
+('Scant stromal fibrosis with delicate collagen fibers.', 'Dense stromal fibrosis with thick collagen bundles and increased cellularity.'), Score: 0.8296
+('Absence of atypical cells.', 'Presence of atypical cells.'), Score: 0.8291
+('No evidence of perineural invasion.', 'Perineural invasion.'), Score: 0.8267
+('No nuclear atypia observed.', 'Distinct tumor cell nests are present.'), Score: 0.8165
+('No atypical cells or nuclear changes identified.', 'Atypical cells and nuclear changes are present.'), Score: 0.8120
+('Uniform nuclear staining.', 'Heterogeneous nuclear staining.'), Score: 0.7957
+('Absence of giant cells.', 'Presence of multinucleated giant cells.'), Score: 0.7809
+('Normal cells, low mitotic rate.', 'Atypical cells, high mitotic rate.'), Score: 0.7806
+('Low mitotic activity.', 'High mitotic activity.'), Score: 0.7683
+('No atypical cells or vascular invasion seen.', 'Atypical cells and vascular invasion present.'), Score: 0.7683
+('No evidence of necrosis.', 'Presence of tumor necrosis with karyorrhexis and cellular debris.'), Score: 0.7626
+('No evidence of mitosis is identified.', 'Atypical mitotic figures are readily apparent.'), Score: 0.7593
+('Small, round, blue cells.', 'Large, irregular, atypical cells.'), Score: 0.7357
+('Uniform nuclei, no atypical cells seen.', 'Atypical nuclei, necrosis is present.'), Score: 0.7357
+('Uniform nuclei, typical ratio.', 'Atypical nuclei, high ratio.'), Score: 0.7288
+('No tumor cell nests identified.', 'Distinct tumor cell nests are visible.'), Score: 0.7267
+('Normal cells, no necrosis.', 'Atypical cells, necrosis present.'), Score: 0.7260
+('No evidence of angiolymphatic invasion.', 'Angiolymphatic invasion.'), Score: 0.7222
+('No evidence of invasion.', 'Evidence of invasion into surrounding tissues.'), Score: 0.7195
+('Lymphocytes with high nucleus-to-cytoplasm ratio and scant cytoplasm.', 'Large, atypical cells with abundant eosinophilic cytoplasm and prominent nucleoli.'), Score: 0.7174
+('No significant nuclear atypia.', 'Marked nuclear atypia with bizarre shapes and sizes.'), Score: 0.7099
+('Normal stromal cells.', 'Atypical stromal cells.'), Score: 0.7009
+('No hemorrhage.', 'Presence of hemorrhage within the tissue.'), Score: 0.6897
+('Normal cellular morphology and arrangement.', 'Evidence of atypical cellular features.'), Score: 0.6754
+('Normal immune cell infiltrate.', 'Increased or atypical immune cell infiltrate.'), Score: 0.6738
+('Normal cells with typical nuclei and cytoplasm.', 'Atypical cells with enlarged nuclei and irregular cytoplasm.'), Score: 0.6738
+('No tumor necrosis is observed.', 'Tumor necrosis with cellular debris is present.'), Score: 0.6691
+('Uniform cell size and shape.', 'Pleomorphic cell size and shape.'), Score: 0.6666
+('No evidence of granuloma formation.', 'Granuloma formation.'), Score: 0.6606
+('Minimal inflammation and sparse immune cells.', 'Significant inflammation with dense immune cell infiltration.'), Score: 0.6453
+('Normal cells with mild immune response.', 'Aggressive cells, significant immune reaction, necrosis.'), Score: 0.6433
+('Nucleoli are not easily identified.', 'Large, distinct nucleoli are present.'), Score: 0.6363
+('No prominent nucleoli.', 'Prominent nucleoli.'), Score: 0.6342
+('Normal nuclear-cytoplasmic ratio.', 'Increased nuclear-cytoplasmic ratio.'), Score: 0.6340
+('No evidence of apoptosis.', 'Increased apoptosis or programmed cell death.'), Score: 0.6287
+('Normal lymphocytes with typical nuclei and cytoplasm.', 'Atypical cells with necrosis and cellular debris present.'), Score: 0.6234
+('Normal cell morphology.', 'Atypical cell morphology.'), Score: 0.6220
+('Low grade cells, sparse collagen.', 'High grade cells, abundant collagen.'), Score: 0.6174
+('Cells appear normal.', 'Atypical cells are visible.'), Score: 0.6167
+('No tumor necrosis is visible.', 'Tumor cells are clearly present.'), Score: 0.6026
+('Normal tissue, low immune cell count.', 'Abnormal tissue, high immune cell count.'), Score: 0.6001
+
+Iteration 49:
+('No necrosis or cellular debris observed.', 'Distinct tumor nests are clearly visible.'), Score: 0.8972
+('No nuclear atypia, normal stroma.', 'Tumor cell nests, atypical stroma.'), Score: 0.8970
+('Uniform nuclear staining, no tumor nests identified.', 'Heterogeneous nuclear staining, tumor cell nests visible.'), Score: 0.8954
+('No cellular atypia is present.', 'Significant cellular atypia is observed.'), Score: 0.8834
+('Cells exhibit uniform size and shape; no necrosis is present.', 'Cells show pleomorphism; tumor nests are clearly visible.'), Score: 0.8812
+('No tumor necrosis is evident.', 'Tumor necrosis with atypical mitosis present.'), Score: 0.8779
+('Absence of mitotic figures.', 'Frequent mitotic figures, including atypical forms.'), Score: 0.8746
+('No evidence of atypical cells.', 'Atypical cells forming tumor nests are seen.'), Score: 0.8652
+('Minimal immune response, normal stromal tissue.', 'Strong immune response, abnormal stromal tissue.'), Score: 0.8534
+('No tumor necrosis or mitotic figures are identified.', 'Atypical mitotic figures and tumor necrosis are present.'), Score: 0.8486
+('No evidence of hemorrhage.', 'Tumor cell nests detected.'), Score: 0.8478
+('Benign cells, normal immune infiltrate.', 'Malignant cells, active immune infiltrate.'), Score: 0.8456
+('No tumor nests identified.', 'Distinct tumor nests present.'), Score: 0.8395
+('Normal lymphoid follicles with distinct mantle and germinal center zones.', 'Disrupted follicular architecture with loss of polarity and irregular germinal centers.'), Score: 0.8360
+('No evidence of tumor cell nests.', 'Tumor cell nests.'), Score: 0.8296
+('Scant stromal fibrosis with delicate collagen fibers.', 'Dense stromal fibrosis with thick collagen bundles and increased cellularity.'), Score: 0.8296
+('Absence of atypical cells.', 'Presence of atypical cells.'), Score: 0.8291
+('No evidence of perineural invasion.', 'Perineural invasion.'), Score: 0.8267
+('No nuclear atypia observed.', 'Distinct tumor cell nests are present.'), Score: 0.8165
+('No atypical cells or nuclear changes identified.', 'Atypical cells and nuclear changes are present.'), Score: 0.8120
+('Uniform nuclear staining.', 'Heterogeneous nuclear staining.'), Score: 0.7957
+('Absence of giant cells.', 'Presence of multinucleated giant cells.'), Score: 0.7809
+('Normal cells, low mitotic rate.', 'Atypical cells, high mitotic rate.'), Score: 0.7806
+('Low mitotic activity.', 'High mitotic activity.'), Score: 0.7683
+('No atypical cells or vascular invasion seen.', 'Atypical cells and vascular invasion present.'), Score: 0.7683
+('No evidence of necrosis.', 'Presence of tumor necrosis with karyorrhexis and cellular debris.'), Score: 0.7626
+('No evidence of mitosis is identified.', 'Atypical mitotic figures are readily apparent.'), Score: 0.7593
+('Small, round, blue cells.', 'Large, irregular, atypical cells.'), Score: 0.7357
+('Uniform nuclei, no atypical cells seen.', 'Atypical nuclei, necrosis is present.'), Score: 0.7357
+('Uniform nuclei, typical ratio.', 'Atypical nuclei, high ratio.'), Score: 0.7288
+('No tumor cell nests identified.', 'Distinct tumor cell nests are visible.'), Score: 0.7267
+('Normal cells, no necrosis.', 'Atypical cells, necrosis present.'), Score: 0.7260
+('No evidence of angiolymphatic invasion.', 'Angiolymphatic invasion.'), Score: 0.7222
+('No evidence of invasion.', 'Evidence of invasion into surrounding tissues.'), Score: 0.7195
+('Lymphocytes with high nucleus-to-cytoplasm ratio and scant cytoplasm.', 'Large, atypical cells with abundant eosinophilic cytoplasm and prominent nucleoli.'), Score: 0.7174
+('No significant nuclear atypia.', 'Marked nuclear atypia with bizarre shapes and sizes.'), Score: 0.7099
+('Normal stromal cells.', 'Atypical stromal cells.'), Score: 0.7009
+('No hemorrhage.', 'Presence of hemorrhage within the tissue.'), Score: 0.6897
+('Normal cellular morphology and arrangement.', 'Evidence of atypical cellular features.'), Score: 0.6754
+('Normal immune cell infiltrate.', 'Increased or atypical immune cell infiltrate.'), Score: 0.6738
+('Normal cells with typical nuclei and cytoplasm.', 'Atypical cells with enlarged nuclei and irregular cytoplasm.'), Score: 0.6738
+('No tumor necrosis is observed.', 'Tumor necrosis with cellular debris is present.'), Score: 0.6691
+('Uniform cell size and shape.', 'Pleomorphic cell size and shape.'), Score: 0.6666
+('No evidence of granuloma formation.', 'Granuloma formation.'), Score: 0.6606
+('Minimal inflammation and sparse immune cells.', 'Significant inflammation with dense immune cell infiltration.'), Score: 0.6453
+('Normal cells with mild immune response.', 'Aggressive cells, significant immune reaction, necrosis.'), Score: 0.6433
+('Nucleoli are not easily identified.', 'Large, distinct nucleoli are present.'), Score: 0.6363
+('Benign cells, minimal inflammation.', 'Malignant cells, significant inflammation.'), Score: 0.6342
+('No prominent nucleoli.', 'Prominent nucleoli.'), Score: 0.6342
+('Normal nuclear-cytoplasmic ratio.', 'Increased nuclear-cytoplasmic ratio.'), Score: 0.6340
+('No evidence of apoptosis.', 'Increased apoptosis or programmed cell death.'), Score: 0.6287
+('Normal lymphocytes with typical nuclei and cytoplasm.', 'Atypical cells with necrosis and cellular debris present.'), Score: 0.6234
+('Normal cell morphology.', 'Atypical cell morphology.'), Score: 0.6220
+('Low grade cells, sparse collagen.', 'High grade cells, abundant collagen.'), Score: 0.6174
+('Cells appear normal.', 'Atypical cells are visible.'), Score: 0.6167
+('No tumor necrosis is visible.', 'Tumor cells are clearly present.'), Score: 0.6026
+('Normal tissue, low immune cell count.', 'Abnormal tissue, high immune cell count.'), Score: 0.6001
+
+Iteration 50:
+('No necrosis or cellular debris observed.', 'Distinct tumor nests are clearly visible.'), Score: 0.8972
+('No nuclear atypia, normal stroma.', 'Tumor cell nests, atypical stroma.'), Score: 0.8970
+('Uniform nuclear staining, no tumor nests identified.', 'Heterogeneous nuclear staining, tumor cell nests visible.'), Score: 0.8954
+('No cellular atypia is present.', 'Significant cellular atypia is observed.'), Score: 0.8834
+('Cells exhibit uniform size and shape; no necrosis is present.', 'Cells show pleomorphism; tumor nests are clearly visible.'), Score: 0.8812
+('No tumor necrosis is evident.', 'Tumor necrosis with atypical mitosis present.'), Score: 0.8779
+('Absence of mitotic figures.', 'Frequent mitotic figures, including atypical forms.'), Score: 0.8746
+('No evidence of atypical cells.', 'Atypical cells forming tumor nests are seen.'), Score: 0.8652
+('Minimal immune response, normal stromal tissue.', 'Strong immune response, abnormal stromal tissue.'), Score: 0.8534
+('No tumor necrosis or mitotic figures are identified.', 'Atypical mitotic figures and tumor necrosis are present.'), Score: 0.8486
+('No evidence of hemorrhage.', 'Tumor cell nests detected.'), Score: 0.8478
+('Benign cells, normal immune infiltrate.', 'Malignant cells, active immune infiltrate.'), Score: 0.8456
+('No tumor nests identified.', 'Distinct tumor nests present.'), Score: 0.8395
+('Normal lymphoid follicles with distinct mantle and germinal center zones.', 'Disrupted follicular architecture with loss of polarity and irregular germinal centers.'), Score: 0.8360
+('No evidence of tumor cell nests.', 'Tumor cell nests.'), Score: 0.8296
+('Scant stromal fibrosis with delicate collagen fibers.', 'Dense stromal fibrosis with thick collagen bundles and increased cellularity.'), Score: 0.8296
+('Absence of atypical cells.', 'Presence of atypical cells.'), Score: 0.8291
+('No evidence of perineural invasion.', 'Perineural invasion.'), Score: 0.8267
+('No nuclear atypia observed.', 'Distinct tumor cell nests are present.'), Score: 0.8165
+('No atypical cells or nuclear changes identified.', 'Atypical cells and nuclear changes are present.'), Score: 0.8120
+('Uniform nuclear staining.', 'Heterogeneous nuclear staining.'), Score: 0.7957
+('Absence of giant cells.', 'Presence of multinucleated giant cells.'), Score: 0.7809
+('Normal cells, low mitotic rate.', 'Atypical cells, high mitotic rate.'), Score: 0.7806
+('Low mitotic activity.', 'High mitotic activity.'), Score: 0.7683
+('No atypical cells or vascular invasion seen.', 'Atypical cells and vascular invasion present.'), Score: 0.7683
+('No evidence of necrosis.', 'Presence of tumor necrosis with karyorrhexis and cellular debris.'), Score: 0.7626
+('No evidence of mitosis is identified.', 'Atypical mitotic figures are readily apparent.'), Score: 0.7593
+('Small, round, blue cells.', 'Large, irregular, atypical cells.'), Score: 0.7357
+('Uniform nuclei, no atypical cells seen.', 'Atypical nuclei, necrosis is present.'), Score: 0.7357
+('Uniform nuclei, typical ratio.', 'Atypical nuclei, high ratio.'), Score: 0.7288
+('No tumor cell nests identified.', 'Distinct tumor cell nests are visible.'), Score: 0.7267
+('Normal cells, no necrosis.', 'Atypical cells, necrosis present.'), Score: 0.7260
+('No evidence of angiolymphatic invasion.', 'Angiolymphatic invasion.'), Score: 0.7222
+('No evidence of invasion.', 'Evidence of invasion into surrounding tissues.'), Score: 0.7195
+('Lymphocytes with high nucleus-to-cytoplasm ratio and scant cytoplasm.', 'Large, atypical cells with abundant eosinophilic cytoplasm and prominent nucleoli.'), Score: 0.7174
+('No significant nuclear atypia.', 'Marked nuclear atypia with bizarre shapes and sizes.'), Score: 0.7099
+('Normal stromal cells.', 'Atypical stromal cells.'), Score: 0.7009
+('No hemorrhage.', 'Presence of hemorrhage within the tissue.'), Score: 0.6897
+('Normal cellular morphology and arrangement.', 'Evidence of atypical cellular features.'), Score: 0.6754
+('Normal immune cell infiltrate.', 'Increased or atypical immune cell infiltrate.'), Score: 0.6738
+('Normal cells with typical nuclei and cytoplasm.', 'Atypical cells with enlarged nuclei and irregular cytoplasm.'), Score: 0.6738
+('No tumor necrosis is observed.', 'Tumor necrosis with cellular debris is present.'), Score: 0.6691
+('Uniform cell size and shape.', 'Pleomorphic cell size and shape.'), Score: 0.6666
+('No evidence of granuloma formation.', 'Granuloma formation.'), Score: 0.6606
+('Minimal inflammation and sparse immune cells.', 'Significant inflammation with dense immune cell infiltration.'), Score: 0.6453
+('Normal cells with mild immune response.', 'Aggressive cells, significant immune reaction, necrosis.'), Score: 0.6433
+('Nucleoli are not easily identified.', 'Large, distinct nucleoli are present.'), Score: 0.6363
+('Benign cells, minimal inflammation.', 'Malignant cells, significant inflammation.'), Score: 0.6342
+('No prominent nucleoli.', 'Prominent nucleoli.'), Score: 0.6342
+('Normal nuclear-cytoplasmic ratio.', 'Increased nuclear-cytoplasmic ratio.'), Score: 0.6340
+('No evidence of apoptosis.', 'Increased apoptosis or programmed cell death.'), Score: 0.6287
+('Normal lymphocytes with typical nuclei and cytoplasm.', 'Atypical cells with necrosis and cellular debris present.'), Score: 0.6234
+('Normal cell morphology.', 'Atypical cell morphology.'), Score: 0.6220
+('Low grade cells, sparse collagen.', 'High grade cells, abundant collagen.'), Score: 0.6174
+('Cells appear normal.', 'Atypical cells are visible.'), Score: 0.6167
+('No tumor necrosis is visible.', 'Tumor cells are clearly present.'), Score: 0.6026
+('Normal tissue, low immune cell count.', 'Abnormal tissue, high immune cell count.'), Score: 0.6001
+
