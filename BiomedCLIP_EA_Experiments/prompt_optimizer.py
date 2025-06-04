@@ -12,9 +12,10 @@ import numpy as np
 import os
 
 
+
 def main():
     # Name the experiment we are currently running
-    experiment_name = "Experiment-5-roulette_40_1000_iter"
+    experiment_name = "Experiment-7-all_in_one-optimization"
     print(f"Running {experiment_name}...")
 
     # Create experiment results directory
@@ -59,12 +60,22 @@ def main():
     # Configure the prompt templates
     meta_init_prompt = """Give 50 textual descriptions pairs of visual discriminative features to identify whether the central region of an histopathological image patch contains tumor tissue or not. The patch is extracted from an H&E‑stained whole‑slide image of a lymph node section. Only give the output as python code in the format - prompts: list[tuple[negative: str, positive: str]]"""
 
-    meta_prompt_template = """The task is to generate textual descriptions pairs of visual discriminative features to identify whether the central region of an histopathological image patch contains tumor tissue or not. The patch is extracted from an H&E‑stained whole‑slide image of a lymph node section.
+    # meta_prompt_template = """The task is to generate textual descriptions pairs of visual discriminative features to identify whether the central region of an histopathological image patch contains tumor tissue or not. The patch is extracted from an H&E‑stained whole‑slide image of a lymph node section.
+    # Here are the best performing pairs in descending order. High scores indicate higher quality visual discriminative features.
+    # {content}
+    # Write 10 new prompt pairs that is different from the old ones and has a score as high as possible. 
+    # Only give the output as python code in the format - prompts: list[tuple[negative: str, positive: str]]
+    # """
+
+    # Base meta prompt template
+    base_meta_prompt_template = """The task is to generate textual descriptions pairs of visual discriminative features to identify whether the central region of an histopathological image patch contains tumor tissue or not. The patch is extracted from an H&E‑stained whole‑slide image of a lymph node section.
     Here are the best performing pairs in descending order. High scores indicate higher quality visual discriminative features.
     {content}
-    Write 10 new prompt pairs that is different from the old ones and has a score as high as possible. 
+    {iteration_specific_instruction}
     Only give the output as python code in the format - prompts: list[tuple[negative: str, positive: str]]
     """
+
+
 
     # Optimization loop
     pq = util.PriorityQueue(max_capacity=1000)
@@ -73,8 +84,21 @@ def main():
         if j == 0:
             prompts = util.get_prompt_pairs(meta_init_prompt, client)
         else:
-            prompts = util.get_prompt_pairs(
-                meta_prompt_template.format(content=prompt_content), client)
+             # Update instruction based on iteration milestones
+            if j + 1 == 51:
+                current_instruction = "Write 10 new prompt pairs by combining multiple medical concepts only from the above prompts to make the score as high as possible."
+            elif j + 1 == 101:
+                current_instruction = "Write 10 new prompt pairs with different language style and same medical concepts. Each pair should have distinct language style."
+            elif j + 1 == 201:
+                current_instruction = "Write 10 new prompt pairs similar to the above pairs only making slight changes to the language style to make the score as high as possible."
+            
+            # Format the meta prompt with current instruction
+            meta_prompt = base_meta_prompt_template.format(
+                content=prompt_content, 
+                iteration_specific_instruction=current_instruction
+            )
+            
+            prompts = util.get_prompt_pairs(meta_prompt, client)
 
         for i, prompt_pair in enumerate(prompts):
             if len(prompt_pair) != 2:
@@ -86,7 +110,7 @@ def main():
 
             pq.insert((negative_prompt, positive_prompt), results['accuracy'])
 
-        n = 40
+        n = 10
         print(f"\nCurrent Top {n} prompt pairs:")
         selected_prompts = pq.get_roulette_wheel_selection(n)
         # selected_prompts = pq.get_best_n(n)
