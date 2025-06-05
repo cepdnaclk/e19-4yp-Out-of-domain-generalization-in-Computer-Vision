@@ -171,14 +171,13 @@ def main():
             prompt_content += f"{i+1}. {prompt_pair}, Score: {score:.1f}\n"
 
         # Save the best prompt pairs to a file, every 20 iterations
-        # if (j + 1) % 20 == 0 or j == 0:
-        # for every iteration
-        top_prompts = pq.get_best_n(1000)
-        with open(results_filename, "a") as f:
-            f.write(f"Iteration {j+1}:\n")
-            for prompt_pair, score in top_prompts:
-                f.write(f"{prompt_pair}, Score: {score:.4f}\n")
-            f.write("\n")
+        if (j + 1) % 20 == 0 or j == 0:
+            top_prompts = pq.get_best_n(1000)
+            with open(results_filename, "a") as f:
+                f.write(f"Iteration {j+1}:\n")
+                for prompt_pair, score in top_prompts:
+                    f.write(f"{prompt_pair}, Score: {score:.4f}\n")
+                f.write("\n")
 
         # print the average score of the top n prompts
         print(
