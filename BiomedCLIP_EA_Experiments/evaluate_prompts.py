@@ -22,6 +22,10 @@ def main():
     )
     print("Center embeddings extracted successfully.")
 
+    # Convert to torch tensors for each center
+    centers_features = [torch.from_numpy(feat) for feat in centers_features]
+    centers_labels = [torch.from_numpy(label) for label in centers_labels]
+
     # 3. load prompts
     negative_prompt = "No evidence of tumor cells with a normal nuclear grade and envelope, normal nucleolus, normal cell density."
     positive_prompt = "High-grade nuclei with significant atypia, irregular nuclear envelope, multiple nucleoli present, high cell density."
