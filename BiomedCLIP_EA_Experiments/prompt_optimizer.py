@@ -144,7 +144,7 @@ def main():
             #     iteration_num=j, prompt_content=prompt_content, generate_n=10)
 
             prompts = util.get_prompt_pairs(
-                meta_prompt_template.format(prompt_content), client)
+                meta_prompt_template.format(content=prompt_content), client)
 
         for i, prompt_pair in enumerate(prompts):
             if len(prompt_pair) != 2:
