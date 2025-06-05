@@ -27,18 +27,23 @@ def main():
     centers_labels = [torch.from_numpy(label) for label in centers_labels]
 
     # 3. load prompts
-    negative_prompt = "No evidence of atypical cytoplasm."
-    positive_prompt = "Atypical cytoplasmic features."
+    prompts = util.load_initial_prompts(
+        "experiment_results/best_prompts.txt"
+    )
 
-    for i, _ in enumerate(centers_features):
-        print(f"Evaluating center {i}...")
-        results = util.evaluate_prompt_pair(
-            negative_prompt, positive_prompt, centers_features[i], centers_labels[i], model, tokenizer)
+    for (negative_prompt, positive_prompt) in prompts:
+        print(f"Evaluating prompts: \n")
+        print(f"Negative Prompt: {negative_prompt}")
+        print(f"Positive Prompt: {positive_prompt}\n\n")
+        for i, _ in enumerate(centers_features):
+            print(f"Evaluating center {i}...")
+            results = util.evaluate_prompt_pair(
+                negative_prompt, positive_prompt, centers_features[i], centers_labels[i], model, tokenizer)
 
-        print(f"Accuracy: {results['accuracy']}")
-        print(f"ROC AUC: {results['auc']}")
-        print(f"Confusion Matrix:\n{results['cm']}")
-        print(f"Classification Report:\n{results['report']}")
+            print(f"Accuracy: {results['accuracy']}")
+            print(f"ROC AUC: {results['auc']}")
+            print(f"Confusion Matrix:\n{results['cm']}")
+            print(f"Classification Report:\n{results['report']}")
 
 
 if __name__ == "__main__":
