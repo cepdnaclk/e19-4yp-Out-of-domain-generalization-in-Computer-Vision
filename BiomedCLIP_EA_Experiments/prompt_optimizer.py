@@ -131,7 +131,7 @@ def main():
             prompts = util.get_prompt_pairs(meta_init_prompt, client)
         else:
             meta_prompt = get_prompt_template(
-                iteration_num=j, prompt_content=prompt_content)
+                iteration_num=j, prompt_content=prompt_content, generate_n=50)
 
             prompts = util.get_prompt_pairs(meta_prompt, client)
 
