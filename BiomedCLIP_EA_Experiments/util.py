@@ -145,12 +145,12 @@ def extract_center_embeddings(
     metadata_df = pd.read_csv(metadata_csv, index_col=0)
     metadata_df = append_filename_and_filepath(metadata_df)
 
-    # Filter for training split
-    df_train = metadata_df[metadata_df.split == int(isTrain)]
+    # Filter for training split 0: train, 1: test
+    df = metadata_df[metadata_df.split == int(0 if isTrain else 1)]
 
     # Build datasets per center
     centers_ds = [
-        BiomedCLIPDataset(df_train[df_train.center == i], preprocess)
+        BiomedCLIPDataset(df[df.center == i], preprocess)
         for i in range(num_centers)
     ]
 
@@ -162,8 +162,8 @@ def extract_center_embeddings(
     os.makedirs(f"{CACHE_PATH}/centers", exist_ok=True)
     for i, ds in enumerate(centers_ds):
         if isTrain:
-            feature_path = f"{CACHE_PATH}/centers/center{i}_features.npy"
-            label_path = f"{CACHE_PATH}/centers/center{i}_labels.npy"
+            feature_path = f"{CACHE_PATH}/centers/train-center{i}_features.npy"
+            label_path = f"{CACHE_PATH}/centers/train-center{i}_labels.npy"
         else:
             feature_path = f"{CACHE_PATH}/centers/test-center{i}_features.npy"
             label_path = f"{CACHE_PATH}/centers/test-center{i}_labels.npy"
