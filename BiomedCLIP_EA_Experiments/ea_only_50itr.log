@@ -1,0 +1,473 @@
+nohup: ignoring input
+/home/e19408/fyp/bioenv/lib/python3.13/site-packages/transformers/utils/generic.py:441: FutureWarning: `torch.utils._pytree._register_pytree_node` is deprecated. Please use `torch.utils._pytree.register_pytree_node` instead.
+  _torch_pytree._register_pytree_node(
+/home/e19408/fyp/bioenv/lib/python3.13/site-packages/transformers/utils/generic.py:309: FutureWarning: `torch.utils._pytree._register_pytree_node` is deprecated. Please use `torch.utils._pytree.register_pytree_node` instead.
+  _torch_pytree._register_pytree_node(
+/home/e19408/fyp/bioenv/lib/python3.13/site-packages/timm/models/layers/__init__.py:48: FutureWarning: Importing from timm.models.layers is deprecated, please import via timm.layers
+  warnings.warn(f"Importing from {__name__} is deprecated, please import via timm.layers", FutureWarning)
+/home/e19408/fyp/bioenv/lib/python3.13/site-packages/huggingface_hub/file_download.py:943: FutureWarning: `resume_download` is deprecated and will be removed in version 1.0.0. Downloads always resume when possible. If you want to force a new download, use `force_download=True`.
+  warnings.warn(
+Running EA-Only-reg-with-50-iterations...
+Model, preprocess, and tokenizer loaded successfully.
+Loading cached features for center 0...
+Center embeddings extracted successfully.
+Gemini client initialized successfully.
+Loaded 60 prompt-pairs.
+First pair: ('Uniformly spaced, small, round nuclei with regular chromatin.', 'Irregularly shaped nuclei with hyperchromatic chromatin, clustered or overlapping.')
+Iteration 1, New Prompt Pair 1: Uniformly spaced, small, round nuclei with regular chromatin., Irregularly shaped nuclei with hyperchromatic chromatin, clustered or overlapping., Accuracy: 0.5304
+Iteration 1, New Prompt Pair 2: Lymphocytes with high nucleus-to-cytoplasm ratio and scant cytoplasm., Large, atypical cells with abundant eosinophilic cytoplasm and prominent nucleoli., Accuracy: 0.7174
+Iteration 1, New Prompt Pair 3: Normal lymphoid follicles with distinct mantle and germinal center zones., Disrupted follicular architecture with loss of polarity and irregular germinal centers., Accuracy: 0.8360
+Iteration 1, New Prompt Pair 4: Sinusoids with smooth endothelial lining and minimal cellular infiltrate., Sinusoidal dilation with endothelial hyperplasia and extensive inflammatory infiltrate., Accuracy: 0.4914
+Iteration 1, New Prompt Pair 5: Scant stromal fibrosis with delicate collagen fibers., Dense stromal fibrosis with thick collagen bundles and increased cellularity., Accuracy: 0.8296
+Iteration 1, New Prompt Pair 6: Uniformly distributed small lymphocytes., Presence of large, atypical lymphocytes and reactive lymphoid cells., Accuracy: 0.5593
+Iteration 1, New Prompt Pair 7: Absence of mitotic figures., Frequent mitotic figures, including atypical forms., Accuracy: 0.8746
+Iteration 1, New Prompt Pair 8: Regular nuclear membrane., Irregular, thickened, or indented nuclear membrane., Accuracy: 0.4884
+Iteration 1, New Prompt Pair 9: Nucleoli are small and inconspicuous., Nucleoli are large, prominent, and multiple., Accuracy: 0.5991
+Iteration 1, New Prompt Pair 10: Chromatin is finely granular and evenly distributed., Chromatin is coarse, clumped, and unevenly distributed., Accuracy: 0.4863
+Iteration 1, New Prompt Pair 11: Cytoplasm is pale blue and uniform., Cytoplasm is abundant, eosinophilic, and may contain inclusions., Accuracy: 0.4668
+Iteration 1, New Prompt Pair 12: Lymph node capsule is intact., Capsular invasion by tumor cells., Accuracy: 0.4292
+Iteration 1, New Prompt Pair 13: Medullary cords are well-defined., Medullary cords are effaced or disrupted., Accuracy: 0.3539
+Iteration 1, New Prompt Pair 14: Cortical sinuses are open and regular., Cortical sinuses are narrowed or obliterated., Accuracy: 0.5007
+Iteration 1, New Prompt Pair 15: No evidence of necrosis., Presence of tumor necrosis with karyorrhexis and cellular debris., Accuracy: 0.7626
+Iteration 1, New Prompt Pair 16: Normal lymphatic drainage., Lymphatic vessel invasion by tumor cells., Accuracy: 0.5059
+Iteration 1, New Prompt Pair 17: Absence of giant cells., Presence of multinucleated giant cells., Accuracy: 0.7809
+Iteration 1, New Prompt Pair 18: No atypical mitotic activity., Atypical mitotic figures, including tripolar or quadripolar spindles., Accuracy: 0.5397
+Iteration 1, New Prompt Pair 19: Normal lymphocyte morphology., Lymphocytes with cleaved nuclei or irregular shapes., Accuracy: 0.5951
+Iteration 1, New Prompt Pair 20: Low cellularity., High cellularity with crowding of cells., Accuracy: 0.4026
+Iteration 1, New Prompt Pair 21: Uniform cell size., Variable cell size with pleomorphism., Accuracy: 0.5082
+Iteration 1, New Prompt Pair 22: No plasmacytoid differentiation., Presence of plasmacytoid cells with eccentric nuclei., Accuracy: 0.5939
+Iteration 1, New Prompt Pair 23: No evidence of angiolymphatic invasion., Tumor cells within lymphatic or blood vessels., Accuracy: 0.5054
+Iteration 1, New Prompt Pair 24: Normal background staining., Increased background staining due to cellular debris or inflammation., Accuracy: 0.3236
+Iteration 1, New Prompt Pair 25: No significant nuclear atypia., Marked nuclear atypia with bizarre shapes and sizes., Accuracy: 0.7099
+Iteration 1, New Prompt Pair 26: Normal stromal architecture., Disrupted stromal architecture with fibrosis and inflammation., Accuracy: 0.4710
+Iteration 1, New Prompt Pair 27: Absence of tumor cell clusters., Presence of cohesive tumor cell clusters., Accuracy: 0.5029
+Iteration 1, New Prompt Pair 28: No evidence of perineural invasion., Tumor cells surrounding or infiltrating nerves., Accuracy: 0.5926
+Iteration 1, New Prompt Pair 29: Normal fat distribution., Fat necrosis or altered fat distribution., Accuracy: 0.4984
+Iteration 1, New Prompt Pair 30: No hemorrhage., Presence of hemorrhage within the tissue., Accuracy: 0.6897
+Iteration 1, New Prompt Pair 31: Normal immune cell infiltrate., Increased or atypical immune cell infiltrate., Accuracy: 0.6738
+Iteration 1, New Prompt Pair 32: No evidence of extracellular matrix degradation., Extracellular matrix degradation with collagen breakdown., Accuracy: 0.5131
+Iteration 1, New Prompt Pair 33: Small, round, blue cells., Large, irregular, atypical cells., Accuracy: 0.7357
+Iteration 1, New Prompt Pair 34: Regular nuclear shape., Irregular nuclear shape (e.g., lobulated, indented)., Accuracy: 0.5164
+Iteration 1, New Prompt Pair 35: Uniform nuclear staining., Heterogeneous nuclear staining., Accuracy: 0.7957
+Iteration 1, New Prompt Pair 36: Scant cytoplasm., Abundant cytoplasm., Accuracy: 0.4886
+Iteration 1, New Prompt Pair 37: Well-defined cell borders., Ill-defined cell borders., Accuracy: 0.4954
+Iteration 1, New Prompt Pair 38: Normal cell arrangement., Disorganized cell arrangement., Accuracy: 0.5255
+Iteration 1, New Prompt Pair 39: No evidence of apoptosis., Increased apoptosis or programmed cell death., Accuracy: 0.6287
+Iteration 1, New Prompt Pair 40: Normal vascularity., Increased vascularity or angiogenesis., Accuracy: 0.5132
+Iteration 1, New Prompt Pair 41: No evidence of fibrosis., Extensive fibrosis., Accuracy: 0.5307
+Iteration 1, New Prompt Pair 42: Normal inflammatory response., Aggressive inflammatory response., Accuracy: 0.5041
+Iteration 1, New Prompt Pair 43: No evidence of granuloma formation., Granuloma formation., Accuracy: 0.6606
+Iteration 1, New Prompt Pair 44: Normal tissue architecture., Distorted tissue architecture., Accuracy: 0.5019
+Iteration 1, New Prompt Pair 45: Absence of atypical cells., Presence of atypical cells., Accuracy: 0.8291
+Iteration 1, New Prompt Pair 46: Normal cell density., Increased cell density., Accuracy: 0.5300
+Iteration 1, New Prompt Pair 47: No evidence of invasion., Evidence of invasion into surrounding tissues., Accuracy: 0.7195
+Iteration 1, New Prompt Pair 48: Normal cell polarity., Loss of cell polarity., Accuracy: 0.5242
+Iteration 1, New Prompt Pair 49: No evidence of necrosis., Extensive necrosis., Accuracy: 0.5746
+Iteration 1, New Prompt Pair 50: Normal mitotic rate., Increased mitotic rate., Accuracy: 0.5417
+Iteration 1, New Prompt Pair 51: No evidence of angiolymphatic invasion., Angiolymphatic invasion., Accuracy: 0.7222
+Iteration 1, New Prompt Pair 52: Normal stromal cells., Atypical stromal cells., Accuracy: 0.7009
+Iteration 1, New Prompt Pair 53: No evidence of perineural invasion., Perineural invasion., Accuracy: 0.8267
+Iteration 1, New Prompt Pair 54: Normal cell morphology., Atypical cell morphology., Accuracy: 0.6220
+Iteration 1, New Prompt Pair 55: Uniform cell size and shape., Pleomorphic cell size and shape., Accuracy: 0.6666
+Iteration 1, New Prompt Pair 56: Normal chromatin pattern., Abnormal chromatin pattern (e.g., vesicular, hyperchromatic)., Accuracy: 0.5392
+Iteration 1, New Prompt Pair 57: No prominent nucleoli., Prominent nucleoli., Accuracy: 0.6342
+Iteration 1, New Prompt Pair 58: Normal nuclear-cytoplasmic ratio., Increased nuclear-cytoplasmic ratio., Accuracy: 0.6340
+Iteration 1, New Prompt Pair 59: No evidence of tumor cell nests., Tumor cell nests., Accuracy: 0.8296
+Iteration 1, New Prompt Pair 60: Normal lymphatic vessels., Dilated lymphatic vessels., Accuracy: 0.5006
+Selected 2 prompt pairs:
+1. ('Normal nuclear-cytoplasmic ratio.', 'Increased nuclear-cytoplasmic ratio.'), Score: 10.0000
+2. ('Uniform nuclear staining.', 'Heterogeneous nuclear staining.'), Score: 90.0000
+Iteration 1: mean accuracy of top 10: 0.8100482448843787.
+
+Loaded 2 prompt-pairs.
+First pair: Uniform nuclei, typical ratio.
+Iteration 2, New Prompt Pair 1: Uniform nuclei, typical ratio., Atypical nuclei, high ratio., Accuracy: 0.7288
+Selected 2 prompt pairs:
+1. ('No significant nuclear atypia.', 'Marked nuclear atypia with bizarre shapes and sizes.'), Score: 10.0000
+2. ('No evidence of tumor cell nests.', 'Tumor cell nests.'), Score: 90.0000
+Iteration 2: mean accuracy of top 10: 0.8100482448843787.
+
+Loaded 2 prompt-pairs.
+First pair: No nuclear atypia observed.
+Iteration 3, New Prompt Pair 1: No nuclear atypia observed., Distinct tumor cell nests are present., Accuracy: 0.8165
+Selected 2 prompt pairs:
+1. ('Absence of giant cells.', 'Presence of multinucleated giant cells.'), Score: 10.0000
+2. ('No evidence of perineural invasion.', 'Perineural invasion.'), Score: 90.0000
+Iteration 3: mean accuracy of top 10: 0.8181334220595575.
+
+Loaded 2 prompt-pairs.
+First pair: No inflammation detected.
+Iteration 4, New Prompt Pair 1: No inflammation detected., Clear signs of inflammation., Accuracy: 0.5031
+Selected 2 prompt pairs:
+1. ('No evidence of invasion.', 'Evidence of invasion into surrounding tissues.'), Score: 90.0000
+2. ('Normal immune cell infiltrate.', 'Increased or atypical immune cell infiltrate.'), Score: 10.0000
+Iteration 4: mean accuracy of top 10: 0.8181334220595575.
+
+Loaded 2 prompt-pairs.
+First pair: Normal cellular morphology and arrangement.
+Iteration 5, New Prompt Pair 1: Normal cellular morphology and arrangement., Evidence of atypical cellular features., Accuracy: 0.6754
+Selected 2 prompt pairs:
+1. ('Absence of mitotic figures.', 'Frequent mitotic figures, including atypical forms.'), Score: 90.0000
+2. ('Normal stromal cells.', 'Atypical stromal cells.'), Score: 10.0000
+Iteration 5: mean accuracy of top 10: 0.8181334220595575.
+
+Loaded 2 prompt-pairs.
+First pair: Normal cells, low mitotic rate.
+Iteration 6, New Prompt Pair 1: Normal cells, low mitotic rate., Atypical cells, high mitotic rate., Accuracy: 0.7806
+Selected 2 prompt pairs:
+1. ('Absence of mitotic figures.', 'Frequent mitotic figures, including atypical forms.'), Score: 90.0000
+2. ('Normal cellular morphology and arrangement.', 'Evidence of atypical cellular features.'), Score: 10.0000
+Iteration 6: mean accuracy of top 10: 0.8199301280984862.
+
+Loaded 2 prompt-pairs.
+First pair: Few mitotic figures, normal appearance.
+Iteration 7, New Prompt Pair 1: Few mitotic figures, normal appearance., Numerous atypical mitoses, abnormal cells., Accuracy: 0.5670
+Selected 2 prompt pairs:
+1. ('No evidence of invasion.', 'Evidence of invasion into surrounding tissues.'), Score: 10.0000
+2. ('No evidence of tumor cell nests.', 'Tumor cell nests.'), Score: 90.0000
+Iteration 7: mean accuracy of top 10: 0.8199301280984862.
+
+Loaded 2 prompt-pairs.
+First pair: No tumor cell nests identified.
+Iteration 8, New Prompt Pair 1: No tumor cell nests identified., Distinct tumor cell nests are visible., Accuracy: 0.7267
+Selected 2 prompt pairs:
+1. ('No evidence of perineural invasion.', 'Perineural invasion.'), Score: 10.0000
+2. ('Normal lymphoid follicles with distinct mantle and germinal center zones.', 'Disrupted follicular architecture with loss of polarity and irregular germinal centers.'), Score: 90.0000
+Iteration 8: mean accuracy of top 10: 0.8199301280984862.
+
+Loaded 2 prompt-pairs.
+First pair: No architectural disruption observed.
+Iteration 9, New Prompt Pair 1: No architectural disruption observed., Irregular follicles and disordered architecture., Accuracy: 0.3484
+Selected 2 prompt pairs:
+1. ('Normal cells, low mitotic rate.', 'Atypical cells, high mitotic rate.'), Score: 10.0000
+2. ('Scant stromal fibrosis with delicate collagen fibers.', 'Dense stromal fibrosis with thick collagen bundles and increased cellularity.'), Score: 90.0000
+Iteration 9: mean accuracy of top 10: 0.8199301280984862.
+
+Loaded 2 prompt-pairs.
+First pair: Low grade cells, sparse collagen.
+Iteration 10, New Prompt Pair 1: Low grade cells, sparse collagen., High grade cells, abundant collagen., Accuracy: 0.6174
+Selected 2 prompt pairs:
+1. ('Scant stromal fibrosis with delicate collagen fibers.', 'Dense stromal fibrosis with thick collagen bundles and increased cellularity.'), Score: 90.0000
+2. ('No evidence of granuloma formation.', 'Granuloma formation.'), Score: 10.0000
+Iteration 10: mean accuracy of top 10: 0.8199301280984862.
+
+Loaded 2 prompt-pairs.
+First pair: Minimal stromal fibrosis present.
+Iteration 11, New Prompt Pair 1: Minimal stromal fibrosis present., Significant stromal fibrosis observed., Accuracy: 0.5302
+Selected 2 prompt pairs:
+1. ('No nuclear atypia observed.', 'Distinct tumor cell nests are present.'), Score: 10.0000
+2. ('No evidence of perineural invasion.', 'Perineural invasion.'), Score: 90.0000
+Iteration 11: mean accuracy of top 10: 0.8199301280984862.
+
+Loaded 2 prompt-pairs.
+First pair: Nuclear atypia is absent.
+Iteration 12, New Prompt Pair 1: Nuclear atypia is absent., Perineural invasion is identified., Accuracy: 0.4909
+Selected 2 prompt pairs:
+1. ('Normal cell morphology.', 'Atypical cell morphology.'), Score: 10.0000
+2. ('No tumor cell nests identified.', 'Distinct tumor cell nests are visible.'), Score: 90.0000
+Iteration 12: mean accuracy of top 10: 0.8199301280984862.
+
+Loaded 2 prompt-pairs.
+First pair: No evidence of atypical cells.
+Iteration 13, New Prompt Pair 1: No evidence of atypical cells., Atypical cells forming tumor nests are seen., Accuracy: 0.8652
+Selected 2 prompt pairs:
+1. ('Absence of atypical cells.', 'Presence of atypical cells.'), Score: 90.0000
+2. ('No evidence of necrosis.', 'Presence of tumor necrosis with karyorrhexis and cellular debris.'), Score: 10.0000
+Iteration 13: mean accuracy of top 10: 0.8283979371152886.
+
+Loaded 2 prompt-pairs.
+First pair: No tumor necrosis is observed.
+Iteration 14, New Prompt Pair 1: No tumor necrosis is observed., Tumor necrosis with cellular debris is present., Accuracy: 0.6691
+Selected 2 prompt pairs:
+1. ('Scant stromal fibrosis with delicate collagen fibers.', 'Dense stromal fibrosis with thick collagen bundles and increased cellularity.'), Score: 90.0000
+2. ('Absence of atypical cells.', 'Presence of atypical cells.'), Score: 10.0000
+Iteration 14: mean accuracy of top 10: 0.8283979371152886.
+
+Loaded 2 prompt-pairs.
+First pair: Mild fibrosis, cells appear normal.
+Iteration 15, New Prompt Pair 1: Mild fibrosis, cells appear normal., Marked fibrosis, atypical cells present., Accuracy: 0.5064
+Selected 2 prompt pairs:
+1. ('No evidence of invasion.', 'Evidence of invasion into surrounding tissues.'), Score: 10.0000
+2. ('No tumor cell nests identified.', 'Distinct tumor cell nests are visible.'), Score: 90.0000
+Iteration 15: mean accuracy of top 10: 0.8283979371152886.
+
+Loaded 2 prompt-pairs.
+First pair: No tumor nests identified.
+Iteration 16, New Prompt Pair 1: No tumor nests identified., Distinct tumor nests present., Accuracy: 0.8395
+Selected 2 prompt pairs:
+1. ('Scant stromal fibrosis with delicate collagen fibers.', 'Dense stromal fibrosis with thick collagen bundles and increased cellularity.'), Score: 90.0000
+2. ('Uniform nuclear staining.', 'Heterogeneous nuclear staining.'), Score: 10.0000
+Iteration 16: mean accuracy of top 10: 0.8342538679088338.
+
+Loaded 2 prompt-pairs.
+First pair: Minimal inflammation and sparse immune cells.
+Iteration 17, New Prompt Pair 1: Minimal inflammation and sparse immune cells., Significant inflammation with dense immune cell infiltration., Accuracy: 0.6453
+Selected 2 prompt pairs:
+1. ('Normal cell morphology.', 'Atypical cell morphology.'), Score: 10.0000
+2. ('Small, round, blue cells.', 'Large, irregular, atypical cells.'), Score: 90.0000
+Iteration 17: mean accuracy of top 10: 0.8342538679088338.
+
+Loaded 2 prompt-pairs.
+First pair: Normal, small, round cells.
+Iteration 18, New Prompt Pair 1: Normal, small, round cells., Abnormal, large, irregular cells., Accuracy: 0.5766
+Selected 2 prompt pairs:
+1. ('Lymphocytes with high nucleus-to-cytoplasm ratio and scant cytoplasm.', 'Large, atypical cells with abundant eosinophilic cytoplasm and prominent nucleoli.'), Score: 10.0000
+2. ('No tumor cell nests identified.', 'Distinct tumor cell nests are visible.'), Score: 90.0000
+Iteration 18: mean accuracy of top 10: 0.8342538679088338.
+
+Loaded 2 prompt-pairs.
+First pair: No atypical cells identified.
+Iteration 19, New Prompt Pair 1: No atypical cells identified., High nucleus-to-cytoplasm ratio lymphocytes present., Accuracy: 0.3542
+Selected 2 prompt pairs:
+1. ('No tumor nests identified.', 'Distinct tumor nests present.'), Score: 90.0000
+2. ('No evidence of necrosis.', 'Presence of tumor necrosis with karyorrhexis and cellular debris.'), Score: 10.0000
+Iteration 19: mean accuracy of top 10: 0.8342538679088338.
+
+Loaded 2 prompt-pairs.
+First pair: No necrosis or cellular debris observed.
+Iteration 20, New Prompt Pair 1: No necrosis or cellular debris observed., Distinct tumor nests are clearly visible., Accuracy: 0.8972
+Selected 2 prompt pairs:
+1. ('Normal immune cell infiltrate.', 'Increased or atypical immune cell infiltrate.'), Score: 10.0000
+2. ('Normal cells, low mitotic rate.', 'Atypical cells, high mitotic rate.'), Score: 90.0000
+Iteration 20: mean accuracy of top 10: 0.8444019297953751.
+
+Loaded 2 prompt-pairs.
+First pair: Benign cells, normal immune infiltrate.
+Iteration 21, New Prompt Pair 1: Benign cells, normal immune infiltrate., Malignant cells, active immune infiltrate., Accuracy: 0.8456
+Selected 2 prompt pairs:
+1. ('No nuclear atypia observed.', 'Distinct tumor cell nests are present.'), Score: 90.0000
+2. ('Normal stromal cells.', 'Atypical stromal cells.'), Score: 10.0000
+Iteration 21: mean accuracy of top 10: 0.8473132590251206.
+
+Loaded 2 prompt-pairs.
+First pair: No nuclear atypia, normal stroma.
+Iteration 22, New Prompt Pair 1: No nuclear atypia, normal stroma., Tumor cell nests, atypical stroma., Accuracy: 0.8970
+Selected 2 prompt pairs:
+1. ('No evidence of granuloma formation.', 'Granuloma formation.'), Score: 10.0000
+2. ('No tumor cell nests identified.', 'Distinct tumor cell nests are visible.'), Score: 90.0000
+Iteration 22: mean accuracy of top 10: 0.8543503576775912.
+
+Loaded 2 prompt-pairs.
+First pair: Tumor and granuloma not identified.
+Iteration 23, New Prompt Pair 1: Tumor and granuloma not identified., Tumor and granuloma are visible., Accuracy: 0.5997
+Selected 2 prompt pairs:
+1. ('No hemorrhage.', 'Presence of hemorrhage within the tissue.'), Score: 10.0000
+2. ('Absence of mitotic figures.', 'Frequent mitotic figures, including atypical forms.'), Score: 90.0000
+Iteration 23: mean accuracy of top 10: 0.8543503576775912.
+
+Loaded 2 prompt-pairs.
+First pair: No cellular atypia is present.
+Iteration 24, New Prompt Pair 1: No cellular atypia is present., Significant cellular atypia is observed., Accuracy: 0.8834
+Selected 2 prompt pairs:
+1. ('No prominent nucleoli.', 'Prominent nucleoli.'), Score: 10.0000
+2. ('Normal lymphoid follicles with distinct mantle and germinal center zones.', 'Disrupted follicular architecture with loss of polarity and irregular germinal centers.'), Score: 90.0000
+Iteration 24: mean accuracy of top 10: 0.8597737481284312.
+
+Loaded 2 prompt-pairs.
+First pair: Nucleoli are small and inconspicuous.
+Iteration 25, New Prompt Pair 1: Nucleoli are small and inconspicuous., Follicles show irregular centers and loss of structure., Accuracy: 0.4796
+Selected 2 prompt pairs:
+1. ('No tumor nests identified.', 'Distinct tumor nests present.'), Score: 90.0000
+2. ('No tumor cell nests identified.', 'Distinct tumor cell nests are visible.'), Score: 10.0000
+Iteration 25: mean accuracy of top 10: 0.8597737481284312.
+
+Loaded 2 prompt-pairs.
+First pair: Tumor nests are not identified.
+Iteration 26, New Prompt Pair 1: Tumor nests are not identified., Clear tumor cell nests are visible., Accuracy: 0.2549
+Selected 2 prompt pairs:
+1. ('Lymphocytes with high nucleus-to-cytoplasm ratio and scant cytoplasm.', 'Large, atypical cells with abundant eosinophilic cytoplasm and prominent nucleoli.'), Score: 90.0000
+2. ('No tumor necrosis is observed.', 'Tumor necrosis with cellular debris is present.'), Score: 10.0000
+Iteration 26: mean accuracy of top 10: 0.8597737481284312.
+
+Loaded 2 prompt-pairs.
+First pair: Normal lymphocytes with typical nuclei and cytoplasm.
+Iteration 27, New Prompt Pair 1: Normal lymphocytes with typical nuclei and cytoplasm., Atypical cells with necrosis and cellular debris present., Accuracy: 0.6234
+Selected 2 prompt pairs:
+1. ('No evidence of tumor cell nests.', 'Tumor cell nests.'), Score: 90.0000
+2. ('No hemorrhage.', 'Presence of hemorrhage within the tissue.'), Score: 10.0000
+Iteration 27: mean accuracy of top 10: 0.8597737481284312.
+
+Loaded 2 prompt-pairs.
+First pair: No evidence of hemorrhage.
+Iteration 28, New Prompt Pair 1: No evidence of hemorrhage., Tumor cell nests detected., Accuracy: 0.8478
+Selected 2 prompt pairs:
+1. ('Absence of atypical cells.', 'Presence of atypical cells.'), Score: 90.0000
+2. ('No nuclear atypia observed.', 'Distinct tumor cell nests are present.'), Score: 10.0000
+Iteration 28: mean accuracy of top 10: 0.861587090334387.
+
+Loaded 2 prompt-pairs.
+First pair: No atypical cells or nuclear changes identified.
+Iteration 29, New Prompt Pair 1: No atypical cells or nuclear changes identified., Atypical cells and nuclear changes are present., Accuracy: 0.8120
+Selected 2 prompt pairs:
+1. ('No prominent nucleoli.', 'Prominent nucleoli.'), Score: 10.0000
+2. ('Absence of mitotic figures.', 'Frequent mitotic figures, including atypical forms.'), Score: 90.0000
+Iteration 29: mean accuracy of top 10: 0.861587090334387.
+
+Loaded 2 prompt-pairs.
+First pair: Nucleoli are not easily identified.
+Iteration 30, New Prompt Pair 1: Nucleoli are not easily identified., Large, distinct nucleoli are present., Accuracy: 0.6363
+Selected 2 prompt pairs:
+1. ('No tumor necrosis is observed.', 'Tumor necrosis with cellular debris is present.'), Score: 10.0000
+2. ('Absence of mitotic figures.', 'Frequent mitotic figures, including atypical forms.'), Score: 90.0000
+Iteration 30: mean accuracy of top 10: 0.861587090334387.
+
+Loaded 2 prompt-pairs.
+First pair: No evidence of mitosis is identified.
+Iteration 31, New Prompt Pair 1: No evidence of mitosis is identified., Atypical mitotic figures are readily apparent., Accuracy: 0.7593
+Selected 2 prompt pairs:
+1. ('Uniform cell size and shape.', 'Pleomorphic cell size and shape.'), Score: 10.0000
+2. ('No necrosis or cellular debris observed.', 'Distinct tumor nests are clearly visible.'), Score: 90.0000
+Iteration 31: mean accuracy of top 10: 0.861587090334387.
+
+Loaded 2 prompt-pairs.
+First pair: Cells exhibit uniform size and shape; no necrosis is present.
+Iteration 32, New Prompt Pair 1: Cells exhibit uniform size and shape; no necrosis is present., Cells show pleomorphism; tumor nests are clearly visible., Accuracy: 0.8812
+Selected 2 prompt pairs:
+1. ('Minimal inflammation and sparse immune cells.', 'Significant inflammation with dense immune cell infiltration.'), Score: 10.0000
+2. ('Normal stromal cells.', 'Atypical stromal cells.'), Score: 90.0000
+Iteration 32: mean accuracy of top 10: 0.8667443021127932.
+
+Loaded 2 prompt-pairs.
+First pair: Minimal immune response, normal stromal tissue.
+Iteration 33, New Prompt Pair 1: Minimal immune response, normal stromal tissue., Strong immune response, abnormal stromal tissue., Accuracy: 0.8534
+Selected 2 prompt pairs:
+1. ('No tumor necrosis is observed.', 'Tumor necrosis with cellular debris is present.'), Score: 10.0000
+2. ('No evidence of mitosis is identified.', 'Atypical mitotic figures are readily apparent.'), Score: 90.0000
+Iteration 33: mean accuracy of top 10: 0.8684910996506405.
+
+Loaded 2 prompt-pairs.
+First pair: No tumor necrosis is evident.
+Iteration 34, New Prompt Pair 1: No tumor necrosis is evident., Tumor necrosis with atypical mitosis present., Accuracy: 0.8779
+Selected 2 prompt pairs:
+1. ('Normal immune cell infiltrate.', 'Increased or atypical immune cell infiltrate.'), Score: 10.0000
+2. ('Normal stromal cells.', 'Atypical stromal cells.'), Score: 90.0000
+Iteration 34: mean accuracy of top 10: 0.8723340542339045.
+
+Loaded 2 prompt-pairs.
+First pair: Normal tissue architecture observed.
+Iteration 35, New Prompt Pair 1: Normal tissue architecture observed., Significantly disrupted tissue architecture., Accuracy: 0.5011
+Selected 2 prompt pairs:
+1. ('Uniform nuclear staining.', 'Heterogeneous nuclear staining.'), Score: 90.0000
+2. ('No tumor cell nests identified.', 'Distinct tumor cell nests are visible.'), Score: 10.0000
+Iteration 35: mean accuracy of top 10: 0.8723340542339045.
+
+Loaded 2 prompt-pairs.
+First pair: Uniform nuclear staining, no tumor nests identified.
+Iteration 36, New Prompt Pair 1: Uniform nuclear staining, no tumor nests identified., Heterogeneous nuclear staining, tumor cell nests visible., Accuracy: 0.8954
+Selected 2 prompt pairs:
+1. ('Lymphocytes with high nucleus-to-cytoplasm ratio and scant cytoplasm.', 'Large, atypical cells with abundant eosinophilic cytoplasm and prominent nucleoli.'), Score: 10.0000
+2. ('No cellular atypia is present.', 'Significant cellular atypia is observed.'), Score: 90.0000
+Iteration 36: mean accuracy of top 10: 0.8773082681750125.
+
+Loaded 2 prompt-pairs.
+First pair: Normal cells with typical nuclei and cytoplasm.
+Iteration 37, New Prompt Pair 1: Normal cells with typical nuclei and cytoplasm., Atypical cells with enlarged nuclei and irregular cytoplasm., Accuracy: 0.6738
+Selected 2 prompt pairs:
+1. ('No tumor necrosis is observed.', 'Tumor necrosis with cellular debris is present.'), Score: 10.0000
+2. ('No evidence of hemorrhage.', 'Tumor cell nests detected.'), Score: 90.0000
+Iteration 37: mean accuracy of top 10: 0.8773082681750125.
+
+Loaded 2 prompt-pairs.
+First pair: No tumor necrosis is visible.
+Iteration 38, New Prompt Pair 1: No tumor necrosis is visible., Tumor cells are clearly present., Accuracy: 0.6026
+Selected 2 prompt pairs:
+1. ('No tumor necrosis is evident.', 'Tumor necrosis with atypical mitosis present.'), Score: 90.0000
+2. ('No evidence of mitosis is identified.', 'Atypical mitotic figures are readily apparent.'), Score: 10.0000
+Iteration 38: mean accuracy of top 10: 0.8773082681750125.
+
+Loaded 2 prompt-pairs.
+First pair: No tumor necrosis or mitotic figures are identified.
+Iteration 39, New Prompt Pair 1: No tumor necrosis or mitotic figures are identified., Atypical mitotic figures and tumor necrosis are present., Accuracy: 0.8486
+Selected 2 prompt pairs:
+1. ('No evidence of atypical cells.', 'Atypical cells forming tumor nests are seen.'), Score: 90.0000
+2. ('No evidence of angiolymphatic invasion.', 'Angiolymphatic invasion.'), Score: 10.0000
+Iteration 39: mean accuracy of top 10: 0.8773914490101481.
+
+Loaded 2 prompt-pairs.
+First pair: No atypical cells or vascular invasion seen.
+Iteration 40, New Prompt Pair 1: No atypical cells or vascular invasion seen., Atypical cells and vascular invasion present., Accuracy: 0.7683
+Selected 2 prompt pairs:
+1. ('Normal cells, low mitotic rate.', 'Atypical cells, high mitotic rate.'), Score: 10.0000
+2. ('No atypical cells or nuclear changes identified.', 'Atypical cells and nuclear changes are present.'), Score: 90.0000
+Iteration 40: mean accuracy of top 10: 0.8773914490101481.
+
+Loaded 2 prompt-pairs.
+First pair: Low mitotic activity.
+Iteration 41, New Prompt Pair 1: Low mitotic activity., High mitotic activity., Accuracy: 0.7683
+Selected 2 prompt pairs:
+1. ('No tumor nests identified.', 'Distinct tumor nests present.'), Score: 90.0000
+2. ('No evidence of perineural invasion.', 'Perineural invasion.'), Score: 10.0000
+Iteration 41: mean accuracy of top 10: 0.8773914490101481.
+
+Loaded 2 prompt-pairs.
+First pair: Tumor nests are absent.
+Iteration 42, New Prompt Pair 1: Tumor nests are absent., Perineural invasion is present., Accuracy: 0.3509
+Selected 2 prompt pairs:
+1. ('Benign cells, normal immune infiltrate.', 'Malignant cells, active immune infiltrate.'), Score: 10.0000
+2. ('No necrosis or cellular debris observed.', 'Distinct tumor nests are clearly visible.'), Score: 90.0000
+Iteration 42: mean accuracy of top 10: 0.8773914490101481.
+
+Loaded 2 prompt-pairs.
+First pair: Normal cells with mild immune response.
+Iteration 43, New Prompt Pair 1: Normal cells with mild immune response., Aggressive cells, significant immune reaction, necrosis., Accuracy: 0.6433
+Selected 2 prompt pairs:
+1. ('Absence of giant cells.', 'Presence of multinucleated giant cells.'), Score: 90.0000
+2. ('Normal stromal cells.', 'Atypical stromal cells.'), Score: 10.0000
+Iteration 43: mean accuracy of top 10: 0.8773914490101481.
+
+Loaded 2 prompt-pairs.
+First pair: Cells appear normal.
+Iteration 44, New Prompt Pair 1: Cells appear normal., Atypical cells are visible., Accuracy: 0.6167
+Selected 2 prompt pairs:
+1. ('Normal cells, low mitotic rate.', 'Atypical cells, high mitotic rate.'), Score: 10.0000
+2. ('Minimal immune response, normal stromal tissue.', 'Strong immune response, abnormal stromal tissue.'), Score: 90.0000
+Iteration 44: mean accuracy of top 10: 0.8773914490101481.
+
+Loaded 2 prompt-pairs.
+First pair: Normal tissue, low immune cell count.
+Iteration 45, New Prompt Pair 1: Normal tissue, low immune cell count., Abnormal tissue, high immune cell count., Accuracy: 0.6001
+Selected 2 prompt pairs:
+1. ('No tumor necrosis is observed.', 'Tumor necrosis with cellular debris is present.'), Score: 10.0000
+2. ('Small, round, blue cells.', 'Large, irregular, atypical cells.'), Score: 90.0000
+Iteration 45: mean accuracy of top 10: 0.8773914490101481.
+
+Loaded 2 prompt-pairs.
+First pair: Normal cells, no necrosis.
+Iteration 46, New Prompt Pair 1: Normal cells, no necrosis., Atypical cells, necrosis present., Accuracy: 0.7260
+Selected 2 prompt pairs:
+1. ('Minimal immune response, normal stromal tissue.', 'Strong immune response, abnormal stromal tissue.'), Score: 90.0000
+2. ('Uniform cell size and shape.', 'Pleomorphic cell size and shape.'), Score: 10.0000
+Iteration 46: mean accuracy of top 10: 0.8773914490101481.
+
+Loaded 2 prompt-pairs.
+First pair: Weak immune cells, regular cell morphology.
+Iteration 47, New Prompt Pair 1: Weak immune cells, regular cell morphology., Robust immune infiltrate, irregular cell shapes., Accuracy: 0.5706
+Selected 2 prompt pairs:
+1. ('Uniform nuclear staining, no tumor nests identified.', 'Heterogeneous nuclear staining, tumor cell nests visible.'), Score: 90.0000
+2. ('Normal cells, no necrosis.', 'Atypical cells, necrosis present.'), Score: 10.0000
+Iteration 47: mean accuracy of top 10: 0.8773914490101481.
+
+Loaded 2 prompt-pairs.
+First pair: Uniform nuclei, no atypical cells seen.
+Iteration 48, New Prompt Pair 1: Uniform nuclei, no atypical cells seen., Atypical nuclei, necrosis is present., Accuracy: 0.7357
+Selected 2 prompt pairs:
+1. ('Absence of atypical cells.', 'Presence of atypical cells.'), Score: 10.0000
+2. ('Minimal immune response, normal stromal tissue.', 'Strong immune response, abnormal stromal tissue.'), Score: 90.0000
+Iteration 48: mean accuracy of top 10: 0.8773914490101481.
+
+Loaded 2 prompt-pairs.
+First pair: Benign cells, minimal inflammation.
+Iteration 49, New Prompt Pair 1: Benign cells, minimal inflammation., Malignant cells, significant inflammation., Accuracy: 0.6342
+Selected 2 prompt pairs:
+1. ('Absence of giant cells.', 'Presence of multinucleated giant cells.'), Score: 90.0000
+2. ('Uniform nuclei, typical ratio.', 'Atypical nuclei, high ratio.'), Score: 10.0000
+Iteration 49: mean accuracy of top 10: 0.8773914490101481.
+
+Loaded 2 prompt-pairs.
+First pair: Normal nuclei, consistent size and shape.
+Iteration 50, New Prompt Pair 1: Normal nuclei, consistent size and shape., Irregular nuclei, varying sizes and shapes., Accuracy: 0.5107
+Selected 2 prompt pairs:
+1. ('No tumor necrosis or mitotic figures are identified.', 'Atypical mitotic figures and tumor necrosis are present.'), Score: 90.0000
+2. ('No evidence of tumor cell nests.', 'Tumor cell nests.'), Score: 10.0000
+Iteration 50: mean accuracy of top 10: 0.8773914490101481.
+

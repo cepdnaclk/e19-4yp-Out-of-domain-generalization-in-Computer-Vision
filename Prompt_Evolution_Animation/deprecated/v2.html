@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sentence Evolution Animation</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: white;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .file-input-section {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .file-input {
+            background: rgba(255, 255, 255, 0.2);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 25px;
+            font-size: 16px;
+            backdrop-filter: blur(10px);
+            margin-right: 10px;
+        }
+
+        .file-input::file-selector-button {
+            background: rgba(255, 255, 255, 0.3);
+            border: none;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 15px;
+            margin-right: 10px;
+            cursor: pointer;
+        }
+
+        .controls {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            background: rgba(255, 255, 255, 0.2);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            border-color: rgba(255, 255, 255, 0.5);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .iteration-display {
+            text-align: center;
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            font-weight: bold;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+        }
+
+        .sentences-container {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 20px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            position: relative;
+            min-height: 700px;
+            height: 700px;
+            overflow: hidden;
+        }
+
+        .sentence-item {
+            display: flex;
+            align-items: center;
+            padding: 12px 18px;
+            margin: 6px 0;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 12px;
+            border-left: 4px solid #00ff88;
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            position: absolute;
+            width: calc(100% - 40px);
+            backdrop-filter: blur(5px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            height: 60px;
+        }
+
+        .sentence-item.entering {
+            opacity: 0;
+            transform: translateX(100px) scale(0.9);
+        }
+
+        .sentence-item.exiting {
+            opacity: 0;
+            transform: translateX(-100px) scale(0.9);
+        }
+
+        .rank {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-right: 15px;
+            min-width: 30px;
+            text-align: center;
+            color: #00ff88;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+        }
+
+        .sentence-text {
+            flex: 1;
+            font-size: 14px;
+            line-height: 1.4;
+            margin-right: 15px;
+        }
+
+        .score {
+            font-weight: bold;
+            font-size: 16px;
+            color: #ffeb3b;
+            background: rgba(0,0,0,0.2);
+            padding: 5px 10px;
+            border-radius: 20px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 6px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 3px;
+            margin: 20px 0;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #00ff88, #00d4ff);
+            border-radius: 3px;
+            transition: width 0.3s ease;
+        }
+
+        .status-message {
+            text-align: center;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        .sentence-item:hover {
+            transform: translateX(5px) scale(1.02);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+            
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .sentence-text {
+                font-size: 12px;
+            }
+            
+            .controls {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🔬 Dynamic Sentence Evolution Viewer</h1>
+            <p>Upload your experiment data file to watch sentences evolve through iterations</p>
+        </div>
+        
+        <div class="file-input-section">
+            <input type="file" id="fileInput" class="file-input" accept=".txt" />
+            <button class="btn" onclick="loadFile()">📁 Load Data</button>
+        </div>
+        
+        <div id="statusMessage" class="status-message" style="display: none;">
+            Ready to load data...
+        </div>
+        
+        <div class="controls">
+            <button class="btn" id="startBtn" onclick="startAnimation()" disabled>▶️ Start Animation</button>
+            <button class="btn" id="pauseBtn" onclick="pauseAnimation()" disabled>⏸️ Pause</button>
+            <button class="btn" id="resetBtn" onclick="resetAnimation()" disabled>🔄 Reset</button>
+            <button class="btn" id="nextBtn" onclick="nextIteration()" disabled>⏭️ Next</button>
+            <button class="btn" id="prevBtn" onclick="prevIteration()" disabled>⏮️ Previous</button>
+        </div>
+        
+        <div class="iteration-display">
+            <span id="currentIteration">No data loaded</span>
+        </div>
+        
+        <div class="progress-bar">
+            <div class="progress-fill" id="progressFill"></div>
+        </div>
+        
+        <div class="sentences-container" id="sentencesContainer">
+        </div>
+    </div>
+
+    <script>
+        let iterationData = [];
+        let currentIterationIndex = 0;
+        let animationInterval;
+        let isAnimating = false;
+
+        function showStatus(message, isError = false) {
+            const statusEl = document.getElementById('statusMessage');
+            statusEl.textContent = message;
+            statusEl.style.display = 'block';
+            statusEl.style.background = isError ? 'rgba(255, 0, 0, 0.2)' : 'rgba(0, 255, 0, 0.2)';
+            
+            setTimeout(() => {
+                statusEl.style.display = 'none';
+            }, 3000);
+        }
+
+        function enableControls(enabled) {
+            const buttons = ['startBtn', 'pauseBtn', 'resetBtn', 'nextBtn', 'prevBtn'];
+            buttons.forEach(id => {
+                document.getElementById(id).disabled = !enabled;
+            });
+        }
+
+        function parseDataFile(content) {
+            const lines = content.split('\n');
+            const iterations = [];
+            let currentIteration = [];
+            
+            for (let line of lines) {
+                line = line.trim();
+                if (!line) continue;
+                
+                // Check if this is an iteration header
+                if (line.startsWith('Iteration ')) {
+                    // If we have data from previous iteration, save it
+                    if (currentIteration.length > 0) {
+                        iterations.push(currentIteration.slice(0, 10)); // Take only top 10
+                        currentIteration = [];
+                    }
+                    continue;
+                }
+                
+                // Parse sentence line
+                const match = line.match(/\('([^']+)',\s*'([^']+)'\),\s*Score:\s*([\d.]+)/);
+                if (match) {
+                    const [, negativeSentence, positiveSentence, score] = match;
+                    // Use the positive sentence (second one) as it represents the evolved state
+                    currentIteration.push({
+                        text: `${positiveSentence}, ${negativeSentence}`, 
+                        score: parseFloat(score)
+                    });
+                }
+            }
+            
+            // Don't forget the last iteration
+            if (currentIteration.length > 0) {
+                iterations.push(currentIteration.slice(0, 10));
+            }
+            
+            return iterations;
+        }
+
+        function loadFile() {
+            const fileInput = document.getElementById('fileInput');
+            const file = fileInput.files[0];
+            
+            if (!file) {
+                showStatus('Please select a file first!', true);
+                return;
+            }
+            
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                try {
+                    const content = e.target.result;
+                    iterationData = parseDataFile(content);
+                    
+                    if (iterationData.length === 0) {
+                        showStatus('No valid data found in file!', true);
+                        return;
+                    }
+                    
+                    showStatus(`Loaded ${iterationData.length} iterations successfully!`);
+                    enableControls(true);
+                    currentIterationIndex = 0;
+                    displayIteration(currentIterationIndex);
+                    
+                } catch (error) {
+                    showStatus('Error parsing file: ' + error.message, true);
+                    console.error('Parse error:', error);
+                }
+            };
+            
+            reader.onerror = function() {
+                showStatus('Error reading file!', true);
+            };
+            
+            reader.readAsText(file);
+        }
+
+        function displayIteration(index) {
+            if (iterationData.length === 0) return;
+            
+            const container = document.getElementById('sentencesContainer');
+            const iterationDisplay = document.getElementById('currentIteration');
+            const progressFill = document.getElementById('progressFill');
+            
+            // Update iteration display
+            iterationDisplay.textContent = `Iteration ${(index + 1)*20} of ${(iterationData.length)*20}`;
+            
+            // Update progress bar
+            const progress = ((index + 1) / iterationData.length) * 100;
+            progressFill.style.width = `${progress}%`;
+            
+            // Get existing items
+            const existingItems = Array.from(container.children);
+            const newData = iterationData[index];
+            
+            // Create a map of existing sentences for comparison
+            const existingMap = new Map();
+            existingItems.forEach((item, idx) => {
+                const text = item.querySelector('.sentence-text').textContent;
+                existingMap.set(text, {element: item, oldIndex: idx});
+            });
+            
+            // Animate out items that are no longer in top 10
+            existingItems.forEach(item => {
+                const text = item.querySelector('.sentence-text').textContent;
+                const stillExists = newData.some(sentence => sentence.text === text);
+                if (!stillExists) {
+                    item.classList.add('exiting');
+                    setTimeout(() => {
+                        if (item.parentNode) {
+                            item.parentNode.removeChild(item);
+                        }
+                    }, 600);
+                }
+            });
+            
+            // Position and animate items
+            newData.forEach((sentence, newIndex) => {
+                const yPosition = newIndex * 65;
+                let item = existingMap.get(sentence.text)?.element;
+                
+                if (item) {
+                    // Existing item - animate to new position
+                    item.style.top = `${yPosition}px`;
+                    item.querySelector('.rank').textContent = `#${newIndex + 1}`;
+                    item.querySelector('.score').textContent = sentence.score.toFixed(4);
+                    item.classList.remove('entering', 'exiting');
+                } else {
+                    // New item - create and animate in
+                    item = createSentenceItem(sentence, newIndex, yPosition);
+                    container.appendChild(item);
+                    
+                    // Trigger entering animation
+                    setTimeout(() => {
+                        item.classList.remove('entering');
+                    }, 50);
+                }
+            });
+        }
+
+        function createSentenceItem(sentence, index, yPosition) {
+            const item = document.createElement('div');
+            item.className = 'sentence-item entering';
+            item.style.top = `${yPosition}px`;
+            
+            item.innerHTML = `
+                <div class="rank">#${index + 1}</div>
+                <div class="sentence-text">${sentence.text}</div>
+                <div class="score">${sentence.score.toFixed(4)}</div>
+            `;
+            
+            return item;
+        }
+
+        function startAnimation() {
+            if (isAnimating || iterationData.length === 0) return;
+            
+            isAnimating = true;
+            animationInterval = setInterval(() => {
+                currentIterationIndex++;
+                if (currentIterationIndex >= iterationData.length) {
+                    currentIterationIndex = 0;
+                }
+                displayIteration(currentIterationIndex);
+            }, 2000); // Change iteration every 2 seconds
+        }
+
+        function pauseAnimation() {
+            isAnimating = false;
+            if (animationInterval) {
+                clearInterval(animationInterval);
+                animationInterval = null;
+            }
+        }
+
+        function resetAnimation() {
+            pauseAnimation();
+            currentIterationIndex = 0;
+            if (iterationData.length > 0) {
+                displayIteration(currentIterationIndex);
+            }
+        }
+
+        function nextIteration() {
+            if (iterationData.length === 0) return;
+            pauseAnimation();
+            currentIterationIndex = (currentIterationIndex + 1) % iterationData.length;
+            displayIteration(currentIterationIndex);
+        }
+
+        function prevIteration() {
+            if (iterationData.length === 0) return;
+            pauseAnimation();
+            currentIterationIndex = currentIterationIndex === 0 ? iterationData.length - 1 : currentIterationIndex - 1;
+            displayIteration(currentIterationIndex);
+        }
+
+        // Initialize
+        document.getElementById('fileInput').addEventListener('change', function() {
+            if (this.files[0]) {
+                document.querySelector('.file-input-section button').textContent = '📁 Load: ' + this.files[0].name;
+            }
+        });
+
+        showStatus('Please load a data file to begin');
+    </script>
+</body>
+</html>

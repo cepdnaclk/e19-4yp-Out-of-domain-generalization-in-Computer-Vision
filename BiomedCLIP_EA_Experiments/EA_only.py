@@ -10,11 +10,12 @@ import ast
 from typing import List, Any
 import numpy as np
 import os
+from EA_prompts import EXPERIMENT_1, PROMPT_1
 
 
 def main():
     # Name the experiment we are currently running
-    experiment_name = "EA-Only-Experiment-1"
+    experiment_name = EXPERIMENT_1
     print(f"Running {experiment_name}...")
 
     # Create experiment results directory
@@ -58,16 +59,7 @@ def main():
 
     # 4. Define the meta prompt and template
     meta_init_prompt = """Give 50 textual descriptions pairs of visual discriminative features to identify whether the central region of an histopathological image patch contains tumor tissue or not. The patch is extracted from an H&E‑stained whole‑slide image of a lymph node section. Only give the output as python code in the format - prompts: list[tuple[negative: str, positive: str]]"""
-    META_PROMPT_TEMPLATE = """\
-            Please follow the instruction step-by-step to generate a better prompt pair.
-
-            1. Cross over the following prompts and generate a new prompt:
-
-            Prompt Pair 1: {pair1}
-            Prompt Pair 2: {pair2}
-
-            2. Mutate the prompt generated in Step 1 and generate a final prompt pair in a python tuple (str, str)
-    """
+    META_PROMPT_TEMPLATE = PROMPT_1
 
     # initial_list = load_initial_prompts("selected_prompts.txt")
     # pq = PriorityQueue(max_capacity=40, initial=initial_list)
