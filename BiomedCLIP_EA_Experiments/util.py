@@ -477,16 +477,19 @@ class PriorityQueue:
             # If we want raw scores, return them directly
             return selected
 
-        # --- Step B: normalize the selected raw scores to [0..100] ints ---
+        # --- Step B: normalize the selected raw scores to [min_score..max_score] ints ---
+        min_score = 60
+        max_score = 90
+
         raw_scores = [score for (_, score) in selected]
         mn, mx = min(raw_scores), max(raw_scores)
 
         if mx == mn:
-            # everyone identical → give all 90
-            norm_scores = [90] * len(raw_scores)
+            # everyone identical → give all max_score
+            norm_scores = [max_score] * len(raw_scores)
         else:
             norm_scores = [
-                int(round((s - mn) / (mx - mn) * (90 - 10) + 10))
+                int(round((s - mn) / (mx - mn) * (max_score - min_score) + min_score))
                 for s in raw_scores
             ]
 
