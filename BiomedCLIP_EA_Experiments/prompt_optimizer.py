@@ -70,7 +70,7 @@ def get_prompt_template(iteration_num: int, prompt_content: str, generate_n: int
 
 def main():
     # Name the experiment we are currently running
-    experiment_name = "Experiment-11-all-training-centers-fixed-train-test-bug.txt"
+    experiment_name = "Experiment-12-all-training-centers-n5.txt"
     print(f"Running {experiment_name}...")
 
     # Create experiment results directory
@@ -131,7 +131,7 @@ def main():
             prompts = util.get_prompt_pairs(meta_init_prompt, client)
         else:
             meta_prompt = get_prompt_template(
-                iteration_num=j, prompt_content=prompt_content, generate_n=50)
+                iteration_num=j, prompt_content=prompt_content, generate_n=5)
 
             prompts = util.get_prompt_pairs(meta_prompt, client)
 
@@ -145,7 +145,7 @@ def main():
 
             pq.insert((negative_prompt, positive_prompt), results['accuracy'])
 
-        n = 10
+        n = 5
         print(f"\nCurrent Top {n} prompt pairs:")
 
         # Selector Operator: Roulette Wheel Selection or Best N Prompts
