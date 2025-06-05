@@ -27,8 +27,8 @@ def main():
     centers_labels = [torch.from_numpy(label) for label in centers_labels]
 
     # 3. load prompts
-    negative_prompt = "No evidence of tumor cells with a normal nuclear size, normal nucleolus size, normal nuclear chromatin, normal cell density, normal nuclear border, normal spindle cell morphology, normal nuclear grade"
-    positive_prompt = "Large, prominent, and multiple nucleoli with increased nuclear chromatin, high cell density, irregular and jagged nuclear borders, spindle cell morphology, high-grade nuclei with significant atypia."
+    negative_prompt = "No evidence of atypical cytoplasm."
+    positive_prompt = "'Atypical cytoplasmic features."
 
     for i, _ in enumerate(centers_features):
         print(f"Evaluating center {i}...")
