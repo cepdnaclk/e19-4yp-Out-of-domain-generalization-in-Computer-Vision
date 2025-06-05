@@ -24,11 +24,12 @@ def get_prompt_template(iteration_num: int, prompt_content: str) -> str:
 
     """
     # define a dictionary to map iteration ranges to instructions
+    n = 40
     instruction_map = {
-        "medical_concepts": "Write 10 new prompt pairs that are different from the old ones and has a score as high as possible.",
-        "combined_medical_concepts": "Write 10 new prompt pairs by combining multiple medical concepts only from the above prompts to make the score as high as possible.",
-        "language_styles": "Write 10 new prompt pairs with different language style and same medical concepts. Each pair should have distinct language style.",
-        "slight_changes": "Write 10 new prompt pairs similar to the above pairs only making slight changes to the language style to make the score as high as possible."
+        "medical_concepts": f"Write {n} new prompt pairs that are different from the old ones and has a score as high as possible.",
+        "combined_medical_concepts": f"Write {n} new prompt pairs by combining multiple medical concepts only from the above prompts to make the score as high as possible.",
+        "language_styles": f"Write {n} new prompt pairs with different language style and same medical concepts. Each pair should have distinct language style.",
+        "slight_changes": f"Write {n} new prompt pairs similar to the above pairs only making slight changes to the language style to make the score as high as possible."
     }
 
     # Base meta prompt template
@@ -126,8 +127,6 @@ def main():
     pq = util.PriorityQueue(max_capacity=100)
     prompt_content = ""
 
-    # Variable to track current instruction phase
-    current_instruction = "Write 10 new prompt pairs that is different from the old ones and has a score as high as possible."
     for j in range(300):
         if j == 0:
             prompts = util.get_prompt_pairs(meta_init_prompt, client)
@@ -147,7 +146,7 @@ def main():
 
             pq.insert((negative_prompt, positive_prompt), results['accuracy'])
 
-        n = 10
+        n = 40
         print(f"\nCurrent Top {n} prompt pairs:")
 
         # Selector Operator: Roulette Wheel Selection or Best N Prompts
