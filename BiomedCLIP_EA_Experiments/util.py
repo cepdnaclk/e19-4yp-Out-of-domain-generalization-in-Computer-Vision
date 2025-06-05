@@ -121,6 +121,7 @@ def extract_center_embeddings(
     preprocess: Callable,
     num_centers: int = 1,
     metadata_csv: str = METADATA_CSV,
+    isTrain: bool = True,
 ) -> Tuple[List[torch.Tensor], List[torch.Tensor]]:
     """
     Reads metadata, splits into centers, and computes normalized image embeddings.
@@ -145,7 +146,7 @@ def extract_center_embeddings(
     metadata_df = append_filename_and_filepath(metadata_df)
 
     # Filter for training split
-    df_train = metadata_df[metadata_df.split == 1]
+    df_train = metadata_df[metadata_df.split == int(isTrain)]
 
     # Build datasets per center
     centers_ds = [
@@ -160,8 +161,12 @@ def extract_center_embeddings(
 
     os.makedirs(f"{CACHE_PATH}/centers", exist_ok=True)
     for i, ds in enumerate(centers_ds):
-        feature_path = f"{CACHE_PATH}/centers/center{i}_features.npy"
-        label_path = f"{CACHE_PATH}/centers/center{i}_labels.npy"
+        if isTrain:
+            feature_path = f"{CACHE_PATH}/centers/center{i}_features.npy"
+            label_path = f"{CACHE_PATH}/centers/center{i}_labels.npy"
+        else:
+            feature_path = f"{CACHE_PATH}/centers/test-center{i}_features.npy"
+            label_path = f"{CACHE_PATH}/centers/test-center{i}_labels.npy"
 
         if os.path.exists(feature_path) and os.path.exists(label_path):
             print(f"Loading cached features for center {i}...")
