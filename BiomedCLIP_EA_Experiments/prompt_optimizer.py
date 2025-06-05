@@ -40,19 +40,19 @@ def get_prompt_template(iteration_num: int, prompt_content: str) -> str:
     Only give the output as python code in the format - prompts: list[tuple[negative: str, positive: str]]
     """
 
-    if 1 <= iteration_num <= 50:
+    if 1 <= iteration_num <= 100:
         # Iterations 1-50: Basic exploration
         return base_meta_prompt_template.format(
             content=prompt_content,
             iteration_specific_instruction=instruction_map["medical_concepts"]
         )
-    elif 51 <= iteration_num <= 100:
+    elif 101 <= iteration_num <= 150:
         # Iterations 51-100: Concept combination
         return base_meta_prompt_template.format(
             content=prompt_content,
             iteration_specific_instruction=instruction_map["combined_medical_concepts"]
         )
-    elif 101 <= iteration_num <= 200:
+    elif 151 <= iteration_num <= 200:
         # Iterations 101-200: Language style variation
         return base_meta_prompt_template.format(
             content=prompt_content,
@@ -66,12 +66,12 @@ def get_prompt_template(iteration_num: int, prompt_content: str) -> str:
         )
     else:
         # Fallback (shouldn't happen with normal iteration numbering)
-        raise IndexError("Error occure when getting prompt template")
+        raise IndexError("Error occured when getting prompt template")
 
 
 def main():
     # Name the experiment we are currently running
-    experiment_name = "Experiment-10-all-training-centers-selector-changed.txt"
+    experiment_name = "Experiment-11-all-training-centers-fixed-train-test-bug.txt"
     print(f"Running {experiment_name}...")
 
     # Create experiment results directory
@@ -170,8 +170,8 @@ def main():
             print(f"{i+1}. {prompt_pair}, Score: {score:.1f}")
             prompt_content += f"{i+1}. {prompt_pair}, Score: {score:.1f}\n"
 
-        # Save the best prompt pairs to a file, every 20 iterations
-        if (j + 1) % 20 == 0 or j == 0:
+        # Save the best prompt pairs to a file, every 10 iterations
+        if (j + 1) % 10 == 0 or j == 0:
             top_prompts = pq.get_best_n(1000)
             with open(results_filename, "a") as f:
                 f.write(f"Iteration {j+1}:\n")
