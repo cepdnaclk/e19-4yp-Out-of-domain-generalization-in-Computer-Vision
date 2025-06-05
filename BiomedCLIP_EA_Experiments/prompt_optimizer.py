@@ -12,7 +12,7 @@ import numpy as np
 import os
 
 
-def get_prompt_template(iteration_num: int, prompt_content: str) -> str:
+def get_prompt_template(iteration_num: int, prompt_content: str, generate_n: int = 10) -> str:
     """
     Returns the appropriate instruction based on the iteration number range.
 
@@ -24,12 +24,11 @@ def get_prompt_template(iteration_num: int, prompt_content: str) -> str:
 
     """
     # define a dictionary to map iteration ranges to instructions
-    n = 40
     instruction_map = {
-        "medical_concepts": f"Write {n} new prompt pairs that are different from the old ones and has a score as high as possible.",
-        "combined_medical_concepts": f"Write {n} new prompt pairs by combining multiple medical concepts only from the above prompts to make the score as high as possible.",
-        "language_styles": f"Write {n} new prompt pairs with different language style and same medical concepts. Each pair should have distinct language style.",
-        "slight_changes": f"Write {n} new prompt pairs similar to the above pairs only making slight changes to the language style to make the score as high as possible."
+        "medical_concepts": f"Write {generate_n} new prompt pairs that are different from the old ones and has a score as high as possible.",
+        "combined_medical_concepts": f"Write {generate_n} new prompt pairs by combining multiple medical concepts only from the above prompts to make the score as high as possible.",
+        "language_styles": f"Write {generate_n} new prompt pairs with different language style and same medical concepts. Each pair should have distinct language style.",
+        "slight_changes": f"Write {generate_n} new prompt pairs similar to the above pairs only making slight changes to the language style to make the score as high as possible."
     }
 
     # Base meta prompt template
@@ -124,7 +123,7 @@ def main():
     # """
 
     # Optimization loop
-    pq = util.PriorityQueue(max_capacity=100)
+    pq = util.PriorityQueue(max_capacity=1000)
     prompt_content = ""
 
     for j in range(300):
@@ -146,19 +145,20 @@ def main():
 
             pq.insert((negative_prompt, positive_prompt), results['accuracy'])
 
-        n = 40
+        n = 10
         print(f"\nCurrent Top {n} prompt pairs:")
 
         # Selector Operator: Roulette Wheel Selection or Best N Prompts
         # Use Roulette Wheel Selection for the first 250 iterations
         # After 250 iterations, use the best n prompts
         # This is to ensure diversity in the early stages of optimization
-        if j < 250:
-            selected_prompts = pq.get_roulette_wheel_selection(
-                n, isNormalizedInts=False)
-        else:
-            selected_prompts = pq.get_best_n(n)
+        # if j < 250:
+        #     selected_prompts = pq.get_roulette_wheel_selection(
+        #         n, isNormalizedInts=False)
+        # else:
+        #     selected_prompts = pq.get_best_n(n)
 
+        selected_prompts = pq.get_roulette_wheel_selection(n)
         # selected_prompts = pq.get_best_n(n)
         # reverse the order to set it to acsending order: Recency Bias
         selected_prompts = sorted(
@@ -167,8 +167,8 @@ def main():
         # Prepare the content for the meta prompt
         prompt_content = f"Current Top {n} prompt pairs:\n"
         for i, (prompt_pair, score) in enumerate(selected_prompts):
-            print(f"{i+1}. {prompt_pair}, Score: {score:.1f}")
-            prompt_content += f"{i+1}. {prompt_pair}, Score: {score:.1f}\n"
+            print(f"{i+1}. {prompt_pair}, Score: {score}")
+            prompt_content += f"{i+1}. {prompt_pair}, Score: {score:.2f}\n"
 
         # Save the best prompt pairs to a file, every 10 iterations
         if (j + 1) % 10 == 0 or j == 0:

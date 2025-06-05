@@ -514,35 +514,35 @@ class PriorityQueue:
 def load_initial_prompts(path: str) -> List[InitialItem]:
     """
     Reads a text file where each line is of the form:
-      1. ('neg', 'pos'), Score: 0.9364
+    ('neg', 'pos'), Score: 0.9364
     and returns a list of ((neg, pos), score) tuples.
     """
-    initial: List[InitialItem] = []
-    line_re = re.compile(r"""
-        ^\s*\d+\.       # leading index and dot
-        \s*(\(.+\))     # group(1): the tuple literal "('neg','pos')"
-        \s*,\s*Score:\s*
-        ([0-9]+\.[0-9]+)  # group(2): the floating score
-        """, re.VERBOSE)
+    results = []
 
-    with open(path, 'r') as f:
-        for line in f:
-            m = line_re.match(line)
-            if not m:
+    with open(path, 'r', encoding='utf-8') as file:
+        for line_num, line in enumerate(file, 1):
+            line = line.strip()
+            if not line:  # Skip empty lines
                 continue
-            pair_literal, score_str = m.groups()
+
             try:
-                prompt_pair = ast.literal_eval(pair_literal)
-                score = float(score_str)
-                # validate
-                if (
-                    isinstance(prompt_pair, tuple)
-                    and len(prompt_pair) == 2
-                    and all(isinstance(s, str) for s in prompt_pair)
-                ):
-                    initial.append((prompt_pair, score))
-            except Exception:
-                # skip malformed lines
+                # Use regex to parse the line format: ('neg', 'pos'), Score: 0.9364
+                pattern = r"\('([^']*)', '([^']*)'\), Score: ([\d.]+)"
+                match = re.match(pattern, line)
+
+                if match:
+                    neg_prompt = match.group(1)
+                    pos_prompt = match.group(2)
+                    score = float(match.group(3))
+
+                    prompt_pair = (neg_prompt, pos_prompt)
+                    results.append((prompt_pair, score))
+                else:
+                    print(f"Warning: Could not parse line {line_num}: {line}")
+
+            except Exception as e:
+                print(f"Error parsing line {line_num}: {line}")
+                print(f"Error details: {e}")
                 continue
 
-    return initial
+    return results
