@@ -70,7 +70,7 @@ def get_prompt_template(iteration_num: int, prompt_content: str, generate_n: int
 
 def main():
     # Name the experiment we are currently running
-    experiment_name = "Experiment-12-all-training-centers-n5.txt"
+    experiment_name = "Experiment-13-all-training-centers-n10"
     print(f"Running {experiment_name}...")
 
     # Create experiment results directory
