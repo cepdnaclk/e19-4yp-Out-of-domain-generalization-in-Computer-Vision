@@ -28,7 +28,7 @@ def main():
 
     # 3. load prompts
     negative_prompt = "No evidence of atypical cytoplasm."
-    positive_prompt = "'Atypical cytoplasmic features."
+    positive_prompt = "Atypical cytoplasmic features."
 
     for i, _ in enumerate(centers_features):
         print(f"Evaluating center {i}...")
