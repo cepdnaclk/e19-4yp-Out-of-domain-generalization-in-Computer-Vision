@@ -26,6 +26,7 @@ def get_prompt_template(iteration_num: int, prompt_content: str, generate_n: int
     # define a dictionary to map iteration ranges to instructions
     instruction_map = {
         "medical_concepts": f"Write {generate_n} new prompt pairs that are different from the old ones and has a score as high as possible.",
+        "similar": f"Write {generate_n} new prompt pairs that are more similar to the high scoring prompts.",
         "combined_medical_concepts": f"Write {generate_n} new prompt pairs by combining multiple medical concepts only from the above prompts to make the score as high as possible.",
         "language_styles": f"Write {generate_n} new prompt pairs with different language style and same medical concepts. Each pair should have distinct language style.",
         "slight_changes": f"Write {generate_n} new prompt pairs similar to the above pairs only making slight changes to the language style to make the score as high as possible."
@@ -49,13 +50,13 @@ def get_prompt_template(iteration_num: int, prompt_content: str, generate_n: int
         # Iterations 51-100: Concept combination
         return base_meta_prompt_template.format(
             content=prompt_content,
-            iteration_specific_instruction=instruction_map["combined_medical_concepts"]
+            iteration_specific_instruction=instruction_map["similar"]
         )
     elif 151 <= iteration_num <= 200:
         # Iterations 101-200: Language style variation
         return base_meta_prompt_template.format(
             content=prompt_content,
-            iteration_specific_instruction=instruction_map["language_styles"]
+            iteration_specific_instruction=instruction_map["combined_medical_concepts"]
         )
     elif iteration_num > 200:
         # Iterations 201+: Fine-tuning with slight modifications
@@ -70,7 +71,7 @@ def get_prompt_template(iteration_num: int, prompt_content: str, generate_n: int
 
 def main():
     # Name the experiment we are currently running
-    experiment_name = "Experiment-14-given-default-prompt"
+    experiment_name = "Experiment-15-given-similar-prompt"
     print(f"Running {experiment_name}...")
 
     # Create experiment results directory
