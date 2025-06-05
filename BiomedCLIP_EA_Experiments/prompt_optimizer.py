@@ -71,7 +71,7 @@ def get_prompt_template(iteration_num: int, prompt_content: str, generate_n: int
 
 def main():
     # Name the experiment we are currently running
-    experiment_name = "Experiment-15-given-similar-prompt"
+    experiment_name = "Experiment-16-optimize-ea-our-first-try"
     print(f"Running {experiment_name}...")
 
     # Create experiment results directory
@@ -121,12 +121,16 @@ def main():
 
     Only give the output as python code in the format - prompts: list[tuple[negative: str, positive: str]]"""
 
-    # meta_prompt_template = """The task is to generate textual descriptions pairs of visual discriminative features to identify whether the central region of an histopathological image patch contains tumor tissue or not. The patch is extracted from an H&E‑stained whole‑slide image of a lymph node section.
-    # Here are the best performing pairs in descending order. High scores indicate higher quality visual discriminative features.
-    # {content}
-    # Write 10 new prompt pairs that is different from the old ones and has a score as high as possible.
-    # Only give the output as python code in the format - prompts: list[tuple[negative: str, positive: str]]
-    # """
+    meta_prompt_template = """The task is to generate 50 textual descriptions pairs of visual discriminative features to identify whether the central region of an histopathological image patch contains tumor tissue or not. The patch is extracted from an H&E‑stained whole‑slide image of a lymph node section.
+    Here are the best performing pairs. You should aim to get higher scores. Each description should be about 5-20 words.
+    {content}
+    1-10: Generate the first 10 pairs exploring variations of the top 1 (best) given. Remove certain words, add words, change order and generate variations
+    11-20: Generate 10 pairs using the top 10, explore additional knowledge and expand on it. 
+    21-30: The next 10 pairs should maintain similar content as middle pairs but use different language style and sentence structures. 
+    31-40: The next 10 pairs should combine knowledge of top pairs and bottom pairs.
+    41-50: The remaining 10 pairs should be randomly generated. 
+    Only give the output as python code in the format - prompts: list[tuple[negative: str, positive: str]]
+    """
 
     # Optimization loop
     pq = util.PriorityQueue(max_capacity=1000)
@@ -136,10 +140,11 @@ def main():
         if j == 0:
             prompts = util.get_prompt_pairs(meta_init_prompt, client)
         else:
-            meta_prompt = get_prompt_template(
-                iteration_num=j, prompt_content=prompt_content, generate_n=10)
+            # meta_prompt = get_prompt_template(
+            #     iteration_num=j, prompt_content=prompt_content, generate_n=10)
 
-            prompts = util.get_prompt_pairs(meta_prompt, client)
+            prompts = util.get_prompt_pairs(
+                meta_prompt_template.format(prompt_content), client)
 
         for i, prompt_pair in enumerate(prompts):
             if len(prompt_pair) != 2:
@@ -151,7 +156,7 @@ def main():
 
             pq.insert((negative_prompt, positive_prompt), results['accuracy'])
 
-        n = 10
+        n = 50
         print(f"\nCurrent Top {n} prompt pairs:")
 
         # Selector Operator: Roulette Wheel Selection or Best N Prompts

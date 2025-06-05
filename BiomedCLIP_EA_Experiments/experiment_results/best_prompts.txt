@@ -1,3 +1,4 @@
+('Normal follicular architecture is preserved', 'Disrupted follicular architecture with loss of polarity'), Score: 0.8940
 ('No interfollicular proliferation and no irregular nuclear contours', 'Interfollicular proliferation of atypical cells with irregular nuclear contours'), Score: 0.8900
 ('No perinuclear halo and no angiolymphatic invasion', 'Prominent perinuclear halo and tumor cells demonstrate angiolymphatic invasion'), Score: 0.8899
 ('No interfollicular proliferation and no irregular nuclear contours', 'Interfollicular proliferation of atypical cells exhibiting irregular nuclear contours'), Score: 0.8872
