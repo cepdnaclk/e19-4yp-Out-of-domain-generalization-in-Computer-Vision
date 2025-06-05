@@ -31,10 +31,11 @@ def main():
         "experiment_results/best_prompts.txt"
     )
 
-    for (negative_prompt, positive_prompt) in prompts:
+    for ((negative_prompt, positive_prompt), score) in prompts:
         print(f"Evaluating prompts: \n")
         print(f"Negative Prompt: {negative_prompt}")
-        print(f"Positive Prompt: {positive_prompt}\n\n")
+        print(f"Positive Prompt: {positive_prompt}")
+        print(f"Training Fitness: {score}\n")
         for i, _ in enumerate(centers_features):
             print(f"Evaluating center {i}...")
             results = util.evaluate_prompt_pair(
