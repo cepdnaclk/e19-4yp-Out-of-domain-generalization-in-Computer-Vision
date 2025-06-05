@@ -1,0 +1,24 @@
+Iteration 1:
+('Absence of mitotic figures or rare, typical mitoses', 'Frequent and/or atypical mitotic figures'), Score: 0.8396
+('Absence of intracellular mucin', 'Presence of intracellular mucin in tumor cells'), Score: 0.8291
+('Absence of tumor giant cells', 'Presence of tumor giant cells'), Score: 0.8269
+('Absence of cellular crowding', 'Cellular crowding and overlapping nuclei'), Score: 0.8113
+('Absence of luminal structures filled with atypical cells', 'Presence of luminal structures filled with atypical cells'), Score: 0.7532
+('Regular tissue organization', 'Disorganized tissue architecture with loss of polarity'), Score: 0.7385
+('No evidence of necrosis', 'Presence of necrosis (coagulative or single cell)'), Score: 0.7103
+('Well-preserved cytoplasm', 'Vacuolated or degenerated cytoplasm'), Score: 0.6917
+('Uniform chromatin distribution', 'Irregular chromatin distribution, clumping, and hyperchromasia'), Score: 0.6914
+('Absence of atypical vascular proliferation', 'Presence of atypical vascular proliferation'), Score: 0.6842
+
+Iteration 1:
+('Absence of mitotic figures', 'Presence of atypical mitotic figures'), Score: 0.8357
+('Absence of tumor giant cells', 'Presence of tumor giant cells'), Score: 0.8269
+('Fine, delicate collagen fibers', 'Coarse, dense, or desmoplastic collagen'), Score: 0.8242
+('Absence of individual cell necrosis', 'Presence of individual cell necrosis'), Score: 0.8130
+('Absence of significant nuclear pleomorphism', 'Presence of significant nuclear pleomorphism'), Score: 0.7616
+('Uniform staining intensity', 'Varied and irregular staining intensity'), Score: 0.6853
+('Absence of signet ring cells', 'Presence of signet ring cells'), Score: 0.6800
+('Absence of keratin pearls', 'Presence of keratin pearls'), Score: 0.6700
+('Absence of cellular budding', 'Presence of cellular budding at tumor front'), Score: 0.6621
+('Absence of atypical lymphoid cells', 'Presence of atypical lymphoid cells'), Score: 0.6469
+

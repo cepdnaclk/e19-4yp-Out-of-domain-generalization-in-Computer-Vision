@@ -1,0 +1,624 @@
+Iteration 1:
+('Absence of tumor giant cells', 'Presence of multinucleated tumor giant cells'), Score: 0.8746
+('Absence of large, pleomorphic nuclei', 'Presence of large, pleomorphic nuclei'), Score: 0.7922
+
+Iteration 2:
+('Normal lymphoid follicles', 'Disrupted or effaced lymphoid follicles'), Score: 0.6096
+('Uniform, small lymphocytes', 'Pleomorphic cells with varying sizes'), Score: 0.8333
+
+Iteration 3:
+('Regular nuclear contours', 'Irregular nuclear contours'), Score: 0.5601
+('Scattered, normal-appearing vessels', 'Neovascularization or abnormal vascular proliferation'), Score: 0.5446
+
+Iteration 4:
+('Clear cytoplasm in most cells', 'Eosinophilic or basophilic cytoplasm in atypical cells'), Score: 0.5287
+('Absence of prominent nucleoli', 'Presence of prominent nucleoli'), Score: 0.8530
+
+Iteration 5:
+('Uniform chromatin distribution', 'Irregular chromatin distribution'), Score: 0.5915
+('Clear cytoplasm in most cells', 'Eosinophilic or basophilic cytoplasm in atypical cells'), Score: 0.5287
+
+Iteration 6:
+('No significant nuclear atypia', 'Significant nuclear atypia'), Score: 0.9039
+('Clear demarcation of cellular borders', 'Overlapping or indistinct cellular borders'), Score: 0.7079
+
+Iteration 7:
+('Clear cytoplasm in most cells', 'Eosinophilic or basophilic cytoplasm in atypical cells'), Score: 0.5287
+('No evidence of capsular invasion', 'Evidence of capsular invasion'), Score: 0.8767
+
+Iteration 8:
+('Small, round nuclei', 'Enlarged, oval or irregular nuclei'), Score: 0.5242
+('Inconspicuous nucleoli', 'Prominent, often multiple nucleoli'), Score: 0.5035
+
+Iteration 9:
+('Few or no mitotic figures', 'Frequent mitotic figures'), Score: 0.7407
+('Uniform, small lymphocytes', 'Pleomorphic cells with varying sizes'), Score: 0.8333
+
+Iteration 10:
+('Normal stromal elements', 'Desmoplastic stroma or increased collagen deposition'), Score: 0.5829
+('Absence of large, pleomorphic nuclei', 'Presence of large, pleomorphic nuclei'), Score: 0.7922
+
+Iteration 11:
+('Subtle nuclear features', 'Markedly altered nuclear morphology and prominent nucleoli'), Score: 0.7472
+('Scattered, normal-appearing vessels', 'Neovascularization or abnormal vascular proliferation'), Score: 0.5446
+
+Iteration 12:
+('No evidence of lymphatic invasion', 'Presence of lymphovascular invasion'), Score: 0.6332
+('Sparse inflammatory infiltrate', 'Dense inflammatory infiltrate associated with tumor'), Score: 0.5190
+
+Iteration 13:
+('Small, regular nuclei in lymphocytes', 'Large, irregular nuclei in atypical cells'), Score: 0.8215
+('Clear differentiation of cortical and medullary sinuses', 'Obliteration of sinuses by tumor cells'), Score: 0.6707
+
+Iteration 14:
+('Absence of large, pleomorphic nuclei', 'Presence of large, pleomorphic nuclei'), Score: 0.7922
+('No significant variation in nuclear size', 'Significant anisonucleosis'), Score: 0.5062
+
+Iteration 15:
+('Uniform nuclear size and shape', 'Nuclear pleomorphism and anisonucleosis'), Score: 0.5503
+('Few or no mitotic figures', 'Frequent mitotic figures'), Score: 0.7407
+
+Iteration 16:
+('Absence of large, pleomorphic nuclei', 'Presence of large, pleomorphic nuclei'), Score: 0.7922
+('Normal follicular architecture with uniform lymphocytes', 'Effaced follicular architecture with pleomorphic cells'), Score: 0.7804
+
+Iteration 17:
+('Normal lymphoid follicles', 'Disrupted or effaced lymphoid follicles'), Score: 0.6096
+('Benign stromal architecture with uniform nuclei', 'Desmoplastic reaction with pleomorphic nuclei'), Score: 0.7271
+
+Iteration 18:
+('Absence of abnormal architectural patterns', 'Presence of abnormal architectural patterns (e.g., solid sheets)'), Score: 0.5082
+('Clear differentiation between cortex and medulla', 'Loss of architectural differentiation'), Score: 0.5094
+
+Iteration 19:
+('Absence of lymphatic invasion and scant inflammation', 'Demonstration of lymphovascular invasion with prominent tumor-associated inflammation'), Score: 0.5680
+('Clearly demarcated normal cell morphology with uniformly sized nuclei', 'Infiltrative growth pattern with effaced tissue planes and varied nuclear size and shape'), Score: 0.6393
+
+Iteration 20:
+('Few or no mitotic figures', 'Frequent mitotic figures'), Score: 0.7407
+('Intact lymphatic sinuses', 'Effacement of lymphatic sinuses'), Score: 0.6014
+
+Iteration 21:
+('Absence of lymphatic invasion and scant inflammation', 'Demonstration of lymphovascular invasion with prominent tumor-associated inflammation'), Score: 0.5680
+('Preserved tissue architecture', 'Disrupted or effaced tissue architecture'), Score: 0.5583
+
+Iteration 22:
+('Chromatin clumping, peripheralized', 'Dispersed or vesicular chromatin'), Score: 0.5227
+('Absence of atypical mitotic figures', 'Presence of atypical mitotic figures'), Score: 0.7998
+
+Iteration 23:
+('No significant nuclear atypia and clear demarcation of cellular borders', 'Significant nuclear atypia and overlapping or indistinct cellular borders'), Score: 0.7436
+('Intact capsular architecture', 'Infiltrative growth pattern through capsule'), Score: 0.6460
+
+Iteration 24:
+('Intact follicular structure with small, uniform nuclei', 'Disrupted follicular architecture with enlarged, irregular nuclei'), Score: 0.7163
+('Sparse inflammatory infiltrate', 'Dense inflammatory infiltrate associated with tumor'), Score: 0.5190
+
+Iteration 25:
+('Small, regular nuclei in lymphocytes', 'Large, irregular nuclei in atypical cells'), Score: 0.8215
+('Intact lymphatic sinuses', 'Effacement of lymphatic sinuses'), Score: 0.6014
+
+Iteration 26:
+('Uniform background staining', 'Heterogeneous background staining'), Score: 0.6764
+('No significant nuclear atypia and clear demarcation of cellular borders', 'Significant nuclear atypia and overlapping or indistinct cellular borders'), Score: 0.7436
+
+Iteration 27:
+('Uniform background staining', 'Heterogeneous background staining'), Score: 0.6764
+('Chromatin clumping, peripheralized', 'Dispersed or vesicular chromatin'), Score: 0.5227
+
+Iteration 28:
+('Absence of necrosis', 'Presence of focal or widespread necrosis'), Score: 0.7928
+('Intact lymphatic sinuses', 'Effacement of lymphatic sinuses'), Score: 0.6014
+
+Iteration 29:
+('Small, round nuclei', 'Enlarged, oval or irregular nuclei'), Score: 0.5242
+('Uniform background staining', 'Heterogeneous background staining'), Score: 0.6764
+
+Iteration 30:
+('Absence of significant lymphatic involvement and preserved tissue integrity', 'Presence of prominent lymphatic invasion and disrupted tissue architecture'), Score: 0.7641
+('Cells with uniform nuclei and rare mitotic figures', 'Cells with pleomorphic nuclei and abundant mitotic figures'), Score: 0.6965
+
+Iteration 31:
+('No evidence of capsular invasion', 'Evidence of capsular invasion'), Score: 0.8767
+('Absence of significant lymphatic involvement and preserved tissue integrity', 'Presence of prominent lymphatic invasion and disrupted tissue architecture'), Score: 0.7641
+
+Iteration 32:
+('Presence of cells with irregular nuclear contours and evidence of neovascularization', 'Presence of cells with regular nuclear contours and normal-appearing vessels'), Score: 0.5755
+('Intact cellular morphology with minimal nuclear atypia and infrequent cell division', 'Disrupted cellular architecture with marked nuclear pleomorphism and frequent mitotic activity'), Score: 0.6100
+
+Iteration 33:
+('Normal interfollicular regions', 'Infiltration of interfollicular regions by atypical cells'), Score: 0.5526
+('Cytoplasm with clear boundaries', 'Indistinct cytoplasmic boundaries'), Score: 0.6091
+
+Iteration 34:
+('Lymphocytes with scant cytoplasm', 'Atypical cells with abundant cytoplasm'), Score: 0.7679
+('Preserved tissue architecture', 'Disrupted or effaced tissue architecture'), Score: 0.5583
+
+Iteration 35:
+('Uniform background staining and clear cellular borders without nuclear atypia', 'Heterogeneous background staining with indistinct or overlapping cellular borders and significant nuclear atypia'), Score: 0.7108
+('Clearly demarcated normal cell morphology with uniformly sized nuclei', 'Infiltrative growth pattern with effaced tissue planes and varied nuclear size and shape'), Score: 0.6393
+
+Iteration 36:
+('Small, round nuclei', 'Enlarged, oval or irregular nuclei'), Score: 0.5242
+('Subtle nuclear changes with normal vasculature', 'Markedly altered nuclear morphology and prominent neovascularization'), Score: 0.5480
+
+Iteration 37:
+('Intact lymphatic sinuses', 'Effacement of lymphatic sinuses'), Score: 0.6014
+('No evidence of lymphatic invasion', 'Presence of lymphovascular invasion'), Score: 0.6332
+
+Iteration 38:
+('No evidence of lymphatic invasion', 'Presence of lymphovascular invasion'), Score: 0.6332
+('Clearly demarcated normal cell morphology with uniformly sized nuclei', 'Infiltrative growth pattern with effaced tissue planes and varied nuclear size and shape'), Score: 0.6393
+
+Iteration 39:
+('Absence of lymphatic invasion and scant inflammation', 'Demonstration of lymphovascular invasion with prominent tumor-associated inflammation'), Score: 0.5680
+('Preserved tissue architecture', 'Disrupted or effaced tissue architecture'), Score: 0.5583
+
+Iteration 40:
+('No significant nuclear atypia', 'Significant nuclear atypia'), Score: 0.9039
+('Lymphocytes with scant cytoplasm and preserved tissue architecture', 'Atypical cells with abundant cytoplasm and disrupted tissue architecture'), Score: 0.7838
+
+Iteration 41:
+('Non-invasive tumor with bland cytology and circumscribed margins', 'Invasive carcinoma with high-grade features and associated lymphovascular invasion'), Score: 0.5101
+('Intact capsular architecture', 'Infiltrative growth pattern through capsule'), Score: 0.6460
+
+Iteration 42:
+('Preserved tissue architecture', 'Disrupted or effaced tissue architecture'), Score: 0.5583
+('Predominantly clear cytoplasm and absence of capsular invasion', 'Atypical cells with eosinophilic or basophilic cytoplasm and clear signs of capsular invasion'), Score: 0.5764
+
+Iteration 43:
+('Intact cellular morphology with minimal nuclear atypia and infrequent cell division', 'Disrupted cellular architecture with marked nuclear pleomorphism and frequent mitotic activity'), Score: 0.6100
+('Absence of abnormal architectural patterns', 'Presence of abnormal architectural patterns (e.g., solid sheets)'), Score: 0.5082
+
+Iteration 44:
+('Well-preserved tissue architecture with cells showing predominantly clear cytoplasm and no evidence of capsular invasion', 'Disrupted or effaced tissue architecture with atypical cells displaying eosinophilic or basophilic cytoplasm and clear signs of capsular invasion'), Score: 0.6036
+('Clear cytoplasm and inconspicuous nucleoli', 'Dense cytoplasm and prominent nucleoli'), Score: 0.5207
+
+Iteration 45:
+('Regular nuclear contours', 'Irregular nuclear contours'), Score: 0.5601
+('Absence of tumor giant cells', 'Presence of multinucleated tumor giant cells'), Score: 0.8746
+
+Iteration 46:
+('Intact capsular architecture', 'Infiltrative growth pattern through capsule'), Score: 0.6460
+('Lymphocytes with scant cytoplasm and preserved tissue architecture', 'Atypical cells with abundant cytoplasm and disrupted tissue architecture'), Score: 0.7838
+
+Iteration 47:
+('Absence of tumor giant cells', 'Presence of multinucleated tumor giant cells'), Score: 0.8746
+('Well-defined cellular architecture with uniform nuclear chromatin and clear background', 'Disorganized cellular arrangement with pleomorphic nuclei, prominent nucleoli, and an infiltrative growth pattern'), Score: 0.5662
+
+Iteration 48:
+('Well-defined cellular architecture with uniform nuclear chromatin and clear background', 'Disorganized cellular arrangement with pleomorphic nuclei, prominent nucleoli, and an infiltrative growth pattern'), Score: 0.5662
+('Few or no mitotic figures', 'Frequent mitotic figures'), Score: 0.7407
+
+Iteration 49:
+('Inconspicuous nucleoli', 'Prominent, often multiple nucleoli'), Score: 0.5035
+('Absence of necrosis', 'Presence of focal or widespread necrosis'), Score: 0.7928
+
+Iteration 50:
+('Clear cytoplasm in most cells', 'Eosinophilic or basophilic cytoplasm in atypical cells'), Score: 0.5287
+('Uniform background staining', 'Heterogeneous background staining'), Score: 0.6764
+
+Iteration 51:
+('Intact cellular morphology with minimal nuclear atypia and absence of abnormal architectural patterns', 'Disrupted cellular architecture with marked nuclear pleomorphism, frequent mitotic activity, and presence of abnormal architectural patterns (e.g., solid sheets)'), Score: 0.6006
+('No significant nuclear atypia and clear demarcation of cellular borders', 'Significant nuclear atypia and overlapping or indistinct cellular borders'), Score: 0.7436
+
+Iteration 52:
+('Intact follicular structure with small, uniform nuclei', 'Disrupted follicular architecture with enlarged, irregular nuclei'), Score: 0.7163
+('Uniform, small lymphocytes', 'Pleomorphic cells with varying sizes'), Score: 0.8333
+
+Iteration 53:
+('No evidence of lymphatic invasion', 'Presence of lymphovascular invasion'), Score: 0.6332
+('Lymphocytes with scant cytoplasm', 'Atypical cells with abundant cytoplasm'), Score: 0.7679
+
+Iteration 54:
+('Small, regular nuclei in lymphocytes', 'Large, irregular nuclei in atypical cells'), Score: 0.8215
+('Regular, organized cellular arrangement with small, uniform nuclei', 'Disorganized cellular architecture with pleomorphic, enlarged, and irregular nuclei'), Score: 0.6919
+
+Iteration 55:
+('Uniform cell size and shape', 'Variable cell size and shape (anisocytosis, poikilocytosis)'), Score: 0.5212
+('Lymphocytes with scant cytoplasm', 'Atypical cells with abundant cytoplasm'), Score: 0.7679
+
+Iteration 56:
+('No significant variation in nuclear size', 'Significant anisonucleosis'), Score: 0.5062
+('Few or no mitotic figures', 'Frequent mitotic figures'), Score: 0.7407
+
+Iteration 57:
+('Bland cell morphology with a uniform background', 'Pleomorphic cells with varied background characteristics'), Score: 0.8732
+('Benign stromal architecture with uniform nuclei', 'Desmoplastic reaction with pleomorphic nuclei'), Score: 0.7271
+
+Iteration 58:
+('Clearly demarcated normal cell morphology with uniformly sized nuclei', 'Infiltrative growth pattern with effaced tissue planes and varied nuclear size and shape'), Score: 0.6393
+('Normal stromal elements', 'Desmoplastic stroma or increased collagen deposition'), Score: 0.5829
+
+Iteration 59:
+('Cytoplasm with clear boundaries', 'Indistinct cytoplasmic boundaries'), Score: 0.6091
+('Well-preserved tissue architecture with cells showing predominantly clear cytoplasm and no evidence of capsular invasion', 'Disrupted or effaced tissue architecture with atypical cells displaying eosinophilic or basophilic cytoplasm and clear signs of capsular invasion'), Score: 0.6036
+
+Iteration 60:
+('Intact follicular structure with small, uniform nuclei', 'Disrupted follicular architecture with enlarged, irregular nuclei'), Score: 0.7163
+('Regular nuclear contours', 'Irregular nuclear contours'), Score: 0.5601
+
+Iteration 61:
+('Absence of large, pleomorphic nuclei', 'Presence of large, pleomorphic nuclei'), Score: 0.7922
+('Absence of atypical multinucleated giant cells and pleomorphic nuclei', 'Presence of atypical multinucleated giant cells and pleomorphic nuclei'), Score: 0.7484
+
+Iteration 62:
+('Bland cell morphology with a uniform background', 'Pleomorphic cells with varied background characteristics'), Score: 0.8732
+('Minor nuclear size variation and few mitotic figures', 'Prominent anisonucleosis and frequent mitotic figures'), Score: 0.6558
+
+Iteration 63:
+('Ordered cellular arrangement with monomorphic nuclei and clear cytoplasm', 'Disordered cellular arrangement with pleomorphic nuclei and abundant mitotic figures'), Score: 0.7040
+('Well-defined cellular architecture with uniform nuclear chromatin and clear background', 'Disorganized cellular arrangement with pleomorphic nuclei, prominent nucleoli, and an infiltrative growth pattern'), Score: 0.5662
+
+Iteration 64:
+('No significant nuclear atypia and clear demarcation of cellular borders', 'Significant nuclear atypia and overlapping or indistinct cellular borders'), Score: 0.7436
+('Uniform background staining', 'Heterogeneous background staining'), Score: 0.6764
+
+Iteration 65:
+('Few or no mitotic figures', 'Frequent mitotic figures'), Score: 0.7407
+('Scattered plasma cells and histiocytes', 'Sheets of monotonous atypical cells'), Score: 0.6843
+
+Iteration 66:
+('Uniform background staining and clear cellular borders without nuclear atypia', 'Heterogeneous background staining with indistinct or overlapping cellular borders and significant nuclear atypia'), Score: 0.7108
+('Scattered cellular distribution with mild nuclear irregularities and infrequent mitotic activity', 'Dense cellular clusters with significant nuclear atypia, prominent nucleoli, and numerous mitotic figures'), Score: 0.7151
+
+Iteration 67:
+('Regular, organized cellular arrangement with small, uniform nuclei', 'Disorganized cellular architecture with pleomorphic, enlarged, and irregular nuclei'), Score: 0.6919
+('Cytoplasm with clear boundaries', 'Indistinct cytoplasmic boundaries'), Score: 0.6091
+
+Iteration 68:
+('Absence of significant lymphatic involvement and preserved tissue integrity', 'Presence of prominent lymphatic invasion and disrupted tissue architecture'), Score: 0.7641
+('Inconspicuous nucleoli', 'Prominent, often multiple nucleoli'), Score: 0.5035
+
+Iteration 69:
+('Cells with uniform nuclei and rare mitotic figures', 'Cells with pleomorphic nuclei and abundant mitotic figures'), Score: 0.6965
+('Few or no mitotic figures', 'Frequent mitotic figures'), Score: 0.7407
+
+Iteration 70:
+('Sparse mitotic activity and reactive inflammatory infiltrate', 'High mitotic rate and diffuse atypical cell proliferation'), Score: 0.7404
+('Normal cellular morphology with consistent size, shape, and typical cytoplasmic volume', 'Aberrant cellular morphology characterized by pleomorphism, anisocytosis, and altered nuclear-to-cytoplasmic ratio'), Score: 0.7389
+
+Iteration 71:
+('Well-preserved tissue with clear cytoplasm and inconspicuous nucleoli, absent capsular invasion', 'Disrupted tissue with dense, atypical cytoplasm and prominent nucleoli, evident capsular invasion'), Score: 0.6135
+('Chromatin evenly distributed', 'Chromatin unevenly distributed, clumped'), Score: 0.5074
+
+Iteration 72:
+('Ordered cellular arrangement with monomorphic nuclei and clear cytoplasm', 'Disordered cellular arrangement with pleomorphic nuclei and abundant mitotic figures'), Score: 0.7040
+('Small, round nuclei with uniform background staining', 'Enlarged, oval or irregular nuclei with heterogeneous background staining'), Score: 0.6432
+
+Iteration 73:
+('Uniform cellular morphology with minimal nuclear atypia in a clear background', 'Variable cell morphology with significant nuclear pleomorphism and increased mitotic activity in a heterogeneous background'), Score: 0.7953
+('Lack of large, pleomorphic nuclei and atypical multinucleated giant cells', 'Demonstration of large, pleomorphic nuclei and atypical multinucleated giant cells'), Score: 0.8144
+
+Iteration 74:
+('Scattered cellular distribution with mild nuclear irregularities and infrequent mitotic activity', 'Dense cellular clusters with significant nuclear atypia, prominent nucleoli, and numerous mitotic figures'), Score: 0.7151
+('Uniform background staining and clear cellular borders without nuclear atypia', 'Heterogeneous background staining with indistinct or overlapping cellular borders and significant nuclear atypia'), Score: 0.7108
+
+Iteration 75:
+('Inconspicuous nucleoli', 'Prominent, often multiple nucleoli'), Score: 0.5035
+('Evenly distributed chromatin, clear cytoplasm, and inconspicuous nucleoli, absent capsular invasion', 'Unevenly distributed, clumped chromatin, dense, atypical cytoplasm, and prominent nucleoli, evident capsular invasion'), Score: 0.7226
+
+Iteration 76:
+('Normal lymphoid follicles', 'Disrupted or effaced lymphoid follicles'), Score: 0.6096
+('Intact capsular architecture', 'Infiltrative growth pattern through capsule'), Score: 0.6460
+
+Iteration 77:
+('Uniform, small lymphocytes', 'Pleomorphic cells with varying sizes'), Score: 0.8333
+('No significant nuclear atypia and preserved tissue architecture', 'Significant nuclear atypia with abundant cytoplasm and disrupted tissue architecture'), Score: 0.8849
+
+Iteration 78:
+('Normal cell and stromal architecture with uniform nuclei', 'Infiltrative growth with desmoplastic stroma and pleomorphic nuclei'), Score: 0.5486
+('Scattered, normal-appearing vessels', 'Neovascularization or abnormal vascular proliferation'), Score: 0.5446
+
+Iteration 79:
+('Cells with uniform nuclei and rare mitotic figures', 'Cells with pleomorphic nuclei and abundant mitotic figures'), Score: 0.6965
+('Lymphocytes with scant cytoplasm and preserved tissue architecture', 'Atypical cells with abundant cytoplasm and disrupted tissue architecture'), Score: 0.7838
+
+Iteration 80:
+('Cytoplasm with clear boundaries', 'Indistinct cytoplasmic boundaries'), Score: 0.6091
+('Preserved capsular architecture with atypical cells', 'Disrupted capsular architecture with pleomorphic cells'), Score: 0.5698
+
+Iteration 81:
+('Well-demarcated normal cell morphology with scant inflammation and uniformly sized nuclei', 'Infiltrative growth pattern with prominent tumor-associated inflammation and varied nuclear size and shape'), Score: 0.7108
+('Absence of atypical mitotic figures', 'Presence of atypical mitotic figures'), Score: 0.7998
+
+Iteration 82:
+('Clear demarcation of cellular borders', 'Overlapping or indistinct cellular borders'), Score: 0.7079
+('Cells with uniform nuclei and rare mitotic figures', 'Cells with pleomorphic nuclei and abundant mitotic figures'), Score: 0.6965
+
+Iteration 83:
+('No significant nuclear atypia and clear demarcation of cellular borders', 'Significant nuclear atypia and overlapping or indistinct cellular borders'), Score: 0.7436
+('No evidence of extracapsular extension', 'Presence of extracapsular extension'), Score: 0.7293
+
+Iteration 84:
+('Bland cell morphology with a uniform background', 'Pleomorphic cells with varied background characteristics'), Score: 0.8732
+('Sparse inflammatory infiltrate', 'Dense inflammatory infiltrate associated with tumor'), Score: 0.5190
+
+Iteration 85:
+('Chromatin evenly distributed', 'Chromatin unevenly distributed, clumped'), Score: 0.5074
+('Loosely dispersed cells with uniform nuclear features and minimal proliferative activity', 'Crowded cellular arrangement with pleomorphic nuclei, conspicuous nucleoli, and brisk mitotic activity'), Score: 0.8867
+
+Iteration 86:
+('Uniform nuclei within a uniformly stained background', 'Pleomorphic nuclei within a heterogeneously stained background'), Score: 0.7564
+('Clear cytoplasm and inconspicuous nucleoli', 'Dense cytoplasm and prominent nucleoli'), Score: 0.5207
+
+Iteration 1:
+('Scattered plasma cells', 'Abundant and atypical plasma cells'), Score: 0.5275
+('Regular cell shape', 'Irregular or spiky cell shape'), Score: 0.6243
+
+Iteration 2:
+('Absence of apoptotic bodies', 'Presence of numerous apoptotic bodies'), Score: 0.8220
+('Smooth nuclear contours', 'Irregular or indented nuclear contours'), Score: 0.5848
+
+Iteration 3:
+('Regular nuclear membrane', 'Irregular nuclear membrane'), Score: 0.6044
+('Scattered plasma cells', 'Abundant and atypical plasma cells'), Score: 0.5275
+
+Iteration 4:
+('Absence of clear cell morphology', 'Presence of clear cell morphology'), Score: 0.8307
+('Smooth nuclear contours', 'Irregular or indented nuclear contours'), Score: 0.5848
+
+Iteration 5:
+('Absence of prominent cellular pleomorphism', 'Presence of prominent cellular pleomorphism'), Score: 0.8485
+('Uniform chromatin distribution', 'Irregular chromatin distribution'), Score: 0.5915
+
+Iteration 6:
+('Absence of prominent cellular pleomorphism', 'Presence of prominent cellular pleomorphism'), Score: 0.8485
+('Absence of satellite nucleoli', 'Presence of satellite nucleoli'), Score: 0.6801
+
+Iteration 7:
+('Absence of tumor giant cells', 'Presence of tumor giant cells'), Score: 0.8269
+('Absence of prominent cellular pleomorphism', 'Presence of prominent cellular pleomorphism'), Score: 0.8485
+
+Iteration 8:
+('Uniformly dispersed lymphocytes', 'Clumping or aggregation of lymphocytes'), Score: 0.7195
+('Absence of clear cell morphology', 'Presence of clear cell morphology'), Score: 0.8307
+
+Iteration 9:
+('Absence of signet ring cells', 'Presence of signet ring cells'), Score: 0.6800
+('Regular nuclear membrane', 'Irregular nuclear membrane'), Score: 0.6044
+
+Iteration 10:
+('Absence of prominent nucleoli', 'Presence of prominent nucleoli'), Score: 0.8530
+('Organized follicular architecture', 'Disrupted or effaced follicular architecture'), Score: 0.5253
+
+Iteration 11:
+('Predominance of small, round nuclei', 'Predominance of large, irregular nuclei'), Score: 0.7712
+('Regular spacing of cells', 'Irregular spacing or piling up of cells'), Score: 0.5502
+
+Iteration 12:
+('Predominance of small, round nuclei', 'Predominance of large, irregular nuclei'), Score: 0.7712
+('Uniform nuclear staining', 'Heterogeneous nuclear staining'), Score: 0.8060
+
+Iteration 13:
+('Predominance of small, round nuclei', 'Predominance of large, irregular nuclei'), Score: 0.7712
+('Absence of tumor budding', 'Presence of tumor budding'), Score: 0.5038
+
+Iteration 14:
+('Predominance of small, round nuclei with uniform staining', 'Predominance of large, irregular nuclei with heterogeneous staining'), Score: 0.6848
+('Absence of nuclear molding', 'Presence of nuclear molding'), Score: 0.5075
+
+Iteration 15:
+('Clear background with dispersed cells', 'Crowded cells with little intervening stroma'), Score: 0.6091
+('Small, round nuclei with uniform chromatin and no nuclear molding', 'Large, pleomorphic nuclei with prominent nucleoli and nuclear molding'), Score: 0.8599
+
+Iteration 16:
+('Absence of abnormal chromatin clumping', 'Presence of abnormal chromatin clumping'), Score: 0.5536
+('Absence of satellite nucleoli', 'Presence of satellite nucleoli'), Score: 0.6801
+
+Iteration 17:
+('Well-preserved capsule', 'Infiltrated or breached capsule'), Score: 0.6542
+('Cells with clear cell morphology and smooth nuclear contours', 'Cells with absence of clear cell morphology and irregular or indented nuclear contours'), Score: 0.5124
+
+Iteration 18:
+('Absence of large, pleomorphic nuclei', 'Presence of large, pleomorphic nuclei'), Score: 0.7922
+('Uniform nuclear staining', 'Heterogeneous nuclear staining'), Score: 0.8060
+
+Iteration 19:
+('Absence of bizarre mitotic figures', 'Presence of bizarre mitotic figures'), Score: 0.7679
+('Absence of apoptotic bodies', 'Presence of numerous apoptotic bodies'), Score: 0.8220
+
+Iteration 20:
+('Absence of prominent cellular pleomorphism', 'Presence of prominent cellular pleomorphism'), Score: 0.8485
+('Organized follicular architecture', 'Disrupted or effaced follicular architecture'), Score: 0.5253
+
+Iteration 21:
+('Fine granular chromatin', 'Coarse granular chromatin'), Score: 0.5035
+('Thin and delicate nuclear membranes', 'Thickened or irregular nuclear membranes'), Score: 0.7930
+
+Iteration 22:
+('Absence of nuclear molding', 'Presence of nuclear molding'), Score: 0.5075
+('Widely spaced cells featuring small, uniformly regular nuclei', 'Densely packed cells exhibiting enlarged, irregularly shaped nuclei'), Score: 0.6005
+
+Iteration 23:
+('Uniformly dispersed lymphocytes', 'Clumping or aggregation of lymphocytes'), Score: 0.7195
+('Absence of abnormal chromatin clumping', 'Presence of abnormal chromatin clumping'), Score: 0.5536
+
+Iteration 24:
+('Absence of tumor giant cells', 'Presence of tumor giant cells'), Score: 0.8269
+('Predominance of small, round nuclei', 'Predominance of large, irregular nuclei'), Score: 0.7712
+
+Iteration 25:
+('Absence of prominent cellular pleomorphism', 'Presence of prominent cellular pleomorphism'), Score: 0.8485
+('Thin and delicate nuclear membranes', 'Thickened or irregular nuclear membranes'), Score: 0.7930
+
+Iteration 26:
+('Small, round nuclei with uniform chromatin and no nuclear molding', 'Large, pleomorphic nuclei with prominent nucleoli and nuclear molding'), Score: 0.8599
+('Absence of cellular atypia', 'Presence of significant cellular atypia'), Score: 0.8389
+
+Iteration 27:
+('Organized follicular architecture', 'Disrupted or effaced follicular architecture'), Score: 0.5253
+('Well-preserved capsule', 'Infiltrated or breached capsule'), Score: 0.6542
+
+Iteration 28:
+('Cells with uniformly regular nuclei and absence of nuclear molding', 'Cells with enlarged, irregularly shaped nuclei and presence of nuclear molding'), Score: 0.6158
+('Scattered mitotic figures', 'Numerous and atypical mitotic figures'), Score: 0.5890
+
+Iteration 29:
+('Absence of prominent nucleoli', 'Presence of prominent nucleoli'), Score: 0.8530
+('Absence of nuclear molding', 'Presence of nuclear molding'), Score: 0.5075
+
+Iteration 30:
+('Widely spaced cells featuring small, uniformly regular nuclei', 'Densely packed cells exhibiting enlarged, irregularly shaped nuclei'), Score: 0.6005
+('Predominance of small, round nuclei with absence of tumor giant cells', 'Predominance of large, irregular nuclei with presence of tumor giant cells'), Score: 0.6489
+
+Iteration 31:
+('Cells exhibiting minimal pleomorphism and lacking satellite nucleoli', 'Cells exhibiting significant pleomorphism and prominent satellite nucleoli'), Score: 0.7140
+('Clear background with dispersed cells', 'Crowded cells with little intervening stroma'), Score: 0.6091
+
+Iteration 32:
+('Regular nuclear membrane', 'Irregular nuclear membrane'), Score: 0.6044
+('Absence of nuclear molding', 'Presence of nuclear molding'), Score: 0.5075
+
+Iteration 33:
+('Loosely cohesive cells', 'Tightly cohesive cell clusters or sheets'), Score: 0.7205
+('Well-preserved capsule', 'Infiltrated or breached capsule'), Score: 0.6542
+
+Iteration 34:
+('Loosely cohesive cells', 'Tightly cohesive cell clusters or sheets'), Score: 0.7205
+('Widely spaced cells featuring small, uniformly regular nuclei', 'Densely packed cells exhibiting enlarged, irregularly shaped nuclei'), Score: 0.6005
+
+Iteration 35:
+('Absence of bizarre mitotic figures', 'Presence of bizarre mitotic figures'), Score: 0.7679
+('Absence of apoptotic bodies', 'Presence of numerous apoptotic bodies'), Score: 0.8220
+
+Iteration 36:
+('Predominance of small lymphocytes', 'Predominance of large, atypical cells'), Score: 0.7943
+('Well-preserved capsule', 'Infiltrated or breached capsule'), Score: 0.6542
+
+Iteration 37:
+('Clear background with dispersed cells', 'Crowded cells with little intervening stroma'), Score: 0.6091
+('Absence of bizarre mitotic figures', 'Presence of bizarre mitotic figures'), Score: 0.7679
+
+Iteration 38:
+('Predominance of small lymphocytes', 'Predominance of large, atypical cells'), Score: 0.7943
+('Well-preserved capsule', 'Infiltrated or breached capsule'), Score: 0.6542
+
+Iteration 39:
+('Cells exhibiting minimal pleomorphism and lacking satellite nucleoli', 'Cells exhibiting significant pleomorphism and prominent satellite nucleoli'), Score: 0.7140
+('Normal lymphocyte distribution and morphology', 'Atypical lymphocyte aggregation with clear cell features'), Score: 0.7620
+
+Iteration 40:
+('Lymphocytes with typical morphology and inconspicuous nucleoli', 'Lymphocytes displaying significant pleomorphism and prominent satellite nucleoli'), Score: 0.5404
+('Regular spacing of cells', 'Irregular spacing or piling up of cells'), Score: 0.5502
+
+Iteration 41:
+('Absence of prominent nucleoli', 'Presence of prominent nucleoli'), Score: 0.8530
+('Absence of intranuclear inclusions', 'Presence of intranuclear inclusions'), Score: 0.6020
+
+Iteration 42:
+('Uniform chromatin distribution', 'Irregular chromatin distribution'), Score: 0.5915
+('Absence of apoptotic bodies', 'Presence of numerous apoptotic bodies'), Score: 0.8220
+
+Iteration 43:
+('Absence of signet ring cells', 'Presence of signet ring cells'), Score: 0.6800
+('Absence of nuclear molding', 'Presence of nuclear molding'), Score: 0.5075
+
+Iteration 44:
+('Absence of prominent nucleoli and intranuclear inclusions', 'Presence of prominent nucleoli and intranuclear inclusions'), Score: 0.8783
+('Lack of bizarre mitotic figures and apoptotic bodies', 'Detection of bizarre mitotic figures and numerous apoptotic bodies'), Score: 0.7727
+
+Iteration 45:
+('Predominance of small, round nuclei with uniform staining', 'Predominance of large, irregular nuclei with heterogeneous staining'), Score: 0.6848
+('Typical nuclear features', 'Atypical nuclear features'), Score: 0.7760
+
+Iteration 46:
+('Small, round nuclei with uniform chromatin and no nuclear molding', 'Large, pleomorphic nuclei with prominent nucleoli and nuclear molding'), Score: 0.8599
+('Small, inconspicuous nucleoli', 'Large, prominent nucleoli'), Score: 0.5213
+
+Iteration 47:
+('Typical nuclear morphology: small, round nuclei with uniform chromatin', 'Atypical nuclear morphology: large, irregular nuclei with heterogeneous chromatin'), Score: 0.7529
+('Uniformly dispersed lymphocytes', 'Clumping or aggregation of lymphocytes'), Score: 0.7195
+
+Iteration 48:
+('Small, round nuclei with uniform chromatin in individually dispersed cells', 'Large, irregular nuclei with heterogeneous chromatin in aggregated cell clusters'), Score: 0.5149
+('Intact lymphatic sinusoids', 'Effaced or distorted lymphatic sinusoids'), Score: 0.5242
+
+Iteration 49:
+('Absence of satellite nucleoli', 'Presence of satellite nucleoli'), Score: 0.6801
+('Predominance of small lymphocytes', 'Predominance of large, atypical cells'), Score: 0.7943
+
+Iteration 50:
+('Scattered, loosely cohesive cells presenting uniformly small and regular nuclei', 'Crowded, tightly clustered cells displaying pleomorphic and enlarged nuclei'), Score: 0.7765
+('Finely dispersed chromatin', 'Clumped chromatin'), Score: 0.5907
+
+Iteration 51:
+('Small, round nuclei with uniform chromatin in individually dispersed cells', 'Large, irregular nuclei with heterogeneous chromatin in aggregated cell clusters'), Score: 0.5149
+('Scattered mitotic figures', 'Numerous and atypical mitotic figures'), Score: 0.5890
+
+Iteration 52:
+('Predominance of small lymphocytes', 'Predominance of large, atypical cells'), Score: 0.7943
+('Small, uniform nuclei without atypia or molding', 'Large, pleomorphic nuclei with prominent nucleoli and significant atypia'), Score: 0.8231
+
+Iteration 53:
+('Cells with uniform morphology and regular spacing', 'Cells with varying morphology and disorganized arrangement with crowding'), Score: 0.5943
+('Predominance of small, round nuclei', 'Predominance of large, irregular nuclei'), Score: 0.7712
+
+Iteration 54:
+('Small, round nuclei with uniform chromatin in intact lymphatic sinusoids', 'Large, irregular nuclei with heterogeneous chromatin in effaced lymphatic sinusoids'), Score: 0.6482
+('Loosely cohesive cells', 'Tightly cohesive cell clusters or sheets'), Score: 0.7205
+
+Iteration 55:
+('Absence of clear cell morphology', 'Presence of clear cell morphology'), Score: 0.8307
+('Cells with small, regular nuclei and no tumor giant cells', 'Cells with large, irregular nuclei and prominent tumor giant cells'), Score: 0.5809
+
+Iteration 56:
+('Absence of abnormal chromatin clumping', 'Presence of abnormal chromatin clumping'), Score: 0.5536
+('Scattered plasma cells', 'Abundant and atypical plasma cells'), Score: 0.5275
+
+Iteration 57:
+('Predominance of small lymphocytes', 'Predominance of large, atypical cells'), Score: 0.7943
+('Organized follicular architecture', 'Disrupted or effaced follicular architecture'), Score: 0.5253
+
+Iteration 58:
+('Absence of bizarre mitotic figures', 'Presence of bizarre mitotic figures'), Score: 0.7679
+('Preserved lymphatic architecture', 'Architectural effacement by atypical cells'), Score: 0.5693
+
+Iteration 59:
+('Minimal cellular pleomorphism with organized follicular architecture', 'Prominent cellular pleomorphism with disrupted follicular architecture'), Score: 0.5540
+('Uniform nuclear staining', 'Heterogeneous nuclear staining'), Score: 0.8060
+
+Iteration 60:
+('Small, round nuclei with uniform chromatin and no nuclear molding', 'Large, pleomorphic nuclei with prominent nucleoli and nuclear molding'), Score: 0.8599
+('Small, uniform nuclei with inconspicuous nucleoli', 'Large, pleomorphic nuclei exhibiting prominent nucleoli and nuclear molding'), Score: 0.7770
+
+Iteration 61:
+('Uniformly dispersed lymphocytes', 'Clumping or aggregation of lymphocytes'), Score: 0.7195
+('Homogeneous and orderly cellular arrangement with uniformly small and regularly shaped nuclei', 'Heterogeneous and chaotic cellular architecture with increased cellularity and pleomorphic, enlarged nuclei'), Score: 0.6169
+
+Iteration 62:
+('Absence of tumor budding', 'Presence of tumor budding'), Score: 0.5038
+('Predominance of small, round nuclei', 'Predominance of large, irregular nuclei'), Score: 0.7712
+
+Iteration 63:
+('Absence of large, pleomorphic nuclei', 'Presence of large, pleomorphic nuclei'), Score: 0.7922
+('Basophilic cytoplasm', 'Eosinophilic or amphophilic cytoplasm'), Score: 0.5112
+
+Iteration 64:
+('Loosely cohesive cells', 'Tightly cohesive cell clusters or sheets'), Score: 0.7205
+('Regular cell shape', 'Irregular or spiky cell shape'), Score: 0.6243
+
+Iteration 65:
+('Cells exhibiting minimal pleomorphism and lacking satellite nucleoli', 'Cells exhibiting significant pleomorphism and prominent satellite nucleoli'), Score: 0.7140
+('Cells with uniformly regular nuclei, absence of nuclear molding, and scattered mitotic figures.', 'Cells with enlarged, irregularly shaped nuclei, presence of nuclear molding, and numerous and atypical mitotic figures.'), Score: 0.7733
+
+Iteration 66:
+('Absence of atypical nucleoli', 'Presence of atypical nucleoli'), Score: 0.8065
+('Fine granular chromatin', 'Coarse granular chromatin'), Score: 0.5035
+
+Iteration 67:
+('Cells with uniformly regular nuclei, absence of nuclear molding, and scattered mitotic figures.', 'Cells with enlarged, irregularly shaped nuclei, presence of nuclear molding, and numerous and atypical mitotic figures.'), Score: 0.7733
+('Cells with small, regular nuclei and no tumor giant cells', 'Cells with large, irregular nuclei and prominent tumor giant cells'), Score: 0.5809
+
+Iteration 68:
+('Small lymphocytes lacking satellite nucleoli', 'Large atypical cells with prominent nucleoli'), Score: 0.7582
+('Uniformly dispersed lymphocytes', 'Clumping or aggregation of lymphocytes'), Score: 0.7195
+
+Iteration 69:
+('Small, round nuclei with uniform chromatin and no nuclear molding', 'Large, pleomorphic nuclei with prominent nucleoli and nuclear molding'), Score: 0.8599
+('Scattered, loosely cohesive cells presenting uniformly small and regular nuclei', 'Crowded, tightly clustered cells displaying pleomorphic and enlarged nuclei'), Score: 0.7765
+
+Iteration 70:
+('Small, inconspicuous nucleoli', 'Large, prominent nucleoli'), Score: 0.5213
+('Small, uniform nuclei without atypia or molding', 'Large, pleomorphic nuclei with prominent nucleoli and significant atypia'), Score: 0.8231
+
