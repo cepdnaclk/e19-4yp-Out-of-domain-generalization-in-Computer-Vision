@@ -36,3 +36,7 @@ def main():
         print(f"ROC AUC: {results['auc']}")
         print(f"Confusion Matrix:\n{results['cm']}")
         print(f"Classification Report:\n{results['report']}")
+
+
+if __name__ == "__main__":
+    main()
