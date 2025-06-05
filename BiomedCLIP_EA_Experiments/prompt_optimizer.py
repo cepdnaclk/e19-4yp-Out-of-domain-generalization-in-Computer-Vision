@@ -70,7 +70,7 @@ def get_prompt_template(iteration_num: int, prompt_content: str, generate_n: int
 
 def main():
     # Name the experiment we are currently running
-    experiment_name = "Experiment-13-all-training-centers-n10"
+    experiment_name = "Experiment-14-given-default-prompt"
     print(f"Running {experiment_name}...")
 
     # Create experiment results directory
@@ -113,7 +113,12 @@ def main():
     print("Gemini client initialized successfully.")
 
     # Configure the prompt templates
-    meta_init_prompt = """Give 50 textual descriptions pairs of visual discriminative features to identify whether the central region of an histopathological image patch contains tumor tissue or not. The patch is extracted from an H&E‑stained whole‑slide image of a lymph node section. Only give the output as python code in the format - prompts: list[tuple[negative: str, positive: str]]"""
+    meta_init_prompt = """Give 50 textual descriptions pairs of visual discriminative features to identify whether the central region of an histopathological image patch contains tumor tissue or not. The patch is extracted from an H&E‑stained whole‑slide image of a lymph node section.
+    
+    Default prompt pairs are:
+    1. ("Tumor is not present in this image", "This is an image of a tumor")
+
+    Only give the output as python code in the format - prompts: list[tuple[negative: str, positive: str]]"""
 
     # meta_prompt_template = """The task is to generate textual descriptions pairs of visual discriminative features to identify whether the central region of an histopathological image patch contains tumor tissue or not. The patch is extracted from an H&E‑stained whole‑slide image of a lymph node section.
     # Here are the best performing pairs in descending order. High scores indicate higher quality visual discriminative features.
