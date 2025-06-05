@@ -168,8 +168,8 @@ def main():
         # Prepare the content for the meta prompt
         prompt_content = f"Current Top {n} prompt pairs:\n"
         for i, (prompt_pair, score) in enumerate(selected_prompts):
-            print(f"{i+1}. {prompt_pair}, Score: {score}")
-            prompt_content += f"{i+1}. {prompt_pair}, Score: {score}\n"
+            print(f"{i+1}. {prompt_pair}, Score: {score:.1f}")
+            prompt_content += f"{i+1}. {prompt_pair}, Score: {score:.1f}\n"
 
         # Save the best prompt pairs to a file, every 20 iterations
         # if (j + 1) % 20 == 0 or j == 0:
