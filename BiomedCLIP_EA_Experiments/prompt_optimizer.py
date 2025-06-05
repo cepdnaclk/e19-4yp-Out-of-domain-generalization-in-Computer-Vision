@@ -93,7 +93,7 @@ def main():
     centers_features, centers_labels = util.extract_center_embeddings(
         model=model,
         preprocess=preprocess,
-        num_centers=1,  # trained only on center 0
+        num_centers=3,  # trained only on center 0
     )
 
     # 2) Concatenate and convert—annotate the resulting tensors
