@@ -11,20 +11,21 @@ import torch
 import numpy as np
 import os
 
+
 def get_prompt_template(iteration_num: int, prompt_content: str) -> str:
     """
     Returns the appropriate instruction based on the iteration number range.
-    
+
     Args:
         iteration_num: Current iteration number (1-indexed)
-    
+
     Returns:
         String containing the iteration-specific instruction
 
     """
     # define a dictionary to map iteration ranges to instructions
     instruction_map = {
-        "medical_concepts": "Write 10 new prompt pairs that is different from the old ones and has a score as high as possible.",
+        "medical_concepts": "Write 10 new prompt pairs that are different from the old ones and has a score as high as possible.",
         "combined_medical_concepts": "Write 10 new prompt pairs by combining multiple medical concepts only from the above prompts to make the score as high as possible.",
         "language_styles": "Write 10 new prompt pairs with different language style and same medical concepts. Each pair should have distinct language style.",
         "slight_changes": "Write 10 new prompt pairs similar to the above pairs only making slight changes to the language style to make the score as high as possible."
@@ -41,38 +42,35 @@ def get_prompt_template(iteration_num: int, prompt_content: str) -> str:
     if 1 <= iteration_num <= 50:
         # Iterations 1-50: Basic exploration
         return base_meta_prompt_template.format(
-                content=prompt_content, 
-                iteration_specific_instruction=instruction_map["medical_concepts"]
-            )
+            content=prompt_content,
+            iteration_specific_instruction=instruction_map["medical_concepts"]
+        )
     elif 51 <= iteration_num <= 100:
         # Iterations 51-100: Concept combination
         return base_meta_prompt_template.format(
-                content=prompt_content, 
-                iteration_specific_instruction=instruction_map["combined_medical_concepts"]
-            )
+            content=prompt_content,
+            iteration_specific_instruction=instruction_map["combined_medical_concepts"]
+        )
     elif 101 <= iteration_num <= 200:
         # Iterations 101-200: Language style variation
         return base_meta_prompt_template.format(
-                content=prompt_content, 
-                iteration_specific_instruction=instruction_map["language_styles"]
-            )
+            content=prompt_content,
+            iteration_specific_instruction=instruction_map["language_styles"]
+        )
     elif iteration_num > 200:
         # Iterations 201+: Fine-tuning with slight modifications
         return base_meta_prompt_template.format(
-                content=prompt_content, 
-                iteration_specific_instruction=instruction_map["slight_changes"]
-            )
+            content=prompt_content,
+            iteration_specific_instruction=instruction_map["slight_changes"]
+        )
     else:
         # Fallback (shouldn't happen with normal iteration numbering)
         raise IndexError("Error occure when getting prompt template")
 
 
-
-
-
 def main():
     # Name the experiment we are currently running
-    experiment_name = "Experiment-8-all_in_one-optimization_max_capacity_100"
+    experiment_name = "Experiment-10-all-training-centers-selector-changed.txt"
     print(f"Running {experiment_name}...")
 
     # Create experiment results directory
@@ -120,13 +118,9 @@ def main():
     # meta_prompt_template = """The task is to generate textual descriptions pairs of visual discriminative features to identify whether the central region of an histopathological image patch contains tumor tissue or not. The patch is extracted from an H&E‑stained whole‑slide image of a lymph node section.
     # Here are the best performing pairs in descending order. High scores indicate higher quality visual discriminative features.
     # {content}
-    # Write 10 new prompt pairs that is different from the old ones and has a score as high as possible. 
+    # Write 10 new prompt pairs that is different from the old ones and has a score as high as possible.
     # Only give the output as python code in the format - prompts: list[tuple[negative: str, positive: str]]
     # """
-
-    
-
-
 
     # Optimization loop
     pq = util.PriorityQueue(max_capacity=100)
@@ -138,8 +132,9 @@ def main():
         if j == 0:
             prompts = util.get_prompt_pairs(meta_init_prompt, client)
         else:
-            meta_prompt = get_prompt_template(iteration_num=j,prompt_content=prompt_content)
-            
+            meta_prompt = get_prompt_template(
+                iteration_num=j, prompt_content=prompt_content)
+
             prompts = util.get_prompt_pairs(meta_prompt, client)
 
         for i, prompt_pair in enumerate(prompts):
@@ -154,7 +149,17 @@ def main():
 
         n = 10
         print(f"\nCurrent Top {n} prompt pairs:")
-        selected_prompts = pq.get_roulette_wheel_selection(n)
+
+        # Selector Operator: Roulette Wheel Selection or Best N Prompts
+        # Use Roulette Wheel Selection for the first 250 iterations
+        # After 250 iterations, use the best n prompts
+        # This is to ensure diversity in the early stages of optimization
+        if j < 250:
+            selected_prompts = pq.get_roulette_wheel_selection(
+                n, isNormalizedInts=False)
+        else:
+            selected_prompts = pq.get_best_n(n)
+
         # selected_prompts = pq.get_best_n(n)
         # reverse the order to set it to acsending order: Recency Bias
         selected_prompts = sorted(
@@ -163,8 +168,8 @@ def main():
         # Prepare the content for the meta prompt
         prompt_content = f"Current Top {n} prompt pairs:\n"
         for i, (prompt_pair, score) in enumerate(selected_prompts):
-            print(f"{i+1}. {prompt_pair}, Score: {int(score)}")
-            prompt_content += f"{i+1}. {prompt_pair}, Score: {int(score)}\n"
+            print(f"{i+1}. {prompt_pair}, Score: {score}")
+            prompt_content += f"{i+1}. {prompt_pair}, Score: {score}\n"
 
         # Save the best prompt pairs to a file, every 20 iterations
         # if (j + 1) % 20 == 0 or j == 0:

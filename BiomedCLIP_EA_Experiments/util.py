@@ -432,7 +432,7 @@ class PriorityQueue:
         ordered = sorted(self._heap, key=lambda x: x[0], reverse=True)
         return str([(pair, score) for score, pair in ordered])
 
-    def get_roulette_wheel_selection(self, n: int) -> List[Tuple[PromptPair, float]]:
+    def get_roulette_wheel_selection(self, n: int, isNormalizedInts: bool = True) -> List[Tuple[PromptPair, float]]:
         """
         Perform roulette-wheel (fitness-proportional) selection without replacement.
 
@@ -467,6 +467,10 @@ class PriorityQueue:
 
         if not selected:
             return []
+
+        if not isNormalizedInts:
+            # If we want raw scores, return them directly
+            return selected
 
         # --- Step B: normalize the selected raw scores to [0..100] ints ---
         raw_scores = [score for (_, score) in selected]
