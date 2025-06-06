@@ -44,7 +44,7 @@ def get_prompt_template(iteration_num: int, prompt_content: str, generate_n: int
         # Iterations 1-50: Basic exploration
         return base_meta_prompt_template.format(
             content=prompt_content,
-            iteration_specific_instruction=instruction_map["language_styles"]
+            iteration_specific_instruction=instruction_map["slight_changes"]
         )
     elif 2001 <= iteration_num <= 3000:
         # Iterations 51-100: Concept combination
@@ -71,7 +71,7 @@ def get_prompt_template(iteration_num: int, prompt_content: str, generate_n: int
 
 def main():
     # Name the experiment we are currently running
-    experiment_name = "Experiment-18-continue-17-2000-iterations"
+    experiment_name = "Experiment-18-continue-17-slight-changes-2000-iterations-top-10-pairs"
     print(f"Running {experiment_name}...")
 
     # Create experiment results directory
@@ -164,7 +164,7 @@ def main():
         # else:
         #     selected_prompts = pq.get_best_n(n)
 
-        selected_prompts = pq.get_roulette_wheel_selection(n)
+        selected_prompts = pq.get_best_n(n, isNormalizedInts=True)
         # selected_prompts = pq.get_best_n(n)
         # reverse the order to set it to acsending order: Recency Bias
         selected_prompts = sorted(

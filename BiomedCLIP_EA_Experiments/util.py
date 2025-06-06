@@ -424,10 +424,31 @@ class PriorityQueue:
         best_score, best_pair = max(self._heap, key=lambda x: x[0])
         return best_pair, best_score
 
-    def get_best_n(self, n: int) -> List[Tuple[PromptPair, float]]:
+    def get_best_n(self, n: int, isNormalizedInts: bool = False) -> List[Tuple[PromptPair, float]]:
         if n <= 0:
             return []
         top_n = sorted(self._heap, key=lambda x: x[0], reverse=True)[:n]
+
+        if isNormalizedInts:
+            # Normalize scores to [60, 90] range
+            min_score = 60
+            max_score = 90
+
+            raw_scores = [score for score, _ in top_n]
+            mn, mx = min(raw_scores), max(raw_scores)
+
+            if mx == mn:
+                # everyone identical → give all max_score
+                norm_scores = [max_score] * len(raw_scores)
+            else:
+                norm_scores = [
+                    int(round((s - mn) / (mx - mn) *
+                        (max_score - min_score) + min_score))
+                    for s in raw_scores
+                ]
+
+            return [(pair, norm) for (pair, _), norm in zip(top_n, norm_scores)]
+
         return [(pair, score) for score, pair in top_n]
 
     def __len__(self) -> int:
