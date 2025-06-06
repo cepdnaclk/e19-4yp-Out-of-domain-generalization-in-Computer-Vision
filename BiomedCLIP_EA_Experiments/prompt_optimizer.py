@@ -1,10 +1,6 @@
 """
 Optimization Only - No Evolutionary Algorithm (EA) - Prompt Optimization Script
 """
-# from API_KEY import GEMINI_API_KEY
-from API_KEY import GEMINI_API_KEY
-
-from google import genai
 from typing import List
 import util
 import torch
@@ -44,7 +40,7 @@ def get_prompt_template(iteration_num: int, prompt_content: str, generate_n: int
         # Iterations 1-50: Basic exploration
         return base_meta_prompt_template.format(
             content=prompt_content,
-            iteration_specific_instruction=instruction_map["slight_changes"]
+            iteration_specific_instruction=instruction_map["medical_concepts"]
         )
     elif 2001 <= iteration_num <= 3000:
         # Iterations 51-100: Concept combination
@@ -71,7 +67,7 @@ def get_prompt_template(iteration_num: int, prompt_content: str, generate_n: int
 
 def main():
     # Name the experiment we are currently running
-    experiment_name = "Experiment-18-continue-17-slight-changes-2000-gen-50-pairs"
+    experiment_name = "Experiment-19-llm-client-gemma"
     print(f"Running {experiment_name}...")
 
     # Create experiment results directory
@@ -110,8 +106,9 @@ def main():
     # 3. load initial prompts (optional)
     # initial_prompts = util.load_initial_prompts()
 
-    client = genai.Client(api_key=GEMINI_API_KEY)
-    print("Gemini client initialized successfully.")
+    # 4. Initialize the LLM client
+    # Set use_local_ollama to True if you want to use a local Ollama server
+    client = util.LLMClient(use_local_ollama=False)
 
     # Configure the prompt templates
     meta_init_prompt = """Give 50 textual descriptions pairs of visual discriminative features to identify whether the central region of an histopathological image patch contains tumor tissue or not. The patch is extracted from an H&E‑stained whole‑slide image of a lymph node section. Only give the output as python code in the format - prompts: list[tuple[negative: str, positive: str]]"""

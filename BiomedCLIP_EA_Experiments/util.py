@@ -23,6 +23,9 @@ from open_clip.factory import HF_HUB_PREFIX, _MODEL_CONFIGS
 import json
 from tqdm import tqdm
 import time
+from API_KEY import GEMINI_API_KEY
+from google import genai
+import ollama
 
 # 1. Paths & constants
 METADATA_CSV = "/storage/projects3/e19-fyp-out-of-domain-gen-in-cv/camelyon17WILDS/metadata.csv"
@@ -338,12 +341,75 @@ def _force_double_quotes(code: str) -> str:
     return tokenize.untokenize(new_tokens)
 
 
-def get_prompt_pairs(prompt, client, parse_func=extract_and_parse_prompt_list,  max_retries=10) -> List[Tuple[str, str]]:
+class LLMClient:
+    """
+    A unified client for interacting with different LLM providers (Gemini, Ollama).
+    """
+
+    def __init__(self, use_local_ollama: bool = False, ollama_model: str = "deepseek-r1:14b", gemini_model: str = "gemma-3-27b-it"):
+        self.use_local_ollama = use_local_ollama
+        self.gemini_client = None
+        self.ollama_model = ollama_model  # Default Ollama model
+        self.gemini_model = gemini_model  # Default Gemini model
+
+        if not use_local_ollama:
+            if GEMINI_API_KEY:
+                self.gemini_client = genai.Client(api_key=GEMINI_API_KEY)
+            else:
+                raise ValueError(
+                    "Gemini API key must be provided if not using local Ollama.")
+
+    def _get_response_from_gemini(self, prompt: str) -> str:
+        """Sends a prompt to the Gemini client and returns the response text."""
+        if not self.gemini_client:
+            raise RuntimeError("Gemini client not initialized.")
+        response = self.gemini_client.models.generate_content(
+            model=self.gemini_model, contents=prompt)
+        return response.text
+
+    def _get_response_from_ollama(self, prompt: str) -> str:
+        """Sends a prompt to the Ollama client and returns the response text."""
+        # The ollama client typically manages its connection internally, no explicit 'client' object
+        response = ollama.chat(model=self.ollama_model, messages=[
+                               {"role": "user", "content": prompt}])
+        return response['message']['content']
+
+    def get_llm_response(self, prompt: str) -> str:
+        """Gets a response from the configured LLM (Gemini or Ollama)."""
+        if self.use_local_ollama:
+            return self._get_response_from_ollama(prompt)
+        else:
+            return self._get_response_from_gemini(prompt)
+
+
+def get_prompt_pairs(
+    prompt: str,
+    llm_client: LLMClient,  # Accept the unified LLMClient instance
+    parse_func: Callable = extract_and_parse_prompt_list,
+    max_retries: int = 10
+) -> List[Tuple[str, str]]:
+    """
+    Retrieves and parses a list of prompt-response pairs from an LLM.
+
+    Args:
+        prompt: The initial prompt to send to the LLM to generate the pairs.
+        llm_client: An instance of LLMClient configured for Gemini or Ollama.
+        parse_func: A function to parse the raw LLM response into a list of tuples.
+                    Defaults to extract_and_parse_prompt_list.
+        max_retries: The maximum number of attempts to get and parse a valid response.
+
+    Returns:
+        A list of (prompt_string, response_string) tuples.
+
+    Raises:
+        RuntimeError: If unable to get and parse prompts after multiple attempts.
+        ValueError: If the LLM response does not contain a valid Python block
+                    or if parsing fails.
+    """
     for attempt in range(1, max_retries + 1):
         try:
-            response = client.models.generate_content(
-                model="gemma-3-27b-it", contents=prompt)
-            raw = response.text
+            # Use the unified LLMClient to get the raw response
+            raw = llm_client.get_llm_response(prompt)
             # print(f"Raw response on attempt {attempt}: {raw}...")
 
             # 1) extract the python block
