@@ -129,7 +129,7 @@ def main():
 
     # Optimization loop
     initial_prompts = util.load_initial_prompts("initial_prompts.txt")
-    pq = util.PriorityQueue(max_capacity=10, initial=initial_prompts)
+    pq = util.PriorityQueue(max_capacity=1000, initial=initial_prompts)
     prompt_content = ""
 
     for j in range(2000):
@@ -137,7 +137,7 @@ def main():
             prompts = util.get_prompt_pairs(meta_init_prompt, client)
         else:
             meta_prompt = get_prompt_template(
-                iteration_num=j, prompt_content=prompt_content, generate_n=10)
+                iteration_num=j, prompt_content=prompt_content, generate_n=50)
 
             prompts = util.get_prompt_pairs(meta_prompt, client)
 
@@ -164,7 +164,8 @@ def main():
         # else:
         #     selected_prompts = pq.get_best_n(n)
 
-        selected_prompts = pq.get_best_n(n, isNormalizedInts=True)
+        selected_prompts = pq.get_roulette_wheel_selection(
+            n, isNormalizedInts=True)
         # selected_prompts = pq.get_best_n(n)
         # reverse the order to set it to acsending order: Recency Bias
         selected_prompts = sorted(
