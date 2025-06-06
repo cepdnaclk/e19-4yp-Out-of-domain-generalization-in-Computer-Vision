@@ -447,7 +447,7 @@ class PriorityQueue:
                     for s in raw_scores
                 ]
 
-            return [(pair, norm) for (pair, _), norm in zip(top_n, norm_scores)]
+            return [(pair, norm) for (_, pair), norm in zip(top_n, norm_scores)]
 
         return [(pair, score) for score, pair in top_n]
 
