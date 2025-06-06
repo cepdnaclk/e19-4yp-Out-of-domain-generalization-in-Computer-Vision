@@ -349,7 +349,7 @@ def main():
         )
     ]
 
-    pq = util.PriorityQueue(max_capacity=1000)
+    pq = util.PriorityQueue(max_capacity=1000, initial=initial_prompts)
     prompt_content = ""
 
     for j in range(2000):
