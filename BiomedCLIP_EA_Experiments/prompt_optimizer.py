@@ -349,12 +349,13 @@ def main():
         )
     ]
 
-    pq = util.PriorityQueue(max_capacity=1000, initial=initial_prompts)
+    pq = util.PriorityQueue(max_capacity=1000)
     prompt_content = ""
 
     for j in range(2000):
         if j == 0:
-            prompts = util.get_prompt_pairs(meta_init_prompt, client)
+            # prompts = util.get_prompt_pairs(meta_init_prompt, client)
+            prompts = initial_prompts
         else:
             meta_prompt = get_prompt_template(
                 iteration_num=j, prompt_content=prompt_content, generate_n=10)
