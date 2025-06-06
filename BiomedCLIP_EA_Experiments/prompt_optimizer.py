@@ -109,7 +109,7 @@ def main():
     # 4. Initialize the LLM client
     # Set use_local_ollama to True if you want to use a local Ollama server
     client = util.LLMClient(
-        use_local_ollama=False, ollama_model="hf.co/unsloth/medgemma-27b-text-it-GGUF:Q4_K_M")
+        use_local_ollama=True, ollama_model="hf.co/unsloth/medgemma-27b-text-it-GGUF:Q4_K_M")
 
     # Configure the prompt templates
     meta_init_prompt = """Give 50 textual descriptions pairs of visual discriminative features to identify whether the central region of an histopathological image patch contains tumor tissue or not. The patch is extracted from an H&E‑stained whole‑slide image of a lymph node section. Only give the output as python code in the format - prompts: list[tuple[negative: str, positive: str]]"""
