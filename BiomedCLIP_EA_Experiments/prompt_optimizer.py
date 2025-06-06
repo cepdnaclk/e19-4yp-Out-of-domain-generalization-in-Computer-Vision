@@ -40,25 +40,25 @@ def get_prompt_template(iteration_num: int, prompt_content: str, generate_n: int
     Only give the output as python code in the format - prompts: list[tuple[negative: str, positive: str]]
     """
 
-    if 1 <= iteration_num <= 100:
+    if 1 <= iteration_num <= 2000:
         # Iterations 1-50: Basic exploration
         return base_meta_prompt_template.format(
             content=prompt_content,
             iteration_specific_instruction=instruction_map["medical_concepts"]
         )
-    elif 101 <= iteration_num <= 150:
+    elif 2001 <= iteration_num <= 3000:
         # Iterations 51-100: Concept combination
         return base_meta_prompt_template.format(
             content=prompt_content,
             iteration_specific_instruction=instruction_map["similar"]
         )
-    elif 151 <= iteration_num <= 200:
+    elif 3001 <= iteration_num <= 4000:
         # Iterations 101-200: Language style variation
         return base_meta_prompt_template.format(
             content=prompt_content,
             iteration_specific_instruction=instruction_map["combined_medical_concepts"]
         )
-    elif iteration_num > 200:
+    elif iteration_num > 4000:
         # Iterations 201+: Fine-tuning with slight modifications
         return base_meta_prompt_template.format(
             content=prompt_content,
@@ -71,7 +71,7 @@ def get_prompt_template(iteration_num: int, prompt_content: str, generate_n: int
 
 def main():
     # Name the experiment we are currently running
-    experiment_name = "Experiment-16-optimize-ea-our-first-try"
+    experiment_name = "Experiment-17-5000-iterations"
     print(f"Running {experiment_name}...")
 
     # Create experiment results directory
@@ -114,37 +114,31 @@ def main():
     print("Gemini client initialized successfully.")
 
     # Configure the prompt templates
-    meta_init_prompt = """Give 50 textual descriptions pairs of visual discriminative features to identify whether the central region of an histopathological image patch contains tumor tissue or not. The patch is extracted from an H&E‑stained whole‑slide image of a lymph node section.
-    
-    Default prompt pairs are:
-    1. ("Tumor is not present in this image", "This is an image of a tumor")
+    meta_init_prompt = """Give 50 textual descriptions pairs of visual discriminative features to identify whether the central region of an histopathological image patch contains tumor tissue or not. The patch is extracted from an H&E‑stained whole‑slide image of a lymph node section. Only give the output as python code in the format - prompts: list[tuple[negative: str, positive: str]]"""
 
-    Only give the output as python code in the format - prompts: list[tuple[negative: str, positive: str]]"""
-
-    meta_prompt_template = """The task is to generate 50 textual descriptions pairs of visual discriminative features to identify whether the central region of an histopathological image patch contains tumor tissue or not. The patch is extracted from an H&E‑stained whole‑slide image of a lymph node section.
-    Here are the best performing pairs. You should aim to get higher scores. Each description should be about 5-20 words.
-    {content}
-    1-10: Generate the first 10 pairs exploring variations of the top 1 (best) given. Remove certain words, add words, change order and generate variations
-    11-20: Generate 10 pairs using the top 10, explore additional knowledge and expand on it. 
-    21-30: The next 10 pairs should maintain similar content as middle pairs but use different language style and sentence structures. 
-    31-40: The next 10 pairs should combine knowledge of top pairs and bottom pairs.
-    41-50: The remaining 10 pairs should be randomly generated. 
-    Only give the output as python code in the format - prompts: list[tuple[negative: str, positive: str]]
-    """
+    # meta_prompt_template = """The task is to generate 50 textual descriptions pairs of visual discriminative features to identify whether the central region of an histopathological image patch contains tumor tissue or not. The patch is extracted from an H&E‑stained whole‑slide image of a lymph node section.
+    # Here are the best performing pairs. You should aim to get higher scores. Each description should be about 5-20 words.
+    # {content}
+    # 1-10: Generate the first 10 pairs exploring variations of the top 1 (best) given. Remove certain words, add words, change order and generate variations
+    # 11-20: Generate 10 pairs using the top 10, explore additional knowledge and expand on it.
+    # 21-30: The next 10 pairs should maintain similar content as middle pairs but use different language style and sentence structures.
+    # 31-40: The next 10 pairs should combine knowledge of top pairs and bottom pairs.
+    # 41-50: The remaining 10 pairs should be randomly generated.
+    # Only give the output as python code in the format - prompts: list[tuple[negative: str, positive: str]]
+    # """
 
     # Optimization loop
     pq = util.PriorityQueue(max_capacity=1000)
     prompt_content = ""
 
-    for j in range(300):
+    for j in range(5000):
         if j == 0:
             prompts = util.get_prompt_pairs(meta_init_prompt, client)
         else:
-            # meta_prompt = get_prompt_template(
-            #     iteration_num=j, prompt_content=prompt_content, generate_n=10)
+            meta_prompt = get_prompt_template(
+                iteration_num=j, prompt_content=prompt_content, generate_n=10)
 
-            prompts = util.get_prompt_pairs(
-                meta_prompt_template.format(content=prompt_content), client)
+            prompts = util.get_prompt_pairs(meta_prompt, client)
 
         for i, prompt_pair in enumerate(prompts):
             if len(prompt_pair) != 2:
@@ -156,7 +150,7 @@ def main():
 
             pq.insert((negative_prompt, positive_prompt), results['accuracy'])
 
-        n = 50
+        n = 10
         print(f"\nCurrent Top {n} prompt pairs:")
 
         # Selector Operator: Roulette Wheel Selection or Best N Prompts
@@ -182,7 +176,7 @@ def main():
             prompt_content += f"{i+1}. {prompt_pair}, Score: {score:.2f}\n"
 
         # Save the best prompt pairs to a file, every 10 iterations
-        if (j + 1) % 10 == 0 or j == 0:
+        if (j + 1) % 20 == 0 or j == 0:
             top_prompts = pq.get_best_n(1000)
             with open(results_filename, "a") as f:
                 f.write(f"Iteration {j+1}:\n")
