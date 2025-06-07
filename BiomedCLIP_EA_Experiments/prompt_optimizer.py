@@ -6,6 +6,7 @@ import util
 import torch
 import numpy as np
 import os
+from chatgpt_initial import INITIAL_CHATGPT_PROMPTS
 
 
 def get_prompt_template(iteration_num: int, prompt_content: str, generate_n: int = 10) -> str:
@@ -67,7 +68,7 @@ def get_prompt_template(iteration_num: int, prompt_content: str, generate_n: int
 
 def main():
     # Name the experiment we are currently running
-    experiment_name = "Experiment-25-medgemma3-ascending-accuracy-5000-iterations"
+    experiment_name = "Experiment-26-chatgpt-gemma3"
     print(f"Running {experiment_name}...")
 
     # Create experiment results directory
@@ -109,7 +110,7 @@ def main():
     # 4. Initialize the LLM client
     # Set use_local_ollama to True if you want to use a local Ollama server
     client = util.LLMClient(
-        use_local_ollama=True, ollama_model="hf.co/unsloth/medgemma-27b-text-it-GGUF:Q8_0")
+        use_local_ollama=False, ollama_model="hf.co/unsloth/medgemma-27b-text-it-GGUF:Q8_0")
 
     # Configure the prompt templates
     meta_init_prompt = """Give 20 textual descriptions pairs of visual discriminative features to identify whether the central region of an histopathological image patch contains tumor tissue or not. The patch is extracted from an H&E‑stained whole‑slide image of a lymph node section. Only give the output as python code in the format - prompts: list[tuple[negative: str, positive: str]]"""
@@ -131,9 +132,9 @@ def main():
     prompt_content = ""
 
     for j in range(5000):
-        if j <= 5:
-            prompts = util.get_prompt_pairs(meta_init_prompt, client)
-            # prompts = initial_prompts
+        if j == 0:
+            # prompts = util.get_prompt_pairs(meta_init_prompt, client)
+            prompts = INITIAL_CHATGPT_PROMPTS
         else:
             meta_prompt = get_prompt_template(
                 iteration_num=j, prompt_content=prompt_content, generate_n=10)
