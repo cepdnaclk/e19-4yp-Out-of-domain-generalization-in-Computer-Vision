@@ -30,7 +30,7 @@ def get_prompt_template(iteration_num: int, prompt_content: str, generate_n: int
 
     # Base meta prompt template
     base_meta_prompt_template = """The task is to generate textual descriptions pairs of visual discriminative features to identify whether the central region of an histopathological image patch contains tumor tissue or not. The patch is extracted from an H&E‑stained whole‑slide image of a lymph node section.
-    Here are the best performing pairs in descending order. High scores indicate higher quality visual discriminative features.
+    Here are the best performing pairs in ascending order. High scores indicate higher quality visual discriminative features.
     {content}
     {iteration_specific_instruction}
     Only give the output as python code in the format - prompts: list[tuple[negative: str, positive: str]]
@@ -67,7 +67,7 @@ def get_prompt_template(iteration_num: int, prompt_content: str, generate_n: int
 
 def main():
     # Name the experiment we are currently running
-    experiment_name = "Experiment-24-medgemma3-q8-5000-different-combined-similar-slight-changes"
+    experiment_name = "Experiment-25-medgemma3-ascending-accuracy-5000-iterations"
     print(f"Running {experiment_name}...")
 
     # Create experiment results directory
@@ -168,13 +168,15 @@ def main():
         # selected_prompts = pq.get_best_n(n)
         # reverse the order to set it to acsending order: Recency Bias
         selected_prompts = sorted(
-            selected_prompts, key=lambda x: x[1], reverse=True)
+            selected_prompts, key=lambda x: x[1], reverse=False)
 
         # Prepare the content for the meta prompt
         prompt_content = f"Current Top {n} prompt pairs:\n"
         for i, (prompt_pair, score) in enumerate(selected_prompts):
             print(f"{i+1}. {prompt_pair}, Score: {score}")
-            prompt_content += f"{i+1}. {prompt_pair}, Score: {score:.2f}\n"
+            # prompt_content += f"{i+1}. {prompt_pair}, Score: {score:.2f}\n"
+            # for ascending order
+            prompt_content += f"{prompt_pair}, Score: {score:.2f}\n"
 
         # Save the best prompt pairs to a file, every 10 iterations
         if (j + 1) % 20 == 0 or j == 0:
