@@ -36,25 +36,25 @@ def get_prompt_template(iteration_num: int, prompt_content: str, generate_n: int
     Only give the output as python code in the format - prompts: list[tuple[negative: str, positive: str]]
     """
 
-    if 1 <= iteration_num <= 50:
+    if 1 <= iteration_num <= 2000:
         # Iterations 1-50: Basic exploration
         return base_meta_prompt_template.format(
             content=prompt_content,
             iteration_specific_instruction=instruction_map["medical_concepts"]
         )
-    elif 51 <= iteration_num <= 100:
+    elif 2001 <= iteration_num <= 3000:
         # Iterations 51-100: Concept combination
         return base_meta_prompt_template.format(
             content=prompt_content,
             iteration_specific_instruction=instruction_map["similar"]
         )
-    elif 101 <= iteration_num <= 150:
+    elif 3001 <= iteration_num <= 4000:
         # Iterations 101-200: Language style variation
         return base_meta_prompt_template.format(
             content=prompt_content,
             iteration_specific_instruction=instruction_map["combined_medical_concepts"]
         )
-    elif iteration_num > 150:
+    elif iteration_num > 4001:
         # Iterations 201+: Fine-tuning with slight modifications
         return base_meta_prompt_template.format(
             content=prompt_content,
@@ -67,7 +67,7 @@ def get_prompt_template(iteration_num: int, prompt_content: str, generate_n: int
 
 def main():
     # Name the experiment we are currently running
-    experiment_name = "Experiment-21-llm-client-phi4"
+    experiment_name = "Experiment-22-medgemma3-q8-5000"
     print(f"Running {experiment_name}...")
 
     # Create experiment results directory
@@ -130,8 +130,8 @@ def main():
     pq = util.PriorityQueue(max_capacity=1000)
     prompt_content = ""
 
-    for j in range(200):
-        if j == 0:
+    for j in range(5000):
+        if j <= 5:
             prompts = util.get_prompt_pairs(meta_init_prompt, client)
             # prompts = initial_prompts
         else:
