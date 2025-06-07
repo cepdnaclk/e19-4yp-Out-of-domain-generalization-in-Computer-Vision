@@ -351,7 +351,7 @@ class LLMClient:
         self.gemini_client = None
         self.ollama_model = ollama_model  # Default Ollama model
         self.gemini_model = gemini_model  # Default Gemini model
-        self.ollama_host = "http://localhost:11434"
+        self.ollama_host = "http://[::1]:11434"
         self._ollama_client_instance = ollama.Client(host=self.ollama_host)
 
         if not use_local_ollama:
