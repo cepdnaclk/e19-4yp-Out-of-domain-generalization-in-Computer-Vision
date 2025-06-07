@@ -6,7 +6,7 @@ import util
 import torch
 import numpy as np
 import os
-from chatgpt_initial import INITIAL_CHATGPT_PROMPTS
+# from chatgpt_initial import INITIAL_CHATGPT_PROMPTS
 
 
 def get_prompt_template(iteration_num: int, prompt_content: str, generate_n: int = 10) -> str:
@@ -26,7 +26,8 @@ def get_prompt_template(iteration_num: int, prompt_content: str, generate_n: int
         "similar": f"Write {generate_n} new prompt pairs that are more similar to the high scoring prompts.",
         "combined_medical_concepts": f"Write {generate_n} new prompt pairs by combining multiple medical concepts only from the above prompts to make the score as high as possible.",
         "language_styles": f"Write {generate_n} new prompt pairs by paraphrasing each of the above. Each pair should have distinct language style.",
-        "slight_changes": f"Write {generate_n} new prompt pairs similar to the above pairs only making slight changes to the language style to make the score as high as possible."
+        "slight_changes": f"Write {generate_n} new prompt pairs similar to the above pairs only making slight changes to the language style to make the score as high as possible.",
+        "summarize_and_mutate": "Please follow the instruction step-by-step to generate a better prompt pair with a score greater than 90.\nStep 1: Write one prompt pair that combines all the knowledge from the above prompts.\nStep 2: Mutate the generated prompt pair so that each description is concise and cohesive."
     }
 
     # Base meta prompt template
@@ -41,7 +42,7 @@ def get_prompt_template(iteration_num: int, prompt_content: str, generate_n: int
         # Iterations 1-50: Basic exploration
         return base_meta_prompt_template.format(
             content=prompt_content,
-            iteration_specific_instruction=instruction_map["medical_concepts"]
+            iteration_specific_instruction=instruction_map["summarize_and_mutate"]
         )
     elif 2001 <= iteration_num <= 3000:
         # Iterations 51-100: Concept combination
@@ -68,7 +69,7 @@ def get_prompt_template(iteration_num: int, prompt_content: str, generate_n: int
 
 def main():
     # Name the experiment we are currently running
-    experiment_name = "Experiment-26-chatgpt-gemma3"
+    experiment_name = "Experiment-27-continue-summarize-and-mutate-gemma3"
     print(f"Running {experiment_name}...")
 
     # Create experiment results directory
@@ -127,14 +128,14 @@ def main():
     # """
 
     # Optimization loop
-    # initial_prompts = []
-    pq = util.PriorityQueue(max_capacity=1000)
+    initial_prompts = util.load_initial_prompts("selected_prompts.txt")
+    pq = util.PriorityQueue(max_capacity=1000, initial=initial_prompts)
     prompt_content = ""
 
-    for j in range(5000):
+    for j in range(1000):
         if j == 0:
-            # prompts = util.get_prompt_pairs(meta_init_prompt, client)
-            prompts = INITIAL_CHATGPT_PROMPTS
+            prompts = util.get_prompt_pairs(meta_init_prompt, client)
+            # prompts = INITIAL_CHATGPT_PROMPTS
         else:
             meta_prompt = get_prompt_template(
                 iteration_num=j, prompt_content=prompt_content, generate_n=10)
@@ -180,7 +181,7 @@ def main():
             prompt_content += f"{prompt_pair}, Score: {score:.2f}\n"
 
         # Save the best prompt pairs to a file, every 10 iterations
-        if (j + 1) % 20 == 0 or j == 0:
+        if (j + 1) % 10 == 0 or j == 0:
             top_prompts = pq.get_best_n(1000)
             with open(results_filename, "a") as f:
                 f.write(f"Iteration {j+1}:\n")
