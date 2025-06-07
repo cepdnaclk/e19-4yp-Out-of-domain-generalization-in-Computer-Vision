@@ -46,13 +46,13 @@ def get_prompt_template(iteration_num: int, prompt_content: str, generate_n: int
         # Iterations 51-100: Concept combination
         return base_meta_prompt_template.format(
             content=prompt_content,
-            iteration_specific_instruction=instruction_map["similar"]
+            iteration_specific_instruction=instruction_map["combined_medical_concepts"]
         )
     elif 3001 <= iteration_num <= 4000:
         # Iterations 101-200: Language style variation
         return base_meta_prompt_template.format(
             content=prompt_content,
-            iteration_specific_instruction=instruction_map["combined_medical_concepts"]
+            iteration_specific_instruction=instruction_map["similar"]
         )
     elif iteration_num > 4001:
         # Iterations 201+: Fine-tuning with slight modifications
@@ -67,7 +67,7 @@ def get_prompt_template(iteration_num: int, prompt_content: str, generate_n: int
 
 def main():
     # Name the experiment we are currently running
-    experiment_name = "Experiment-23-medgemma3-q8-5000"
+    experiment_name = "Experiment-24-medgemma3-q8-5000-different-combined-similar-slight-changes"
     print(f"Running {experiment_name}...")
 
     # Create experiment results directory
