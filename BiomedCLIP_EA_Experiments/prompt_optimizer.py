@@ -67,7 +67,7 @@ def get_prompt_template(iteration_num: int, prompt_content: str, generate_n: int
 
 def main():
     # Name the experiment we are currently running
-    experiment_name = "Experiment-22-medgemma3-q8-5000"
+    experiment_name = "Experiment-23-medgemma3-q8-5000"
     print(f"Running {experiment_name}...")
 
     # Create experiment results directory
