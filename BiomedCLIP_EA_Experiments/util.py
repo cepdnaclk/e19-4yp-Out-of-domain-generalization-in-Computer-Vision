@@ -346,11 +346,13 @@ class LLMClient:
     A unified client for interacting with different LLM providers (Gemini, Ollama).
     """
 
-    def __init__(self, use_local_ollama: bool = False, ollama_model: str = "deepseek-r1:14b", gemini_model: str = "gemma-3-27b-it"):
+    def __init__(self, use_local_ollama: bool = False, ollama_model: str = "hf.co/unsloth/medgemma-27b-text-it-GGUF:Q8_0", gemini_model: str = "gemma-3-27b-it"):
         self.use_local_ollama = use_local_ollama
         self.gemini_client = None
         self.ollama_model = ollama_model  # Default Ollama model
         self.gemini_model = gemini_model  # Default Gemini model
+        self.ollama_host = "http://localhost:11434"
+        self._ollama_client_instance = ollama.Client(host=self.ollama_host)
 
         if not use_local_ollama:
             if GEMINI_API_KEY:
@@ -369,10 +371,18 @@ class LLMClient:
 
     def _get_response_from_ollama(self, prompt: str) -> str:
         """Sends a prompt to the Ollama client and returns the response text."""
-        # The ollama client typically manages its connection internally, no explicit 'client' object
-        response = ollama.chat(model=self.ollama_model, messages=[
-                               {"role": "user", "content": prompt}])
+        # Use the initialized _ollama_client_instance
+        response = self._ollama_client_instance.chat(
+            model=self.ollama_model, messages=[
+                {"role": "user", "content": prompt}]
+        )
         return response['message']['content']
+    # def _get_response_from_ollama(self, prompt: str) -> str:
+    #     """Sends a prompt to the Ollama client and returns the response text."""
+    #     # The ollama client typically manages its connection internally, no explicit 'client' object
+    #     response = ollama.chat(model=self.ollama_model, messages=[
+    #                            {"role": "user", "content": prompt}])
+    #     return response['message']['content']
 
     def get_llm_response(self, prompt: str) -> str:
         """Gets a response from the configured LLM (Gemini or Ollama)."""
