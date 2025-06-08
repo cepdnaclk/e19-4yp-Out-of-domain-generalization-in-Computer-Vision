@@ -92,7 +92,7 @@ def main():
     Here are the best performing pairs in ascending order. High scores indicate higher quality visual discriminative features.
     {content}
     {instruction}
-    Only give the output as python code in the format - prompts: list[tuple[negative: str, positive: str]]
+    Think step by step to give the output as python code in the format - prompts: list[tuple[negative: str, positive: str]]
     """
 
     intstruction_optimizer_template = """The task is to generate textual descriptions pairs of visual discriminative features to identify whether the central region of an histopathological image patch contains tumor tissue or not. The patch is extracted from an H&E‑stained whole‑slide image of a lymph node section.
@@ -102,7 +102,7 @@ def main():
     Last 10 iterations improvement: 0
     Last Instruction: {instruction}
     
-    Think step by step to write a new instruction first to improve the score. Output the new instruction in a <instruction> tag.
+    Think step by step to write a new clear and concise instruction to improve the score. Output the new instruction in a <instruction> tag.
     """
 
     # Optimization loop
@@ -166,7 +166,6 @@ def main():
                     llm_client=client,
                     max_retries=10
                 )
-                print(f"New instruction: {current_instruction}")
 
             else:
                 print(
