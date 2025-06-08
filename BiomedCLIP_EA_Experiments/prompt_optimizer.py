@@ -131,7 +131,7 @@ def main():
 
     # Optimization loop
     initial_prompts = util.load_initial_prompts(
-        "experiment_resulst/medical_concepts.txt")
+        "experiment_results/medical_concepts.txt")
     pq = util.PriorityQueue(max_capacity=1000, initial=initial_prompts)
     prompt_content = ""
 
