@@ -169,7 +169,8 @@ def main():
         # else:
         #     selected_prompts = pq.get_best_n(n)
 
-        selected_prompts = pq.get_best_n(n, isNormalizedInts=True)
+        selected_prompts = pq.get_roulette_wheel_selection(
+            n, isNormalizedInts=True)
         # selected_prompts = pq.get_best_n(n)
         # reverse the order to set it to acsending order: Recency Bias
         selected_prompts = sorted(
