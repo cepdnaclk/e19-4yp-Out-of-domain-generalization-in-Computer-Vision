@@ -31,6 +31,7 @@ def get_prompt_template(iteration_num: int, prompt_content: str, generate_n: int
         "explainability": "For each prompt pair, rewrite them by including a brief rationale for why each discriminative feature predicts tumor vs. non-tumor.",
         "quantitative": f"Write {generate_n} new prompt pairs that adds quantitative cues to the qualitative prompts given above. Score as high as possible.",
         "borderline": f"Write {generate_n} new prompt pairs appending rare or borderline patterns which are easily misclassified to score as high as possible.",
+        "expert": f"Write {generate_n} new prompt pairs expanding each prompt by appending expert biomedical knowledge to score as high as possible.",
     }
 
     # Base meta prompt template
@@ -45,7 +46,7 @@ def get_prompt_template(iteration_num: int, prompt_content: str, generate_n: int
         # Iterations 1-50: Basic exploration
         return base_meta_prompt_template.format(
             content=prompt_content,
-            iteration_specific_instruction=instruction_map["borderline"]
+            iteration_specific_instruction=instruction_map["expert"]
         )
     elif 2001 <= iteration_num <= 3000:
         # Iterations 51-100: Concept combination
@@ -72,7 +73,7 @@ def get_prompt_template(iteration_num: int, prompt_content: str, generate_n: int
 
 def main():
     # Name the experiment we are currently running
-    experiment_name = "Experiment-31-concepts-borderline-gemma3"
+    experiment_name = "Experiment-33-concepts-expert-gemma3"
     print(f"Running {experiment_name}...")
 
     # Create experiment results directory
