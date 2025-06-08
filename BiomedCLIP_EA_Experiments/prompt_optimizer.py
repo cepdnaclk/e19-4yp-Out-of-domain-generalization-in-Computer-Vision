@@ -29,7 +29,8 @@ def get_prompt_template(iteration_num: int, prompt_content: str, generate_n: int
         "slight_changes": f"Write {generate_n} new prompt pairs similar to the above pairs only making slight changes to the language style to make the score as high as possible.",
         "summarize_and_mutate": f"Please follow the instruction step-by-step to generate a better prompt pair with a score greater than 90.\nStep 1: Write one prompt pair that combines all the knowledge from the above prompts.\nStep 2:  Mutate the generated prompt pair in {generate_n} different ways so that each description cohesive.",
         "explainability": "For each prompt pair, rewrite them by including a brief rationale for why each discriminative feature predicts tumor vs. non-tumor.",
-        "quantitative": f"Write {generate_n} new prompt pairs that adds quantitative cues to the qualitative prompts given above. Score as high as possible."
+        "quantitative": f"Write {generate_n} new prompt pairs that adds quantitative cues to the qualitative prompts given above. Score as high as possible.",
+        "borderline": f"Write {generate_n} new prompt pairs appending rare or borderline patterns which are easily misclassified to score as high as possible.",
     }
 
     # Base meta prompt template
@@ -44,7 +45,7 @@ def get_prompt_template(iteration_num: int, prompt_content: str, generate_n: int
         # Iterations 1-50: Basic exploration
         return base_meta_prompt_template.format(
             content=prompt_content,
-            iteration_specific_instruction=instruction_map["quantitative"]
+            iteration_specific_instruction=instruction_map["borderline"]
         )
     elif 2001 <= iteration_num <= 3000:
         # Iterations 51-100: Concept combination
@@ -71,7 +72,7 @@ def get_prompt_template(iteration_num: int, prompt_content: str, generate_n: int
 
 def main():
     # Name the experiment we are currently running
-    experiment_name = "Experiment-30-concepts-quantitative-gemma3"
+    experiment_name = "Experiment-31-concepts-borderline-gemma3"
     print(f"Running {experiment_name}...")
 
     # Create experiment results directory
