@@ -45,7 +45,7 @@ def get_prompt_template(iteration_num: int, prompt_content: str, generate_n: int
         # Iterations 1-50: Basic exploration
         return base_meta_prompt_template.format(
             content=prompt_content,
-            iteration_specific_instruction=instruction_map["boarderline"]
+            iteration_specific_instruction=instruction_map["boSrderline"]
         )
     elif 2001 <= iteration_num <= 3000:
         # Iterations 51-100: Concept combination
