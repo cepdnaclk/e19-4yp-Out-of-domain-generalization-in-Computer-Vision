@@ -45,7 +45,7 @@ def get_prompt_template(iteration_num: int, prompt_content: str, generate_n: int
         # Iterations 1-50: Basic exploration
         return base_meta_prompt_template.format(
             content=prompt_content,
-            iteration_specific_instruction=instruction_map["borderline"]
+            iteration_specific_instruction=instruction_map["quantitative"]
         )
     elif 2001 <= iteration_num <= 3000:
         # Iterations 51-100: Concept combination
@@ -72,7 +72,7 @@ def get_prompt_template(iteration_num: int, prompt_content: str, generate_n: int
 
 def main():
     # Name the experiment we are currently running
-    experiment_name = "Experiment-31-concepts-borderline-gemma3"
+    experiment_name = "Experiment-32-concepts-quantitative-gemma3"
     print(f"Running {experiment_name}...")
 
     # Create experiment results directory
