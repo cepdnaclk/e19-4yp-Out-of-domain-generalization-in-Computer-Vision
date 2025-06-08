@@ -71,7 +71,7 @@ def get_prompt_template(iteration_num: int, prompt_content: str, generate_n: int
 
 def main():
     # Name the experiment we are currently running
-    experiment_name = "Experiment-29-continue-quantitative-gemma3"
+    experiment_name = "Experiment-30-concepts-quantitative-gemma3"
     print(f"Running {experiment_name}...")
 
     # Create experiment results directory
@@ -130,7 +130,8 @@ def main():
     # """
 
     # Optimization loop
-    initial_prompts = util.load_initial_prompts("initial_prompts.txt")
+    initial_prompts = util.load_initial_prompts(
+        "experiment_resulst/medical_concepts.txt")
     pq = util.PriorityQueue(max_capacity=1000, initial=initial_prompts)
     prompt_content = ""
 
