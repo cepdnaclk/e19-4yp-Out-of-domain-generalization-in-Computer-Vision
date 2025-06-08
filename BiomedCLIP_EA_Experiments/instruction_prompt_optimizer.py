@@ -102,7 +102,7 @@ def main():
     Last 10 iterations improvement: 0
     Last Instruction: {instruction}
     
-    Think step by step to write a new clear and concise instruction to improve the score. Output the new instruction in a <instruction> tag.
+    Think step by step to write a new instruction of less than 20 words to improve the score. Output the new instruction in a <instruction> tag.
     """
 
     # Optimization loop
@@ -154,7 +154,7 @@ def main():
                 for prompt_pair, score in top_prompts:
                     f.write(f"{prompt_pair}, Score: {score:.4f}\n")
                 f.write("\n")
-            new_score = pq.get_average_score(10)
+            new_score = pq.get_average_score(20)
 
             # if the score has not improved, then we will update the instruction
             if new_score - current_score < 0.001:
