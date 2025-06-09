@@ -92,7 +92,7 @@ def main():
     Here are the best performing pairs in ascending order. High scores indicate higher quality visual discriminative features.
     {content}
     {instruction}
-    Output as python code in the format - prompts: list[tuple[negative: str, positive: str]]. Let's think step-by-step.
+    Output as python code in the format - prompts: list[tuple[negative: str, positive: str]]. Let's think step-by-step,
     """
 
     intstruction_optimizer_template = """The task is to generate distinct textual descriptions pairs of visual discriminative features to identify whether the central region of an histopathological image patch contains tumor tissue or not. The patch is extracted from an H&E‑stained whole‑slide image of a lymph node section.
@@ -103,8 +103,8 @@ def main():
     Last Instruction: {instruction}
 
     This instruction will be used in the following setting:
-    "<Task>
-    <Current Top 10 Prompts>
+    "\{\{Problem Description and task to be performed\}\}
+    \{\{Current Top 10 Prompts\}\}>
     <Instruction>"
 
     Example Instructions:
@@ -112,8 +112,9 @@ def main():
     Write 10 new prompt pairs that are more similar to the high scoring prompts
     Write 10 new prompt pairs by paraphrasing each of the above. Each pair should have distinct language style.
     Write 10 new prompt pairs appending rare or borderline patterns which are easily misclassified to score as high as possible.
-    
-    Think step by step to write a new instruction to improve the score. Output the new instruction in a <instruction> tag.
+
+    Write a short generalized instruction to improve the score. Avoid any specific characteristics in the instruction, as the current top prompts will be provided.
+    Output in a <instruction> tag. Let's think step-by-step,
     """
 
     # Optimization loop
