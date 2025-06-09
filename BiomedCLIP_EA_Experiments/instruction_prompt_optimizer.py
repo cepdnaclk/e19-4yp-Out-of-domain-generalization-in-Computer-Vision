@@ -86,23 +86,34 @@ def main():
 
     generate_n = 10  # Number of new prompt pairs to generate in each iteration
     # Configure the prompt templates
-    meta_init_prompt = """Give 20 textual descriptions pairs of visual discriminative features to identify whether the central region of an histopathological image patch contains tumor tissue or not. The patch is extracted from an H&E‑stained whole‑slide image of a lymph node section. Only give the output as python code in the format - prompts: list[tuple[negative: str, positive: str]]"""
+    meta_init_prompt = """Give 20 distinct textual descriptions pairs of visual discriminative features to identify whether the central region of an histopathological image patch contains tumor tissue or not. The patch is extracted from an H&E‑stained whole‑slide image of a lymph node section. Only give the output as python code in the format - prompts: list[tuple[negative: str, positive: str]]"""
 
-    meta_prompt_template = """The task is to generate textual descriptions pairs of visual discriminative features to identify whether the central region of an histopathological image patch contains tumor tissue or not. The patch is extracted from an H&E‑stained whole‑slide image of a lymph node section.
+    meta_prompt_template = """The task is to generate distinct textual descriptions pairs of visual discriminative features to identify whether the central region of an histopathological image patch contains tumor tissue or not. The patch is extracted from an H&E‑stained whole‑slide image of a lymph node section.
     Here are the best performing pairs in ascending order. High scores indicate higher quality visual discriminative features.
     {content}
     {instruction}
-    Think step by step to give the output as python code in the format - prompts: list[tuple[negative: str, positive: str]]
+    Output as python code in the format - prompts: list[tuple[negative: str, positive: str]]. Let's think step-by-step.
     """
 
-    intstruction_optimizer_template = """The task is to generate textual descriptions pairs of visual discriminative features to identify whether the central region of an histopathological image patch contains tumor tissue or not. The patch is extracted from an H&E‑stained whole‑slide image of a lymph node section.
+    intstruction_optimizer_template = """The task is to generate distinct textual descriptions pairs of visual discriminative features to identify whether the central region of an histopathological image patch contains tumor tissue or not. The patch is extracted from an H&E‑stained whole‑slide image of a lymph node section.
     Here are the best performing pairs in ascending order. High scores indicate higher quality visual discriminative features.
     {content}
 
     Last 10 iterations improvement: 0
     Last Instruction: {instruction}
+
+    This instruction will be used in the following setting:
+    "<Task>
+    <Current Top 10 Prompts>
+    <Instruction>"
+
+    Example Instructions:
+    Write 10 new prompt pairs that are different from the old ones and has a score as high as possible.
+    Write 10 new prompt pairs that are more similar to the high scoring prompts
+    Write 10 new prompt pairs by paraphrasing each of the above. Each pair should have distinct language style.
+    Write 10 new prompt pairs appending rare or borderline patterns which are easily misclassified to score as high as possible.
     
-    Think step by step to write a new instruction of less than 20 words to improve the score. Output the new instruction in a <instruction> tag.
+    Think step by step to write a new instruction to improve the score. Output the new instruction in a <instruction> tag.
     """
 
     # Optimization loop
@@ -146,8 +157,8 @@ def main():
             print(f"{i+1}. {prompt_pair}, Score: {score}")
             prompt_content += f"{prompt_pair}, Score: {score:.2f}\n"
 
-        # Save the best prompt pairs to a file, every 10 iterations
-        if (j + 1) % 10 == 0 or j == 0:
+        # Save the best prompt pairs to a file, every 5 iterations
+        if (j + 1) % 5 == 0 or j == 0:
             top_prompts = pq.get_best_n(1000)
             with open(results_filename, "a") as f:
                 f.write(f"Iteration {j+1}:\n")
@@ -157,9 +168,9 @@ def main():
             new_score = pq.get_average_score(20)
 
             # if the score has not improved, then we will update the instruction
-            if new_score - current_score < 0.001:
+            if new_score - current_score < 0.0001:
                 print(
-                    f"Score has not improved from {current_score:.4f} to {new_score:.4f}. Updating instruction.")
+                    f"Score has not improved from {current_score:.4f}. Updating instruction.")
                 current_instruction = get_meta_instruction(
                     prompt=intstruction_optimizer_template.format(
                         content=prompt_content, instruction=current_instruction),
