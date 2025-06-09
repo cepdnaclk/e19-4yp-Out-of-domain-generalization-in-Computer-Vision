@@ -103,8 +103,8 @@ def main():
     Last Instruction: {instruction}
 
     This instruction will be used in the following setting:
-    "\{\{Problem Description and task to be performed\}\}
-    \{\{Current Top 10 Prompts\}\}>
+    "<Problem Description and task to be performed>
+    <Current Top 10 Prompts: ....>
     <Instruction>"
 
     Example Instructions:
