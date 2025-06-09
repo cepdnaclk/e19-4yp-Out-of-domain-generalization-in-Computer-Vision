@@ -86,7 +86,7 @@ def main():
 
     generate_n = 10  # Number of new prompt pairs to generate in each iteration
     # Configure the prompt templates
-    meta_init_prompt = """Give 20 distinct textual descriptions pairs of visual discriminative features to identify whether the central region of an histopathological image patch contains tumor tissue or not. The patch is extracted from an H&E‑stained whole‑slide image of a lymph node section. Only give the output as python code in the format - prompts: list[tuple[negative: str, positive: str]]"""
+    meta_init_prompt = """Give 50 distinct textual descriptions pairs of visual discriminative features to identify whether the central region of an histopathological image patch contains tumor tissue or not. The patch is extracted from an H&E‑stained whole‑slide image of a lymph node section. Only give the output as python code in the format - prompts: list[tuple[negative: str, positive: str]]"""
 
     meta_prompt_template = """The task is to generate distinct textual descriptions pairs of visual discriminative features to identify whether the central region of an histopathological image patch contains tumor tissue or not. The patch is extracted from an H&E‑stained whole‑slide image of a lymph node section.
     Here are the best performing pairs in ascending order. High scores indicate higher quality visual discriminative features.
@@ -117,9 +117,9 @@ def main():
     """
 
     # Optimization loop
-    initial_prompts = util.load_initial_prompts(
-        "experiment_results/medical_concepts.txt")
-    pq = util.PriorityQueue(max_capacity=1000, initial=initial_prompts)
+    # initial_prompts = util.load_initial_prompts(
+    #     "experiment_results/medical_concepts.txt")
+    pq = util.PriorityQueue(max_capacity=1000)
     prompt_content = ""
     current_instruction = f"Write {generate_n} new prompt pairs that are different from the old ones and has a score as high as possible."
     current_score = 0.0
