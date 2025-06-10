@@ -31,7 +31,7 @@ def main():
         "experiment_results/medical_concepts.txt"
     )
 
-    for i in range(0, len(prompts_population), 20):
+    for i in range(20, len(prompts_population), 20):
         prompts = prompts_population[0:i + 1]
         print(f"Using {len(prompts)} prompts for evaluation.")
 
@@ -44,7 +44,7 @@ def main():
                 centers_labels[i],
                 model,
                 tokenizer,
-                unweighted=True
+                unweighted=False
             )
 
             print("\n--- Ensemble Evaluation Results ---")
