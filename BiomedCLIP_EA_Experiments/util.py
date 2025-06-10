@@ -250,6 +250,7 @@ def evaluate_prompt_list(
     image_labels: torch.Tensor,  # (N,)
     model,
     tokenizer,
+    unweighted: bool = False  # If True, all prompts are treated equally
 ):
     all_weighted_probs = []
     total_weight = 0.0
@@ -259,7 +260,14 @@ def evaluate_prompt_list(
     labels = image_labels.to(DEVICE)
 
     with torch.no_grad():
-        for (negative_prompt, positive_prompt), weight in prompt_list:
+        for (negative_prompt, positive_prompt), original_weight in prompt_list:
+            # Determine the effective weight
+            effective_weight = 1.0 if unweighted else original_weight
+
+            # Skip if effective_weight is zero to avoid unnecessary computations
+            if effective_weight == 0 and not unweighted:
+                continue
+
             text_inputs = tokenizer(
                 [negative_prompt, positive_prompt],
                 context_length=CONTEXT_LENGTH
@@ -273,23 +281,29 @@ def evaluate_prompt_list(
             logits = logit_scale * (feats @ text_feats.t())
             probs = logits.softmax(dim=1)
 
+            # Extract probability for the positive class (assuming index 1)
+            # If your tumor class is indeed index 0 as per your previous code, change `probs[:, 1]` to `probs[:, 0]`
             current_positive_class_probs = probs[:, 1].cpu().numpy()
 
-            all_weighted_probs.append(current_positive_class_probs * weight)
-            total_weight += weight
+            all_weighted_probs.append(
+                current_positive_class_probs * effective_weight)
+            total_weight += effective_weight
 
-    # Perform weighted ensemble
+    # Perform ensemble
     if total_weight == 0:
-        raise ValueError("Total weight of prompts cannot be zero.")
+        # If all weights were zero, or prompt_list was empty and unweighted was False
+        # This case handles scenarios where no valid prompts or non-zero weights were found.
+        # It might be better to return an error or specific empty results depending on desired behavior.
+        # For now, let's return a dict with NaN or 0 for metrics for clarity,
+        # or raise an error if this state indicates a problem.
+        raise ValueError(
+            "Total effective weight of prompts is zero. Cannot perform ensemble.")
 
     # Convert list of arrays to a single array and sum along the first dimension
     ensemble_probs_unnormalized = np.sum(all_weighted_probs, axis=0)
     ensemble_probs = ensemble_probs_unnormalized / total_weight
 
     # Convert probabilities to predictions
-    # We need a threshold. For AUC, we use probabilities directly.
-    # For accuracy and confusion matrix, we need hard predictions.
-    # A common threshold for binary classification is 0.5
     ensemble_preds = (ensemble_probs >= 0.5).astype(int)
 
     y_true = labels.cpu().numpy()
