@@ -27,26 +27,30 @@ def main():
     centers_labels = [torch.from_numpy(label) for label in centers_labels]
 
     # 3. load prompts
-    prompts = util.load_initial_prompts(
+    prompts_population = util.load_initial_prompts(
         "experiment_results/medical_concepts.txt"
     )
 
-    # Run the evaluation
-    for i, _ in enumerate(centers_features):
-        print(f"Evaluating center {i}...")
-        results = util.evaluate_prompt_list(
-            prompts,
-            centers_features[i],
-            centers_labels[i],
-            model,
-            tokenizer,
-        )
+    for i in range(len(prompts_population), 20):
+        prompts = prompts_population[0:i + 1]
+        print(f"Using {len(prompts)} prompts for evaluation.")
 
-        print("\n--- Ensemble Evaluation Results ---")
-        print(f"Accuracy: {results['accuracy']:.4f}")
-        print(f"AUC: {results['auc']:.4f}")
-        print("Confusion Matrix:\n", results['cm'])
-        print("Classification Report:\n", results['report'])
+        # Run the evaluation
+        for i, _ in enumerate(centers_features):
+            print(f"Evaluating center {i}...")
+            results = util.evaluate_prompt_list(
+                prompts,
+                centers_features[i],
+                centers_labels[i],
+                model,
+                tokenizer,
+            )
+
+            print("\n--- Ensemble Evaluation Results ---")
+            print(f"Accuracy: {results['accuracy']:.4f}")
+            print(f"AUC: {results['auc']:.4f}")
+            print("Confusion Matrix:\n", results['cm'])
+            print("Classification Report:\n", results['report'])
 
 
 if __name__ == "__main__":

@@ -290,7 +290,7 @@ def evaluate_prompt_list(
     # We need a threshold. For AUC, we use probabilities directly.
     # For accuracy and confusion matrix, we need hard predictions.
     # A common threshold for binary classification is 0.5
-    ensemble_preds = (ensemble_probs >= 0.4).astype(int)
+    ensemble_preds = (ensemble_probs >= 0.5).astype(int)
 
     y_true = labels.cpu().numpy()
 
