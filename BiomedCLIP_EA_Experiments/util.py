@@ -11,7 +11,8 @@ from sklearn.metrics import (
     accuracy_score,
     confusion_matrix,
     classification_report,
-    roc_auc_score
+    roc_auc_score,
+    roc_curve
 )
 from typing import Callable, List, Tuple
 import os
@@ -258,6 +259,7 @@ def evaluate_prompt_list(
     # Ensure image feats and labels are on the correct device once
     feats = image_feats.to(DEVICE)
     labels = image_labels.to(DEVICE)
+    y_true = labels.cpu().numpy()  # Get true labels in numpy once
 
     with torch.no_grad():
         for (negative_prompt, positive_prompt), original_weight in prompt_list:
@@ -282,7 +284,6 @@ def evaluate_prompt_list(
             probs = logits.softmax(dim=1)
 
             # Extract probability for the positive class (assuming index 1)
-            # If your tumor class is indeed index 0 as per your previous code, change `probs[:, 1]` to `probs[:, 0]`
             current_positive_class_probs = probs[:, 1].cpu().numpy()
 
             all_weighted_probs.append(
@@ -291,11 +292,6 @@ def evaluate_prompt_list(
 
     # Perform ensemble
     if total_weight == 0:
-        # If all weights were zero, or prompt_list was empty and unweighted was False
-        # This case handles scenarios where no valid prompts or non-zero weights were found.
-        # It might be better to return an error or specific empty results depending on desired behavior.
-        # For now, let's return a dict with NaN or 0 for metrics for clarity,
-        # or raise an error if this state indicates a problem.
         raise ValueError(
             "Total effective weight of prompts is zero. Cannot perform ensemble.")
 
@@ -303,18 +299,53 @@ def evaluate_prompt_list(
     ensemble_probs_unnormalized = np.sum(all_weighted_probs, axis=0)
     ensemble_probs = ensemble_probs_unnormalized / total_weight
 
-    # Convert probabilities to predictions
-    ensemble_preds = (ensemble_probs >= 0.5).astype(int)
+    # --- Dynamically decide the threshold for maximum accuracy ---
+    # 1. Get FPR, TPR, and thresholds
+    # roc_curve expects probabilities of the positive class and true labels
+    fpr, tpr, thresholds = roc_curve(y_true, ensemble_probs)
 
-    y_true = labels.cpu().numpy()
+    # 2. Iterate through thresholds to find the one maximizing accuracy
+    optimal_threshold_for_accuracy = 0.5  # Default fallback
+    max_accuracy = -1  # Initialize with a value lower than any possible accuracy
+
+    for i, t in enumerate(thresholds):
+        # roc_curve can return NaN thresholds for very extreme cases, skip them
+        if np.isnan(t):
+            continue
+
+        # Convert ensemble probabilities to binary predictions using the current threshold
+        current_preds = (ensemble_probs >= t).astype(int)
+
+        # Calculate accuracy for this threshold
+        current_accuracy = accuracy_score(y_true, current_preds)
+
+        # If this threshold gives a better accuracy, update the optimal
+        if current_accuracy > max_accuracy:
+            max_accuracy = current_accuracy
+            optimal_threshold_for_accuracy = t
+    # --- End of dynamic threshold decision ---
+
+    # Use the optimal_threshold_for_accuracy for final predictions
+    ensemble_preds = (ensemble_probs >=
+                      optimal_threshold_for_accuracy).astype(int)
 
     # metrics
-    acc = accuracy_score(y_true, ensemble_preds)
+    # Note: 'acc' will now be the max_accuracy found
+    # 'auc' is still calculated based on probabilities (threshold-independent)
+    acc = max_accuracy  # Use the max accuracy found during threshold search
     auc = roc_auc_score(y_true, ensemble_probs)
     cm = confusion_matrix(y_true, ensemble_preds)
     report = classification_report(y_true, ensemble_preds, digits=4)
 
-    return {'accuracy': acc, 'auc': auc, 'cm': cm, 'report': report, 'ensemble_probs': ensemble_probs}
+    return {
+        'accuracy': acc,
+        'auc': auc,
+        'cm': cm,
+        'report': report,
+        'ensemble_probs': ensemble_probs,
+        # Return the found threshold
+        'optimal_accuracy_threshold': optimal_threshold_for_accuracy
+    }
 
 
 def _force_double_quotes(code: str) -> str:
