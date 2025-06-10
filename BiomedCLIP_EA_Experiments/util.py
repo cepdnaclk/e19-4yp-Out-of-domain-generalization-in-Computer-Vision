@@ -41,6 +41,7 @@ NUM_WORKERS = 4
 DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 PromptPair = Tuple[str, str]
 InitialItem = Tuple[PromptPair, float]
+PromptList = List[Tuple[PromptPair, float]]
 
 
 class BiomedCLIPDataset(Dataset):
@@ -241,6 +242,65 @@ def evaluate_prompt_pair(
     cm = confusion_matrix(y_true, y_pred)
     report = classification_report(y_true, y_pred, digits=4)
     return {'accuracy': acc, 'auc': auc, 'cm': cm, 'report': report}
+
+
+def evaluate_prompt_list(
+    prompt_list: PromptList,
+    image_feats: torch.Tensor,  # (N, D), precomputed
+    image_labels: torch.Tensor,  # (N,)
+    model,
+    tokenizer,
+):
+    all_weighted_probs = []
+    total_weight = 0.0
+
+    # Ensure image feats and labels are on the correct device once
+    feats = image_feats.to(DEVICE)
+    labels = image_labels.to(DEVICE)
+
+    with torch.no_grad():
+        for (negative_prompt, positive_prompt), weight in prompt_list:
+            text_inputs = tokenizer(
+                [negative_prompt, positive_prompt],
+                context_length=CONTEXT_LENGTH
+            ).to(DEVICE)
+
+            text_feats = model.encode_text(text_inputs)  # (2, D)
+            text_feats = text_feats / text_feats.norm(dim=1, keepdim=True)
+            logit_scale = model.logit_scale.exp()
+
+            # compute all logits at once: (N, 2)
+            logits = logit_scale * (feats @ text_feats.t())
+            probs = logits.softmax(dim=1)
+
+            current_positive_class_probs = probs[:, 1].cpu().numpy()
+
+            all_weighted_probs.append(current_positive_class_probs * weight)
+            total_weight += weight
+
+    # Perform weighted ensemble
+    if total_weight == 0:
+        raise ValueError("Total weight of prompts cannot be zero.")
+
+    # Convert list of arrays to a single array and sum along the first dimension
+    ensemble_probs_unnormalized = np.sum(all_weighted_probs, axis=0)
+    ensemble_probs = ensemble_probs_unnormalized / total_weight
+
+    # Convert probabilities to predictions
+    # We need a threshold. For AUC, we use probabilities directly.
+    # For accuracy and confusion matrix, we need hard predictions.
+    # A common threshold for binary classification is 0.5
+    ensemble_preds = (ensemble_probs >= 0.5).astype(int)
+
+    y_true = labels.cpu().numpy()
+
+    # metrics
+    acc = accuracy_score(y_true, ensemble_preds)
+    auc = roc_auc_score(y_true, ensemble_probs)
+    cm = confusion_matrix(y_true, ensemble_preds)
+    report = classification_report(y_true, ensemble_preds, digits=4)
+
+    return {'accuracy': acc, 'auc': auc, 'cm': cm, 'report': report, 'ensemble_probs': ensemble_probs}
 
 
 def _force_double_quotes(code: str) -> str:
