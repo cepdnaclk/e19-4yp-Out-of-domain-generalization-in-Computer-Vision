@@ -26,6 +26,7 @@ import time
 from API_KEY import GEMINI_API_KEY
 from google import genai
 import ollama
+import torch.nn.functional as F
 
 # 1. Paths & constants
 METADATA_CSV = "/storage/projects3/e19-fyp-out-of-domain-gen-in-cv/camelyon17WILDS/metadata.csv"
@@ -236,12 +237,22 @@ def evaluate_prompt_pair(
         y_prob = probs[:, 0].cpu().numpy()    # tumor-class prob
         y_true = labels.cpu().numpy()
 
+        # Compute Binary Cross-Entropy Loss
+        bce_loss = F.binary_cross_entropy(
+            input=torch.tensor(y_prob, device=DEVICE).float(),
+            target=torch.tensor(y_true, device=DEVICE).float()
+        ).item()
+
+        # Invert BCE loss: 1/(1 + loss) (so lower loss → higher value)
+        inverted_bce = 1.0 / (1.0 + bce_loss)
+
+
     # metrics
     acc = accuracy_score(y_true, y_pred)
     auc = roc_auc_score(y_true, y_prob)
     cm = confusion_matrix(y_true, y_pred)
     report = classification_report(y_true, y_pred, digits=4)
-    return {'accuracy': acc, 'auc': auc, 'cm': cm, 'report': report}
+    return {'accuracy': acc, 'auc': auc, 'cm': cm, 'report': report, 'inverted_bce': inverted_bce}
 
 
 def evaluate_prompt_list(
@@ -532,8 +543,9 @@ def get_prompt_pairs(
 
 class PriorityQueue:
     # type: ignore
-    def __init__(self, max_capacity: int = 10, initial: Optional[List[Tuple[PromptPair, float]]] = None):
+    def __init__(self, max_capacity: int = 10, initial: Optional[List[Tuple[PromptPair, float]]] = None,filter_threshold: float = 0.6):
 
+        self.filter_threshold = filter_threshold
         self.max_capacity: int = max_capacity
         # Store (score, prompt_pair); min-heap root is the lowest score.
         self._heap: List[Tuple[float, PromptPair]] = []  # type: ignore
@@ -551,7 +563,7 @@ class PriorityQueue:
         if prompt_pair in self._set:
             return
         # Skip low scores
-        if score < 0.6:
+        if score < self.filter_threshold:
             return
 
         if len(self._heap) < self.max_capacity:
