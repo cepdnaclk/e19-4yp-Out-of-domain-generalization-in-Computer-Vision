@@ -1,0 +1,27 @@
+('No atypical cells infiltrating surrounding tissues', 'Atypical cells infiltrating surrounding tissues and disrupting normal structures'), Score: 0.9013
+("Absence of atypical cellular invasion into adjacent tissues", "Presence of atypical cellular invasion into adjacent tissues, leading to architectural disruption"), Score: 0.8996
+("No abnormal cells spreading beyond their origin", "Abnormal cells spreading and altering normal structures"), Score: 0.8990
+("Cellular pathology remains confined, not extending into neighboring healthy tissue", "Cellular pathology has extended into neighboring healthy tissue, causing disorganization of native structures"), Score: 0.8988
+("Bad cells are not growing into the healthy areas", "Bad cells are growing into the healthy areas and messing up their normal arrangement"), Score: 0.8982
+("Infiltrative growth of neoplastic cells not identified", "Infiltrative growth of neoplastic cells identified, with effacement of normal tissue architecture"), Score: 0.8978
+("The rogue cells are contained, respecting boundaries", "The rogue cells have breached defenses, undermining normal tissue integrity"), Score: 0.8966
+("Atypical cells are limited to their original site", "Atypical cells are spreading into surrounding tissue and disturbing its structure"), Score: 0.8955
+("Atypical cells are not observed to be penetrating the surrounding matrix", "Atypical cells are observed penetrating the surrounding matrix, with resultant structural damage"), Score: 0.8945
+("No invasion present within the surrounding tissue", "Invasion present within the surrounding tissue, with tissue disruption"), Score: 0.8938
+("The tissue remains architecturally intact, free from infiltrating abnormal cells", "The tissue shows architectural distortion due to infiltrating abnormal cells"), Score: 0.8930
+
+
+('No atypical cells infiltrating surrounding tissues', 'Atypical cells infiltrating surrounding tissues and disrupting normal structures'), Score: 0.9013
+('No significant atypia in the surrounding lymphocytes', 'Significant atypia observed in lymphocytes adjacent to tumor nests'), Score: 0.8997
+('No evidence of fibrosis', 'Prominent stromal fibrosis surrounding tumor nests'), Score: 0.8994
+('Normal follicular architecture is preserved', 'Disrupted follicular architecture with loss of polarity'), Score: 0.8940
+('No prominent nucleoli are observed in lymphocytes', 'Cells exhibit large, prominent, and irregular nucleoli'), Score: 0.8935
+('No giant cells or multinucleated cells are seen', 'Presence of multinucleated giant cells, suggestive of specific tumor types'), Score: 0.8884
+('No plasmacytoid differentiation is observed', 'Plasmacytoid differentiation is prominent within the tumor cells'), Score: 0.8883
+('Well-defined follicular architecture is preserved', 'Disrupted follicular architecture with loss of polarity'), Score: 0.8882
+('No prominent nucleoli are observed in lymphocytes', 'Large, prominent nucleoli are visible in tumor cells'), Score: 0.8853
+('Interfollicular areas contain small lymphocytes with regular nuclei', 'Interfollicular areas are infiltrated by large, atypical cells with irregular nuclei'), Score: 0.8841
+('Interfollicular areas show a normal complement of T cells', 'Interfollicular areas are dominated by large, atypical cells'), Score: 0.8830
+('Interfollicular areas contain predominantly small lymphocytes', 'Interfollicular areas are expanded by large, atypical cells with prominent nucleoli'), Score: 0.8827
+('No evidence of fibrosis', 'Significant stromal fibrosis surrounding tumor nests'), Score: 0.8808
+('No prominent nucleolus is seen', 'Large, prominent, and irregular nucleoli are present'), Score: 0.8807
