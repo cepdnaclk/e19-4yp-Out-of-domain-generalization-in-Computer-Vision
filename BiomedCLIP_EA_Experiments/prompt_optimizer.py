@@ -36,11 +36,11 @@ def get_prompt_template(iteration_num: int, prompt_content: str, generate_n: int
     }
 
     # Base meta prompt template
-    base_meta_prompt_template = """The task is to generate textual descriptions pairs of visual discriminative features to identify whether the central region of an histopathological image patch contains tumor tissue or not. The patch is extracted from an H&E‑stained whole‑slide image of a lymph node section.
+    base_meta_prompt_template = """The task is to generate distinct textual descriptions pairs of visual discriminative features to identify whether the central region of a histopathological image patch contains tumor tissue or not. The patch is extracted from an H&E‑stained whole‑slide image of a lymph node section.
     Here are the best performing pairs in ascending order. High scores indicate higher quality visual discriminative features.
     {content}
     {iteration_specific_instruction}
-    Only give the output as python code in the format - prompts: list[tuple[negative: str, positive: str]]
+    Only provide the output as Python code in the following format: prompts = list[tuple[negative: str, positive: str]]. Let's think step-by-step
     """
 
     if 1 <= iteration_num <= 2000:
@@ -74,7 +74,7 @@ def get_prompt_template(iteration_num: int, prompt_content: str, generate_n: int
 
 def main():
     # Name the experiment we are currently running
-    experiment_name = "Experiment-36-strategy-gemma3"
+    experiment_name = "Experiment-40-strategy_bce_inverted-gemma3"
     print(f"Running {experiment_name}...")
 
     # Create experiment results directory
@@ -119,8 +119,7 @@ def main():
         use_local_ollama=False, ollama_model="hf.co/unsloth/medgemma-27b-text-it-GGUF:Q8_0")
 
     # Configure the prompt templates
-    meta_init_prompt = """Give 50 textual descriptions pairs of visual discriminative features to identify whether the central region of an histopathological image patch contains tumor tissue or not. The patch is extracted from an H&E‑stained whole‑slide image of a lymph node section. Only give the output as python code in the format - prompts: list[tuple[negative: str, positive: str]]"""
-
+    meta_init_prompt =  """Give 50 distinct textual descriptions of pairs of visual discriminative features to identify whether the central region of a histopathological image patch contains tumor tissue or not. The patch is extracted from an H&E‑stained whole‑slide image of a lymph node section. Only provide the output as Python code in the following format: prompts = list[tuple[negative: str, positive: str]]. Let's think step-by-step"""
     # meta_prompt_template = """The task is to generate 50 textual descriptions pairs of visual discriminative features to identify whether the central region of an histopathological image patch contains tumor tissue or not. The patch is extracted from an H&E‑stained whole‑slide image of a lymph node section.
     # Here are the best performing pairs. You should aim to get higher scores. Each description should be about 5-20 words.
     # {content}
@@ -156,7 +155,7 @@ def main():
             results = util.evaluate_prompt_pair(
                 negative_prompt, positive_prompt, all_feats, all_labels, model, tokenizer)
 
-            pq.insert((negative_prompt, positive_prompt), results['accuracy'])
+            pq.insert((negative_prompt, positive_prompt), results['inverted_bce'])
 
         n = 10
         print(f"\nCurrent Top {n} prompt pairs:")
