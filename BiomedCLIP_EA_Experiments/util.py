@@ -234,7 +234,7 @@ def evaluate_prompt_pair(
         preds = logits.argmax(dim=1)
 
         y_pred = preds.cpu().numpy()
-        y_prob = probs[:, 0].cpu().numpy()    # tumor-class prob
+        y_prob = probs[:, 1].cpu().numpy()    # tumor-class prob
         y_true = labels.cpu().numpy()
 
         # Compute Binary Cross-Entropy Loss
