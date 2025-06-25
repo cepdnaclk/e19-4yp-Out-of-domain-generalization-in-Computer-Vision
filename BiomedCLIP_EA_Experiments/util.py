@@ -380,6 +380,85 @@ def extract_and_parse_prompt_list(code: str) -> List[Tuple[str, str]]:
     # 4) convert to List[Tuple[str,str]]
     return [(str(a), str(b)) for a, b in data]
 
+def extract_and_parse_prompt_list_with_scores(code: str) -> List[Tuple[str, str, float]]:
+    """
+    From a string of Python code, finds the first occurrence of
+        prompts = [ ... ]
+    and parses that bracketed literal into a List[Tuple[str, str, float]].
+    Expects format: ("neg", "pos"), score,
+
+    Raises:
+        ValueError if no list literal is found or it's malformed.
+    """
+    # 1) Find the prompts list declaration
+    m = re.search(r'prompts\s*=\s*(\[\s*[\s\S]*?\])', code)
+    if not m:
+        raise ValueError("No 'prompts = [...]' list literal found in the code")
+    list_str = m.group(1)
+
+    # 2) Clean and normalize the string
+    # Remove newlines and extra spaces for easier parsing
+    cleaned = ' '.join(list_str.split())
+    # Ensure we have proper comma separation between items
+    cleaned = cleaned.replace('),', '), ')
+
+    # 3) Split into individual items while preserving structure
+    items = []
+    current_item = []
+    depth = 0  # track nesting level for tuples
+    buffer = ""
+    
+    for char in cleaned[1:-1]:  # skip outer brackets
+        if char == '(':
+            depth += 1
+            buffer += char
+        elif char == ')':
+            depth -= 1
+            buffer += char
+        elif char == ',' and depth == 0:
+            # Only split on top-level commas
+            if buffer.strip():
+                current_item.append(buffer.strip())
+                buffer = ""
+            if len(current_item) == 2:  # we have both tuple and score
+                items.append(tuple(current_item))
+                current_item = []
+        else:
+            buffer += char
+    
+    # Add the last item if any
+    if buffer.strip():
+        current_item.append(buffer.strip())
+    if current_item:
+        items.append(tuple(current_item))
+
+    # 4) Parse each item into (neg, pos, score)
+    parsed_items = []
+    for item in items:
+        if len(item) != 2:
+            raise ValueError(f"Expected tuple and score, got: {item}")
+        
+        # Parse the prompt tuple
+        try:
+            prompt_tuple = ast.literal_eval(item[0])
+            if not isinstance(prompt_tuple, tuple) or len(prompt_tuple) != 2:
+                raise ValueError(f"Expected 2-element tuple, got: {prompt_tuple}")
+            neg, pos = prompt_tuple
+        except (SyntaxError, ValueError) as e:
+            raise ValueError(f"Malformed prompt tuple: {e}")
+
+        # Parse the score
+        try:
+            score = float(item[1])
+        except ValueError as e:
+            raise ValueError(f"Malformed score value: {e}")
+
+        parsed_items.append((str(neg), str(pos), score))
+
+    return parsed_items
+
+
+
 
 def extract_and_parse_prompt_tuple(code: str) -> Tuple[str, str]:
     """
