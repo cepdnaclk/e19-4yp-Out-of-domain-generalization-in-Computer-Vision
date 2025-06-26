@@ -239,7 +239,7 @@ if __name__ == "__main__":
 
     # Configure paths
     csv_path = "/storage/projects3/e19-fyp-out-of-domain-gen-in-cv/CheXpert-v1.0-small/train.csv"  # Path to CheXpert CSV
-    image_dir = "/storage/projects3/e19-fyp-out-of-domain-gen-in-cv/CheXpert-v1.0-small/train"  # Base directory for images
+    image_dir = "/storage/projects3/e19-fyp-out-of-domain-gen-in-cv/"  # Base directory for images
     output_dir = "chexpert_results"
     
     # Run processing
