@@ -28,7 +28,7 @@ def main():
 
     # 3. load prompts
     prompts_population = util.load_initial_prompts(
-        "experiment_results/medical_concepts.txt"
+        "experiment_results/inverted_bce_last_iteration.txt"
     )
 
     for i in range(20, len(prompts_population), 20):
