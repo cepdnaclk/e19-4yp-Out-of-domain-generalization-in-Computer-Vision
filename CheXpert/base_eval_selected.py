@@ -17,10 +17,10 @@ CONFIG = {
     ],
     "batch_size": 32,
     "paths": {
-        "config": "/path/to/open_clip_config.json",
-        "weights": "/path/to/open_clip_pytorch_model.bin",
-        "csv": "/path/to/CheXpert-v1.0-small/train.csv",
-        "image_dir": "/path/to/images/",
+        "config": "/storage/projects3/e19-fyp-out-of-domain-gen-in-cv/e19-4yp-Out-of-domain-generalization-in-Computer-Vision/BioMedClip/checkpoints/open_clip_config.json",
+        "weights": "/storage/projects3/e19-fyp-out-of-domain-gen-in-cv/e19-4yp-Out-of-domain-generalization-in-Computer-Vision/BioMedClip/checkpoints/open_clip_pytorch_model.bin",
+        "csv": "/storage/projects3/e19-fyp-out-of-domain-gen-in-cv/CheXpert-v1.0-small/train.csv",
+        "image_dir": "/storage/projects3/e19-fyp-out-of-domain-gen-in-cv/",
         "output_dir": "chexpert_results"
     }
 }
