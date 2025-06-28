@@ -90,14 +90,14 @@ def main():
     print("Model, preprocess, and tokenizer loaded successfully.")
 
     # 2. load dataset - MODIFIED FOR CHEXPERT
-    centers_features, centers_labels = util.extract_embeddings(
+    features, labels = util.extract_embeddings(
         model=model,
         preprocess=preprocess,
     )
     
     # Convert to tensors - MODIFIED FOR MULTI-OBSERVATION SUPPORT
-    all_feats = torch.from_numpy(np.concatenate(centers_features, axis=0)).float()
-    all_labels = torch.from_numpy(np.concatenate(centers_labels, axis=0)).long()
+    all_feats = torch.from_numpy(np.concatenate(features, axis=0)).float()
+    all_labels = torch.from_numpy(np.concatenate(labels, axis=0)).long()
     
     print(f"Loaded {len(all_feats)} CheXpert embeddings")
 
