@@ -161,6 +161,7 @@ def extract_embeddings(
     for idx, row in tqdm(df.iterrows(), total=len(df), desc="Preparing dataset"):
         try:
             img_path = os.path.join(base_image_dir, row['Path'])
+            print(f"preparing image {img_path}")
             img = Image.open(img_path).convert('RGB')
             img = preprocess(img)
             # Store multiple labels for each observation
