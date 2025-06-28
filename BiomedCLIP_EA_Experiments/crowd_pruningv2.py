@@ -53,7 +53,7 @@ def filter_prompts(client,prompt_batch: List[Tuple[str, str, float]]) -> List[Tu
     llm_prompt = f"""The task is to filter textual description pairs of visual discriminative features for tumor detection in histopathology. Remove pairs that have the same medical concepts but differ only in language variations.
         Current Prompt Pairs:
         {prompt_pairs_str}
-        Give the numbers of the pairs that has same medical concept in a different language style.
+        Group the numbers of the pairs that has same medical concepts but differ only in language variations.
         Provide the output as follows: list[list[index:int]]
         Let’s think step by step.
 
