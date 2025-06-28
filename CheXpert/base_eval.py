@@ -66,7 +66,7 @@ def get_similarity_scores(model, preprocess, tokenizer, device, image_paths):
     images = []
     valid_paths = []
     for img_path in image_paths:
-        print(f"Processing image: {img_path}")
+        # print(f"Processing image: {img_path}")
         try:
             img = Image.open(img_path)
             images.append(preprocess(img))
