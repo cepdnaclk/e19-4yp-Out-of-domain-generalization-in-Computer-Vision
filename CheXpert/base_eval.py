@@ -66,6 +66,7 @@ def get_similarity_scores(model, preprocess, tokenizer, device, image_paths):
     images = []
     valid_paths = []
     for img_path in image_paths:
+        print(f"Processing image: {img_path}")
         try:
             img = Image.open(img_path)
             images.append(preprocess(img))
@@ -158,11 +159,11 @@ def process_chexpert_data():
         
         if similarity_results is None:
             continue
-        print(f"edbug")
+        # print(f"edbug")
         # Prepare batch results
         batch_results = []
         for j, img_path in enumerate(valid_paths):
-            print(f"img path {img_path}")
+            # print(f"img path {img_path}")
             # if img_path == "":
             #     continue
             # Get original row data
