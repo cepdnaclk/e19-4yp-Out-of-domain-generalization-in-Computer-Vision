@@ -584,7 +584,7 @@ def get_prompt_pairs(
         try:
             # Use the unified LLMClient to get the raw response
             raw = llm_client.get_llm_response(prompt)
-            # print(f"Raw response on attempt {attempt}: {raw}...")
+            print(f"Raw response on attempt {attempt}: {raw}...")
 
             # 1) extract the python block
 
