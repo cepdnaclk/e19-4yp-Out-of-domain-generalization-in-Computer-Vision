@@ -162,6 +162,9 @@ def process_chexpert_data():
         # Prepare batch results
         batch_results = []
         for j, img_path in enumerate(valid_paths):
+            print(img_path)
+            # if img_path == "":
+            #     continue
             # Get original row data
             original_idx = i + j
             row = df.iloc[original_idx]
