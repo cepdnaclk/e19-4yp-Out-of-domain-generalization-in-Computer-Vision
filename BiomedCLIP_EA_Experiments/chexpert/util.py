@@ -157,7 +157,6 @@ def extract_embeddings(
         df[obs] = df[obs].astype(int)
         
     
-    # Create dataset (using all data since CheXpert doesn't have centers)
     dataset = []
     image_paths = []
     all_labels = []
@@ -169,6 +168,7 @@ def extract_embeddings(
             print(f"preparing image {img_path}")
             img = Image.open(img_path)
             img = preprocess(img)
+            print("row {row}")
             # Store multiple labels for each observation
             labels = [1 if row[1][obs] == 1.0 else 0 for obs in target_observations]
             dataset.append(img)
