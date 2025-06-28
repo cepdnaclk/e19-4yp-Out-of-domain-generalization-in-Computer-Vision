@@ -158,11 +158,11 @@ def process_chexpert_data():
         
         if similarity_results is None:
             continue
-        
+        print(f"edbug")
         # Prepare batch results
         batch_results = []
         for j, img_path in enumerate(valid_paths):
-            print(img_path)
+            print(f"img path {img_path}")
             # if img_path == "":
             #     continue
             # Get original row data
