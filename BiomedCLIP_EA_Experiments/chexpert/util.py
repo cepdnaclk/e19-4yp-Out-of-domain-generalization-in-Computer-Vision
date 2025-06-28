@@ -162,28 +162,36 @@ def extract_embeddings(
     all_labels = []
     
     base_image_dir = "/storage/projects3/e19-fyp-out-of-domain-gen-in-cv/"
+    # Debug counters
+    success_count = 0
+    fail_count = 0
+
     for idx, row in enumerate(df.iterrows()):
         try:
             img_path = os.path.join(base_image_dir, row[1]['Path'])
-            print(f"preparing image {img_path}")
-            img = Image.open(img_path)
-            img = preprocess(img)
-            print("row {row}")
+            # print(f"preparing image {img_path}")
+            with Image.open(img_path) as img:
+                img = img.convert('RGB')  # Ensure RGB format
+            # img = Image.open(img_path)
+                img = preprocess(img)
+            # print("row {row}")
             # Store multiple labels for each observation
-            labels = [1 if row[1][obs] == 1.0 else 0 for obs in target_observations]
-            dataset.append(img)
-            image_paths.append(img_path)
-            all_labels.append(labels)
+                labels = [1 if row[1][obs] == 1.0 else 0 for obs in target_observations]
+                dataset.append(img)
+                image_paths.append(img_path)
+                all_labels.append(labels)
+                success_count += 1
         except Exception as e:
-            print(f"Skipping {img_path}: {str(e)}")
+            print(f"\nFailed on {img_path}: {str(e)}")
+            fail_count += 1
             continue
-    
+    print(f"\nImage processing complete. Success: {success_count}, Failed: {fail_count}")
     # Create DataLoader
     loader = DataLoader(
         dataset,
         batch_size=32,
         shuffle=False,
-        num_workers=4,
+        num_workers=2,
         pin_memory=True
     )
     
