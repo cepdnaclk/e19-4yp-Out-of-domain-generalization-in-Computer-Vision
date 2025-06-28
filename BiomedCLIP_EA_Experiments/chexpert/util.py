@@ -155,9 +155,7 @@ def extract_embeddings(
         df = df[df[obs] != -1.0]
         # Convert remaining values to integers (0 or 1)
         df[obs] = df[obs].astype(int)
-        # df[obs] = df[obs].fillna(0.0)
-        # df = df[df[obs].isin([0.0, 1.0])]
-        # df[obs] = df[obs].replace(-1.0, 0.0)
+        
     
     # Create dataset (using all data since CheXpert doesn't have centers)
     dataset = []
@@ -165,14 +163,14 @@ def extract_embeddings(
     all_labels = []
     
     base_image_dir = "/storage/projects3/e19-fyp-out-of-domain-gen-in-cv/"
-    for idx, row in tqdm(df.iterrows(), total=len(df), desc="Preparing dataset"):
+    for idx, row in enumerate(df.iterrows()):
         try:
-            img_path = os.path.join(base_image_dir, row['Path'])
+            img_path = os.path.join(base_image_dir, row[1]['Path'])
             print(f"preparing image {img_path}")
-            img = Image.open(img_path).convert('RGB')
+            img = Image.open(img_path)
             img = preprocess(img)
             # Store multiple labels for each observation
-            labels = [1 if row[obs] == 1.0 else 0 for obs in target_observations]
+            labels = [1 if row[1][obs] == 1.0 else 0 for obs in target_observations]
             dataset.append(img)
             image_paths.append(img_path)
             all_labels.append(labels)
