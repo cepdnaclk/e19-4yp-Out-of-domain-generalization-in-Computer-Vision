@@ -149,8 +149,15 @@ def extract_embeddings(
     # Treat null/uncertain values as negative (0)
     target_observations = ['Pneumonia']
     for obs in target_observations:
+        # Convert null values to 0 for this observation
         df[obs] = df[obs].fillna(0.0)
-        df[obs] = df[obs].replace(-1.0, 0.0)
+        # Filter out uncertain cases (-1.0) for this observation
+        df = df[df[obs] != -1.0]
+        # Convert remaining values to integers (0 or 1)
+        df[obs] = df[obs].astype(int)
+        # df[obs] = df[obs].fillna(0.0)
+        # df = df[df[obs].isin([0.0, 1.0])]
+        # df[obs] = df[obs].replace(-1.0, 0.0)
     
     # Create dataset (using all data since CheXpert doesn't have centers)
     dataset = []
