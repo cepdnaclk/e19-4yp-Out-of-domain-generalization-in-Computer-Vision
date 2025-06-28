@@ -38,16 +38,16 @@ def filter_prompts(client,prompt_batch: List[Tuple[str, str, float]]) -> List[Tu
     # prompt_pairs_str = "\n".join([f"('{neg}', '{pos}'), {score:.4f}" 
     #                             for neg, pos, score in prompt_batch])
     prompt_pairs_str = '''
-        1. ('No atypical cells infiltrating surrounding tissues', 'Atypical cells infiltrating surrounding tissues and disrupting normal structures'), Score: 0.9013
-        2. ('No significant atypia in the surrounding lymphocytes', 'Significant atypia observed in lymphocytes adjacent to tumor nests'), Score: 0.8997
-        3. ('No evidence of fibrosis', 'Prominent stromal fibrosis surrounding tumor nests'), Score: 0.8994
-        4. ('Normal follicular architecture is preserved', 'Disrupted follicular architecture with loss of polarity'), Score: 0.8940
-        5. ('No prominent nucleoli are observed in lymphocytes', 'Cells exhibit large, prominent, and irregular nucleoli'), Score: 0.8935
-        6. ('No giant cells or multinucleated cells are seen', 'Presence of multinucleated giant cells, suggestive of specific tumor types'), Score: 0.8884
-        7. ('No plasmacytoid differentiation is observed', 'Plasmacytoid differentiation is prominent within the tumor cells'), Score: 0.8883
-        8. ('Well-defined follicular architecture is preserved', 'Disrupted follicular architecture with loss of polarity'), Score: 0.8882
-        9. ('No prominent nucleoli are observed in lymphocytes', 'Large, prominent nucleoli are visible in tumor cells'), Score: 0.8853
-        10. ('Interfollicular areas contain small lymphocytes with regular nuclei', 'Interfollicular areas are infiltrated by large, atypical cells with irregular nuclei'), Score: 0.8841'''
+        1. ('Interfollicular areas show a normal complement of T cells', 'Interfollicular areas are dominated by large, atypical cells'), Score: 0.8830
+        2. ('Interfollicular areas contain predominantly small lymphocytes', 'Interfollicular areas are expanded by large, atypical cells with prominent nucleoli'), Score: 0.8827
+        3. ('No evidence of fibrosis', 'Significant stromal fibrosis surrounding tumor nests'), Score: 0.8808
+        4. ('No prominent nucleolus is seen', 'Large, prominent, and irregular nucleoli are present'), Score: 0.8807
+        5. ('Lymphocytes exhibit a uniform population', 'Tumor cells demonstrate significant heterogeneity in size and morphology'), Score: 0.8794
+        6. ('Scattered, small lymphocytes with condensed chromatin', 'Large, atypical cells with vesicular nuclei and prominent nucleoli'), Score: 0.8790
+        7. ('No evidence of mitotic activity in lymphocytes', 'Increased mitotic figures observed in tumor cells'), Score: 0.8776
+        8. ('Lymphocytes display uniform size and shape', 'Tumor cells exhibit marked variability in size and shape (anisocytosis/pleomorphism)'), Score: 0.8775
+        9. ('Stroma is delicate and sparsely collagenized', 'Stroma is dense and desmoplastic, surrounding tumor nests'), Score: 0.8772
+        10. ('No plasmacytic differentiation is observed', 'Plasmacytic differentiation is prominent within the tumor'), Score: 0.8771'''
 
     # Create the prompt for the LLM
     llm_prompt = f"""The task is to filter textual description pairs of visual discriminative features for tumor detection in histopathology. Remove pairs that have the same medical concepts but differ only in language variations.
