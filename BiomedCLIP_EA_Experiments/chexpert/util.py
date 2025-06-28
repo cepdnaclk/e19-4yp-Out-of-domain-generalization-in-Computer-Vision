@@ -170,17 +170,17 @@ def extract_embeddings(
         try:
             img_path = os.path.join(base_image_dir, row[1]['Path'])
             # print(f"preparing image {img_path}")
-            with Image.open(img_path) as img:
-                img = img.convert('RGB')  # Ensure RGB format
-            # img = Image.open(img_path)
-                img = preprocess(img)
-            # print("row {row}")
-            # Store multiple labels for each observation
-                labels = [1 if row[1][obs] == 1.0 else 0 for obs in target_observations]
-                dataset.append(img)
-                image_paths.append(img_path)
-                all_labels.append(labels)
-                success_count += 1
+            # with Image.open(img_path) as img:
+            img = Image.open(img_path)
+            img = img.convert('RGB')  # Ensure RGB format
+            img = preprocess(img)
+        # print("row {row}")
+        # Store multiple labels for each observation
+            labels = [1 if row[1][obs] == 1.0 else 0 for obs in target_observations]
+            dataset.append(img)
+            image_paths.append(img_path)
+            all_labels.append(labels)
+            success_count += 1
         except Exception as e:
             print(f"\nFailed on {img_path}: {str(e)}")
             fail_count += 1
