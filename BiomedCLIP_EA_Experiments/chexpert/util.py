@@ -145,16 +145,19 @@ def extract_embeddings(
     
     # Load CheXpert metadata
     df = pd.read_csv(metadata_csv)
+    print(f"Loaded {len(df)} rows from {metadata_csv}")
     
     # Treat null/uncertain values as negative (0)
     target_observations = ['Pneumonia']
     for obs in target_observations:
+        print(f"Processing observation: {obs}")
         # Convert null values to 0 for this observation
         df[obs] = df[obs].fillna(0.0)
         # Filter out uncertain cases (-1.0) for this observation
         df = df[df[obs] != -1.0]
         # Convert remaining values to integers (0 or 1)
         df[obs] = df[obs].astype(int)
+        print(f"Unique values for {obs}: {df[obs].unique()}")
         
     
     dataset = []
