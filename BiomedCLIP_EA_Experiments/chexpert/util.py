@@ -154,7 +154,7 @@ def extract_embeddings(model, preprocess, metadata_csv, cache_dir):
         df[obs] = df[obs].fillna(0.0)
         df = df[df[obs] != -1.0]
         df[obs] = df[obs].astype(int)
-
+    base_image_dir = "/storage/projects3/e19-fyp-out-of-domain-gen-in-cv/"
     dataset = CheXpertDataset(df, base_image_dir, preprocess, target_observations)
     loader = DataLoader(dataset, batch_size=32, shuffle=False, num_workers=2, pin_memory=True)
     
