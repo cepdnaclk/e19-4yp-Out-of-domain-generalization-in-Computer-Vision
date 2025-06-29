@@ -61,6 +61,24 @@ class BiomedCLIPDataset(Dataset):
         label = torch.tensor(self.labels[idx], dtype=torch.long)
         return img, label
 
+class CheXpertDataset(torch.utils.data.Dataset):
+    def __init__(self, df, base_image_dir, preprocess, target_observations):
+        self.df = df
+        self.base_image_dir = base_image_dir
+        self.preprocess = preprocess
+        self.target_observations = target_observations
+
+    def __len__(self):
+        return len(self.df)
+
+    def __getitem__(self, idx):
+        row = self.df.iloc[idx]
+        img_path = os.path.join(self.base_image_dir, row['Path'])
+        img = Image.open(img_path).convert('RGB')
+        img = self.preprocess(img)
+        labels = [1 if row[obs] == 1 else 0 for obs in self.target_observations]
+        return img, torch.tensor(labels)
+
 
 def append_filename_and_filepath(df):
     df["filename"] = df.apply(
@@ -121,160 +139,45 @@ def load_clip_model(
     return model, preprocess, tokenizer
 
 
-def extract_embeddings(
-    model: torch.nn.Module,
-    preprocess: Callable,
-    metadata_csv: str = "/storage/projects3/e19-fyp-out-of-domain-gen-in-cv/CheXpert-v1.0-small/train.csv",
-    cache_dir: str = "./chexpert_cache"
-) -> Tuple[List[np.ndarray], List[np.ndarray]]:
-    """
-    Modified for CheXpert dataset with caching support.
-    Extracts image embeddings from chest X-rays and caches them for faster subsequent runs.
-    """
-    # Create cache directory if it doesn't exist
+def extract_embeddings(model, preprocess, metadata_csv, cache_dir):
     os.makedirs(cache_dir, exist_ok=True)
+    features_cache = os.path.join(cache_dir, "chexpert_features.npy")
+    labels_cache = os.path.join(cache_dir, "chexpert_labels.npy")
     
-    # Determine cache filenames
-    features_cache = os.path.join(cache_dir, f"chexpert_features.npy")
-    labels_cache = os.path.join(cache_dir, f"chexpert_labels.npy")
-    
-    # Check if cached embeddings exist
     if os.path.exists(features_cache) and os.path.exists(labels_cache):
         print("Loading cached embeddings...")
         return [np.load(features_cache)], [np.load(labels_cache)]
     
-    # Load CheXpert metadata
     df = pd.read_csv(metadata_csv)
-    print(f"Loaded {len(df)} rows from {metadata_csv}")
-    
-    # Treat null/uncertain values as negative (0)
     target_observations = ['Pneumonia']
-    print(f"Target observations: {target_observations}")
     for obs in target_observations:
-        print(f"Processing observation: {obs}")
-        # Convert null values to 0 for this observation
         df[obs] = df[obs].fillna(0.0)
-        # Filter out uncertain cases (-1.0) for this observation
         df = df[df[obs] != -1.0]
-        # Convert remaining values to integers (0 or 1)
         df[obs] = df[obs].astype(int)
-        print(f"Unique values for {obs}: {df[obs].unique()}")
-        print(f"Number of valid cases for {obs}: {df[obs].sum()}")
 
-
-        
+    dataset = CheXpertDataset(df, base_image_dir, preprocess, target_observations)
+    loader = DataLoader(dataset, batch_size=32, shuffle=False, num_workers=2, pin_memory=True)
     
-    dataset = []
-    image_paths = []
-    all_labels = []
-    
-    base_image_dir = "/storage/projects3/e19-fyp-out-of-domain-gen-in-cv/"
-    # Debug counters
-    success_count = 0
-    fail_count = 0
-
-    for idx, row in enumerate(df.iterrows()):
-        try:
-            img_path = os.path.join(base_image_dir, row[1]['Path'])
-            # print(f"preparing image {img_path}")
-            # with Image.open(img_path) as img:
-            img = Image.open(img_path)
-            img = img.convert('RGB')  # Ensure RGB format
-            img = preprocess(img)
-        # Store multiple labels for each observation
-            labels = [1 if row[1][obs] == 1.0 else 0 for obs in target_observations]
-            dataset.append(img)
-            image_paths.append(img_path)
-            all_labels.append(labels)
-            success_count += 1
-            print(f"\rProcessed {success_count} images", end="")
-        except Exception as e:
-            print(f"\nFailed on {img_path}: {str(e)}")
-            fail_count += 1
-            continue
-    print(f"\nImage processing complete. Success: {success_count}, Failed: {fail_count}")
-    # Create DataLoader
-    loader = DataLoader(
-        dataset,
-        batch_size=32,
-        shuffle=False,
-        num_workers=2,
-        pin_memory=True
-    )
-    
-    # Extract features
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
-    features = []
+    model = model.to(device).eval()
     
+    features, all_labels = [], []
     with torch.no_grad():
-        for batch in tqdm(loader, desc="Extracting embeddings"):
+        for batch, labels in tqdm(loader, desc="Extracting embeddings"):
             batch = batch.to(device)
             feats = model.encode_image(batch)
             feats = feats / feats.norm(dim=-1, keepdim=True)
             features.append(feats.cpu())
+            all_labels.append(labels.numpy())
     
-    # Convert to numpy arrays
     features_array = torch.cat(features).numpy()
-    labels_array = np.array(all_labels)
+    labels_array = np.concatenate(all_labels)
     
-    # Save to cache
     np.save(features_cache, features_array)
     np.save(labels_cache, labels_array)
-    print(f"Embeddings cached to {features_cache} and {labels_cache}")
     
-    # Return as lists of numpy arrays to match original interface
-    # For multi-label, we return all features together and labels per observation
     return [features_array], [labels_array[:, i] for i in range(len(target_observations))]
 
-
-def evaluate_prompt_pair(
-    negative_prompt: str,
-    positive_prompt: str,
-    image_feats: torch.Tensor,    # (N, D), precomputed
-    image_labels: torch.Tensor,   # (N,)
-    model,
-    tokenizer
-):
-    # encode prompts once
-    text_inputs = tokenizer(
-        [negative_prompt, positive_prompt],
-        context_length=CONTEXT_LENGTH
-    ).to(DEVICE)
-
-    with torch.no_grad():
-        text_feats = model.encode_text(text_inputs)           # (2, D)
-        text_feats = text_feats / text_feats.norm(dim=1, keepdim=True)
-        logit_scale = model.logit_scale.exp()
-
-        # move image feats to DEVICE for one matrix multiply
-        feats = image_feats.to(DEVICE)                        # (N, D)
-        labels = image_labels.to(DEVICE)                      # (N,)
-
-        # compute all logits at once: (N, 2)
-        logits = logit_scale * (feats @ text_feats.t())
-        probs = logits.softmax(dim=1)
-        preds = logits.argmax(dim=1)
-
-        y_pred = preds.cpu().numpy()
-        y_prob = probs[:, 1].cpu().numpy()    # tumor-class prob
-        y_true = labels.cpu().numpy()
-
-        # Compute Binary Cross-Entropy Loss
-        bce_loss = F.binary_cross_entropy(
-            input=torch.tensor(y_prob, device=DEVICE).float(),
-            target=torch.tensor(y_true, device=DEVICE).float()
-        ).item()
-
-        # Invert BCE loss: 1/(1 + loss) (so lower loss → higher value)
-        inverted_bce = 1.0 / (1.0 + bce_loss)
-
-
-    # metrics
-    acc = accuracy_score(y_true, y_pred)
-    auc = roc_auc_score(y_true, y_prob)
-    cm = confusion_matrix(y_true, y_pred)
-    report = classification_report(y_true, y_pred, digits=4)
-    return {'accuracy': acc, 'auc': auc, 'cm': cm, 'report': report, 'inverted_bce': inverted_bce}
 
 
 def evaluate_prompt_list(
