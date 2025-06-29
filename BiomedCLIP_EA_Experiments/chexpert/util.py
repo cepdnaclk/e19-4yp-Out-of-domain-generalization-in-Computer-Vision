@@ -139,7 +139,8 @@ def load_clip_model(
     return model, preprocess, tokenizer
 
 
-def extract_embeddings(model, preprocess, metadata_csv, cache_dir):
+def extract_embeddings(model, preprocess, metadata_csv = "/storage/projects3/e19-fyp-out-of-domain-gen-in-cv/CheXpert-v1.0-small/train.csv",
+    cache_dir = "./chexpert_cache"):
     os.makedirs(cache_dir, exist_ok=True)
     features_cache = os.path.join(cache_dir, "chexpert_features.npy")
     labels_cache = os.path.join(cache_dir, "chexpert_labels.npy")
