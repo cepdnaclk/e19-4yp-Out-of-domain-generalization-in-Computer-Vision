@@ -181,7 +181,7 @@ def extract_embeddings(
             img = Image.open(img_path)
             img = img.convert('RGB')  # Ensure RGB format
             img = preprocess(img)
-        # print("row {row}")
+            print("row {row}")
         # Store multiple labels for each observation
             labels = [1 if row[1][obs] == 1.0 else 0 for obs in target_observations]
             dataset.append(img)
