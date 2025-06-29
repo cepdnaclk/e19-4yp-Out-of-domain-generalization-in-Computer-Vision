@@ -181,13 +181,13 @@ def extract_embeddings(
             img = Image.open(img_path)
             img = img.convert('RGB')  # Ensure RGB format
             img = preprocess(img)
-            print("row {row}")
         # Store multiple labels for each observation
             labels = [1 if row[1][obs] == 1.0 else 0 for obs in target_observations]
             dataset.append(img)
             image_paths.append(img_path)
             all_labels.append(labels)
             success_count += 1
+            print(f"\rProcessed {success_count} images", end="")
         except Exception as e:
             print(f"\nFailed on {img_path}: {str(e)}")
             fail_count += 1
