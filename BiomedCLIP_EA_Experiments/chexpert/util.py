@@ -149,6 +149,7 @@ def extract_embeddings(
     
     # Treat null/uncertain values as negative (0)
     target_observations = ['Pneumonia']
+    print(f"Target observations: {target_observations}")
     for obs in target_observations:
         print(f"Processing observation: {obs}")
         # Convert null values to 0 for this observation
