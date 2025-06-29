@@ -159,6 +159,9 @@ def extract_embeddings(
         # Convert remaining values to integers (0 or 1)
         df[obs] = df[obs].astype(int)
         print(f"Unique values for {obs}: {df[obs].unique()}")
+        print(f"Number of valid cases for {obs}: {df[obs].sum()}")
+
+
         
     
     dataset = []
