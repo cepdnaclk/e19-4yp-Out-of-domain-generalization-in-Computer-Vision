@@ -95,6 +95,7 @@ def main():
         preprocess=preprocess,
     )
     
+    print(f"labels {labels}")
     # Convert to tensors - MODIFIED FOR MULTI-OBSERVATION SUPPORT
     all_feats = torch.from_numpy(np.concatenate(features, axis=0)).float()
     all_labels = torch.from_numpy(np.concatenate(labels, axis=0)).long()
