@@ -200,7 +200,7 @@ def extract_embeddings(model, preprocess,
             all_labels.append(labels.numpy())
     
     features_array = torch.cat(features).numpy()
-    print(f"all labels {all_labels}")
+    # print(f"all labels {all_labels}")
     labels_array = np.concatenate(all_labels)
     
     # Save to cache
