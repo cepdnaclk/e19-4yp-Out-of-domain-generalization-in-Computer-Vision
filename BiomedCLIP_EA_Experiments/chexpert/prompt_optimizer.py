@@ -74,7 +74,7 @@ def get_prompt_template(iteration_num: int, prompt_content: str, generate_n: int
 
 def main():
     # Name the experiment we are currently running
-    experiment_name = "CheXpert_Experiments-02_Strategy_500Iterations"
+    experiment_name = "CheXpert_Experiments-03_Strategy_500Iterations_BCE"
     print(f"Running {experiment_name}...")
 
     # Create experiment results directory
