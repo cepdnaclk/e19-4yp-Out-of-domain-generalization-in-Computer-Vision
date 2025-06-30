@@ -45,39 +45,39 @@ InitialItem = Tuple[PromptPair, float]
 PromptList = List[Tuple[PromptPair, float]]
 
 
-class BiomedCLIPDataset(Dataset):
-    def __init__(self, df, preprocess):
-        self.filepaths = df["filepath"].tolist()
-        self.labels = df["tumor"].astype(int).tolist()
-        self.preproc = preprocess
+# class BiomedCLIPDataset(Dataset):
+#     def __init__(self, df, preprocess):
+#         self.filepaths = df["filepath"].tolist()
+#         self.labels = df["tumor"].astype(int).tolist()
+#         self.preproc = preprocess
 
-    def __len__(self):
-        return len(self.filepaths)
+#     def __len__(self):
+#         return len(self.filepaths)
 
-    def __getitem__(self, idx):
-        with Image.open(self.filepaths[idx]) as img:
-            img = img.convert("RGB")
-            img = self.preproc(img)
-        label = torch.tensor(self.labels[idx], dtype=torch.long)
-        return img, label
+#     def __getitem__(self, idx):
+#         with Image.open(self.filepaths[idx]) as img:
+#             img = img.convert("RGB")
+#             img = self.preproc(img)
+#         label = torch.tensor(self.labels[idx], dtype=torch.long)
+#         return img, label
 
-class CheXpertDataset(torch.utils.data.Dataset):
-    def __init__(self, df, base_image_dir, preprocess, target_observations):
-        self.df = df
-        self.base_image_dir = base_image_dir
-        self.preprocess = preprocess
-        self.target_observations = target_observations
+# class CheXpertDataset(torch.utils.data.Dataset):
+#     def __init__(self, df, base_image_dir, preprocess, target_observations):
+#         self.df = df
+#         self.base_image_dir = base_image_dir
+#         self.preprocess = preprocess
+#         self.target_observations = target_observations
 
-    def __len__(self):
-        return len(self.df)
+#     def __len__(self):
+#         return len(self.df)
 
-    def __getitem__(self, idx):
-        row = self.df.iloc[idx]
-        img_path = os.path.join(self.base_image_dir, row['Path'])
-        img = Image.open(img_path).convert('RGB')
-        img = self.preprocess(img)
-        labels = [1 if row[obs] == 1 else 0 for obs in self.target_observations]
-        return img, torch.tensor(labels)
+#     def __getitem__(self, idx):
+#         row = self.df.iloc[idx]
+#         img_path = os.path.join(self.base_image_dir, row['Path'])
+#         img = Image.open(img_path).convert('RGB')
+#         img = self.preprocess(img)
+#         labels = [1 if row[obs] == 1 else 0 for obs in self.target_observations]
+#         return img, torch.tensor(labels)
 
 
 class NIHChestXRayDataset(Dataset):
@@ -98,6 +98,7 @@ class NIHChestXRayDataset(Dataset):
         
         # Create binary label (1 if target_label is present, 0 otherwise)
         labels = 1 if self.target_label in row['Finding Labels'] else 0
+        print(f"labels: {labels}")
         return img, torch.tensor(labels)
 
 
