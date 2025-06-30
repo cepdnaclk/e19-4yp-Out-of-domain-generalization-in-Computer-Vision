@@ -160,7 +160,7 @@ def load_clip_model(
     return model, preprocess, tokenizer
 
 
-def extract_chestxray_embeddings(model, preprocess, 
+def extract_embeddings(model, preprocess, 
                                 metadata_csv="/storage/projects3/e19-fyp-out-of-domain-gen-in-cv/NIH_Chest/Data_Entry_2017.csv",
                                 test_list="/storage/projects3/e19-fyp-out-of-domain-gen-in-cv/NIH_Chest/test_list.txt",
                                 image_dir="/storage/projects3/e19-fyp-out-of-domain-gen-in-cv/NIH_Chest/all_images",
