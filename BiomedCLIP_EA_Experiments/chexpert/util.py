@@ -193,6 +193,7 @@ def evaluate_prompt_list(
     total_weight = 0.0
 
     # Ensure image feats and labels are on the correct device once
+    print(f"shape of image_feats: {image_feats.shape}, dtype: {image_feats.dtype}")
     feats = image_feats.to(DEVICE)
     labels = image_labels.to(DEVICE)
 
