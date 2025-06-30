@@ -96,7 +96,7 @@ def main():
     )
     
     # Convert to tensors - MODIFIED FOR MULTI-OBSERVATION SUPPORT
-    all_feats = torch.from_numpy(np.concatenate(features, axis=0)).float()
+    all_feats = torch.from_numpy(features).float()
     all_labels = torch.from_numpy(labels).long()
 
     print(f"shape of all_feats: {all_feats.shape} and all_labels: {all_labels.shape}")
