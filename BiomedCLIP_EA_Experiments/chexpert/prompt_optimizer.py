@@ -49,24 +49,24 @@ def get_prompt_template(iteration_num: int, prompt_content: str, generate_n: int
             content=prompt_content,
             iteration_specific_instruction=instruction_map["strategy"]
         )
-    elif 201 <= iteration_num <= 300:
-        # Iterations 51-100: Concept combination
-        return base_meta_prompt_template.format(
-            content=prompt_content,
-            iteration_specific_instruction=instruction_map["combined_medical_concepts"]
-        )
-    elif 301 <= iteration_num <= 400:
-        # Iterations 101-200: Language style variation
-        return base_meta_prompt_template.format(
-            content=prompt_content,
-            iteration_specific_instruction=instruction_map["similar"]
-        )
-    elif iteration_num > 401:
-        # Iterations 201+: Fine-tuning with slight modifications
-        return base_meta_prompt_template.format(
-            content=prompt_content,
-            iteration_specific_instruction=instruction_map["slight_changes"]
-        )
+    # elif 201 <= iteration_num <= 300:
+    #     # Iterations 51-100: Concept combination
+    #     return base_meta_prompt_template.format(
+    #         content=prompt_content,
+    #         iteration_specific_instruction=instruction_map["combined_medical_concepts"]
+    #     )
+    # elif 301 <= iteration_num <= 400:
+    #     # Iterations 101-200: Language style variation
+    #     return base_meta_prompt_template.format(
+    #         content=prompt_content,
+    #         iteration_specific_instruction=instruction_map["similar"]
+    #     )
+    # elif iteration_num > 401:
+    #     # Iterations 201+: Fine-tuning with slight modifications
+    #     return base_meta_prompt_template.format(
+    #         content=prompt_content,
+    #         iteration_specific_instruction=instruction_map["slight_changes"]
+    #     )
     else:
         # Fallback (shouldn't happen with normal iteration numbering)
         raise IndexError("Error occured when getting prompt template")
