@@ -287,13 +287,13 @@ def evaluate_prompt_pair(
         y_true = labels.cpu().numpy()
 
         # Compute Binary Cross-Entropy Loss
-        bce_loss = F.binary_cross_entropy(
-            input=torch.tensor(y_prob, device=DEVICE).float(),
-            target=torch.tensor(y_true, device=DEVICE).float()
-        ).item()
+        # bce_loss = F.binary_cross_entropy(
+        #     input=torch.tensor(y_prob, device=DEVICE).float(),
+        #     target=torch.tensor(y_true, device=DEVICE).float()
+        # ).item()
 
         # Invert BCE loss: 1/(1 + loss) (so lower loss → higher value)
-        inverted_bce = 1.0 / (1.0 + bce_loss)
+        # inverted_bce = 1.0 / (1.0 + bce_loss)
 
 
     # metrics
@@ -301,7 +301,7 @@ def evaluate_prompt_pair(
     auc = roc_auc_score(y_true, y_prob)
     cm = confusion_matrix(y_true, y_pred)
     report = classification_report(y_true, y_pred, digits=4)
-    return {'accuracy': acc, 'auc': auc, 'cm': cm, 'report': report, 'inverted_bce': inverted_bce}
+    return {'accuracy': acc, 'auc': auc, 'cm': cm, 'report': report}
 
 
 def _force_double_quotes(code: str) -> str:
