@@ -99,9 +99,9 @@ def main():
     all_feats = torch.from_numpy(features).float()
     all_labels = torch.from_numpy(labels).long()
 
-    print(f"shape of all_feats: {all_feats.shape} and all_labels: {all_labels.shape}")
+    # print(f"shape of all_feats: {all_feats.shape} and all_labels: {all_labels.shape}")
     
-    print(f"Loaded {len(all_feats)} CheXpert embeddings")
+    print(f"Loaded {len(all_feats)} NIHChestXrays embeddings")
 
     # 3. load initial prompts (optional)
     # initial_prompts = util.load_initial_prompts()
