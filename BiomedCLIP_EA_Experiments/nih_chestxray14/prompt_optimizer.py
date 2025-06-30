@@ -74,7 +74,7 @@ def get_prompt_template(iteration_num: int, prompt_content: str, generate_n: int
 
 def main():
     # Name the experiment we are currently running
-    experiment_name = "NIHChestXray_Experiments-04_Strategy_500Iterations_BCE"
+    experiment_name = "CheXpert_Experiments-03_Strategy_500Iterations_BCE"
     print(f"Running {experiment_name}...")
 
     # Create experiment results directory
@@ -99,7 +99,7 @@ def main():
     all_feats = torch.from_numpy(np.concatenate(features, axis=0)).float()
     all_labels = torch.from_numpy(np.concatenate(labels, axis=0)).long()
     
-    print(f"Loaded {len(all_feats)} NIHChestXray embeddings")
+    print(f"Loaded {len(all_feats)} CheXpert embeddings")
 
     # 3. load initial prompts (optional)
     # initial_prompts = util.load_initial_prompts()
