@@ -254,6 +254,55 @@ def evaluate_prompt_list(
 
     return {'accuracy': acc, 'auc': auc, 'cm': cm, 'report': report, 'ensemble_probs': ensemble_probs}
 
+def evaluate_prompt_pair(
+    negative_prompt: str,
+    positive_prompt: str,
+    image_feats: torch.Tensor,    # (N, D), precomputed
+    image_labels: torch.Tensor,   # (N,)
+    model,
+    tokenizer
+):
+    # encode prompts once
+    text_inputs = tokenizer(
+        [negative_prompt, positive_prompt],
+        context_length=CONTEXT_LENGTH
+    ).to(DEVICE)
+
+    with torch.no_grad():
+        text_feats = model.encode_text(text_inputs)           # (2, D)
+        text_feats = text_feats / text_feats.norm(dim=1, keepdim=True)
+        logit_scale = model.logit_scale.exp()
+
+        # move image feats to DEVICE for one matrix multiply
+        feats = image_feats.to(DEVICE)                        # (N, D)
+        labels = image_labels.to(DEVICE)                      # (N,)
+
+        # compute all logits at once: (N, 2)
+        logits = logit_scale * (feats @ text_feats.t())
+        probs = logits.softmax(dim=1)
+        preds = logits.argmax(dim=1)
+
+        y_pred = preds.cpu().numpy()
+        y_prob = probs[:, 1].cpu().numpy()    # tumor-class prob
+        y_true = labels.cpu().numpy()
+
+        # Compute Binary Cross-Entropy Loss
+        bce_loss = F.binary_cross_entropy(
+            input=torch.tensor(y_prob, device=DEVICE).float(),
+            target=torch.tensor(y_true, device=DEVICE).float()
+        ).item()
+
+        # Invert BCE loss: 1/(1 + loss) (so lower loss → higher value)
+        inverted_bce = 1.0 / (1.0 + bce_loss)
+
+
+    # metrics
+    acc = accuracy_score(y_true, y_pred)
+    auc = roc_auc_score(y_true, y_prob)
+    cm = confusion_matrix(y_true, y_pred)
+    report = classification_report(y_true, y_pred, digits=4)
+    return {'accuracy': acc, 'auc': auc, 'cm': cm, 'report': report, 'inverted_bce': inverted_bce}
+
 
 def _force_double_quotes(code: str) -> str:
     """
