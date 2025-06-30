@@ -32,18 +32,18 @@ def get_prompt_template(iteration_num: int, prompt_content: str, generate_n: int
         "quantitative": f"Write {generate_n} new prompt pairs that adds quantitative cues to the qualitative prompts given above. Score as high as possible.",
         "borderline": f"Write {generate_n} new prompt pairs appending rare or borderline patterns which are easily misclassified to score as high as possible.",
         "expert": f"Write {generate_n} new prompt pairs expanding each prompt by appending expert biomedical knowledge to score as high as possible.",
-        "strategy": f"Write {generate_n} new prompt pairs to improve the score, think slowly and formulate a strategy",
+        "strategy": f"Write {generate_n} new prompt pairs that are different from the old ones and has a score as high as possible, formulate a strategy",
     }
 
     # Base meta prompt template
-    base_meta_prompt_template = """The task is to generate distinct textual descriptions pairs of visual discriminative features to identify whether the central region of a histopathological image patch contains tumor tissue or not. The patch is extracted from an H&E‑stained whole‑slide image of a lymph node section.
+    base_meta_prompt_template = """The task is to generate distinct textual descriptions pairs of visual discriminative features to identify whether a chest X-ray image contains pneumonia or not. These descriptions should focus on observable characteristics within the image.
     Here are the best performing pairs in ascending order. High scores indicate higher quality visual discriminative features.
     {content}
     {iteration_specific_instruction}
     Only provide the output as Python code in the following format: prompts = list[tuple[negative: str, positive: str]]. Let's think step-by-step
     """
 
-    if 1 <= iteration_num <= 200:
+    if 1 <= iteration_num <= 500:
         # Iterations 1-50: Basic exploration
         return base_meta_prompt_template.format(
             content=prompt_content,
@@ -129,7 +129,7 @@ def main():
     pq = util.PriorityQueue(max_capacity=1000)
     prompt_content = ""
 
-    for j in range(1000):
+    for j in range(500):
         if j == 0:
             prompts = util.get_prompt_pairs(meta_init_prompt, client)
             # prompts = INITIAL_CHATGPT_PROMPTS
