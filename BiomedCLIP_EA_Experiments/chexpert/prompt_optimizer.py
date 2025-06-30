@@ -143,7 +143,7 @@ def main():
                 print(f"Invalid prompt pair: {prompt_pair}")
                 continue
             negative_prompt, positive_prompt = prompt_pair
-            results = util.evaluate_prompt_pair(
+            results = util.evaluate_prompt_list(
                 negative_prompt, positive_prompt, all_feats, all_labels, model, tokenizer)
             # print(f"Inverted BCE for prompt pair {i+1}: {results['inverted_bce']:.4f} {results['accuracy']}")
             pq.insert((negative_prompt, positive_prompt), results['accuracy'])
