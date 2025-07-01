@@ -27,7 +27,7 @@ def main():
 
     # 3. load prompts
     prompts_population = util.load_initial_prompts(
-        "experiment_results/BiomedCLIP_EA_Experiments/experiment_results/ensemble_sample.txt"
+        "experiment_results/ensemble_sample.txt"
     )
 
     for i in range(10, len(prompts_population), 10):
