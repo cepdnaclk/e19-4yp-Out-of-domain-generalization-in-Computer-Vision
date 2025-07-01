@@ -31,7 +31,7 @@ def main():
         "experiment_results/inverted_bce_last_iteration.txt"
     )
 
-    for i in range(20, len(prompts_population), 20):
+    for i in range(10, len(prompts_population), 10):
         prompts = prompts_population[0:i + 1]
         print(f"Using {len(prompts)} prompts for evaluation.")
 
