@@ -17,10 +17,9 @@ def main():
     features, labels = util.extract_embeddings(
         model=model,
         preprocess=preprocess,
-        num_centers=5,  # evaluating on all centers
-        isTrain=False,  # Evaluating on test centers only
+        train_or_test="test"  # Evaluating on test centers only
     )
-    print("Center embeddings extracted successfully.")
+    print("embeddings extracted successfully.")
 
     # Convert to torch tensors for each center
     all_features = torch.from_numpy(features)
