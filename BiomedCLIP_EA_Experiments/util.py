@@ -246,7 +246,6 @@ def evaluate_prompt_pair(
         # Invert BCE loss: 1/(1 + loss) (so lower loss → higher value)
         inverted_bce = 1.0 / (1.0 + bce_loss)
 
-
     # metrics
     acc = accuracy_score(y_true, y_pred)
     auc = roc_auc_score(y_true, y_prob)
@@ -380,6 +379,7 @@ def extract_and_parse_prompt_list(code: str) -> List[Tuple[str, str]]:
     # 4) convert to List[Tuple[str,str]]
     return [(str(a), str(b)) for a, b in data]
 
+
 def extract_and_parse_prompt_list_with_scores(code: str) -> List[Tuple[str, str, float]]:
     """
     Extracts and parses the list defined after 'prompts:' in the format:
@@ -420,8 +420,6 @@ def extract_and_parse_prompt_list_with_scores(code: str) -> List[Tuple[str, str,
             raise ValueError(f"Invalid format in item: {item}")
 
     return parsed
-
-
 
 
 def extract_and_parse_prompt_tuple(code: str) -> Tuple[str, str]:
@@ -586,7 +584,7 @@ def get_prompt_pairs(
 
 class PriorityQueue:
     # type: ignore
-    def __init__(self, max_capacity: int = 10, initial: Optional[List[Tuple[PromptPair, float]]] = None,filter_threshold: float = 0.6):
+    def __init__(self, max_capacity: int = 10, initial: Optional[List[Tuple[PromptPair, float]]] = None, filter_threshold: float = 0.6):
 
         self.filter_threshold = filter_threshold
         self.max_capacity: int = max_capacity
@@ -738,6 +736,18 @@ class PriorityQueue:
             return 0.0
         total_score = sum(score for _, score in top_items)
         return total_score / len(top_items)
+
+    def delete_top_n(self, n: int) -> None:
+        """
+        Remove the top n items from the priority queue.
+        If n exceeds the current size, it removes all items.
+        """
+        if n <= 0:
+            return
+        for _ in range(min(n, len(self._heap))):
+            if self._heap:
+                score, pair = heapq.heappop(self._heap)
+                self._set.remove(pair)
 
 
 def load_initial_prompts(path: str) -> List[InitialItem]:
