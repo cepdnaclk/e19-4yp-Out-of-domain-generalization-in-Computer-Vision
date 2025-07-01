@@ -98,7 +98,7 @@ class NIHChestXRayDataset(Dataset):
         
         # Create binary label (1 if target_label is present, 0 otherwise)
         labels = 1 if self.target_label in row['Finding Labels'] else 0
-        print(f"labels: {labels}")
+        # print(f"labels: {labels}")
         return img, torch.tensor(labels)
 
 
