@@ -163,13 +163,17 @@ def load_clip_model(
 
 def extract_embeddings(model, preprocess, 
                                 metadata_csv="/storage/projects3/e19-fyp-out-of-domain-gen-in-cv/NIH_Chest/Data_Entry_2017.csv",
-                                test_list="/storage/projects3/e19-fyp-out-of-domain-gen-in-cv/NIH_Chest/train_val_list.txt",
+                                image_list="/storage/projects3/e19-fyp-out-of-domain-gen-in-cv/NIH_Chest/test_list.txt",
                                 image_dir="/storage/projects3/e19-fyp-out-of-domain-gen-in-cv/NIH_Chest/all_images",
                                 cache_dir="./NIHchestxray_cache",
-                                target_label="Pneumonia"):
+                                target_label="Pneumonia",train_or_test= "test"):
+    if train_or_test == "test":
+        image_list = f"/storage/projects3/e19-fyp-out-of-domain-gen-in-cv/NIH_Chest/test_list.txt"
+    else:
+        image_list = f"/storage/projects3/e19-fyp-out-of-domain-gen-in-cv/NIH_Chest/train_val_list.txt"
     os.makedirs(cache_dir, exist_ok=True)
-    features_cache = os.path.join(cache_dir, "chestxray_features.npy")
-    labels_cache = os.path.join(cache_dir, "chestxray_labels.npy")
+    features_cache = os.path.join(cache_dir, f"{train_or_test}_chestxray_features.npy")
+    labels_cache = os.path.join(cache_dir, f"{train_or_test}_chestxray_labels.npy")
     
     if os.path.exists(features_cache) and os.path.exists(labels_cache):
         print("Loading cached embeddings...")
@@ -177,11 +181,11 @@ def extract_embeddings(model, preprocess,
     
     # Load metadata and filter test images
     df = pd.read_csv(metadata_csv)
-    with open(test_list, 'r') as f:
-        test_images = [line.strip() for line in f.readlines()]
+    with open(image_list, 'r') as f:
+        images = [line.strip() for line in f.readlines()]
     
     # Filter dataframe to only include test images
-    df = df[df['Image Index'].isin(test_images)]
+    df = df[df['Image Index'].isin(images)]
     
     # Create dataset and dataloader
     dataset = NIHChestXRayDataset(df, image_dir, preprocess, target_label)
