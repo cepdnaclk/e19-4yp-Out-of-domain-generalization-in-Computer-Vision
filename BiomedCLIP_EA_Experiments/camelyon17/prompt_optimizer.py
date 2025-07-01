@@ -32,7 +32,7 @@ def get_prompt_template(iteration_num: int, prompt_content: str, generate_n: int
         "quantitative": f"Write {generate_n} new prompt pairs that adds quantitative cues to the qualitative prompts given above. Score as high as possible.",
         "borderline": f"Write {generate_n} new prompt pairs appending rare or borderline patterns which are easily misclassified to score as high as possible.",
         "expert": f"Write {generate_n} new prompt pairs expanding each prompt by appending expert biomedical knowledge to score as high as possible.",
-        "strategy": f"Write {generate_n} new prompt pairs to improve the score, think slowly and formulate a strategy",
+        "strategy": f"Write {generate_n} new prompt pairs that are different to from the old ones and has a score as high as possible. Formulate a strategy",
     }
 
     # Base meta prompt template
@@ -119,7 +119,7 @@ def main():
         use_local_ollama=False, ollama_model="hf.co/unsloth/medgemma-27b-text-it-GGUF:Q8_0")
 
     # Configure the prompt templates
-    meta_init_prompt =  """Give 50 distinct textual descriptions of pairs of visual discriminative features to identify whether the central region of a histopathological image patch contains tumor tissue or not. The patch is extracted from an H&E‑stained whole‑slide image of a lymph node section. Only provide the output as Python code in the following format: prompts = list[tuple[negative: str, positive: str]]. Let's think step-by-step"""
+    meta_init_prompt = """Give 50 distinct textual descriptions of pairs of visual discriminative features to identify whether the central region of a histopathological image patch contains tumor tissue or not. The patch is extracted from an H&E‑stained whole‑slide image of a lymph node section. Only provide the output as Python code in the following format: prompts = list[tuple[negative: str, positive: str]]. Let's think step-by-step"""
     # meta_prompt_template = """The task is to generate 50 textual descriptions pairs of visual discriminative features to identify whether the central region of an histopathological image patch contains tumor tissue or not. The patch is extracted from an H&E‑stained whole‑slide image of a lymph node section.
     # Here are the best performing pairs. You should aim to get higher scores. Each description should be about 5-20 words.
     # {content}
@@ -134,7 +134,7 @@ def main():
     # Optimization loop
     initial_prompts = util.load_initial_prompts(
         "experiment_results/medical_concepts.txt")
-    pq = util.PriorityQueue(max_capacity=1000,filter_threshold=0.4)
+    pq = util.PriorityQueue(max_capacity=1000, filter_threshold=0.4)
     prompt_content = ""
 
     for j in range(1000):
@@ -154,8 +154,10 @@ def main():
             negative_prompt, positive_prompt = prompt_pair
             results = util.evaluate_prompt_pair(
                 negative_prompt, positive_prompt, all_feats, all_labels, model, tokenizer)
-            print(f"Inverted BCE for prompt pair {i+1}: {results['inverted_bce']:.4f} {results['accuracy']}")
-            pq.insert((negative_prompt, positive_prompt), results['inverted_bce'])
+            print(
+                f"Inverted BCE for prompt pair {i+1}: {results['inverted_bce']:.4f} {results['accuracy']}")
+            pq.insert((negative_prompt, positive_prompt),
+                      results['inverted_bce'])
 
         n = 10
         print(f"\nCurrent Top {n} prompt pairs:")
