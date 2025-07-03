@@ -74,7 +74,7 @@ def get_prompt_template(iteration_num: int, prompt_content: str, generate_n: int
 
 def main():
     # Name the experiment we are currently running
-    experiment_name = "Experiment-40-strategy_bce_inverted-gemma3"
+    experiment_name = "Experiment-41-strategy_bce_inverted-gpt-4.1-azure_openai"
     print(f"Running {experiment_name}...")
 
     # Create experiment results directory
@@ -114,22 +114,12 @@ def main():
     # initial_prompts = util.load_initial_prompts()
 
     # 4. Initialize the LLM client
-    # Set use_local_ollama to True if you want to use a local Ollama server
-    client = util.LLMClient(
-        use_local_ollama=False, ollama_model="hf.co/unsloth/medgemma-27b-text-it-GGUF:Q8_0")
+    # 'gemini', 'ollama', or 'azure_openai'
+
+    client = util.LLMClient(provider='azure_openai')
 
     # Configure the prompt templates
     meta_init_prompt = """Give 50 distinct textual descriptions of pairs of visual discriminative features to identify whether the central region of a histopathological image patch contains tumor tissue or not. The patch is extracted from an H&E‑stained whole‑slide image of a lymph node section. Only provide the output as Python code in the following format: prompts = list[tuple[negative: str, positive: str]]. Let's think step-by-step"""
-    # meta_prompt_template = """The task is to generate 50 textual descriptions pairs of visual discriminative features to identify whether the central region of an histopathological image patch contains tumor tissue or not. The patch is extracted from an H&E‑stained whole‑slide image of a lymph node section.
-    # Here are the best performing pairs. You should aim to get higher scores. Each description should be about 5-20 words.
-    # {content}
-    # 1-10: Generate the first 10 pairs exploring variations of the top 1 (best) given. Remove certain words, add words, change order and generate variations
-    # 11-20: Generate 10 pairs using the top 10, explore additional knowledge and expand on it.
-    # 21-30: The next 10 pairs should maintain similar content as middle pairs but use different language style and sentence structures.
-    # 31-40: The next 10 pairs should combine knowledge of top pairs and bottom pairs.
-    # 41-50: The remaining 10 pairs should be randomly generated.
-    # Only give the output as python code in the format - prompts: list[tuple[negative: str, positive: str]]
-    # """
 
     # Optimization loop
     initial_prompts = util.load_initial_prompts(
