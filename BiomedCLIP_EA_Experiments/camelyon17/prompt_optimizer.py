@@ -122,8 +122,8 @@ def main():
     meta_init_prompt = """Give 50 distinct textual descriptions of pairs of visual discriminative features to identify whether the central region of a histopathological image patch contains tumor tissue or not. The patch is extracted from an H&E‑stained whole‑slide image of a lymph node section. Only provide the output as Python code in the following format: prompts = list[tuple[negative: str, positive: str]]. Let's think step-by-step"""
 
     # Optimization loop
-    initial_prompts = util.load_initial_prompts(
-        "experiment_results/medical_concepts.txt")
+    # initial_prompts = util.load_initial_prompts(
+    #     "experiment_results/medical_concepts.txt")
     pq = util.PriorityQueue(max_capacity=1000, filter_threshold=0.4)
     prompt_content = ""
 
@@ -144,8 +144,8 @@ def main():
             negative_prompt, positive_prompt = prompt_pair
             results = util.evaluate_prompt_pair(
                 negative_prompt, positive_prompt, all_feats, all_labels, model, tokenizer)
-            print(
-                f"Inverted BCE for prompt pair {i+1}: {results['inverted_bce']:.4f} {results['accuracy']}")
+            # print(
+            #     f"Inverted BCE for prompt pair {i+1}: {results['inverted_bce']:.4f} {results['accuracy']}")
             pq.insert((negative_prompt, positive_prompt),
                       results['inverted_bce'])
 
