@@ -11,3 +11,5 @@
 /BiomedCLIP_EA_Experiments/chexpert/API_KEY.py
 /BiomedCLIP_EA_Experiments/camelyon17/cached
 /BiomedCLIP_EA_Experiments/chexpert/cached
+**/API_KEY.py
+**/cached
