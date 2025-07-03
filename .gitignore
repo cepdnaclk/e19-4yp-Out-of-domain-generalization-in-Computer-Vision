@@ -7,4 +7,7 @@
 *.pyc
 /BiomedCLIP_EA_Experiments/API_KEY.py
 /BiomedCLIP_Explorations/cached/
-**/API_KEY.py
+/BiomedCLIP_EA_Experiments/camelyon17/API_KEY.py
+/BiomedCLIP_EA_Experiments/chexpert/API_KEY.py
+/BiomedCLIP_EA_Experiments/camelyon17/cached
+/BiomedCLIP_EA_Experiments/chexpert/cached
