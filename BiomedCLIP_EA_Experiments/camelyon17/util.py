@@ -549,8 +549,8 @@ class LLMClient:
         completion = self.azure_openai_client.chat.completions.create(
             model=self.azure_openai_model,
             messages=messages,
-            max_tokens=800,
-            temperature=0.7,
+            max_tokens=5000,
+            temperature=1.0,
             top_p=0.95,
             frequency_penalty=0,
             presence_penalty=0,
