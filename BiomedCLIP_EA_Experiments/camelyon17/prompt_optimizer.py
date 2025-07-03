@@ -74,7 +74,7 @@ def get_prompt_template(iteration_num: int, prompt_content: str, generate_n: int
 
 def main():
     # Name the experiment we are currently running
-    experiment_name = "Experiment-42-strategy-regularized_bce_inverted-gpt-4.1-azure_openai"
+    experiment_name = "Experiment-43-strategy-regularized_bce_inverted-gemma3"
     print(f"Running {experiment_name}...")
 
     # Create experiment results directory
@@ -115,8 +115,7 @@ def main():
 
     # 4. Initialize the LLM client
     # 'gemini', 'ollama', or 'azure_openai'
-
-    client = util.LLMClient(provider='azure_openai')
+    client = util.LLMClient(provider='gemini')
 
     # Configure the prompt templates
     meta_init_prompt = """Give 50 distinct textual descriptions of pairs of visual discriminative features to identify whether the central region of a histopathological image patch contains tumor tissue or not. The patch is extracted from an H&E‑stained whole‑slide image of a lymph node section. Each prompt should contain about 10 words. Only provide the output as Python code in the following format: prompts = list[tuple[negative: str, positive: str]]. Let's think step-by-step"""
