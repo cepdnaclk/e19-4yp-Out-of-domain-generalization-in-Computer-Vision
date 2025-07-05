@@ -82,7 +82,9 @@ PromptList = List[Tuple[PromptPair, float]]
 
 class NIHChestXRayDataset(Dataset):
     def __init__(self, df, image_dir, preprocess, target_label="Pneumonia"):
-        self.df = df
+        self.df = df[df['Finding Labels'].apply(
+            lambda x: target_label in x.split('|') or x == 'No Finding'
+        )]
         self.image_dir = image_dir
         self.preprocess = preprocess
         self.target_label = target_label
@@ -97,6 +99,7 @@ class NIHChestXRayDataset(Dataset):
         img = self.preprocess(img)
         
         # Create binary label (1 if target_label is present, 0 otherwise)
+        
         labels = 1 if self.target_label in row['Finding Labels'] else 0
         # print(f"labels: {labels}")
         return img, torch.tensor(labels)
