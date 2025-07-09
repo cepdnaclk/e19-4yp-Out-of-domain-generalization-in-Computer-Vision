@@ -115,13 +115,13 @@ Let's think step by step."""
         missing_indexes = set(range(1, total_count + 1)) - set(flat_list)
         return sorted(list(missing_indexes))
 
-    def _get_grouped_indexes_from_llm(self, prompt_text: str) -> List[List[int]]:
+    def _get_grouped_indexes_from_llm(self, llm_prompt: str) -> List[List[int]]:
         """Sends a prompt to the LLM and parses the grouped indexes from its response."""
         print("Sending Prompt to LLM for grouping...")
         for attempt in range(self._max_retries):
             try:
                 response = self._llm_client.get_llm_response(
-                    prompt=prompt_text)
+                    prompt=llm_prompt)
                 # print(f"LLM Response (attempt {attempt+1}):\n{response}") # For debugging LLM raw response
                 grouped_indexes = self._parse_grouped_indexes(response)
                 # Basic validation: ensure all sublists contain integers and overall structure is list[list[int]]
