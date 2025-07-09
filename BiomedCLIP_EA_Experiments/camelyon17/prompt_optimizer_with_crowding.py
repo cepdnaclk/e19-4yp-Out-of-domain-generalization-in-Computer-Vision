@@ -351,8 +351,8 @@ def main():
 
         prompt_content = f"Current Top {n_display} prompt pairs:\n"
         for i, (prompt_pair, score) in enumerate(selected_prompts):
-            print(f"{i+1}. {prompt_pair}, Score: {score:.4f}")
-            prompt_content += f"{prompt_pair}, Score: {score:.2f}\n"
+            print(f"{i+1}. {prompt_pair}, Score: {int(score)}")
+            prompt_content += f"{prompt_pair}, Score: {int(score)}\n"
 
         # Step 6d: Perform Crowding
         if j % CROWDING_INTERVAL == 0:  # Perform crowding at specified intervals
