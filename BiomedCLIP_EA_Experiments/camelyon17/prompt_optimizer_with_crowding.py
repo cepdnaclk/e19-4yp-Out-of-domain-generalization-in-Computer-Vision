@@ -136,12 +136,12 @@ Let's think step by step."""
             print(
                 f"Iteration {i+1} completed. Deleted {deleted_num} duplicate prompts so far.")
 
-            pq.delete_top_n(pq.max_capacity)  # Clear the queue at the end
-            for prompt_pair, score in best_prompt_pairs_with_scores:
-                # Reinsert the best prompts into the queue
-                pq.insert(prompt_pair, score)
+        pq.delete_top_n(pq.max_capacity)  # Clear the queue at the end
+        for prompt_pair, score in best_prompt_pairs_with_scores:
+            # Reinsert the best prompts into the queue
+            pq.insert(prompt_pair, score)
 
-            return pq
+        return pq
 
 
 def get_prompt_template(iteration_num: int, prompt_content: str, generate_n: int = 10) -> str:
