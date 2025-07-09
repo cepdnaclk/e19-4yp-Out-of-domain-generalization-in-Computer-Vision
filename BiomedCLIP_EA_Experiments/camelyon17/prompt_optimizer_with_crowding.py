@@ -243,7 +243,7 @@ def get_prompt_template(iteration_num: int, prompt_content: str, generate_n: int
 
     # Base meta prompt template
     base_meta_prompt_template = """The task is to generate distinct textual descriptions pairs of visual discriminative features to identify whether the central region of a histopathological image patch contains tumor tissue or not. The patch is extracted from an H&E‑stained whole‑slide image of a lymph node section.
-    Here are the best performing pairs in ascending order. High scores indicate higher quality visual discriminative features. Each prompt should contain about 10 words.
+    Here are the best performing pairs in ascending order. High scores indicate higher quality visual discriminative features.
     {content}
     {iteration_specific_instruction}
     Only provide the output as Python code in the following format: prompts = list[tuple[negative: str, positive: str]]. Let's think step-by-step
@@ -274,7 +274,7 @@ def get_prompt_template(iteration_num: int, prompt_content: str, generate_n: int
 
 
 def main():
-    experiment_name = "Experiment-43-strategy-regularized_bce_inverted-gemma3_crowding_class"
+    experiment_name = "Experiment-51-strategy-bce_inverted-gemma3_crowding"
     print(f"Running {experiment_name}...")
 
     results_dir = "experiment_results"
@@ -309,7 +309,7 @@ def main():
     )
 
     # 5. Configure the initial meta prompt
-    meta_init_prompt = """Give 50 distinct textual descriptions of pairs of visual discriminative features to identify whether the central region of a histopathological image patch contains tumor tissue or not. The patch is extracted from an H&E‑stained whole‑slide image of a lymph node section. Each prompt should contain about 10 words. Only provide the output as Python code in the following format: prompts = list[tuple[negative: str, positive: str]]. Let's think step-by-step"""
+    meta_init_prompt = """Give 50 distinct textual descriptions of pairs of visual discriminative features to identify whether the central region of a histopathological image patch contains tumor tissue or not. The patch is extracted from an H&E‑stained whole‑slide image of a lymph node section. Only provide the output as Python code in the following format: prompts = list[tuple[negative: str, positive: str]]. Let's think step-by-step"""
 
     # 6. Initialize the Priority Queue
     pq = util.PriorityQueue(max_capacity=1000, filter_threshold=0.4)
@@ -359,7 +359,7 @@ def main():
             crowding_manager.perform_crowding(pq)
 
         # Step 6e: Save results and print stats
-        if j % 10 == 0 or j == 1:  # Save best prompts every 10 iterations, and at the first
+        if j % 1 == 0 or j == 1:  # Save best prompts every 10 iterations, and at the first
             # Get all prompts currently in PQ
             top_prompts = pq.get_best_n(pq.max_capacity)
             with open(results_filename, "w") as f:  # Use "w" to overwrite with current best set
