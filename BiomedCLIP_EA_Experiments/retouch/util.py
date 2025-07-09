@@ -338,6 +338,13 @@ def extract_and_parse_prompt_list(code: str) -> List[Tuple[str, str]]:
         raise ValueError("No list literal found after an '=' in the code")
     list_str = m.group(1)
 
+    # Added by Mansitha
+    # Try to fix common string literal issues
+    list_str = list_str.replace('\\', '\\\\')  # handle existing escapes
+    list_str = re.sub(r'(?<!\\)\'', '\\\'', list_str)  # escape unescaped single quotes
+
+
+
     # 2) safely evaluate it (only literals)
     try:
         data: Any = ast.literal_eval(list_str)
