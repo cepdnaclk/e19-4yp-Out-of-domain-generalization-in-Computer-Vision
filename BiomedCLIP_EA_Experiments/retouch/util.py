@@ -298,7 +298,7 @@ def evaluate_prompt_pair(
     acc = accuracy_score(y_true, y_pred)
     auc = roc_auc_score(y_true, y_prob)
     cm = confusion_matrix(y_true, y_pred)
-    report = classification_report(y_true, y_pred, digits=4)
+    report = classification_report(y_true, y_pred, digits=4,zero_division=0)
     return {'accuracy': acc, 'auc': auc, 'cm': cm, 'report': report, 'inverted_bce': inverted_bce}
 
 
