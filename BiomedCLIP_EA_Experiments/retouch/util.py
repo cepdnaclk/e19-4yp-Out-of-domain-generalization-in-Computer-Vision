@@ -568,7 +568,7 @@ def get_prompt_pairs(
                 raise ValueError("No ```python ... ``` block found")
             code = m.group(1)
 
-            print("i am inside of get_prompt_pairs")
+            print(f"******************i am inside of get_prompt_pairs {code}")
             # 2) normalize all literals to double-quoted form
             code = _force_double_quotes(code)
 
