@@ -307,6 +307,7 @@ def _force_double_quotes(code: str) -> str:
     Rewrites every Python string-literal in `code` to use double-quotes,
     properly handling apostrophes and other special characters.
     """
+    print("I am inside of force double quotes")
     tokens = tokenize.generate_tokens(io.StringIO(code).readline)
     new_tokens = []
     for toknum, tokval, start, end, line in tokens:
