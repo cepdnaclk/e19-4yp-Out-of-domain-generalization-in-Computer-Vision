@@ -36,7 +36,7 @@ def get_prompt_template(iteration_num: int, prompt_content: str, generate_n: int
     }
 
     # Base meta prompt template
-    base_meta_prompt_template = """The task is to generate distinct textual descriptions pairs of visual discriminative features to identify whether a chest X-ray image contains pneumonia or not. These descriptions should focus on observable characteristics within the image.
+    base_meta_prompt_template = """The task is to generate distinct textual descriptions pairs of visual discriminative features to identify whether a OCT B-Scan image contains IRF(intra retinal fluid) or not. These descriptions should focus on observable characteristics within the image.
     Here are the best performing pairs in ascending order. High scores indicate higher quality visual discriminative features.
     {content}
     {iteration_specific_instruction}
@@ -74,7 +74,7 @@ def get_prompt_template(iteration_num: int, prompt_content: str, generate_n: int
 
 def main():
     # Name the experiment we are currently running
-    experiment_name = "NIH_Train_Experiments-02_Strategy_500Iterations_BCE_After_Fix_Normal_Condition"
+    experiment_name = "RETOUCH_Train_Experiments-01_Strategy_500Iterations_BCE_TargetClass_1=IRF"
     print(f"Running {experiment_name}...")
 
     # Create experiment results directory
@@ -90,7 +90,7 @@ def main():
     print("Model, preprocess, and tokenizer loaded successfully.")
 
     # 2. load dataset - MODIFIED FOR CHEXPERT
-    features, labels = util.extract_embeddings(
+    features, labels = util.extract_oct_embeddings(
         model=model,
         preprocess=preprocess,
         train_or_test="train"
@@ -102,7 +102,7 @@ def main():
 
     # print(f"shape of all_feats: {all_feats.shape} and all_labels: {all_labels.shape}")
     
-    print(f"Loaded {len(all_feats)} NIHChestXrays embeddings")
+    print(f"Loaded {len(all_feats)} Retouch OCT Dataset embeddings")
 
     # 3. load initial prompts (optional)
     # initial_prompts = util.load_initial_prompts()
@@ -114,7 +114,7 @@ def main():
 
     # Configure the prompt templates
     # meta_init_prompt =  """Give 50 distinct textual descriptions of pairs of visual discriminative features to identify whether the central region of a histopathological image patch contains tumor tissue or not. The patch is extracted from an H&E‑stained whole‑slide image of a lymph node section. Only provide the output as Python code in the following format: prompts = list[tuple[negative: str, positive: str]]. Let's think step-by-step"""
-    meta_init_prompt = """ Give 50 distinct textual descriptions of pairs of discriptive observations to identify whether a chest X-ray image contains pneumonia or not. These descriptions should focus on observable characteristics within the image. Only provide the output as Python code in the following format: prompts = list[tuple[negative: str, positive: str]]. Let's think step-by-step"""
+    meta_init_prompt = """ Give 50 distinct textual descriptions of pairs of discriptive observations to identify whether a whether a OCT B-Scan image contains IRF(intra retinal fluid) or not. These descriptions should focus on observable characteristics within the image. Only provide the output as Python code in the following format: prompts = list[tuple[negative: str, positive: str]]. Let's think step-by-step"""
     # meta_prompt_template = """The task is to generate 50 textual descriptions pairs of visual discriminative features to identify whether the central region of an histopathological image patch contains tumor tissue or not. The patch is extracted from an H&E‑stained whole‑slide image of a lymph node section.
     # Here are the best performing pairs. You should aim to get higher scores. Each description should be about 5-20 words.
     # {content}

@@ -27,10 +27,8 @@ from API_KEY import GEMINI_API_KEY
 from google import genai
 import ollama
 import torch.nn.functional as F
+import SimpleITK as sitk
 
-# 1. Paths & constants
-METADATA_CSV = "/storage/projects3/e19-fyp-out-of-domain-gen-in-cv/camelyon17WILDS/metadata.csv"
-PATCHES_DIR = "/storage/projects3/e19-fyp-out-of-domain-gen-in-cv/camelyon17WILDS/patches"
 
 CONFIG_PATH = "/storage/projects3/e19-fyp-out-of-domain-gen-in-cv/e19-4yp-Out-of-domain-generalization-in-Computer-Vision/BioMedClip/checkpoints/open_clip_config.json"
 WEIGHTS_PATH = "/storage/projects3/e19-fyp-out-of-domain-gen-in-cv/e19-4yp-Out-of-domain-generalization-in-Computer-Vision/BioMedClip/checkpoints/open_clip_pytorch_model.bin"
@@ -45,64 +43,52 @@ InitialItem = Tuple[PromptPair, float]
 PromptList = List[Tuple[PromptPair, float]]
 
 
-# class BiomedCLIPDataset(Dataset):
-#     def __init__(self, df, preprocess):
-#         self.filepaths = df["filepath"].tolist()
-#         self.labels = df["tumor"].astype(int).tolist()
-#         self.preproc = preprocess
-
-#     def __len__(self):
-#         return len(self.filepaths)
-
-#     def __getitem__(self, idx):
-#         with Image.open(self.filepaths[idx]) as img:
-#             img = img.convert("RGB")
-#             img = self.preproc(img)
-#         label = torch.tensor(self.labels[idx], dtype=torch.long)
-#         return img, label
-
-# class CheXpertDataset(torch.utils.data.Dataset):
-#     def __init__(self, df, base_image_dir, preprocess, target_observations):
-#         self.df = df
-#         self.base_image_dir = base_image_dir
-#         self.preprocess = preprocess
-#         self.target_observations = target_observations
-
-#     def __len__(self):
-#         return len(self.df)
-
-#     def __getitem__(self, idx):
-#         row = self.df.iloc[idx]
-#         img_path = os.path.join(self.base_image_dir, row['Path'])
-#         img = Image.open(img_path).convert('RGB')
-#         img = self.preprocess(img)
-#         labels = [1 if row[obs] == 1 else 0 for obs in self.target_observations]
-#         return img, torch.tensor(labels)
-
-
-class NIHChestXRayDataset(Dataset):
-    def __init__(self, df, image_dir, preprocess, target_label="Pneumonia"):
-        self.df = df[df['Finding Labels'].apply(
-            lambda x: target_label in x.split('|') or x == 'No Finding'
-        )]
-        self.image_dir = image_dir
+class RETOUCHOCTDataset(Dataset):
+    def __init__(self, root_dir, preprocess, target_fluid=1):  # target_fluid: 1=IRF, 2=SRF, 3=PED
+        self.root_dir = root_dir
         self.preprocess = preprocess
-        self.target_label = target_label
+        self.target_fluid = target_fluid
+        self.samples = []
         
+        # Get all patient folders
+        patient_folders = [f for f in os.listdir(root_dir) if os.path.isdir(os.path.join(root_dir, f))]
+        
+        for patient in patient_folders:
+            oct_path = os.path.join(root_dir, patient, 'oct.mhd')
+            ref_path = os.path.join(root_dir, patient, 'reference.mhd')
+            
+            if os.path.exists(oct_path) and os.path.exists(ref_path):
+                # Load reference volume to check fluid presence
+                ref_volume = sitk.GetArrayFromImage(sitk.ReadImage(ref_path))
+                
+                # Check if target fluid exists in any slice
+                has_fluid = int(np.any(ref_volume == target_fluid))
+                
+                # Add all slices from this volume (same label for all slices)
+                oct_volume = sitk.GetArrayFromImage(sitk.ReadImage(oct_path))
+                for slice_idx in range(len(oct_volume)):
+                    self.samples.append((patient, slice_idx, has_fluid))
+    
     def __len__(self):
-        return len(self.df)
+        return len(self.samples)
     
     def __getitem__(self, idx):
-        row = self.df.iloc[idx]
-        img_path = os.path.join(self.image_dir, row['Image Index'])
-        img = Image.open(img_path).convert('RGB')
-        img = self.preprocess(img)
+        patient, slice_idx, label = self.samples[idx]
+        oct_path = os.path.join(self.root_dir, patient, 'oct.mhd')
         
-        # Create binary label (1 if target_label is present, 0 otherwise)
+        # Load and preprocess the OCT slice
+        oct_volume = sitk.GetArrayFromImage(sitk.ReadImage(oct_path))
+        oct_slice = oct_volume[slice_idx]
         
-        labels = 1 if self.target_label in row['Finding Labels'] else 0
-        # print(f"labels: {labels}")
-        return img, torch.tensor(labels)
+        # Normalize and convert to PIL Image
+        oct_slice = (oct_slice - oct_slice.min()) / (oct_slice.max() - oct_slice.min())
+        oct_slice = (oct_slice * 255).astype(np.uint8)
+        image = Image.fromarray(oct_slice).convert('RGB')
+        
+        if self.preprocess:
+            image = self.preprocess(image)
+            
+        return image, torch.tensor(label)
 
 
 def append_filename_and_filepath(df):
@@ -164,51 +150,39 @@ def load_clip_model(
     return model, preprocess, tokenizer
 
 
-def extract_embeddings(model, preprocess, 
-                                metadata_csv="/storage/projects3/e19-fyp-out-of-domain-gen-in-cv/NIH_Chest/Data_Entry_2017.csv",
-                                image_list="/storage/projects3/e19-fyp-out-of-domain-gen-in-cv/NIH_Chest/test_list.txt",
-                                image_dir="/storage/projects3/e19-fyp-out-of-domain-gen-in-cv/NIH_Chest/all_images",
-                                cache_dir="./NIHchestxray_cache",
-                                target_label="Pneumonia",train_or_test= "test"):
-    if train_or_test == "test":
-        image_list = f"/storage/projects3/e19-fyp-out-of-domain-gen-in-cv/NIH_Chest/test_list.txt"
-    else:
-        image_list = f"/storage/projects3/e19-fyp-out-of-domain-gen-in-cv/NIH_Chest/train_val_list.txt"
+def extract_oct_embeddings(model, preprocess, 
+                         root_dir="/storage/projects3/e19-fyp-out-of-domain-gen-in-cv/retouch_data/RETOUCH-TrainingSet-Cirrus",
+                         cache_dir="./retouch_cache",
+                         target_fluid=1,  # 1=IRF, 2=SRF, 3=PED
+                         train_or_test="train"):
     os.makedirs(cache_dir, exist_ok=True)
-    features_cache = os.path.join(cache_dir, f"{train_or_test}_chestxray_features.npy")
-    labels_cache = os.path.join(cache_dir, f"{train_or_test}_chestxray_labels.npy")
+    features_cache = os.path.join(cache_dir, f"{train_or_test}_retouch_fluid{target_fluid}_features.npy")
+    labels_cache = os.path.join(cache_dir, f"{train_or_test}_retouch_fluid{target_fluid}_labels.npy")
     
     if os.path.exists(features_cache) and os.path.exists(labels_cache):
-        print("Loading cached embeddings...")
+        print(f"Loading cached {train_or_test} embeddings...")
         return np.load(features_cache), np.load(labels_cache)
     
-    # Load metadata and filter test images
-    df = pd.read_csv(metadata_csv)
-    with open(image_list, 'r') as f:
-        images = [line.strip() for line in f.readlines()]
+    # Create full dataset
+    full_dataset = RETOUCHOCTDataset(root_dir, preprocess, target_fluid)
     
-    # Filter dataframe to only include test images
-    df = df[df['Image Index'].isin(images)]
-    
-    # Create dataset and dataloader
-    dataset = NIHChestXRayDataset(df, image_dir, preprocess, target_label)
-    loader = DataLoader(dataset, batch_size=32, shuffle=False, num_workers=2, pin_memory=True)
+    # Create dataloader
+    loader = DataLoader(full_dataset, batch_size=32, shuffle=False, num_workers=4, pin_memory=True)
     
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
     model = model.to(device).eval()
     
-    features, all_labels = [], []
+    features, labels = [], []
     with torch.no_grad():
-        for batch, labels in tqdm(loader, desc="Extracting embeddings"):
+        for batch, batch_labels in tqdm(loader, desc=f"Extracting {train_or_test} embeddings"):
             batch = batch.to(device)
             feats = model.encode_image(batch)
-            feats = feats / feats.norm(dim=-1, keepdim=True)
-            features.append(feats.cpu())
-            all_labels.append(labels.numpy())
+            feats = feats / feats.norm(dim=-1, keepdim=True)  # Normalize features
+            features.append(feats.cpu().numpy())
+            labels.append(batch_labels.numpy())
     
-    features_array = torch.cat(features).numpy()
-    # print(f"all labels {all_labels}")
-    labels_array = np.concatenate(all_labels)
+    features_array = np.concatenate(features)
+    labels_array = np.concatenate(labels)
     
     # Save to cache
     np.save(features_cache, features_array)
