@@ -7,15 +7,16 @@ import numpy as np
 import os
 
 # Crowding parameters
-CROWDING_INTERVAL = 20  # Perform crowding every X iterations
+CROWDING_INTERVAL = 20  # Perform crowding burst after this many main iterations
+# Number of consecutive crowding steps in a burst
+NUM_CROWDING_ITERATIONS_PER_BURST = 5
 # Number of top prompts to consider for grouping by LLM
 NUMBER_OF_PROMPTS_TO_GROUP = 50
-MAX_RETRIES_CROWDING = 5  # Max retries for LLM calls during crowding
+# Max retries for LLM calls during crowding
+MAX_RETRIES_CROWDING = 5
 
 
 # --- CrowdingManager Class ---
-
-
 class CrowdingManager:
     """
     Manages the crowding-based selection and duplicate removal process
@@ -137,7 +138,7 @@ Let's think step by step."""
 
     def perform_crowding(self, pq: util.PriorityQueue) -> int:
         """
-        Performs the crowding operation on the top prompts in the priority queue.
+        Performs a single crowding operation on the top prompts in the priority queue.
         Removes duplicates and re-inserts unique representative prompts.
 
         Args:
@@ -146,8 +147,7 @@ Let's think step by step."""
         Returns:
             The number of duplicate prompts removed.
         """
-        print(
-            f"\nPerforming crowding on top {self._prompt_grouping_size} prompts...")
+        # print(f"\nPerforming crowding on top {self._prompt_grouping_size} prompts...") # This print moved to the main loop
 
         # 1. Retrieve the best prompt pairs from the priority queue for grouping
         # Get actual (pair, score) tuples, 0-indexed for internal use
@@ -165,7 +165,7 @@ Let's think step by step."""
             num_of_prompts=self._prompt_grouping_size
         )
         grouped_indexes = self._get_grouped_indexes_from_llm(
-            prompt_text=llm_prompt_for_crowding)
+            llm_prompt=llm_prompt_for_crowding)
 
         # 3. Check for remaining ungrouped indexes and retry if necessary
         remaining_indexes = self._get_remaining_indexes(
@@ -175,22 +175,23 @@ Let's think step by step."""
                 f"Remaining indexes after first grouping attempt: {remaining_indexes}. Retrying...")
 
             # Prepare remaining prompts string (1-indexed for LLM)
-            prompt_pairs_str_remaining = "\n".join(
-                [f"{i}. ('{prompt_pairs_with_scores[i-1][0]}' , '{prompt_pairs_with_scores[i-1][1]}')" for i in remaining_indexes]
+            # Need to get the actual prompts corresponding to remaining_indexes
+            remaining_prompts_for_retry_str = "\n".join(
+                [f"{i}. ('{prompt_pairs_with_scores[i-1][0]}' , '{prompt_pairs_with_scores[i-1][1]}')"
+                 for i in remaining_indexes]
             )
 
             retry_prompt_str = self._retry_llm_prompt_template.format(
                 prompt_pairs_str=crowding_prompt_pairs_str,  # Full list for context
                 current_grouped_indexes=str(grouped_indexes),
-                prompt_pairs_str_remaining=prompt_pairs_str_remaining
+                prompt_pairs_str_remaining=remaining_prompts_for_retry_str
             )
             grouped_indexes = self._get_grouped_indexes_from_llm(
-                prompt_text=retry_prompt_str)
+                llm_prompt=retry_prompt_str)
 
         # 4. Get unique indexes (representatives) after all grouping attempts
         unique_indexes_1_based = self._get_unique_indexes(grouped_indexes)
-        print(
-            f"Unique indexes identified after crowding: {unique_indexes_1_based}")
+        # print(f"Unique indexes identified after crowding: {unique_indexes_1_based}") # This print moved to main loop
 
         # 5. Select the best prompts based on the unique indexes (only keep one from each grouped set)
         # Convert 1-based unique_indexes back to 0-based for list access
@@ -210,8 +211,7 @@ Let's think step by step."""
         # 7. Calculate and return the number of duplicates removed
         deleted_duplicates_count = self._prompt_grouping_size - \
             len(unique_indexes_1_based)
-        print(
-            f"Crowding completed. Removed {deleted_duplicates_count} duplicate prompts from the top {self._prompt_grouping_size}.")
+        # print(f"Crowding completed. Removed {deleted_duplicates_count} duplicate prompts from the top {self._prompt_grouping_size}.") # This print moved to main loop
         return deleted_duplicates_count
 
 # --- End of CrowdingManager Class ---
@@ -274,7 +274,8 @@ def get_prompt_template(iteration_num: int, prompt_content: str, generate_n: int
 
 
 def main():
-    experiment_name = "Experiment-51-strategy-bce_inverted-gemma3_crowding"
+    # Updated experiment name
+    experiment_name = "Experiment-51-strategy-bce_inverted-gemma3_crowding_burst"
     print(f"Running {experiment_name}...")
 
     results_dir = "experiment_results"
@@ -351,18 +352,30 @@ def main():
 
         prompt_content = f"Current Top {n_display} prompt pairs:\n"
         for i, (prompt_pair, score) in enumerate(selected_prompts):
-            print(f"{i+1}. {prompt_pair}, Score: {int(score)}")
-            prompt_content += f"{prompt_pair}, Score: {int(score)}\n"
+            # Display score as float for more precision during iterations
+            print(f"{i+1}. {prompt_pair}, Score: {score:.4f}")
+            # Keep prompt_content score as float for LLM context, it's better not to lose precision
+            prompt_content += f"{prompt_pair}, Score: {score:.2f}\n"
 
-        # Step 6d: Perform Crowding
-        if j % CROWDING_INTERVAL == 0:  # Perform crowding at specified intervals
-            crowding_manager.perform_crowding(pq)
+        # Step 6d: Perform Crowding Burst - NEW LOGIC
+        if j % CROWDING_INTERVAL == 0:
+            print(
+                f"\n--- Initiating {NUM_CROWDING_ITERATIONS_PER_BURST} crowding burst iterations after main iteration {j} ---")
+            for crowding_iter_idx in range(1, NUM_CROWDING_ITERATIONS_PER_BURST + 1):
+                print(
+                    f"--- Crowding Burst Iteration {crowding_iter_idx} of {NUM_CROWDING_ITERATIONS_PER_BURST} ---")
+                deleted_count = crowding_manager.perform_crowding(pq)
+                print(
+                    f"Crowding Burst Iteration {crowding_iter_idx} completed. Removed {deleted_count} duplicates.")
+                # You might want to re-display top prompts here if you want to see the effect after each crowding step
+                # For brevity, I've left it to display after the entire burst.
 
         # Step 6e: Save results and print stats
-        if j % 1 == 0 or j == 1:  # Save best prompts every 10 iterations, and at the first
-            # Get all prompts currently in PQ
+        # Changed (j % 1 == 0) to (j % 10 == 0) for typical saving frequency,
+        # but kept j == 1 to save initial state. Adjust as needed.
+        if j % 10 == 0 or j == 1:
             top_prompts = pq.get_best_n(pq.max_capacity)
-            with open(results_filename, "w") as f:  # Use "w" to overwrite with current best set
+            with open(results_filename, "w") as f:
                 f.write(f"Iteration {j}:\n")
                 for prompt_pair, score in top_prompts:
                     f.write(f"{prompt_pair}, Score: {score:.4f}\n")
