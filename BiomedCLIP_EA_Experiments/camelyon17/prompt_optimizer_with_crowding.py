@@ -165,7 +165,7 @@ Let's think step by step."""
             num_of_prompts=self._prompt_grouping_size
         )
         grouped_indexes = self._get_grouped_indexes_from_llm(
-            llm_prompt=llm_prompt_for_crowding)
+            prompt_text=llm_prompt_for_crowding)
 
         # 3. Check for remaining ungrouped indexes and retry if necessary
         remaining_indexes = self._get_remaining_indexes(
@@ -185,7 +185,7 @@ Let's think step by step."""
                 prompt_pairs_str_remaining=prompt_pairs_str_remaining
             )
             grouped_indexes = self._get_grouped_indexes_from_llm(
-                llm_prompt=retry_prompt_str)
+                prompt_text=retry_prompt_str)
 
         # 4. Get unique indexes (representatives) after all grouping attempts
         unique_indexes_1_based = self._get_unique_indexes(grouped_indexes)
