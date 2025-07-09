@@ -317,7 +317,15 @@ def force_double_quotes(code: str) -> str:
             # Create a new string literal with double quotes
             # Properly escape any double quotes or backslashes in the string
             # This automatically handles escaping correctly
-            tokval = json.dumps(value)
+            # tokval = json.dumps(value)
+
+            # Use repr() to get a Python-style escaped string, then convert quotes
+            quoted = repr(value)
+            if quoted.startswith("'"):
+                # Replace outer single quotes with double quotes, and unescape internal double quotes
+                quoted = '"' + quoted[1:-1].replace('"', r'\"').replace("\\'", "'") + '"'
+            tokval = quoted
+
 
         new_tokens.append((toknum, tokval))
     return tokenize.untokenize(new_tokens)
@@ -338,10 +346,10 @@ def extract_and_parse_prompt_list(code: str) -> List[Tuple[str, str]]:
         raise ValueError("No list literal found after an '=' in the code")
     list_str = m.group(1)
 
-    # Added by Mansitha
-    # Try to fix common string literal issues
-    list_str = list_str.replace('\\', '\\\\')  # handle existing escapes
-    list_str = re.sub(r'(?<!\\)\'', '\\\'', list_str)  # escape unescaped single quotes
+    # # Added by Mansitha
+    # # Try to fix common string literal issues
+    # list_str = list_str.replace('\\', '\\\\')  # handle existing escapes
+    # list_str = re.sub(r'(?<!\\)\'', '\\\'', list_str)  # escape unescaped single quotes
 
 
 
@@ -575,7 +583,7 @@ def get_prompt_pairs(
             code = m.group(1)
 
             # 2) normalize all literals to double-quoted form
-            # code = force_double_quotes(code)
+            code = force_double_quotes(code)
 
             # print(f"Normalized code on attempt {attempt}: {code}...")
 
