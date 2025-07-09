@@ -118,7 +118,7 @@ Let's think step by step."""
                     llm_prompt=retry_prompt_str,
                 )
 
-            unique_indexes = self.get_unique_indexes(grouped_indexes)
+            unique_indexes = self._get_unique_indexes(grouped_indexes)
             print(f"Unique indexes: {unique_indexes}")
 
             # select the best prompts based on the unique indexes
