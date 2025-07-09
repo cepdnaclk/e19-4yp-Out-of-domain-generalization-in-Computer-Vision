@@ -302,12 +302,12 @@ def evaluate_prompt_pair(
     return {'accuracy': acc, 'auc': auc, 'cm': cm, 'report': report, 'inverted_bce': inverted_bce}
 
 
-def _force_double_quotes(code: str) -> str:
+def force_double_quotes(code: str) -> str:
     """
     Rewrites every Python string-literal in `code` to use double-quotes,
     properly handling apostrophes and other special characters.
     """
-    print("I am inside of force double quotes")
+    print("&&&&&&&&&&&&&&I am inside of force double quotes")
     tokens = tokenize.generate_tokens(io.StringIO(code).readline)
     new_tokens = []
     for toknum, tokval, start, end, line in tokens:
@@ -568,9 +568,9 @@ def get_prompt_pairs(
                 raise ValueError("No ```python ... ``` block found")
             code = m.group(1)
 
-            print(f"******************i am inside of get_prompt_pairs {code}")
+            print(f"******************i am inside of get_prompt_pairs")
             # 2) normalize all literals to double-quoted form
-            code = _force_double_quotes(code)
+            code = force_double_quotes(code)
 
             # print(f"Normalized code on attempt {attempt}: {code}...")
 
