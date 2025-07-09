@@ -596,7 +596,7 @@ def get_prompt_pairs(
 
 class PriorityQueue:
     # type: ignore
-    def __init__(self, max_capacity: int = 10, initial: Optional[List[Tuple[PromptPair, float]]] = None,filter_threshold: float = 0.6):
+    def __init__(self, max_capacity: int = 10, initial: Optional[List[Tuple[PromptPair, float]]] = None,filter_threshold: float = 0.4):
 
         self.filter_threshold = filter_threshold
         self.max_capacity: int = max_capacity
