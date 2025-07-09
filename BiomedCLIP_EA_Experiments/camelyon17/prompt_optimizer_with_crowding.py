@@ -110,8 +110,7 @@ Let's think step by step."""
                     prompt_pairs_str=prompt_pairs_str,
                     current_grouped_indexes=str(grouped_indexes),
                     prompt_pairs_str_remaining="\n".join(
-                        [f"{remaining_indexes[i]}. ('{pair[0]}' , '{pair[1]}')" for i, (pair, score) in enumerate(
-                            [prompt_pairs[i-1] for i in remaining_indexes])]
+                        [f"{original_idx}. ('{prompt_pairs[original_idx-1][0]}' , '{prompt_pairs[original_idx-1][1]}')" for original_idx in remaining_indexes]
                     )
                 )
                 grouped_indexes = self._get_grouped_indexes_from_llm(
