@@ -317,15 +317,14 @@ def force_double_quotes(code: str) -> str:
             # Create a new string literal with double quotes
             # Properly escape any double quotes or backslashes in the string
             # This automatically handles escaping correctly
-            # tokval = json.dumps(value)
+            tokval = json.dumps(value)
 
-            # Use repr() to get a Python-style escaped string, then convert quotes
-            quoted = repr(value)
-            if quoted.startswith("'"):
-                # Replace outer single quotes with double quotes, and unescape internal double quotes
-                quoted = '"' + quoted[1:-1].replace('"', r'\"').replace("\\'", "'") + '"'
-            tokval = quoted
-
+            # # Use repr() to get a Python-style escaped string, then convert quotes
+            # quoted = repr(value)
+            # if quoted.startswith("'"):
+            #     # Replace outer single quotes with double quotes, and unescape internal double quotes
+            #     quoted = '"' + quoted[1:-1].replace('"', r'\"').replace("\\'", "'") + '"'
+            # tokval = quoted
 
         new_tokens.append((toknum, tokval))
     return tokenize.untokenize(new_tokens)
@@ -549,7 +548,7 @@ def get_prompt_pairs(
     prompt: str,
     llm_client: LLMClient,  # Accept the unified LLMClient instance
     parse_func: Callable = extract_and_parse_prompt_list,
-    max_retries: int = 10
+    max_retries: int = 30
 ) -> List[Tuple[str, str]]:
     """
     Retrieves and parses a list of prompt-response pairs from an LLM.
