@@ -91,20 +91,7 @@ class RETOUCHOCTDataset(Dataset):
         return image, torch.tensor(label)
 
 
-def append_filename_and_filepath(df):
-    df["filename"] = df.apply(
-        lambda r: f"patch_patient_{r.patient:03d}_node_{r.node}_x_{r.x_coord}_y_{r.y_coord}.png",
-        axis=1
-    )
-    df["filepath"] = df.apply(
-        lambda r: os.path.join(
-            PATCHES_DIR,
-            f"patient_{r.patient:03d}_node_{r.node}",
-            r.filename
-        ),
-        axis=1
-    )
-    return df
+
 
 
 def load_clip_model(
