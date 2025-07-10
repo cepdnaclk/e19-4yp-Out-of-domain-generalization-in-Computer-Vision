@@ -51,7 +51,7 @@ def main():
         max_capacity=1000, filter_threshold=0.6, initial=initial_prompts)
     all_scores = [s for _, s in pq.get_best_n(len(pq))]
     recommended_n = util.KneePointAnalysis(all_scores).find_knee_point()
-    prompt_population = [p for p, _ in pq.get_best_n(recommended_n)]
+    prompt_population = pq.get_best_n(recommended_n)
     print(f"Selected {len(prompt_population)} prompts after knee analysis.")
 
     # 4. build train/test splits by center indices
