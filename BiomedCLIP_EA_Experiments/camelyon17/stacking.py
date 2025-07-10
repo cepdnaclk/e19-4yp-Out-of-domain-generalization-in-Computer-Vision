@@ -56,7 +56,7 @@ def main():
 
     # 4. build train/test splits by center indices
     train_idxs = [0, 1, 2]
-    test_idxs = [3, 4]
+    test_idxs = [4]
 
     P_train_list, y_train_list = [], []
     P_test_list, y_test_list = [], []
