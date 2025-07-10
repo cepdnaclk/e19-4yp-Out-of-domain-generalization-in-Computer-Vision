@@ -42,7 +42,7 @@ def main():
     recommended_n = knee_analyzer.find_knee_point()
     prompts_population = pq.get_best_n(recommended_n)
 
-    for i in range(0, len(prompts_population), 2):
+    for i in range(0, len(prompts_population), 1):
         prompts = prompts_population[0:i + 1]
         print(f"Using {len(prompts)} prompts for evaluation.")
 
