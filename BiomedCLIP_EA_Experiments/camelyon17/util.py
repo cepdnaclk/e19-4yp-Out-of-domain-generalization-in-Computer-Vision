@@ -937,21 +937,29 @@ class KneePointAnalysis:
         return recommended_n
 
 
-def compute_prompt_probs_matrix(prompt_list, image_feats, model, tokenizer):
-    """
-    Returns an (N_images, n_prompts) array of positive‑class probabilities.
-    """
+def compute_prompt_probs_matrix(
+    prompt_list: PromptList,
+    image_feats: torch.Tensor,  # (N, D), precomputed
+    model,
+    tokenizer,
+):
+    # Ensure image feats and labels are on the correct device once
     feats = image_feats.to(DEVICE)
     matrix = []
+
     with torch.no_grad():
-        for (neg, pos), _ in prompt_list:
+        for (negative_prompt, positive_prompt), original_weight in prompt_list:
             text_inputs = tokenizer(
-                [neg, pos], context_length=CONTEXT_LENGTH).to(DEVICE)
-            t_feats = model.encode_text(text_inputs)
-            t_feats = t_feats / t_feats.norm(dim=1, keepdim=True)
+                [negative_prompt, positive_prompt],
+                context_length=CONTEXT_LENGTH
+            ).to(DEVICE)
+            text_feats = model.encode_text(text_inputs)  # (2, D)
+            text_feats = text_feats / text_feats.norm(dim=1, keepdim=True)
             logit_scale = model.logit_scale.exp()
-            logits = logit_scale * (feats @ t_feats.t())         # (N,2)
-            probs = logits.softmax(dim=1)                        # (N,2)
+
+            # compute all logits at once: (N, 2)
+            logits = logit_scale * (feats @ text_feats.t())
+            probs = logits.softmax(dim=1)
             pos_probs = probs[:, 1].cpu().numpy()                # (N,)
             matrix.append(pos_probs)
     # shape: (n_prompts, N) → transpose → (N, n_prompts)

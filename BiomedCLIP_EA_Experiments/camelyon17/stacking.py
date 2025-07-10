@@ -28,12 +28,6 @@ def main():
     print("Model, preprocess, and tokenizer loaded successfully.")
 
     # 2. load dataset embeddings by center
-    centers_feats, centers_labels = util.extract_center_embeddings(
-        model=model,
-        preprocess=preprocess,
-        num_centers=5,
-        isTrain=False
-    )
     # convert to torch and numpy
     centers_features: List[np.ndarray]
     centers_labels:   List[np.ndarray]
@@ -64,7 +58,7 @@ def main():
     P_test_list, y_test_list = [], []
 
     for idx in train_idxs:
-        feats = centers_feats[idx]
+        feats = centers_features[idx]
         labels = centers_labels[idx]
         P = util.compute_prompt_probs_matrix(
             prompt_population, feats, model, tokenizer)
@@ -72,7 +66,7 @@ def main():
         y_train_list.append(labels)
 
     for idx in test_idxs:
-        feats = centers_feats[idx]
+        feats = centers_features[idx]
         labels = centers_labels[idx]
         P = util.compute_prompt_probs_matrix(
             prompt_population, feats, model, tokenizer)
