@@ -37,6 +37,10 @@ def main():
         num_centers=5,  # evaluating on all centers
         isTrain=False,  # Evaluating on test centers only
     )
+
+    # convert to torch tensors for each center
+    centers_features = [torch.from_numpy(feat) for feat in centers_features]
+    centers_labels = [torch.from_numpy(label) for label in centers_labels]
     print("Center embeddings extracted successfully.")
 
     # 3. load and select prompts
