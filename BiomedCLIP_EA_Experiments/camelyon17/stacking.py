@@ -101,6 +101,13 @@ def main():
     for j, coef in enumerate(logreg.coef_[0]):
         print(f"  Prompt #{j:2d}:  β = {coef:.4f}")
 
+    # Decision tree evaluation
+    y_tree_pred = tree.predict(P_test)
+    tree_acc = accuracy_score(y_test, y_tree_pred)
+    tree_auc = roc_auc_score(y_test, tree.predict_proba(P_test)[:, 1])
+    print(
+        f"\nTest Meta‑DecisionTree  →  Acc: {tree_acc:.4f}, AUC: {tree_auc:.4f}")
+
     print("\nDecision‑Tree rules:\n")
     print(export_text(tree, feature_names=[
           f"p{j}" for j in range(P_train.shape[1])]))
