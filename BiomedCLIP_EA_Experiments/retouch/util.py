@@ -298,11 +298,11 @@ def evaluate_prompt_pair(
     acc = accuracy_score(y_true, y_pred)
     auc = roc_auc_score(y_true, y_prob)
     cm = confusion_matrix(y_true, y_pred)
-    report = classification_report(y_true, y_pred, digits=4)
+    report = classification_report(y_true, y_pred, digits=4,zero_division=0)
     return {'accuracy': acc, 'auc': auc, 'cm': cm, 'report': report, 'inverted_bce': inverted_bce}
 
 
-def _force_double_quotes(code: str) -> str:
+def force_double_quotes(code: str) -> str:
     """
     Rewrites every Python string-literal in `code` to use double-quotes,
     properly handling apostrophes and other special characters.
@@ -318,6 +318,13 @@ def _force_double_quotes(code: str) -> str:
             # Properly escape any double quotes or backslashes in the string
             # This automatically handles escaping correctly
             tokval = json.dumps(value)
+
+            # # Use repr() to get a Python-style escaped string, then convert quotes
+            # quoted = repr(value)
+            # if quoted.startswith("'"):
+            #     # Replace outer single quotes with double quotes, and unescape internal double quotes
+            #     quoted = '"' + quoted[1:-1].replace('"', r'\"').replace("\\'", "'") + '"'
+            # tokval = quoted
 
         new_tokens.append((toknum, tokval))
     return tokenize.untokenize(new_tokens)
@@ -337,6 +344,13 @@ def extract_and_parse_prompt_list(code: str) -> List[Tuple[str, str]]:
     if not m:
         raise ValueError("No list literal found after an '=' in the code")
     list_str = m.group(1)
+
+    # # Added by Mansitha
+    # # Try to fix common string literal issues
+    # list_str = list_str.replace('\\', '\\\\')  # handle existing escapes
+    # list_str = re.sub(r'(?<!\\)\'', '\\\'', list_str)  # escape unescaped single quotes
+
+
 
     # 2) safely evaluate it (only literals)
     try:
@@ -458,25 +472,25 @@ def extract_and_parse_prompt_tuple(code: str) -> Tuple[str, str]:
     raise ValueError("No 2-element string tuple found in code")
 
 
-def _force_double_quotes(code: str) -> str:
-    """
-    Rewrites every Python string-literal in `code` to use double-quotes,
-    properly handling apostrophes and other special characters.
-    """
-    tokens = tokenize.generate_tokens(io.StringIO(code).readline)
-    new_tokens = []
-    for toknum, tokval, start, end, line in tokens:
-        if toknum == tokenize.STRING:
-            # Get the actual string value
-            value = ast.literal_eval(tokval)
+# def _force_double_quotes(code: str) -> str:
+#     """
+#     Rewrites every Python string-literal in `code` to use double-quotes,
+#     properly handling apostrophes and other special characters.
+#     """
+#     tokens = tokenize.generate_tokens(io.StringIO(code).readline)
+#     new_tokens = []
+#     for toknum, tokval, start, end, line in tokens:
+#         if toknum == tokenize.STRING:
+#             # Get the actual string value
+#             value = ast.literal_eval(tokval)
 
-            # Create a new string literal with double quotes
-            # Properly escape any double quotes or backslashes in the string
-            # This automatically handles escaping correctly
-            tokval = json.dumps(value)
+#             # Create a new string literal with double quotes
+#             # Properly escape any double quotes or backslashes in the string
+#             # This automatically handles escaping correctly
+#             tokval = json.dumps(value)
 
-        new_tokens.append((toknum, tokval))
-    return tokenize.untokenize(new_tokens)
+#         new_tokens.append((toknum, tokval))
+#     return tokenize.untokenize(new_tokens)
 
 
 class LLMClient:
@@ -534,7 +548,7 @@ def get_prompt_pairs(
     prompt: str,
     llm_client: LLMClient,  # Accept the unified LLMClient instance
     parse_func: Callable = extract_and_parse_prompt_list,
-    max_retries: int = 10
+    max_retries: int = 30
 ) -> List[Tuple[str, str]]:
     """
     Retrieves and parses a list of prompt-response pairs from an LLM.
@@ -568,7 +582,7 @@ def get_prompt_pairs(
             code = m.group(1)
 
             # 2) normalize all literals to double-quoted form
-            code = _force_double_quotes(code)
+            code = force_double_quotes(code)
 
             # print(f"Normalized code on attempt {attempt}: {code}...")
 
