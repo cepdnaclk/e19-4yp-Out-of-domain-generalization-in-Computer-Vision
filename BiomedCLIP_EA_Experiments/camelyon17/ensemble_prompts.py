@@ -1,4 +1,4 @@
-from typing import List
+from typing import List, Optional
 import util
 import torch
 import numpy as np
@@ -27,11 +27,22 @@ def main():
     centers_labels = [torch.from_numpy(label) for label in centers_labels]
 
     # 3. load prompts
-    prompts_population = util.load_initial_prompts(
-        "experiment_results/inverted_bce_last_iteration.txt"
-    )
+    initial_prompts = util.load_initial_prompts(
+        "experiment_results/distinct_medical_concepts.txt")
 
-    for i in range(10, len(prompts_population), 10):
+    print(f"Initial prompts loaded: {len(initial_prompts)} prompts.")
+
+    pq = util.PriorityQueue(
+        max_capacity=1000, filter_threshold=0.6, initial=initial_prompts)
+
+    # knee point analysis
+    all_current_scores = [score for _, score in pq.get_best_n(
+        len(pq))]  # Get all, sorted by score
+    knee_analyzer = util.KneePointAnalysis(all_current_scores)
+    recommended_n = knee_analyzer.find_knee_point()
+    prompts_population = pq.get_best_n(recommended_n)
+
+    for i in range(0, len(prompts_population), 2):
         prompts = prompts_population[0:i + 1]
         print(f"Using {len(prompts)} prompts for evaluation.")
 

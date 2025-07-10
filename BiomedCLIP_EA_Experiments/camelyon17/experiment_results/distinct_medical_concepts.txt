@@ -1,0 +1,18 @@
+('No atypical cells infiltrating surrounding tissues', 'Atypical cells infiltrating surrounding tissues and disrupting normal structures'), Score: 0.9013
+('No significant atypia in the surrounding lymphocytes', 'Significant atypia observed in lymphocytes adjacent to tumor nests'), Score: 0.8997
+('No evidence of fibrosis', 'Prominent stromal fibrosis surrounding tumor nests'), Score: 0.8994
+('Normal follicular architecture is preserved', 'Disrupted follicular architecture with loss of polarity'), Score: 0.894
+('No prominent nucleoli are observed in lymphocytes', 'Cells exhibit large, prominent, and irregular nucleoli'), Score: 0.8935
+('No giant cells or multinucleated cells are seen', 'Presence of multinucleated giant cells, suggestive of specific tumor types'), Score: 0.8884
+('No plasmacytoid differentiation is observed', 'Plasmacytoid differentiation is prominent within the tumor cells'), Score: 0.8883
+('Interfollicular areas show a normal complement of T cells', 'Interfollicular areas are dominated by large, atypical cells'), Score: 0.883
+('Lymphocytes exhibit a uniform population', 'Tumor cells demonstrate significant heterogeneity in size and morphology'), Score: 0.8794
+('Scattered, small lymphocytes with condensed chromatin', 'Large, atypical cells with vesicular nuclei and prominent nucleoli'), Score: 0.879
+('No evidence of mitotic activity in lymphocytes', 'Increased mitotic figures observed in tumor cells'), Score: 0.8776
+('Lymphocytes display uniform size and shape', 'Tumor cells exhibit marked variability in size and shape (anisocytosis/pleomorphism)'), Score: 0.8775
+('Stroma is delicate and sparsely collagenized', 'Stroma is dense and desmoplastic, surrounding tumor nests'), Score: 0.8772
+('Blood vessels are small and exhibit normal morphology', 'Blood vessels are enlarged and show irregular shapes with tumor emboli'), Score: 0.8754
+('Sinusoids are open and show normal lymphocyte flow', 'Sinusoids are obliterated by tumor cells'), Score: 0.8749
+('Lymphocytes are predominantly small and mature', 'Lymphocytes are atypical, large, and immature with prominent nucleoli'), Score: 0.8727
+('No atypical cells are observed', 'Presence of atypical cells with hyperchromatic nuclei and prominent nucleoli'), Score: 0.8726
+('Nuclei are round to oval with smooth chromatin', 'Nuclei are irregular with coarse chromatin and prominent nucleoli'), Score: 0.8726

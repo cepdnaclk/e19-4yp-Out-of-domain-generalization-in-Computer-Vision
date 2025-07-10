@@ -848,3 +848,111 @@ def load_initial_prompts(path: str) -> List[InitialItem]:
                 continue
 
     return results
+
+
+class KneePointAnalysis:
+    """
+    A utility class to perform knee-point (elbow) analysis on a collection of scores,
+    typically obtained from a PriorityQueue.
+    """
+
+    def __init__(self, scores: List[float]):
+        """
+        Initializes the analyzer with a list of scores.
+        Scores are expected to be in descending order for knee-point analysis.
+        Ensures scores are numeric by casting to float.
+        """
+        # Ensure all scores are floats before sorting and storing
+        self._scores = sorted([float(s) for s in scores], reverse=True)
+
+    def find_knee_point(self, k_range: Optional[List[int]] = None) -> int:
+        """
+        Finds the knee point (elbow) in the sorted scores using the 'distance from line' method.
+        This suggests a natural 'n' for selecting the best solutions.
+
+        Args:
+            k_range: An optional list of K values (number of solutions/ranks) to consider for analysis.
+                     If None, it considers all possible 'n' up to the number of scores.
+        Returns:
+            The recommended number of 'n' (solutions) based on the knee point.
+            Returns 0 if there are no scores or only one score.
+        """
+        if len(self._scores) <= 1:
+            return len(self._scores)
+
+        # Prepare x-values (ranks) and y-values (scores) for the full dataset
+        x_values_all = np.arange(1, len(self._scores) + 1)
+        # This conversion now should be safe as _scores are floats
+        y_values_all = np.array(self._scores)
+
+        # Determine the subset of data for analysis if k_range is provided
+        if k_range is None:
+            x_values_for_analysis = x_values_all
+            y_values_for_analysis = y_values_all
+        else:
+            # Filter x_values and y_values based on k_range
+            valid_indices = [i for i, k in enumerate(
+                x_values_all) if k in k_range and k <= len(self._scores)]
+            if not valid_indices:
+                print(
+                    "Warning: No valid ranks in k_range for the current data size. Returning 0.")
+                return 0
+            x_values_for_analysis = x_values_all[valid_indices]
+            y_values_for_analysis = y_values_all[valid_indices]
+
+        # Handle cases with insufficient points for line drawing
+        if len(x_values_for_analysis) < 2:
+            return len(x_values_for_analysis) if len(x_values_for_analysis) > 0 else 0
+
+        # If the analysis range is just two points, the knee is trivially the first point,
+        # or the second if the first is disproportionately high. For robustness, if only 2 points,
+        # the 'knee' concept is weak.
+        if len(x_values_for_analysis) == 2:
+            return x_values_for_analysis[0]
+
+        # Calculate the line between the first and last point of the *analysis subset*
+        p1 = (x_values_for_analysis[0], y_values_for_analysis[0])
+        p2 = (x_values_for_analysis[-1], y_values_for_analysis[-1])
+
+        # Calculate line equation: y = mx + c  =>  mx - y + c = 0
+        # Handle the edge case where x_values_for_analysis are all the same (vertical line)
+        if (p2[0] - p1[0]) == 0:
+            return x_values_for_analysis[0]  # Fallback to first point
+
+        m = (p2[1] - p1[1]) / (p2[0] - p1[0])
+        c = p1[1] - m * p1[0]
+
+        A, B, C = m, -1, c  # Coefficients for Ax + By + C = 0
+
+        distances = []
+        for i in range(len(x_values_for_analysis)):
+            x0, y0 = x_values_for_analysis[i], y_values_for_analysis[i]
+            dist = np.abs(A * x0 + B * y0 + C) / np.sqrt(A**2 + B**2)
+            distances.append(dist)
+
+        # The knee point is where the distance is maximized
+        knee_index = np.argmax(distances)
+        recommended_n = x_values_for_analysis[knee_index]  # The rank itself
+
+        return recommended_n
+
+
+def compute_prompt_probs_matrix(prompt_list, image_feats, model, tokenizer):
+    """
+    Returns an (N_images, n_prompts) array of positive‑class probabilities.
+    """
+    feats = image_feats.to(DEVICE)
+    matrix = []
+    with torch.no_grad():
+        for (neg, pos), _ in prompt_list:
+            text_inputs = tokenizer(
+                [neg, pos], context_length=CONTEXT_LENGTH).to(DEVICE)
+            t_feats = model.encode_text(text_inputs)
+            t_feats = t_feats / t_feats.norm(dim=1, keepdim=True)
+            logit_scale = model.logit_scale.exp()
+            logits = logit_scale * (feats @ t_feats.t())         # (N,2)
+            probs = logits.softmax(dim=1)                        # (N,2)
+            pos_probs = probs[:, 1].cpu().numpy()                # (N,)
+            matrix.append(pos_probs)
+    # shape: (n_prompts, N) → transpose → (N, n_prompts)
+    return np.vstack(matrix).T
