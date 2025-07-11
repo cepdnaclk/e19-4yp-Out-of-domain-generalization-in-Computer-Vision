@@ -302,48 +302,48 @@ def evaluate_prompt_pair(
     return {'accuracy': acc, 'auc': auc, 'cm': cm, 'report': report, 'inverted_bce': inverted_bce}
 
 
-# def force_double_quotes(code: str) -> str:
-#     """
-#     Rewrites every Python string-literal in `code` to use double-quotes,
-#     properly handling apostrophes and other special characters.
-#     """
-#     tokens = tokenize.generate_tokens(io.StringIO(code).readline)
-#     new_tokens = []
-#     for toknum, tokval, start, end, line in tokens:
-#         if toknum == tokenize.STRING:
-#             value = ast.literal_eval(tokval)
-
-#             tokval = json.dumps(value)
-
-            
-
-#         new_tokens.append((toknum, tokval))
-#     return tokenize.untokenize(new_tokens)
-
-import tokenize
-import io
-import ast
-
 def force_double_quotes(code: str) -> str:
     """
     Rewrites every Python string-literal in `code` to use double-quotes,
-    properly handling apostrophes and other special characters without
-    escaping apostrophes.
+    properly handling apostrophes and other special characters.
     """
     tokens = tokenize.generate_tokens(io.StringIO(code).readline)
     new_tokens = []
     for toknum, tokval, start, end, line in tokens:
         if toknum == tokenize.STRING:
             value = ast.literal_eval(tokval)
-            # Use a custom replacement that preserves apostrophes
-            if "'" in value:
-                # If the string contains apostrophes, we need to handle them carefully
-                tokval = '"' + value.replace('"', '\\"') + '"'
-            else:
-                # Simple case - just use double quotes
-                tokval = '"' + value + '"'
+
+            tokval = json.dumps(value)
+
+            
+
         new_tokens.append((toknum, tokval))
     return tokenize.untokenize(new_tokens)
+
+# import tokenize
+# import io
+# import ast
+
+# def force_double_quotes(code: str) -> str:
+#     """
+#     Rewrites every Python string-literal in `code` to use double-quotes,
+#     properly handling apostrophes and other special characters without
+#     escaping apostrophes.
+#     """
+#     tokens = tokenize.generate_tokens(io.StringIO(code).readline)
+#     new_tokens = []
+#     for toknum, tokval, start, end, line in tokens:
+#         if toknum == tokenize.STRING:
+#             value = ast.literal_eval(tokval)
+#             # Use a custom replacement that preserves apostrophes
+#             if "'" in value:
+#                 # If the string contains apostrophes, we need to handle them carefully
+#                 tokval = '"' + value.replace('"', '\\"') + '"'
+#             else:
+#                 # Simple case - just use double quotes
+#                 tokval = '"' + value + '"'
+#         new_tokens.append((toknum, tokval))
+#     return tokenize.untokenize(new_tokens)
 
 
 def extract_and_parse_prompt_list(code: str) -> List[Tuple[str, str]]:
