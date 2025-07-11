@@ -1,4 +1,0 @@
-Give 50 distinct textual descriptions of pairs of discriptive observations to identify whether a whether 
-a OCT B-Scan image contains IRF(intra retinal fluid) or not. These descriptions should focus on observable
- characteristics within the image. Only provide the output as 
- Python code in the following format: prompts = list[tuple[negative: str, positive: str]]. Let's think step-by-step
