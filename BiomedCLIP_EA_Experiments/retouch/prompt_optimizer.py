@@ -40,7 +40,7 @@ def get_prompt_template(iteration_num: int, prompt_content: str, generate_n: int
     Here are the best performing pairs in ascending order. High scores indicate higher quality visual discriminative features.
     {content}
     {iteration_specific_instruction}
-    Only provide the output as Python code in the following format: prompts = list[tuple[negative: str, positive: str]]. Let's think step-by-step
+    Only provide the output as Python code in the following format: prompts = list[tuple[negative: str, positive: str]]. If a prompt contains apostrophe make it \' instead of just '. Let's think step-by-step
     """
 
     if 1 <= iteration_num <= 500:
@@ -114,7 +114,7 @@ def main():
 
     # Configure the prompt templates
     # meta_init_prompt =  """Give 50 distinct textual descriptions of pairs of visual discriminative features to identify whether the central region of a histopathological image patch contains tumor tissue or not. The patch is extracted from an H&E‑stained whole‑slide image of a lymph node section. Only provide the output as Python code in the following format: prompts = list[tuple[negative: str, positive: str]]. Let's think step-by-step"""
-    meta_init_prompt = """ Give 50 distinct textual descriptions of pairs of discriptive observations to identify whether a whether a OCT B-Scan image contains IRF(intra retinal fluid) or not. These descriptions should focus on observable characteristics within the image. Only provide the output as Python code in the following format: prompts = list[tuple[negative: str, positive: str]]. Let's think step-by-step"""
+    meta_init_prompt = """ Give 50 distinct textual descriptions of pairs of discriptive observations to identify whether a whether a OCT B-Scan image contains IRF(intra retinal fluid) or not. These descriptions should focus on observable characteristics within the image. If a prompt contains apostrophe make it \' instead of just '. Only provide the output as Python code in the following format: prompts = list[tuple[negative: str, positive: str]]. Let's think step-by-step"""
     # meta_prompt_template = """The task is to generate 50 textual descriptions pairs of visual discriminative features to identify whether the central region of an histopathological image patch contains tumor tissue or not. The patch is extracted from an H&E‑stained whole‑slide image of a lymph node section.
     # Here are the best performing pairs. You should aim to get higher scores. Each description should be about 5-20 words.
     # {content}
