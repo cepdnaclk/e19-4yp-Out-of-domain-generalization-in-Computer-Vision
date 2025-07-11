@@ -527,7 +527,7 @@ def get_prompt_pairs(
     prompt: str,
     llm_client: LLMClient,  # Accept the unified LLMClient instance
     parse_func: Callable = extract_and_parse_prompt_list,
-    max_retries: int = 2
+    max_retries: int = 1
 ) -> List[Tuple[str, str]]:
     """
     Retrieves and parses a list of prompt-response pairs from an LLM.
@@ -561,7 +561,9 @@ def get_prompt_pairs(
             code = m.group(1)
 
             # 2) normalize all literals to double-quoted form
+            print(f"******************* Before forcing double quotes: {code}...")
             code = force_double_quotes(code)
+            print(f"******************* After forcing double quotes: {code}...")
 
             # print(f"Normalized code on attempt {attempt}: {code}...")
 
