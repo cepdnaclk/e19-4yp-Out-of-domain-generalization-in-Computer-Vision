@@ -472,27 +472,6 @@ def extract_and_parse_prompt_tuple(code: str) -> Tuple[str, str]:
     raise ValueError("No 2-element string tuple found in code")
 
 
-# def _force_double_quotes(code: str) -> str:
-#     """
-#     Rewrites every Python string-literal in `code` to use double-quotes,
-#     properly handling apostrophes and other special characters.
-#     """
-#     tokens = tokenize.generate_tokens(io.StringIO(code).readline)
-#     new_tokens = []
-#     for toknum, tokval, start, end, line in tokens:
-#         if toknum == tokenize.STRING:
-#             # Get the actual string value
-#             value = ast.literal_eval(tokval)
-
-#             # Create a new string literal with double quotes
-#             # Properly escape any double quotes or backslashes in the string
-#             # This automatically handles escaping correctly
-#             tokval = json.dumps(value)
-
-#         new_tokens.append((toknum, tokval))
-#     return tokenize.untokenize(new_tokens)
-
-
 class LLMClient:
     """
     A unified client for interacting with different LLM providers (Gemini, Ollama).
