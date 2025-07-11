@@ -527,7 +527,7 @@ def get_prompt_pairs(
     prompt: str,
     llm_client: LLMClient,  # Accept the unified LLMClient instance
     parse_func: Callable = extract_and_parse_prompt_list,
-    max_retries: int = 30
+    max_retries: int = 2
 ) -> List[Tuple[str, str]]:
     """
     Retrieves and parses a list of prompt-response pairs from an LLM.
