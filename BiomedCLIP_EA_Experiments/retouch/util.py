@@ -301,6 +301,25 @@ def evaluate_prompt_pair(
     report = classification_report(y_true, y_pred, digits=4,zero_division=0)
     return {'accuracy': acc, 'auc': auc, 'cm': cm, 'report': report, 'inverted_bce': inverted_bce}
 
+def convert_prompts_raw_to_double_quotes(raw_code: str) -> str:
+    # Match inside the prompts list
+    list_body = re.search(r"prompts\s*=\s*\[(.*)\]", raw_code, re.DOTALL)
+    if not list_body:
+        raise ValueError("Could not find 'prompts = [...]' assignment.")
+    
+    content = list_body.group(1)
+
+    # Regex to find tuples: ('...', '...')
+    pattern = re.compile(r"\(\s*'(.*?)'\s*,\s*'(.*?)'\s*\)", re.DOTALL)
+
+    # Replace with double-quoted strings
+    result = "prompts = [\n"
+    for match in pattern.finditer(content):
+        left = match.group(1).replace('"', '\\"')
+        right = match.group(2).replace('"', '\\"')
+        result += f'    ("{left}", "{right}"),\n'
+    result = result.rstrip(',\n') + "\n]"
+    return result
 
 def force_double_quotes(code: str) -> str:
     """
@@ -578,7 +597,8 @@ def get_prompt_pairs(
 
             # 2) normalize all literals to double-quoted form
             print(f"******************* Before forcing double quotes: {code}...")
-            code = force_double_quotes(code)
+            # code = force_double_quotes(code)
+            code = convert_prompts_raw_to_double_quotes(code)
             print(f"******************* After forcing double quotes: {code}...")
 
             # print(f"Normalized code on attempt {attempt}: {code}...")
