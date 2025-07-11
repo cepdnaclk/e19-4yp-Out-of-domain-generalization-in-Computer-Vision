@@ -302,30 +302,46 @@ def evaluate_prompt_pair(
     return {'accuracy': acc, 'auc': auc, 'cm': cm, 'report': report, 'inverted_bce': inverted_bce}
 
 
+# def force_double_quotes(code: str) -> str:
+#     """
+#     Rewrites every Python string-literal in `code` to use double-quotes,
+#     properly handling apostrophes and other special characters.
+#     """
+#     tokens = tokenize.generate_tokens(io.StringIO(code).readline)
+#     new_tokens = []
+#     for toknum, tokval, start, end, line in tokens:
+#         if toknum == tokenize.STRING:
+#             value = ast.literal_eval(tokval)
+
+#             tokval = json.dumps(value)
+
+            
+
+#         new_tokens.append((toknum, tokval))
+#     return tokenize.untokenize(new_tokens)
+
+import tokenize
+import io
+import ast
+
 def force_double_quotes(code: str) -> str:
     """
     Rewrites every Python string-literal in `code` to use double-quotes,
-    properly handling apostrophes and other special characters.
+    properly handling apostrophes and other special characters without
+    escaping apostrophes.
     """
     tokens = tokenize.generate_tokens(io.StringIO(code).readline)
     new_tokens = []
     for toknum, tokval, start, end, line in tokens:
         if toknum == tokenize.STRING:
-            # Get the actual string value
             value = ast.literal_eval(tokval)
-
-            # Create a new string literal with double quotes
-            # Properly escape any double quotes or backslashes in the string
-            # This automatically handles escaping correctly
-            tokval = json.dumps(value)
-
-            # # Use repr() to get a Python-style escaped string, then convert quotes
-            # quoted = repr(value)
-            # if quoted.startswith("'"):
-            #     # Replace outer single quotes with double quotes, and unescape internal double quotes
-            #     quoted = '"' + quoted[1:-1].replace('"', r'\"').replace("\\'", "'") + '"'
-            # tokval = quoted
-
+            # Use a custom replacement that preserves apostrophes
+            if "'" in value:
+                # If the string contains apostrophes, we need to handle them carefully
+                tokval = '"' + value.replace('"', '\\"') + '"'
+            else:
+                # Simple case - just use double quotes
+                tokval = '"' + value + '"'
         new_tokens.append((toknum, tokval))
     return tokenize.untokenize(new_tokens)
 
