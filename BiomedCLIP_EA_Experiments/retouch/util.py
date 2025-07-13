@@ -598,7 +598,7 @@ def get_prompt_pairs(
             # 2) normalize all literals to double-quoted form
             print(f"******************* Before forcing double quotes: {code}...")
             # code = force_double_quotes(code)
-            # code = convert_prompts_raw_to_double_quotes(code)
+            code = convert_prompts_raw_to_double_quotes(code)
             print(f"******************* After forcing double quotes: {code}...")
 
             # print(f"Normalized code on attempt {attempt}: {code}...")
