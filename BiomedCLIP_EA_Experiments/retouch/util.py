@@ -386,7 +386,7 @@ def extract_and_parse_prompt_list(code: str) -> List[Tuple[str, str]]:
     # list_str = re.sub(r'(?<!\\)\'', '\\\'', list_str)  # escape unescaped single quotes
 
 
-
+    print(f"Inside of parse Function {code}")
     # 2) safely evaluate it (only literals)
     try:
         data: Any = ast.literal_eval(list_str)
