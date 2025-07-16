@@ -1,2 +1,4 @@
 cached
 logs
+**/API_KEY.py
+**/cached
