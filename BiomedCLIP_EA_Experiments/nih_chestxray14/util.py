@@ -81,7 +81,7 @@ PromptList = List[Tuple[PromptPair, float]]
 
 
 class NIHChestXRayDataset(Dataset):
-    def __init__(self, df, image_dir, preprocess, target_label="Nodule"):
+    def __init__(self, df, image_dir, preprocess, target_label="Mass"):
         self.df = df[df['Finding Labels'].apply(
             lambda x: target_label in x.split('|') or x == 'No Finding'
         )]
