@@ -1,0 +1,113 @@
+Iteration 1:
+('No evidence of bronchiectasis.', 'Bronchiectasis with dilated airways.'), Score: 0.8971
+('No signs of pulmonary hypertension.', 'Signs of pulmonary hypertension with enlarged pulmonary arteries.'), Score: 0.8945
+('No evidence of foreign body.', 'A foreign body is visible in the right bronchus.'), Score: 0.8940
+('No evidence of pneumothorax.', 'Apical pneumothorax present.'), Score: 0.8925
+('No evidence of pneumomediastinum.', 'Pneumomediastinum present.'), Score: 0.8891
+('No evidence of atelectasis.', 'Atelectasis of the left lower lobe.'), Score: 0.8861
+('No evidence of interstitial lung disease.', 'Honeycomb lung pattern suggestive of interstitial lung disease.'), Score: 0.8828
+('No pleural thickening.', 'Pleural thickening with blunting of the costophrenic angle.'), Score: 0.8812
+('Lungs appear clear with sharp diaphragmatic angles.', 'Presence of consolidation in the lower lobes.'), Score: 0.8786
+('No evidence of tuberculosis.', 'Cavitary lesions suggestive of tuberculosis.'), Score: 0.8696
+('No evidence of ARDS.', 'Diffuse alveolar damage consistent with ARDS.'), Score: 0.8586
+('Normal clavicles.', 'Clavicular fracture.'), Score: 0.8515
+('No air bronchograms are seen.', 'Air bronchograms visible within a consolidated area.'), Score: 0.8457
+('No pleural strands.', 'Pleural strands present.'), Score: 0.8378
+('No evidence of emphysema.', 'Hyperinflation consistent with emphysema.'), Score: 0.8371
+('No evidence of organizing pneumonia.', 'Patchy consolidation consistent with organizing pneumonia.'), Score: 0.8367
+('No pleural effusions are visible.', 'Pleural effusion present in the left hemithorax.'), Score: 0.8365
+('No calcifications.', 'Calcifications within a lung nodule.'), Score: 0.8208
+('No interstitial markings.', 'Reticular interstitial markings suggestive of fibrosis.'), Score: 0.8143
+('No evidence of cavitation.', 'Cavity formation within a lung nodule.'), Score: 0.8129
+('No focal consolidation.', 'Dense consolidation in the left lower lobe.'), Score: 0.8076
+('No evidence of fungal infection.', 'Multiple nodules suggestive of fungal infection.'), Score: 0.8056
+('No evidence of malignancy.', 'A large mass suggestive of malignancy.'), Score: 0.7966
+('Clear lung fields bilaterally.', 'Opacification of the right middle lobe.'), Score: 0.7932
+('Sharp cardiac silhouette.', 'Cardiomegaly with pulmonary edema.'), Score: 0.7883
+('No fluid in the fissures.', 'Fluid within the interlobar fissures.'), Score: 0.7685
+('Normal scapulae.', 'Scapular fracture.'), Score: 0.7592
+('No subcutaneous emphysema.', 'Subcutaneous emphysema present.'), Score: 0.7479
+('No evidence of pulmonary embolism.', 'Wedge-shaped peripheral opacity suggestive of pulmonary embolism.'), Score: 0.7430
+('No evidence of scarring.', 'Evidence of scarring in the upper lobes.'), Score: 0.7360
+('No evidence of lymphadenopathy.', 'Mediastinal lymphadenopathy.'), Score: 0.6470
+('Clear upper lobes.', 'Infiltrates in the upper lobes.'), Score: 0.6430
+('Mediastinum is unremarkable.', 'Mediastinal widening and shifting.'), Score: 0.6321
+
+Iteration 10:
+('No evidence of bronchial wall thickening.', 'Bronchial wall thickening suggestive of chronic bronchitis.'), Score: 0.9115
+('No evidence of bronchial wall thickening.', 'Bronchial wall thickening indicating chronic bronchitis.'), Score: 0.9083
+('No evidence of bronchiectasis.', 'Bronchiectasis with dilated airways.'), Score: 0.8971
+('No signs of pulmonary hypertension.', 'Signs of pulmonary hypertension with enlarged pulmonary arteries.'), Score: 0.8945
+('No evidence of foreign body.', 'A foreign body is visible in the right bronchus.'), Score: 0.8940
+('No evidence of pneumothorax.', 'Apical pneumothorax present.'), Score: 0.8925
+('No evidence of pneumothorax.', 'Pneumothorax with visceral pleural line.'), Score: 0.8920
+('No pleural effusion.', 'Blunting of the costophrenic angle suggestive of pleural effusion.'), Score: 0.8899
+('Clear costophrenic angles.', 'Costophrenic angle blunting due to fluid accumulation.'), Score: 0.8899
+('No hilar adenopathy.', 'Hilar adenopathy suggesting lymph node enlargement.'), Score: 0.8897
+('No evidence of pneumomediastinum.', 'Pneumomediastinum present.'), Score: 0.8891
+('No evidence of pulmonary nodules.', 'Multiple pulmonary nodules of varying sizes.'), Score: 0.8888
+('No evidence of atelectasis.', 'Atelectasis of the right middle lobe.'), Score: 0.8887
+('No cardiomegaly.', 'Cardiomegaly with an increased cardiothoracic ratio.'), Score: 0.8887
+('No pleural thickening.', 'Pleural thickening with associated volume loss.'), Score: 0.8873
+('Mediastinum within normal limits.', 'Mediastinal widening suggestive of aortic dissection.'), Score: 0.8870
+('No hilar prominence.', 'Hilar prominence suggesting lymphadenopathy.'), Score: 0.8863
+('No evidence of atelectasis.', 'Atelectasis of the left lower lobe.'), Score: 0.8861
+('No evidence of interstitial lung disease.', 'Honeycomb lung pattern suggestive of interstitial lung disease.'), Score: 0.8828
+('No pulmonary nodules.', 'Multiple pulmonary nodules of varying sizes.'), Score: 0.8828
+('No pleural thickening.', 'Pleural thickening with blunting of the costophrenic angle.'), Score: 0.8812
+('No evidence of pleural thickening.', 'Pleural thickening and calcification.'), Score: 0.8810
+('No mediastinal widening.', 'Mediastinal widening suggestive of a mass or adenopathy.'), Score: 0.8790
+('Lungs appear clear with sharp diaphragmatic angles.', 'Presence of consolidation in the lower lobes.'), Score: 0.8786
+('No pleural effusion.', 'Pleural effusion with blunting of the costophrenic angle.'), Score: 0.8786
+('No air bronchograms.', 'Air bronchograms visible within an area of consolidation.'), Score: 0.8751
+('No signs of pulmonary edema.', 'Kerley B lines indicating pulmonary edema.'), Score: 0.8727
+('No evidence of tuberculosis.', 'Cavitary lesions suggestive of tuberculosis.'), Score: 0.8696
+('Clear costophrenic angles.', 'Costophrenic angle obliteration.'), Score: 0.8688
+('Clear costophrenic angles bilaterally.', 'Costophrenic angle obliteration on the right side.'), Score: 0.8658
+('No peribronchial cuffing.', 'Peribronchial cuffing indicating airway inflammation.'), Score: 0.8647
+('No mediastinal widening.', 'Mediastinal widening potentially indicating a mass or adenopathy.'), Score: 0.8639
+('No evidence of pleural effusion.', 'Large pleural effusion with meniscus sign.'), Score: 0.8633
+('No evidence of ARDS.', 'Diffuse alveolar damage consistent with ARDS.'), Score: 0.8586
+('Normal clavicles.', 'Clavicular fracture.'), Score: 0.8515
+('No hilar enlargement.', 'Hilar lymphadenopathy present.'), Score: 0.8506
+('No air bronchograms.', 'Air bronchograms indicating consolidation.'), Score: 0.8463
+('No air bronchograms are seen.', 'Air bronchograms visible within a consolidated area.'), Score: 0.8457
+('No evidence of cavitation.', 'Cavitation within a lung mass.'), Score: 0.8420
+('No pleural strands.', 'Pleural strands present.'), Score: 0.8378
+('No evidence of emphysema.', 'Hyperinflation consistent with emphysema.'), Score: 0.8371
+('No pleural effusion.', 'Large left pleural effusion.'), Score: 0.8368
+('No evidence of organizing pneumonia.', 'Patchy consolidation consistent with organizing pneumonia.'), Score: 0.8367
+('No pleural effusions are visible.', 'Pleural effusion present in the left hemithorax.'), Score: 0.8365
+('No pleural effusion.', 'Large right pleural effusion.'), Score: 0.8359
+('No evidence of cavitation.', 'Cavitation within a lung nodule, potentially indicating infection.'), Score: 0.8343
+('No evidence of atelectasis.', 'Linear atelectasis in the left lower lobe.'), Score: 0.8326
+('No evidence of pneumothorax.', 'Right-sided pneumothorax with apical air collection.'), Score: 0.8314
+('No focal opacity.', 'Round opacity in the right upper lobe, potentially a nodule.'), Score: 0.8312
+('No evidence of pulmonary edema.', 'Bilateral pulmonary edema with Kerley B lines.'), Score: 0.8311
+('No evidence of ground-glass opacity.', 'Ground-glass opacity in the left upper lobe.'), Score: 0.8231
+('Clear lung fields.', 'Right lower lobe consolidation.'), Score: 0.8211
+('No calcifications.', 'Calcifications within a lung nodule.'), Score: 0.8208
+('No evidence of cavitation.', 'Cavitation within a lung nodule.'), Score: 0.8207
+('No interstitial markings.', 'Reticular interstitial markings suggestive of fibrosis.'), Score: 0.8143
+('No evidence of cavitation.', 'Cavity formation within a lung nodule.'), Score: 0.8129
+('No focal consolidation.', 'Dense consolidation in the left lower lobe.'), Score: 0.8076
+('No evidence of fungal infection.', 'Multiple nodules suggestive of fungal infection.'), Score: 0.8056
+('No evidence of malignancy.', 'A large mass suggestive of malignancy.'), Score: 0.7966
+('No evidence of rib fractures.', 'Multiple rib fractures on the left side.'), Score: 0.7956
+('Clear lung fields bilaterally.', 'Opacification of the right middle lobe.'), Score: 0.7932
+('Sharp cardiac silhouette.', 'Cardiomegaly with pulmonary edema.'), Score: 0.7883
+('No peribronchial cuffing.', 'Peribronchial cuffing suggestive of bronchitis.'), Score: 0.7783
+('Bony thorax is intact.', 'Rib fracture with cortical disruption.'), Score: 0.7771
+('No fluid in the fissures.', 'Fluid within the interlobar fissures.'), Score: 0.7685
+('Normal scapulae.', 'Scapular fracture.'), Score: 0.7592
+('No subcutaneous emphysema.', 'Subcutaneous emphysema present.'), Score: 0.7479
+('No evidence of pulmonary embolism.', 'Wedge-shaped peripheral opacity suggestive of pulmonary embolism.'), Score: 0.7430
+('No evidence of pneumothorax.', 'Apical pneumothorax with visible pleural line.'), Score: 0.7377
+('No evidence of scarring.', 'Evidence of scarring in the upper lobes.'), Score: 0.7360
+('Mediastinal contours are within normal limits.', 'Widened mediastinum potentially indicating aortic dissection.'), Score: 0.6926
+('No hilar prominence.', 'Hilar enlargement.'), Score: 0.6682
+('No evidence of lymphadenopathy.', 'Mediastinal lymphadenopathy.'), Score: 0.6470
+('Clear upper lobes.', 'Infiltrates in the upper lobes.'), Score: 0.6430
+('Normal mediastinal width.', 'Widened mediastinum potentially indicating aortic dissection or mass.'), Score: 0.6402
+('Mediastinum is unremarkable.', 'Mediastinal widening and shifting.'), Score: 0.6321
+

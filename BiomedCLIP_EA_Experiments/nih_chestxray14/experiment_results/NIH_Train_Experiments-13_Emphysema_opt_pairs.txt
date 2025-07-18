@@ -1,0 +1,1558 @@
+Iteration 1:
+('No hilar adenopathy.', 'Hilar adenopathy present.'), Score: 0.9153
+('No evidence of rib notching.', 'Rib notching observed.'), Score: 0.9022
+('No evidence of lordosis.', 'Lordosis observed.'), Score: 0.8996
+('No evidence of kyphosis.', 'Kyphosis observed.'), Score: 0.8975
+('No evidence of bronchiectasis.', 'Bronchiectatic changes observed.'), Score: 0.8926
+('No evidence of pneumomediastinum.', 'Pneumomediastinum present.'), Score: 0.8891
+('No pleural thickening.', 'Pleural thickening present along the lateral chest wall.'), Score: 0.8883
+('No evidence of pulmonary nodules.', 'Multiple pulmonary nodules observed.'), Score: 0.8872
+('No evidence of alveolar edema.', 'Alveolar edema present.'), Score: 0.8818
+('Lungs appear clear with sharp diaphragmatic angles.', 'Presence of consolidation in the lower lobes.'), Score: 0.8786
+('No infiltrates are seen.', 'Infiltrates present in the lower lung fields.'), Score: 0.8772
+('No evidence of cavitation.', 'Cavity observed in the right upper lobe.'), Score: 0.8701
+('No evidence of scoliosis.', 'Scoliosis observed.'), Score: 0.8666
+('No subcutaneous emphysema.', 'Subcutaneous emphysema present in the neck.'), Score: 0.8605
+('No evidence of prior surgery.', 'Post-surgical changes observed.'), Score: 0.8588
+('No evidence of pulmonary hypertension.', 'Signs of pulmonary hypertension, including enlarged pulmonary arteries.'), Score: 0.8576
+('Clear lung apices.', 'Apical cap suggestive of old tuberculosis.'), Score: 0.8545
+('Lung fields are symmetrical.', 'Asymmetry in lung volumes.'), Score: 0.8523
+('Normal clavicles.', 'Clavicular fracture.'), Score: 0.8515
+('No evidence of lymphatic obstruction.', 'Lymphatic obstruction with dilated lymphatics.'), Score: 0.8432
+('No pleural effusions are present.', 'Pleural effusion noted in the left hemithorax.'), Score: 0.8407
+('Clear air bronchograms are absent.', 'Air bronchograms visible within the consolidation.'), Score: 0.8358
+('No signs of pulmonary congestion.', 'Increased pulmonary venous congestion.'), Score: 0.8120
+('No evidence of interstitial edema.', 'Interstitial edema present.'), Score: 0.8012
+('No evidence of pneumothorax.', 'Presence of a left-sided pneumothorax.'), Score: 0.8002
+('No evidence of ground-glass opacity.', 'Ground-glass opacity present in the right middle lobe.'), Score: 0.7740
+('Normal scapulae.', 'Scapular fracture.'), Score: 0.7592
+('No evidence of radiation therapy changes.', 'Radiation pneumonitis observed.'), Score: 0.7565
+('No focal airspace opacities.', 'Focal consolidation in the left upper lobe.'), Score: 0.7489
+('No evidence of pulmonary embolism.', 'Wedge-shaped peripheral opacity suggestive of pulmonary embolism.'), Score: 0.7430
+('No interstitial markings.', 'Reticular pattern throughout both lungs.'), Score: 0.6914
+('Normal cardiac silhouette.', 'Enlarged cardiac silhouette with rounded contours.'), Score: 0.6218
+
+Iteration 10:
+('No evidence of peribronchial cuffing.', 'Peribronchial cuffing present, suggesting airway inflammation.'), Score: 0.9163
+('No hilar adenopathy.', 'Hilar adenopathy present.'), Score: 0.9153
+('No evidence of bronchial wall thickening.', 'Bronchial wall thickening observed, suggesting bronchitis or bronchiectasis.'), Score: 0.9088
+('No evidence of hilar prominence.', 'Hilar prominence suggestive of lymphadenopathy.'), Score: 0.9040
+('No evidence of rib notching.', 'Rib notching observed.'), Score: 0.9022
+('No evidence of lordosis.', 'Lordosis observed.'), Score: 0.8996
+('No mediastinal widening.', 'Mediastinal widening observed, potentially indicating a mass or aortic dissection.'), Score: 0.8984
+('No mediastinal widening.', 'Mediastinal widening observed, potentially due to aortic dissection or mass.'), Score: 0.8978
+('No evidence of kyphosis.', 'Kyphosis observed.'), Score: 0.8975
+('No evidence of atelectasis.', 'Atelectasis of the right lower lobe.'), Score: 0.8948
+('No atelectasis.', 'Atelectasis observed in the right middle lobe.'), Score: 0.8937
+('No evidence of bronchiectasis.', 'Bronchiectasis observed in the lower lobes.'), Score: 0.8936
+('No evidence of bronchiectasis.', 'Bronchiectatic changes observed.'), Score: 0.8926
+('No evidence of consolidation.', 'Consolidation present in the left lower lobe.'), Score: 0.8915
+('No cavitation is seen.', 'Cavitation observed within a lung nodule.'), Score: 0.8906
+('No evidence of pneumomediastinum.', 'Pneumomediastinum present.'), Score: 0.8891
+('No evidence of pulmonary nodules.', 'Multiple pulmonary nodules identified, requiring further investigation.'), Score: 0.8885
+('No pleural thickening.', 'Pleural thickening present along the lateral chest wall.'), Score: 0.8883
+('No evidence of pulmonary nodules.', 'Multiple pulmonary nodules observed in both lungs.'), Score: 0.8880
+('No evidence of rib fractures.', 'Multiple rib fractures identified on the right side.'), Score: 0.8878
+('No signs of pulmonary hypertension.', 'Signs of pulmonary hypertension are present.'), Score: 0.8876
+('No evidence of pulmonary nodules.', 'Multiple pulmonary nodules observed.'), Score: 0.8872
+('No evidence of alveolar edema.', 'Alveolar edema present.'), Score: 0.8818
+('No pleural effusion.', 'Pleural effusion present, blunting the costophrenic angle.'), Score: 0.8806
+('No evidence of cardiomegaly.', 'Cardiomegaly with an increased cardiothoracic ratio.'), Score: 0.8793
+('Lungs appear clear with sharp diaphragmatic angles.', 'Presence of consolidation in the lower lobes.'), Score: 0.8786
+('Mediastinum is within normal limits.', 'Widened mediastinum, potentially indicating lymphadenopathy.'), Score: 0.8783
+('No infiltrates are seen.', 'Infiltrates present in the lower lung fields.'), Score: 0.8772
+('No evidence of pleural effusion.', 'Pleural effusion present, blunting the costophrenic angle.'), Score: 0.8719
+('No evidence of cavitation.', 'Cavity observed in the right upper lobe.'), Score: 0.8701
+('No evidence of scoliosis.', 'Scoliosis observed.'), Score: 0.8666
+('No infiltrates are visible.', 'Patchy infiltrates observed bilaterally.'), Score: 0.8619
+('No subcutaneous emphysema.', 'Subcutaneous emphysema present in the neck.'), Score: 0.8605
+('No evidence of prior surgery.', 'Post-surgical changes observed.'), Score: 0.8588
+('Lung fields are clear bilaterally.', 'Patchy infiltrates observed in the left upper lobe.'), Score: 0.8588
+('No evidence of air bronchograms.', 'Air bronchograms visible within an area of consolidation.'), Score: 0.8583
+('No evidence of pulmonary hypertension.', 'Signs of pulmonary hypertension, including enlarged pulmonary arteries.'), Score: 0.8576
+('No pleural thickening is present.', 'Pleural thickening observed, potentially indicating prior inflammation.'), Score: 0.8547
+('Clear lung apices.', 'Apical cap suggestive of old tuberculosis.'), Score: 0.8545
+('Lung fields are symmetrical.', 'Asymmetry in lung volumes.'), Score: 0.8523
+('Lung fields are clear.', 'Consolidation present in the left upper lobe.'), Score: 0.8522
+('Normal clavicles.', 'Clavicular fracture.'), Score: 0.8515
+('No cardiomegaly.', 'Cardiomegaly present, with an increased cardiothoracic ratio.'), Score: 0.8495
+('No evidence of cavitation.', 'Cavitation within a lung mass is identified.'), Score: 0.8493
+('No evidence of consolidation.', 'Consolidation present in the left lower lobe, suggestive of pneumonia.'), Score: 0.8480
+('No evidence of infiltrates.', 'Bilateral infiltrates observed in the lung fields.'), Score: 0.8467
+('No visible pleural thickening.', 'Pleural thickening present, potentially indicating pleurisy or malignancy.'), Score: 0.8443
+('No pleural effusion is present.', 'Pleural effusion noted in the right hemithorax.'), Score: 0.8438
+('No evidence of lymphatic obstruction.', 'Lymphatic obstruction with dilated lymphatics.'), Score: 0.8432
+('No focal opacity is seen.', 'Focal opacity in the right middle lobe, concerning for pneumonia or mass.'), Score: 0.8427
+('No pleural effusions are present.', 'Pleural effusion noted in the left hemithorax.'), Score: 0.8407
+('No evidence of pneumothorax.', 'Pneumothorax present, with a visible pleural line and lung collapse.'), Score: 0.8401
+('Cardiac silhouette is normal in size.', 'Cardiomegaly observed.'), Score: 0.8388
+('No evidence of cavitation.', 'Cavitation observed within a lung nodule, concerning for infection or malignancy.'), Score: 0.8367
+('Clear air bronchograms are absent.', 'Air bronchograms visible within the consolidation.'), Score: 0.8358
+('No evidence of cavitation.', 'Cavitation present within a pulmonary nodule.'), Score: 0.8331
+('No evidence of peribronchial cuffing.', 'Peribronchial cuffing noted, indicating airway inflammation.'), Score: 0.8328
+('No peribronchial cuffing.', 'Peribronchial cuffing observed, indicating airway inflammation.'), Score: 0.8319
+('No evidence of Kerley B lines.', 'Kerley B lines observed, indicative of interstitial edema.'), Score: 0.8218
+('No evidence of atelectasis.', 'Atelectasis present, causing volume loss and mediastinal shift.'), Score: 0.8216
+('No evidence of air bronchograms.', 'Air bronchograms visible, indicating alveolar filling.'), Score: 0.8173
+('No signs of pulmonary congestion.', 'Increased pulmonary venous congestion.'), Score: 0.8120
+('No evidence of atelectasis.', 'Atelectasis noted in the left upper lobe, causing volume loss.'), Score: 0.8022
+('No evidence of interstitial edema.', 'Interstitial edema present.'), Score: 0.8012
+('No evidence of pneumothorax.', 'Presence of a left-sided pneumothorax.'), Score: 0.8002
+('No focal opacity.', 'Focal opacity identified in the right mid-lung zone, concerning for a mass or pneumonia.'), Score: 0.7987
+('No hilar adenopathy.', 'Hilar adenopathy present, suggesting lymph node enlargement.'), Score: 0.7986
+('No evidence of lobar collapse.', 'Complete collapse of the right upper lobe.'), Score: 0.7756
+('No evidence of ground-glass opacity.', 'Ground-glass opacity present in the right middle lobe.'), Score: 0.7740
+('Normal scapulae.', 'Scapular fracture.'), Score: 0.7592
+('No consolidation is seen.', 'Consolidation observed in the right lower lobe.'), Score: 0.7591
+('Mediastinum is within normal limits.', 'Widened mediastinum, consider aortic dissection or mass.'), Score: 0.7590
+('No evidence of radiation therapy changes.', 'Radiation pneumonitis observed.'), Score: 0.7565
+('No Kerley B lines.', 'Kerley B lines present, indicating interstitial lung disease.'), Score: 0.7490
+('No focal airspace opacities.', 'Focal consolidation in the left upper lobe.'), Score: 0.7489
+('No evidence of pulmonary embolism.', 'Wedge-shaped peripheral opacity suggestive of pulmonary embolism.'), Score: 0.7430
+('No subcutaneous air is present.', 'Subcutaneous emphysema observed, with air outlining the soft tissues of the neck.'), Score: 0.7429
+('No pneumothorax is present.', 'Pneumothorax identified, with visible pleural line.'), Score: 0.7158
+('No Kerley B lines.', 'Kerley B lines present, indicative of pulmonary edema.'), Score: 0.7025
+('No interstitial markings.', 'Reticular pattern throughout both lungs.'), Score: 0.6914
+('No evidence of ground-glass opacity.', 'Ground-glass opacity present, potentially indicating viral pneumonia or early interstitial lung disease.'), Score: 0.6899
+('No peribronchial cuffing.', 'Peribronchial cuffing present, suggesting airway inflammation.'), Score: 0.6855
+('No subcutaneous emphysema.', 'Subcutaneous emphysema noted in the neck and chest wall.'), Score: 0.6805
+('No evidence of Kerley B lines.', 'Kerley B lines present, indicative of pulmonary edema.'), Score: 0.6629
+('Normal cardiac silhouette.', 'Enlarged cardiac silhouette with rounded contours.'), Score: 0.6218
+
+Iteration 20:
+('No evidence of peribronchial cuffing.', 'Peribronchial cuffing observed, suggesting airway inflammation.'), Score: 0.9175
+('No evidence of peribronchial cuffing.', 'Peribronchial cuffing present, suggesting airway inflammation.'), Score: 0.9163
+('No hilar adenopathy.', 'Hilar adenopathy present.'), Score: 0.9153
+('No evidence of bronchial wall thickening.', 'Bronchial wall thickening observed, suggesting bronchitis or bronchiectasis.'), Score: 0.9088
+('No hilar enlargement is present.', 'Hilar enlargement observed, potentially due to lymphadenopathy.'), Score: 0.9075
+('No peribronchial cuffing.', 'Peribronchial cuffing present, indicating inflammation around the bronchi.'), Score: 0.9059
+('No evidence of hilar prominence.', 'Hilar prominence suggestive of lymphadenopathy.'), Score: 0.9040
+('No mediastinal widening is seen.', 'Mediastinal widening observed, concerning for aortic dissection or mass.'), Score: 0.9038
+('No evidence of a hydropneumothorax.', 'Hydropneumothorax present, with both fluid and air in the pleural space.'), Score: 0.9029
+('No evidence of rib notching.', 'Rib notching observed.'), Score: 0.9022
+('No evidence of lordosis.', 'Lordosis observed.'), Score: 0.8996
+('No mediastinal widening.', 'Mediastinal widening observed, potentially due to mass or fluid accumulation.'), Score: 0.8994
+('No mediastinal widening.', 'Mediastinal widening observed, potentially indicating a mass or aortic dissection.'), Score: 0.8984
+('No evidence of a pleural mass.', 'Pleural mass identified, requiring further characterization.'), Score: 0.8980
+('No mediastinal widening.', 'Mediastinal widening observed, potentially due to aortic dissection or mass.'), Score: 0.8978
+('No evidence of kyphosis.', 'Kyphosis observed.'), Score: 0.8975
+('No cardiomegaly is present.', 'Cardiomegaly observed, with an increased cardiothoracic ratio.'), Score: 0.8969
+('No hilar prominence.', 'Hilar prominence observed, suggesting lymphadenopathy.'), Score: 0.8965
+('No evidence of atelectasis.', 'Atelectasis of the right lower lobe.'), Score: 0.8948
+('No atelectasis.', 'Atelectasis observed in the right middle lobe.'), Score: 0.8937
+('No evidence of bronchiectasis.', 'Bronchiectasis observed in the lower lobes.'), Score: 0.8936
+('No evidence of a rounded opacity.', 'A rounded opacity is present, potentially representing pneumonia or abscess.'), Score: 0.8935
+('No evidence of bronchiectasis.', 'Bronchiectatic changes observed.'), Score: 0.8926
+('No evidence of bronchial wall thickening.', 'Bronchial wall thickening observed, potentially due to inflammation or infection.'), Score: 0.8920
+('No evidence of consolidation.', 'Consolidation present in the left lower lobe.'), Score: 0.8915
+('No evidence of lobar consolidation.', 'Lobar consolidation present in the right lower lobe.'), Score: 0.8913
+('No cavitation is seen.', 'Cavitation observed within a lung nodule.'), Score: 0.8906
+('No evidence of pneumomediastinum.', 'Pneumomediastinum present.'), Score: 0.8891
+('No evidence of pulmonary nodules.', 'Multiple pulmonary nodules identified, requiring further investigation.'), Score: 0.8885
+('No pleural thickening.', 'Pleural thickening present along the lateral chest wall.'), Score: 0.8883
+('No evidence of pulmonary nodules.', 'Multiple pulmonary nodules observed in both lungs.'), Score: 0.8880
+('No evidence of rib fractures.', 'Multiple rib fractures identified on the right side.'), Score: 0.8878
+('No signs of pulmonary hypertension.', 'Signs of pulmonary hypertension are present.'), Score: 0.8876
+('No evidence of pulmonary nodules.', 'Multiple pulmonary nodules observed.'), Score: 0.8872
+('No evidence of hilar enlargement.', 'Hilar enlargement observed, potentially indicating lymphadenopathy.'), Score: 0.8864
+('No signs of pulmonary congestion.', 'Pulmonary congestion observed, with increased vascular markings.'), Score: 0.8852
+('No cardiomegaly is apparent.', 'Cardiomegaly present, with an increased cardiothoracic ratio.'), Score: 0.8823
+('No evidence of alveolar edema.', 'Alveolar edema present.'), Score: 0.8818
+('No evidence of mediastinal widening.', 'Mediastinal widening observed, potentially indicating aortic dissection or mediastinitis.'), Score: 0.8807
+('No pleural effusion.', 'Pleural effusion present, blunting the costophrenic angle.'), Score: 0.8806
+('No evidence of atelectasis.', 'Atelectasis of the right lower lobe, potentially secondary to obstruction.'), Score: 0.8804
+('No pleural effusion is visible.', 'Blunting of the costophrenic angle suggestive of pleural effusion.'), Score: 0.8794
+('No evidence of cardiomegaly.', 'Cardiomegaly with an increased cardiothoracic ratio.'), Score: 0.8793
+('Lungs appear clear with sharp diaphragmatic angles.', 'Presence of consolidation in the lower lobes.'), Score: 0.8786
+('No evidence of air bronchograms.', 'Air bronchograms visible within an area of consolidation, indicating pneumonia.'), Score: 0.8784
+('Mediastinum is within normal limits.', 'Widened mediastinum, potentially indicating lymphadenopathy.'), Score: 0.8783
+('No infiltrates are seen.', 'Infiltrates present in the lower lung fields.'), Score: 0.8772
+('No air bronchograms are present.', 'Air bronchograms noted within an area of consolidation.'), Score: 0.8766
+('No evidence of pulmonary nodules.', 'Multiple pulmonary nodules present, requiring further investigation for possible metastatic disease or pneumonia.'), Score: 0.8753
+('No evidence of a pleural mass.', 'Pleural mass observed, potentially malignant.'), Score: 0.8725
+('No evidence of pleural effusion.', 'Pleural effusion present, blunting the costophrenic angle.'), Score: 0.8719
+('No evidence of pulmonary congestion.', 'Pulmonary congestion present, with increased vascular markings.'), Score: 0.8710
+('No evidence of atelectasis.', 'Atelectasis observed in the left lower lobe, causing volume loss.'), Score: 0.8707
+('No evidence of atelectasis.', 'Atelectasis present in the right lower lobe, causing volume loss.'), Score: 0.8706
+('No evidence of bronchial wall thickening.', 'Bronchial wall thickening present, indicating airway inflammation.'), Score: 0.8704
+('No evidence of cavitation.', 'Cavity observed in the right upper lobe.'), Score: 0.8701
+('No air bronchograms are seen.', 'Air bronchograms present within an area of consolidation.'), Score: 0.8699
+('No evidence of a pneumothorax.', 'Pneumothorax present, with lung collapse and air in the pleural space.'), Score: 0.8673
+('No evidence of a pulmonary mass.', 'A pulmonary mass is present, potentially representing pneumonia or tumor.'), Score: 0.8668
+('No evidence of scoliosis.', 'Scoliosis observed.'), Score: 0.8666
+('No air bronchograms are visible.', 'Air bronchograms present within an area of consolidation.'), Score: 0.8665
+('No evidence of atelectasis.', 'Atelectasis present in the right middle lobe, causing volume loss.'), Score: 0.8653
+('No evidence of hilar adenopathy.', 'Hilar adenopathy observed, raising suspicion for infection or malignancy.'), Score: 0.8653
+('No air bronchograms are seen.', 'Air bronchograms visible within an area of consolidation.'), Score: 0.8629
+('No infiltrates are visible.', 'Patchy infiltrates observed bilaterally.'), Score: 0.8619
+('No cardiomegaly.', 'Cardiomegaly observed, with an increased cardiothoracic ratio.'), Score: 0.8613
+('Lung fields are clear without infiltrates.', 'Patchy infiltrates observed in the left upper lobe.'), Score: 0.8607
+('No subcutaneous emphysema.', 'Subcutaneous emphysema present in the neck.'), Score: 0.8605
+('Lung fields are clear.', 'Ill-defined infiltrates present in the left upper lobe.'), Score: 0.8601
+('No pleural effusion.', 'Pleural effusion noted in the right costophrenic angle.'), Score: 0.8596
+('No pleural effusion is present.', 'Pleural effusion observed in the left hemithorax.'), Score: 0.8589
+('No evidence of prior surgery.', 'Post-surgical changes observed.'), Score: 0.8588
+('Lung fields are clear bilaterally.', 'Patchy infiltrates observed in the left upper lobe.'), Score: 0.8588
+('No evidence of air bronchograms.', 'Air bronchograms visible within an area of consolidation.'), Score: 0.8583
+('No evidence of pulmonary hypertension.', 'Signs of pulmonary hypertension, including enlarged pulmonary arteries.'), Score: 0.8576
+('No pleural thickening is present.', 'Pleural thickening observed, potentially indicating prior inflammation.'), Score: 0.8547
+('Clear lung apices.', 'Apical cap suggestive of old tuberculosis.'), Score: 0.8545
+('Lung fields are symmetrical.', 'Asymmetry in lung volumes.'), Score: 0.8523
+('Lung fields are clear.', 'Consolidation present in the left upper lobe.'), Score: 0.8522
+('Normal clavicles.', 'Clavicular fracture.'), Score: 0.8515
+('No evidence of cavitation.', 'Cavitation present within a pulmonary nodule, concerning for necrotizing pneumonia.'), Score: 0.8500
+('No evidence of cavitation.', 'Cavitation present within a pulmonary lesion, suggestive of necrotizing pneumonia.'), Score: 0.8497
+('No cardiomegaly.', 'Cardiomegaly present, with an increased cardiothoracic ratio.'), Score: 0.8495
+('No evidence of cavitation.', 'Cavitation within a lung mass is identified.'), Score: 0.8493
+('No evidence of consolidation.', 'Consolidation present in the left lower lobe, suggestive of pneumonia.'), Score: 0.8480
+('No evidence of pleural thickening.', 'Pleural thickening present, potentially due to empyema or chronic inflammation.'), Score: 0.8474
+('No evidence of cavitation.', 'Cavitation observed within a pulmonary nodule, raising concern for infection.'), Score: 0.8473
+('No evidence of infiltrates.', 'Bilateral infiltrates observed in the lung fields.'), Score: 0.8467
+('No evidence of pneumothorax.', 'Pneumothorax present, with a visible pleural line.'), Score: 0.8443
+('No visible pleural thickening.', 'Pleural thickening present, potentially indicating pleurisy or malignancy.'), Score: 0.8443
+('No evidence of cardiomegaly.', 'Cardiomegaly present, potentially contributing to pulmonary congestion.'), Score: 0.8440
+('No pleural effusion is present.', 'Pleural effusion noted in the right hemithorax.'), Score: 0.8438
+('No evidence of lymphatic obstruction.', 'Lymphatic obstruction with dilated lymphatics.'), Score: 0.8432
+('No focal opacity is seen.', 'Focal opacity in the right middle lobe, concerning for pneumonia or mass.'), Score: 0.8427
+('No evidence of lobar collapse.', 'Lobar collapse with associated volume loss and mediastinal shift.'), Score: 0.8421
+('No evidence of cardiomegaly.', 'Cardiomegaly present, with an increased cardiothoracic ratio.'), Score: 0.8408
+('No pleural effusions are present.', 'Pleural effusion noted in the left hemithorax.'), Score: 0.8407
+('No evidence of pneumothorax.', 'Pneumothorax present, with a visible pleural line and lung collapse.'), Score: 0.8401
+('Cardiac silhouette is normal in size.', 'Cardiomegaly observed.'), Score: 0.8388
+('No evidence of cavitation.', 'Cavitation observed within a lung nodule, concerning for infection or malignancy.'), Score: 0.8367
+('Clear air bronchograms are absent.', 'Air bronchograms visible within the consolidation.'), Score: 0.8358
+('No evidence of consolidation.', 'Consolidation present in the left lower lobe, consistent with pneumonia.'), Score: 0.8345
+('No evidence of cavitation.', 'Cavitation present within a pulmonary nodule.'), Score: 0.8331
+('No evidence of peribronchial cuffing.', 'Peribronchial cuffing noted, indicating airway inflammation.'), Score: 0.8328
+('No evidence of cavitation.', 'Cavitation present within a pulmonary nodule, suggestive of necrotizing pneumonia.'), Score: 0.8322
+('No peribronchial cuffing.', 'Peribronchial cuffing observed, indicating airway inflammation.'), Score: 0.8319
+('No evidence of lobar consolidation.', 'Lobar consolidation present in the right lower lobe, obscuring the right hemidiaphragm.'), Score: 0.8290
+('No evidence of Kerley B lines.', 'Kerley B lines observed, indicative of interstitial edema.'), Score: 0.8218
+('No evidence of atelectasis.', 'Atelectasis present, causing volume loss and mediastinal shift.'), Score: 0.8216
+('No signs of pneumothorax.', 'Pneumothorax present, with visible pleural line and lung collapse.'), Score: 0.8192
+('No evidence of interstitial infiltrates.', 'Bilateral interstitial infiltrates suggestive of atypical pneumonia.'), Score: 0.8186
+('No evidence of atelectasis.', 'Atelectasis observed, with volume loss and mediastinal shift.'), Score: 0.8179
+('No evidence of air bronchograms.', 'Air bronchograms visible, indicating alveolar filling.'), Score: 0.8173
+('No signs of pulmonary congestion.', 'Increased pulmonary venous congestion.'), Score: 0.8120
+('No infiltrates are visible.', 'Patchy infiltrates observed in the right mid-lung zone.'), Score: 0.8024
+('No evidence of atelectasis.', 'Atelectasis noted in the left upper lobe, causing volume loss.'), Score: 0.8022
+('No evidence of interstitial edema.', 'Interstitial edema present.'), Score: 0.8012
+('No evidence of bronchial wall thickening.', 'Bronchial wall thickening observed, potentially indicating bronchitis.'), Score: 0.8004
+('No evidence of pneumothorax.', 'Presence of a left-sided pneumothorax.'), Score: 0.8002
+('No evidence of a pneumothorax.', 'Pneumothorax present, with a visible pleural line.'), Score: 0.7993
+('No focal opacity.', 'Focal opacity identified in the right mid-lung zone, concerning for a mass or pneumonia.'), Score: 0.7987
+('No hilar adenopathy.', 'Hilar adenopathy present, suggesting lymph node enlargement.'), Score: 0.7986
+('No peribronchial cuffing is present.', 'Peribronchial cuffing observed, indicating airway inflammation.'), Score: 0.7866
+('No evidence of pneumothorax.', 'Pneumothorax present in the left apex.'), Score: 0.7842
+('No evidence of lobar collapse.', 'Complete collapse of the right upper lobe.'), Score: 0.7756
+('No subsegmental atelectasis is seen.', 'Subsegmental atelectasis present in the left lower lobe.'), Score: 0.7752
+('No evidence of ground-glass opacity.', 'Ground-glass opacity present in the right middle lobe.'), Score: 0.7740
+('No peribronchial cuffing.', 'Peribronchial cuffing present, indicating airway inflammation.'), Score: 0.7683
+('No evidence of pulmonary nodules.', 'Multiple pulmonary nodules observed in both lung fields.'), Score: 0.7637
+('No ground-glass opacities are present.', 'Ground-glass opacities observed in the bilateral upper lobes.'), Score: 0.7613
+('Normal scapulae.', 'Scapular fracture.'), Score: 0.7592
+('No consolidation is seen.', 'Consolidation observed in the right lower lobe.'), Score: 0.7591
+('Mediastinum is within normal limits.', 'Widened mediastinum, consider aortic dissection or mass.'), Score: 0.7590
+('No evidence of radiation therapy changes.', 'Radiation pneumonitis observed.'), Score: 0.7565
+('No evidence of increased lung opacity.', 'Increased lung opacity observed, consistent with consolidation.'), Score: 0.7541
+('No evidence of ground-glass opacity.', 'Ground-glass opacity noted in the left upper lobe, potentially indicative of early pneumonia or viral infection.'), Score: 0.7492
+('No Kerley B lines.', 'Kerley B lines present, indicating interstitial lung disease.'), Score: 0.7490
+('No focal airspace opacities.', 'Focal consolidation in the left upper lobe.'), Score: 0.7489
+('No evidence of pulmonary embolism.', 'Wedge-shaped peripheral opacity suggestive of pulmonary embolism.'), Score: 0.7430
+('No subcutaneous air is present.', 'Subcutaneous emphysema observed, with air outlining the soft tissues of the neck.'), Score: 0.7429
+('No interstitial thickening.', 'Retinodular pattern indicating interstitial pneumonia.'), Score: 0.7295
+('No hilar adenopathy is present.', 'Hilar adenopathy observed, suggesting infection or malignancy.'), Score: 0.7292
+('No visible pneumothorax.', 'Pneumothorax present in the right apical region.'), Score: 0.7208
+('No cardiomegaly.', 'Cardiomegaly present, with an enlarged cardiac silhouette.'), Score: 0.7163
+('No pneumothorax is present.', 'Pneumothorax identified, with visible pleural line.'), Score: 0.7158
+('No evidence of interstitial markings.', 'Prominent interstitial markings suggestive of pulmonary edema or fibrosis.'), Score: 0.7137
+('No consolidation is present.', 'Patchy consolidation observed in the right lower lobe.'), Score: 0.7087
+('No visible Kerley B lines.', 'Kerley B lines present, indicative of pulmonary edema.'), Score: 0.7064
+('No evidence of silhouette sign.', 'Silhouette sign present, obscuring the cardiac border.'), Score: 0.7058
+('No Kerley B lines.', 'Kerley B lines present, indicative of pulmonary edema.'), Score: 0.7025
+('No pleural thickening is observed.', 'Pleural thickening present, potentially indicating empyema.'), Score: 0.7014
+('No interstitial markings.', 'Reticular pattern throughout both lungs.'), Score: 0.6914
+('No evidence of ground-glass opacity.', 'Ground-glass opacity present, potentially indicating viral pneumonia or early interstitial lung disease.'), Score: 0.6899
+('No peribronchial cuffing.', 'Peribronchial cuffing present, suggesting airway inflammation.'), Score: 0.6855
+('No subcutaneous emphysema.', 'Subcutaneous emphysema noted in the neck and chest wall.'), Score: 0.6805
+('No increased opacity in the costophrenic angles.', 'Increased opacity in the costophrenic angles, suggestive of pleural effusion.'), Score: 0.6763
+('No evidence of Kerley B lines.', 'Kerley B lines present, indicative of pulmonary edema.'), Score: 0.6629
+('No hilar prominence.', 'Bilateral hilar prominence, suggestive of lymphadenopathy.'), Score: 0.6503
+('No evidence of silhouette sign.', 'Silhouette sign present, obscuring the cardiac border, suggestive of left lower lobe consolidation.'), Score: 0.6489
+('Normal cardiac silhouette.', 'Enlarged cardiac silhouette with rounded contours.'), Score: 0.6218
+('No evidence of interstitial markings.', 'Prominent interstitial markings suggestive of pulmonary edema or infection.'), Score: 0.6115
+
+Iteration 30:
+('No evidence of peribronchial cuffing.', 'Peribronchial cuffing observed, suggesting airway inflammation.'), Score: 0.9175
+('No evidence of peribronchial cuffing.', 'Peribronchial cuffing present, suggesting airway inflammation.'), Score: 0.9163
+('No hilar adenopathy.', 'Hilar adenopathy present.'), Score: 0.9153
+('No evidence of hilar adenopathy.', 'Hilar adenopathy present, suggesting lymph node involvement.'), Score: 0.9129
+('No peribronchial cuffing is noted.', 'Peribronchial cuffing present, indicating airway inflammation.'), Score: 0.9090
+('No evidence of bronchial wall thickening.', 'Bronchial wall thickening observed, suggesting bronchitis or bronchiectasis.'), Score: 0.9088
+('No hilar enlargement is present.', 'Hilar enlargement observed, potentially due to lymphadenopathy.'), Score: 0.9075
+('No peribronchial cuffing.', 'Peribronchial cuffing present, indicating inflammation around the bronchi.'), Score: 0.9059
+('No evidence of hilar prominence.', 'Hilar prominence suggestive of lymphadenopathy.'), Score: 0.9040
+('No evidence of peribronchial cuffing.', 'Peribronchial cuffing observed, indicating airway inflammation.'), Score: 0.9039
+('No mediastinal widening is seen.', 'Mediastinal widening observed, concerning for aortic dissection or mass.'), Score: 0.9038
+('No evidence of a hydropneumothorax.', 'Hydropneumothorax present, with both fluid and air in the pleural space.'), Score: 0.9029
+('No evidence of rib notching.', 'Rib notching observed.'), Score: 0.9022
+('No evidence of mediastinal widening.', 'Mediastinal widening observed, potentially indicating mass or inflammation.'), Score: 0.9020
+('No evidence of pleural thickening.', 'Pleural thickening present, potentially chronic.'), Score: 0.9005
+('No evidence of bronchial wall thickening.', 'Bronchial wall thickening present, suggesting inflammation.'), Score: 0.9004
+('No cavitation is visible.', 'Cavitation present within a pulmonary nodule, raising concern for necrotizing pneumonia.'), Score: 0.9003
+('No mediastinal widening.', 'Mediastinal widening present, potentially indicating aortic dissection or mediastinal mass.'), Score: 0.8998
+('No evidence of lordosis.', 'Lordosis observed.'), Score: 0.8996
+('No mediastinal widening.', 'Mediastinal widening observed, potentially due to mass or fluid accumulation.'), Score: 0.8994
+('No mediastinal widening.', 'Mediastinal widening observed, potentially indicating a mass or aortic dissection.'), Score: 0.8984
+('No evidence of a pleural mass.', 'Pleural mass identified, requiring further characterization.'), Score: 0.8980
+('No mediastinal widening.', 'Mediastinal widening observed, potentially due to aortic dissection or mass.'), Score: 0.8978
+('No evidence of kyphosis.', 'Kyphosis observed.'), Score: 0.8975
+('No cardiomegaly is present.', 'Cardiomegaly observed, with an increased cardiothoracic ratio.'), Score: 0.8969
+('No mediastinal widening is seen.', 'Mediastinal widening observed, potentially due to lymphadenopathy or aortic dissection.'), Score: 0.8966
+('No hilar prominence.', 'Hilar prominence observed, suggesting lymphadenopathy.'), Score: 0.8965
+('No cavitation is seen.', 'Cavitation within a pulmonary nodule, raising concern for necrotizing pneumonia.'), Score: 0.8959
+('No evidence of atelectasis.', 'Atelectasis of the right lower lobe.'), Score: 0.8948
+('No atelectasis.', 'Atelectasis observed in the right middle lobe.'), Score: 0.8937
+('No evidence of bronchiectasis.', 'Bronchiectasis observed in the lower lobes.'), Score: 0.8936
+('No evidence of a rounded opacity.', 'A rounded opacity is present, potentially representing pneumonia or abscess.'), Score: 0.8935
+('No evidence of bronchiectasis.', 'Bronchiectatic changes observed.'), Score: 0.8926
+('No evidence of bronchial wall thickening.', 'Bronchial wall thickening observed, potentially due to inflammation or infection.'), Score: 0.8920
+('No evidence of consolidation.', 'Consolidation present in the left lower lobe.'), Score: 0.8915
+('No evidence of lobar consolidation.', 'Lobar consolidation present in the right lower lobe.'), Score: 0.8913
+('No cavitation is seen.', 'Cavitation observed within a lung nodule.'), Score: 0.8906
+('No evidence of reticular opacities.', 'Reticular opacities observed, suggestive of interstitial lung disease or pneumonia.'), Score: 0.8902
+('No evidence of pneumomediastinum.', 'Pneumomediastinum present.'), Score: 0.8891
+('No evidence of pulmonary nodules.', 'Multiple pulmonary nodules identified, requiring further investigation.'), Score: 0.8885
+('No pleural thickening.', 'Pleural thickening present along the lateral chest wall.'), Score: 0.8883
+('No evidence of pulmonary nodules.', 'Multiple pulmonary nodules observed in both lungs.'), Score: 0.8880
+('No evidence of rib fractures.', 'Multiple rib fractures identified on the right side.'), Score: 0.8878
+('No signs of pulmonary hypertension.', 'Signs of pulmonary hypertension are present.'), Score: 0.8876
+('No evidence of pulmonary nodules.', 'Multiple pulmonary nodules observed.'), Score: 0.8872
+('No evidence of hilar enlargement.', 'Hilar enlargement observed, potentially indicating lymphadenopathy.'), Score: 0.8864
+('No signs of pulmonary congestion.', 'Pulmonary congestion observed, with increased vascular markings.'), Score: 0.8852
+('No cardiomegaly is apparent.', 'Cardiomegaly present, with an increased cardiothoracic ratio.'), Score: 0.8823
+('No evidence of alveolar edema.', 'Alveolar edema present.'), Score: 0.8818
+('No pleural effusion is present.', 'Pleural effusion present, blunting the costophrenic angle.'), Score: 0.8815
+('No evidence of mediastinal widening.', 'Mediastinal widening observed, potentially indicating aortic dissection or mediastinitis.'), Score: 0.8807
+('No pleural effusion.', 'Pleural effusion present, blunting the costophrenic angle.'), Score: 0.8806
+('No evidence of atelectasis.', 'Atelectasis of the right lower lobe, potentially secondary to obstruction.'), Score: 0.8804
+('No hilar adenopathy is seen.', 'Hilar adenopathy present, potentially indicating infection.'), Score: 0.8798
+('No pleural effusion is visible.', 'Blunting of the costophrenic angle suggestive of pleural effusion.'), Score: 0.8794
+('No evidence of cardiomegaly.', 'Cardiomegaly with an increased cardiothoracic ratio.'), Score: 0.8793
+('Lungs appear clear with sharp diaphragmatic angles.', 'Presence of consolidation in the lower lobes.'), Score: 0.8786
+('No evidence of air bronchograms.', 'Air bronchograms visible within an area of consolidation, indicating pneumonia.'), Score: 0.8784
+('Mediastinum is within normal limits.', 'Widened mediastinum, potentially indicating lymphadenopathy.'), Score: 0.8783
+('No cavitation is seen within the lung parenchyma.', 'Cavitation present within a lung nodule, consider abscess or necrotizing pneumonia.'), Score: 0.8780
+('Mediastinum is within normal limits.', 'Widened mediastinum, raising suspicion for aortic dissection or mediastinal mass.'), Score: 0.8775
+('No pleural effusion is present.', 'Pleural effusion observed, indicating fluid accumulation in the pleural space.'), Score: 0.8775
+('No infiltrates are seen.', 'Infiltrates present in the lower lung fields.'), Score: 0.8772
+('No air bronchograms are present.', 'Air bronchograms noted within an area of consolidation.'), Score: 0.8766
+('No evidence of pleural fluid layering.', 'Pleural fluid layering along the posterior costophrenic angle.'), Score: 0.8755
+('No evidence of pulmonary nodules.', 'Multiple pulmonary nodules present, requiring further investigation for possible metastatic disease or pneumonia.'), Score: 0.8753
+('No evidence of a mass-like consolidation.', 'Mass-like consolidation observed, raising concern for pneumonia mimicking a tumor.'), Score: 0.8742
+('No pleural thickening is noted.', 'Pleural thickening observed, potentially secondary to empyema.'), Score: 0.8731
+('No evidence of a pleural mass.', 'Pleural mass observed, potentially malignant.'), Score: 0.8725
+('No evidence of pleural effusion.', 'Pleural effusion present, blunting the costophrenic angle.'), Score: 0.8719
+('No pleural effusion is visible.', 'Pleural effusion present, blunting the costophrenic angle.'), Score: 0.8719
+('No evidence of pulmonary congestion.', 'Pulmonary congestion present, with increased vascular markings.'), Score: 0.8710
+('No evidence of atelectasis.', 'Atelectasis of the left lower lobe, potentially due to mucus plugging.'), Score: 0.8710
+('No evidence of atelectasis.', 'Atelectasis observed in the left lower lobe, causing volume loss.'), Score: 0.8707
+('No evidence of atelectasis.', 'Atelectasis present in the right lower lobe, causing volume loss.'), Score: 0.8706
+('No evidence of bronchial wall thickening.', 'Bronchial wall thickening present, indicating airway inflammation.'), Score: 0.8704
+('No evidence of cavitation.', 'Cavity observed in the right upper lobe.'), Score: 0.8701
+('No air bronchograms are seen.', 'Air bronchograms present within an area of consolidation.'), Score: 0.8699
+('No pleural thickening is observed.', 'Pleural thickening present, potentially secondary to chronic infection.'), Score: 0.8690
+('No evidence of pulmonary edema.', 'Pulmonary edema present, with Kerley B lines visible.'), Score: 0.8690
+('No pulmonary infiltrate is seen.', 'Pulmonary infiltrate present in the left upper lobe.'), Score: 0.8683
+('No evidence of a pneumothorax.', 'Pneumothorax present, with lung collapse and air in the pleural space.'), Score: 0.8673
+('No evidence of bronchial wall thickening.', 'Bronchial wall thickening observed, suggestive of bronchitis or pneumonia.'), Score: 0.8673
+('No lobar consolidation is seen.', 'Lobar consolidation present, suggesting pneumonia affecting an entire lobe.'), Score: 0.8670
+('No evidence of a pulmonary mass.', 'A pulmonary mass is present, potentially representing pneumonia or tumor.'), Score: 0.8668
+('No evidence of scoliosis.', 'Scoliosis observed.'), Score: 0.8666
+('No air bronchograms are visible.', 'Air bronchograms present within an area of consolidation.'), Score: 0.8665
+('No evidence of lobar consolidation.', 'Extensive lobar consolidation in the left lower lobe.'), Score: 0.8663
+('No evidence of atelectasis.', 'Atelectasis present in the right middle lobe, causing volume loss.'), Score: 0.8653
+('No evidence of hilar adenopathy.', 'Hilar adenopathy observed, raising suspicion for infection or malignancy.'), Score: 0.8653
+('No hilar prominence is observed.', 'Hilar prominence present, potentially due to lymphadenopathy.'), Score: 0.8649
+('No evidence of air bronchograms.', 'Air bronchograms present within an area of consolidation.'), Score: 0.8649
+('No air bronchograms are seen.', 'Air bronchograms visible within an area of consolidation.'), Score: 0.8629
+('No infiltrates are visible.', 'Patchy infiltrates observed bilaterally.'), Score: 0.8619
+('No evidence of cavitation.', 'Cavitation observed within a pulmonary infiltrate, raising concern for necrotizing pneumonia.'), Score: 0.8615
+('No cardiomegaly.', 'Cardiomegaly observed, with an increased cardiothoracic ratio.'), Score: 0.8613
+('Lung fields are clear without infiltrates.', 'Patchy infiltrates observed in the left upper lobe.'), Score: 0.8607
+('No subcutaneous emphysema.', 'Subcutaneous emphysema present in the neck.'), Score: 0.8605
+('Lung fields are clear.', 'Ill-defined infiltrates present in the left upper lobe.'), Score: 0.8601
+('No pleural effusion.', 'Pleural effusion noted in the right costophrenic angle.'), Score: 0.8596
+('No evidence of rib fractures.', 'Multiple rib fractures observed in the left lateral chest wall.'), Score: 0.8593
+('No pleural effusion is present.', 'Pleural effusion observed in the left hemithorax.'), Score: 0.8589
+('No evidence of prior surgery.', 'Post-surgical changes observed.'), Score: 0.8588
+('Lung fields are clear bilaterally.', 'Patchy infiltrates observed in the left upper lobe.'), Score: 0.8588
+('No evidence of pulmonary nodules.', 'Multiple pulmonary nodules observed, requiring further investigation.'), Score: 0.8588
+('No evidence of air bronchograms.', 'Air bronchograms visible within an area of consolidation.'), Score: 0.8583
+('No evidence of pulmonary hypertension.', 'Signs of pulmonary hypertension, including enlarged pulmonary arteries.'), Score: 0.8576
+('No pleural thickening is present.', 'Pleural thickening observed, potentially indicating prior inflammation.'), Score: 0.8547
+('Clear lung apices.', 'Apical cap suggestive of old tuberculosis.'), Score: 0.8545
+('No evidence of hazy opacification.', 'Hazy opacification noted in the left lower lobe, potentially representing early pneumonia.'), Score: 0.8532
+('No evidence of air space opacity.', 'Air space opacity present in the right middle lobe.'), Score: 0.8530
+('Lung fields are symmetrical.', 'Asymmetry in lung volumes.'), Score: 0.8523
+('Lung fields are clear.', 'Consolidation present in the left upper lobe.'), Score: 0.8522
+('Normal clavicles.', 'Clavicular fracture.'), Score: 0.8515
+('No evidence of cavitation.', 'Cavitation observed within a pulmonary nodule, concerning for infection.'), Score: 0.8512
+('No evidence of cavitation.', 'Cavitation present within a pulmonary nodule, concerning for necrotizing pneumonia.'), Score: 0.8500
+('No evidence of cavitation.', 'Cavitation present within a pulmonary lesion, suggestive of necrotizing pneumonia.'), Score: 0.8497
+('No evidence of a pneumothorax.', 'Pneumothorax present in the left hemithorax, with visible visceral pleural line.'), Score: 0.8497
+('No cardiomegaly.', 'Cardiomegaly present, with an increased cardiothoracic ratio.'), Score: 0.8495
+('No evidence of cavitation.', 'Cavitation within a lung mass is identified.'), Score: 0.8493
+('No air bronchograms are identified.', 'Air bronchograms are clearly visible within the consolidated area.'), Score: 0.8492
+('No evidence of consolidation.', 'Consolidation present in the left lower lobe, suggestive of pneumonia.'), Score: 0.8480
+('No evidence of pleural thickening.', 'Pleural thickening present, potentially due to empyema or chronic inflammation.'), Score: 0.8474
+('No evidence of cavitation.', 'Cavitation observed within a pulmonary nodule, raising concern for infection.'), Score: 0.8473
+('No evidence of infiltrates.', 'Bilateral infiltrates observed in the lung fields.'), Score: 0.8467
+('No evidence of pneumothorax.', 'Pneumothorax present, with a visible pleural line.'), Score: 0.8443
+('No visible pleural thickening.', 'Pleural thickening present, potentially indicating pleurisy or malignancy.'), Score: 0.8443
+('No evidence of cardiomegaly.', 'Cardiomegaly present, potentially contributing to pulmonary congestion.'), Score: 0.8440
+('No pleural effusion is present.', 'Pleural effusion noted in the right hemithorax.'), Score: 0.8438
+('No evidence of lymphatic obstruction.', 'Lymphatic obstruction with dilated lymphatics.'), Score: 0.8432
+('No focal opacity is seen.', 'Focal opacity in the right middle lobe, concerning for pneumonia or mass.'), Score: 0.8427
+('No evidence of a pneumothorax.', 'Pneumothorax present, indicating air in the pleural space.'), Score: 0.8422
+('No evidence of lobar collapse.', 'Lobar collapse with associated volume loss and mediastinal shift.'), Score: 0.8421
+('No evidence of cardiomegaly.', 'Cardiomegaly present, with an increased cardiothoracic ratio.'), Score: 0.8408
+('No pleural effusions are present.', 'Pleural effusion noted in the left hemithorax.'), Score: 0.8407
+('No evidence of pneumothorax.', 'Pneumothorax present, with a visible pleural line and lung collapse.'), Score: 0.8401
+('Cardiac silhouette is normal in size.', 'Cardiomegaly observed.'), Score: 0.8388
+('No evidence of cavitation.', 'Cavitation observed within a lung nodule, concerning for infection or malignancy.'), Score: 0.8367
+('Clear air bronchograms are absent.', 'Air bronchograms visible within the consolidation.'), Score: 0.8358
+('No evidence of consolidation.', 'Consolidation present in the left lower lobe, consistent with pneumonia.'), Score: 0.8345
+('No evidence of cavitation.', 'Cavitation present within a pulmonary nodule.'), Score: 0.8331
+('No evidence of peribronchial cuffing.', 'Peribronchial cuffing noted, indicating airway inflammation.'), Score: 0.8328
+('No evidence of cavitation.', 'Cavitation present within a pulmonary nodule, suggestive of necrotizing pneumonia.'), Score: 0.8322
+('No peribronchial cuffing.', 'Peribronchial cuffing observed, indicating airway inflammation.'), Score: 0.8319
+('No pleural effusions are identified.', 'Pleural effusion present in the right hemithorax, blunting the costophrenic angle.'), Score: 0.8296
+('No evidence of lobar consolidation.', 'Lobar consolidation present in the right lower lobe, obscuring the right hemidiaphragm.'), Score: 0.8290
+('No evidence of atelectasis.', 'Atelectasis observed in the left upper lobe, causing volume loss.'), Score: 0.8273
+('No consolidation is present.', 'Consolidation observed in the left lower lobe.'), Score: 0.8264
+('No evidence of Kerley B lines.', 'Kerley B lines observed, indicative of interstitial edema.'), Score: 0.8218
+('No evidence of atelectasis.', 'Atelectasis present, causing volume loss and mediastinal shift.'), Score: 0.8216
+('No evidence of ground-glass opacities.', 'Ground-glass opacities present in the right upper lobe.'), Score: 0.8214
+('No signs of pneumothorax.', 'Pneumothorax present, with visible pleural line and lung collapse.'), Score: 0.8192
+('No evidence of interstitial infiltrates.', 'Bilateral interstitial infiltrates suggestive of atypical pneumonia.'), Score: 0.8186
+('No evidence of a mass-like opacity.', 'Mass-like opacity identified in the right lung, requiring further evaluation.'), Score: 0.8185
+('No evidence of atelectasis.', 'Atelectasis observed, with volume loss and mediastinal shift.'), Score: 0.8179
+('No evidence of air bronchograms.', 'Air bronchograms visible, indicating alveolar filling.'), Score: 0.8173
+('No signs of pulmonary congestion.', 'Increased pulmonary venous congestion.'), Score: 0.8120
+('No infiltrates are visible.', 'Patchy infiltrates observed in the right mid-lung zone.'), Score: 0.8024
+('No evidence of atelectasis.', 'Atelectasis noted in the left upper lobe, causing volume loss.'), Score: 0.8022
+('No evidence of interstitial edema.', 'Interstitial edema present.'), Score: 0.8012
+('No evidence of bronchial wall thickening.', 'Bronchial wall thickening observed, potentially indicating bronchitis.'), Score: 0.8004
+('No evidence of pneumothorax.', 'Presence of a left-sided pneumothorax.'), Score: 0.8002
+('No evidence of a pneumothorax.', 'Pneumothorax present, with a visible pleural line.'), Score: 0.7993
+('No focal opacity.', 'Focal opacity identified in the right mid-lung zone, concerning for a mass or pneumonia.'), Score: 0.7987
+('No hilar adenopathy.', 'Hilar adenopathy present, suggesting lymph node enlargement.'), Score: 0.7986
+('No evidence of ground-glass opacity.', 'Ground-glass opacity noted in the right upper lobe, concerning for atypical pneumonia.'), Score: 0.7953
+('No evidence of subsegmental atelectasis.', 'Subsegmental atelectasis present, appearing as linear opacities.'), Score: 0.7913
+('No evidence of bronchial wall thickening.', 'Bronchial wall thickening noted, suggesting airway inflammation.'), Score: 0.7905
+('No peribronchial cuffing is present.', 'Peribronchial cuffing observed, indicating airway inflammation.'), Score: 0.7866
+('No evidence of pneumothorax.', 'Pneumothorax present in the left apex.'), Score: 0.7842
+('No ground-glass opacities are visible.', 'Ground-glass opacities present bilaterally, potentially indicative of viral pneumonia.'), Score: 0.7830
+('No evidence of lobar collapse.', 'Complete collapse of the right upper lobe.'), Score: 0.7756
+('No subsegmental atelectasis is seen.', 'Subsegmental atelectasis present in the left lower lobe.'), Score: 0.7752
+('No evidence of ground-glass opacity.', 'Ground-glass opacity present in the right middle lobe.'), Score: 0.7740
+('No peribronchial cuffing.', 'Peribronchial cuffing present, indicating airway inflammation.'), Score: 0.7683
+('No cardiomegaly is present.', 'Cardiomegaly noted, potentially secondary to fluid overload.'), Score: 0.7682
+('No evidence of pulmonary nodules.', 'Multiple pulmonary nodules observed in both lung fields.'), Score: 0.7637
+('No ground-glass opacities are present.', 'Ground-glass opacities observed in the bilateral upper lobes.'), Score: 0.7613
+('No evidence of increased lung opacity.', 'Increased opacity in the right middle lobe, consistent with consolidation.'), Score: 0.7611
+('Normal scapulae.', 'Scapular fracture.'), Score: 0.7592
+('No consolidation is seen.', 'Consolidation observed in the right lower lobe.'), Score: 0.7591
+('Mediastinum is within normal limits.', 'Widened mediastinum, consider aortic dissection or mass.'), Score: 0.7590
+('No evidence of a pneumothorax.', 'Pneumothorax present, with visible pleural line.'), Score: 0.7567
+('No evidence of radiation therapy changes.', 'Radiation pneumonitis observed.'), Score: 0.7565
+('No hilar enlargement is observed.', 'Bilateral hilar enlargement, concerning for lymphadenopathy.'), Score: 0.7556
+('No evidence of ground-glass opacity.', 'Ground-glass opacity present in the bilateral lungs, potentially indicative of viral pneumonia.'), Score: 0.7546
+('No evidence of pneumothorax.', 'Pneumothorax present in the left apex, with visible pleural line.'), Score: 0.7544
+('No evidence of increased lung opacity.', 'Increased lung opacity observed, consistent with consolidation.'), Score: 0.7541
+('No ground-glass opacities are identified.', 'Ground-glass opacities present, often seen in viral pneumonia.'), Score: 0.7519
+('No pulmonary edema is visible.', 'Pulmonary edema with Kerley B lines observed, indicating fluid overload.'), Score: 0.7510
+('No evidence of ground-glass opacity.', 'Ground-glass opacity noted in the left upper lobe, potentially indicative of early pneumonia or viral infection.'), Score: 0.7492
+('No Kerley B lines.', 'Kerley B lines present, indicating interstitial lung disease.'), Score: 0.7490
+('No focal airspace opacities.', 'Focal consolidation in the left upper lobe.'), Score: 0.7489
+('No evidence of interstitial markings.', 'Bilateral interstitial infiltrates observed, suggestive of atypical pneumonia.'), Score: 0.7477
+('No evidence of pulmonary embolism.', 'Wedge-shaped peripheral opacity suggestive of pulmonary embolism.'), Score: 0.7430
+('No subcutaneous air is present.', 'Subcutaneous emphysema observed, with air outlining the soft tissues of the neck.'), Score: 0.7429
+('No consolidation is present.', 'Dense consolidation observed in the left lower lobe, suggestive of pneumonia.'), Score: 0.7309
+('No interstitial thickening.', 'Retinodular pattern indicating interstitial pneumonia.'), Score: 0.7295
+('No hilar adenopathy is present.', 'Hilar adenopathy observed, suggesting infection or malignancy.'), Score: 0.7292
+('No evidence of a pneumothorax.', 'Small pneumothorax present in the right apex.'), Score: 0.7244
+('No evidence of ground-glass opacity.', 'Ground-glass opacity observed bilaterally.'), Score: 0.7210
+('No visible pneumothorax.', 'Pneumothorax present in the right apical region.'), Score: 0.7208
+('No evidence of atelectasis.', 'Atelectasis present, indicating lung collapse.'), Score: 0.7164
+('No cardiomegaly.', 'Cardiomegaly present, with an enlarged cardiac silhouette.'), Score: 0.7163
+('No pneumothorax is present.', 'Pneumothorax identified, with visible pleural line.'), Score: 0.7158
+('No evidence of interstitial markings.', 'Prominent interstitial markings suggestive of pulmonary edema or fibrosis.'), Score: 0.7137
+('No consolidation is present.', 'Patchy consolidation observed in the right lower lobe.'), Score: 0.7087
+('No reticular opacities are visible.', 'Reticular opacities present, indicating interstitial lung disease or atypical pneumonia.'), Score: 0.7076
+('No visible Kerley B lines.', 'Kerley B lines present, indicative of pulmonary edema.'), Score: 0.7064
+('No evidence of silhouette sign.', 'Silhouette sign present, obscuring the cardiac border.'), Score: 0.7058
+('No Kerley B lines.', 'Kerley B lines present, indicative of pulmonary edema.'), Score: 0.7025
+('No pleural thickening is observed.', 'Pleural thickening present, potentially indicating empyema.'), Score: 0.7014
+('No interstitial markings.', 'Reticular pattern throughout both lungs.'), Score: 0.6914
+('No evidence of ground-glass opacity.', 'Ground-glass opacity present, potentially indicating viral pneumonia or early interstitial lung disease.'), Score: 0.6899
+('No peribronchial cuffing.', 'Peribronchial cuffing present, suggesting airway inflammation.'), Score: 0.6855
+('No subcutaneous emphysema.', 'Subcutaneous emphysema noted in the neck and chest wall.'), Score: 0.6805
+('No increased opacity in the costophrenic angles.', 'Increased opacity in the costophrenic angles, suggestive of pleural effusion.'), Score: 0.6763
+('No evidence of interlobular septal thickening.', 'Interlobular septal thickening observed, suggestive of pulmonary edema or interstitial pneumonia.'), Score: 0.6701
+('No evidence of Kerley B lines.', 'Kerley B lines present, indicative of pulmonary edema.'), Score: 0.6629
+('No hilar prominence.', 'Bilateral hilar prominence, suggestive of lymphadenopathy.'), Score: 0.6503
+('No evidence of silhouette sign.', 'Silhouette sign present, obscuring the cardiac border, suggestive of left lower lobe consolidation.'), Score: 0.6489
+('Normal cardiac silhouette.', 'Enlarged cardiac silhouette with rounded contours.'), Score: 0.6218
+('No evidence of interstitial markings.', 'Prominent interstitial markings suggestive of pulmonary edema or infection.'), Score: 0.6115
+('No nodular opacities are present.', 'Multiple nodular opacities present, consider metastatic disease or fungal infection.'), Score: 0.6086
+
+Iteration 40:
+('No evidence of peribronchial cuffing.', 'Peribronchial cuffing observed, suggesting airway inflammation.'), Score: 0.9175
+('No evidence of peribronchial cuffing.', 'Peribronchial cuffing present, suggesting airway inflammation.'), Score: 0.9163
+('No hilar adenopathy.', 'Hilar adenopathy present.'), Score: 0.9153
+('No evidence of hilar adenopathy.', 'Hilar adenopathy present, suggesting lymph node involvement.'), Score: 0.9129
+('No peribronchial cuffing is noted.', 'Peribronchial cuffing present, indicating airway inflammation.'), Score: 0.9090
+('No evidence of bronchial wall thickening.', 'Bronchial wall thickening observed, suggesting bronchitis or bronchiectasis.'), Score: 0.9088
+('No evidence of peribronchial cuffing.', 'Peribronchial cuffing present, indicating airway inflammation.'), Score: 0.9081
+('No hilar enlargement is present.', 'Hilar enlargement observed, potentially due to lymphadenopathy.'), Score: 0.9075
+('No peribronchial cuffing.', 'Peribronchial cuffing present, indicating inflammation around the bronchi.'), Score: 0.9059
+('No evidence of a pulmonary nodule.', 'A pulmonary nodule is present, requiring further evaluation to rule out pneumonia or malignancy.'), Score: 0.9047
+('No pleural thickening.', 'Pleural thickening observed in the left lower lobe.'), Score: 0.9047
+('No evidence of hilar prominence.', 'Hilar prominence suggestive of lymphadenopathy.'), Score: 0.9040
+('No evidence of peribronchial cuffing.', 'Peribronchial cuffing observed, indicating airway inflammation.'), Score: 0.9039
+('No mediastinal widening is seen.', 'Mediastinal widening observed, concerning for aortic dissection or mass.'), Score: 0.9038
+('No evidence of a hydropneumothorax.', 'Hydropneumothorax present, with both fluid and air in the pleural space.'), Score: 0.9029
+('No hilar enlargement is present.', 'Hilar enlargement observed, potentially indicating lymphadenopathy.'), Score: 0.9025
+('No evidence of rib notching.', 'Rib notching observed.'), Score: 0.9022
+('No evidence of mediastinal widening.', 'Mediastinal widening observed, potentially indicating mass or inflammation.'), Score: 0.9020
+('No evidence of pleural thickening.', 'Pleural thickening present, potentially chronic.'), Score: 0.9005
+('No evidence of bronchial wall thickening.', 'Bronchial wall thickening present, suggesting inflammation.'), Score: 0.9004
+('No cavitation is visible.', 'Cavitation present within a pulmonary nodule, raising concern for necrotizing pneumonia.'), Score: 0.9003
+('No mediastinal widening.', 'Mediastinal widening present, potentially indicating aortic dissection or mediastinal mass.'), Score: 0.8998
+('No evidence of lordosis.', 'Lordosis observed.'), Score: 0.8996
+('No mediastinal widening.', 'Mediastinal widening observed, potentially due to mass or fluid accumulation.'), Score: 0.8994
+('No mediastinal widening.', 'Mediastinal widening observed, potentially indicating a mass or aortic dissection.'), Score: 0.8984
+('No evidence of a pleural mass.', 'Pleural mass identified, requiring further characterization.'), Score: 0.8980
+('No mediastinal widening.', 'Mediastinal widening observed, potentially due to aortic dissection or mass.'), Score: 0.8978
+('No evidence of kyphosis.', 'Kyphosis observed.'), Score: 0.8975
+('No evidence of mediastinal widening.', 'Mediastinal widening observed, potentially indicating lymphadenopathy or aortic dissection.'), Score: 0.8972
+('No cardiomegaly is present.', 'Cardiomegaly observed, with an increased cardiothoracic ratio.'), Score: 0.8969
+('No mediastinal widening is seen.', 'Mediastinal widening observed, potentially due to lymphadenopathy or aortic dissection.'), Score: 0.8966
+('No hilar prominence.', 'Hilar prominence observed, suggesting lymphadenopathy.'), Score: 0.8965
+('No cavitation is seen.', 'Cavitation within a pulmonary nodule, raising concern for necrotizing pneumonia.'), Score: 0.8959
+('No evidence of atelectasis.', 'Atelectasis of the right lower lobe.'), Score: 0.8948
+('No atelectasis.', 'Atelectasis observed in the right middle lobe.'), Score: 0.8937
+('No evidence of bronchiectasis.', 'Bronchiectasis observed in the lower lobes.'), Score: 0.8936
+('No evidence of a rounded opacity.', 'A rounded opacity is present, potentially representing pneumonia or abscess.'), Score: 0.8935
+('No mediastinal widening is observed.', 'Mediastinal widening present, potentially due to lymphadenopathy or other mediastinal pathology.'), Score: 0.8932
+('No evidence of bronchiectasis.', 'Bronchiectatic changes observed.'), Score: 0.8926
+('No evidence of bronchial wall thickening.', 'Bronchial wall thickening observed, potentially due to inflammation or infection.'), Score: 0.8920
+('No evidence of consolidation.', 'Consolidation present in the left lower lobe.'), Score: 0.8915
+('No evidence of lobar consolidation.', 'Lobar consolidation present in the right lower lobe.'), Score: 0.8913
+('No cavitation is seen.', 'Cavitation observed within a lung nodule.'), Score: 0.8906
+('No evidence of reticular opacities.', 'Reticular opacities observed, suggestive of interstitial lung disease or pneumonia.'), Score: 0.8902
+('No mediastinal widening is present.', 'Mediastinal widening observed, potentially indicating a mass or aortic dissection.'), Score: 0.8898
+('No peribronchial cuffing is present.', 'Peribronchial cuffing observed, indicative of airway inflammation.'), Score: 0.8898
+('No mediastinal widening is observed.', 'Mediastinal widening present, potentially due to lymphadenopathy or aortic dissection.'), Score: 0.8893
+('No evidence of pneumomediastinum.', 'Pneumomediastinum present.'), Score: 0.8891
+('No hilar enlargement is noted.', 'Hilar enlargement present bilaterally, potentially indicating lymphadenopathy.'), Score: 0.8889
+('No evidence of pulmonary nodules.', 'Multiple pulmonary nodules identified, requiring further investigation.'), Score: 0.8885
+('No pleural thickening is seen.', 'Pleural thickening present, potentially secondary to infection or inflammation.'), Score: 0.8884
+('No pleural thickening.', 'Pleural thickening present along the lateral chest wall.'), Score: 0.8883
+('No evidence of pulmonary nodules.', 'Multiple pulmonary nodules observed in both lungs.'), Score: 0.8880
+('No evidence of rib fractures.', 'Multiple rib fractures identified on the right side.'), Score: 0.8878
+('No signs of pulmonary hypertension.', 'Signs of pulmonary hypertension are present.'), Score: 0.8876
+('No evidence of pulmonary nodules.', 'Multiple pulmonary nodules observed.'), Score: 0.8872
+('No evidence of hilar enlargement.', 'Hilar enlargement observed, potentially indicating lymphadenopathy.'), Score: 0.8864
+('No signs of pulmonary congestion.', 'Pulmonary congestion observed, with increased vascular markings.'), Score: 0.8852
+('No cavitation is visible.', 'Cavitation present within a pulmonary nodule, concerning for infection or malignancy.'), Score: 0.8830
+('No cardiomegaly is apparent.', 'Cardiomegaly present, with an increased cardiothoracic ratio.'), Score: 0.8823
+('No evidence of alveolar edema.', 'Alveolar edema present.'), Score: 0.8818
+('No pleural effusion is present.', 'Pleural effusion present, blunting the costophrenic angle.'), Score: 0.8815
+('No evidence of mediastinal widening.', 'Mediastinal widening observed, potentially indicating aortic dissection or mediastinitis.'), Score: 0.8807
+('No pleural effusion.', 'Pleural effusion present, blunting the costophrenic angle.'), Score: 0.8806
+('No evidence of atelectasis.', 'Atelectasis of the right lower lobe, potentially secondary to obstruction.'), Score: 0.8804
+('No hilar adenopathy is seen.', 'Hilar adenopathy present, potentially indicating infection.'), Score: 0.8798
+('No pleural effusion is visible.', 'Blunting of the costophrenic angle suggestive of pleural effusion.'), Score: 0.8794
+('No evidence of cardiomegaly.', 'Cardiomegaly with an increased cardiothoracic ratio.'), Score: 0.8793
+('Lungs appear clear with sharp diaphragmatic angles.', 'Presence of consolidation in the lower lobes.'), Score: 0.8786
+('No evidence of air bronchograms.', 'Air bronchograms visible within an area of consolidation, indicating pneumonia.'), Score: 0.8784
+('Mediastinum is within normal limits.', 'Widened mediastinum, potentially indicating lymphadenopathy.'), Score: 0.8783
+('No cardiomegaly is present.', 'Cardiomegaly observed, potentially contributing to pulmonary congestion.'), Score: 0.8782
+('No cavitation is seen within the lung parenchyma.', 'Cavitation present within a lung nodule, consider abscess or necrotizing pneumonia.'), Score: 0.8780
+('No evidence of patchy infiltrates.', 'Patchy infiltrates present in both lower lobes, consistent with bronchopneumonia.'), Score: 0.8779
+('Mediastinum is within normal limits.', 'Widened mediastinum, raising suspicion for aortic dissection or mediastinal mass.'), Score: 0.8775
+('No pleural effusion is present.', 'Pleural effusion observed, indicating fluid accumulation in the pleural space.'), Score: 0.8775
+('No infiltrates are seen.', 'Infiltrates present in the lower lung fields.'), Score: 0.8772
+('No air bronchograms are present.', 'Air bronchograms noted within an area of consolidation.'), Score: 0.8766
+('No evidence of pleural fluid layering.', 'Pleural fluid layering along the posterior costophrenic angle.'), Score: 0.8755
+('No evidence of pulmonary nodules.', 'Multiple pulmonary nodules present, requiring further investigation for possible metastatic disease or pneumonia.'), Score: 0.8753
+('No evidence of a mass-like consolidation.', 'Mass-like consolidation observed, raising concern for pneumonia mimicking a tumor.'), Score: 0.8742
+('No air bronchograms are visible.', 'Air bronchograms present, indicating alveolar filling.'), Score: 0.8734
+('No pleural thickening is noted.', 'Pleural thickening observed, potentially secondary to empyema.'), Score: 0.8731
+('No lobar consolidation is present.', 'Lobar consolidation observed, consistent with pneumonia.'), Score: 0.8726
+('No evidence of a pleural mass.', 'Pleural mass observed, potentially malignant.'), Score: 0.8725
+('No evidence of pleural effusion.', 'Pleural effusion present, blunting the costophrenic angle.'), Score: 0.8719
+('No pleural effusion is visible.', 'Pleural effusion present, blunting the costophrenic angle.'), Score: 0.8719
+('No evidence of subsegmental atelectasis.', 'Subsegmental atelectasis noted in the right middle lobe, potentially secondary to mucus plugging or pneumonia.'), Score: 0.8717
+('No air bronchograms are present.', 'Air bronchograms visualized within an area of consolidation, indicative of pneumonia.'), Score: 0.8717
+('No evidence of pulmonary congestion.', 'Pulmonary congestion present, with increased vascular markings.'), Score: 0.8710
+('No evidence of atelectasis.', 'Atelectasis of the left lower lobe, potentially due to mucus plugging.'), Score: 0.8710
+('No evidence of atelectasis.', 'Atelectasis observed in the left lower lobe, causing volume loss.'), Score: 0.8707
+('No evidence of atelectasis.', 'Atelectasis present in the right lower lobe, causing volume loss.'), Score: 0.8706
+('No evidence of bronchial wall thickening.', 'Bronchial wall thickening present, indicating airway inflammation.'), Score: 0.8704
+('No pleural thickening is present.', 'Pleural thickening observed in the right lower lobe, potentially indicative of prior infection or inflammation.'), Score: 0.8704
+('No evidence of pulmonary nodules.', 'Multiple pulmonary nodules present, requiring further investigation for malignancy or infection.'), Score: 0.8701
+('No evidence of cavitation.', 'Cavity observed in the right upper lobe.'), Score: 0.8701
+('No air bronchograms are seen.', 'Air bronchograms present within an area of consolidation.'), Score: 0.8699
+('No pleural thickening is observed.', 'Pleural thickening present, potentially secondary to chronic infection.'), Score: 0.8690
+('No evidence of pulmonary edema.', 'Pulmonary edema present, with Kerley B lines visible.'), Score: 0.8690
+('No pulmonary infiltrate is seen.', 'Pulmonary infiltrate present in the left upper lobe.'), Score: 0.8683
+('No evidence of a pneumothorax.', 'Pneumothorax present, with lung collapse and air in the pleural space.'), Score: 0.8673
+('No evidence of bronchial wall thickening.', 'Bronchial wall thickening observed, suggestive of bronchitis or pneumonia.'), Score: 0.8673
+('No lobar consolidation is seen.', 'Lobar consolidation present, suggesting pneumonia affecting an entire lobe.'), Score: 0.8670
+('No evidence of a pulmonary mass.', 'A pulmonary mass is present, potentially representing pneumonia or tumor.'), Score: 0.8668
+('No evidence of scoliosis.', 'Scoliosis observed.'), Score: 0.8666
+('No air bronchograms are visible.', 'Air bronchograms present within an area of consolidation.'), Score: 0.8665
+('No evidence of lobar consolidation.', 'Extensive lobar consolidation in the left lower lobe.'), Score: 0.8663
+('No evidence of atelectasis.', 'Atelectasis present in the right middle lobe, causing volume loss.'), Score: 0.8653
+('No evidence of hilar adenopathy.', 'Hilar adenopathy observed, raising suspicion for infection or malignancy.'), Score: 0.8653
+('No evidence of air bronchograms.', 'Air bronchograms present within an area of consolidation, highly suggestive of pneumonia.'), Score: 0.8651
+('No hilar prominence is observed.', 'Hilar prominence present, potentially due to lymphadenopathy.'), Score: 0.8649
+('No evidence of air bronchograms.', 'Air bronchograms present within an area of consolidation.'), Score: 0.8649
+('No evidence of consolidation.', 'Consolidation present in the right lower lobe, suggestive of pneumonia.'), Score: 0.8645
+('No evidence of pulmonary edema.', 'Pulmonary edema observed with Kerley B lines, potentially due to heart failure or ARDS complicating pneumonia.'), Score: 0.8645
+('No air bronchograms are seen.', 'Air bronchograms visible within an area of consolidation.'), Score: 0.8629
+('No evidence of lobar opacity.', 'Lobar opacity present in the left upper lobe, consistent with pneumonia.'), Score: 0.8627
+('No infiltrates are visible.', 'Patchy infiltrates observed bilaterally.'), Score: 0.8619
+('No evidence of cavitation.', 'Cavitation observed within a pulmonary infiltrate, raising concern for necrotizing pneumonia.'), Score: 0.8615
+('No cardiomegaly.', 'Cardiomegaly observed, with an increased cardiothoracic ratio.'), Score: 0.8613
+('No evidence of a mass-like consolidation.', 'Mass-like consolidation observed, requiring further investigation for malignancy.'), Score: 0.8612
+('Lung fields are clear without infiltrates.', 'Patchy infiltrates observed in the left upper lobe.'), Score: 0.8607
+('No subcutaneous emphysema.', 'Subcutaneous emphysema present in the neck.'), Score: 0.8605
+('Lung parenchyma appears clear without nodules.', 'Multiple pulmonary nodules identified, requiring further characterization.'), Score: 0.8601
+('Lung fields are clear.', 'Ill-defined infiltrates present in the left upper lobe.'), Score: 0.8601
+('No pleural effusion.', 'Pleural effusion noted in the right costophrenic angle.'), Score: 0.8596
+('No pleural thickening is seen.', 'Pleural thickening observed, potentially due to prior inflammation or infection.'), Score: 0.8595
+('No evidence of rib fractures.', 'Multiple rib fractures observed in the left lateral chest wall.'), Score: 0.8593
+('No pleural effusion is present.', 'Pleural effusion observed in the left hemithorax.'), Score: 0.8589
+('No evidence of prior surgery.', 'Post-surgical changes observed.'), Score: 0.8588
+('Lung fields are clear bilaterally.', 'Patchy infiltrates observed in the left upper lobe.'), Score: 0.8588
+('No evidence of pulmonary nodules.', 'Multiple pulmonary nodules observed, requiring further investigation.'), Score: 0.8588
+('No evidence of air bronchograms.', 'Air bronchograms visible within an area of consolidation.'), Score: 0.8583
+('No evidence of pulmonary hypertension.', 'Signs of pulmonary hypertension, including enlarged pulmonary arteries.'), Score: 0.8576
+('No pleural thickening is present.', 'Pleural thickening observed, potentially indicating prior inflammation.'), Score: 0.8547
+('Clear lung apices.', 'Apical cap suggestive of old tuberculosis.'), Score: 0.8545
+('No evidence of hazy opacification.', 'Hazy opacification noted in the left lower lobe, potentially representing early pneumonia.'), Score: 0.8532
+('No evidence of air space opacity.', 'Air space opacity present in the right middle lobe.'), Score: 0.8530
+('No evidence of cavitation within lung parenchyma.', 'Cavitation observed in the right upper lobe, potentially indicative of necrotizing pneumonia.'), Score: 0.8524
+('Lung fields are symmetrical.', 'Asymmetry in lung volumes.'), Score: 0.8523
+('Lung fields are clear.', 'Consolidation present in the left upper lobe.'), Score: 0.8522
+('Normal clavicles.', 'Clavicular fracture.'), Score: 0.8515
+('No cardiomegaly is present.', 'Cardiomegaly observed, suggesting heart failure.'), Score: 0.8512
+('No evidence of cavitation.', 'Cavitation observed within a pulmonary nodule, concerning for infection.'), Score: 0.8512
+('No evidence of cavitation.', 'Cavitation present within a pulmonary nodule, concerning for necrotizing pneumonia.'), Score: 0.8500
+('No evidence of pleural effusion.', 'Pleural effusion present in the right pleural space.'), Score: 0.8498
+('No evidence of cavitation.', 'Cavitation present within a pulmonary lesion, suggestive of necrotizing pneumonia.'), Score: 0.8497
+('No evidence of a pneumothorax.', 'Pneumothorax present in the left hemithorax, with visible visceral pleural line.'), Score: 0.8497
+('No cardiomegaly.', 'Cardiomegaly present, with an increased cardiothoracic ratio.'), Score: 0.8495
+('No evidence of cavitation.', 'Cavitation within a lung mass is identified.'), Score: 0.8493
+('No air bronchograms are identified.', 'Air bronchograms are clearly visible within the consolidated area.'), Score: 0.8492
+('No evidence of consolidation.', 'Consolidation present in the left lower lobe, suggestive of pneumonia.'), Score: 0.8480
+('No evidence of pleural thickening.', 'Pleural thickening present, potentially due to empyema or chronic inflammation.'), Score: 0.8474
+('Clear costophrenic angles bilaterally.', 'Blunted costophrenic angles bilaterally, suggestive of fluid.'), Score: 0.8473
+('No evidence of cavitation.', 'Cavitation observed within a pulmonary nodule, raising concern for infection.'), Score: 0.8473
+('No evidence of infiltrates.', 'Bilateral infiltrates observed in the lung fields.'), Score: 0.8467
+('No evidence of a pleural cap.', 'Pleural cap present, indicating a small pleural effusion.'), Score: 0.8460
+('No evidence of pneumothorax.', 'Pneumothorax present, with a visible pleural line.'), Score: 0.8443
+('No visible pleural thickening.', 'Pleural thickening present, potentially indicating pleurisy or malignancy.'), Score: 0.8443
+('No evidence of cardiomegaly.', 'Cardiomegaly present, potentially contributing to pulmonary congestion.'), Score: 0.8440
+('No pleural effusion is present.', 'Pleural effusion noted in the right hemithorax.'), Score: 0.8438
+('No visible pleural effusion.', 'Pleural effusion noted in the left hemithorax, potentially due to pneumonia or heart failure.'), Score: 0.8437
+('No evidence of lymphatic obstruction.', 'Lymphatic obstruction with dilated lymphatics.'), Score: 0.8432
+('No focal opacity is seen.', 'Focal opacity in the right middle lobe, concerning for pneumonia or mass.'), Score: 0.8427
+('No evidence of a pneumothorax.', 'Pneumothorax present, indicating air in the pleural space.'), Score: 0.8422
+('No evidence of lobar collapse.', 'Lobar collapse with associated volume loss and mediastinal shift.'), Score: 0.8421
+('No signs of pulmonary edema.', 'Pulmonary edema observed, characterized by bilateral infiltrates and Kerley B lines.'), Score: 0.8419
+('No evidence of cardiomegaly.', 'Cardiomegaly present, with an increased cardiothoracic ratio.'), Score: 0.8408
+('No pleural effusions are present.', 'Pleural effusion noted in the left hemithorax.'), Score: 0.8407
+('No evidence of pneumothorax.', 'Pneumothorax present, with a visible pleural line and lung collapse.'), Score: 0.8401
+('Cardiac silhouette is normal in size.', 'Cardiomegaly observed.'), Score: 0.8388
+('No evidence of cavitation.', 'Cavitation observed within a lung nodule, concerning for infection or malignancy.'), Score: 0.8367
+('Clear air bronchograms are absent.', 'Air bronchograms visible within the consolidation.'), Score: 0.8358
+('No increased opacity is seen.', 'Increased opacity in the left upper lobe, suggestive of pneumonia or other infiltrative process.'), Score: 0.8350
+('No evidence of cavitation.', 'Cavitation observed within a pulmonary nodule, raising concern for necrotizing pneumonia or abscess.'), Score: 0.8345
+('No evidence of consolidation.', 'Consolidation present in the left lower lobe, consistent with pneumonia.'), Score: 0.8345
+('No evidence of cavitation.', 'Cavitation present within a pulmonary nodule.'), Score: 0.8331
+('No evidence of peribronchial cuffing.', 'Peribronchial cuffing noted, indicating airway inflammation.'), Score: 0.8328
+('No evidence of cavitation.', 'Cavitation observed in the right upper lobe, consider necrotizing pneumonia or tuberculosis.'), Score: 0.8328
+('No evidence of cavitation.', 'Cavitation present within a pulmonary nodule, suggestive of necrotizing pneumonia.'), Score: 0.8322
+('No peribronchial cuffing.', 'Peribronchial cuffing observed, indicating airway inflammation.'), Score: 0.8319
+('No evidence of subsegmental atelectasis.', 'Subsegmental atelectasis present in the right lower lobe.'), Score: 0.8309
+('No pleural effusions are identified.', 'Pleural effusion present in the right hemithorax, blunting the costophrenic angle.'), Score: 0.8296
+('No evidence of lobar consolidation.', 'Lobar consolidation present in the right lower lobe, obscuring the right hemidiaphragm.'), Score: 0.8290
+('No evidence of cavitation.', 'Cavitation present within a pulmonary nodule, raising suspicion for infection or malignancy.'), Score: 0.8288
+('No interstitial thickening is seen.', 'Interstitial thickening present, potentially due to inflammation or edema.'), Score: 0.8275
+('No evidence of atelectasis.', 'Atelectasis observed in the left upper lobe, causing volume loss.'), Score: 0.8273
+('No pleural effusions are visible.', 'Pleural effusion present in the right hemithorax, blunting the costophrenic angle.'), Score: 0.8267
+('No consolidation is present.', 'Consolidation observed in the left lower lobe.'), Score: 0.8264
+('No evidence of ground-glass opacity.', 'Ground-glass opacity noted in the bilateral lower lobes, potentially representing viral pneumonia or early COVID-19.'), Score: 0.8230
+('No consolidation with air bronchograms.', 'Consolidation with visible air bronchograms in the right lower lobe, highly suggestive of pneumonia.'), Score: 0.8222
+('No evidence of Kerley B lines.', 'Kerley B lines observed, indicative of interstitial edema.'), Score: 0.8218
+('No evidence of atelectasis.', 'Atelectasis present, causing volume loss and mediastinal shift.'), Score: 0.8216
+('No evidence of ground-glass opacities.', 'Ground-glass opacities present in the right upper lobe.'), Score: 0.8214
+('No signs of pneumothorax.', 'Pneumothorax present, with visible pleural line and lung collapse.'), Score: 0.8192
+('No evidence of interstitial infiltrates.', 'Bilateral interstitial infiltrates suggestive of atypical pneumonia.'), Score: 0.8186
+('No evidence of a mass-like opacity.', 'Mass-like opacity identified in the right lung, requiring further evaluation.'), Score: 0.8185
+('No evidence of atelectasis.', 'Atelectasis observed, with volume loss and mediastinal shift.'), Score: 0.8179
+('No evidence of air bronchograms.', 'Air bronchograms visible, indicating alveolar filling.'), Score: 0.8173
+('No evidence of atelectasis.', 'Atelectasis observed, potentially secondary to airway obstruction or pneumonia.'), Score: 0.8169
+('No signs of pulmonary congestion.', 'Increased pulmonary venous congestion.'), Score: 0.8120
+('No evidence of pneumothorax.', 'Pneumothorax present in the left hemithorax, with visible pleural line.'), Score: 0.8047
+('No infiltrates are visible.', 'Patchy infiltrates observed in the right mid-lung zone.'), Score: 0.8024
+('No evidence of atelectasis.', 'Atelectasis noted in the left upper lobe, causing volume loss.'), Score: 0.8022
+('No evidence of interstitial edema.', 'Interstitial edema present.'), Score: 0.8012
+('No evidence of bronchial wall thickening.', 'Bronchial wall thickening observed, potentially indicating bronchitis.'), Score: 0.8004
+('No evidence of pneumothorax.', 'Presence of a left-sided pneumothorax.'), Score: 0.8002
+('No evidence of a pneumothorax.', 'Pneumothorax present, with a visible pleural line.'), Score: 0.7993
+('No focal opacity.', 'Focal opacity identified in the right mid-lung zone, concerning for a mass or pneumonia.'), Score: 0.7987
+('No hilar adenopathy.', 'Hilar adenopathy present, suggesting lymph node enlargement.'), Score: 0.7986
+('No evidence of hilar lymphadenopathy.', 'Hilar lymphadenopathy present, suggesting infection or malignancy.'), Score: 0.7977
+('No evidence of ground-glass opacity.', 'Ground-glass opacity noted in the right upper lobe, concerning for atypical pneumonia.'), Score: 0.7953
+('No ground-glass opacities.', 'Ground-glass opacities visible in the left upper lobe.'), Score: 0.7938
+('No evidence of subsegmental atelectasis.', 'Subsegmental atelectasis present, appearing as linear opacities.'), Score: 0.7913
+('No evidence of bronchial wall thickening.', 'Bronchial wall thickening noted, suggesting airway inflammation.'), Score: 0.7905
+('No peribronchial cuffing is present.', 'Peribronchial cuffing observed, indicating airway inflammation.'), Score: 0.7866
+('No evidence of pneumothorax.', 'Pneumothorax present in the left apex.'), Score: 0.7842
+('No ground-glass opacities are visible.', 'Ground-glass opacities present bilaterally, potentially indicative of viral pneumonia.'), Score: 0.7830
+('No evidence of lobar collapse.', 'Complete collapse of the right upper lobe.'), Score: 0.7756
+('No subsegmental atelectasis is seen.', 'Subsegmental atelectasis present in the left lower lobe.'), Score: 0.7752
+('No evidence of ground-glass opacity.', 'Ground-glass opacity present in the right middle lobe.'), Score: 0.7740
+('No peribronchial cuffing.', 'Peribronchial cuffing present, indicating airway inflammation.'), Score: 0.7683
+('No cardiomegaly is present.', 'Cardiomegaly noted, potentially secondary to fluid overload.'), Score: 0.7682
+('No reticular opacities.', 'Reticular opacities present, indicating interstitial lung disease.'), Score: 0.7658
+('No evidence of a pneumothorax.', 'Pneumothorax observed, indicating air in the pleural space.'), Score: 0.7652
+('No evidence of pulmonary nodules.', 'Multiple pulmonary nodules observed in both lung fields.'), Score: 0.7637
+('No ground-glass opacities are present.', 'Ground-glass opacities observed in the bilateral upper lobes.'), Score: 0.7613
+('No evidence of increased lung opacity.', 'Increased opacity in the right middle lobe, consistent with consolidation.'), Score: 0.7611
+('Normal scapulae.', 'Scapular fracture.'), Score: 0.7592
+('No consolidation is seen.', 'Consolidation observed in the right lower lobe.'), Score: 0.7591
+('Mediastinum is within normal limits.', 'Widened mediastinum, consider aortic dissection or mass.'), Score: 0.7590
+('No evidence of a pneumothorax.', 'Pneumothorax present, with visible pleural line.'), Score: 0.7567
+('No evidence of radiation therapy changes.', 'Radiation pneumonitis observed.'), Score: 0.7565
+('No hilar enlargement is observed.', 'Bilateral hilar enlargement, concerning for lymphadenopathy.'), Score: 0.7556
+('No evidence of ground-glass opacity.', 'Ground-glass opacity present in the bilateral lungs, potentially indicative of viral pneumonia.'), Score: 0.7546
+('No evidence of pneumothorax.', 'Pneumothorax present in the left apex, with visible pleural line.'), Score: 0.7544
+('No evidence of increased lung opacity.', 'Increased lung opacity observed, consistent with consolidation.'), Score: 0.7541
+('No evidence of increased lung markings.', 'Increased lung markings present, suggestive of vascular congestion or interstitial disease.'), Score: 0.7536
+('No ground-glass opacities are identified.', 'Ground-glass opacities present, often seen in viral pneumonia.'), Score: 0.7519
+('No pulmonary edema is visible.', 'Pulmonary edema with Kerley B lines observed, indicating fluid overload.'), Score: 0.7510
+('No evidence of ground-glass opacity.', 'Ground-glass opacity noted in the left upper lobe, potentially indicative of early pneumonia or viral infection.'), Score: 0.7492
+('No Kerley B lines.', 'Kerley B lines present, indicating interstitial lung disease.'), Score: 0.7490
+('No focal airspace opacities.', 'Focal consolidation in the left upper lobe.'), Score: 0.7489
+('No evidence of Kerley B lines.', 'Kerley B lines visible, indicating interstitial edema.'), Score: 0.7480
+('No evidence of interstitial markings.', 'Bilateral interstitial infiltrates observed, suggestive of atypical pneumonia.'), Score: 0.7477
+('No evidence of pulmonary embolism.', 'Wedge-shaped peripheral opacity suggestive of pulmonary embolism.'), Score: 0.7430
+('No subcutaneous air is present.', 'Subcutaneous emphysema observed, with air outlining the soft tissues of the neck.'), Score: 0.7429
+('Cardiomediastinal silhouette is normal in size and contour.', 'Cardiomegaly present, with an enlarged cardiac silhouette.'), Score: 0.7403
+('No consolidation is present.', 'Dense consolidation observed in the left lower lobe, suggestive of pneumonia.'), Score: 0.7309
+('No interstitial thickening.', 'Retinodular pattern indicating interstitial pneumonia.'), Score: 0.7295
+('No hilar adenopathy is present.', 'Hilar adenopathy observed, suggesting infection or malignancy.'), Score: 0.7292
+('No evidence of a pneumothorax.', 'Small pneumothorax present in the right apex.'), Score: 0.7244
+('No evidence of ground-glass opacity.', 'Ground-glass opacity observed bilaterally.'), Score: 0.7210
+('No visible pneumothorax.', 'Pneumothorax present in the right apical region.'), Score: 0.7208
+('No evidence of atelectasis.', 'Atelectasis present, indicating lung collapse.'), Score: 0.7164
+('No cardiomegaly.', 'Cardiomegaly present, with an enlarged cardiac silhouette.'), Score: 0.7163
+('No pneumothorax is present.', 'Pneumothorax identified, with visible pleural line.'), Score: 0.7158
+('No evidence of interstitial markings.', 'Prominent interstitial markings suggestive of pulmonary edema or fibrosis.'), Score: 0.7137
+('No consolidation is present.', 'Patchy consolidation observed in the right lower lobe.'), Score: 0.7087
+('No reticular opacities are visible.', 'Reticular opacities present, indicating interstitial lung disease or atypical pneumonia.'), Score: 0.7076
+('No visible Kerley B lines.', 'Kerley B lines present, indicative of pulmonary edema.'), Score: 0.7064
+('No evidence of silhouette sign.', 'Silhouette sign present, obscuring the cardiac border.'), Score: 0.7058
+('No Kerley B lines.', 'Kerley B lines present, indicative of pulmonary edema.'), Score: 0.7025
+('No pleural thickening is observed.', 'Pleural thickening present, potentially indicating empyema.'), Score: 0.7014
+('No Kerley B lines are visible.', 'Kerley B lines present, indicative of interstitial lung disease or fluid overload.'), Score: 0.6938
+('No interstitial markings.', 'Reticular pattern throughout both lungs.'), Score: 0.6914
+('No evidence of ground-glass opacity.', 'Ground-glass opacity present, potentially indicating viral pneumonia or early interstitial lung disease.'), Score: 0.6899
+('No increased opacity in the costophrenic angles.', 'Increased opacity in the right costophrenic angle, suggestive of a small pleural effusion or pneumonia.'), Score: 0.6896
+('No peribronchial cuffing.', 'Peribronchial cuffing present, suggesting airway inflammation.'), Score: 0.6855
+('No subcutaneous emphysema.', 'Subcutaneous emphysema noted in the neck and chest wall.'), Score: 0.6805
+('No increased opacity in the costophrenic angles.', 'Increased opacity in the costophrenic angles, suggestive of pleural effusion.'), Score: 0.6763
+('No evidence of interlobular septal thickening.', 'Interlobular septal thickening observed, suggestive of pulmonary edema or interstitial pneumonia.'), Score: 0.6701
+('No evidence of Kerley B lines.', 'Kerley B lines present, indicative of pulmonary edema.'), Score: 0.6629
+('No silhouette sign is present.', 'Silhouette sign observed, obscuring the cardiac border.'), Score: 0.6593
+('No hilar prominence.', 'Bilateral hilar prominence, suggestive of lymphadenopathy.'), Score: 0.6503
+('No evidence of silhouette sign.', 'Silhouette sign present, obscuring the cardiac border, suggestive of left lower lobe consolidation.'), Score: 0.6489
+('No evidence of a silhouette sign.', 'Silhouette sign present obscuring the right heart border, suggestive of right lower lobe consolidation.'), Score: 0.6443
+('No focal consolidation.', 'Patchy consolidation present in the right mid-lung zone.'), Score: 0.6351
+('No air bronchograms are identified.', 'Air bronchograms present, indicating alveolar filling.'), Score: 0.6318
+('Normal cardiac silhouette.', 'Enlarged cardiac silhouette with rounded contours.'), Score: 0.6218
+('No evidence of interstitial markings.', 'Prominent interstitial markings suggestive of pulmonary edema or infection.'), Score: 0.6115
+('No nodular opacities are present.', 'Multiple nodular opacities present, consider metastatic disease or fungal infection.'), Score: 0.6086
+('No cavitation is present within the lung parenchyma.', 'Cavitation observed, suggestive of necrotizing pneumonia or abscess.'), Score: 0.6075
+('No evidence of silhouette sign.', 'Silhouette sign present obscuring the left hemidiaphragm, potentially due to pleural effusion or consolidation.'), Score: 0.6051
+
+Iteration 50:
+('No evidence of peribronchial cuffing.', 'Peribronchial cuffing observed, suggesting airway inflammation.'), Score: 0.9175
+('No evidence of peribronchial cuffing.', 'Peribronchial cuffing present, suggesting airway inflammation.'), Score: 0.9163
+('No hilar adenopathy.', 'Hilar adenopathy present.'), Score: 0.9153
+('No evidence of hilar adenopathy.', 'Hilar adenopathy present, suggesting lymph node involvement.'), Score: 0.9129
+('No subsegmental atelectasis is present.', 'Subsegmental atelectasis observed, potentially due to mucus plugging.'), Score: 0.9107
+('No hilar adenopathy is seen.', 'Hilar adenopathy present, potentially due to infection or malignancy.'), Score: 0.9090
+('No peribronchial cuffing is noted.', 'Peribronchial cuffing present, indicating airway inflammation.'), Score: 0.9090
+('No evidence of bronchial wall thickening.', 'Bronchial wall thickening observed, suggesting bronchitis or bronchiectasis.'), Score: 0.9088
+('No evidence of peribronchial cuffing.', 'Peribronchial cuffing present, indicating airway inflammation.'), Score: 0.9081
+('No hilar enlargement is present.', 'Hilar enlargement observed, potentially due to lymphadenopathy.'), Score: 0.9075
+('No evidence of a pneumothorax.', 'Pneumothorax observed, potentially a complication of pneumonia.'), Score: 0.9074
+('No pleural thickening is seen.', 'Pleural thickening present, potentially indicative of chronic inflammation.'), Score: 0.9069
+('No peribronchial cuffing.', 'Peribronchial cuffing present, indicating inflammation around the bronchi.'), Score: 0.9059
+('No evidence of a pulmonary nodule.', 'A pulmonary nodule is present, requiring further evaluation to rule out pneumonia or malignancy.'), Score: 0.9047
+('No pleural thickening.', 'Pleural thickening observed in the left lower lobe.'), Score: 0.9047
+('No evidence of hilar prominence.', 'Hilar prominence suggestive of lymphadenopathy.'), Score: 0.9040
+('No evidence of peribronchial cuffing.', 'Peribronchial cuffing observed, indicating airway inflammation.'), Score: 0.9039
+('No mediastinal widening is seen.', 'Mediastinal widening observed, concerning for aortic dissection or mass.'), Score: 0.9038
+('No evidence of a hydropneumothorax.', 'Hydropneumothorax present, with both fluid and air in the pleural space.'), Score: 0.9029
+('No hilar enlargement is present.', 'Hilar enlargement observed, potentially indicating lymphadenopathy.'), Score: 0.9025
+('No evidence of rib notching.', 'Rib notching observed.'), Score: 0.9022
+('No evidence of mediastinal widening.', 'Mediastinal widening observed, potentially indicating mass or inflammation.'), Score: 0.9020
+('No lobar consolidation is present.', 'Lobar consolidation observed in the right lower lobe.'), Score: 0.9007
+('No evidence of pleural thickening.', 'Pleural thickening present, potentially chronic.'), Score: 0.9005
+('No evidence of bronchial wall thickening.', 'Bronchial wall thickening present, suggesting inflammation.'), Score: 0.9004
+('No cavitation is visible.', 'Cavitation present within a pulmonary nodule, raising concern for necrotizing pneumonia.'), Score: 0.9003
+('No mediastinal widening.', 'Mediastinal widening present, potentially indicating aortic dissection or mediastinal mass.'), Score: 0.8998
+('No evidence of lordosis.', 'Lordosis observed.'), Score: 0.8996
+('No mediastinal widening.', 'Mediastinal widening observed, potentially due to mass or fluid accumulation.'), Score: 0.8994
+('No evidence of pneumothorax.', 'Pneumothorax present, with visible visceral pleural line.'), Score: 0.8986
+('No evidence of diaphragmatic elevation.', 'Diaphragmatic elevation observed, possibly due to phrenic nerve paralysis or ascites.'), Score: 0.8985
+('No mediastinal widening.', 'Mediastinal widening observed, potentially indicating a mass or aortic dissection.'), Score: 0.8984
+('No evidence of a pleural mass.', 'Pleural mass identified, requiring further characterization.'), Score: 0.8980
+('No mediastinal widening.', 'Mediastinal widening observed, potentially due to aortic dissection or mass.'), Score: 0.8978
+('No evidence of kyphosis.', 'Kyphosis observed.'), Score: 0.8975
+('No evidence of mediastinal widening.', 'Mediastinal widening observed, potentially indicating lymphadenopathy or aortic dissection.'), Score: 0.8972
+('No evidence of a pleural thickening.', 'Pleural thickening observed, potentially post-inflammatory.'), Score: 0.8969
+('No cardiomegaly is present.', 'Cardiomegaly observed, with an increased cardiothoracic ratio.'), Score: 0.8969
+('No mediastinal widening is seen.', 'Mediastinal widening observed, potentially due to lymphadenopathy or aortic dissection.'), Score: 0.8966
+('No hilar prominence.', 'Hilar prominence observed, suggesting lymphadenopathy.'), Score: 0.8965
+('No cavitation is seen.', 'Cavitation within a pulmonary nodule, raising concern for necrotizing pneumonia.'), Score: 0.8959
+('No hilar prominence is seen.', 'Hilar prominence observed, potentially due to lymphadenopathy.'), Score: 0.8957
+('No evidence of atelectasis.', 'Atelectasis of the right lower lobe.'), Score: 0.8948
+('No atelectasis.', 'Atelectasis observed in the right middle lobe.'), Score: 0.8937
+('No evidence of bronchiectasis.', 'Bronchiectasis observed in the lower lobes.'), Score: 0.8936
+('No evidence of a rounded opacity.', 'A rounded opacity is present, potentially representing pneumonia or abscess.'), Score: 0.8935
+('No mediastinal widening is observed.', 'Mediastinal widening present, potentially due to lymphadenopathy or other mediastinal pathology.'), Score: 0.8932
+('No evidence of bronchiectasis.', 'Bronchiectatic changes observed.'), Score: 0.8926
+('No evidence of bronchial wall thickening.', 'Bronchial wall thickening observed, potentially due to inflammation or infection.'), Score: 0.8920
+('No evidence of consolidation.', 'Consolidation present in the left lower lobe.'), Score: 0.8915
+('No evidence of lobar consolidation.', 'Lobar consolidation present in the right lower lobe.'), Score: 0.8913
+('No cavitation is seen.', 'Cavitation observed within a lung nodule.'), Score: 0.8906
+('No evidence of reticular opacities.', 'Reticular opacities observed, suggestive of interstitial lung disease or pneumonia.'), Score: 0.8902
+('No mediastinal widening is present.', 'Mediastinal widening observed, potentially indicating a mass or aortic dissection.'), Score: 0.8898
+('No peribronchial cuffing is present.', 'Peribronchial cuffing observed, indicative of airway inflammation.'), Score: 0.8898
+('No evidence of mediastinal widening.', 'Mediastinal widening observed, potentially due to aortic dissection or mass.'), Score: 0.8895
+('No mediastinal widening is observed.', 'Mediastinal widening present, potentially due to lymphadenopathy or aortic dissection.'), Score: 0.8893
+('No evidence of pneumomediastinum.', 'Pneumomediastinum present.'), Score: 0.8891
+('No hilar enlargement is noted.', 'Hilar enlargement present bilaterally, potentially indicating lymphadenopathy.'), Score: 0.8889
+('No evidence of pulmonary nodules.', 'Multiple pulmonary nodules identified, requiring further investigation.'), Score: 0.8885
+('No pleural thickening is seen.', 'Pleural thickening present, potentially secondary to infection or inflammation.'), Score: 0.8884
+('No pleural thickening.', 'Pleural thickening present along the lateral chest wall.'), Score: 0.8883
+('No evidence of pulmonary nodules.', 'Multiple pulmonary nodules observed in both lungs.'), Score: 0.8880
+('No evidence of rib fractures.', 'Multiple rib fractures identified on the right side.'), Score: 0.8878
+('No signs of pulmonary hypertension.', 'Signs of pulmonary hypertension are present.'), Score: 0.8876
+('No evidence of pulmonary nodules.', 'Multiple pulmonary nodules observed.'), Score: 0.8872
+('No evidence of hilar enlargement.', 'Hilar enlargement observed, potentially indicating lymphadenopathy.'), Score: 0.8864
+('No signs of pulmonary congestion.', 'Pulmonary congestion observed, with increased vascular markings.'), Score: 0.8852
+('No consolidation with air bronchograms.', 'Consolidation with visible air bronchograms, highly suggestive of pneumonia.'), Score: 0.8846
+('No cavitation is visible.', 'Cavitation present within a pulmonary nodule, concerning for infection or malignancy.'), Score: 0.8830
+('No cardiomegaly is apparent.', 'Cardiomegaly present, with an increased cardiothoracic ratio.'), Score: 0.8823
+('No evidence of atelectasis.', 'Atelectasis of the left lower lobe, potentially secondary to obstruction.'), Score: 0.8821
+('No evidence of lobar collapse.', 'Lobar collapse present, likely due to mucus plugging or pneumonia.'), Score: 0.8819
+('No evidence of alveolar edema.', 'Alveolar edema present.'), Score: 0.8818
+('No pleural effusion is present.', 'Pleural effusion present, blunting the costophrenic angle.'), Score: 0.8815
+('No air bronchograms are identified.', 'Air bronchograms present within an area of consolidation.'), Score: 0.8812
+('No evidence of mediastinal widening.', 'Mediastinal widening observed, potentially indicating aortic dissection or mediastinitis.'), Score: 0.8807
+('No pleural effusion.', 'Pleural effusion present, blunting the costophrenic angle.'), Score: 0.8806
+('No evidence of atelectasis.', 'Atelectasis of the right lower lobe, potentially secondary to obstruction.'), Score: 0.8804
+('No air bronchograms.', 'Air bronchograms visible within an area of consolidation, highly suggestive of pneumonia.'), Score: 0.8803
+('No hilar adenopathy is seen.', 'Hilar adenopathy present, potentially indicating infection.'), Score: 0.8798
+('No pleural effusion is visible.', 'Blunting of the costophrenic angle suggestive of pleural effusion.'), Score: 0.8794
+('No evidence of cardiomegaly.', 'Cardiomegaly with an increased cardiothoracic ratio.'), Score: 0.8793
+('No evidence of peribronchial cuffing.', 'Peribronchial cuffing observed, suggestive of bronchitis or pneumonia.'), Score: 0.8792
+('No pulmonary nodules are seen.', 'Multiple pulmonary nodules identified, requiring further investigation for malignancy.'), Score: 0.8788
+('Lungs appear clear with sharp diaphragmatic angles.', 'Presence of consolidation in the lower lobes.'), Score: 0.8786
+('No evidence of air bronchograms.', 'Air bronchograms visible within an area of consolidation, indicating pneumonia.'), Score: 0.8784
+('Mediastinum is within normal limits.', 'Widened mediastinum, potentially indicating lymphadenopathy.'), Score: 0.8783
+('No cardiomegaly is present.', 'Cardiomegaly observed, potentially contributing to pulmonary congestion.'), Score: 0.8782
+('No cavitation is seen within the lung parenchyma.', 'Cavitation present within a lung nodule, consider abscess or necrotizing pneumonia.'), Score: 0.8780
+('No evidence of patchy infiltrates.', 'Patchy infiltrates present in both lower lobes, consistent with bronchopneumonia.'), Score: 0.8779
+('Mediastinum is within normal limits.', 'Widened mediastinum, raising suspicion for aortic dissection or mediastinal mass.'), Score: 0.8775
+('No pleural effusion is present.', 'Pleural effusion observed, indicating fluid accumulation in the pleural space.'), Score: 0.8775
+('No infiltrates are seen.', 'Infiltrates present in the lower lung fields.'), Score: 0.8772
+('No air bronchograms are present.', 'Air bronchograms noted within an area of consolidation.'), Score: 0.8766
+('No air bronchograms are visible.', 'Air bronchograms present within an area of consolidation, suggestive of pneumonia.'), Score: 0.8763
+('No evidence of pleural fluid layering.', 'Pleural fluid layering along the posterior costophrenic angle.'), Score: 0.8755
+('No evidence of pulmonary nodules.', 'Multiple pulmonary nodules present, requiring further investigation for possible metastatic disease or pneumonia.'), Score: 0.8753
+('No evidence of a mass-like consolidation.', 'Mass-like consolidation observed, raising concern for pneumonia mimicking a tumor.'), Score: 0.8742
+('No air bronchograms are visible.', 'Air bronchograms present, indicating alveolar filling.'), Score: 0.8734
+('No pleural thickening is noted.', 'Pleural thickening observed, potentially secondary to empyema.'), Score: 0.8731
+('No evidence of pleural effusion.', 'Pleural effusion observed, blunting the costophrenic angle.'), Score: 0.8729
+('No lobar consolidation is present.', 'Lobar consolidation observed, consistent with pneumonia.'), Score: 0.8726
+('No evidence of a pleural mass.', 'Pleural mass observed, potentially malignant.'), Score: 0.8725
+('No evidence of pleural effusion.', 'Pleural effusion present, blunting the costophrenic angle.'), Score: 0.8719
+('No pleural effusion is visible.', 'Pleural effusion present, blunting the costophrenic angle.'), Score: 0.8719
+('No evidence of subsegmental atelectasis.', 'Subsegmental atelectasis noted in the right middle lobe, potentially secondary to mucus plugging or pneumonia.'), Score: 0.8717
+('No air bronchograms are present.', 'Air bronchograms visualized within an area of consolidation, indicative of pneumonia.'), Score: 0.8717
+('No evidence of pulmonary congestion.', 'Pulmonary congestion present, with increased vascular markings.'), Score: 0.8710
+('No evidence of atelectasis.', 'Atelectasis of the left lower lobe, potentially due to mucus plugging.'), Score: 0.8710
+('No evidence of atelectasis.', 'Atelectasis observed in the left lower lobe, causing volume loss.'), Score: 0.8707
+('No hilar prominence is noted.', 'Hilar prominence present, potentially due to lymph node enlargement.'), Score: 0.8707
+('No evidence of atelectasis.', 'Atelectasis present in the right lower lobe, causing volume loss.'), Score: 0.8706
+('No evidence of bronchial wall thickening.', 'Bronchial wall thickening present, indicating airway inflammation.'), Score: 0.8704
+('No pleural thickening is present.', 'Pleural thickening observed in the right lower lobe, potentially indicative of prior infection or inflammation.'), Score: 0.8704
+('No evidence of pulmonary nodules.', 'Multiple pulmonary nodules present, requiring further investigation for malignancy or infection.'), Score: 0.8701
+('No evidence of cavitation.', 'Cavity observed in the right upper lobe.'), Score: 0.8701
+('No air bronchograms are seen.', 'Air bronchograms present within an area of consolidation.'), Score: 0.8699
+('No pleural thickening is observed.', 'Pleural thickening present, potentially secondary to chronic infection.'), Score: 0.8690
+('No evidence of pulmonary edema.', 'Pulmonary edema present, with Kerley B lines visible.'), Score: 0.8690
+('No interstitial markings are prominent.', 'Retinodular pattern present, suggestive of interstitial pneumonia.'), Score: 0.8690
+('No pulmonary nodules are present.', 'A solitary pulmonary nodule observed in the right upper lobe, requiring further evaluation.'), Score: 0.8687
+('No pulmonary infiltrate is seen.', 'Pulmonary infiltrate present in the left upper lobe.'), Score: 0.8683
+('No evidence of a pneumothorax.', 'Pneumothorax present, with lung collapse and air in the pleural space.'), Score: 0.8673
+('No evidence of bronchial wall thickening.', 'Bronchial wall thickening observed, suggestive of bronchitis or pneumonia.'), Score: 0.8673
+('Mediastinum within normal limits.', 'Widened mediastinum, raising suspicion for aortic dissection or mediastinal mass.'), Score: 0.8672
+('No lobar consolidation is seen.', 'Lobar consolidation present, suggesting pneumonia affecting an entire lobe.'), Score: 0.8670
+('No air bronchograms are visible.', 'Air bronchograms present within an area of consolidation, indicating alveolar filling.'), Score: 0.8668
+('No evidence of a pulmonary mass.', 'A pulmonary mass is present, potentially representing pneumonia or tumor.'), Score: 0.8668
+('No evidence of a mass-like consolidation.', 'Mass-like consolidation observed, raising concern for pneumonia or malignancy.'), Score: 0.8667
+('No evidence of scoliosis.', 'Scoliosis observed.'), Score: 0.8666
+('No air bronchograms are visible.', 'Air bronchograms present within an area of consolidation.'), Score: 0.8665
+('No evidence of lobar consolidation.', 'Extensive lobar consolidation in the left lower lobe.'), Score: 0.8663
+('No evidence of atelectasis.', 'Atelectasis present in the right middle lobe, causing volume loss.'), Score: 0.8653
+('No evidence of hilar adenopathy.', 'Hilar adenopathy observed, raising suspicion for infection or malignancy.'), Score: 0.8653
+('No evidence of air bronchograms.', 'Air bronchograms present within an area of consolidation, highly suggestive of pneumonia.'), Score: 0.8651
+('No hilar prominence is observed.', 'Hilar prominence present, potentially due to lymphadenopathy.'), Score: 0.8649
+('No evidence of air bronchograms.', 'Air bronchograms present within an area of consolidation.'), Score: 0.8649
+('No evidence of consolidation.', 'Consolidation present in the right lower lobe, suggestive of pneumonia.'), Score: 0.8645
+('No evidence of pulmonary edema.', 'Pulmonary edema observed with Kerley B lines, potentially due to heart failure or ARDS complicating pneumonia.'), Score: 0.8645
+('No air bronchograms are seen.', 'Air bronchograms visible within an area of consolidation.'), Score: 0.8629
+('No evidence of lobar opacity.', 'Lobar opacity present in the left upper lobe, consistent with pneumonia.'), Score: 0.8627
+('No infiltrates are visible.', 'Patchy infiltrates observed bilaterally.'), Score: 0.8619
+('No pleural effusion is present.', 'Pleural effusion observed, potentially parapneumonic.'), Score: 0.8618
+('No evidence of cavitation.', 'Cavitation observed within a pulmonary infiltrate, raising concern for necrotizing pneumonia.'), Score: 0.8615
+('No cardiomegaly.', 'Cardiomegaly observed, with an increased cardiothoracic ratio.'), Score: 0.8613
+('No evidence of a mass-like consolidation.', 'Mass-like consolidation observed, requiring further investigation for malignancy.'), Score: 0.8612
+('Lung fields are clear without infiltrates.', 'Patchy infiltrates observed in the left upper lobe.'), Score: 0.8607
+('No subcutaneous emphysema.', 'Subcutaneous emphysema present in the neck.'), Score: 0.8605
+('Lung parenchyma appears clear without nodules.', 'Multiple pulmonary nodules identified, requiring further characterization.'), Score: 0.8601
+('Lung fields are clear.', 'Ill-defined infiltrates present in the left upper lobe.'), Score: 0.8601
+('No pleural effusion.', 'Pleural effusion noted in the right costophrenic angle.'), Score: 0.8596
+('No pleural thickening is seen.', 'Pleural thickening observed, potentially due to prior inflammation or infection.'), Score: 0.8595
+('No evidence of rib fractures.', 'Multiple rib fractures observed in the left lateral chest wall.'), Score: 0.8593
+('No pleural effusion is present.', 'Pleural effusion observed in the left hemithorax.'), Score: 0.8589
+('No evidence of prior surgery.', 'Post-surgical changes observed.'), Score: 0.8588
+('Lung fields are clear bilaterally.', 'Patchy infiltrates observed in the left upper lobe.'), Score: 0.8588
+('No evidence of pulmonary nodules.', 'Multiple pulmonary nodules observed, requiring further investigation.'), Score: 0.8588
+('No evidence of air bronchograms.', 'Air bronchograms visible within an area of consolidation.'), Score: 0.8583
+('No pulmonary congestion.', 'Pulmonary congestion with increased vascular markings, potentially due to heart failure or pneumonia.'), Score: 0.8582
+('No evidence of diaphragmatic elevation.', 'Diaphragmatic elevation on the right side, potentially due to phrenic nerve palsy or underlying pathology.'), Score: 0.8581
+('No evidence of pulmonary hypertension.', 'Signs of pulmonary hypertension, including enlarged pulmonary arteries.'), Score: 0.8576
+('No pleural effusion.', 'Pleural effusion present, causing opacity in the lower lung fields.'), Score: 0.8560
+('No pleural thickening is present.', 'Pleural thickening observed, potentially indicating prior inflammation.'), Score: 0.8547
+('Clear lung apices.', 'Apical cap suggestive of old tuberculosis.'), Score: 0.8545
+('No evidence of hazy opacification.', 'Hazy opacification noted in the left lower lobe, potentially representing early pneumonia.'), Score: 0.8532
+('No evidence of air space opacity.', 'Air space opacity present in the right middle lobe.'), Score: 0.8530
+('No evidence of cavitation within lung parenchyma.', 'Cavitation observed in the right upper lobe, potentially indicative of necrotizing pneumonia.'), Score: 0.8524
+('Lung fields are symmetrical.', 'Asymmetry in lung volumes.'), Score: 0.8523
+('Lung fields are clear.', 'Consolidation present in the left upper lobe.'), Score: 0.8522
+('Normal clavicles.', 'Clavicular fracture.'), Score: 0.8515
+('No cardiomegaly is present.', 'Cardiomegaly observed, suggesting heart failure.'), Score: 0.8512
+('No evidence of cavitation.', 'Cavitation observed within a pulmonary nodule, concerning for infection.'), Score: 0.8512
+('No evidence of cardiomegaly.', 'Cardiomegaly observed, with an increased cardiothoracic ratio.'), Score: 0.8506
+('No evidence of cavitation.', 'Cavitation present within a pulmonary nodule, concerning for necrotizing pneumonia.'), Score: 0.8500
+('No evidence of pleural effusion.', 'Pleural effusion present in the right pleural space.'), Score: 0.8498
+('No evidence of cavitation.', 'Cavitation present within a pulmonary lesion, suggestive of necrotizing pneumonia.'), Score: 0.8497
+('No evidence of a pneumothorax.', 'Pneumothorax present in the left hemithorax, with visible visceral pleural line.'), Score: 0.8497
+('No cardiomegaly.', 'Cardiomegaly present, with an increased cardiothoracic ratio.'), Score: 0.8495
+('No evidence of cavitation.', 'Cavitation within a lung mass is identified.'), Score: 0.8493
+('No air bronchograms are identified.', 'Air bronchograms are clearly visible within the consolidated area.'), Score: 0.8492
+('No evidence of consolidation.', 'Consolidation present in the left lower lobe, suggestive of pneumonia.'), Score: 0.8480
+('No evidence of pleural thickening.', 'Pleural thickening present, potentially due to empyema or chronic inflammation.'), Score: 0.8474
+('Clear costophrenic angles bilaterally.', 'Blunted costophrenic angles bilaterally, suggestive of fluid.'), Score: 0.8473
+('No evidence of cavitation.', 'Cavitation observed within a pulmonary nodule, raising concern for infection.'), Score: 0.8473
+('No evidence of infiltrates.', 'Bilateral infiltrates observed in the lung fields.'), Score: 0.8467
+('No evidence of a pleural cap.', 'Pleural cap present, indicating a small pleural effusion.'), Score: 0.8460
+('No signs of pulmonary edema.', 'Pulmonary edema present, with bilateral fluffy infiltrates.'), Score: 0.8448
+('No evidence of pneumothorax.', 'Pneumothorax present, with a visible pleural line.'), Score: 0.8443
+('No visible pleural thickening.', 'Pleural thickening present, potentially indicating pleurisy or malignancy.'), Score: 0.8443
+('No evidence of cardiomegaly.', 'Cardiomegaly present, potentially contributing to pulmonary congestion.'), Score: 0.8440
+('No pleural effusion is present.', 'Pleural effusion noted in the right hemithorax.'), Score: 0.8438
+('No visible pleural effusion.', 'Pleural effusion noted in the left hemithorax, potentially due to pneumonia or heart failure.'), Score: 0.8437
+('No evidence of lymphatic obstruction.', 'Lymphatic obstruction with dilated lymphatics.'), Score: 0.8432
+('No focal opacity is seen.', 'Focal opacity in the right middle lobe, concerning for pneumonia or mass.'), Score: 0.8427
+('No evidence of a pulmonary mass.', 'A new pulmonary mass with surrounding consolidation, concerning for pneumonia or malignancy.'), Score: 0.8427
+('No evidence of cavitation.', 'Cavitation observed within a pulmonary nodule, raising suspicion for infection.'), Score: 0.8423
+('No evidence of a pneumothorax.', 'Pneumothorax present, indicating air in the pleural space.'), Score: 0.8422
+('No evidence of lobar collapse.', 'Lobar collapse with associated volume loss and mediastinal shift.'), Score: 0.8421
+('No signs of pulmonary edema.', 'Pulmonary edema observed, characterized by bilateral infiltrates and Kerley B lines.'), Score: 0.8419
+('No evidence of cardiomegaly.', 'Cardiomegaly present, with an increased cardiothoracic ratio.'), Score: 0.8408
+('No pleural effusions are present.', 'Pleural effusion noted in the left hemithorax.'), Score: 0.8407
+('No evidence of pneumothorax.', 'Pneumothorax present, with a visible pleural line and lung collapse.'), Score: 0.8401
+('Cardiac silhouette is normal in size.', 'Cardiomegaly observed.'), Score: 0.8388
+('No pleural effusion is present.', 'Pleural effusion noted in the right hemithorax, potentially secondary to pneumonia.'), Score: 0.8382
+('No evidence of cavitation.', 'Cavitation observed within a lung nodule, concerning for infection or malignancy.'), Score: 0.8367
+('Clear air bronchograms are absent.', 'Air bronchograms visible within the consolidation.'), Score: 0.8358
+('No evidence of pulmonary edema.', 'Pulmonary edema present, with bilateral fluffy infiltrates.'), Score: 0.8350
+('No increased opacity is seen.', 'Increased opacity in the left upper lobe, suggestive of pneumonia or other infiltrative process.'), Score: 0.8350
+('No evidence of cavitation.', 'Cavitation observed within a pulmonary nodule, raising concern for necrotizing pneumonia or abscess.'), Score: 0.8345
+('No evidence of consolidation.', 'Consolidation present in the left lower lobe, consistent with pneumonia.'), Score: 0.8345
+('No evidence of cavitation.', 'Cavitation present within a pulmonary nodule.'), Score: 0.8331
+('No evidence of peribronchial cuffing.', 'Peribronchial cuffing noted, indicating airway inflammation.'), Score: 0.8328
+('No evidence of cavitation.', 'Cavitation observed in the right upper lobe, consider necrotizing pneumonia or tuberculosis.'), Score: 0.8328
+('No evidence of cavitation.', 'Cavitation present within a pulmonary nodule, suggestive of necrotizing pneumonia.'), Score: 0.8322
+('No peribronchial cuffing.', 'Peribronchial cuffing observed, indicating airway inflammation.'), Score: 0.8319
+('No evidence of subsegmental atelectasis.', 'Subsegmental atelectasis present in the right lower lobe.'), Score: 0.8309
+('No evidence of pneumothorax.', 'Pneumothorax present, with visible pleural line and lung collapse.'), Score: 0.8305
+('No evidence of cavitation.', 'Cavitation within a pulmonary nodule, raising concern for necrotizing pneumonia.'), Score: 0.8297
+('No pleural effusions are identified.', 'Pleural effusion present in the right hemithorax, blunting the costophrenic angle.'), Score: 0.8296
+('No evidence of lobar consolidation.', 'Lobar consolidation present in the right lower lobe, obscuring the right hemidiaphragm.'), Score: 0.8290
+('No evidence of cavitation.', 'Cavitation present within a pulmonary nodule, raising suspicion for infection or malignancy.'), Score: 0.8288
+('No cardiomegaly is present.', 'Cardiomegaly noted, potentially related to underlying cardiac disease or fluid overload.'), Score: 0.8285
+('No evidence of cavitation.', 'Cavitation observed within a pulmonary nodule, suggestive of necrotizing pneumonia.'), Score: 0.8281
+('No evidence of consolidation.', 'Consolidation observed in the left lower lobe, consistent with pneumonia.'), Score: 0.8276
+('No interstitial thickening is seen.', 'Interstitial thickening present, potentially due to inflammation or edema.'), Score: 0.8275
+('No evidence of atelectasis.', 'Atelectasis observed in the left upper lobe, causing volume loss.'), Score: 0.8273
+('No pleural effusions are visible.', 'Pleural effusion present in the right hemithorax, blunting the costophrenic angle.'), Score: 0.8267
+('No consolidation is present.', 'Consolidation observed in the left lower lobe.'), Score: 0.8264
+('No peribronchial cuffing is seen.', 'Peribronchial cuffing present, indicating airway inflammation associated with pneumonia.'), Score: 0.8255
+('No evidence of pulmonary edema.', 'Pulmonary edema present, characterized by bilateral fluffy opacities.'), Score: 0.8237
+('No evidence of ground-glass opacity.', 'Ground-glass opacity noted in the bilateral lower lobes, potentially representing viral pneumonia or early COVID-19.'), Score: 0.8230
+('No consolidation with air bronchograms.', 'Consolidation with visible air bronchograms in the right lower lobe, highly suggestive of pneumonia.'), Score: 0.8222
+('No evidence of Kerley B lines.', 'Kerley B lines observed, indicative of interstitial edema.'), Score: 0.8218
+('No evidence of atelectasis.', 'Atelectasis present, causing volume loss and mediastinal shift.'), Score: 0.8216
+('No evidence of bronchial wall thickening.', 'Bronchial wall thickening present, indicating airway inflammation or infection.'), Score: 0.8215
+('No evidence of ground-glass opacities.', 'Ground-glass opacities present in the right upper lobe.'), Score: 0.8214
+('Mediastinal silhouette is unremarkable.', 'Mediastinal shift to the right, consider mass effect.'), Score: 0.8211
+('No signs of pneumothorax.', 'Pneumothorax present, with visible pleural line and lung collapse.'), Score: 0.8192
+('No evidence of interstitial infiltrates.', 'Bilateral interstitial infiltrates suggestive of atypical pneumonia.'), Score: 0.8186
+('No evidence of a mass-like opacity.', 'Mass-like opacity identified in the right lung, requiring further evaluation.'), Score: 0.8185
+('No evidence of atelectasis.', 'Atelectasis observed, with volume loss and mediastinal shift.'), Score: 0.8179
+('No evidence of air bronchograms.', 'Air bronchograms visible, indicating alveolar filling.'), Score: 0.8173
+('No evidence of atelectasis.', 'Atelectasis observed, potentially secondary to airway obstruction or pneumonia.'), Score: 0.8169
+('No hilar adenopathy.', 'Hilar adenopathy present, indicating possible infection or malignancy.'), Score: 0.8150
+('No signs of pulmonary congestion.', 'Increased pulmonary venous congestion.'), Score: 0.8120
+('No evidence of interstitial markings.', 'Interstitial markings present, indicating interstitial pneumonia.'), Score: 0.8085
+('No evidence of pneumothorax.', 'Pneumothorax present in the left hemithorax, with visible pleural line.'), Score: 0.8047
+('No infiltrates are visible.', 'Patchy infiltrates observed in the right mid-lung zone.'), Score: 0.8024
+('No evidence of atelectasis.', 'Atelectasis noted in the left upper lobe, causing volume loss.'), Score: 0.8022
+('No evidence of interstitial edema.', 'Interstitial edema present.'), Score: 0.8012
+('No evidence of bronchial wall thickening.', 'Bronchial wall thickening observed, potentially indicating bronchitis.'), Score: 0.8004
+('No evidence of pneumothorax.', 'Presence of a left-sided pneumothorax.'), Score: 0.8002
+('No evidence of a pneumothorax.', 'Pneumothorax present, with a visible pleural line.'), Score: 0.7993
+('No focal opacity.', 'Focal opacity identified in the right mid-lung zone, concerning for a mass or pneumonia.'), Score: 0.7987
+('No hilar adenopathy.', 'Hilar adenopathy present, suggesting lymph node enlargement.'), Score: 0.7986
+('No evidence of hilar lymphadenopathy.', 'Hilar lymphadenopathy present, suggesting infection or malignancy.'), Score: 0.7977
+('No evidence of atelectasis.', 'Atelectasis of the left lower lobe noted.'), Score: 0.7956
+('No evidence of ground-glass opacity.', 'Ground-glass opacity noted in the right upper lobe, concerning for atypical pneumonia.'), Score: 0.7953
+('No pneumothorax is present.', 'Pneumothorax present in the left pleural space, causing lung collapse.'), Score: 0.7951
+('No ground-glass opacities.', 'Ground-glass opacities visible in the left upper lobe.'), Score: 0.7938
+('No evidence of subsegmental atelectasis.', 'Subsegmental atelectasis present, appearing as linear opacities.'), Score: 0.7913
+('No evidence of bronchial wall thickening.', 'Bronchial wall thickening noted, suggesting airway inflammation.'), Score: 0.7905
+('No peribronchial cuffing is present.', 'Peribronchial cuffing observed, indicating airway inflammation.'), Score: 0.7866
+('No evidence of pneumothorax.', 'Pneumothorax present in the left apex.'), Score: 0.7842
+('No ground-glass opacities are visible.', 'Ground-glass opacities present bilaterally, potentially indicative of viral pneumonia.'), Score: 0.7830
+('No evidence of lobar collapse.', 'Complete collapse of the right upper lobe.'), Score: 0.7756
+('No subsegmental atelectasis is seen.', 'Subsegmental atelectasis present in the left lower lobe.'), Score: 0.7752
+('No evidence of ground-glass opacity.', 'Ground-glass opacity present in the right middle lobe.'), Score: 0.7740
+('No evidence of Kerley B lines.', 'Kerley B lines observed, indicative of interstitial edema, commonly seen in heart failure.'), Score: 0.7714
+('No peribronchial cuffing.', 'Peribronchial cuffing present, indicating airway inflammation.'), Score: 0.7683
+('No cardiomegaly is present.', 'Cardiomegaly noted, potentially secondary to fluid overload.'), Score: 0.7682
+('No reticular opacities.', 'Reticular opacities present, indicating interstitial lung disease.'), Score: 0.7658
+('No evidence of a pneumothorax.', 'Pneumothorax observed, indicating air in the pleural space.'), Score: 0.7652
+('No evidence of pulmonary nodules.', 'Multiple pulmonary nodules observed in both lung fields.'), Score: 0.7637
+('No ground-glass opacities are present.', 'Ground-glass opacities observed in the bilateral upper lobes.'), Score: 0.7613
+('No evidence of increased lung opacity.', 'Increased opacity in the right middle lobe, consistent with consolidation.'), Score: 0.7611
+('Normal scapulae.', 'Scapular fracture.'), Score: 0.7592
+('No consolidation is seen.', 'Consolidation observed in the right lower lobe.'), Score: 0.7591
+('Mediastinum is within normal limits.', 'Widened mediastinum, consider aortic dissection or mass.'), Score: 0.7590
+('No evidence of a pneumothorax.', 'Pneumothorax present, with visible pleural line.'), Score: 0.7567
+('No evidence of radiation therapy changes.', 'Radiation pneumonitis observed.'), Score: 0.7565
+('No hilar enlargement is observed.', 'Bilateral hilar enlargement, concerning for lymphadenopathy.'), Score: 0.7556
+('No evidence of ground-glass opacity.', 'Ground-glass opacity present in the bilateral lungs, potentially indicative of viral pneumonia.'), Score: 0.7546
+('No evidence of pneumothorax.', 'Pneumothorax present in the left apex, with visible pleural line.'), Score: 0.7544
+('No pleural effusion is present.', 'Small pleural effusion noted in the left costophrenic angle, potentially related to pneumonia.'), Score: 0.7542
+('No evidence of increased lung opacity.', 'Increased lung opacity observed, consistent with consolidation.'), Score: 0.7541
+('No evidence of increased lung markings.', 'Increased lung markings present, suggestive of vascular congestion or interstitial disease.'), Score: 0.7536
+('No ground-glass opacities are identified.', 'Ground-glass opacities present, often seen in viral pneumonia.'), Score: 0.7519
+('No pulmonary edema is visible.', 'Pulmonary edema with Kerley B lines observed, indicating fluid overload.'), Score: 0.7510
+('No evidence of ground-glass opacity.', 'Ground-glass opacity noted in the left upper lobe, potentially indicative of early pneumonia or viral infection.'), Score: 0.7492
+('No Kerley B lines.', 'Kerley B lines present, indicating interstitial lung disease.'), Score: 0.7490
+('No focal airspace opacities.', 'Focal consolidation in the left upper lobe.'), Score: 0.7489
+('No evidence of Kerley B lines.', 'Kerley B lines visible, indicating interstitial edema.'), Score: 0.7480
+('No evidence of interstitial markings.', 'Bilateral interstitial infiltrates observed, suggestive of atypical pneumonia.'), Score: 0.7477
+('No evidence of pulmonary embolism.', 'Wedge-shaped peripheral opacity suggestive of pulmonary embolism.'), Score: 0.7430
+('No subcutaneous air is present.', 'Subcutaneous emphysema observed, with air outlining the soft tissues of the neck.'), Score: 0.7429
+('Cardiomediastinal silhouette is normal in size and contour.', 'Cardiomegaly present, with an enlarged cardiac silhouette.'), Score: 0.7403
+('No ground-glass opacities are noted.', 'Ground-glass opacities present in the right middle lobe, concerning for atypical pneumonia.'), Score: 0.7341
+('No consolidation is present.', 'Dense consolidation observed in the left lower lobe, suggestive of pneumonia.'), Score: 0.7309
+('No interstitial thickening.', 'Retinodular pattern indicating interstitial pneumonia.'), Score: 0.7295
+('No hilar adenopathy is present.', 'Hilar adenopathy observed, suggesting infection or malignancy.'), Score: 0.7292
+('No evidence of a pneumothorax.', 'Small pneumothorax present in the right apex.'), Score: 0.7244
+('No evidence of ground-glass opacity.', 'Ground-glass opacity observed bilaterally.'), Score: 0.7210
+('No visible pneumothorax.', 'Pneumothorax present in the right apical region.'), Score: 0.7208
+('No ground-glass opacities are identified.', 'Ground-glass opacities present, suggestive of atypical pneumonia.'), Score: 0.7203
+('No pleural thickening is seen.', 'Pleural thickening present, potentially due to empyema.'), Score: 0.7186
+('No evidence of atelectasis.', 'Atelectasis present, indicating lung collapse.'), Score: 0.7164
+('No cardiomegaly.', 'Cardiomegaly present, with an enlarged cardiac silhouette.'), Score: 0.7163
+('No pneumothorax is present.', 'Pneumothorax identified, with visible pleural line.'), Score: 0.7158
+('No evidence of interstitial markings.', 'Prominent interstitial markings suggestive of pulmonary edema or fibrosis.'), Score: 0.7137
+('No peribronchial cuffing is observed.', 'Peribronchial cuffing present, indicating airway inflammation.'), Score: 0.7128
+('No consolidation is present.', 'Patchy consolidation observed in the right lower lobe.'), Score: 0.7087
+('No reticular opacities are visible.', 'Reticular opacities present, indicating interstitial lung disease or atypical pneumonia.'), Score: 0.7076
+('No visible Kerley B lines.', 'Kerley B lines present, indicative of pulmonary edema.'), Score: 0.7064
+('No evidence of silhouette sign.', 'Silhouette sign present, obscuring the cardiac border.'), Score: 0.7058
+('No Kerley B lines.', 'Kerley B lines present, indicative of pulmonary edema.'), Score: 0.7025
+('No pleural thickening is observed.', 'Pleural thickening present, potentially indicating empyema.'), Score: 0.7014
+('No Kerley B lines are visible.', 'Kerley B lines present, indicative of interstitial lung disease or fluid overload.'), Score: 0.6938
+('No interstitial markings.', 'Reticular pattern throughout both lungs.'), Score: 0.6914
+('No evidence of ground-glass opacity.', 'Ground-glass opacity present, potentially indicating viral pneumonia or early interstitial lung disease.'), Score: 0.6899
+('No increased opacity in the cardiac silhouette.', 'Increased opacity obscuring the cardiac silhouette, potentially due to pneumonia or effusion.'), Score: 0.6897
+('No increased opacity in the costophrenic angles.', 'Increased opacity in the right costophrenic angle, suggestive of a small pleural effusion or pneumonia.'), Score: 0.6896
+('No costophrenic angle is obscured.', 'Costophrenic angle obscured, potentially due to pleural effusion or atelectasis.'), Score: 0.6895
+('No peribronchial cuffing.', 'Peribronchial cuffing present, suggesting airway inflammation.'), Score: 0.6855
+('No interstitial markings are increased.', 'Increased interstitial markings suggestive of interstitial pneumonia or pulmonary fibrosis.'), Score: 0.6811
+('No subcutaneous emphysema.', 'Subcutaneous emphysema noted in the neck and chest wall.'), Score: 0.6805
+('No increased opacity in the costophrenic angles.', 'Increased opacity in the costophrenic angles, suggestive of pleural effusion.'), Score: 0.6763
+('No silhouette sign is observed.', 'Silhouette sign present involving the right hemidiaphragm, suggesting lower lobe consolidation.'), Score: 0.6760
+('No consolidation is present in either lung.', 'Consolidation observed in the right lower lobe, consistent with pneumonia.'), Score: 0.6756
+('No evidence of interlobular septal thickening.', 'Interlobular septal thickening observed, suggestive of pulmonary edema or interstitial pneumonia.'), Score: 0.6701
+('No evidence of Kerley B lines.', 'Kerley B lines present, indicative of pulmonary edema.'), Score: 0.6629
+('No silhouette sign is present.', 'Silhouette sign observed, obscuring the cardiac border.'), Score: 0.6593
+('No hilar prominence.', 'Bilateral hilar prominence, suggestive of lymphadenopathy.'), Score: 0.6503
+('No increased interstitial markings.', 'Increased interstitial markings bilaterally, potentially indicating viral pneumonia.'), Score: 0.6492
+('No evidence of silhouette sign.', 'Silhouette sign present, obscuring the cardiac border, suggestive of left lower lobe consolidation.'), Score: 0.6489
+('Lung markings are clear.', 'Increased lung markings suggestive of consolidation.'), Score: 0.6487
+('No evidence of a silhouette sign.', 'Silhouette sign present obscuring the right heart border, suggestive of right lower lobe consolidation.'), Score: 0.6443
+('No cavitation is identified.', 'Cavitation present within a pulmonary nodule, raising concern for necrotizing pneumonia or abscess.'), Score: 0.6374
+('No focal consolidation.', 'Patchy consolidation present in the right mid-lung zone.'), Score: 0.6351
+('No air bronchograms are identified.', 'Air bronchograms present, indicating alveolar filling.'), Score: 0.6318
+('Normal cardiac silhouette.', 'Enlarged cardiac silhouette with rounded contours.'), Score: 0.6218
+('No subsegmental atelectasis is identified.', 'Subsegmental atelectasis present, possibly due to mucus plugging.'), Score: 0.6144
+('No evidence of interstitial markings.', 'Prominent interstitial markings suggestive of pulmonary edema or infection.'), Score: 0.6115
+('No nodular opacities are present.', 'Multiple nodular opacities present, consider metastatic disease or fungal infection.'), Score: 0.6086
+('No cavitation is present within the lung parenchyma.', 'Cavitation observed, suggestive of necrotizing pneumonia or abscess.'), Score: 0.6075
+('No evidence of silhouette sign.', 'Silhouette sign present obscuring the left hemidiaphragm, potentially due to pleural effusion or consolidation.'), Score: 0.6051
+('No evidence of Kerley B lines.', 'Kerley B lines present, indicating pulmonary edema.'), Score: 0.6016
+
+Iteration 60:
+('No evidence of peribronchial cuffing.', 'Peribronchial cuffing observed, suggesting airway inflammation.'), Score: 0.9175
+('No evidence of peribronchial cuffing.', 'Peribronchial cuffing present, suggesting airway inflammation.'), Score: 0.9163
+('No hilar adenopathy.', 'Hilar adenopathy present.'), Score: 0.9153
+('No evidence of hilar adenopathy.', 'Hilar adenopathy present, suggesting lymph node involvement.'), Score: 0.9129
+('No pleural thickening is present.', 'Pleural thickening observed, potentially indicating chronic inflammation or malignancy.'), Score: 0.9124
+('No evidence of a pulmonary nodule.', 'A pulmonary nodule is identified, requiring further evaluation to rule out malignancy or infection.'), Score: 0.9110
+('No subsegmental atelectasis is present.', 'Subsegmental atelectasis observed, potentially due to mucus plugging.'), Score: 0.9107
+('No hilar adenopathy is seen.', 'Hilar adenopathy present, potentially due to infection or malignancy.'), Score: 0.9090
+('No peribronchial cuffing is noted.', 'Peribronchial cuffing present, indicating airway inflammation.'), Score: 0.9090
+('No evidence of bronchial wall thickening.', 'Bronchial wall thickening observed, suggesting bronchitis or bronchiectasis.'), Score: 0.9088
+('No evidence of a pneumothorax.', 'Pneumothorax present, potentially a complication of pneumonia or other lung disease.'), Score: 0.9086
+('No evidence of peribronchial cuffing.', 'Peribronchial cuffing present, indicating airway inflammation.'), Score: 0.9081
+('No hilar enlargement is present.', 'Hilar enlargement observed, potentially due to lymphadenopathy.'), Score: 0.9075
+('No evidence of a pneumothorax.', 'Pneumothorax observed, potentially a complication of pneumonia.'), Score: 0.9074
+('No evidence of pleural-based opacity.', 'Pleural-based opacity present, raising suspicion for pneumonia or malignancy.'), Score: 0.9072
+('No evidence of pleural thickening.', 'Pleural thickening present, potentially due to chronic inflammation or fibrosis.'), Score: 0.9071
+('No pleural thickening is seen.', 'Pleural thickening present, potentially indicative of chronic inflammation.'), Score: 0.9069
+('No pleural thickening is seen.', 'Pleural thickening present, potentially indicating chronic inflammation or malignancy.'), Score: 0.9069
+('No peribronchial cuffing.', 'Peribronchial cuffing present, indicating inflammation around the bronchi.'), Score: 0.9059
+('No evidence of a pulmonary nodule.', 'A pulmonary nodule is present, requiring further evaluation to rule out pneumonia or malignancy.'), Score: 0.9047
+('No pleural thickening.', 'Pleural thickening observed in the left lower lobe.'), Score: 0.9047
+('No evidence of hilar prominence.', 'Hilar prominence suggestive of lymphadenopathy.'), Score: 0.9040
+('No evidence of peribronchial cuffing.', 'Peribronchial cuffing observed, indicating airway inflammation.'), Score: 0.9039
+('No mediastinal widening is seen.', 'Mediastinal widening observed, concerning for aortic dissection or mass.'), Score: 0.9038
+('No evidence of peribronchial cuffing.', 'Peribronchial cuffing visualized, indicating airway inflammation.'), Score: 0.9031
+('No evidence of a hydropneumothorax.', 'Hydropneumothorax present, with both fluid and air in the pleural space.'), Score: 0.9029
+('No hilar enlargement is present.', 'Hilar enlargement observed, potentially indicating lymphadenopathy.'), Score: 0.9025
+('No evidence of rib notching.', 'Rib notching observed.'), Score: 0.9022
+('No evidence of mediastinal widening.', 'Mediastinal widening observed, potentially indicating mass or inflammation.'), Score: 0.9020
+('No lobar consolidation is present.', 'Lobar consolidation observed in the right lower lobe.'), Score: 0.9007
+('No evidence of pleural thickening.', 'Pleural thickening present, potentially chronic.'), Score: 0.9005
+('No evidence of bronchial wall thickening.', 'Bronchial wall thickening present, suggesting inflammation.'), Score: 0.9004
+('No cavitation is visible.', 'Cavitation present within a pulmonary nodule, raising concern for necrotizing pneumonia.'), Score: 0.9003
+('No mediastinal widening.', 'Mediastinal widening present, potentially indicating aortic dissection or mediastinal mass.'), Score: 0.8998
+('No evidence of lordosis.', 'Lordosis observed.'), Score: 0.8996
+('No mediastinal widening.', 'Mediastinal widening observed, potentially due to mass or fluid accumulation.'), Score: 0.8994
+('No evidence of pneumothorax.', 'Pneumothorax present, with visible visceral pleural line.'), Score: 0.8986
+('No evidence of diaphragmatic elevation.', 'Diaphragmatic elevation observed, possibly due to phrenic nerve paralysis or ascites.'), Score: 0.8985
+('No mediastinal widening.', 'Mediastinal widening observed, potentially indicating a mass or aortic dissection.'), Score: 0.8984
+('No evidence of a pleural mass.', 'Pleural mass identified, requiring further characterization.'), Score: 0.8980
+('No mediastinal widening.', 'Mediastinal widening observed, potentially due to aortic dissection or mass.'), Score: 0.8978
+('No evidence of kyphosis.', 'Kyphosis observed.'), Score: 0.8975
+('No evidence of mediastinal widening.', 'Mediastinal widening observed, potentially indicating lymphadenopathy or aortic dissection.'), Score: 0.8972
+('No evidence of a pleural thickening.', 'Pleural thickening observed, potentially post-inflammatory.'), Score: 0.8969
+('No cardiomegaly is present.', 'Cardiomegaly observed, with an increased cardiothoracic ratio.'), Score: 0.8969
+('No mediastinal widening is seen.', 'Mediastinal widening observed, potentially due to lymphadenopathy or aortic dissection.'), Score: 0.8966
+('No hilar prominence.', 'Hilar prominence observed, suggesting lymphadenopathy.'), Score: 0.8965
+('No visible mediastinal widening.', 'Mediastinal widening observed, potentially due to aortic dissection or mediastinal mass.'), Score: 0.8960
+('No cavitation is seen.', 'Cavitation within a pulmonary nodule, raising concern for necrotizing pneumonia.'), Score: 0.8959
+('No hilar prominence is seen.', 'Hilar prominence observed, potentially due to lymphadenopathy.'), Score: 0.8957
+('No evidence of atelectasis.', 'Atelectasis of the right lower lobe.'), Score: 0.8948
+('No atelectasis.', 'Atelectasis observed in the right middle lobe.'), Score: 0.8937
+('No evidence of bronchiectasis.', 'Bronchiectasis observed in the lower lobes.'), Score: 0.8936
+('No evidence of a rounded opacity.', 'A rounded opacity is present, potentially representing pneumonia or abscess.'), Score: 0.8935
+('No mediastinal widening is observed.', 'Mediastinal widening present, potentially due to lymphadenopathy or other mediastinal pathology.'), Score: 0.8932
+('No evidence of bronchiectasis.', 'Bronchiectatic changes observed.'), Score: 0.8926
+('No mediastinal widening is observed.', 'Mediastinal widening present, potentially due to lymphadenopathy or aortic dissection/pneumonia complication.'), Score: 0.8922
+('No evidence of bronchial wall thickening.', 'Bronchial wall thickening observed, potentially due to inflammation or infection.'), Score: 0.8920
+('No evidence of consolidation.', 'Consolidation present in the left lower lobe.'), Score: 0.8915
+('No evidence of lobar consolidation.', 'Lobar consolidation present in the right lower lobe.'), Score: 0.8913
+('No cavitation is seen.', 'Cavitation observed within a lung nodule.'), Score: 0.8906
+('No evidence of reticular opacities.', 'Reticular opacities observed, suggestive of interstitial lung disease or pneumonia.'), Score: 0.8902
+('No mediastinal widening is present.', 'Mediastinal widening observed, potentially indicating a mass or aortic dissection.'), Score: 0.8898
+('No peribronchial cuffing is present.', 'Peribronchial cuffing observed, indicative of airway inflammation.'), Score: 0.8898
+('No evidence of a halo sign.', 'Halo sign present around a pulmonary nodule, concerning for invasive fungal infection.'), Score: 0.8897
+('No evidence of mediastinal widening.', 'Mediastinal widening observed, potentially due to aortic dissection or mass.'), Score: 0.8895
+('No mediastinal widening is observed.', 'Mediastinal widening present, potentially due to lymphadenopathy or aortic dissection.'), Score: 0.8893
+('No evidence of pneumomediastinum.', 'Pneumomediastinum present.'), Score: 0.8891
+('No hilar enlargement is noted.', 'Hilar enlargement present bilaterally, potentially indicating lymphadenopathy.'), Score: 0.8889
+('No evidence of pulmonary nodules.', 'Multiple pulmonary nodules identified, requiring further investigation.'), Score: 0.8885
+('No pleural thickening is seen.', 'Pleural thickening present, potentially secondary to infection or inflammation.'), Score: 0.8884
+('No pleural thickening.', 'Pleural thickening present along the lateral chest wall.'), Score: 0.8883
+('No evidence of pulmonary nodules.', 'Multiple pulmonary nodules observed in both lungs.'), Score: 0.8880
+('No evidence of rib fractures.', 'Multiple rib fractures identified on the right side.'), Score: 0.8878
+('No signs of pulmonary hypertension.', 'Signs of pulmonary hypertension are present.'), Score: 0.8876
+('No evidence of pulmonary nodules.', 'Multiple pulmonary nodules observed.'), Score: 0.8872
+('No evidence of a rounded opacity.', 'A rounded opacity observed in the right middle lobe, potentially representing a mass or pneumonia.'), Score: 0.8872
+('No evidence of reticular opacities.', 'Reticular opacities observed, potentially indicating interstitial lung disease or atypical pneumonia.'), Score: 0.8871
+('No evidence of hilar enlargement.', 'Hilar enlargement observed, potentially indicating lymphadenopathy.'), Score: 0.8864
+('No signs of atelectasis.', 'Atelectasis of the left lower lobe, potentially due to mucus plugging or pneumonia.'), Score: 0.8864
+('No evidence of pulmonary consolidation.', 'Pulmonary consolidation present in the left lower lobe, consistent with pneumonia.'), Score: 0.8862
+('No signs of pulmonary congestion.', 'Pulmonary congestion observed, with increased vascular markings.'), Score: 0.8852
+('No consolidation with air bronchograms.', 'Consolidation with visible air bronchograms, highly suggestive of pneumonia.'), Score: 0.8846
+('No ground-glass opacity is identified.', 'Ground-glass opacity present, commonly seen in viral pneumonia.'), Score: 0.8838
+('No cavitation is visible.', 'Cavitation present within a pulmonary nodule, concerning for infection or malignancy.'), Score: 0.8830
+('No evidence of atelectasis.', 'Atelectasis present, potentially due to airway obstruction or pneumonia.'), Score: 0.8825
+('No cardiomegaly is apparent.', 'Cardiomegaly present, with an increased cardiothoracic ratio.'), Score: 0.8823
+('No evidence of atelectasis.', 'Atelectasis of the left lower lobe, potentially secondary to obstruction.'), Score: 0.8821
+('No evidence of lobar collapse.', 'Lobar collapse present, likely due to mucus plugging or pneumonia.'), Score: 0.8819
+('No evidence of alveolar edema.', 'Alveolar edema present.'), Score: 0.8818
+('No pleural effusion is present.', 'Pleural effusion present, blunting the costophrenic angle.'), Score: 0.8815
+('No air bronchograms are identified.', 'Air bronchograms present within an area of consolidation.'), Score: 0.8812
+('No evidence of mediastinal widening.', 'Mediastinal widening observed, potentially indicating aortic dissection or mediastinitis.'), Score: 0.8807
+('No pleural effusion.', 'Pleural effusion present, blunting the costophrenic angle.'), Score: 0.8806
+('No evidence of atelectasis.', 'Atelectasis of the right lower lobe, potentially secondary to obstruction.'), Score: 0.8804
+('No air bronchograms.', 'Air bronchograms visible within an area of consolidation, highly suggestive of pneumonia.'), Score: 0.8803
+('No hilar adenopathy is seen.', 'Hilar adenopathy present, potentially indicating infection.'), Score: 0.8798
+('No pleural effusion is visible.', 'Blunting of the costophrenic angle suggestive of pleural effusion.'), Score: 0.8794
+('No evidence of cardiomegaly.', 'Cardiomegaly with an increased cardiothoracic ratio.'), Score: 0.8793
+('No hilar enlargement is present.', 'Hilar enlargement, potentially due to lymphadenopathy associated with infection.'), Score: 0.8793
+('No evidence of peribronchial cuffing.', 'Peribronchial cuffing observed, suggestive of bronchitis or pneumonia.'), Score: 0.8792
+('No pulmonary nodules are seen.', 'Multiple pulmonary nodules identified, requiring further investigation for malignancy.'), Score: 0.8788
+('Lungs appear clear with sharp diaphragmatic angles.', 'Presence of consolidation in the lower lobes.'), Score: 0.8786
+('No evidence of air bronchograms.', 'Air bronchograms visible within an area of consolidation, indicating pneumonia.'), Score: 0.8784
+('Mediastinum is within normal limits.', 'Widened mediastinum, potentially indicating lymphadenopathy.'), Score: 0.8783
+('No cardiomegaly is present.', 'Cardiomegaly observed, potentially contributing to pulmonary congestion.'), Score: 0.8782
+('No cavitation is seen within the lung parenchyma.', 'Cavitation present within a lung nodule, consider abscess or necrotizing pneumonia.'), Score: 0.8780
+('No evidence of patchy infiltrates.', 'Patchy infiltrates present in both lower lobes, consistent with bronchopneumonia.'), Score: 0.8779
+('Mediastinum is within normal limits.', 'Widened mediastinum, raising suspicion for aortic dissection or mediastinal mass.'), Score: 0.8775
+('No pleural effusion is present.', 'Pleural effusion observed, indicating fluid accumulation in the pleural space.'), Score: 0.8775
+('No infiltrates are seen.', 'Infiltrates present in the lower lung fields.'), Score: 0.8772
+('No air bronchograms are present.', 'Air bronchograms noted within an area of consolidation.'), Score: 0.8766
+('No air bronchograms are visible.', 'Air bronchograms present within an area of consolidation, suggestive of pneumonia.'), Score: 0.8763
+('No evidence of pleural fluid layering.', 'Pleural fluid layering along the posterior costophrenic angle.'), Score: 0.8755
+('No evidence of pulmonary nodules.', 'Multiple pulmonary nodules present, requiring further investigation for possible metastatic disease or pneumonia.'), Score: 0.8753
+('No evidence of a mass-like consolidation.', 'Mass-like consolidation observed, raising concern for pneumonia mimicking a tumor.'), Score: 0.8742
+('No air bronchograms are visible.', 'Air bronchograms present, indicating alveolar filling.'), Score: 0.8734
+('No pleural thickening is noted.', 'Pleural thickening observed, potentially secondary to empyema.'), Score: 0.8731
+('No air bronchograms are visible.', 'Air bronchograms present within an area of consolidation, indicative of pneumonia.'), Score: 0.8731
+('No evidence of pleural effusion.', 'Pleural effusion observed, blunting the costophrenic angle.'), Score: 0.8729
+('No lobar consolidation is present.', 'Lobar consolidation observed, consistent with pneumonia.'), Score: 0.8726
+('No evidence of a pleural mass.', 'Pleural mass observed, potentially malignant.'), Score: 0.8725
+('No evidence of subsegmental atelectasis.', 'Subsegmental atelectasis present in the left upper lobe, possibly due to mucus plugging.'), Score: 0.8721
+('No evidence of pleural effusion.', 'Pleural effusion present, blunting the costophrenic angle.'), Score: 0.8719
+('No pleural effusion is visible.', 'Pleural effusion present, blunting the costophrenic angle.'), Score: 0.8719
+('No evidence of subsegmental atelectasis.', 'Subsegmental atelectasis noted in the right middle lobe, potentially secondary to mucus plugging or pneumonia.'), Score: 0.8717
+('No air bronchograms are present.', 'Air bronchograms visualized within an area of consolidation, indicative of pneumonia.'), Score: 0.8717
+('No interstitial thickening is observed.', 'Interstitial thickening present, indicative of inflammation or fibrosis.'), Score: 0.8716
+('No evidence of pulmonary congestion.', 'Pulmonary congestion present, with increased vascular markings.'), Score: 0.8710
+('No evidence of atelectasis.', 'Atelectasis of the left lower lobe, potentially due to mucus plugging.'), Score: 0.8710
+('No pleural effusion is visible.', 'Pleural effusion present, potentially complicating pneumonia or indicating another process.'), Score: 0.8709
+('No evidence of atelectasis.', 'Atelectasis observed in the left lower lobe, causing volume loss.'), Score: 0.8707
+('No hilar prominence is noted.', 'Hilar prominence present, potentially due to lymph node enlargement.'), Score: 0.8707
+('No evidence of atelectasis.', 'Atelectasis present in the right lower lobe, causing volume loss.'), Score: 0.8706
+('No pleural effusion is identified.', 'Pleural effusion noted, blunting the costophrenic angle, potentially secondary to pneumonia.'), Score: 0.8706
+('No evidence of bronchial wall thickening.', 'Bronchial wall thickening present, indicating airway inflammation.'), Score: 0.8704
+('No pleural thickening is present.', 'Pleural thickening observed in the right lower lobe, potentially indicative of prior infection or inflammation.'), Score: 0.8704
+('No evidence of pulmonary nodules.', 'Multiple pulmonary nodules present, requiring further investigation for malignancy or infection.'), Score: 0.8701
+('No evidence of cavitation.', 'Cavity observed in the right upper lobe.'), Score: 0.8701
+('No pleural effusion is present.', 'Pleural effusion observed in the left hemithorax, blunting the costophrenic angle.'), Score: 0.8700
+('No air bronchograms are seen.', 'Air bronchograms present within an area of consolidation.'), Score: 0.8699
+('No pleural thickening is observed.', 'Pleural thickening present, potentially secondary to chronic infection.'), Score: 0.8690
+('No evidence of pulmonary edema.', 'Pulmonary edema present, with Kerley B lines visible.'), Score: 0.8690
+('No interstitial markings are prominent.', 'Retinodular pattern present, suggestive of interstitial pneumonia.'), Score: 0.8690
+('No pulmonary nodules are present.', 'A solitary pulmonary nodule observed in the right upper lobe, requiring further evaluation.'), Score: 0.8687
+('No pulmonary infiltrate is seen.', 'Pulmonary infiltrate present in the left upper lobe.'), Score: 0.8683
+('No evidence of atelectasis.', 'Atelectasis present in the right middle lobe, potentially secondary to mucus plugging in pneumonia.'), Score: 0.8677
+('No air bronchograms are visible.', 'Air bronchograms present, suggesting alveolar filling.'), Score: 0.8676
+('No evidence of a pneumothorax.', 'Pneumothorax present, with lung collapse and air in the pleural space.'), Score: 0.8673
+('No evidence of bronchial wall thickening.', 'Bronchial wall thickening observed, suggestive of bronchitis or pneumonia.'), Score: 0.8673
+('Mediastinum within normal limits.', 'Widened mediastinum, raising suspicion for aortic dissection or mediastinal mass.'), Score: 0.8672
+('No lobar consolidation is seen.', 'Lobar consolidation present, suggesting pneumonia affecting an entire lobe.'), Score: 0.8670
+('No air bronchograms are visible.', 'Air bronchograms present within an area of consolidation, indicating alveolar filling.'), Score: 0.8668
+('No evidence of a pulmonary mass.', 'A pulmonary mass is present, potentially representing pneumonia or tumor.'), Score: 0.8668
+('No evidence of a mass-like consolidation.', 'Mass-like consolidation observed, raising concern for pneumonia or malignancy.'), Score: 0.8667
+('No evidence of scoliosis.', 'Scoliosis observed.'), Score: 0.8666
+('No evidence of air bronchograms.', 'Air bronchograms visible within an area of consolidation, highly suggestive of pneumonia.'), Score: 0.8665
+('No air bronchograms are visible.', 'Air bronchograms present within an area of consolidation.'), Score: 0.8665
+('No evidence of lobar consolidation.', 'Extensive lobar consolidation in the left lower lobe.'), Score: 0.8663
+('No evidence of atelectasis.', 'Atelectasis present in the right middle lobe, causing volume loss.'), Score: 0.8653
+('No evidence of hilar adenopathy.', 'Hilar adenopathy observed, raising suspicion for infection or malignancy.'), Score: 0.8653
+('No evidence of lobar infiltrate.', 'Lobar infiltrate present in the right middle lobe, suggestive of bacterial pneumonia.'), Score: 0.8652
+('No evidence of air bronchograms.', 'Air bronchograms present within an area of consolidation, highly suggestive of pneumonia.'), Score: 0.8651
+('No hilar prominence is observed.', 'Hilar prominence present, potentially due to lymphadenopathy.'), Score: 0.8649
+('No evidence of air bronchograms.', 'Air bronchograms present within an area of consolidation.'), Score: 0.8649
+('No evidence of consolidation.', 'Consolidation present in the right lower lobe, suggestive of pneumonia.'), Score: 0.8645
+('No evidence of pulmonary edema.', 'Pulmonary edema observed with Kerley B lines, potentially due to heart failure or ARDS complicating pneumonia.'), Score: 0.8645
+('No air bronchograms are seen.', 'Air bronchograms visible within an area of consolidation.'), Score: 0.8629
+('No evidence of lobar opacity.', 'Lobar opacity present in the left upper lobe, consistent with pneumonia.'), Score: 0.8627
+('No infiltrates are visible.', 'Patchy infiltrates observed bilaterally.'), Score: 0.8619
+('No pleural effusion is present.', 'Pleural effusion observed, potentially parapneumonic.'), Score: 0.8618
+('No evidence of cavitation.', 'Cavitation observed within a pulmonary infiltrate, raising concern for necrotizing pneumonia.'), Score: 0.8615
+('No cardiomegaly.', 'Cardiomegaly observed, with an increased cardiothoracic ratio.'), Score: 0.8613
+('No evidence of a mass-like consolidation.', 'Mass-like consolidation observed, requiring further investigation for malignancy.'), Score: 0.8612
+('Lung fields are clear without infiltrates.', 'Patchy infiltrates observed in the left upper lobe.'), Score: 0.8607
+('No subcutaneous emphysema.', 'Subcutaneous emphysema present in the neck.'), Score: 0.8605
+('Lung parenchyma appears clear without nodules.', 'Multiple pulmonary nodules identified, requiring further characterization.'), Score: 0.8601
+('Lung fields are clear.', 'Ill-defined infiltrates present in the left upper lobe.'), Score: 0.8601
+('No pleural effusion.', 'Pleural effusion noted in the right costophrenic angle.'), Score: 0.8596
+('No pleural thickening is seen.', 'Pleural thickening observed, potentially due to prior inflammation or infection.'), Score: 0.8595
+('No evidence of rib fractures.', 'Multiple rib fractures observed in the left lateral chest wall.'), Score: 0.8593
+('No pleural effusion is present.', 'Pleural effusion observed in the left hemithorax.'), Score: 0.8589
+('No evidence of prior surgery.', 'Post-surgical changes observed.'), Score: 0.8588
+('Lung fields are clear bilaterally.', 'Patchy infiltrates observed in the left upper lobe.'), Score: 0.8588
+('No evidence of pulmonary nodules.', 'Multiple pulmonary nodules observed, requiring further investigation.'), Score: 0.8588
+('No evidence of air bronchograms.', 'Air bronchograms visible within an area of consolidation.'), Score: 0.8583
+('No pulmonary congestion.', 'Pulmonary congestion with increased vascular markings, potentially due to heart failure or pneumonia.'), Score: 0.8582
+('No evidence of diaphragmatic elevation.', 'Diaphragmatic elevation on the right side, potentially due to phrenic nerve palsy or underlying pathology.'), Score: 0.8581
+('No evidence of pulmonary hypertension.', 'Signs of pulmonary hypertension, including enlarged pulmonary arteries.'), Score: 0.8576
+('No pleural effusion.', 'Pleural effusion present, causing opacity in the lower lung fields.'), Score: 0.8560
+('No evidence of cavitation.', 'Cavity within the lung parenchyma, raising suspicion for tuberculosis or necrotizing pneumonia.'), Score: 0.8554
+('No pleural thickening is present.', 'Pleural thickening observed, potentially indicating prior inflammation.'), Score: 0.8547
+('Clear lung apices.', 'Apical cap suggestive of old tuberculosis.'), Score: 0.8545
+('No evidence of hazy opacification.', 'Hazy opacification noted in the left lower lobe, potentially representing early pneumonia.'), Score: 0.8532
+('No evidence of air space opacity.', 'Air space opacity present in the right middle lobe.'), Score: 0.8530
+('No evidence of air space opacity.', 'Air space opacity present in the right lower lobe, consistent with pneumonia.'), Score: 0.8526
+('No evidence of cavitation within lung parenchyma.', 'Cavitation observed in the right upper lobe, potentially indicative of necrotizing pneumonia.'), Score: 0.8524
+('Lung fields are symmetrical.', 'Asymmetry in lung volumes.'), Score: 0.8523
+('Lung fields are clear.', 'Consolidation present in the left upper lobe.'), Score: 0.8522
+('Normal clavicles.', 'Clavicular fracture.'), Score: 0.8515
+('No cardiomegaly is present.', 'Cardiomegaly observed, suggesting heart failure.'), Score: 0.8512
+('No evidence of cavitation.', 'Cavitation observed within a pulmonary nodule, concerning for infection.'), Score: 0.8512
+('No evidence of cardiomegaly.', 'Cardiomegaly observed, with an increased cardiothoracic ratio.'), Score: 0.8506
+('No evidence of cavitation.', 'Cavitation present within a pulmonary nodule, concerning for necrotizing pneumonia.'), Score: 0.8500
+('No evidence of pleural effusion.', 'Pleural effusion present in the right pleural space.'), Score: 0.8498
+('No evidence of cavitation.', 'Cavitation present within a pulmonary lesion, suggestive of necrotizing pneumonia.'), Score: 0.8497
+('No evidence of a pneumothorax.', 'Pneumothorax present in the left hemithorax, with visible visceral pleural line.'), Score: 0.8497
+('No cardiomegaly.', 'Cardiomegaly present, with an increased cardiothoracic ratio.'), Score: 0.8495
+('No evidence of cavitation.', 'Cavitation within a lung mass is identified.'), Score: 0.8493
+('No air bronchograms are identified.', 'Air bronchograms are clearly visible within the consolidated area.'), Score: 0.8492
+('No evidence of consolidation.', 'Consolidation present in the left lower lobe, suggestive of pneumonia.'), Score: 0.8480
+('No pleural effusion is present.', 'Pleural effusion noted in the right hemithorax, blunting the costophrenic angle.'), Score: 0.8478
+('No evidence of pleural thickening.', 'Pleural thickening present, potentially due to empyema or chronic inflammation.'), Score: 0.8474
+('Clear costophrenic angles bilaterally.', 'Blunted costophrenic angles bilaterally, suggestive of fluid.'), Score: 0.8473
+('No evidence of cavitation.', 'Cavitation observed within a pulmonary nodule, raising concern for infection.'), Score: 0.8473
+('No evidence of infiltrates.', 'Bilateral infiltrates observed in the lung fields.'), Score: 0.8467
+('No evidence of a pleural cap.', 'Pleural cap present, indicating a small pleural effusion.'), Score: 0.8460
+('No signs of pulmonary edema.', 'Pulmonary edema present, with bilateral fluffy infiltrates.'), Score: 0.8448
+('No evidence of pneumothorax.', 'Pneumothorax present, with a visible pleural line.'), Score: 0.8443
+('No visible pleural thickening.', 'Pleural thickening present, potentially indicating pleurisy or malignancy.'), Score: 0.8443
+('No evidence of cardiomegaly.', 'Cardiomegaly present, potentially contributing to pulmonary congestion.'), Score: 0.8440
+('No pleural effusion is present.', 'Pleural effusion noted in the right hemithorax.'), Score: 0.8438
+('No visible pleural effusion.', 'Pleural effusion noted in the left hemithorax, potentially due to pneumonia or heart failure.'), Score: 0.8437
+('No evidence of lymphatic obstruction.', 'Lymphatic obstruction with dilated lymphatics.'), Score: 0.8432
+('No focal opacity is seen.', 'Focal opacity in the right middle lobe, concerning for pneumonia or mass.'), Score: 0.8427
+('No evidence of a pulmonary mass.', 'A new pulmonary mass with surrounding consolidation, concerning for pneumonia or malignancy.'), Score: 0.8427
+('No evidence of cavitation.', 'Cavitation observed within a pulmonary nodule, raising suspicion for infection.'), Score: 0.8423
+('No evidence of a pneumothorax.', 'Pneumothorax present, indicating air in the pleural space.'), Score: 0.8422
+('No evidence of lobar collapse.', 'Lobar collapse with associated volume loss and mediastinal shift.'), Score: 0.8421
+('No signs of pulmonary edema.', 'Pulmonary edema observed, characterized by bilateral infiltrates and Kerley B lines.'), Score: 0.8419
+('No evidence of a mass-like opacity.', 'Mass-like opacity in the lung parenchyma, requiring further investigation for pneumonia or malignancy.'), Score: 0.8417
+('No evidence of cardiomegaly.', 'Cardiomegaly present, with an increased cardiothoracic ratio.'), Score: 0.8408
+('No pleural effusions are present.', 'Pleural effusion noted in the left hemithorax.'), Score: 0.8407
+('No evidence of pneumothorax.', 'Pneumothorax present, with a visible pleural line and lung collapse.'), Score: 0.8401
+('Cardiac silhouette is normal in size.', 'Cardiomegaly observed.'), Score: 0.8388
+('No pleural effusion is present.', 'Pleural effusion noted in the right hemithorax, potentially secondary to pneumonia.'), Score: 0.8382
+('No evidence of cavitation.', 'Cavitation observed within a lung nodule, concerning for infection or malignancy.'), Score: 0.8367
+('No evidence of cavitation.', 'Cavitation present within a pulmonary nodule, suggestive of infection or malignancy.'), Score: 0.8362
+('No evidence of a pneumothorax.', 'Pneumothorax present in the right pleural space, causing lung collapse.'), Score: 0.8361
+('Clear air bronchograms are absent.', 'Air bronchograms visible within the consolidation.'), Score: 0.8358
+('No evidence of pulmonary edema.', 'Pulmonary edema present, with bilateral fluffy infiltrates.'), Score: 0.8350
+('No increased opacity is seen.', 'Increased opacity in the left upper lobe, suggestive of pneumonia or other infiltrative process.'), Score: 0.8350
+('No evidence of cavitation.', 'Cavitation observed within a pulmonary nodule, raising concern for necrotizing pneumonia or abscess.'), Score: 0.8345
+('No evidence of consolidation.', 'Consolidation present in the left lower lobe, consistent with pneumonia.'), Score: 0.8345
+('No evidence of cavitation.', 'Cavitation present within a pulmonary nodule.'), Score: 0.8331
+('No evidence of peribronchial cuffing.', 'Peribronchial cuffing noted, indicating airway inflammation.'), Score: 0.8328
+('No evidence of cavitation.', 'Cavitation observed in the right upper lobe, consider necrotizing pneumonia or tuberculosis.'), Score: 0.8328
+('No evidence of cavitation.', 'Cavitation present within a pulmonary nodule, suggestive of necrotizing pneumonia.'), Score: 0.8322
+('No peribronchial cuffing.', 'Peribronchial cuffing observed, indicating airway inflammation.'), Score: 0.8319
+('No evidence of atelectasis.', 'Atelectasis of the left lower lobe, causing volume loss and mediastinal shift.'), Score: 0.8314
+('No evidence of pulmonary edema.', 'Pulmonary edema with bilateral airspace opacities and Kerley B lines.'), Score: 0.8313
+('No evidence of subsegmental atelectasis.', 'Subsegmental atelectasis present in the right lower lobe.'), Score: 0.8309
+('No evidence of pneumothorax.', 'Pneumothorax present, with visible pleural line and lung collapse.'), Score: 0.8305
+('No evidence of cavitation.', 'Cavitation within a pulmonary nodule, raising concern for necrotizing pneumonia.'), Score: 0.8297
+('No pleural effusions are identified.', 'Pleural effusion present in the right hemithorax, blunting the costophrenic angle.'), Score: 0.8296
+('No evidence of lobar consolidation.', 'Lobar consolidation present in the right lower lobe, obscuring the right hemidiaphragm.'), Score: 0.8290
+('No evidence of cavitation.', 'Cavitation present within a pulmonary nodule, raising suspicion for infection or malignancy.'), Score: 0.8288
+('No evidence of cavitation.', 'Cavitation present within a pulmonary nodule, raising suspicion for necrotizing pneumonia.'), Score: 0.8287
+('No cardiomegaly is present.', 'Cardiomegaly noted, potentially related to underlying cardiac disease or fluid overload.'), Score: 0.8285
+('No evidence of cavitation.', 'Cavitation observed within a pulmonary nodule, suggestive of necrotizing pneumonia.'), Score: 0.8281
+('No evidence of consolidation.', 'Consolidation observed in the left lower lobe, consistent with pneumonia.'), Score: 0.8276
+('No interstitial thickening is seen.', 'Interstitial thickening present, potentially due to inflammation or edema.'), Score: 0.8275
+('No evidence of atelectasis.', 'Atelectasis observed in the left upper lobe, causing volume loss.'), Score: 0.8273
+('No pleural effusions are visible.', 'Pleural effusion present in the right hemithorax, blunting the costophrenic angle.'), Score: 0.8267
+('No consolidation is present.', 'Consolidation observed in the left lower lobe.'), Score: 0.8264
+('No signs of pulmonary congestion.', 'Kerley B lines present, indicating pulmonary congestion.'), Score: 0.8260
+('No peribronchial cuffing is seen.', 'Peribronchial cuffing present, indicating airway inflammation associated with pneumonia.'), Score: 0.8255
+('No evidence of pulmonary edema.', 'Pulmonary edema present, characterized by bilateral fluffy opacities.'), Score: 0.8237
+('No evidence of ground-glass opacity.', 'Ground-glass opacity noted in the bilateral lower lobes, potentially representing viral pneumonia or early COVID-19.'), Score: 0.8230
+('No consolidation with air bronchograms.', 'Consolidation with visible air bronchograms in the right lower lobe, highly suggestive of pneumonia.'), Score: 0.8222
+('No evidence of Kerley B lines.', 'Kerley B lines observed, indicative of interstitial edema.'), Score: 0.8218
+('No evidence of atelectasis.', 'Atelectasis present, causing volume loss and mediastinal shift.'), Score: 0.8216
+('No evidence of bronchial wall thickening.', 'Bronchial wall thickening present, indicating airway inflammation or infection.'), Score: 0.8215
+('No evidence of ground-glass opacities.', 'Ground-glass opacities present in the right upper lobe.'), Score: 0.8214
+('Mediastinal silhouette is unremarkable.', 'Mediastinal shift to the right, consider mass effect.'), Score: 0.8211
+('No evidence of pulmonary edema.', 'Pulmonary edema observed, with Kerley B lines and cardiomegaly.'), Score: 0.8193
+('No signs of pneumothorax.', 'Pneumothorax present, with visible pleural line and lung collapse.'), Score: 0.8192
+('No evidence of interstitial infiltrates.', 'Bilateral interstitial infiltrates suggestive of atypical pneumonia.'), Score: 0.8186
+('No evidence of a mass-like opacity.', 'Mass-like opacity identified in the right lung, requiring further evaluation.'), Score: 0.8185
+('No evidence of atelectasis.', 'Atelectasis observed, with volume loss and mediastinal shift.'), Score: 0.8179
+('No evidence of air bronchograms.', 'Air bronchograms visible, indicating alveolar filling.'), Score: 0.8173
+('No evidence of atelectasis.', 'Atelectasis observed, potentially secondary to airway obstruction or pneumonia.'), Score: 0.8169
+('No hilar adenopathy.', 'Hilar adenopathy present, indicating possible infection or malignancy.'), Score: 0.8150
+('No signs of pulmonary congestion.', 'Increased pulmonary venous congestion.'), Score: 0.8120
+('No evidence of pneumothorax.', 'Pneumothorax present, with visible pleural line.'), Score: 0.8115
+('No evidence of interstitial markings.', 'Interstitial markings present, indicating interstitial pneumonia.'), Score: 0.8085
+('No pleural calcifications are visible.', 'Pleural calcifications present, suggesting prior pleural effusion or empyema.'), Score: 0.8082
+('No evidence of peribronchial cuffing.', 'Peribronchial cuffing noted, suggesting airway inflammation.'), Score: 0.8059
+('No evidence of a fluid-air level.', 'Fluid-air level present in the left pleural space, suggestive of a complicated parapneumonic effusion.'), Score: 0.8050
+('No evidence of pneumothorax.', 'Pneumothorax present in the left hemithorax, with visible pleural line.'), Score: 0.8047
+('No infiltrates are visible.', 'Patchy infiltrates observed in the right mid-lung zone.'), Score: 0.8024
+('No evidence of atelectasis.', 'Atelectasis noted in the left upper lobe, causing volume loss.'), Score: 0.8022
+('No evidence of interstitial edema.', 'Interstitial edema present.'), Score: 0.8012
+('No evidence of bronchial wall thickening.', 'Bronchial wall thickening observed, potentially indicating bronchitis.'), Score: 0.8004
+('No evidence of pneumothorax.', 'Presence of a left-sided pneumothorax.'), Score: 0.8002
+('No evidence of a pneumothorax.', 'Pneumothorax present, with a visible pleural line.'), Score: 0.7993
+('No focal opacity.', 'Focal opacity identified in the right mid-lung zone, concerning for a mass or pneumonia.'), Score: 0.7987
+('No hilar adenopathy.', 'Hilar adenopathy present, suggesting lymph node enlargement.'), Score: 0.7986
+('No evidence of pulmonary edema.', 'Pulmonary edema noted, characterized by bilateral fluffy infiltrates.'), Score: 0.7986
+('No evidence of hilar lymphadenopathy.', 'Hilar lymphadenopathy present, suggesting infection or malignancy.'), Score: 0.7977
+('No evidence of atelectasis.', 'Atelectasis of the left lower lobe noted.'), Score: 0.7956
+('No evidence of ground-glass opacity.', 'Ground-glass opacity noted in the right upper lobe, concerning for atypical pneumonia.'), Score: 0.7953
+('No pneumothorax is present.', 'Pneumothorax present in the left pleural space, causing lung collapse.'), Score: 0.7951
+('No ground-glass opacities.', 'Ground-glass opacities visible in the left upper lobe.'), Score: 0.7938
+('No evidence of subsegmental atelectasis.', 'Subsegmental atelectasis present, appearing as linear opacities.'), Score: 0.7913
+('No evidence of bronchial wall thickening.', 'Bronchial wall thickening noted, suggesting airway inflammation.'), Score: 0.7905
+('No evidence of bronchial wall thickening.', 'Bronchial wall thickening observed, suggestive of inflammation or infection.'), Score: 0.7893
+('No peribronchial cuffing is present.', 'Peribronchial cuffing observed, indicating airway inflammation.'), Score: 0.7866
+('No evidence of pneumothorax.', 'Pneumothorax present in the left apex.'), Score: 0.7842
+('No ground-glass opacities are visible.', 'Ground-glass opacities present bilaterally, potentially indicative of viral pneumonia.'), Score: 0.7830
+('No evidence of lobar collapse.', 'Complete collapse of the right upper lobe.'), Score: 0.7756
+('No subsegmental atelectasis is seen.', 'Subsegmental atelectasis present in the left lower lobe.'), Score: 0.7752
+('No evidence of cardiomegaly.', 'Cardiomegaly present, potentially complicating pneumonia or indicating underlying heart failure.'), Score: 0.7745
+('No evidence of ground-glass opacity.', 'Ground-glass opacity present in the right middle lobe.'), Score: 0.7740
+('No evidence of Kerley B lines.', 'Kerley B lines observed, indicative of interstitial edema, commonly seen in heart failure.'), Score: 0.7714
+('No ground-glass opacities are seen.', 'Ground-glass opacities present in the left upper lobe, potentially indicating early pneumonia or viral infection.'), Score: 0.7703
+('No evidence of lobar collapse.', 'Lobar collapse observed in the left lower lobe, potentially due to pneumonia or obstruction.'), Score: 0.7702
+('No evidence of increased lung markings.', 'Increased lung markings observed diffusely, consistent with interstitial pneumonia.'), Score: 0.7694
+('No evidence of hilar lymphadenopathy.', 'Hilar lymphadenopathy observed, potentially indicating infection or malignancy.'), Score: 0.7690
+('No hilar adenopathy is present.', 'Hilar adenopathy noted, potentially indicating infection or malignancy.'), Score: 0.7685
+('No peribronchial cuffing.', 'Peribronchial cuffing present, indicating airway inflammation.'), Score: 0.7683
+('No cardiomegaly is present.', 'Cardiomegaly noted, potentially secondary to fluid overload.'), Score: 0.7682
+('No reticular opacities.', 'Reticular opacities present, indicating interstitial lung disease.'), Score: 0.7658
+('No evidence of a pneumothorax.', 'Pneumothorax observed, indicating air in the pleural space.'), Score: 0.7652
+('No evidence of pulmonary nodules.', 'Multiple pulmonary nodules observed in both lung fields.'), Score: 0.7637
+('No ground-glass opacities are present.', 'Ground-glass opacities observed in the bilateral upper lobes.'), Score: 0.7613
+('No evidence of increased lung opacity.', 'Increased opacity in the right middle lobe, consistent with consolidation.'), Score: 0.7611
+('Normal scapulae.', 'Scapular fracture.'), Score: 0.7592
+('No consolidation is seen.', 'Consolidation observed in the right lower lobe.'), Score: 0.7591
+('Mediastinum is within normal limits.', 'Widened mediastinum, consider aortic dissection or mass.'), Score: 0.7590
+('No evidence of a pneumothorax.', 'Pneumothorax present, with visible pleural line.'), Score: 0.7567
+('No evidence of radiation therapy changes.', 'Radiation pneumonitis observed.'), Score: 0.7565
+('No hilar enlargement is observed.', 'Bilateral hilar enlargement, concerning for lymphadenopathy.'), Score: 0.7556
+('No evidence of ground-glass opacity.', 'Ground-glass opacity present in the bilateral lungs, potentially indicative of viral pneumonia.'), Score: 0.7546
+('No evidence of a rounded opacity.', 'Rounded opacity in the periphery of the lung, potentially representing a resolving pneumonia or other process.'), Score: 0.7544
+('No evidence of pneumothorax.', 'Pneumothorax present in the left apex, with visible pleural line.'), Score: 0.7544
+('No pleural effusion is present.', 'Small pleural effusion noted in the left costophrenic angle, potentially related to pneumonia.'), Score: 0.7542
+('No evidence of increased lung opacity.', 'Increased lung opacity observed, consistent with consolidation.'), Score: 0.7541
+('No evidence of increased lung markings.', 'Increased lung markings present, suggestive of vascular congestion or interstitial disease.'), Score: 0.7536
+('No ground-glass opacities are identified.', 'Ground-glass opacities present, often seen in viral pneumonia.'), Score: 0.7519
+('No pulmonary edema is visible.', 'Pulmonary edema with Kerley B lines observed, indicating fluid overload.'), Score: 0.7510
+('No evidence of ground-glass opacity.', 'Ground-glass opacity noted in the left upper lobe, potentially indicative of early pneumonia or viral infection.'), Score: 0.7492
+('No Kerley B lines.', 'Kerley B lines present, indicating interstitial lung disease.'), Score: 0.7490
+('No focal airspace opacities.', 'Focal consolidation in the left upper lobe.'), Score: 0.7489
+('No evidence of Kerley B lines.', 'Kerley B lines visible, indicating interstitial edema.'), Score: 0.7480
+('No evidence of interstitial markings.', 'Bilateral interstitial infiltrates observed, suggestive of atypical pneumonia.'), Score: 0.7477
+('No evidence of miliary nodules.', 'Miliary nodules scattered throughout both lung fields, raising suspicion for disseminated tuberculosis or fungal infection.'), Score: 0.7456
+('No evidence of pulmonary embolism.', 'Wedge-shaped peripheral opacity suggestive of pulmonary embolism.'), Score: 0.7430
+('No subcutaneous air is present.', 'Subcutaneous emphysema observed, with air outlining the soft tissues of the neck.'), Score: 0.7429
+('Cardiomediastinal silhouette is normal in size and contour.', 'Cardiomegaly present, with an enlarged cardiac silhouette.'), Score: 0.7403
+('No Kerley B lines are seen.', 'Kerley B lines present, indicative of interstitial edema and possible heart failure/pneumonia.'), Score: 0.7345
+('No ground-glass opacities are noted.', 'Ground-glass opacities present in the right middle lobe, concerning for atypical pneumonia.'), Score: 0.7341
+('No evidence of a silhouette sign.', 'Silhouette sign present, obscuring the left hemidiaphragm, potentially due to left lower lobe consolidation.'), Score: 0.7329
+('No consolidation is present.', 'Dense consolidation observed in the left lower lobe, suggestive of pneumonia.'), Score: 0.7309
+('No interstitial thickening.', 'Retinodular pattern indicating interstitial pneumonia.'), Score: 0.7295
+('No hilar adenopathy is present.', 'Hilar adenopathy observed, suggesting infection or malignancy.'), Score: 0.7292
+('No evidence of a pneumothorax.', 'Small pneumothorax present in the right apex.'), Score: 0.7244
+('No evidence of ground-glass opacity.', 'Ground-glass opacity observed bilaterally.'), Score: 0.7210
+('No visible pneumothorax.', 'Pneumothorax present in the right apical region.'), Score: 0.7208
+('No ground-glass opacities are identified.', 'Ground-glass opacities present, suggestive of atypical pneumonia.'), Score: 0.7203
+('No pleural thickening is seen.', 'Pleural thickening present, potentially due to empyema.'), Score: 0.7186
+('No evidence of atelectasis.', 'Atelectasis present, indicating lung collapse.'), Score: 0.7164
+('No cardiomegaly.', 'Cardiomegaly present, with an enlarged cardiac silhouette.'), Score: 0.7163
+('No pneumothorax is present.', 'Pneumothorax identified, with visible pleural line.'), Score: 0.7158
+('No evidence of interstitial markings.', 'Prominent interstitial markings suggestive of pulmonary edema or fibrosis.'), Score: 0.7137
+('No evidence of ground-glass opacity.', 'Ground-glass opacity noted bilaterally, potentially indicative of viral pneumonia.'), Score: 0.7135
+('No peribronchial cuffing is observed.', 'Peribronchial cuffing present, indicating airway inflammation.'), Score: 0.7128
+('No consolidation is present.', 'Patchy consolidation observed in the right lower lobe.'), Score: 0.7087
+('No reticular opacities are visible.', 'Reticular opacities present, indicating interstitial lung disease or atypical pneumonia.'), Score: 0.7076
+('No visible Kerley B lines.', 'Kerley B lines present, indicative of pulmonary edema.'), Score: 0.7064
+('No evidence of silhouette sign.', 'Silhouette sign present, obscuring the cardiac border.'), Score: 0.7058
+('No Kerley B lines.', 'Kerley B lines present, indicative of pulmonary edema.'), Score: 0.7025
+('No pleural thickening is observed.', 'Pleural thickening present, potentially indicating empyema.'), Score: 0.7014
+('No Kerley B lines are visible.', 'Kerley B lines present, indicative of interstitial lung disease or fluid overload.'), Score: 0.6938
+('No interstitial markings.', 'Reticular pattern throughout both lungs.'), Score: 0.6914
+('No evidence of ground-glass opacity.', 'Ground-glass opacity present, potentially indicating viral pneumonia or early interstitial lung disease.'), Score: 0.6899
+('No increased opacity in the cardiac silhouette.', 'Increased opacity obscuring the cardiac silhouette, potentially due to pneumonia or effusion.'), Score: 0.6897
+('No increased opacity in the costophrenic angles.', 'Increased opacity in the right costophrenic angle, suggestive of a small pleural effusion or pneumonia.'), Score: 0.6896
+('No costophrenic angle is obscured.', 'Costophrenic angle obscured, potentially due to pleural effusion or atelectasis.'), Score: 0.6895
+('No peribronchial cuffing.', 'Peribronchial cuffing present, suggesting airway inflammation.'), Score: 0.6855
+('No interstitial markings are increased.', 'Increased interstitial markings suggestive of interstitial pneumonia or pulmonary fibrosis.'), Score: 0.6811
+('No subcutaneous emphysema.', 'Subcutaneous emphysema noted in the neck and chest wall.'), Score: 0.6805
+('No increased opacity in the costophrenic angles.', 'Increased opacity in the costophrenic angles, suggestive of pleural effusion.'), Score: 0.6763
+('No silhouette sign is observed.', 'Silhouette sign present involving the right hemidiaphragm, suggesting lower lobe consolidation.'), Score: 0.6760
+('No consolidation is present in either lung.', 'Consolidation observed in the right lower lobe, consistent with pneumonia.'), Score: 0.6756
+('No ground-glass opacities are seen.', 'Ground-glass opacities present, potentially representing early viral pneumonia or organizing pneumonia.'), Score: 0.6707
+('No evidence of interlobular septal thickening.', 'Interlobular septal thickening observed, suggestive of pulmonary edema or interstitial pneumonia.'), Score: 0.6701
+('No peribronchial cuffing is present.', 'Peribronchial cuffing observed, suggesting airway inflammation associated with pneumonia.'), Score: 0.6629
+('No evidence of Kerley B lines.', 'Kerley B lines present, indicative of pulmonary edema.'), Score: 0.6629
+('No silhouette sign is present.', 'Silhouette sign observed, obscuring the cardiac border.'), Score: 0.6593
+('No evidence of a silhouette sign.', 'Silhouette sign present, obscuring the right heart border, potentially due to consolidation.'), Score: 0.6584
+('No evidence of Kerley B lines.', 'Kerley B lines present, suggesting pulmonary edema or interstitial lung disease.'), Score: 0.6525
+('No hilar prominence.', 'Bilateral hilar prominence, suggestive of lymphadenopathy.'), Score: 0.6503
+('No increased interstitial markings.', 'Increased interstitial markings bilaterally, potentially indicating viral pneumonia.'), Score: 0.6492
+('No evidence of silhouette sign.', 'Silhouette sign present, obscuring the cardiac border, suggestive of left lower lobe consolidation.'), Score: 0.6489
+('Lung markings are clear.', 'Increased lung markings suggestive of consolidation.'), Score: 0.6487
+('No evidence of a silhouette sign.', 'Silhouette sign present obscuring the right heart border, suggestive of right lower lobe consolidation.'), Score: 0.6443
+('No cavitation is identified.', 'Cavitation present within a pulmonary nodule, raising concern for necrotizing pneumonia or abscess.'), Score: 0.6374
+('No focal consolidation.', 'Patchy consolidation present in the right mid-lung zone.'), Score: 0.6351
+('No air bronchograms are identified.', 'Air bronchograms present, indicating alveolar filling.'), Score: 0.6318
+('Normal cardiac silhouette.', 'Enlarged cardiac silhouette with rounded contours.'), Score: 0.6218
+('No evidence of increased opacity in the costophrenic angles.', 'Increased opacity in the costophrenic angles bilaterally, suggestive of pleural effusion.'), Score: 0.6193
+('No interstitial thickening is seen.', 'Interstitial thickening observed, potentially due to pulmonary fibrosis or edema.'), Score: 0.6177
+('No subsegmental atelectasis is identified.', 'Subsegmental atelectasis present, possibly due to mucus plugging.'), Score: 0.6144
+('No evidence of a silhouette sign.', 'Silhouette sign present, obscuring the cardiac border, potentially due to pleural effusion or consolidation.'), Score: 0.6120
+('No evidence of interstitial markings.', 'Prominent interstitial markings suggestive of pulmonary edema or infection.'), Score: 0.6115
+('No nodular opacities are present.', 'Multiple nodular opacities present, consider metastatic disease or fungal infection.'), Score: 0.6086
+('No cavitation is present within the lung parenchyma.', 'Cavitation observed, suggestive of necrotizing pneumonia or abscess.'), Score: 0.6075
+('No evidence of silhouette sign.', 'Silhouette sign present obscuring the left hemidiaphragm, potentially due to pleural effusion or consolidation.'), Score: 0.6051
+('No evidence of Kerley B lines.', 'Kerley B lines present, indicating pulmonary edema.'), Score: 0.6016
+
