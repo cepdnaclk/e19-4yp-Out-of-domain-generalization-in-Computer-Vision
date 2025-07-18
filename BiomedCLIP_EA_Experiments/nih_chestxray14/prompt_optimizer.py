@@ -9,7 +9,7 @@ import os
 # from chatgpt_initial import INITIAL_CHATGPT_PROMPTS
 
 
-def get_prompt_template(iteration_num: int, prompt_content: str, generate_n: int = 10) -> str:
+def get_prompt_template(iteration_num: int, prompt_content: str, disease: str, generate_n: int = 10) -> str:
     """
     Returns the appropriate instruction based on the iteration number range.
 
@@ -20,7 +20,6 @@ def get_prompt_template(iteration_num: int, prompt_content: str, generate_n: int
         String containing the iteration-specific instruction
 
     """
-    disease = "Hernia"  # Set the disease for the prompt
     # define a dictionary to map iteration ranges to instructions
     instruction_map = {
         "medical_concepts": f"Write {generate_n} new prompt pairs that are different from the old ones and has a score as high as possible.",
@@ -48,7 +47,8 @@ def get_prompt_template(iteration_num: int, prompt_content: str, generate_n: int
         # Iterations 1-50: Basic exploration
         return base_meta_prompt_template.format(
             content=prompt_content,
-            iteration_specific_instruction=instruction_map["strategy"]
+            iteration_specific_instruction=instruction_map["strategy"],
+            disease=disease
         )
     # elif 201 <= iteration_num <= 300:
     #     # Iterations 51-100: Concept combination
@@ -74,8 +74,9 @@ def get_prompt_template(iteration_num: int, prompt_content: str, generate_n: int
 
 
 def main():
+    disease = "Hernia"  # Set the disease for the prompt
     # Name the experiment we are currently running
-    experiment_name = "NIH_Train_Experiments-16_Hernia"
+    experiment_name = "NIH_Train_Experiments-16_" + disease
     print(f"Running {experiment_name}...")
 
     # Create experiment results directory
@@ -115,7 +116,7 @@ def main():
 
     # Configure the prompt templates
     # meta_init_prompt =  """Give 50 distinct textual descriptions of pairs of visual discriminative features to identify whether the central region of a histopathological image patch contains tumor tissue or not. The patch is extracted from an H&E‑stained whole‑slide image of a lymph node section. Only provide the output as Python code in the following format: prompts = list[tuple[negative: str, positive: str]]. Let's think step-by-step"""
-    meta_init_prompt = """ Give 50 distinct textual descriptions of pairs of discriptive observations to identify whether a chest X-ray image contains {disease} or not. These descriptions should focus on observable characteristics within the image. Only provide the output as Python code in the following format: prompts = list[tuple[negative: str, positive: str]]. Let's think step-by-step"""
+    meta_init_prompt = f" Give 50 distinct textual descriptions of pairs of discriptive observations to identify whether a chest X-ray image contains {disease} or not. These descriptions should focus on observable characteristics within the image. Only provide the output as Python code in the following format: prompts = list[tuple[negative: str, positive: str]]. Let's think step-by-step"
     # meta_prompt_template = """The task is to generate 50 textual descriptions pairs of visual discriminative features to identify whether the central region of an histopathological image patch contains tumor tissue or not. The patch is extracted from an H&E‑stained whole‑slide image of a lymph node section.
     # Here are the best performing pairs. You should aim to get higher scores. Each description should be about 5-20 words.
     # {content}
@@ -139,7 +140,7 @@ def main():
             # prompts = INITIAL_CHATGPT_PROMPTS
         else:
             meta_prompt = get_prompt_template(
-                iteration_num=j, prompt_content=prompt_content, generate_n=10)
+                iteration_num=j, prompt_content=prompt_content,disease=disease, generate_n=10)
 
             prompts = util.get_prompt_pairs(meta_prompt, client)
 
