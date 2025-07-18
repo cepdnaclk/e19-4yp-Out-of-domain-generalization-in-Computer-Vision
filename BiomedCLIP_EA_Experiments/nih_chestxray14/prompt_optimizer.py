@@ -20,6 +20,7 @@ def get_prompt_template(iteration_num: int, prompt_content: str, generate_n: int
         String containing the iteration-specific instruction
 
     """
+    disease = "Hernia"  # Set the disease for the prompt
     # define a dictionary to map iteration ranges to instructions
     instruction_map = {
         "medical_concepts": f"Write {generate_n} new prompt pairs that are different from the old ones and has a score as high as possible.",
@@ -36,7 +37,7 @@ def get_prompt_template(iteration_num: int, prompt_content: str, generate_n: int
     }
 
     # Base meta prompt template
-    base_meta_prompt_template = """The task is to generate distinct textual descriptions pairs of visual discriminative features to identify whether a chest X-ray image contains pneumonia or not. These descriptions should focus on observable characteristics within the image.
+    base_meta_prompt_template = """The task is to generate distinct textual descriptions pairs of visual discriminative features to identify whether a chest X-ray image contains {disease} or not. These descriptions should focus on observable characteristics within the image.
     Here are the best performing pairs in ascending order. High scores indicate higher quality visual discriminative features.
     {content}
     {iteration_specific_instruction}
@@ -114,7 +115,7 @@ def main():
 
     # Configure the prompt templates
     # meta_init_prompt =  """Give 50 distinct textual descriptions of pairs of visual discriminative features to identify whether the central region of a histopathological image patch contains tumor tissue or not. The patch is extracted from an H&E‑stained whole‑slide image of a lymph node section. Only provide the output as Python code in the following format: prompts = list[tuple[negative: str, positive: str]]. Let's think step-by-step"""
-    meta_init_prompt = """ Give 50 distinct textual descriptions of pairs of discriptive observations to identify whether a chest X-ray image contains pneumonia or not. These descriptions should focus on observable characteristics within the image. Only provide the output as Python code in the following format: prompts = list[tuple[negative: str, positive: str]]. Let's think step-by-step"""
+    meta_init_prompt = """ Give 50 distinct textual descriptions of pairs of discriptive observations to identify whether a chest X-ray image contains {disease} or not. These descriptions should focus on observable characteristics within the image. Only provide the output as Python code in the following format: prompts = list[tuple[negative: str, positive: str]]. Let's think step-by-step"""
     # meta_prompt_template = """The task is to generate 50 textual descriptions pairs of visual discriminative features to identify whether the central region of an histopathological image patch contains tumor tissue or not. The patch is extracted from an H&E‑stained whole‑slide image of a lymph node section.
     # Here are the best performing pairs. You should aim to get higher scores. Each description should be about 5-20 words.
     # {content}
