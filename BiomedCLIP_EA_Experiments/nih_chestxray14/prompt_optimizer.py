@@ -74,7 +74,7 @@ def get_prompt_template(iteration_num: int, prompt_content: str, disease: str, g
 
 
 def main():
-    disease = "Hernia"  # Set the disease for the prompt
+    disease = "Edema"  # Set the disease for the prompt
     # Name the experiment we are currently running
     experiment_name = "NIH_Train_Experiments-18_" + disease
     print(f"Running {experiment_name}...")
