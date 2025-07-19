@@ -44,6 +44,9 @@ def main():
     centers_labels = [torch.from_numpy(label) for label in centers_labels]
     print("Center embeddings extracted successfully.")
 
+    # use CPU
+    util.DEVICE = torch.device("cpu")
+
     # 3. load and select prompts
     initial_prompts = util.load_initial_prompts(
         "experiment_results/distinct_medical_concepts.txt"
