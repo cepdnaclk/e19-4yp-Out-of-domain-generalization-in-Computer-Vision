@@ -15698,3 +15698,1005 @@ Iteration 210:
 ('Normal size of right ventricle.', 'Enlarged right ventricle, suggesting right heart strain from cardiomegaly or pulmonary hypertension.'), Score: 0.6811
 ('Normal cardiac silhouette width.', 'Increased cardiac silhouette width exceeding half the chest width, suggestive of cardiomegaly.'), Score: 0.6811
 
+Iteration 220:
+('Normal descending aorta.', 'Prominent descending aorta suggesting aortic dilation or increased blood flow.'), Score: 0.7563
+('Normal descending aorta.', 'Prominent descending aorta, potentially related to left ventricular enlargement.'), Score: 0.7558
+('No pericardial effusion.', 'Pericardial effusion present, potentially related to heart failure.'), Score: 0.7552
+('No pericardial effusion.', 'Pericardial effusion present, potentially related to heart failure or inflammation.'), Score: 0.7529
+('Normal descending aorta.', 'Prominent descending aorta, potentially related to aortic dilation and cardiac issues.'), Score: 0.7527
+('No pleural thickening.', 'Pleural thickening, potentially related to chronic heart failure.'), Score: 0.7506
+('Normal pericardial fat pad.', 'Increased pericardial fat pad thickness, potentially indicating fluid accumulation.'), Score: 0.7497
+('No pleural thickening.', 'Pleural thickening present, potentially related to chronic heart failure.'), Score: 0.7491
+('Normal mediastinal fat.', 'Increased density within the mediastinum, potentially indicating fluid or enlarged lymph nodes secondary to heart failure.'), Score: 0.7488
+('No pleural thickening.', 'Pleural thickening, potentially due to chronic congestion and inflammation related to heart failure.'), Score: 0.7485
+('No pleural thickening.', 'Pleural thickening potentially related to chronic heart failure.'), Score: 0.7485
+('No pericardial fat pad thickening.', 'Thickening of the pericardial fat pad, suggestive of fluid accumulation and potential heart failure.'), Score: 0.7484
+('No pericardial effusion.', 'Pericardial effusion present, potentially related to heart failure and cardiomegaly.'), Score: 0.7484
+('Normal pericardial fat pad.', 'Increased pericardial fat pad, potentially indicating fluid accumulation related to heart failure.'), Score: 0.7481
+('Normal pericardial fat pad.', 'Increased pericardial fat pad thickness, potentially indicating pericardial effusion.'), Score: 0.7476
+('No pleural thickening.', 'Pleural thickening potentially due to chronic heart failure.'), Score: 0.7476
+('Sharp pulmonary artery outline.', 'Increased diameter of the pulmonary artery, suggestive of pulmonary hypertension from heart failure.'), Score: 0.7470
+('No pericardial fat pad thickening.', 'Pericardial fat pad thickening, potentially indicating fluid overload and heart failure.'), Score: 0.7465
+('Normal descending aorta.', 'Prominent descending aorta, potentially related to increased left ventricular end-diastolic pressure.'), Score: 0.7465
+('Normal mediastinal contour.', 'Irregular mediastinal contour, potentially due to enlarged cardiac chambers or masses.'), Score: 0.7461
+('No pleural effusion.', 'Pleural effusion, potentially secondary to heart failure and increased hydrostatic pressure.'), Score: 0.7457
+('Normal descending aorta.', 'Widened descending aorta potentially related to cardiac enlargement and increased blood volume.'), Score: 0.7457
+('Normal pericardial fat pad.', 'Increased pericardial fat pad, potentially indicating pericardial effusion secondary to heart failure.'), Score: 0.7453
+('No pleural thickening.', 'Pleural thickening potentially related to chronic congestion from heart failure.'), Score: 0.7450
+('Normal mediastinal contour.', 'Irregular mediastinal contour, potentially due to pericardial effusion or enlarged cardiac chambers.'), Score: 0.7446
+('Sharp pulmonary artery outline.', 'Prominent pulmonary artery, indicating pulmonary hypertension secondary to heart failure.'), Score: 0.7445
+('No pericardial fat pad thickening.', 'Pericardial fat pad thickening, potentially indicating cardiac enlargement.'), Score: 0.7445
+('Normal pericardial fat pad.', 'Increased pericardial fat pad thickness, potentially indicating pericardial effusion associated with heart failure.'), Score: 0.7442
+('Normal mediastinal contour.', 'Mediastinal contour irregularity, potentially due to cardiac chamber enlargement.'), Score: 0.7441
+('No pleural thickening.', 'Pleural thickening secondary to congestive heart failure.'), Score: 0.7441
+('No pleural thickening.', 'Pleural thickening, potentially related to chronic fluid overload and heart failure.'), Score: 0.7439
+('Normal pulmonary vascularity.', 'Increased pulmonary vascularity, suggesting pulmonary hypertension.'), Score: 0.7439
+('Normal mediastinal contour.', 'Irregular mediastinal contour due to cardiac chamber enlargement.'), Score: 0.7436
+('Normal descending aorta.', 'Prominent descending aorta, potentially related to increased cardiac output or aortic dilation with cardiomegaly.'), Score: 0.7429
+('Normal size and shape of the right ventricle.', 'Right ventricular enlargement with bowing of the interventricular septum.'), Score: 0.7425
+('Normal descending aorta.', 'Prominent descending aorta, potentially indicating aortic dilation associated with cardiomegaly.'), Score: 0.7423
+('No evidence of interstitial edema.', 'Interstitial edema present, a sign of increased hydrostatic pressure due to heart failure.'), Score: 0.7420
+('Normal pulmonary artery size.', 'Prominent pulmonary artery, suggesting pulmonary hypertension secondary to heart failure.'), Score: 0.7420
+('Normal descending aorta.', 'Prominent descending aorta suggesting aortic dilation and potential cardiomegaly.'), Score: 0.7420
+('Normal descending aorta.', 'Prominent descending aorta with post-stenotic dilation secondary to aortic valve disease and cardiomegaly.'), Score: 0.7417
+('Normal mediastinal width.', 'Increased mediastinal width potentially due to cardiac enlargement.'), Score: 0.7417
+('No pleural effusion.', 'Pleural effusion present, potentially secondary to heart failure.'), Score: 0.7415
+('Normal mediastinal fat pads.', 'Increased opacity of mediastinal fat pads, suggesting fluid accumulation due to heart failure.'), Score: 0.7414
+('No pleural thickening.', 'Pleural thickening, potentially due to chronic congestion from heart failure.'), Score: 0.7414
+('No pericardial fat pad haziness.', 'Pericardial fat pad haziness, potentially indicating pericardial effusion.'), Score: 0.7412
+('Normal pulmonary hilum.', 'Prominent pulmonary hilum due to vascular congestion.'), Score: 0.7411
+('No pericardial effusion.', 'Pericardial effusion associated with congestive heart failure.'), Score: 0.7410
+('No pleural thickening.', 'Pleural thickening secondary to chronic congestion from heart failure.'), Score: 0.7410
+('No evidence of pericardial fat pad blurring.', 'Blurring of the pericardial fat pad, suggestive of pericardial effusion secondary to heart failure.'), Score: 0.7409
+('No pleural thickening.', 'Pleural thickening secondary to chronic heart failure.'), Score: 0.7409
+('Normal pulmonary artery size.', 'Prominent pulmonary artery, indicating pulmonary hypertension secondary to heart failure.'), Score: 0.7408
+('No pleural effusion.', 'Pleural effusion, potentially due to increased pulmonary venous pressure from heart failure.'), Score: 0.7407
+('No pleural thickening.', 'Pleural thickening and fluid accumulation secondary to congestive heart failure.'), Score: 0.7406
+('Normal pulmonary vascular markings.', 'Increased pulmonary vascular markings with cephalization, indicating pulmonary venous hypertension.'), Score: 0.7406
+('Normal pulmonary artery size.', 'Increased pulmonary artery diameter suggesting pulmonary hypertension secondary to cardiomegaly.'), Score: 0.7404
+('No pleural thickening.', 'Pleural thickening, potentially related to chronic heart failure and fluid overload.'), Score: 0.7403
+('No pleural thickening observed.', 'Pleural thickening present, potentially secondary to chronic heart failure.'), Score: 0.7402
+('No pleural effusion.', 'Bilateral pleural effusions associated with congestive heart failure.'), Score: 0.7397
+('No pericardial effusion.', 'Pericardial effusion, potentially contributing to cardiac enlargement and dysfunction.'), Score: 0.7393
+('Normal mediastinal width.', 'Increased mediastinal width, potentially due to cardiac enlargement or pericardial effusion.'), Score: 0.7392
+('Normal pulmonary vascular markings.', 'Increased pulmonary vascular markings, suggestive of pulmonary venous hypertension.'), Score: 0.7391
+('Normal pulmonary artery size.', 'Prominent pulmonary artery, suggesting pulmonary hypertension secondary to left heart failure.'), Score: 0.7391
+('Normal pulmonary artery size.', 'Prominent pulmonary artery, indicating pulmonary hypertension secondary to left heart failure.'), Score: 0.7390
+('No evidence of pleural thickening.', 'Pleural thickening, potentially related to chronic heart failure and fluid overload.'), Score: 0.7389
+('No pleural thickening.', 'Pleural thickening suggestive of chronic congestion from heart failure.'), Score: 0.7388
+('Normal pulmonary artery size.', 'Prominent pulmonary artery suggesting pulmonary hypertension secondary to heart failure.'), Score: 0.7387
+('No pleural effusion.', 'Pleural effusions, particularly bilateral, indicating congestive heart failure.'), Score: 0.7386
+('No pleural thickening observed.', 'Pleural thickening present, potentially related to chronic heart failure.'), Score: 0.7386
+('No pleural thickening.', 'Pleural thickening suggestive of chronic heart failure.'), Score: 0.7383
+('Normal left ventricular size.', 'Enlarged left ventricular size, indicating left ventricular hypertrophy or dilation.'), Score: 0.7382
+('Normal aortic arch.', 'Prominent aortic arch with post-stenotic dilation, potentially related to hypertension and cardiomegaly.'), Score: 0.7382
+('Normal size of the right ventricle.', 'Right ventricular enlargement, indicating pulmonary hypertension secondary to cardiomegaly.'), Score: 0.7379
+('No pleural effusions.', 'Bilateral pleural effusions associated with congestive heart failure.'), Score: 0.7377
+('No evidence of pulmonary edema.', 'Interstitial edema with fluffy infiltrates in the lung periphery, indicative of pulmonary congestion from heart failure.'), Score: 0.7375
+('No pleural thickening.', 'Pleural thickening, potentially related to chronic fluid overload and cardiac dysfunction.'), Score: 0.7369
+('Normal pulmonary artery size.', 'Prominent pulmonary artery with increased diameter, suggesting pulmonary hypertension secondary to cardiomegaly.'), Score: 0.7369
+('No pleural thickening.', 'Pleural thickening present, potentially related to chronic fluid overload and heart failure.'), Score: 0.7368
+('No pericardial fat pad thickening.', 'Pericardial fat pad thickening, potentially indicating fluid overload.'), Score: 0.7367
+('No pericardial fat pad thickening.', 'Pericardial fat pad thickening indicating chronic cardiac enlargement.'), Score: 0.7367
+('Normal cardiac apex position.', 'Displaced cardiac apex, indicating chamber enlargement.'), Score: 0.7367
+('No pleural thickening.', 'Pleural thickening, potentially secondary to chronic heart failure and fluid overload.'), Score: 0.7364
+('No pleural thickening observed.', 'Pleural thickening suggestive of chronic heart failure.'), Score: 0.7363
+('No pericardial fat pad thickening.', 'Pericardial fat pad thickening, suggesting fluid overload and potential heart failure.'), Score: 0.7362
+('No evidence of pulmonary venous congestion.', 'Increased pulmonary venous congestion with visible vascular engorgement.'), Score: 0.7361
+('Normal mediastinal width.', 'Increased mediastinal width, potentially due to cardiac enlargement and/or pericardial effusion.'), Score: 0.7360
+('No evidence of increased opacity in the lung hilum.', 'Increased opacity in the lung hilum, suggesting pulmonary venous congestion from heart failure.'), Score: 0.7359
+('Normal pulmonary artery size.', 'Prominent pulmonary artery, indicating pulmonary hypertension secondary to cardiomegaly.'), Score: 0.7354
+('No pleural effusions.', 'Pleural effusions present, potentially secondary to heart failure.'), Score: 0.7354
+('No pericardial fat pad blurring.', 'Blurring of the pericardial fat pad, suggestive of pericardial effusion.'), Score: 0.7353
+('No pleural thickening.', 'Pleural thickening potentially related to chronic heart failure and fluid overload.'), Score: 0.7353
+('Normal pulmonary vasculature.', 'Prominent pulmonary vasculature indicating pulmonary hypertension secondary to cardiomegaly.'), Score: 0.7351
+('Normal aortic arch.', 'Prominent aortic arch with post-stenotic dilation, potentially related to cardiomegaly.'), Score: 0.7351
+('No pleural thickening.', 'Pleural thickening present, potentially related to chronic heart failure and fluid overload.'), Score: 0.7349
+('No pleural thickening.', 'Pleural thickening secondary to chronic congestion.'), Score: 0.7348
+('No pleural effusion.', 'Pleural effusion present, often associated with congestive heart failure.'), Score: 0.7347
+('Normal mediastinal width.', 'Increased mediastinal width potentially indicating cardiac enlargement.'), Score: 0.7345
+('Normal pulmonary artery size.', 'Prominent pulmonary artery, indicating pulmonary hypertension.'), Score: 0.7345
+('No pericardial fat pad blurring.', 'Blurring of the pericardial fat pad, suggesting pericardial effusion secondary to heart failure.'), Score: 0.7344
+('No evidence of pulmonary congestion.', 'Pulmonary congestion with peribronchial cuffing.'), Score: 0.7344
+('No visible peribronchial cuffing.', 'Peribronchial cuffing present, indicating fluid accumulation in the lung interstitium due to heart failure.'), Score: 0.7343
+('No pericardial fat pad thickening.', 'Pericardial fat pad thickening suggestive of chronic fluid overload and cardiomegaly.'), Score: 0.7342
+('Normal aortic arch.', 'Prominent aortic arch with post-stenotic dilation, potentially related to cardiac strain.'), Score: 0.7342
+('Normal cardiac apex.', 'Displaced cardiac apex, indicating cardiomegaly and potential chamber enlargement.'), Score: 0.7340
+('Normal left ventricular size.', 'Left ventricular enlargement with increased cardiac diameter.'), Score: 0.7340
+('Normal descending aorta.', 'Prominent descending aorta, potentially reflecting increased left ventricular stroke volume in cardiomegaly.'), Score: 0.7338
+('Normal mediastinal width.', 'Increased mediastinal width, potentially due to cardiac enlargement and pericardial effusion.'), Score: 0.7337
+('Normal pulmonary artery size.', 'Prominent pulmonary artery, suggesting pulmonary hypertension secondary to cardiomegaly.'), Score: 0.7336
+('Normal mediastinal width.', 'Increased mediastinal width, potentially indicating cardiomegaly or other mediastinal pathology.'), Score: 0.7335
+('Normal mediastinal fat.', 'Increased density of mediastinal fat, potentially related to chronic venous congestion.'), Score: 0.7333
+('Normal lung vascularity.', 'Increased pulmonary vascularity, suggesting pulmonary venous hypertension.'), Score: 0.7333
+('No pleural effusions are present.', 'Bilateral pleural effusions, commonly associated with congestive heart failure.'), Score: 0.7333
+('No pleural effusions are present.', 'Pleural effusions present, potentially secondary to heart failure.'), Score: 0.7333
+('No evidence of pulmonary edema.', 'Fluffy infiltrates in the lung fields, consistent with pulmonary edema secondary to heart failure.'), Score: 0.7331
+('No pleural thickening.', 'Pleural thickening, potentially due to chronic heart failure and fluid overload.'), Score: 0.7330
+('Normal mediastinal vascularity.', 'Increased mediastinal vascularity due to cardiac enlargement.'), Score: 0.7330
+('No pleural thickening.', 'Pleural thickening secondary to chronic fluid overload and heart failure.'), Score: 0.7330
+('Normal pulmonary vascular markings.', 'Increased pulmonary vascular markings indicating pulmonary congestion.'), Score: 0.7329
+('Normal cardiac waist.', 'Loss of cardiac waist, suggesting enlargement of the cardiac chambers.'), Score: 0.7328
+('Normal pericardial fat pad.', 'Increased pericardial fat pad thickness, potentially indicating fluid accumulation with cardiomegaly.'), Score: 0.7327
+('Normal left ventricular size.', 'Prominent left ventricle, indicating left ventricular hypertrophy or dilation.'), Score: 0.7325
+('No evidence of increased opacity in lung hilum.', 'Increased opacity in lung hilum due to vascular congestion from heart failure.'), Score: 0.7323
+('No pleural thickening.', 'Pleural thickening present, potentially secondary to chronic heart failure and fluid overload.'), Score: 0.7322
+('No evidence of pleural thickening.', 'Pleural thickening secondary to chronic heart failure and fluid overload.'), Score: 0.7322
+('No evidence of pulmonary edema.', 'Interstitial edema with increased peribronchial cuffing due to elevated left atrial pressure.'), Score: 0.7322
+('No pleural effusion.', 'Bilateral pleural effusions, commonly seen in advanced heart failure and cardiomegaly.'), Score: 0.7321
+('Normal size of the left ventricle.', 'Left ventricular enlargement with increased cardiothoracic ratio.'), Score: 0.7320
+('No pleural thickening.', 'Pleural thickening secondary to chronic heart failure and fluid overload.'), Score: 0.7320
+('Normal pulmonary artery size.', 'Prominent pulmonary artery, suggesting pulmonary hypertension related to cardiomegaly.'), Score: 0.7319
+('No pleural effusion.', 'Bilateral pleural effusions, commonly seen in congestive heart failure associated with cardiomegaly.'), Score: 0.7319
+('No evidence of pericardial effusion.', 'Pericardial effusion present, potentially contributing to cardiac compression and heart failure.'), Score: 0.7317
+('Normal pulmonary artery size.', 'Prominent pulmonary artery suggesting pulmonary hypertension from left heart failure.'), Score: 0.7315
+('Normal pulmonary artery size.', 'Prominent pulmonary artery suggesting pulmonary hypertension secondary to cardiomegaly.'), Score: 0.7314
+('No pericardial fat pad thickening.', 'Pericardial fat pad thickening, suggestive of fluid accumulation and potential cardiac strain.'), Score: 0.7313
+('Normal descending aorta.', 'Prominent descending aorta, potentially related to cardiomegaly and increased pulmonary pressure.'), Score: 0.7311
+('No evidence of pulmonary edema.', 'Fluffy infiltrates in the lung periphery consistent with pulmonary edema secondary to heart failure.'), Score: 0.7311
+('No pleural thickening.', 'Pleural thickening present, potentially due to chronic heart failure and fluid overload.'), Score: 0.7311
+('No evidence of Kerley B lines.', 'Kerley B lines present, suggestive of pulmonary edema secondary to heart failure.'), Score: 0.7309
+('No pericardial fat pad blurring.', 'Blurring of the pericardial fat pad indicating pericardial effusion.'), Score: 0.7308
+('No Kerley B lines.', 'Presence of Kerley B lines indicating interstitial edema.'), Score: 0.7307
+('No pericardial thickening.', 'Pericardial thickening suggestive of chronic pericarditis or effusion.'), Score: 0.7306
+('Normal pulmonary artery size.', 'Prominent pulmonary artery, suggesting pulmonary hypertension associated with cardiomegaly.'), Score: 0.7305
+('No pleural effusions.', 'Pleural effusions present, often associated with congestive heart failure.'), Score: 0.7305
+('Normal pulmonary artery size.', 'Prominent pulmonary artery indicating pulmonary hypertension secondary to cardiomegaly.'), Score: 0.7304
+('No pleural thickening.', 'Pleural thickening suggesting chronic heart failure and fluid overload.'), Score: 0.7303
+('Normal pulmonary artery size.', 'Prominent pulmonary artery, indicating pulmonary hypertension related to cardiomegaly.'), Score: 0.7301
+('Normal pericardial fat pad.', 'Increased pericardial fat pad thickness, suggestive of pericardial effusion.'), Score: 0.7299
+('Normal pulmonary artery size.', 'Prominent pulmonary artery, potentially due to pulmonary hypertension secondary to cardiomegaly.'), Score: 0.7299
+('Normal pericardial fat pad.', 'Increased pericardial fat pad, potentially indicating chronic cardiac enlargement.'), Score: 0.7298
+('No pericardial effusion.', 'Pericardial effusion present, potentially contributing to cardiac enlargement or mimicking it.'), Score: 0.7298
+('No pleural effusion.', 'Pleural effusion, often bilateral, secondary to congestive heart failure from cardiomegaly.'), Score: 0.7298
+('Normal right atrial size.', 'Prominent right atrium, indicating right atrial enlargement due to cardiomegaly.'), Score: 0.7297
+('Normal pulmonary artery size.', 'Enlarged pulmonary artery, suggesting pulmonary hypertension secondary to heart failure.'), Score: 0.7297
+('Sharp pulmonary artery margins.', 'Blurred pulmonary artery margins due to pulmonary congestion.'), Score: 0.7297
+('Well-defined right heart border.', 'Right heart border obscured by pericardial effusion.'), Score: 0.7296
+('No pericardial fat pad thickening.', 'Pericardial fat pad thickening, suggestive of chronic heart failure.'), Score: 0.7295
+('No evidence of Kerley B lines.', 'Kerley B lines present, indicating interstitial edema secondary to heart failure.'), Score: 0.7295
+('Normal cardiac shadow.', 'Abnormal cardiac shadow with indistinct borders.'), Score: 0.7295
+('Normal pulmonary artery size.', 'Prominent pulmonary artery, indicating pulmonary hypertension associated with cardiomegaly.'), Score: 0.7294
+('Normal lung vascular markings.', 'Increased lung vascular markings suggestive of pulmonary venous congestion.'), Score: 0.7294
+('Normal pericardial fat pad.', 'Increased pericardial fat pad thickness, potentially indicating pericardial effusion associated with cardiomegaly.'), Score: 0.7294
+('Normal diaphragmatic contour.', 'Diaphragmatic contour obscured by pleural fluid secondary to heart failure.'), Score: 0.7293
+('No evidence of left ventricular hypertrophy.', 'Left ventricular hypertrophy with thickening of the ventricular wall.'), Score: 0.7291
+('No evidence of peribronchial cuffing.', 'Peribronchial cuffing indicating interstitial edema.'), Score: 0.7291
+('Normal size of the right ventricle.', 'Right ventricular enlargement, suggesting pulmonary hypertension secondary to cardiomegaly.'), Score: 0.7289
+('No evidence of interstitial edema.', 'Interstitial edema with increased peribronchial cuffing, consistent with heart failure.'), Score: 0.7289
+('No pleural thickening.', 'Pleural thickening, potentially due to chronic congestion and fluid overload.'), Score: 0.7288
+('Normal descending aorta.', 'Prominent descending aorta suggesting aortic dilation or hypertension contributing to cardiac strain.'), Score: 0.7288
+('Normal aortic arch.', 'Aortic arch enlargement, potentially due to increased cardiac output or underlying pathology.'), Score: 0.7288
+('Sharp diaphragmatic contours.', 'Flattened or obscured diaphragmatic contours due to pleural effusion or ascites secondary to heart failure.'), Score: 0.7287
+('Normal pulmonary artery.', 'Enlarged pulmonary artery indicating pulmonary hypertension secondary to heart failure.'), Score: 0.7286
+('Normal costophrenic angles.', 'Blunted costophrenic angles, indicative of pleural effusion secondary to heart failure.'), Score: 0.7285
+('Normal pulmonary artery size.', 'Prominent pulmonary artery suggesting pulmonary hypertension from cardiomegaly.'), Score: 0.7285
+('Normal mediastinal width.', 'Increased mediastinal width due to cardiac enlargement.'), Score: 0.7285
+('No evidence of pulmonary edema.', 'Fluffy infiltrates in the lung periphery, indicative of pulmonary edema.'), Score: 0.7284
+('Clear diaphragmatic contours.', 'Undulation of diaphragmatic contours due to pleural effusion associated with heart failure.'), Score: 0.7284
+('Sharp cardiac borders.', 'Diffuse cardiac borders, indicating pericardial effusion associated with heart failure.'), Score: 0.7284
+('Normal pulmonary venous pressure.', 'Elevated pulmonary venous pressure indicated by pulmonary congestion.'), Score: 0.7283
+('Normal pulmonary vasculature.', 'Prominent pulmonary vasculature indicating pulmonary venous hypertension.'), Score: 0.7282
+('No pleural effusions are present.', 'Pleural effusions are present, potentially related to heart failure from cardiomegaly.'), Score: 0.7282
+('No evidence of Kerley B lines.', 'Kerley B lines present, suggestive of interstitial edema and heart failure.'), Score: 0.7282
+('Normal pulmonary vascularity.', 'Increased pulmonary vascularity indicating pulmonary venous hypertension.'), Score: 0.7282
+('No evidence of pulmonary edema.', 'Interstitial edema with peribronchial cuffing, indicative of pulmonary congestion from heart failure.'), Score: 0.7280
+('No evidence of Kerley B lines.', 'Kerley B lines present, suggestive of pulmonary edema from heart failure.'), Score: 0.7280
+('Normal distance between the heart and the trachea.', 'Reduced distance between the heart and the trachea due to cardiac enlargement.'), Score: 0.7280
+('Normal cardiac contour.', 'Abnormal cardiac contour suggestive of chamber enlargement.'), Score: 0.7278
+('No evidence of Kerley B lines.', 'Presence of Kerley B lines, indicating interstitial pulmonary edema secondary to heart failure.'), Score: 0.7278
+('Normal pulmonary artery segmentation.', 'Delayed or diminished pulmonary artery segmentation, suggestive of pulmonary hypertension secondary to cardiomegaly.'), Score: 0.7277
+('Normal pulmonary artery.', 'Prominent pulmonary artery, suggesting pulmonary hypertension secondary to cardiomegaly.'), Score: 0.7276
+('No evidence of Kerley B lines.', 'Kerley B lines present, indicating interstitial edema.'), Score: 0.7276
+('No evidence of pulmonary edema.', 'Fluffy infiltrates in the lung periphery consistent with pulmonary edema.'), Score: 0.7275
+('Normal mediastinal fat pads.', 'Increased mediastinal fat pads, potentially indicating fluid overload associated with heart failure.'), Score: 0.7275
+('Normal cardiac apex position.', 'Displaced cardiac apex, suggesting cardiomegaly and potential chamber enlargement.'), Score: 0.7273
+('No evidence of pulmonary venous congestion.', 'Increased pulmonary venous congestion with cephalization of vessels.'), Score: 0.7272
+('Normal pulmonary artery size relative to trachea.', 'Pulmonary artery larger than the trachea, suggestive of pulmonary hypertension.'), Score: 0.7272
+('No evidence of Kerley B lines.', 'Kerley B lines present, indicating interstitial pulmonary edema.'), Score: 0.7271
+('No Kerley B lines.', 'Kerley B lines present at the lung bases, indicating interstitial edema.'), Score: 0.7271
+('Normal cardiac apex position.', 'Downward and laterally displaced cardiac apex indicating cardiomegaly.'), Score: 0.7270
+('No pericardial fat pad infiltration.', 'Pericardial fat pad infiltration obscuring the cardiac borders.'), Score: 0.7270
+('Normal cardiac apex position.', 'Displaced cardiac apex, potentially indicating left ventricular hypertrophy or enlargement.'), Score: 0.7270
+('No interstitial edema.', 'Interstitial edema with Kerley A lines, indicating increased pulmonary venous pressure and heart failure.'), Score: 0.7268
+('No pericardial fat pad blurring.', 'Blurring of the pericardial fat pad, suggesting pericardial effusion often seen with heart failure.'), Score: 0.7268
+('No pleural thickening.', 'Pleural thickening associated with chronic heart failure.'), Score: 0.7268
+('Sharp cardiac borders.', 'Diffuse cardiac borders indicating pericardial effusion associated with heart failure.'), Score: 0.7267
+('No Kerley B lines.', 'Kerley B lines present, indicating interstitial pulmonary edema due to heart failure.'), Score: 0.7266
+('No evidence of pulmonary edema.', 'Fluffy infiltrates in the lung periphery, indicative of pulmonary edema secondary to cardiomegaly.'), Score: 0.7266
+('No evidence of pulmonary edema.', 'Diffuse pulmonary edema, appearing as fluffy infiltrates, secondary to heart failure.'), Score: 0.7265
+('No evidence of pulmonary edema.', 'Interstitial and alveolar edema, consistent with cardiogenic pulmonary edema.'), Score: 0.7264
+('No pleural thickening.', 'Presence of pleural thickening, potentially related to chronic heart failure and fluid overload.'), Score: 0.7264
+('Normal pulmonary artery size.', 'Prominent pulmonary artery, potentially due to pulmonary hypertension from cardiomegaly.'), Score: 0.7263
+('Normal pulmonary artery hilum.', 'Engorgement of the pulmonary artery hilum, suggestive of pulmonary hypertension.'), Score: 0.7262
+('Normal left atrial size.', 'Left atrial enlargement, indicating left ventricular dysfunction.'), Score: 0.7260
+('No Kerley B lines.', 'Kerley B lines present, indicating interstitial edema and heart failure.'), Score: 0.7260
+('Normal size of the right ventricle.', 'Enlarged right ventricle with increased transverse diameter.'), Score: 0.7259
+('Normal left ventricular dimension.', 'Increased left ventricular dimension, indicating left ventricular dilation and cardiomegaly.'), Score: 0.7258
+('Normal cardiac apex position.', 'Displaced cardiac apex, indicating left ventricular enlargement.'), Score: 0.7257
+('Normal cardiac-diaphragmatic angle.', 'Increased cardiac-diaphragmatic angle due to cardiac enlargement.'), Score: 0.7255
+('No interstitial markings.', 'Increased interstitial markings, indicating fluid accumulation in the lung interstitium due to heart failure.'), Score: 0.7254
+('No evidence of Kerley B lines.', 'Kerley B lines present, suggestive of interstitial edema due to heart failure.'), Score: 0.7254
+('Lung parenchyma appears clear.', 'Patchy opacities in the lung fields, suggestive of pulmonary edema from heart failure.'), Score: 0.7252
+('No evidence of pulmonary edema.', 'Interstitial and alveolar edema present, consistent with cardiogenic pulmonary edema.'), Score: 0.7252
+('Normal mediastinal width.', 'Increased mediastinal width due to cardiac enlargement and potential pericardial effusion.'), Score: 0.7252
+('No evidence of pulmonary edema.', 'Pulmonary edema with fluffy infiltrates, secondary to elevated pulmonary venous pressure.'), Score: 0.7251
+('Normal pulmonary artery size.', 'Prominent pulmonary artery hilum suggesting pulmonary hypertension secondary to cardiomegaly.'), Score: 0.7251
+('No pleural effusion.', 'Small bilateral pleural effusions secondary to heart failure.'), Score: 0.7251
+('Normal hilar vascular markings.', 'Prominent hilar vascular markings, indicating pulmonary venous hypertension.'), Score: 0.7250
+('No pericardial calcification.', 'Pericardial calcification potentially indicating chronic pericarditis contributing to cardiac constraint.'), Score: 0.7249
+('Normal pulmonary artery size.', 'Enlarged pulmonary artery, suggesting pulmonary hypertension.'), Score: 0.7249
+('No Kerley B lines.', 'Kerley B lines present, indicating interstitial pulmonary edema.'), Score: 0.7248
+('Normal lung vascular markings.', 'Cephalization of pulmonary vessels, indicating increased pulmonary venous pressure from heart failure.'), Score: 0.7248
+('No Kerley B lines.', 'Kerley B lines present, indicating interstitial edema.'), Score: 0.7246
+('No evidence of Kerley B lines.', 'Kerley B lines present, indicating interstitial edema and pulmonary congestion.'), Score: 0.7245
+('No evidence of Kerley B lines.', 'Kerley B lines present, indicative of pulmonary edema secondary to heart failure.'), Score: 0.7245
+('No Kerley B lines.', 'Kerley B lines present, indicating interstitial edema due to heart failure.'), Score: 0.7245
+('Normal pulmonary artery size.', 'Enlarged pulmonary artery, indicating pulmonary hypertension secondary to cardiomegaly.'), Score: 0.7243
+('No evidence of Kerley B lines.', 'Kerley B lines present, indicating pulmonary edema associated with heart failure.'), Score: 0.7242
+('No evidence of Kerley B lines.', 'Presence of Kerley B lines indicating pulmonary edema secondary to heart failure.'), Score: 0.7241
+('No evidence of Kerley B lines.', 'Presence of Kerley B lines, suggestive of pulmonary edema secondary to heart failure.'), Score: 0.7241
+('Normal cardiac width to chest width ratio.', 'Increased cardiac width to chest width ratio (>0.5), indicating cardiomegaly.'), Score: 0.7241
+('No evidence of Kerley B lines.', 'Kerley B lines present, indicating interstitial edema from heart failure.'), Score: 0.7240
+('No evidence of pulmonary edema.', 'Diffuse bilateral interstitial and alveolar edema consistent with cardiogenic pulmonary edema.'), Score: 0.7240
+('No pericardial fat padding.', 'Increased pericardial fat padding, potentially indicating chronic heart failure.'), Score: 0.7240
+('Lung parenchyma demonstrates clear vascular markings.', 'Interstitial edema visible in lung parenchyma, consistent with heart failure.'), Score: 0.7239
+('Normal pericardial fat pads.', 'Increased pericardial fat pads, potentially indicating cardiac enlargement.'), Score: 0.7238
+('Normal pulmonary artery size.', 'Enlarged pulmonary artery suggesting pulmonary hypertension secondary to heart failure.'), Score: 0.7238
+('Normal cardiac apex position.', 'Displaced cardiac apex suggesting cardiomegaly and/or chamber enlargement.'), Score: 0.7237
+('Normal cardiac apex.', 'Displaced cardiac apex, potentially indicating left ventricular hypertrophy.'), Score: 0.7236
+('No evidence of Kerley B lines.', 'Kerley B lines present, indicative of pulmonary edema due to heart failure.'), Score: 0.7236
+('No pleural effusion.', 'Pleural effusion, potentially secondary to heart failure and cardiomegaly.'), Score: 0.7234
+('Pulmonary vessels are not prominent.', 'Prominent pulmonary vessels indicating pulmonary hypertension secondary to heart failure.'), Score: 0.7234
+('No evidence of pulmonary edema.', 'Diffuse pulmonary edema with peribronchial cuffing consistent with cardiogenic pulmonary edema.'), Score: 0.7233
+('Normal cardiac waist.', 'Loss of cardiac waist, indicating generalized cardiac enlargement.'), Score: 0.7233
+('Normal size of right ventricle.', 'Right ventricular enlargement suggesting pulmonary hypertension secondary to cardiomegaly.'), Score: 0.7232
+('Normal cardiac apex.', 'Displaced cardiac apex, indicating cardiomegaly.'), Score: 0.7232
+('No Kerley B lines.', 'Kerley B lines present, indicating interstitial pulmonary edema from heart failure.'), Score: 0.7232
+('Normal mediastinal width.', 'Increased mediastinal width, potentially due to cardiomegaly or pericardial effusion.'), Score: 0.7232
+('No pleural effusion.', 'Pleural effusion, often associated with congestive heart failure secondary to cardiomegaly.'), Score: 0.7231
+('No evidence of pulmonary edema.', 'Fluffy infiltrates in the pulmonary parenchyma, consistent with pulmonary edema due to cardiomegaly.'), Score: 0.7231
+('No evidence of pulmonary edema.', 'Fluffy infiltrates in the lung periphery, consistent with pulmonary edema secondary to cardiomegaly.'), Score: 0.7230
+('Normal retrosternal airspace.', 'Narrowing of the retrosternal airspace, potentially due to cardiac enlargement.'), Score: 0.7230
+('No Kerley B lines.', 'Presence of Kerley B lines indicating interstitial edema secondary to heart failure.'), Score: 0.7229
+('Normal pulmonary artery pressure.', 'Elevated pulmonary artery pressure, indicated by prominent pulmonary arteries and right heart enlargement, secondary to cardiomegaly.'), Score: 0.7229
+('Sharp pulmonary artery margins.', 'Obscured pulmonary artery margins due to perivascular cuffing from edema.'), Score: 0.7228
+('Normal mediastinal width.', 'Increased mediastinal width, suggesting cardiomegaly or other mediastinal pathology.'), Score: 0.7228
+('Normal pericardial space.', 'Widened pericardial space with fluid density, suggestive of pericardial effusion associated with cardiomegaly.'), Score: 0.7228
+('Normal pulmonary vascular markings.', 'Increased pulmonary vascular markings suggestive of pulmonary congestion secondary to cardiomegaly.'), Score: 0.7227
+('No Kerley B lines.', 'Presence of Kerley B lines indicating interstitial pulmonary edema.'), Score: 0.7226
+('Sharp pulmonary artery branches.', 'Prominent and dilated pulmonary artery branches, suggestive of pulmonary hypertension.'), Score: 0.7226
+('Normal cardiac apex position.', 'Displaced cardiac apex, potentially indicating left ventricular enlargement.'), Score: 0.7225
+('No cardiopericardial fat pad infiltration.', 'Cardiopericardial fat pad infiltration suggesting chronic cardiac enlargement.'), Score: 0.7225
+('Normal left ventricular size and contour.', 'Prominent left ventricular enlargement contributing to cardiomegaly.'), Score: 0.7225
+('Normal pulmonary artery size.', 'Enlarged pulmonary artery, suggesting pulmonary hypertension secondary to cardiomegaly.'), Score: 0.7224
+('No evidence of pulmonary edema.', 'Hazy opacities in the lung fields consistent with pulmonary edema.'), Score: 0.7224
+('No Kerley B lines.', 'Presence of Kerley B lines indicating pulmonary edema secondary to heart failure.'), Score: 0.7224
+('Normal cardiac apex position.', 'Displaced cardiac apex, potentially indicating left ventricular enlargement and cardiomegaly.'), Score: 0.7222
+('No evidence of peribronchial cuffing.', 'Peribronchial cuffing present, indicating fluid accumulation in the bronchioles secondary to heart failure.'), Score: 0.7222
+('No evidence of Kerley B lines.', 'Kerley B lines present, indicating interstitial edema secondary to elevated pulmonary venous pressure.'), Score: 0.7222
+('No Kerley B lines present.', 'Kerley B lines present, indicative of pulmonary edema secondary to heart failure.'), Score: 0.7221
+('Normal pericardial fat pad.', 'Increased pericardial fat pad thickness suggestive of chronic fluid overload.'), Score: 0.7220
+('Normal mediastinal width.', 'Increased mediastinal width due to cardiac enlargement and/or pericardial effusion.'), Score: 0.7220
+('No Kerley B lines.', 'Kerley B lines present, indicative of interstitial pulmonary edema due to heart failure.'), Score: 0.7219
+('Normal pulmonary artery size.', 'Enlarged pulmonary artery, potentially due to pulmonary hypertension from cardiomegaly.'), Score: 0.7219
+('Normal pulmonary vascular markings.', 'Increased pulmonary vascular markings, suggesting pulmonary venous hypertension and cardiomegaly.'), Score: 0.7217
+('Normal pulmonary artery size.', 'Enlarged pulmonary artery, suggesting pulmonary hypertension related to cardiomegaly.'), Score: 0.7217
+('Normal cardiac silhouette shape.', 'Globular cardiac silhouette characteristic of cardiomegaly.'), Score: 0.7216
+('No Kerley B lines.', 'Kerley B lines present, indicative of pulmonary edema.'), Score: 0.7216
+('No evidence of pulmonary congestion.', 'Prominent pulmonary congestion with hazy opacities, consistent with cardiogenic pulmonary edema.'), Score: 0.7216
+('No pleural effusions.', 'Pleural effusions present, often associated with congestive heart failure and cardiomegaly.'), Score: 0.7216
+('Sharp pulmonary artery margins.', 'Hazy pulmonary artery margins due to pulmonary congestion.'), Score: 0.7215
+('Normal cardiac apex.', 'Displaced or rounded cardiac apex, suggestive of ventricular enlargement and cardiomegaly.'), Score: 0.7214
+('No Kerley B lines.', 'Kerley B lines present, suggestive of interstitial edema due to heart failure.'), Score: 0.7214
+('Normal pulmonary artery size.', 'Enlarged pulmonary artery, potentially due to pulmonary hypertension secondary to cardiomegaly.'), Score: 0.7214
+('No Kerley B lines.', 'Presence of Kerley B lines, suggestive of pulmonary edema due to heart failure.'), Score: 0.7213
+('Normal pulmonary artery prominence.', 'Increased prominence of the pulmonary artery, suggesting pulmonary hypertension secondary to cardiomegaly.'), Score: 0.7212
+('Normal mediastinal width.', 'Increased mediastinal width, potentially indicating cardiomegaly and/or pericardial effusion.'), Score: 0.7212
+('No evidence of pulmonary venous congestion.', 'Prominent pulmonary venous congestion indicating elevated left atrial pressure and heart failure.'), Score: 0.7212
+('Clear costophrenic angles.', 'Obtuse costophrenic angles, suggestive of pleural effusion secondary to heart failure.'), Score: 0.7211
+('No evidence of pulmonary congestion.', 'Increased peribronchial cuffing, indicative of pulmonary congestion.'), Score: 0.7210
+('Normal cardiac angle.', 'Increased cardiac angle, indicating cardiomegaly.'), Score: 0.7210
+('Normal mediastinal width.', 'Increased mediastinal width, potentially due to cardiomegaly or aortic enlargement.'), Score: 0.7209
+('No signs of pulmonary congestion.', 'Peribronchial cuffing indicating pulmonary congestion.'), Score: 0.7209
+('No evidence of pulmonary venous congestion.', 'Increased pulmonary venous congestion with visible Kerley A lines.'), Score: 0.7209
+('No Kerley B lines.', 'Presence of Kerley B lines indicating interstitial pulmonary edema from heart failure.'), Score: 0.7209
+('Normal pulmonary artery size.', 'Prominent pulmonary artery, suggesting pulmonary hypertension and right ventricular strain.'), Score: 0.7208
+('Normal cardiac angle.', 'Increased cardiac angle (>90 degrees) indicating cardiomegaly.'), Score: 0.7207
+('No Kerley B lines.', 'Kerley B lines present, indicating interstitial edema from heart failure.'), Score: 0.7207
+('Normal left ventricular border.', 'Blunted left ventricular border, suggestive of pericardial effusion secondary to heart failure.'), Score: 0.7207
+('No evidence of right ventricular hypertrophy.', 'Right ventricular hypertrophy with prominence of the right ventricular border.'), Score: 0.7206
+('Normal cardiac motion.', 'Reduced cardiac motion suggestive of heart failure.'), Score: 0.7205
+('Normal cardiac output appearance.', 'Reduced cardiac output appearance due to heart failure.'), Score: 0.7205
+('No Kerley B lines.', 'Presence of Kerley B lines indicating pulmonary edema.'), Score: 0.7205
+('Normal cardiac apex.', 'Displaced cardiac apex, indicating left ventricular enlargement and cardiomegaly.'), Score: 0.7205
+('No evidence of pulmonary congestion.', 'Increased pulmonary venous congestion with peribronchial cuffing.'), Score: 0.7203
+('No pleural effusion.', 'Pleural effusions, often bilateral and symmetric, secondary to heart failure.'), Score: 0.7203
+('Normal descending aorta contour.', 'Bulging of the descending aorta, potentially related to left ventricular enlargement.'), Score: 0.7202
+('Normal aortic arch.', 'Prominent aortic arch, potentially indicating left ventricular hypertrophy.'), Score: 0.7200
+('No cardiopericardial fat pad infiltration.', 'Cardiopericardial fat pad infiltration, suggesting chronic cardiac enlargement.'), Score: 0.7200
+('Normal right ventricular size.', 'Right ventricular enlargement, suggesting right heart strain.'), Score: 0.7199
+('Normal pulmonary artery size.', 'Prominent pulmonary artery, indicative of pulmonary hypertension secondary to cardiomegaly.'), Score: 0.7199
+('Normal left ventricular size.', 'Enlarged left ventricular size, indicating left ventricular hypertrophy and cardiomegaly.'), Score: 0.7199
+('Sharp costophrenic angles.', 'Blunted costophrenic angles due to pleural effusion.'), Score: 0.7199
+('No interstitial edema.', 'Interstitial edema visible as Kerley A lines and peribronchial cuffing.'), Score: 0.7199
+('Normal cardiac waist.', 'Loss of cardiac waist, indicating cardiomegaly.'), Score: 0.7199
+('No evidence of interstitial edema.', 'Interstitial edema with Kerley A lines present.'), Score: 0.7199
+('Normal mediastinal width.', 'Increased mediastinal width indicating cardiac enlargement.'), Score: 0.7198
+('No evidence of pulmonary congestion.', 'Diffuse pulmonary congestion, consistent with fluid overload from heart failure.'), Score: 0.7198
+('No peribronchial cuffing.', 'Peribronchial cuffing, indicative of fluid accumulation in the lungs.'), Score: 0.7198
+('No evidence of Kerley B lines.', 'Kerley B lines present, indicative of pulmonary edema from heart failure.'), Score: 0.7198
+('No evidence of Kerley B lines.', 'Kerley B lines present, representing interstitial edema due to elevated pulmonary venous pressure.'), Score: 0.7197
+('No evidence of Kerley B lines.', 'Kerley B lines present, indicative of interstitial edema and heart failure.'), Score: 0.7197
+('Normal cardiac angle.', 'Increased cardiac angle indicating enlargement.'), Score: 0.7197
+('No evidence of Kerley B lines.', 'Kerley B lines present, indicative of interstitial pulmonary edema.'), Score: 0.7196
+('Normal pulmonary artery size.', 'Enlarged pulmonary artery, suggestive of pulmonary hypertension secondary to cardiomegaly.'), Score: 0.7195
+('No evidence of Kerley B lines.', 'Kerley B lines present, indicating interstitial edema and elevated pulmonary venous pressure.'), Score: 0.7195
+('No evidence of pulmonary congestion.', 'Pulmonary congestion with increased interstitial markings.'), Score: 0.7195
+('No evidence of Kerley B lines.', 'Presence of Kerley B lines, indicating interstitial edema secondary to elevated pulmonary venous pressure from heart failure.'), Score: 0.7194
+('Normal mediastinal contour.', 'Bulging mediastinum, potentially due to right atrial enlargement.'), Score: 0.7194
+('No Kerley B lines.', 'Presence of Kerley B lines, representing interstitial edema and heart failure.'), Score: 0.7193
+('Normal mediastinal contour.', 'Bulging mediastinal contour, suggestive of cardiac enlargement.'), Score: 0.7192
+('Normal left ventricular size.', 'Left ventricular enlargement with increased cardiothoracic ratio.'), Score: 0.7192
+('No evidence of interstitial edema.', 'Diffuse interstitial edema indicating increased pulmonary capillary pressure.'), Score: 0.7192
+('Normal retrosternal space.', 'Loss of retrosternal space indicating anterior cardiac displacement.'), Score: 0.7191
+('Normal left atrial size.', 'Left atrial enlargement, indicating increased left atrial pressure.'), Score: 0.7190
+('Normal pulmonary artery size.', 'Enlarged pulmonary artery, suggesting pulmonary hypertension associated with cardiomegaly.'), Score: 0.7190
+('No evidence of increased opacity in the hilar regions.', 'Increased opacity in the hilar regions, suggestive of pulmonary congestion.'), Score: 0.7189
+('Normal mediastinum width.', 'Widened mediastinum, potentially due to cardiac enlargement and/or pericardial effusion.'), Score: 0.7189
+('No evidence of interstitial edema.', 'Diffuse interstitial edema consistent with congestive heart failure.'), Score: 0.7189
+('No Kerley B lines.', 'Kerley B lines present, representing interstitial edema.'), Score: 0.7188
+('Normal cardiac silhouette.', 'Globular cardiac silhouette suggesting generalized cardiac enlargement.'), Score: 0.7187
+('No evidence of peribronchial cuffing.', 'Peribronchial cuffing suggestive of pulmonary edema secondary to heart failure.'), Score: 0.7186
+('Normal pulmonary artery hilum.', 'Prominent pulmonary artery hilum indicating pulmonary hypertension.'), Score: 0.7184
+('No Kerley B lines.', 'Kerley B lines present, consistent with interstitial pulmonary edema.'), Score: 0.7183
+('No pericardial fat pad blurring.', 'Blurring of the pericardial fat pad, suggestive of pericardial effusion associated with cardiomegaly.'), Score: 0.7183
+('No pulmonary congestion.', 'Pulmonary congestion with increased interstitial markings.'), Score: 0.7183
+('No evidence of Kerley B lines.', 'Presence of Kerley B lines, indicative of interstitial pulmonary edema secondary to heart failure.'), Score: 0.7183
+('No pericardial fat pad blurring.', 'Blurring of the pericardial fat pad indicating pericardial effusion associated with cardiomegaly.'), Score: 0.7183
+('No interstitial edema.', 'Interstitial edema causing hazy opacities in the lung fields due to heart failure.'), Score: 0.7183
+('Normal mediastinal width.', 'Widened mediastinum, potentially due to cardiac enlargement.'), Score: 0.7182
+('Unremarkable hilar vasculature.', 'Hilar congestion and prominence due to increased pulmonary venous pressure.'), Score: 0.7181
+('Normal mediastinal width.', 'Increased mediastinal width, potentially due to cardiomegaly and/or pericardial effusion.'), Score: 0.7181
+('Normal left ventricular wall thickness.', 'Increased left ventricular wall thickness indicating hypertrophy and potential strain.'), Score: 0.7180
+('Normal cardiac silhouette density.', 'Increased cardiac silhouette density suggesting chamber enlargement.'), Score: 0.7179
+('Normal pulmonary artery.', 'Prominent pulmonary artery, potentially due to pulmonary hypertension secondary to cardiomegaly.'), Score: 0.7179
+('No peribronchial cuffing.', 'Peribronchial cuffing present, indicating fluid accumulation in the bronchioles due to heart failure.'), Score: 0.7179
+('Normal pulmonary vasculature.', 'Increased interstitial markings in the lower lobes due to pulmonary edema.'), Score: 0.7178
+('Normal cardiac apex.', 'Displaced cardiac apex, indicating left ventricular enlargement.'), Score: 0.7178
+('No Kerley B lines.', 'Kerley B lines present, indicative of pulmonary edema secondary to heart failure and cardiomegaly.'), Score: 0.7178
+('No evidence of peribronchial cuffing.', 'Peribronchial cuffing present, indicating fluid accumulation in the bronchial walls due to pulmonary edema.'), Score: 0.7178
+('Normal cardiac silhouette borders.', 'Ill-defined cardiac silhouette borders, potentially due to pericardial effusion or significant enlargement.'), Score: 0.7177
+('No Kerley B lines.', 'Kerley B lines indicating interstitial edema and heart failure.'), Score: 0.7177
+('No evidence of peribronchial cuffing.', 'Peribronchial cuffing present, indicating fluid accumulation and potential heart failure.'), Score: 0.7176
+('Normal lung parenchyma.', 'Interstitial markings are increased, suggesting fluid overload.'), Score: 0.7176
+('Normal cardiac apex position.', 'Displaced cardiac apex suggesting left ventricular enlargement.'), Score: 0.7176
+('No Kerley B lines present.', 'Kerley B lines present, indicating interstitial pulmonary edema from heart failure.'), Score: 0.7176
+('Diaphragm is smooth and well-defined.', 'Blunting of the left costophrenic angle due to cardiomegaly and associated pleural effusion.'), Score: 0.7175
+('No evidence of apical pleural thickening.', 'Apical pleural thickening, potentially related to chronic heart failure and fluid overload.'), Score: 0.7175
+('No evidence of cephalization of pulmonary vessels.', 'Cephalization of pulmonary vessels, indicating increased pulmonary venous pressure and heart failure.'), Score: 0.7174
+('No Kerley B lines.', 'Presence of Kerley B lines indicating pulmonary edema and heart failure.'), Score: 0.7174
+('Normal mediastinal contour.', 'Mediastinal contour obscured by cardiomegaly and pericardial effusion.'), Score: 0.7172
+('Sharp pulmonary artery outline.', 'Prominent and indistinct pulmonary artery, potentially enlarged due to increased pulmonary pressure.'), Score: 0.7172
+('Normal pulmonary artery size.', 'Enlarged pulmonary artery suggesting pulmonary hypertension.'), Score: 0.7172
+('Normal pulmonary artery size.', 'Enlarged pulmonary artery, potentially due to pulmonary hypertension associated with cardiomegaly.'), Score: 0.7170
+('No evidence of interstitial edema.', 'Interstitial edema present, indicating fluid overload from heart failure.'), Score: 0.7170
+('Normal pericardial fat pad.', 'Prominent pericardial fat pad, potentially indicating chronic heart failure.'), Score: 0.7169
+('Normal pulmonary vasculature.', 'Diffuse pulmonary vascular prominence indicating pulmonary hypertension.'), Score: 0.7167
+('No Kerley B lines.', 'Presence of Kerley B lines indicating interstitial edema from heart failure.'), Score: 0.7167
+('Normal left atrial appendage.', 'Enlarged left atrial appendage, indicating left atrial enlargement.'), Score: 0.7166
+('Normal cardiac apex.', 'Displaced cardiac apex, suggesting cardiomegaly.'), Score: 0.7166
+('Normal left ventricular size and contour.', 'Left ventricular enlargement with globular or rounded cardiac silhouette.'), Score: 0.7165
+('No evidence of interstitial edema.', 'Increased interstitial edema, consistent with fluid overload from heart failure.'), Score: 0.7165
+('Normal mediastinal width.', 'Widened mediastinum, potentially due to cardiac enlargement and/or pericardial effusion.'), Score: 0.7164
+('Sharp pulmonary artery.', 'Prominent pulmonary artery with increased diameter, suggestive of pulmonary hypertension secondary to cardiomegaly.'), Score: 0.7164
+('Normal right ventricular size.', 'Enlarged right ventricular size, suggesting right ventricular hypertrophy and potential pulmonary hypertension.'), Score: 0.7164
+('Normal pulmonary artery size.', 'Enlarged pulmonary artery suggesting pulmonary hypertension secondary to cardiomegaly.'), Score: 0.7163
+('Normal mediastinal width.', 'Increased mediastinal width, suggestive of cardiac enlargement.'), Score: 0.7162
+('Clear costophrenic angles.', 'Blunted costophrenic angles indicating pleural effusion.'), Score: 0.7162
+('No evidence of increased opacity in lung periphery.', 'Increased opacity in the lung periphery consistent with pulmonary edema.'), Score: 0.7161
+('Normal left ventricular angle.', 'Increased left ventricular angle suggesting cardiomegaly.'), Score: 0.7158
+('Normal mediastinal contour.', 'Widened mediastinum, potentially due to cardiomegaly and/or pericardial effusion.'), Score: 0.7157
+('No evidence of interstitial edema.', 'Diffuse interstitial edema with increased lung markings, consistent with heart failure.'), Score: 0.7156
+('No evidence of pulmonary congestion.', 'Increased interstitial markings and hazy opacities indicating pulmonary congestion from heart failure.'), Score: 0.7156
+('Sharp diaphragmatic contours.', 'Obscuration of diaphragmatic contours due to pleural effusion secondary to heart failure.'), Score: 0.7155
+('Normal pulmonary venous vasculature.', 'Increased pulmonary venous vasculature, suggesting pulmonary hypertension secondary to cardiomegaly.'), Score: 0.7155
+('Normal sized pulmonary veins.', 'Dilated pulmonary veins, suggesting increased pulmonary venous pressure secondary to heart failure.'), Score: 0.7155
+('Normal mediastinal width.', 'Widened mediastinum, potentially due to cardiac enlargement or pericardial effusion.'), Score: 0.7154
+('Normal costophrenic angles.', 'Blunting of costophrenic angles, suggestive of pleural effusion secondary to heart failure.'), Score: 0.7154
+('Normal pulmonary vascular markings.', 'Cephalization of pulmonary vessels, indicating increased pulmonary venous pressure.'), Score: 0.7152
+('No Kerley B lines.', 'Kerley B lines present, indicating interstitial edema and elevated pulmonary venous pressure.'), Score: 0.7151
+('Normal pericardial fat pads.', 'Increased pericardial fat pad prominence, suggesting fluid accumulation around the heart.'), Score: 0.7150
+('No Kerley B lines.', 'Kerley B lines present, representing interlobular septal thickening due to pulmonary edema.'), Score: 0.7149
+('Normal cardiac waist.', 'Loss of cardiac waist suggesting cardiomegaly.'), Score: 0.7149
+('Lung fields are clear.', 'Hazy lung fields due to interstitial fluid accumulation from cardiogenic pulmonary edema.'), Score: 0.7148
+('Normal left ventricular size.', 'Increased left ventricular size causing displacement of the diaphragm.'), Score: 0.7147
+('Normal descending aorta.', 'Tortuous or dilated descending aorta, potentially associated with cardiomegaly and hypertension.'), Score: 0.7146
+('No pericardial effusion.', 'Pericardial effusion surrounding the cardiac silhouette.'), Score: 0.7146
+('Cardiac width is less than half the chest width.', 'Cardiac width exceeds half the chest width.'), Score: 0.7146
+('No Kerley B lines.', 'Presence of Kerley B lines, indicative of pulmonary edema secondary to heart failure.'), Score: 0.7146
+('Sharp costophrenic angles.', 'Blunted costophrenic angles indicative of pleural effusion secondary to heart failure.'), Score: 0.7145
+('No evidence of Kerley B lines.', 'Kerley B lines present, indicative of interstitial edema from heart failure.'), Score: 0.7145
+('No evidence of peribronchial cuffing.', 'Peribronchial cuffing present, suggestive of pulmonary edema secondary to heart failure.'), Score: 0.7145
+('Normal pulmonary vasculature.', 'Kerley B lines indicating pulmonary edema due to heart failure.'), Score: 0.7145
+('No evidence of interstitial edema.', 'Interstitial edema visible as Kerley A lines, associated with heart failure.'), Score: 0.7145
+('Sharp diaphragmatic silhouette.', 'Ill-defined diaphragmatic silhouette, potentially due to cardiomegaly and associated pleural effusion.'), Score: 0.7144
+('Normal mediastinal width.', 'Widened mediastinum, potentially indicating cardiac enlargement.'), Score: 0.7144
+('Normal right ventricular dimension.', 'Increased right ventricular dimension, suggesting right ventricular hypertrophy and cardiomegaly.'), Score: 0.7144
+('No Kerley B lines.', 'Presence of Kerley B lines indicating interstitial edema due to elevated pulmonary venous pressure.'), Score: 0.7144
+('Normal cardiac angle.', 'Increased cardiac angle (>45 degrees), indicating cardiomegaly.'), Score: 0.7144
+('No Kerley B lines.', 'Kerley B lines indicating interstitial pulmonary edema from heart failure.'), Score: 0.7143
+('Normal cardiac silhouette.', 'Globular cardiac silhouette with increased cardiothoracic ratio.'), Score: 0.7143
+('No perivascular haze.', 'Perivascular haze indicating interstitial edema due to elevated pulmonary venous pressure.'), Score: 0.7141
+('No Kerley B lines.', 'Presence of Kerley B lines indicating interstitial edema and elevated pulmonary venous pressure.'), Score: 0.7141
+('No cardiophrenic angle enlargement.', 'Cardiophrenic angle enlargement, indicating increased cardiac size and potential fluid accumulation.'), Score: 0.7141
+('Normal pulmonary artery size.', 'Enlarged pulmonary artery suggesting pulmonary hypertension related to cardiomegaly.'), Score: 0.7141
+('Right heart border is unremarkable.', 'Right heart border is obscured, suggesting right ventricular enlargement.'), Score: 0.7141
+('Normal cardiac apex.', 'Displaced or rounded cardiac apex, suggestive of cardiomegaly.'), Score: 0.7141
+('Normal size of right ventricle.', 'Right ventricular enlargement with increased prominence of the outflow tract.'), Score: 0.7140
+('Normal mediastinal width.', 'Increased mediastinal width due to cardiomegaly and potential pericardial effusion.'), Score: 0.7140
+('No evidence of pulmonary edema.', 'Interstitial and alveolar edema visible, consistent with cardiogenic pulmonary edema.'), Score: 0.7139
+('No Kerley B lines.', 'Kerley B lines present, indicating interstitial edema from elevated pulmonary venous pressure.'), Score: 0.7139
+('Normal cardiac apex.', 'Displaced or rounded cardiac apex suggestive of cardiomegaly.'), Score: 0.7138
+('Sharp pulmonary artery.', 'Prominent and dilated pulmonary artery, suggesting pulmonary hypertension secondary to cardiomegaly.'), Score: 0.7138
+('Sharp pulmonary artery.', 'Prominent pulmonary artery, suggesting pulmonary hypertension secondary to cardiomegaly.'), Score: 0.7137
+('Normal mediastinal contour.', 'Widening of the mediastinum, potentially due to cardiac enlargement or pericardial effusion.'), Score: 0.7136
+('No pleural thickening.', 'Pleural thickening, potentially secondary to chronic heart failure and fluid overload from cardiomegaly.'), Score: 0.7136
+('Normal hilar prominence.', 'Hilar prominence due to vascular congestion from heart failure.'), Score: 0.7136
+('No evidence of cephalization of pulmonary vessels.', 'Cephalization of pulmonary vessels, indicating increased pulmonary venous pressure secondary to heart failure.'), Score: 0.7135
+('Clear costophrenic angles.', 'Blunting of costophrenic angles bilaterally, suggestive of pleural effusion secondary to heart failure.'), Score: 0.7134
+('No evidence of pulmonary edema.', 'Interstitial edema present, indicating fluid overload secondary to heart failure and cardiomegaly.'), Score: 0.7134
+('Normal cardiac silhouette width.', 'Increased cardiac silhouette width, indicative of cardiomegaly.'), Score: 0.7132
+('Normal left atrial size.', 'Left atrial enlargement, indicating left ventricular dysfunction and potential cardiomegaly.'), Score: 0.7131
+('No Kerley B lines.', 'Kerley B lines present, indicative of interstitial edema due to heart failure.'), Score: 0.7130
+('No Kerley B lines.', 'Kerley B lines indicating interstitial pulmonary edema.'), Score: 0.7129
+('No Kerley B lines.', 'Presence of Kerley B lines (short horizontal lines at the lung periphery) due to interstitial edema.'), Score: 0.7129
+('Clear costophrenic angles.', 'Blunted costophrenic angles due to pleural effusion.'), Score: 0.7128
+('Normal mediastinal width.', 'Widened mediastinal width, potentially due to cardiac enlargement and pericardial effusion.'), Score: 0.7127
+('Normal pulmonary venous distribution.', 'Increased pulmonary venous congestion with peribronchial cuffing.'), Score: 0.7126
+('No evidence of cephalization of pulmonary vessels.', 'Cephalization of pulmonary vessels, indicating increased pulmonary venous pressure due to heart failure.'), Score: 0.7126
+('No peribronchial cuffing.', 'Peribronchial cuffing, indicating fluid accumulation in the bronchial walls due to heart failure.'), Score: 0.7126
+('No pleural effusion.', 'Pleural effusion present, often associated with heart failure and cardiomegaly.'), Score: 0.7126
+('Normal cardiac angle.', 'Increased cardiac angle, suggesting cardiomegaly and altered cardiac position.'), Score: 0.7125
+('No Kerley B lines.', 'Presence of Kerley B lines, indicating interstitial edema due to elevated pulmonary venous pressure.'), Score: 0.7125
+('Normal pericardial fat pad.', 'Increased pericardial fat pad thickness, suggesting fluid accumulation around the heart.'), Score: 0.7124
+('No evidence of interstitial edema.', 'Diffuse interstitial edema with Kerley A lines, indicative of pulmonary venous hypertension.'), Score: 0.7124
+('No evidence of increased opacity in the hilar regions.', 'Increased opacity in the hilar regions due to pulmonary congestion.'), Score: 0.7124
+('Normal costophrenic angles.', 'Blunting of costophrenic angles, suggestive of pleural effusion related to heart failure.'), Score: 0.7123
+('Pericardial fat pad is within normal limits.', 'Increased pericardial fat pad size suggestive of pericardial effusion related to heart failure.'), Score: 0.7123
+('Costophrenic angles are sharp and clear.', 'Blunting of costophrenic angles suggestive of pleural effusion.'), Score: 0.7120
+('Normal aortic arch.', 'Bulging aortic arch with post-stenotic dilation, potentially related to cardiac strain.'), Score: 0.7119
+('Sharp cardiac borders.', 'Blurred cardiac borders, indicating cardiomegaly and potential pericardial effusion.'), Score: 0.7119
+('Normal right ventricular size.', 'Enlarged right ventricular size, suggesting right heart strain and potential cor pulmonale associated with cardiomegaly.'), Score: 0.7119
+('Cardiac silhouette with normal apex.', 'Cardiomegaly with a displaced and rounded cardiac apex.'), Score: 0.7118
+('Normal costophrenic angles.', 'Blunted costophrenic angles, suggesting pleural effusion related to cardiomegaly.'), Score: 0.7118
+('Normal hilar prominence.', 'Hilar prominence due to vascular congestion.'), Score: 0.7118
+('No peribronchial cuffing.', 'Peribronchial cuffing suggesting pulmonary edema secondary to heart failure.'), Score: 0.7117
+('No evidence of interstitial thickening.', 'Interstitial thickening with Kerley C lines, indicating pulmonary edema secondary to heart failure.'), Score: 0.7117
+('Normal cardiac silhouette shape.', 'Globular cardiac silhouette suggestive of cardiomegaly.'), Score: 0.7117
+('No Kerley B lines present.', 'Kerley B lines visible, indicating interstitial pulmonary edema secondary to heart failure.'), Score: 0.7116
+('Normal pulmonary artery size.', 'Prominent pulmonary arteries, suggesting pulmonary hypertension secondary to cardiomegaly.'), Score: 0.7116
+('Normal costophrenic angles.', 'Blunting of costophrenic angles suggestive of pleural effusion secondary to heart failure.'), Score: 0.7116
+('No peribronchial cuffing.', 'Peribronchial cuffing, indicating fluid accumulation in the bronchioles due to heart failure.'), Score: 0.7115
+('Normal diaphragmatic contour.', 'Diaphragmatic elevation, potentially related to cardiac enlargement or ascites.'), Score: 0.7114
+('No Kerley B lines.', 'Presence of Kerley B lines, indicating interstitial edema due to elevated pulmonary venous pressure from heart failure.'), Score: 0.7114
+('Clear costal phrenic angles.', 'Obscuration of costal phrenic angles due to pleural fluid accumulation.'), Score: 0.7114
+('Normal cardiac apex.', 'Displaced cardiac apex suggesting left ventricular hypertrophy.'), Score: 0.7114
+('Clear costophrenic angles.', 'Pleural effusion with blunting of costophrenic angles related to heart failure.'), Score: 0.7113
+('Normal mediastinal contour.', 'Bulging of the mediastinal contour, potentially due to cardiac enlargement or aortic aneurysm.'), Score: 0.7113
+('Sharp cardiac borders.', 'Ill-defined cardiac borders, potentially due to pericardial effusion or cardiomegaly.'), Score: 0.7113
+('No evidence of Kerley B lines.', 'Presence of Kerley B lines in the lower lung fields, indicative of interstitial edema and elevated pulmonary venous pressure.'), Score: 0.7113
+('No evidence of Kerley B lines.', 'Kerley B lines present, indicative of interstitial edema.'), Score: 0.7112
+('Clear costophrenic angles.', 'Blunted costophrenic angles indicating pleural effusion secondary to heart failure.'), Score: 0.7112
+('Clear cardiophrenic angles.', 'Obscured cardiophrenic angles due to fluid accumulation from congestive heart failure.'), Score: 0.7111
+('No pericardial effusion.', 'Pericardial effusion present, causing a water-density opacity around the cardiac silhouette.'), Score: 0.7110
+('Sharp costophrenic angles.', 'Blunted costophrenic angles, suggestive of pleural effusion secondary to heart failure.'), Score: 0.7110
+('No evidence of interstitial edema.', 'Interstitial edema present, appearing as hazy opacities in the lung periphery.'), Score: 0.7110
+('Normal cardiac silhouette.', 'Globular cardiac silhouette, suggesting generalized cardiomegaly.'), Score: 0.7110
+('No evidence of peribronchial cuffing.', 'Peribronchial cuffing indicating fluid accumulation in the bronchioles due to heart failure.'), Score: 0.7109
+('Normal left atrial size.', 'Enlarged left atrium suggesting left atrial enlargement secondary to cardiomegaly.'), Score: 0.7109
+('No perivascular haze.', 'Perivascular haze indicating interstitial edema associated with elevated pulmonary venous pressure.'), Score: 0.7109
+('Well-defined right heart border.', 'Ill-defined right heart border due to cardiomegaly and pericardial effusion.'), Score: 0.7108
+('Clear costophrenic angles.', 'Blunted costophrenic angles suggestive of pleural effusion.'), Score: 0.7107
+('Normal descending aorta.', 'Tortuous descending aorta, potentially related to aortic dilation and cardiomegaly.'), Score: 0.7107
+('Clear costophrenic angles.', 'Blunted costophrenic angles, indicative of pleural effusion associated with heart failure.'), Score: 0.7107
+('Normal left ventricular size.', 'Enlarged left ventricular size with blunted costophrenic angles.'), Score: 0.7107
+('Clear costophrenic angles.', 'Blunted costophrenic angles, suggestive of pleural effusion secondary to heart failure.'), Score: 0.7106
+('Clear lung fields without interstitial markings.', 'Interstitial edema present, indicating pulmonary congestion secondary to heart failure.'), Score: 0.7106
+('Normal pulmonary artery size.', 'Enlarged pulmonary artery with increased prominence.'), Score: 0.7105
+('No evidence of increased interstitial markings in the upper lobes.', 'Increased interstitial markings predominantly in the upper lobes, consistent with pulmonary venous hypertension secondary to cardiomegaly.'), Score: 0.7105
+('Normal cardiac silhouette width.', 'Increased cardiac silhouette width, indicating cardiomegaly.'), Score: 0.7105
+('No Kerley B lines present.', 'Kerley B lines present, indicating interstitial edema and elevated pulmonary venous pressure.'), Score: 0.7105
+('Clear costophrenic angles.', 'Blunted costophrenic angles, indicative of pleural effusion secondary to heart failure.'), Score: 0.7104
+('Normal cardiac silhouette shape.', 'Rounded and enlarged cardiac silhouette with loss of normal contours.'), Score: 0.7104
+('No Kerley B lines.', 'Presence of Kerley B lines, indicative of interstitial pulmonary edema.'), Score: 0.7104
+('Pulmonary vasculature is normal.', 'Prominent pulmonary vasculature suggesting pulmonary congestion secondary to cardiomegaly.'), Score: 0.7102
+('Normal pulmonary venous distribution.', 'Diffuse pulmonary venous congestion with prominent vessels.'), Score: 0.7102
+('Normal mediastinal contour.', 'Bulging of the mediastinum, indicating cardiac enlargement.'), Score: 0.7102
+('Normal mediastinal contour.', 'Mediastinal widening, potentially indicating pericardial effusion or significant cardiac enlargement.'), Score: 0.7101
+('Normal left atrial size.', 'Enlarged left atrial size, suggesting left ventricular dysfunction and cardiomegaly.'), Score: 0.7101
+('Normal cardiac silhouette.', 'Globular cardiac silhouette suggestive of cardiomegaly.'), Score: 0.7101
+('Normal cardiac-to-chest width ratio.', 'Cardiac-to-chest width ratio greater than 0.5, strongly suggestive of cardiomegaly.'), Score: 0.7101
+('No evidence of pulmonary congestion.', 'Kerley B lines present, indicating pulmonary congestion due to elevated left atrial pressure.'), Score: 0.7100
+('No evidence of Kerley B lines.', 'Kerley B lines present, indicating interstitial edema associated with cardiomegaly.'), Score: 0.7100
+('Normal hilar vascularity.', 'Hilar congestion and vascular prominence due to pulmonary venous hypertension.'), Score: 0.7099
+('Clear costophrenic angles.', 'Blunting of costophrenic angles, suggestive of pleural effusion secondary to heart failure.'), Score: 0.7099
+('No evidence of pulmonary edema.', 'Fluffy infiltrates in the perihilar regions consistent with pulmonary edema from heart failure.'), Score: 0.7099
+('Normal pulmonary vein size.', 'Prominent pulmonary veins due to increased pulmonary venous pressure.'), Score: 0.7099
+('No evidence of interstitial shadowing.', 'Diffuse interstitial shadowing consistent with pulmonary congestion.'), Score: 0.7099
+('No peribronchial cuffing.', 'Peribronchial cuffing present, indicating fluid accumulation in the lung parenchyma due to heart failure.'), Score: 0.7098
+('No evidence of interstitial markings.', 'Increased interstitial markings, suggestive of pulmonary edema and heart failure.'), Score: 0.7097
+('Normal mediastinal silhouette.', 'Increased retrosternal space due to enlarged cardiac silhouette.'), Score: 0.7096
+('Normal cardiac silhouette shape.', 'Globular or water bottle shaped cardiac silhouette.'), Score: 0.7096
+('Clear costophrenic angles.', 'Blunting of costophrenic angles, indicative of pleural effusion secondary to heart failure.'), Score: 0.7095
+('Normal cardiac silhouette.', 'Globular cardiac silhouette indicating cardiomegaly.'), Score: 0.7095
+('Clear costophrenic angles.', 'Blunted costophrenic angles, indicative of pleural effusion related to heart failure.'), Score: 0.7094
+('Clear costophrenic angles.', 'Blunted costophrenic angles suggestive of pleural effusion secondary to heart failure.'), Score: 0.7094
+('No Kerley B lines.', 'Presence of Kerley B lines, representing interstitial edema from elevated pulmonary venous pressure.'), Score: 0.7094
+('Normal cardiac apex.', 'Displaced cardiac apex suggesting left ventricular enlargement.'), Score: 0.7093
+('Normal descending aorta.', 'Tortuous descending aorta potentially related to chronic cardiomegaly.'), Score: 0.7092
+('No evidence of pulmonary congestion.', 'Diffuse pulmonary congestion with perihilar haze.'), Score: 0.7092
+('No Kerley B lines.', 'Presence of Kerley B lines indicating interstitial pulmonary edema due to elevated left atrial pressure.'), Score: 0.7091
+('Normal mediastinal contour.', 'Smooth or irregular mediastinal contour with possible cardiopericardial silhouette enlargement.'), Score: 0.7091
+('No Kerley B lines.', 'Kerley B lines present, indicating interstitial edema and pulmonary venous hypertension.'), Score: 0.7091
+('No evidence of interstitial edema.', 'Interstitial edema present, consistent with elevated pulmonary venous pressure.'), Score: 0.7090
+('Normal costophrenic angles.', 'Blunting of costophrenic angles, suggestive of pleural effusions related to heart failure.'), Score: 0.7090
+('Clear lung fields without interstitial markings.', 'Increased interstitial markings and Kerley C lines indicating pulmonary edema.'), Score: 0.7090
+('Sharp costophrenic angles.', 'Blunted costophrenic angles suggestive of pleural effusion secondary to heart failure.'), Score: 0.7089
+('No evidence of interstitial edema.', 'Interstitial edema indicating elevated pulmonary venous pressure.'), Score: 0.7088
+('Normal hilar prominence.', 'Hilar prominence, potentially due to pulmonary hypertension secondary to heart failure.'), Score: 0.7088
+('Sharp costophrenic angles.', 'Blunted costophrenic angles due to pleural effusion associated with heart failure.'), Score: 0.7088
+('Normal cardiac silhouette contour.', 'Cardiomegaly with a rounded or globular cardiac silhouette.'), Score: 0.7087
+('Normal cardiac silhouette shape.', 'Globular cardiac silhouette indicating generalized cardiomegaly.'), Score: 0.7087
+('No evidence of Kerley B lines.', 'Presence of Kerley B lines, indicative of interstitial edema from heart failure.'), Score: 0.7087
+('No evidence of increased opacity in the lung bases.', 'Increased opacity in the lung bases consistent with pulmonary congestion from heart failure.'), Score: 0.7087
+('No evidence of peribronchial cuffing.', 'Peribronchial cuffing present, suggestive of pulmonary edema related to heart failure.'), Score: 0.7086
+('Mediastinal contours are within normal limits.', 'Widened mediastinum, potentially due to cardiac enlargement and pericardial effusion.'), Score: 0.7086
+('Normal cardiac silhouette.', 'Globular or enlarged cardiac silhouette indicating cardiomegaly.'), Score: 0.7085
+('No Kerley B lines.', 'Presence of Kerley B lines, indicative of pulmonary edema associated with heart failure.'), Score: 0.7085
+('Clear costophrenic angles.', 'Blunting of the costophrenic angles, indicating pleural effusion secondary to heart failure.'), Score: 0.7082
+('Normal left ventricular size.', 'Left ventricular enlargement with increased myocardial mass, indicative of hypertrophy and cardiomegaly.'), Score: 0.7082
+('No evidence of right ventricular hypertrophy.', 'Right ventricular hypertrophy with prominence of the ascending aorta.'), Score: 0.7081
+('Normal mediastinal contour.', 'Mediastinal widening, potentially due to cardiac enlargement or pericardial effusion.'), Score: 0.7080
+('Clear mediastinal contours.', 'Widened mediastinum, potentially due to cardiomegaly and/or pericardial effusion.'), Score: 0.7080
+('No peribronchial cuffing.', 'Peribronchial cuffing present, indicative of fluid in the bronchial walls due to heart failure.'), Score: 0.7079
+('No evidence of cephalization of pulmonary vessels.', 'Cephalization of pulmonary vessels, suggesting increased pulmonary venous pressure from heart failure.'), Score: 0.7078
+('Clear lung fields without significant interstitial markings.', 'Increased interstitial markings suggestive of pulmonary edema related to heart failure.'), Score: 0.7078
+('Normal cardiac waist.', 'Loss of cardiac waist, indicating cardiomegaly and potential left ventricular enlargement.'), Score: 0.7077
+('No evidence of Kerley B lines.', 'Kerley B lines present, indicative of pulmonary edema related to cardiomegaly.'), Score: 0.7077
+('Normal cardiac angle.', 'Increased cardiac angle, suggesting cardiomegaly.'), Score: 0.7077
+('No peribronchial cuffing.', 'Peribronchial cuffing present, indicating fluid in the bronchial walls due to heart failure.'), Score: 0.7076
+('Normal superior vena cava size.', 'Prominent superior vena cava suggesting increased right atrial pressure and volume overload.'), Score: 0.7074
+('Normal mediastinal width.', 'Widened mediastinum, potentially due to cardiomegaly or pericardial effusion.'), Score: 0.7074
+('Clear lung fields.', 'Increased opacity in lung fields due to pulmonary edema secondary to heart failure.'), Score: 0.7074
+('Normal hilar vascularity.', 'Increased hilar vascularity due to pulmonary venous congestion.'), Score: 0.7073
+('Normal right atrial size.', 'Right atrial enlargement, indicating right heart strain and potential cardiomegaly.'), Score: 0.7073
+('Normal right ventricular size.', 'Right ventricular enlargement, suggesting right heart strain secondary to cardiomegaly.'), Score: 0.7073
+('Clear costophrenic angles.', 'Blunting of costophrenic angles, indicative of pleural effusion associated with heart failure.'), Score: 0.7072
+('Normal hilar prominence.', 'Hilar prominence due to vascular congestion, suggesting heart failure.'), Score: 0.7072
+('No evidence of cephalization of pulmonary vessels.', 'Cephalization of pulmonary vessels, indicating increased pulmonary venous pressure from heart failure.'), Score: 0.7071
+('Normal mediastinal width.', 'Widened mediastinum, potentially due to cardiomegaly and/or pericardial effusion.'), Score: 0.7070
+('No Kerley B lines.', 'Presence of Kerley B lines indicating interstitial edema and pulmonary venous hypertension.'), Score: 0.7069
+('Normal diaphragmatic contour.', 'Flattened diaphragmatic contour, potentially obscured by cardiomegaly and fluid accumulation.'), Score: 0.7069
+('Normal aortic knob.', 'Prominent aortic knob, potentially indicating aortic root dilation secondary to heart failure.'), Score: 0.7069
+('Normal diaphragmatic contour.', 'Undulation of the diaphragmatic contour due to cardiac enlargement.'), Score: 0.7069
+('Normal pericardial fat pads.', 'Pericardial fat pads appear blurred or displaced due to pericardial effusion.'), Score: 0.7068
+('No evidence of cephalization of pulmonary vessels.', 'Cephalization of pulmonary vessels, suggesting pulmonary venous hypertension.'), Score: 0.7067
+('No pericardial fat pad blurring.', 'Blurring of the pericardial fat pad, potentially due to pericardial effusion associated with cardiomegaly.'), Score: 0.7066
+('Normal mediastinal width.', 'Increased mediastinal width, suggesting cardiomegaly and/or pericardial effusion.'), Score: 0.7064
+('No evidence of interstitial edema.', 'Diffuse interstitial edema, appearing as hazy opacities.'), Score: 0.7064
+('Normal pericardial fat pad.', 'Increased pericardial fat pad thickness, suggesting fluid accumulation.'), Score: 0.7064
+('Normal mediastinal width.', 'Widened mediastinum, potentially due to cardiomegaly and associated vascular enlargement.'), Score: 0.7064
+('Normal pericardial fat pad.', 'Increased pericardial fat pad thickness, suggesting fluid accumulation related to heart failure.'), Score: 0.7063
+('Normal pulmonary artery size.', 'Enlarged pulmonary artery, suggesting pulmonary hypertension and right ventricular strain.'), Score: 0.7063
+('Normal mediastinal contour.', 'Smooth mediastinal contour with increased width, suggestive of cardiac enlargement.'), Score: 0.7062
+('No pericardial fat pad obscuration.', 'Pericardial fat pad obscuration suggesting cardiomegaly and/or pericardial effusion.'), Score: 0.7061
+('No evidence of interstitial edema.', 'Interstitial edema present, indicated by hazy opacities.'), Score: 0.7061
+('Normal sternal border.', 'Sternal border obscured by enlarged cardiac silhouette.'), Score: 0.7061
+('Normal mediastinal width.', 'Increased mediastinal width, potentially due to cardiomegaly or aortic aneurysm.'), Score: 0.7061
+('No significant interstitial edema.', 'Interstitial edema visible as hazy opacities in the lung fields, secondary to cardiogenic pulmonary edema.'), Score: 0.7060
+('Normal cardiac silhouette shape.', 'Globular cardiac silhouette, suggestive of cardiomegaly.'), Score: 0.7060
+('No evidence of pulmonary congestion.', 'Increased pulmonary vascular congestion, indicating pulmonary venous hypertension.'), Score: 0.7060
+('No evidence of increased interstitial markings.', 'Increased interstitial markings suggestive of pulmonary congestion secondary to heart failure.'), Score: 0.7059
+('Clear costophrenic angles.', 'Blunting of costophrenic angles suggestive of pleural effusion secondary to heart failure.'), Score: 0.7058
+('No evidence of cephalization of pulmonary vessels.', 'Cephalization of pulmonary vessels, indicating increased pulmonary venous pressure due to left heart failure.'), Score: 0.7057
+('Normal superior vena cava.', 'Prominent superior vena cava due to increased right atrial pressure.'), Score: 0.7057
+('Normal aortic knob.', 'Prominent aortic knob, potentially indicating aortic root dilation secondary to hypertension and heart failure.'), Score: 0.7057
+('Clear costophrenic angles.', 'Blunting of costophrenic angles, suggestive of pleural effusion related to heart failure.'), Score: 0.7057
+('Normal size of the brachiocephalic veins.', 'Prominent brachiocephalic veins, suggesting superior vena cava syndrome secondary to right heart failure.'), Score: 0.7056
+('No evidence of increased opacity in the lung bases.', 'Increased opacity in the lung bases consistent with alveolar edema from cardiogenic pulmonary edema.'), Score: 0.7056
+('Normal mediastinal width.', 'Mediastinal widening, potentially due to cardiac enlargement and pericardial effusion.'), Score: 0.7056
+('Clear costophrenic angles.', 'Obscuration of costophrenic angles secondary to pleural effusion from heart failure.'), Score: 0.7056
+('Normal left ventricular dimension.', 'Left ventricular dilation with increased cardiothoracic ratio.'), Score: 0.7055
+('No evidence of interstitial edema.', 'Interstitial edema visible as peribronchial cuffing, indicating pulmonary congestion.'), Score: 0.7055
+('Normal cardiac silhouette.', 'Globular cardiac silhouette, suggesting cardiomegaly.'), Score: 0.7054
+('No peribronchial cuffing.', 'Peribronchial cuffing suggesting pulmonary edema related to heart failure.'), Score: 0.7053
+('Normal mediastinal contours.', 'Mediastinal widening and distortion due to cardiac enlargement and vascular changes.'), Score: 0.7052
+('Pulmonary arteries appear normal in caliber.', 'Prominent pulmonary arteries, suggesting pulmonary hypertension.'), Score: 0.7052
+('Normal mediastinal width.', 'Increased mediastinal width, suggesting cardiac enlargement.'), Score: 0.7052
+('No evidence of peribronchial cuffing.', 'Peribronchial cuffing present, indicating pulmonary edema.'), Score: 0.7051
+('Normal left hemidiaphragm contour.', 'Flattened left hemidiaphragm, potentially due to underlying cardiac enlargement.'), Score: 0.7050
+('Normal left atrial size.', 'Left atrial enlargement causing esophageal impression.'), Score: 0.7050
+('Normal mediastinum contour.', 'Mediastinal shift or distortion, potentially due to massive cardiomegaly.'), Score: 0.7047
+('Sharp costophrenic angles.', 'Blunted costophrenic angles due to pleural effusion secondary to heart failure.'), Score: 0.7046
+('Sharp costophrenic angles.', 'Blunted costophrenic angles, suggesting pleural effusion secondary to heart failure.'), Score: 0.7044
+('Normal cardiac angle.', 'Increased cardiac angle suggesting cardiomegaly.'), Score: 0.7044
+('Normal aortic arch configuration.', 'Prominent aortic arch with post-stenotic dilation associated with cardiomegaly.'), Score: 0.7044
+('Normal superior vena cava contour.', 'Dilated superior vena cava, potentially due to increased right atrial pressure.'), Score: 0.7043
+('No mediastinal widening.', 'Mediastinal widening, potentially due to cardiac enlargement or pericardial effusion.'), Score: 0.7043
+('Normal cardiac silhouette.', 'Globular cardiac silhouette, indicating overall cardiomegaly.'), Score: 0.7042
+('Normal cardiac silhouette.', 'Globular cardiac silhouette, potentially due to cardiomegaly.'), Score: 0.7041
+('Normal atrial size.', 'Right atrial enlargement, a common finding in cardiomegaly and heart failure.'), Score: 0.7039
+('No Kerley B lines.', 'Kerley B lines present, indicative of interstitial edema.'), Score: 0.7038
+('Normal mediastinal width.', 'Increased mediastinal width, potentially due to cardiomegaly and/or associated findings.'), Score: 0.7038
+('Clear costophrenic angles.', 'Blunting of costophrenic angles, suggestive of pleural effusion.'), Score: 0.7037
+('No perivascular haze.', 'Perivascular haze present, indicating pulmonary venous congestion.'), Score: 0.7037
+('Normal aortic knob contour.', 'Prominent aortic knob, potentially indicating left ventricular enlargement.'), Score: 0.7036
+('Normal aortic knob contour.', 'Aortic knob enlargement and indistinctness associated with left ventricular enlargement.'), Score: 0.7036
+('No evidence of interstitial edema.', 'Interstitial edema visible as hazy opacities, consistent with heart failure.'), Score: 0.7036
+('No evidence of peribronchial cuffing.', 'Peribronchial cuffing present, suggestive of pulmonary edema.'), Score: 0.7036
+('Normal cardiac silhouette.', 'Globular cardiac silhouette, suggestive of cardiomegaly.'), Score: 0.7036
+('Normal cardiophrenic angles.', 'Blunting of cardiophrenic angles due to pleural effusion associated with heart failure.'), Score: 0.7035
+('No Kerley B lines present.', 'Kerley B lines visible, indicating interstitial edema and heart failure.'), Score: 0.7034
+('No interstitial edema.', 'Interstitial edema visible as Kerley lines, indicating pulmonary congestion.'), Score: 0.7033
+('No evidence of cephalization of pulmonary vessels.', 'Cephalization of pulmonary vessels suggesting pulmonary venous hypertension.'), Score: 0.7033
+('No evidence of apical pleural thickening.', 'Apical pleural thickening due to chronic pulmonary congestion and heart failure.'), Score: 0.7033
+('Normal pulmonary artery prominence.', 'Prominent pulmonary artery, suggestive of pulmonary hypertension secondary to cardiomegaly.'), Score: 0.7032
+('No evidence of increased opacity in the lung bases.', 'Increased opacity in the lung bases consistent with pulmonary edema secondary to cardiomegaly.'), Score: 0.7031
+('Sharp costophrenic angles bilaterally.', 'Blunting of costophrenic angles bilaterally, potentially due to pleural effusion secondary to heart failure.'), Score: 0.7031
+('No Kerley B lines.', 'Kerley B lines present, indicative of interstitial edema from elevated pulmonary venous pressure.'), Score: 0.7031
+('No visible cardiophrenic angle.', 'Prominent cardiophrenic angle, indicating increased cardiac size.'), Score: 0.7031
+('Normal cardiac silhouette.', 'Globular cardiac silhouette with increased cardiothoracic ratio, suggestive of cardiomegaly.'), Score: 0.7031
+('No evidence of interstitial edema.', 'Diffuse interstitial edema, appearing as hazy opacities, due to increased pulmonary venous pressure.'), Score: 0.7030
+('No cardiophrenic angle enlargement.', 'Cardiophrenic angle enlargement due to pericardial effusion secondary to heart failure.'), Score: 0.7030
+('Normal mediastinal width.', 'Widened mediastinum potentially due to cardiac enlargement or other mediastinal pathology.'), Score: 0.7030
+('Normal costophrenic angles.', 'Blunting of costophrenic angles due to pleural effusion.'), Score: 0.7029
+('Normal cardiac silhouette.', 'Globular or enlarged cardiac silhouette suggesting cardiomegaly.'), Score: 0.7029
+('Normal pleural space.', 'Pleural thickening, potentially due to chronic heart failure and fluid accumulation.'), Score: 0.7029
+('Normal left ventricular dimension.', 'Left ventricular enlargement with increased left ventricular end-diastolic diameter.'), Score: 0.7029
+('No evidence of interstitial edema.', 'Interstitial edema present, appearing as hazy opacities.'), Score: 0.7028
+('Normal mediastinal width.', 'Increased mediastinal width suggesting cardiomegaly or pericardial effusion.'), Score: 0.7028
+('Normal mediastinal contour.', 'Mediastinal widening potentially due to cardiac enlargement or pericardial effusion.'), Score: 0.7027
+('Sharp costophrenic angles.', 'Blunted costophrenic angles due to pleural effusion associated with congestive heart failure.'), Score: 0.7027
+('Normal descending aorta.', 'Tortuous and dilated descending aorta, potentially associated with long-standing cardiomegaly and hypertension.'), Score: 0.7026
+('No evidence of interstitial edema.', 'Diffuse interstitial edema, appearing as hazy opacities throughout the lungs.'), Score: 0.7026
+('Sharp left heart border.', 'Diffuse left heart border obscuring the cardiac silhouette.'), Score: 0.7026
+('Normal cardiac silhouette shape.', 'Globular cardiac silhouette indicative of cardiomegaly.'), Score: 0.7026
+('Normal left atrial size.', 'Left atrial enlargement, suggesting left heart strain and potential cardiomegaly.'), Score: 0.7025
+('No interstitial markings.', 'Increased interstitial markings suggestive of pulmonary edema.'), Score: 0.7024
+('Sharp diaphragmatic contours.', 'Diaphragmatic tenting due to cardiac enlargement.'), Score: 0.7024
+('Sharp costophrenic angles.', 'Obtuse costophrenic angles, potentially due to pleural effusion secondary to heart failure.'), Score: 0.7024
+('Normal hilar prominence.', 'Increased hilar prominence, potentially due to pulmonary vascular congestion.'), Score: 0.7024
+('Normal mediastinal width.', 'Increased mediastinal width suggesting cardiac enlargement.'), Score: 0.7022
+('Normal left ventricular size.', 'Left ventricular enlargement contributing to a widened cardiac silhouette.'), Score: 0.7022
+('Sharp cardiac silhouette.', 'Diffuse cardiac enlargement with indistinct cardiac borders.'), Score: 0.7022
+('Normal superior vena cava diameter.', 'Increased superior vena cava diameter suggestive of right heart failure and cardiomegaly.'), Score: 0.7022
+('Clear costophrenic angles.', 'Blunted costophrenic angles, indicative of pleural effusion secondary to heart failure and cardiomegaly.'), Score: 0.7021
+('Normal cardiac angle.', 'Increased cardiac angle (>90 degrees) suggesting cardiomegaly.'), Score: 0.7021
+('Normal mediastinal width.', 'Widened mediastinum due to cardiac enlargement.'), Score: 0.7021
+('Normal mediastinal width.', 'Mediastinal shift or widening with indistinct borders.'), Score: 0.7021
+('Normal left atrial appendage.', 'Left atrial enlargement with prominent left atrial appendage.'), Score: 0.7020
+('Normal left ventricular free wall thickness.', 'Increased left ventricular free wall thickness, suggestive of left ventricular hypertrophy.'), Score: 0.7020
+('No evidence of peribronchial cuffing.', 'Peribronchial cuffing present, suggestive of pulmonary congestion.'), Score: 0.7019
+('Sharp pulmonary artery pulsations.', 'Obscured pulmonary artery pulsations due to pericardial effusion.'), Score: 0.7019
+('No Kerley B lines present.', 'Kerley B lines present, indicative of interstitial edema from heart failure.'), Score: 0.7018
+('Normal mediastinal width.', 'Widened mediastinum, potentially due to cardiomegaly or other mediastinal pathology.'), Score: 0.7018
+('Normal pericardial fat pad.', 'Increased pericardial fat pad thickness indicating fluid accumulation or cardiac strain.'), Score: 0.7018
+('No peribronchial cuffing.', 'Peribronchial cuffing, a sign of pulmonary edema and potential heart failure.'), Score: 0.7018
+('Normal pulmonary artery prominence.', 'Prominent pulmonary artery with signs of pulmonary hypertension secondary to cardiomegaly.'), Score: 0.7018
+('Normal right ventricular size.', 'Right ventricular enlargement suggesting pulmonary hypertension secondary to cardiomegaly.'), Score: 0.7018
+('Normal cardiac apex.', 'Displaced or rounded cardiac apex, indicating ventricular enlargement.'), Score: 0.7017
+('Normal descending aorta.', 'Tortuous and dilated descending aorta, potentially related to long-standing hypertension and cardiomegaly.'), Score: 0.7017
+('Normal mediastinal contour.', 'Bulging of the mediastinal contour, suggesting cardiac enlargement.'), Score: 0.7017
+('No evidence of interstitial edema.', 'Interstitial edema present, consistent with elevated pulmonary venous pressure from cardiomegaly.'), Score: 0.7016
+('Normal aortic knob contour.', 'Prominent aortic knob contour due to left atrial enlargement.'), Score: 0.7016
+('Normal diaphragmatic contour.', 'Diaphragmatic elevation, potentially due to cardiomegaly and/or pleural effusion.'), Score: 0.7015
+('Normal pulmonary artery size and prominence.', 'Prominent pulmonary artery and increased pulmonary vascular markings due to pulmonary hypertension secondary to cardiomegaly.'), Score: 0.7013
+('Clear costophrenic angles.', 'Blunting of the costophrenic angles indicating pleural effusion related to heart failure.'), Score: 0.7013
+('Normal descending aorta.', 'Tortuous descending aorta, potentially related to aortic dilation and cardiac strain.'), Score: 0.7013
+('Clear lung fields without interstitial markings.', 'Kerley B lines present, indicating pulmonary edema from heart failure.'), Score: 0.7013
+('Normal pulmonary vasculature.', 'Increased pulmonary vascular markings suggestive of pulmonary congestion.'), Score: 0.7012
+('Normal costophrenic angles.', 'Blunting of costophrenic angles suggesting pleural effusion secondary to heart failure.'), Score: 0.7011
+('Normal pulmonary venous distribution.', 'Increased pulmonary venous congestion with cephalization of vessels.'), Score: 0.7010
+('No evidence of cephalization of pulmonary vessels.', 'Cephalization of pulmonary vessels, suggesting pulmonary hypertension secondary to cardiomegaly.'), Score: 0.7009
+('Normal pulmonary vein size.', 'Enlarged pulmonary veins, indicating increased pulmonary venous pressure.'), Score: 0.7009
+('Normal left atrial size.', 'Left atrial enlargement, causing S-shaped esophagus or obscuration of the left bronchus.'), Score: 0.7009
+('Clear costophrenic angles.', 'Blunted costophrenic angles suggesting pleural effusion secondary to heart failure.'), Score: 0.7009
+('No evidence of interstitial edema.', 'Increased interstitial markings throughout the lung fields consistent with pulmonary edema.'), Score: 0.7009
+('Clear costophrenic angles.', 'Blunting of costophrenic angles due to pleural effusion secondary to heart failure.'), Score: 0.7008
+('Normal left ventricular size.', 'Increased left ventricular size with blunting of the cardiac apex.'), Score: 0.7008
+('Normal pericardial fat pad.', 'Pericardial fat pad obscuration due to enlarged cardiac silhouette.'), Score: 0.7008
+('Normal mediastinal width.', 'Mediastinal widening potentially due to cardiac enlargement.'), Score: 0.7008
+('Sharp and well-defined cardiac borders.', 'Ill-defined cardiac borders, potentially due to pericardial effusion associated with cardiomegaly.'), Score: 0.7007
+('Normal cardiac silhouette.', 'Enlarged cardiac silhouette with globular or rounded contours.'), Score: 0.7007
+('No peribronchial cuffing.', 'Peribronchial cuffing indicating pulmonary edema.'), Score: 0.7007
+('No evidence of peribronchial cuffing.', 'Peribronchial cuffing, indicating fluid accumulation in the bronchial walls, often seen in heart failure.'), Score: 0.7006
+('No evidence of pulmonary congestion.', 'Increased pulmonary vascularity and congestion, consistent with cardiogenic pulmonary edema.'), Score: 0.7006
+('Normal descending aorta.', 'Tortuous descending aorta potentially related to aortic dilation from cardiac stress.'), Score: 0.7006
+('Clear costophrenic angles.', 'Blunted costophrenic angles due to pleural effusion secondary to heart failure.'), Score: 0.7005
+('Normal mediastinal width.', 'Widened mediastinum potentially due to cardiomegaly and/or associated vascular enlargement.'), Score: 0.7005
+('No interstitial edema.', 'Interstitial edema visible as hazy opacities in the lung fields.'), Score: 0.7004
+('Normal pericardial fat pad.', 'Increased pericardial fat pad thickness, suggesting fluid accumulation and cardiomegaly.'), Score: 0.7003
+('Clear costophrenic angles.', 'Blunted costophrenic angles due to fluid accumulation.'), Score: 0.7002
+('No signs of congestive heart failure.', 'Signs of pulmonary edema consistent with congestive heart failure.'), Score: 0.7002
+('No evidence of interstitial thickening.', 'Interstitial thickening with Kerley C lines, indicative of pulmonary edema.'), Score: 0.7001
+('No evidence of Kerley A lines.', 'Kerley A lines present, indicating interstitial edema from heart failure related to cardiomegaly.'), Score: 0.7000
+('Normal size of the right ventricle.', 'Enlarged right ventricle, suggesting right heart strain secondary to cardiomegaly.'), Score: 0.6999
+('Normal right atrial size.', 'Right atrial enlargement causing prominence of the right heart border.'), Score: 0.6999
+('Clear costal phrenic angles.', 'Obscuration of costal phrenic angles due to pleural fluid.'), Score: 0.6998
+('Normal cardiac silhouette shape.', 'Globular or enlarged cardiac silhouette, suggestive of cardiomegaly.'), Score: 0.6997
+('No peribronchial cuffing.', 'Peribronchial cuffing present, suggesting fluid accumulation in the bronchial walls due to heart failure.'), Score: 0.6997
+('Normal pulmonary venous distribution.', 'Increased pulmonary venous congestion with Kerley B lines.'), Score: 0.6997
+('Normal left ventricular dimension.', 'Increased left ventricular dimension contributing to overall cardiac enlargement.'), Score: 0.6997
+('No Kerley B lines present.', 'Kerley B lines visible in the lower lung fields, indicative of pulmonary edema from heart failure.'), Score: 0.6997
+('No evidence of pulmonary edema.', 'Fluffy infiltrates in perihilar regions consistent with pulmonary edema.'), Score: 0.6996
+('No interstitial edema.', 'Interstitial edema visible as hazy opacities in the lung periphery.'), Score: 0.6996
+('Sharp costophrenic angles.', 'Blunting of costophrenic angles due to pleural effusion secondary to heart failure.'), Score: 0.6995
+('Sharp and well-defined cardiac borders.', 'Blurred or indistinct cardiac borders due to cardiomegaly and/or pericardial effusion.'), Score: 0.6994
+('Mediastinum of normal width.', 'Widened mediastinum potentially indicating cardiac enlargement.'), Score: 0.6994
+('Normal hilar prominence.', 'Hilar prominence due to pulmonary vascular congestion.'), Score: 0.6991
+('No evidence of pulmonary congestion.', 'Increased pulmonary vascularity indicating pulmonary congestion from heart failure.'), Score: 0.6990
+('No evidence of peribronchial cuffing.', 'Peribronchial cuffing present, suggestive of pulmonary edema due to elevated pulmonary venous pressure.'), Score: 0.6989
+('Normal left ventricular size and contour.', 'Left ventricular enlargement with rounded apex, suggestive of cardiomegaly.'), Score: 0.6987
+('No Kerley B lines.', 'Presence of Kerley B lines, representing interlobular septal thickening due to pulmonary edema.'), Score: 0.6986
+('Normal hilar prominence.', 'Hilar prominence indicating pulmonary vascular congestion.'), Score: 0.6985
+('No evidence of right ventricular hypertrophy.', 'Right ventricular hypertrophy with prominence of the right ventricular outflow tract.'), Score: 0.6985
+('Clear costophrenic angles.', 'Blunting of costophrenic angles due to pleural effusion from heart failure.'), Score: 0.6984
+('Sharp diaphragmatic contours.', 'Diaphragmatic tenting, a sign of increased intra-abdominal pressure and potential cardiac dysfunction.'), Score: 0.6983
+('Normal mediastinal width.', 'Widened mediastinum suggesting cardiac enlargement and/or pericardial effusion.'), Score: 0.6981
+('Normal descending aorta.', 'Tortuous descending aorta, potentially related to aortic dilation secondary to cardiac stress.'), Score: 0.6980
+('No evidence of pulmonary congestion.', 'Kerley B lines present, indicating pulmonary congestion.'), Score: 0.6980
+('Normal left hemidiaphragm position.', 'Elevated left hemidiaphragm, potentially due to cardiomegaly and associated pleural effusion.'), Score: 0.6980
+('Normal retrosternal space.', 'Loss of retrosternal space due to cardiac enlargement.'), Score: 0.6979
+('Normal retrocardiac space.', 'Obliteration of the retrocardiac space due to cardiomegaly and fluid accumulation.'), Score: 0.6978
+('No evidence of right heart strain.', 'Right heart strain evident, including right atrial enlargement, suggesting pulmonary hypertension and cardiomegaly.'), Score: 0.6978
+('No interstitial markings.', 'Increased interstitial markings consistent with pulmonary edema.'), Score: 0.6977
+('No interstitial thickening.', 'Interstitial thickening consistent with pulmonary edema.'), Score: 0.6977
+('Normal mediastinal width.', 'Widened mediastinum due to cardiomegaly and/or pericardial effusion.'), Score: 0.6976
+('Normal cardiac-to-thoracic ratio.', 'Increased cardiac-to-thoracic ratio indicating cardiomegaly.'), Score: 0.6976
+('Normal mediastinal width.', 'Widened mediastinum, potentially indicating cardiac enlargement or aortic aneurysm.'), Score: 0.6976
+('No evidence of interstitial edema.', 'Interstitial edema visible as increased reticular markings, consistent with heart failure.'), Score: 0.6976
+('No evidence of right atrial enlargement.', 'Right atrial enlargement, potentially indicating right heart strain and cardiomegaly.'), Score: 0.6976
+('Normal left atrial size.', 'Enlarged left atrial size, suggesting left atrial hypertension and cardiomegaly.'), Score: 0.6974
+('No evidence of interstitial thickening.', 'Interstitial thickening present, indicative of pulmonary edema.'), Score: 0.6974
+('Normal aortic arch.', 'Bulging aortic arch, potentially indicating left ventricular enlargement and cardiomegaly.'), Score: 0.6973
+('No evidence of increased interstitial markings in the upper lobes.', 'Increased interstitial markings in the upper lobes, consistent with pulmonary venous hypertension and cardiomegaly.'), Score: 0.6973
+('Mediastinum appears normal in width.', 'Mediastinum widened due to cardiac enlargement.'), Score: 0.6973
+('Clear costophrenic angles.', 'Blunted costophrenic angles, potentially due to pleural effusion associated with heart failure.'), Score: 0.6973
+('Normal hilar prominence.', 'Hilar prominence, potentially due to pulmonary artery enlargement and lymphatic congestion.'), Score: 0.6973
+('Sharp pulmonary artery branches.', 'Obscuration of pulmonary artery branches due to vascular congestion.'), Score: 0.6972
+('Clear costophrenic angles.', 'Blunting of costophrenic angles, suggestive of pleural effusion secondary to cardiomegaly.'), Score: 0.6972
+('Clear lung fields.', 'Increased opacity in the lung bases, indicative of pulmonary edema related to heart failure.'), Score: 0.6971
+('Clear costophrenic angles.', 'Blunting of costophrenic angles due to pleural effusion associated with heart failure.'), Score: 0.6971
+('Normal cardiac silhouette shape.', 'Globular cardiac silhouette, indicative of cardiomegaly.'), Score: 0.6971
+('Normal hilar prominence.', 'Hilar prominence, suggesting pulmonary vascular congestion secondary to heart failure.'), Score: 0.6969
+('Normal pulmonary artery segmentation.', 'Increased prominence of pulmonary artery segments, suggesting pulmonary hypertension.'), Score: 0.6969
+('Normal cardiac silhouette.', 'Globular cardiac silhouette indicative of cardiomegaly.'), Score: 0.6968
+('Normal diaphragmatic excursion.', 'Reduced diaphragmatic excursion on affected side, potentially due to pericardial effusion.'), Score: 0.6968
+('Normal retrosternal space.', 'Loss of retrosternal space, indicating cardiomegaly and potential pericardial effusion.'), Score: 0.6967
+('Clear lung fields without consolidation.', 'Kerley B lines visible in the lower lung fields due to interstitial edema from heart failure.'), Score: 0.6966
+('Normal mediastinal silhouette.', 'Mediastinal widening with indistinct borders suggestive of cardiomegaly and/or pericardial effusion.'), Score: 0.6965
+('Normal cardiac silhouette shape.', 'Cardic silhouette with globular appearance, suggestive of cardiomegaly.'), Score: 0.6965
+('No visible cardiophrenic angle widening.', 'Widening of the cardiophrenic angles suggestive of pericardial effusion associated with cardiomegaly.'), Score: 0.6964
+('No evidence of cardiophrenic angle fullness.', 'Cardiophrenic angle fullness suggestive of pericardial effusion associated with heart failure.'), Score: 0.6964
+('Normal mediastinal width.', 'Widened mediastinum, potentially due to cardiomegaly or aortic aneurysm.'), Score: 0.6964
+('Clear lung bases.', 'Increased opacity at lung bases, suggestive of pulmonary edema.'), Score: 0.6964
+('Normal hilar prominence.', 'Increased hilar prominence, potentially due to pulmonary venous congestion.'), Score: 0.6964
+('No pericardial fat pad obscuration.', 'Pericardial fat pad obscuration, suggesting significant cardiomegaly and pericardial effusion.'), Score: 0.6964
+('No evidence of cephalization of pulmonary vessels.', 'Cephalization of pulmonary vessels indicating pulmonary venous hypertension.'), Score: 0.6963
+('No evidence of peribronchial cuffing.', 'Peribronchial cuffing present, indicative of pulmonary edema.'), Score: 0.6962
+('Clear costophrenic angles bilaterally.', 'Blunting of the costophrenic angles bilaterally due to pleural effusion secondary to cardiomegaly.'), Score: 0.6962
+('Normal atrial size.', 'Enlarged left atrium, indicating left atrial pressure overload.'), Score: 0.6961
+('Normal left atrial size.', 'Left atrial enlargement, potentially visible as an S-shaped cardiac border.'), Score: 0.6961
+('Clear pulmonary vessels with normal caliber.', 'Diffuse pulmonary venous congestion indicating elevated left atrial pressure.'), Score: 0.6960
+('Sharp diaphragmatic contours.', 'Diaphragmatic tenting, suggestive of increased intra-abdominal pressure secondary to cardiac dysfunction.'), Score: 0.6959
+('Clear costophrenic angles.', 'Blunting of costophrenic angles, suggestive of fluid accumulation from heart failure.'), Score: 0.6959
+('Pulmonary artery is not prominent.', 'Prominent pulmonary artery suggesting pulmonary hypertension secondary to cardiomegaly.'), Score: 0.6959
+('Normal cardiac silhouette width.', 'Increased cardiac silhouette width on the PA view, consistent with cardiomegaly.'), Score: 0.6958
+('Normal size of the brachiocephalic veins.', 'Dilated brachiocephalic veins, suggesting superior vena cava syndrome secondary to cardiac compression.'), Score: 0.6958
+('Normal hilar prominence.', 'Hilar prominence due to pulmonary artery hypertension and vascular congestion.'), Score: 0.6958
+('Normal cardiac silhouette size.', 'Globular cardiac silhouette with increased cardiothoracic ratio.'), Score: 0.6957
+('Normal atrial size.', 'Left atrial enlargement causing esophageal impression.'), Score: 0.6957
+('Normal aortic knob contour.', 'Prominent aortic knob, potentially indicating aortic root dilation associated with cardiomegaly.'), Score: 0.6957
+('Normal cardiac silhouette shape.', 'Globular cardiac silhouette, consistent with cardiomegaly.'), Score: 0.6957
+('Sharp and well-defined cardiac borders.', 'Ill-defined or hazy cardiac borders, suggesting pericardial effusion.'), Score: 0.6956
+('Normal costophrenic angles.', 'Blunting of costophrenic angles due to pleural effusion associated with cardiomegaly.'), Score: 0.6955
+('No evidence of cephalization of pulmonary vessels.', 'Cephalization of pulmonary vessels, indicating increased pulmonary venous pressure.'), Score: 0.6954
+('Clear lung fields.', 'Patchy opacities in lung fields suggestive of pulmonary edema.'), Score: 0.6954
+('Normal aortic knob contour.', 'Prominent aortic knob suggesting cardiomegaly and potential aortic root dilation.'), Score: 0.6954
+('No evidence of peribronchial cuffing.', 'Peribronchial cuffing present, suggesting pulmonary congestion.'), Score: 0.6954
+('Clear costophrenic angles.', 'Blunting of costophrenic angles due to pleural effusion.'), Score: 0.6954
+('Normal hilar prominence.', 'Hilar prominence, potentially due to pulmonary artery hypertension.'), Score: 0.6954
+('No peribronchial cuffing.', 'Peribronchial cuffing indicating pulmonary edema from heart failure.'), Score: 0.6953
+('Normal mediastinal contour.', 'Mediastinal widening, potentially due to cardiomegaly and/or pericardial effusion.'), Score: 0.6953
+('Clear lung bases.', 'Increased opacity at the lung bases consistent with pulmonary edema secondary to heart failure.'), Score: 0.6953
+('Normal left ventricular size and contour.', 'Left ventricular enlargement with blunting of the left cardiac border.'), Score: 0.6952
+('Normal pericardial fat pad.', 'Increased pericardial fat pad thickness, suggesting chronic fluid overload.'), Score: 0.6952
+('Normal thoracic aorta contour.', 'Tortuous thoracic aorta associated with cardiomegaly and hypertension.'), Score: 0.6950
+('No peribronchial cuffing.', 'Peribronchial cuffing present, suggesting pulmonary edema related to heart failure.'), Score: 0.6950
+('No evidence of fluid in the fissures.', 'Fluid in the interlobar fissures indicating pulmonary edema from heart failure.'), Score: 0.6950
+('No interstitial markings.', 'Increased interstitial markings, consistent with pulmonary edema.'), Score: 0.6950
+('Normal hilar prominence.', 'Hilar prominence suggesting pulmonary vascular congestion.'), Score: 0.6949
+('Clear costal cartilage.', 'Indistinct costal cartilage due to surrounding edema.'), Score: 0.6949
+('Diaphragm is normally positioned.', 'Diaphragmatic elevation, potentially due to cardiomegaly and pleural effusion.'), Score: 0.6949
+('Normal mediastinal width.', 'Widened mediastinum potentially obscuring cardiac borders.'), Score: 0.6949
+('No evidence of interstitial edema.', 'Interstitial edema present, manifesting as hazy opacities in the lung periphery.'), Score: 0.6948
+('No evidence of cephalization of pulmonary vessels.', 'Cephalization of pulmonary vessels present, indicating increased pulmonary venous pressure.'), Score: 0.6948
+('Normal hilar prominence.', 'Hilar congestion and prominence due to pulmonary venous hypertension.'), Score: 0.6948
+('Normal pulmonary vascular markings.', 'Increased pulmonary vascular markings, particularly in the upper lobes, suggestive of pulmonary venous hypertension.'), Score: 0.6948
+('Normal hilar prominence.', 'Increased hilar prominence suggesting pulmonary vascular congestion.'), Score: 0.6947
+('Normal mediastinal width.', 'Widened mediastinal width, potentially due to cardiomegaly and/or pericardial effusion.'), Score: 0.6946
+('Normal vascular pedicle.', 'Widened vascular pedicle, potentially due to cardiac enlargement and vascular congestion.'), Score: 0.6946
+('Normal size of the right ventricle.', 'Enlarged right ventricle causing anterior displacement of the pulmonary artery.'), Score: 0.6946
+('Clear costophrenic angles.', 'Blunted costophrenic angles, potentially due to pleural effusion secondary to heart failure.'), Score: 0.6946
+('No interstitial markings.', 'Increased interstitial markings indicating pulmonary venous hypertension from left heart failure.'), Score: 0.6945
+('No evidence of pulmonary congestion.', 'Increased interstitial markings consistent with pulmonary congestion from heart failure.'), Score: 0.6944
+('Normal cardiac-to-chest width ratio.', 'Cardiac-to-chest width ratio greater than 0.5, indicative of cardiomegaly.'), Score: 0.6944
+('Normal pulmonary vein size.', 'Enlarged pulmonary veins, suggesting increased pulmonary venous pressure.'), Score: 0.6944
+('Normal mediastinal width on lateral view.', 'Increased mediastinal width on lateral view, consistent with cardiomegaly.'), Score: 0.6943
+('Normal costophrenic angles.', 'Obtuse costophrenic angles due to pleural effusion associated with cardiomegaly.'), Score: 0.6943
+('No evidence of interstitial markings.', 'Increased interstitial markings, consistent with pulmonary edema.'), Score: 0.6943
+('Normal position of the trachea.', 'Displacement of the trachea potentially due to mediastinal mass or significant cardiomegaly.'), Score: 0.6943
+('Normal right ventricle size.', 'Right ventricular enlargement suggesting pulmonary hypertension and cor pulmonale.'), Score: 0.6942
+('Sharp pulmonary artery.', 'Prominent pulmonary artery with increased diameter, suggesting pulmonary hypertension.'), Score: 0.6941
+('No evidence of left atrial enlargement.', 'Left atrial enlargement with increased left atrial dimension.'), Score: 0.6941
+('Normal cardiac-to-thoracic ratio.', 'Increased cardiac-to-thoracic ratio (>0.5), indicating cardiomegaly.'), Score: 0.6940
+('No evidence of increased opacity in the perivascular regions.', 'Increased opacity in the perivascular regions, consistent with pulmonary edema secondary to cardiomegaly.'), Score: 0.6940
+('Normal pulmonary venous distribution.', 'Increased pulmonary venous congestion with upper lobe diversion.'), Score: 0.6940
+('Normal cardiothoracic ratio.', 'Increased cardiothoracic ratio (>0.5), suggestive of cardiomegaly.'), Score: 0.6939
+('No interstitial markings.', 'Increased interstitial markings indicating pulmonary edema.'), Score: 0.6938
+('Normal diaphragmatic contour.', 'Undulation of the diaphragmatic contour due to cardiomegaly and pericardial effusion.'), Score: 0.6937
+('Clear retrosternal space.', 'Loss of retrosternal space due to cardiomegaly and pericardial effusion.'), Score: 0.6936
+('Pulmonary arteries are normal in caliber.', 'Prominent pulmonary arteries with peripheral pruning, indicating pulmonary hypertension.'), Score: 0.6936
+('Normal hilar prominence.', 'Hilar prominence due to vascular congestion, consistent with cardiogenic pulmonary edema.'), Score: 0.6935
+('Normal mediastinal contour.', 'Mediastinal widening due to cardiac enlargement.'), Score: 0.6932
+('Normal retrosternal space.', 'Loss of retrosternal space indicating cardiac enlargement.'), Score: 0.6931
+('No evidence of cephalization of pulmonary vessels.', 'Cephalization of pulmonary vessels indicating elevated pulmonary venous pressure.'), Score: 0.6931
+('Clear costophrenic angles.', 'Blunting of costophrenic angles suggesting pleural effusion secondary to heart failure.'), Score: 0.6930
+('Normal left ventricular size.', 'Enlarged left ventricular silhouette, a direct sign of cardiomegaly.'), Score: 0.6930
+('Normal diaphragmatic contour.', 'Undulation of the diaphragmatic contour, potentially due to left atrial enlargement.'), Score: 0.6930
+('Diaphragm is normally positioned.', 'Diaphragmatic elevation, potentially due to enlarged cardiac chambers.'), Score: 0.6930
+('Normal mediastinal width.', 'Mediastinal widening, potentially due to cardiac enlargement or pericardial effusion.'), Score: 0.6929
+('No evidence of interstitial markings.', 'Increased interstitial markings, indicative of pulmonary congestion from heart failure.'), Score: 0.6928
+('No evidence of interstitial edema.', 'Increased interstitial markings, indicating pulmonary edema from heart failure.'), Score: 0.6928
+('Normal hilar prominence.', 'Increased hilar prominence due to pulmonary artery enlargement and congestion.'), Score: 0.6927
+('Normal pericardial fat pad.', 'Increased pericardial fat pad, potentially obscuring cardiac borders.'), Score: 0.6927
+('Normal pericardial fat pad.', 'Increased pericardial fat pad thickness, potentially obscuring cardiac borders and suggesting cardiomegaly.'), Score: 0.6924
+('Normal pulmonary artery prominence.', 'Prominent pulmonary artery, suggesting pulmonary hypertension secondary to cardiomegaly.'), Score: 0.6924
+('Normal left ventricular size.', 'Left ventricular enlargement contributing to overall cardiomegaly and heart failure.'), Score: 0.6923
+('Normal right ventricular size.', 'Right ventricular enlargement with apical displacement.'), Score: 0.6923
+('Normal size of the right ventricle.', 'Right ventricular enlargement, causing prominence of the right heart border.'), Score: 0.6923
+('Normal retrocardiac space.', 'Obliteration of the retrocardiac space, potentially due to pericardial effusion.'), Score: 0.6921
+('No pericardial fat pad.', 'Prominent pericardial fat pad, obscuring the cardiac border and suggesting cardiomegaly.'), Score: 0.6920
+('Normal cardiac silhouette size.', 'Globular cardiac silhouette indicating cardiomegaly.'), Score: 0.6920
+('No evidence of interstitial edema.', 'Interstitial edema visible as increased reticular markings, consistent with cardiogenic pulmonary edema.'), Score: 0.6920
+('Normal right ventricular size.', 'Right ventricular enlargement suggesting pulmonary hypertension.'), Score: 0.6919
+('No evidence of pericardial effusion.', 'Pericardial effusion present, potentially contributing to a larger cardiac silhouette.'), Score: 0.6919
+('Normal vascular pedicle.', 'Widened vascular pedicle, indicating cardiomegaly and/or vascular congestion.'), Score: 0.6919
+('Clear costophrenic angles.', 'Blunting of the costophrenic angles suggesting pleural effusion secondary to heart failure.'), Score: 0.6918
+('Normal aortic knob.', 'Prominent aortic knob with post-stenotic dilation secondary to hypertension and cardiomegaly.'), Score: 0.6918
+('Normal costophrenic angles.', 'Blunting of costophrenic angles suggesting pleural effusion.'), Score: 0.6918
+('Normal retrocardiac space.', 'Reduced retrocardiac space due to cardiac enlargement.'), Score: 0.6918
+('No evidence of atrial shunting.', 'Evidence of atrial shunting, potentially due to increased atrial pressure from heart failure.'), Score: 0.6917
+('Normal size right ventricle.', 'Enlarged right ventricle suggesting right heart strain secondary to cardiomegaly.'), Score: 0.6917
+('Normal diaphragmatic contour.', 'Undulating diaphragmatic contour, potentially due to left ventricular enlargement.'), Score: 0.6917
+('Normal left ventricular size.', 'Left ventricular enlargement contributing to cardiomegaly.'), Score: 0.6917
+('Normal mediastinal width.', 'Increased mediastinal width suggesting cardiomegaly.'), Score: 0.6917
+('No peribronchial cuffing.', 'Peribronchial cuffing present, suggesting fluid in the bronchial walls due to heart failure.'), Score: 0.6916
+('Normal aortic knob contour.', 'Aortic knob enlargement or distortion suggesting left ventricular strain.'), Score: 0.6916
+('Normal aortic knob contour.', 'Enlarged or irregular aortic knob, potentially indicating aortic root dilation or cardiomegaly.'), Score: 0.6916
+('Normal left ventricular free wall thickness.', 'Increased left ventricular free wall thickness, suggesting hypertrophy and potential cardiomegaly.'), Score: 0.6916
+('Normal upper lobe pulmonary vein size.', 'Prominent upper lobe pulmonary veins, indicating increased pulmonary venous pressure.'), Score: 0.6912
+('Normal mediastinal width.', 'Widened mediastinum, suggestive of cardiomegaly and/or aortic aneurysm.'), Score: 0.6912
+('Normal pericardial fat pad.', 'Increased pericardial fat pad thickness, potentially indicating chronic heart failure.'), Score: 0.6911
+('Normal cardiac contour.', 'Globular cardiac contour, consistent with ventricular dilation.'), Score: 0.6911
+('Normal right ventricular size.', 'Right ventricular enlargement with prominence of the outflow tract.'), Score: 0.6911
+('Normal mediastinal width.', 'Increased mediastinal width suggestive of cardiomegaly.'), Score: 0.6911
+('Normal cardiac silhouette size.', 'Globular cardiac silhouette with increased cardiothoracic ratio suggestive of cardiomegaly.'), Score: 0.6911
+('No evidence of interstitial markings.', 'Increased interstitial markings consistent with pulmonary venous hypertension.'), Score: 0.6910
+('Normal hilar prominence.', 'Increased hilar prominence due to pulmonary venous congestion.'), Score: 0.6910
+('Normal left ventricular size.', 'Enlarged left ventricular size, contributing to overall cardiomegaly.'), Score: 0.6910
+('Sharp and well-defined cardiac borders.', 'Blunted or indistinct cardiac borders, suggesting pericardial effusion or cardiomegaly.'), Score: 0.6910
+('Normal pulmonary artery prominence.', 'Prominent pulmonary artery, potentially due to pulmonary hypertension secondary to cardiomegaly.'), Score: 0.6909
+('Normal cardiac silhouette size.', 'Globular cardiac silhouette, suggesting cardiomegaly.'), Score: 0.6908
+('Normal left ventricular size.', 'Enlarged left ventricular silhouette, consistent with left ventricular hypertrophy and cardiomegaly.'), Score: 0.6908
+('Sharp diaphragmatic contours.', 'Diaphragmatic tenting suggesting increased intra-abdominal pressure from cardiac enlargement.'), Score: 0.6908
+('Normal vascular pedicle width.', 'Widened vascular pedicle indicating increased pulmonary blood flow.'), Score: 0.6907
+('Normal right ventricular size.', 'Right ventricular enlargement with prominence of the ascending aorta.'), Score: 0.6907
+('No evidence of pulmonary venous congestion.', 'Increased pulmonary venous congestion, manifesting as vascular redistribution and Kerley lines.'), Score: 0.6906
+('Normal left hemidiaphragm position.', 'Low-lying left hemidiaphragm, potentially due to cardiomegaly or phrenic nerve palsy.'), Score: 0.6905
+('No perivascular haze.', 'Perivascular haze indicating interstitial edema.'), Score: 0.6905
+('Normal hilar prominence.', 'Hilar prominence due to pulmonary venous congestion.'), Score: 0.6905
+('Sharp diaphragmatic contours.', 'Diaphragmatic elevation and blunting due to cardiomegaly and associated pleural effusion.'), Score: 0.6904
+('No evidence of pulmonary venous congestion.', 'Increased prominence of pulmonary veins, indicating elevated pulmonary venous pressure.'), Score: 0.6903
+('Normal cardiac silhouette size.', 'Globular cardiac silhouette suggesting cardiomegaly.'), Score: 0.6903
+('Normal pulmonary venous distribution.', 'Increased pulmonary venous congestion with redistribution to upper lobes.'), Score: 0.6902
+('Normal appearance of the pulmonary arteries.', 'Tortuosity and prominence of the pulmonary arteries, suggesting pulmonary hypertension.'), Score: 0.6899
+('Normal mediastinal contour.', 'Mediastinal widening potentially due to pericardial effusion or aortic dissection associated with cardiomegaly.'), Score: 0.6899
+('No evidence of right atrial enlargement.', 'Right atrial enlargement, potentially due to right heart strain from cardiomegaly.'), Score: 0.6899
+('Sharp diaphragmatic contours.', 'Diaphragmatic tenting, potentially due to increased cardiac size.'), Score: 0.6897
+('No interstitial markings.', 'Increased interstitial markings, indicative of pulmonary edema.'), Score: 0.6897
+('Normal aortic knob contour.', 'Prominent aortic knob, suggesting left ventricular enlargement and cardiomegaly.'), Score: 0.6897
+('No evidence of interstitial edema.', 'Diffuse interstitial edema visible as increased lung markings, consistent with cardiogenic pulmonary edema.'), Score: 0.6896
+('Normal cardiac silhouette size.', 'Globular or enlarged cardiac silhouette, indicating cardiomegaly.'), Score: 0.6896
+('No pericardial fat pad prominence.', 'Prominent pericardial fat pad, indicating increased intrapericardial pressure due to cardiac enlargement.'), Score: 0.6896
+('Cardiac silhouette occupies less than half the chest width.', 'Cardiac silhouette occupies more than half the chest width, indicating cardiomegaly.'), Score: 0.6895
+('No interstitial markings.', 'Increased interstitial markings suggestive of pulmonary congestion.'), Score: 0.6895
+('Normal cardiac silhouette size.', 'Globular cardiac silhouette, indicating cardiomegaly.'), Score: 0.6895
+('Clear costophrenic angles.', 'Blunting of costophrenic angles due to pleural effusion secondary to cardiomegaly.'), Score: 0.6894
+('Normal pulmonary vasculature.', 'Increased pulmonary vascular markings, indicating pulmonary venous congestion.'), Score: 0.6893
+('Normal cardiac length.', 'Increased cardiac length on the PA view.'), Score: 0.6893
+('Normal left atrial size.', 'Enlarged left atrial size, a common finding in cardiomegaly and mitral valve disease.'), Score: 0.6893
+('Normal cardiac-to-thoracic ratio.', 'Increased cardiac-to-thoracic ratio, indicative of cardiomegaly.'), Score: 0.6892
+('Normal hilar prominence.', 'Hilar prominence due to pulmonary artery enlargement and venous congestion.'), Score: 0.6892
+('Normal cardiac silhouette width.', 'Increased cardiac silhouette width, suggestive of cardiomegaly.'), Score: 0.6891
+('Clear costophrenic angles.', 'Blunting of costophrenic angles, potentially due to pleural effusion secondary to heart failure.'), Score: 0.6889
+('No evidence of Kerley A lines.', 'Kerley A lines present, indicating interstitial edema and elevated pulmonary venous pressure.'), Score: 0.6889
+('Normal aortic knob contour.', 'Prominent aortic knob suggesting left ventricular hypertrophy and strain.'), Score: 0.6888
+('Normal hilar prominence.', 'Hilar prominence due to pulmonary artery hypertension.'), Score: 0.6887
+('Sharp costophrenic angles.', 'Blunting of costophrenic angles, potentially due to pleural effusion secondary to heart failure.'), Score: 0.6886
+('Normal mediastinal contours.', 'Mediastinal widening, potentially due to cardiac enlargement.'), Score: 0.6886
+('No evidence of cephalization of pulmonary vessels.', 'Cephalization of pulmonary vessels indicating increased pulmonary venous pressure.'), Score: 0.6880
+('Clear lung fields without congestion.', 'Increased interstitial markings, suggestive of pulmonary edema from heart failure.'), Score: 0.6880
+('Normal pericardial fat pad.', 'Increased pericardial fat pad, potentially obscuring the cardiac silhouette.'), Score: 0.6879
+('Clear lung fields without consolidation.', 'Bilateral lung congestion with hazy opacities, consistent with pulmonary edema from cardiomegaly.'), Score: 0.6878
+('Normal pericardial fat pad.', 'Increased pericardial fat pad thickness, potentially indicating chronic cardiac enlargement.'), Score: 0.6877
+('Normal right ventricular size.', 'Right ventricular enlargement contributing to cardiomegaly.'), Score: 0.6877
+('Normal cardiac silhouette size.', 'Globular or enlarged cardiac silhouette suggesting cardiomegaly.'), Score: 0.6877
+('Normal cardiac silhouette width.', 'Increased cardiac silhouette width, suggesting cardiomegaly.'), Score: 0.6877
+('Normal cardiac silhouette width.', 'Increased cardiac silhouette width (>50% of chest width), indicating cardiomegaly.'), Score: 0.6876
+('Cardiac apex is normally positioned.', 'Displaced cardiac apex, indicating cardiomegaly and potential left ventricular enlargement.'), Score: 0.6875
+('Normal left atrial size and contour.', 'Left atrial enlargement with splaying of the carina.'), Score: 0.6874
+('Normal aortic knob.', 'Prominent aortic knob, potentially indicating left ventricular enlargement and aortic root dilation.'), Score: 0.6873
+('Normal aortic knob contour.', 'Prominent aortic knob suggesting left ventricular hypertrophy and cardiomegaly.'), Score: 0.6872
+('Normal cardiac silhouette width.', 'Increased cardiothoracic ratio (>0.5), indicating cardiomegaly.'), Score: 0.6872
+('No evidence of cephalization of pulmonary vessels.', 'Cephalization of pulmonary vessels indicating elevated pulmonary venous pressure due to cardiomegaly.'), Score: 0.6872
+('Sharp diaphragmatic silhouette.', 'Obscuration of the diaphragmatic silhouette due to cardiomegaly and associated effusion.'), Score: 0.6871
+('No evidence of pulmonary congestion.', 'Increased pulmonary vascular markings, suggestive of pulmonary congestion from heart failure.'), Score: 0.6871
+('Normal size of the pulmonary veins.', 'Dilated pulmonary veins, suggestive of increased left atrial pressure and cardiomegaly.'), Score: 0.6870
+('No significant cardiac contour abnormalities.', 'Left ventricular hypertrophy with apical displacement of the cardiac apex.'), Score: 0.6869
+('Normal left ventricular size.', 'Left ventricular enlargement, contributing to cardiomegaly.'), Score: 0.6869
+('Normal size of the left ventricle.', 'Enlarged left ventricle causing displacement of the diaphragm.'), Score: 0.6868
+('Normal right ventricular size.', 'Right ventricular enlargement, potentially secondary to pulmonary hypertension from cardiomegaly.'), Score: 0.6868
+('Normal aortic knob.', 'Prominent aortic knob potentially indicating aortic root dilation or increased flow.'), Score: 0.6867
+('No evidence of right ventricular hypertrophy.', 'Right ventricular hypertrophy with displacement of the cardiac apex.'), Score: 0.6867
+('Normal cardiac silhouette.', 'Globular cardiac silhouette, indicative of cardiomegaly.'), Score: 0.6867
+('Normal left ventricular size and contour.', 'Left ventricular enlargement with rounded apex and indistinct borders.'), Score: 0.6866
+('Normal aortic knob.', 'Enlarged aortic knob, potentially indicating aortic root dilation associated with cardiomegaly.'), Score: 0.6866
+('Clear lung fields bilaterally.', 'Interstitial edema visible in lung fields, consistent with cardiogenic pulmonary edema.'), Score: 0.6864
+('Clear costophrenic sulci.', 'Obscuration of costophrenic sulci due to pleural effusion.'), Score: 0.6863
+('No evidence of upper lobe vascular diversion.', 'Upper lobe vascular diversion present, indicating increased pulmonary venous pressure.'), Score: 0.6863
+('Normal mediastinum width.', 'Mediastinal widening due to cardiomegaly and possible pericardial effusion.'), Score: 0.6862
+('No Kerley B lines present.', 'Kerley B lines visible, indicative of interstitial edema and elevated pulmonary venous pressure.'), Score: 0.6860
+('Normal pulmonary venous distribution.', 'Increased pulmonary venous congestion with redistribution to the upper lobes.'), Score: 0.6860
+('Clear costophrenic angles.', 'Blunted costophrenic angles, indicating fluid accumulation due to congestive heart failure.'), Score: 0.6859
+('Normal cardiac silhouette size.', 'Globular cardiac silhouette, indicative of cardiomegaly.'), Score: 0.6858
+('Sharp and well-defined cardiac borders.', 'Blunted cardiac borders, suggestive of pericardial effusion or cardiomegaly.'), Score: 0.6858
+('Normal cardiac apex.', 'Rounded and displaced cardiac apex, indicative of cardiomegaly.'), Score: 0.6858
+('Normal right ventricular size.', 'Right ventricular enlargement contributing to overall cardiomegaly.'), Score: 0.6857
+('Normal cardiac axis.', 'Deviation of the cardiac axis suggestive of chamber enlargement.'), Score: 0.6856
+('Normal left ventricular size.', 'Left ventricular enlargement with apical displacement of the cardiac apex.'), Score: 0.6855
+('No evidence of cephalization of pulmonary vessels.', 'Cephalization of pulmonary vessels indicating pulmonary venous hypertension from cardiomegaly.'), Score: 0.6855
+('No significant peribronchial cuffing.', 'Diffuse peribronchial cuffing indicating pulmonary edema secondary to heart failure.'), Score: 0.6855
+('Normal pulmonary vascular markings.', 'Increased pulmonary vascular markings, particularly in the upper lobes, suggesting pulmonary venous hypertension.'), Score: 0.6854
+('Normal cardiac silhouette size.', 'Globular or enlarged cardiac silhouette, suggesting cardiomegaly.'), Score: 0.6852
+('Normal cardiac apex.', 'Rounded or displaced cardiac apex, indicative of cardiomegaly.'), Score: 0.6852
+('No evidence of pulmonary congestion.', 'Increased pulmonary vascular markings, indicating pulmonary congestion secondary to heart failure.'), Score: 0.6852
+('Normal aortic knob.', 'Enlarged aortic knob, potentially contributing to an increased cardiac silhouette.'), Score: 0.6851
+('Normal left atrial size.', 'Left atrial enlargement, potentially causing mitral valve stenosis or dysfunction.'), Score: 0.6851
+('Normal mediastinal width.', 'Mediastinal widening with indistinct borders due to cardiomegaly and vascular congestion.'), Score: 0.6849
+('Normal descending aorta.', 'Tortuous descending aorta, potentially related to hypertension or aortic disease.'), Score: 0.6849
+('Normal mediastinal contour.', 'Mediastinal widening, potentially due to cardiomegaly.'), Score: 0.6848
+('Normal aortic knob contour.', 'Prominent aortic knob, suggesting left ventricular hypertrophy and cardiomegaly.'), Score: 0.6848
+('Normal right ventricular size.', 'Right ventricular enlargement, potentially due to pulmonary hypertension and right heart strain.'), Score: 0.6848
+('Normal left ventricular size and contour.', 'Left ventricular enlargement with displacement of the apex.'), Score: 0.6848
+('Aortic knob appears normal in size.', 'Enlarged aortic knob potentially indicating left ventricular hypertrophy and cardiomegaly.'), Score: 0.6847
+('Normal cardiac apex.', 'Rounded and displaced cardiac apex suggesting left ventricular enlargement.'), Score: 0.6846
+('Normal superior vena cava size.', 'Superior vena cava enlargement, indicating increased right atrial pressure.'), Score: 0.6846
+('Normal left ventricular size.', 'Left ventricular enlargement, contributing to an enlarged cardiac silhouette.'), Score: 0.6844
+('Normal pulmonary vein size.', 'Enlarged pulmonary veins indicating elevated left atrial pressure.'), Score: 0.6843
+('Normal mediastinal width.', 'Mediastinal widening potentially due to cardiomegaly and/or pericardial effusion.'), Score: 0.6843
+('Normal cardiac apex.', 'Rounded or displaced cardiac apex suggesting left ventricular enlargement.'), Score: 0.6843
+('No evidence of apical capping.', 'Apical capping present, indicating fluid overload.'), Score: 0.6842
+('No evidence of cephalization of pulmonary vessels.', 'Cephalization of pulmonary vessels, suggesting pulmonary venous hypertension related to cardiomegaly.'), Score: 0.6842
+
