@@ -13,32 +13,33 @@
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
             min-height: 100vh;
             padding: 20px;
-            color: #333;
+            color: #e2e8f0;
         }
 
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            background: white;
+            background: #1e293b;
             border-radius: 20px;
             padding: 30px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            border: 1px solid #334155;
         }
 
         .title {
             text-align: center;
             margin-bottom: 30px;
-            color: #4a5568;
+            color: #f1f5f9;
             font-size: 28px;
             font-weight: 700;
         }
 
         .subtitle {
             text-align: center;
-            color: #718096;
+            color: #94a3b8;
             margin-bottom: 30px;
             font-size: 16px;
         }
@@ -46,33 +47,33 @@
         .upload-section {
             text-align: center;
             padding: 40px;
-            border: 3px dashed #cbd5e0;
+            border: 3px dashed #475569;
             border-radius: 15px;
             margin-bottom: 30px;
-            background: #f8fafc;
+            background: #0f172a;
             transition: all 0.3s ease;
         }
 
         .upload-section:hover {
-            border-color: #4299e1;
-            background: #ebf8ff;
+            border-color: #60a5fa;
+            background: #1e293b;
         }
 
         .upload-section.dragover {
-            border-color: #4299e1;
-            background: #ebf8ff;
+            border-color: #60a5fa;
+            background: #1e293b;
             transform: scale(1.02);
         }
 
         .upload-icon {
             font-size: 48px;
             margin-bottom: 20px;
-            color: #a0aec0;
+            color: #64748b;
         }
 
         .upload-text {
             font-size: 18px;
-            color: #4a5568;
+            color: #cbd5e1;
             margin-bottom: 15px;
         }
 
@@ -81,7 +82,7 @@
         }
 
         .upload-btn {
-            background: #4299e1;
+            background: #3b82f6;
             color: white;
             border: none;
             padding: 12px 24px;
@@ -93,7 +94,7 @@
         }
 
         .upload-btn:hover {
-            background: #3182ce;
+            background: #2563eb;
             transform: translateY(-2px);
         }
 
@@ -112,11 +113,11 @@
         }
 
         .image-info {
-            background: #f0fff4;
+            background: #065f46;
             padding: 15px;
             border-radius: 10px;
             display: inline-block;
-            color: #22543d;
+            color: #a7f3d0;
             font-weight: 600;
         }
 
@@ -124,16 +125,17 @@
             display: none;
             text-align: center;
             padding: 60px 40px;
-            background: #f8fafc;
+            background: #0f172a;
             border-radius: 15px;
             margin-bottom: 30px;
+            border: 1px solid #334155;
         }
 
         .loading-spinner {
             width: 80px;
             height: 80px;
-            border: 8px solid #e2e8f0;
-            border-top: 8px solid #4299e1;
+            border: 8px solid #334155;
+            border-top: 8px solid #3b82f6;
             border-radius: 50%;
             animation: spin 1s linear infinite;
             margin: 0 auto 30px;
@@ -146,13 +148,13 @@
 
         .loading-text {
             font-size: 20px;
-            color: #4a5568;
+            color: #cbd5e1;
             margin-bottom: 15px;
             font-weight: 600;
         }
 
         .loading-subtext {
-            color: #718096;
+            color: #94a3b8;
             font-size: 16px;
         }
 
@@ -161,26 +163,27 @@
         }
 
         .step {
-            background: #f8fafc;
+            background: #0f172a;
             border-radius: 15px;
             padding: 25px;
-            border-left: 5px solid #4299e1;
+            border-left: 5px solid #3b82f6;
             margin-bottom: 30px;
             opacity: 0;
             transform: translateY(20px);
             transition: all 0.6s ease;
+            border: 1px solid #334155;
         }
 
         .step.active {
             opacity: 1;
             transform: translateY(0);
-            box-shadow: 0 10px 25px rgba(66, 153, 225, 0.2);
+            box-shadow: 0 10px 25px rgba(59, 130, 246, 0.2);
         }
 
         .step-title {
             font-size: 20px;
             font-weight: 600;
-            color: #2d3748;
+            color: #f1f5f9;
             margin-bottom: 15px;
             display: flex;
             align-items: center;
@@ -188,7 +191,7 @@
         }
 
         .step-number {
-            background: #4299e1;
+            background: #3b82f6;
             color: white;
             width: 30px;
             height: 30px;
@@ -221,7 +224,7 @@
 
         .chart-item.processing {
             transform: scale(1.02);
-            background: rgba(66, 153, 225, 0.1);
+            background: rgba(59, 130, 246, 0.1);
             border-radius: 8px;
             padding: 8px;
         }
@@ -251,7 +254,7 @@
         .chart-bar-container {
             flex: 1;
             height: 25px;
-            background: #2d3748;
+            background: #334155;
             border-radius: 12px;
             position: relative;
             margin: 0 15px;
@@ -283,7 +286,7 @@
             margin-top: 15px;
             padding: 0 15px;
             font-size: 12px;
-            color: #a0aec0;
+            color: #94a3b8;
         }
 
         .chart-scale span {
@@ -298,12 +301,12 @@
             transform: translateX(-50%);
             width: 1px;
             height: 8px;
-            background: #4a5568;
+            background: #64748b;
         }
 
         .ensemble-calculation {
-            background: #f0fff4;
-            border: 2px solid #68d391;
+            background: #0a3d0c;
+            border: 2px solid #16a34a;
             border-radius: 15px;
             padding: 25px;
             margin-top: 20px;
@@ -314,10 +317,11 @@
             text-align: center;
             margin-bottom: 20px;
             font-family: 'Courier New', monospace;
-            background: white;
+            background: #1e293b;
             padding: 15px;
             border-radius: 10px;
-            border-left: 5px solid #38a169;
+            border-left: 5px solid #16a34a;
+            color: #e2e8f0;
         }
 
         .final-result {
@@ -351,8 +355,8 @@
 
         .weight-display {
             display: inline-block;
-            background: #ffeaa7;
-            color: #2d3436;
+            background: #fbbf24;
+            color: #1f2937;
             padding: 5px 10px;
             border-radius: 15px;
             font-weight: bold;
@@ -366,7 +370,7 @@
         }
 
         .btn {
-            background: #4299e1;
+            background: #3b82f6;
             color: white;
             border: none;
             padding: 12px 24px;
@@ -379,24 +383,24 @@
         }
 
         .btn:hover {
-            background: #3182ce;
+            background: #2563eb;
             transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(66, 153, 225, 0.3);
+            box-shadow: 0 8px 25px rgba(59, 130, 246, 0.3);
         }
 
         .btn:disabled {
-            background: #a0aec0;
+            background: #64748b;
             cursor: not-allowed;
             transform: none;
             box-shadow: none;
         }
 
         .reset-btn {
-            background: #718096;
+            background: #64748b;
         }
 
         .reset-btn:hover {
-            background: #4a5568;
+            background: #475569;
         }
     </style>
 </head>
@@ -409,7 +413,7 @@
         <div class="upload-section" id="uploadSection">
             <div class="upload-icon">📸</div>
             <div class="upload-text">Upload Histopathology Image</div>
-            <p style="color: #718096; margin-bottom: 20px;">Drag and drop or click to select</p>
+            <p style="color: #94a3b8; margin-bottom: 20px;">Drag and drop or click to select</p>
             <input type="file" class="file-input" id="fileInput" accept="image/*">
             <button class="upload-btn" onclick="document.getElementById('fileInput').click()">
                 Choose Image
@@ -446,60 +450,96 @@
                     <div class="chart-container">
                         <div class="chart-item" data-pair="0">
                             <div class="chart-label">
-                                Malignant tumor cells with irregular morphology
-                                <span class="fitness-score" id="fitness0">92</span>
+                                No atypical cells infiltrating surrounding tissues
+                                <span class="fitness-score" id="fitness0">90</span>
                             </div>
                             <div class="chart-bar-container">
                                 <div class="chart-bar" id="bar0" style="width: 0%">
-                                    <div class="chart-value" id="value0">0.85</div>
+                                    <div class="chart-value" id="value0">0.87</div>
                                 </div>
                             </div>
                         </div>
                         
                         <div class="chart-item" data-pair="1">
                             <div class="chart-label">
-                                Pathological tissue with neoplastic transformation
-                                <span class="fitness-score" id="fitness1">78</span>
+                                No significant atypia in the surrounding lymphocytes
+                                <span class="fitness-score" id="fitness1">90</span>
                             </div>
                             <div class="chart-bar-container">
                                 <div class="chart-bar" id="bar1" style="width: 0%">
-                                    <div class="chart-value" id="value1">0.73</div>
+                                    <div class="chart-value" id="value1">0.79</div>
                                 </div>
                             </div>
                         </div>
                         
                         <div class="chart-item" data-pair="2">
                             <div class="chart-label">
-                                Cancerous cells with high nuclear-cytoplasmic ratio
-                                <span class="fitness-score" id="fitness2">65</span>
+                                No evidence of fibrosis
+                                <span class="fitness-score" id="fitness2">90</span>
                             </div>
                             <div class="chart-bar-container">
                                 <div class="chart-bar" id="bar2" style="width: 0%">
-                                    <div class="chart-value" id="value2">0.41</div>
+                                    <div class="chart-value" id="value2">0.82</div>
                                 </div>
                             </div>
                         </div>
                         
                         <div class="chart-item" data-pair="3">
                             <div class="chart-label">
-                                Abnormal tissue architecture and cellular patterns
-                                <span class="fitness-score" id="fitness3">84</span>
+                                Normal follicular architecture is preserved
+                                <span class="fitness-score" id="fitness3">89</span>
                             </div>
                             <div class="chart-bar-container">
                                 <div class="chart-bar" id="bar3" style="width: 0%">
-                                    <div class="chart-value" id="value3">0.67</div>
+                                    <div class="chart-value" id="value3">0.75</div>
                                 </div>
                             </div>
                         </div>
                         
                         <div class="chart-item" data-pair="4">
                             <div class="chart-label">
-                                Increased cellular density and mitotic activity
-                                <span class="fitness-score" id="fitness4">71</span>
+                                No prominent nucleoli are observed in lymphocytes
+                                <span class="fitness-score" id="fitness4">89</span>
                             </div>
                             <div class="chart-bar-container">
                                 <div class="chart-bar" id="bar4" style="width: 0%">
-                                    <div class="chart-value" id="value4">0.29</div>
+                                    <div class="chart-value" id="value4">0.91</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="chart-item" data-pair="5">
+                            <div class="chart-label">
+                                No giant cells or multinucleated cells are seen
+                                <span class="fitness-score" id="fitness5">89</span>
+                            </div>
+                            <div class="chart-bar-container">
+                                <div class="chart-bar" id="bar5" style="width: 0%">
+                                    <div class="chart-value" id="value5">0.68</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="chart-item" data-pair="6">
+                            <div class="chart-label">
+                                No plasmacytoid differentiation is observed
+                                <span class="fitness-score" id="fitness6">89</span>
+                            </div>
+                            <div class="chart-bar-container">
+                                <div class="chart-bar" id="bar6" style="width: 0%">
+                                    <div class="chart-value" id="value6">0.73</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="chart-item" data-pair="7">
+                            <div class="chart-label">
+                                No prominent nucleolus is seen
+                                <span class="fitness-score" id="fitness7">88</span>
+                            </div>
+                            <div class="chart-bar-container">
+                                <div class="chart-bar" id="bar7" style="width: 0%">
+                                    <div class="chart-value" id="value7">0.85</div>
                                 </div>
                             </div>
                         </div>
@@ -523,24 +563,27 @@
                     Weighted Ensemble Calculation
                 </div>
                 <div class="ensemble-calculation">
-                    <div style="margin-bottom: 20px;">
+                    <div style="margin-bottom: 20px; color: #e2e8f0;">
                         <strong>Normalized Weights Based on Fitness Scores:</strong><br>
-                        <span class="weight-display">w₁ = 0.24 (92/390)</span>
-                        <span class="weight-display">w₂ = 0.20 (78/390)</span>
-                        <span class="weight-display">w₃ = 0.17 (65/390)</span>
-                        <span class="weight-display">w₄ = 0.22 (84/390)</span>
-                        <span class="weight-display">w₅ = 0.18 (71/390)</span>
+                        <span class="weight-display" id="weight0">w₁ = 0.13 (90/712)</span>
+                        <span class="weight-display" id="weight1">w₂ = 0.13 (90/712)</span>
+                        <span class="weight-display" id="weight2">w₃ = 0.13 (90/712)</span>
+                        <span class="weight-display" id="weight3">w₄ = 0.12 (89/712)</span>
+                        <span class="weight-display" id="weight4">w₅ = 0.12 (89/712)</span>
+                        <span class="weight-display" id="weight5">w₆ = 0.12 (89/712)</span>
+                        <span class="weight-display" id="weight6">w₇ = 0.12 (89/712)</span>
+                        <span class="weight-display" id="weight7">w₈ = 0.12 (88/712)</span>
                     </div>
                     <div class="calculation-formula" id="formula">
-                        Final Output = 0.24 × 1 + 0.20 × 1 + 0.17 × 0 + 0.22 × 1 + 0.18 × 0
+                        Final Output = 0.13 × 1 + 0.13 × 1 + 0.13 × 1 + 0.12 × 1 + 0.12 × 1 + 0.12 × 1 + 0.12 × 1 + 0.12 × 1
                     </div>
                     <div class="calculation-formula" id="calculation">
-                        = 0.24 + 0.20 + 0.00 + 0.22 + 0.00 = 0.66
+                        = 0.13 + 0.13 + 0.13 + 0.12 + 0.12 + 0.12 + 0.12 + 0.12 = 0.99
                     </div>
                 </div>
                 <div class="final-result tumor" id="finalResult">
                     <div>🎯 Final Prediction</div>
-                    <div class="final-value" id="finalValue">0.66</div>
+                    <div class="final-value" id="finalValue">0.99</div>
                     <div class="tumor-status" id="tumorStatus">⚠️ CONTAINS TUMOR</div>
                     <div>High confidence tumor detection based on weighted ensemble analysis</div>
                 </div>
@@ -563,33 +606,63 @@
     <script>
         let isAnalyzing = false;
         let imageUploaded = false;
-        
-        // Example data sets for variation
-        const examples = [
+        let currentImageName = "";
+        let currentExample = 0;
+        const promptPairs = [
             {
-                scores: [92, 78, 65, 84, 71],
-                probabilities: [0.85, 0.73, 0.41, 0.67, 0.29],
-                tumorType: "Adenocarcinoma"
+                negative: "No atypical cells infiltrating surrounding tissues",
+                positive: "Atypical cells infiltrating surrounding tissues and disrupting normal structures",
+                score: 90 // 0.9013 * 100 rounded
             },
             {
-                scores: [88, 72, 59, 66, 54],
-                probabilities: [0.42, 0.38, 0.29, 0.35, 0.22],
-                tumorType: "Benign"
+                negative: "No significant atypia in the surrounding lymphocytes", 
+                positive: "Significant atypia observed in lymphocytes adjacent to tumor nests",
+                score: 90 // 0.8997 * 100 rounded
             },
             {
-                scores: [95, 81, 70, 89, 76],
-                probabilities: [0.89, 0.67, 0.55, 0.78, 0.44],
-                tumorType: "Squamous Cell Carcinoma"
+                negative: "No evidence of fibrosis",
+                positive: "Prominent stromal fibrosis surrounding tumor nests", 
+                score: 90 // 0.8994 * 100 rounded
             },
             {
-                scores: [76, 68, 54, 62, 49],
-                probabilities: [0.48, 0.43, 0.35, 0.39, 0.31],
-                tumorType: "Normal Tissue"
+                negative: "Normal follicular architecture is preserved",
+                positive: "Disrupted follicular architecture with loss of polarity",
+                score: 89 // 0.894 * 100 rounded
+            },
+            {
+                negative: "No prominent nucleoli are observed in lymphocytes",
+                positive: "Cells exhibit large, prominent, and irregular nucleoli",
+                score: 89 // 0.8935 * 100 rounded
+            },
+            {
+                negative: "No giant cells or multinucleated cells are seen", 
+                positive: "Presence of multinucleated giant cells, suggestive of specific tumor types",
+                score: 89 // 0.8884 * 100 rounded
+            },
+            {
+                negative: "No plasmacytoid differentiation is observed",
+                positive: "Plasmacytoid differentiation is prominent within the tumor cells",
+                score: 89 // 0.8883 * 100 rounded  
+            },
+            {
+                negative: "No prominent nucleolus is seen",
+                positive: "Large, prominent, and irregular nucleoli are present",
+                score: 88 // 0.8807 * 100 rounded
             }
         ];
-        
-        let currentExample = 0;
 
+        // Image-specific data sets
+        const imageData = {
+            "tumor.png": {
+                probabilities: [0.87, 0.79, 0.82, 0.75, 0.91, 0.68, 0.73, 0.45],
+                tumorType: "Malignant Tumor"
+            },
+            "non_tumor.png": {
+                probabilities: [0.23, 0.18, 0.31, 0.27, 0.15, 0.29, 0.33, 0.21],
+                tumorType: "Normal Tissue"
+            }
+        };
+        
         // Function to generate color based on tumor probability - Red for tumor (>0.5), Green for no tumor (≤0.5)
         function getTumorBasedColor(probability) {
             if (probability > 0.5) {
@@ -650,6 +723,9 @@
                 document.getElementById('imageDisplay').style.display = 'block';
                 document.getElementById('imageInfo').textContent = `📋 ${file.name} - Ready for Analysis`;
                 
+                // Store the image name for analysis
+                currentImageName = file.name.toLowerCase();
+                
                 imageUploaded = true;
                 document.getElementById('analyzeBtn').disabled = false;
             };
@@ -696,7 +772,17 @@
 
         function animatePromptPairs() {
             const pairs = document.querySelectorAll('[data-pair]');
-            const currentData = examples[currentExample];
+            
+            // Get data based on image name
+            let currentData;
+            if (currentImageName === "tumor.png") {
+                currentData = imageData["tumor.png"];
+            } else if (currentImageName === "non_tumor.png") {
+                currentData = imageData["non_tumor.png"];
+            } else {
+                // Default to tumor data if image name doesn't match
+                currentData = imageData["tumor.png"];
+            }
             
             pairs.forEach((pair, index) => {
                 setTimeout(() => {
@@ -707,7 +793,7 @@
                     const value = document.getElementById(`value${index}`);
                     const fitnessScore = document.getElementById(`fitness${index}`);
                     const probability = currentData.probabilities[index];
-                    const score = currentData.scores[index];
+                    const score = promptPairs[index].score;
                     const percentage = probability * 100;
                     
                     // Set color based on tumor detection (red for >0.5, green for ≤0.5)
@@ -733,14 +819,62 @@
             const formula = document.getElementById('formula');
             const calculation = document.getElementById('calculation');
             
+            // Get data based on image name
+            let currentData;
+            if (currentImageName === "tumor.png") {
+                currentData = imageData["tumor.png"];
+            } else if (currentImageName === "non_tumor.png") {
+                currentData = imageData["non_tumor.png"];
+            } else {
+                // Default to tumor data if image name doesn't match
+                currentData = imageData["tumor.png"];
+            }
+            
+            // Calculate weights and final result
+            const scores = promptPairs.map(pair => pair.score);
+            const totalScore = scores.reduce((a, b) => a + b, 0);
+            const weights = scores.map(score => score / totalScore);
+            const binaries = currentData.probabilities.map(prob => prob > 0.5 ? 1 : 0);
+            const finalResult = weights.reduce((sum, weight, index) => sum + weight * binaries[index], 0);
+            
+            // Update weight displays with IDs
+            weights.forEach((weight, index) => {
+                const weightElement = document.getElementById(`weight${index}`);
+                if (weightElement) {
+                    weightElement.textContent = `w${index + 1} = ${weight.toFixed(2)} (${scores[index]}/${totalScore})`;
+                }
+            });
+            
+            // Update formula
+            const formulaParts = weights.map((weight, index) => `${weight.toFixed(2)} × ${binaries[index]}`);
+            formula.textContent = `Final Output = ${formulaParts.join(' + ')}`;
+            
+            // Update calculation
+            const calculationParts = weights.map((weight, index) => (weight * binaries[index]).toFixed(2));
+            calculation.textContent = `= ${calculationParts.join(' + ')} = ${finalResult.toFixed(2)}`;
+            
+            document.getElementById('finalValue').textContent = finalResult.toFixed(2);
+            
+            // Update tumor status and color
+            const finalResultDiv = document.getElementById('finalResult');
+            const tumorStatus = document.getElementById('tumorStatus');
+            
+            if (finalResult > 0.5) {
+                tumorStatus.innerHTML = `⚠️ CONTAINS TUMOR<br><small>${currentData.tumorType}</small>`;
+                finalResultDiv.className = 'final-result tumor';
+            } else {
+                tumorStatus.innerHTML = `✅ NO TUMOR DETECTED<br><small>${currentData.tumorType}</small>`;
+                finalResultDiv.className = 'final-result no-tumor';
+            }
+            
             setTimeout(() => {
-                formula.style.background = '#e6fffa';
-                formula.style.borderLeft = '5px solid #38b2ac';
+                formula.style.background = '#0f172a';
+                formula.style.borderLeft = '5px solid #06b6d4';
             }, 500);
             
             setTimeout(() => {
-                calculation.style.background = '#f0fff4';
-                calculation.style.borderLeft = '5px solid #38a169';
+                calculation.style.background = '#0a3d0c';
+                calculation.style.borderLeft = '5px solid #16a34a';
                 calculation.style.transform = 'scale(1.02)';
             }, 1500);
             
@@ -755,8 +889,14 @@
         function generateNewExample() {
             if (isAnalyzing) return;
             
-            currentExample = (currentExample + 1) % examples.length;
-            const example = examples[currentExample];
+            // Toggle between tumor.png and non_tumor.png data
+            const imageNames = ["tumor.png", "non_tumor.png"];
+            const nextImageIndex = imageNames.indexOf(currentImageName) === 0 ? 1 : 0;
+            const nextImageName = imageNames[nextImageIndex];
+            const example = imageData[nextImageName];
+            
+            // Update current image name
+            currentImageName = nextImageName;
             
             // Update chart bars and values
             example.probabilities.forEach((prob, index) => {
@@ -769,19 +909,22 @@
                 bar.style.background = getTumorBasedColor(prob);
                 bar.style.width = percentage + '%';
                 value.textContent = prob.toFixed(2);
-                fitnessScore.textContent = example.scores[index];
+                fitnessScore.textContent = promptPairs[index].score;
             });
             
             // Calculate new weights and final result
-            const totalScore = example.scores.reduce((a, b) => a + b, 0);
-            const weights = example.scores.map(score => score / totalScore);
+            const scores = promptPairs.map(pair => pair.score);
+            const totalScore = scores.reduce((a, b) => a + b, 0);
+            const weights = scores.map(score => score / totalScore);
             const binaries = example.probabilities.map(prob => prob > 0.5 ? 1 : 0);
             const finalResult = weights.reduce((sum, weight, index) => sum + weight * binaries[index], 0);
             
-            // Update weight displays
-            const weightDisplays = document.querySelectorAll('.weight-display');
-            weightDisplays.forEach((element, index) => {
-                element.textContent = `w${index + 1} = ${weights[index].toFixed(2)} (${example.scores[index]}/${totalScore})`;
+            // Update weight displays with IDs
+            weights.forEach((weight, index) => {
+                const weightElement = document.getElementById(`weight${index}`);
+                if (weightElement) {
+                    weightElement.textContent = `w${index + 1} = ${weight.toFixed(2)} (${scores[index]}/${totalScore})`;
+                }
             });
             
             // Update formula
@@ -803,15 +946,19 @@
                 tumorStatus.innerHTML = `⚠️ CONTAINS TUMOR<br><small>${example.tumorType}</small>`;
                 finalResultDiv.className = 'final-result tumor';
             } else {
-                tumorStatus.innerHTML = `✅ NO TUMOR DETECTED<br><small>Healthy Tissue</small>`;
+                tumorStatus.innerHTML = `✅ NO TUMOR DETECTED<br><small>${example.tumorType}</small>`;
                 finalResultDiv.className = 'final-result no-tumor';
             }
+            
+            // Update image info to show which data is being used
+            document.getElementById('imageInfo').textContent = `📋 Showing results for: ${nextImageName}`;
         }
 
         function resetApplication() {
             // Reset all states
             isAnalyzing = false;
             imageUploaded = false;
+            currentImageName = "";
             currentExample = 0;
             
             // Show upload section
@@ -837,8 +984,8 @@
             document.getElementById('fileInput').value = '';
             
             // Reset styles
-            document.getElementById('formula').style.background = 'white';
-            document.getElementById('calculation').style.background = 'white';
+            document.getElementById('formula').style.background = '#1e293b';
+            document.getElementById('calculation').style.background = '#1e293b';
             document.getElementById('finalResult').style.transform = 'scale(1)';
         }
 
