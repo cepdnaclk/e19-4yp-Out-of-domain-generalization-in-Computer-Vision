@@ -43,11 +43,11 @@ def get_prompt_template(iteration_num: int, prompt_content: str, generate_n: int
     Only provide the output as Python code in the following format: prompts = list[tuple[negative: str, positive: str]]. Let's think step-by-step
     """
 
-    if 1 <= iteration_num <= 2000:
+    if 1 <= iteration_num <= 1000:
         # Iterations 1-50: Basic exploration
         return base_meta_prompt_template.format(
             content=prompt_content,
-            iteration_specific_instruction=instruction_map["strategy"]
+            iteration_specific_instruction=instruction_map["combined_medical_concepts"]
         )
     elif 2001 <= iteration_num <= 3000:
         # Iterations 51-100: Concept combination
@@ -74,7 +74,7 @@ def get_prompt_template(iteration_num: int, prompt_content: str, generate_n: int
 
 def main():
     # Name the experiment we are currently running
-    experiment_name = "Experiment-43-strategy-regularized_bce_inverted-gemma3"
+    experiment_name = "Experiment-60-combined-inv-bce-gemma3"
     print(f"Running {experiment_name}...")
 
     # Create experiment results directory
@@ -121,9 +121,10 @@ def main():
     meta_init_prompt = """Give 50 distinct textual descriptions of pairs of visual discriminative features to identify whether the central region of a histopathological image patch contains tumor tissue or not. The patch is extracted from an H&E‑stained whole‑slide image of a lymph node section. Each prompt should contain about 10 words. Only provide the output as Python code in the following format: prompts = list[tuple[negative: str, positive: str]]. Let's think step-by-step"""
 
     # Optimization loop
-    # initial_prompts = util.load_initial_prompts(
-    #     "experiment_results/medical_concepts.txt")
-    pq = util.PriorityQueue(max_capacity=1000, filter_threshold=0.4)
+    initial_prompts = util.load_initial_prompts(
+        "experiment_results/distinct_medical_concepts.txt")
+    pq = util.PriorityQueue(
+        max_capacity=1000, filter_threshold=0.4, initial=initial_prompts)
     prompt_content = ""
 
     for j in range(1000):
