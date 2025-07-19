@@ -1,0 +1,421 @@
+Iteration 1:
+('Diaphragm is smooth and well-defined.', 'A nodule with central cavitation is visible.'), Score: 0.6371
+('Normal bronchial wall thickness.', 'A nodule is associated with a small pleural effusion.'), Score: 0.6255
+('Normal mediastinal width.', 'A nodule is located in the posterior basal segment.'), Score: 0.6222
+
+Iteration 10:
+('Diaphragm is smooth and well-defined.', 'A nodule with central cavitation is visible.'), Score: 0.6371
+('Normal bronchial wall thickness.', 'A nodule is associated with a small pleural effusion.'), Score: 0.6255
+('Normal mediastinal width.', 'A nodule is located in the posterior basal segment.'), Score: 0.6222
+('Hilar structures are normal in size and shape.', 'A nodule demonstrates air bronchograms within it.'), Score: 0.6178
+
+Iteration 20:
+('Diaphragm is smooth and well-defined.', 'A nodule with central cavitation is visible.'), Score: 0.6371
+('Normal bronchial wall thickness.', 'A nodule is associated with a small pleural effusion.'), Score: 0.6255
+('Normal mediastinal width.', 'A nodule is located in the posterior basal segment.'), Score: 0.6222
+('Hilar structures are normal in size and shape.', 'A nodule demonstrates air bronchograms within it.'), Score: 0.6178
+
+Iteration 30:
+('Diaphragm is smooth and well-defined.', 'A nodule with central cavitation is visible.'), Score: 0.6371
+('Normal bronchial wall thickness.', 'A nodule is associated with a small pleural effusion.'), Score: 0.6255
+('Normal mediastinal width.', 'A nodule is located in the posterior basal segment.'), Score: 0.6222
+('Hilar structures are normal in size and shape.', 'A nodule demonstrates air bronchograms within it.'), Score: 0.6178
+
+Iteration 40:
+('No significant lymphadenopathy is present.', 'A nodule is associated with atelectasis.'), Score: 0.6751
+('Diaphragm is smooth and well-defined.', 'A nodule with central cavitation is visible.'), Score: 0.6371
+('Normal bronchial wall thickness.', 'A nodule is associated with a small pleural effusion.'), Score: 0.6255
+('Normal mediastinal width.', 'A nodule is located in the posterior basal segment.'), Score: 0.6222
+('Hilar structures are normal in size and shape.', 'A nodule demonstrates air bronchograms within it.'), Score: 0.6178
+
+Iteration 50:
+('No significant lymphadenopathy is present.', 'A nodule is associated with atelectasis.'), Score: 0.6751
+('Diaphragm is smooth and well-defined.', 'A nodule with central cavitation is visible.'), Score: 0.6371
+('Normal bronchial wall thickness.', 'A nodule is associated with a small pleural effusion.'), Score: 0.6255
+('Normal mediastinal width.', 'A nodule is located in the posterior basal segment.'), Score: 0.6222
+('Hilar structures are normal in size and shape.', 'A nodule demonstrates air bronchograms within it.'), Score: 0.6178
+
+Iteration 60:
+('No significant lymphadenopathy is present.', 'A nodule is associated with atelectasis.'), Score: 0.6751
+('Diaphragm is smooth and well-defined.', 'A nodule with central cavitation is visible.'), Score: 0.6371
+('Normal bronchial wall thickness.', 'A nodule is associated with a small pleural effusion.'), Score: 0.6255
+('Normal mediastinal width.', 'A nodule is located in the posterior basal segment.'), Score: 0.6222
+('Hilar structures are normal in size and shape.', 'A nodule demonstrates air bronchograms within it.'), Score: 0.6178
+('Vascular markings are normal.', 'A nodule is associated with satellite nodules.'), Score: 0.6060
+
+Iteration 70:
+('No significant lymphadenopathy is present.', 'A nodule is associated with atelectasis.'), Score: 0.6751
+('Diaphragm is smooth and well-defined.', 'A nodule with central cavitation is visible.'), Score: 0.6371
+('Normal bronchial wall thickness.', 'A nodule is associated with a small pleural effusion.'), Score: 0.6255
+('Normal mediastinal width.', 'A nodule is located in the posterior basal segment.'), Score: 0.6222
+('Hilar structures are normal in size and shape.', 'A nodule demonstrates air bronchograms within it.'), Score: 0.6178
+('Vascular markings are normal.', 'A nodule is associated with satellite nodules.'), Score: 0.6060
+
+Iteration 80:
+('No significant lymphadenopathy is present.', 'A nodule is associated with atelectasis.'), Score: 0.6751
+('Diaphragm is smooth and well-defined.', 'A nodule with central cavitation is visible.'), Score: 0.6371
+('Normal bronchial wall thickness.', 'A nodule is associated with a small pleural effusion.'), Score: 0.6255
+('Normal mediastinal width.', 'A nodule is located in the posterior basal segment.'), Score: 0.6222
+('Hilar structures are normal in size and shape.', 'A nodule demonstrates air bronchograms within it.'), Score: 0.6178
+('Vascular markings are normal.', 'A nodule is associated with satellite nodules.'), Score: 0.6060
+
+Iteration 90:
+('No significant lymphadenopathy is present.', 'A nodule is associated with atelectasis.'), Score: 0.6751
+('Diaphragm is smooth and well-defined.', 'A nodule with central cavitation is visible.'), Score: 0.6371
+('Normal bronchial wall thickness.', 'A nodule is associated with a small pleural effusion.'), Score: 0.6255
+('Normal mediastinal width.', 'A nodule is located in the posterior basal segment.'), Score: 0.6222
+('Hilar structures are normal in size and shape.', 'A nodule demonstrates air bronchograms within it.'), Score: 0.6178
+('Vascular markings are normal.', 'A nodule is associated with satellite nodules.'), Score: 0.6060
+
+Iteration 100:
+('No significant lymphadenopathy is present.', 'A nodule is associated with atelectasis.'), Score: 0.6751
+('Diaphragm is smooth and well-defined.', 'A nodule with central cavitation is visible.'), Score: 0.6371
+('Normal bronchial wall thickness.', 'A nodule is associated with a small pleural effusion.'), Score: 0.6255
+('Normal mediastinal width.', 'A nodule is located in the posterior basal segment.'), Score: 0.6222
+('Hilar structures are normal in size and shape.', 'A nodule demonstrates air bronchograms within it.'), Score: 0.6178
+('Vascular markings are normal.', 'A nodule is associated with satellite nodules.'), Score: 0.6060
+
+Iteration 110:
+('No significant lymphadenopathy is present.', 'A nodule is associated with atelectasis.'), Score: 0.6751
+('Diaphragm is smooth and well-defined.', 'A nodule with central cavitation is visible.'), Score: 0.6371
+('Normal bronchial wall thickness.', 'A nodule is associated with a small pleural effusion.'), Score: 0.6255
+('Normal mediastinal width.', 'A nodule is located in the posterior basal segment.'), Score: 0.6222
+('Hilar structures are normal in size and shape.', 'A nodule demonstrates air bronchograms within it.'), Score: 0.6178
+('Vascular markings are normal.', 'A nodule is associated with satellite nodules.'), Score: 0.6060
+
+Iteration 120:
+('No significant lymphadenopathy is present.', 'A nodule is associated with atelectasis.'), Score: 0.6751
+('Diaphragm is smooth and well-defined.', 'A nodule with central cavitation is visible.'), Score: 0.6371
+('Normal bronchial wall thickness.', 'A nodule is associated with a small pleural effusion.'), Score: 0.6255
+('Normal mediastinal width.', 'A nodule is located in the posterior basal segment.'), Score: 0.6222
+('Hilar structures are normal in size and shape.', 'A nodule demonstrates air bronchograms within it.'), Score: 0.6178
+('Vascular markings are normal.', 'A nodule is associated with satellite nodules.'), Score: 0.6060
+
+Iteration 130:
+('No significant lymphadenopathy is present.', 'A nodule is associated with atelectasis.'), Score: 0.6751
+('Diaphragm is smooth and well-defined.', 'A nodule with central cavitation is visible.'), Score: 0.6371
+('Normal bronchial wall thickness.', 'A nodule is associated with a small pleural effusion.'), Score: 0.6255
+('Normal mediastinal width.', 'A nodule is located in the posterior basal segment.'), Score: 0.6222
+('Hilar structures are normal in size and shape.', 'A nodule demonstrates air bronchograms within it.'), Score: 0.6178
+('Vascular markings are normal.', 'A nodule is associated with satellite nodules.'), Score: 0.6060
+
+Iteration 140:
+('No significant lymphadenopathy is present.', 'A nodule is associated with atelectasis.'), Score: 0.6751
+('Diaphragm is smooth and well-defined.', 'A nodule with central cavitation is visible.'), Score: 0.6371
+('Normal bronchial wall thickness.', 'A nodule is associated with a small pleural effusion.'), Score: 0.6255
+('Normal mediastinal width.', 'A nodule is located in the posterior basal segment.'), Score: 0.6222
+('Hilar structures are normal in size and shape.', 'A nodule demonstrates air bronchograms within it.'), Score: 0.6178
+('Vascular markings are normal.', 'A nodule is associated with satellite nodules.'), Score: 0.6060
+
+Iteration 150:
+('No significant lymphadenopathy is present.', 'A nodule is associated with atelectasis.'), Score: 0.6751
+('Diaphragm is smooth and well-defined.', 'A nodule with central cavitation is visible.'), Score: 0.6371
+('Normal bronchial wall thickness.', 'A nodule is associated with a small pleural effusion.'), Score: 0.6255
+('Normal mediastinal width.', 'A nodule is located in the posterior basal segment.'), Score: 0.6222
+('Hilar structures are normal in size and shape.', 'A nodule demonstrates air bronchograms within it.'), Score: 0.6178
+('Vascular markings are normal.', 'A nodule is associated with satellite nodules.'), Score: 0.6060
+
+Iteration 160:
+('No significant lymphadenopathy is present.', 'A nodule is associated with atelectasis.'), Score: 0.6751
+('Diaphragm is smooth and well-defined.', 'A nodule with central cavitation is visible.'), Score: 0.6371
+('Normal bronchial wall thickness.', 'A nodule is associated with a small pleural effusion.'), Score: 0.6255
+('Normal mediastinal width.', 'A nodule is located in the posterior basal segment.'), Score: 0.6222
+('Hilar structures are normal in size and shape.', 'A nodule demonstrates air bronchograms within it.'), Score: 0.6178
+('Vascular markings are normal.', 'A nodule is associated with satellite nodules.'), Score: 0.6060
+
+Iteration 170:
+('No significant lymphadenopathy is present.', 'A nodule is associated with atelectasis.'), Score: 0.6751
+('Diaphragm is smooth and well-defined.', 'A nodule with central cavitation is visible.'), Score: 0.6371
+('Normal bronchial wall thickness.', 'A nodule is associated with a small pleural effusion.'), Score: 0.6255
+('Normal mediastinal width.', 'A nodule is located in the posterior basal segment.'), Score: 0.6222
+('Hilar structures are normal in size and shape.', 'A nodule demonstrates air bronchograms within it.'), Score: 0.6178
+('Vascular markings are normal.', 'A nodule is associated with satellite nodules.'), Score: 0.6060
+
+Iteration 180:
+('No significant lymphadenopathy is present.', 'A nodule is associated with atelectasis.'), Score: 0.6751
+('Diaphragm is smooth and well-defined.', 'A nodule with central cavitation is visible.'), Score: 0.6371
+('Normal bronchial wall thickness.', 'A nodule is associated with a small pleural effusion.'), Score: 0.6255
+('Normal mediastinal width.', 'A nodule is located in the posterior basal segment.'), Score: 0.6222
+('Hilar structures are normal in size and shape.', 'A nodule demonstrates air bronchograms within it.'), Score: 0.6178
+('Vascular markings are normal.', 'A nodule is associated with satellite nodules.'), Score: 0.6060
+
+Iteration 190:
+('No significant lymphadenopathy is present.', 'A nodule is associated with atelectasis.'), Score: 0.6751
+('Diaphragm is smooth and well-defined.', 'A nodule with central cavitation is visible.'), Score: 0.6371
+('Normal bronchial wall thickness.', 'A nodule is associated with a small pleural effusion.'), Score: 0.6255
+('Normal mediastinal width.', 'A nodule is located in the posterior basal segment.'), Score: 0.6222
+('Hilar structures are normal in size and shape.', 'A nodule demonstrates air bronchograms within it.'), Score: 0.6178
+('Vascular markings are normal.', 'A nodule is associated with satellite nodules.'), Score: 0.6060
+
+Iteration 200:
+('No significant lymphadenopathy is present.', 'A nodule is associated with atelectasis.'), Score: 0.6751
+('Diaphragm is smooth and well-defined.', 'A nodule with central cavitation is visible.'), Score: 0.6371
+('Normal bronchial wall thickness.', 'A nodule is associated with a small pleural effusion.'), Score: 0.6255
+('Normal mediastinal width.', 'A nodule is located in the posterior basal segment.'), Score: 0.6222
+('Hilar structures are normal in size and shape.', 'A nodule demonstrates air bronchograms within it.'), Score: 0.6178
+('Vascular markings are normal.', 'A nodule is associated with satellite nodules.'), Score: 0.6060
+
+Iteration 210:
+('No significant lymphadenopathy is present.', 'A nodule is associated with atelectasis.'), Score: 0.6751
+('Diaphragm is smooth and well-defined.', 'A nodule with central cavitation is visible.'), Score: 0.6371
+('Normal bronchial wall thickness.', 'A nodule is associated with a small pleural effusion.'), Score: 0.6255
+('Normal mediastinal width.', 'A nodule is located in the posterior basal segment.'), Score: 0.6222
+('Hilar structures are normal in size and shape.', 'A nodule demonstrates air bronchograms within it.'), Score: 0.6178
+('Vascular markings are normal.', 'A nodule is associated with satellite nodules.'), Score: 0.6060
+
+Iteration 220:
+('No significant lymphadenopathy is present.', 'A nodule is associated with atelectasis.'), Score: 0.6751
+('Diaphragm is smooth and well-defined.', 'A nodule with central cavitation is visible.'), Score: 0.6371
+('Normal bronchial wall thickness.', 'A nodule is associated with a small pleural effusion.'), Score: 0.6255
+('Normal mediastinal width.', 'A nodule is located in the posterior basal segment.'), Score: 0.6222
+('Hilar structures are normal in size and shape.', 'A nodule demonstrates air bronchograms within it.'), Score: 0.6178
+('Vascular markings are normal.', 'A nodule is associated with satellite nodules.'), Score: 0.6060
+
+Iteration 230:
+('No significant lymphadenopathy is present.', 'A nodule is associated with atelectasis.'), Score: 0.6751
+('Diaphragm is smooth and well-defined.', 'A nodule with central cavitation is visible.'), Score: 0.6371
+('Normal bronchial wall thickness.', 'A nodule is associated with a small pleural effusion.'), Score: 0.6255
+('Normal mediastinal width.', 'A nodule is located in the posterior basal segment.'), Score: 0.6222
+('Hilar structures are normal in size and shape.', 'A nodule demonstrates air bronchograms within it.'), Score: 0.6178
+('Vascular markings are normal.', 'A nodule is associated with satellite nodules.'), Score: 0.6060
+
+Iteration 240:
+('No significant lymphadenopathy is present.', 'A nodule is associated with atelectasis.'), Score: 0.6751
+('Diaphragm is smooth and well-defined.', 'A nodule with central cavitation is visible.'), Score: 0.6371
+('Normal bronchial wall thickness.', 'A nodule is associated with a small pleural effusion.'), Score: 0.6255
+('Normal mediastinal width.', 'A nodule is located in the posterior basal segment.'), Score: 0.6222
+('Hilar structures are normal in size and shape.', 'A nodule demonstrates air bronchograms within it.'), Score: 0.6178
+('Vascular markings are normal.', 'A nodule is associated with satellite nodules.'), Score: 0.6060
+
+Iteration 250:
+('No significant lymphadenopathy is present.', 'A nodule is associated with atelectasis.'), Score: 0.6751
+('Diaphragm is smooth and well-defined.', 'A nodule with central cavitation is visible.'), Score: 0.6371
+('Normal bronchial wall thickness.', 'A nodule is associated with a small pleural effusion.'), Score: 0.6255
+('Normal mediastinal width.', 'A nodule is located in the posterior basal segment.'), Score: 0.6222
+('Hilar structures are normal in size and shape.', 'A nodule demonstrates air bronchograms within it.'), Score: 0.6178
+('Vascular markings are normal.', 'A nodule is associated with satellite nodules.'), Score: 0.6060
+
+Iteration 260:
+('No significant lymphadenopathy is present.', 'A nodule is associated with atelectasis.'), Score: 0.6751
+('Diaphragm is smooth and well-defined.', 'A nodule with central cavitation is visible.'), Score: 0.6371
+('Normal bronchial wall thickness.', 'A nodule is associated with a small pleural effusion.'), Score: 0.6255
+('Normal mediastinal width.', 'A nodule is located in the posterior basal segment.'), Score: 0.6222
+('Hilar structures are normal in size and shape.', 'A nodule demonstrates air bronchograms within it.'), Score: 0.6178
+('Vascular markings are normal.', 'A nodule is associated with satellite nodules.'), Score: 0.6060
+
+Iteration 270:
+('No significant lymphadenopathy is present.', 'A nodule is associated with atelectasis.'), Score: 0.6751
+('Diaphragm is smooth and well-defined.', 'A nodule with central cavitation is visible.'), Score: 0.6371
+('Normal bronchial wall thickness.', 'A nodule is associated with a small pleural effusion.'), Score: 0.6255
+('Normal mediastinal width.', 'A nodule is located in the posterior basal segment.'), Score: 0.6222
+('Hilar structures are normal in size and shape.', 'A nodule demonstrates air bronchograms within it.'), Score: 0.6178
+('Vascular markings are normal.', 'A nodule is associated with satellite nodules.'), Score: 0.6060
+
+Iteration 280:
+('No significant lymphadenopathy is present.', 'A nodule is associated with atelectasis.'), Score: 0.6751
+('Diaphragm is smooth and well-defined.', 'A nodule with central cavitation is visible.'), Score: 0.6371
+('Normal bronchial wall thickness.', 'A nodule is associated with a small pleural effusion.'), Score: 0.6255
+('Normal mediastinal width.', 'A nodule is located in the posterior basal segment.'), Score: 0.6222
+('Hilar structures are normal in size and shape.', 'A nodule demonstrates air bronchograms within it.'), Score: 0.6178
+('Vascular markings are normal.', 'A nodule is associated with satellite nodules.'), Score: 0.6060
+
+Iteration 290:
+('No significant lymphadenopathy is present.', 'A nodule is associated with atelectasis.'), Score: 0.6751
+('Diaphragm is smooth and well-defined.', 'A nodule with central cavitation is visible.'), Score: 0.6371
+('Normal bronchial wall thickness.', 'A nodule is associated with a small pleural effusion.'), Score: 0.6255
+('Normal mediastinal width.', 'A nodule is located in the posterior basal segment.'), Score: 0.6222
+('Hilar structures are normal in size and shape.', 'A nodule demonstrates air bronchograms within it.'), Score: 0.6178
+('Vascular markings are normal.', 'A nodule is associated with satellite nodules.'), Score: 0.6060
+
+Iteration 300:
+('No significant lymphadenopathy is present.', 'A nodule is associated with atelectasis.'), Score: 0.6751
+('Diaphragm is smooth and well-defined.', 'A nodule with central cavitation is visible.'), Score: 0.6371
+('Normal bronchial wall thickness.', 'A nodule is associated with a small pleural effusion.'), Score: 0.6255
+('Normal mediastinal width.', 'A nodule is located in the posterior basal segment.'), Score: 0.6222
+('Hilar structures are normal in size and shape.', 'A nodule demonstrates air bronchograms within it.'), Score: 0.6178
+('Vascular markings are normal.', 'A nodule is associated with satellite nodules.'), Score: 0.6060
+
+Iteration 310:
+('No significant lymphadenopathy is present.', 'A nodule is associated with atelectasis.'), Score: 0.6751
+('Diaphragm is smooth and well-defined.', 'A nodule with central cavitation is visible.'), Score: 0.6371
+('Normal bronchial wall thickness.', 'A nodule is associated with a small pleural effusion.'), Score: 0.6255
+('Normal mediastinal width.', 'A nodule is located in the posterior basal segment.'), Score: 0.6222
+('Hilar structures are normal in size and shape.', 'A nodule demonstrates air bronchograms within it.'), Score: 0.6178
+('Vascular markings are normal.', 'A nodule is associated with satellite nodules.'), Score: 0.6060
+
+Iteration 320:
+('No significant lymphadenopathy is present.', 'A nodule is associated with atelectasis.'), Score: 0.6751
+('Diaphragm is smooth and well-defined.', 'A nodule with central cavitation is visible.'), Score: 0.6371
+('Normal bronchial wall thickness.', 'A nodule is associated with a small pleural effusion.'), Score: 0.6255
+('Normal mediastinal width.', 'A nodule is located in the posterior basal segment.'), Score: 0.6222
+('Hilar structures are normal in size and shape.', 'A nodule demonstrates air bronchograms within it.'), Score: 0.6178
+('Vascular markings are normal.', 'A nodule is associated with satellite nodules.'), Score: 0.6060
+
+Iteration 330:
+('No significant lymphadenopathy is present.', 'A nodule is associated with atelectasis.'), Score: 0.6751
+('Diaphragm is smooth and well-defined.', 'A nodule with central cavitation is visible.'), Score: 0.6371
+('Normal bronchial wall thickness.', 'A nodule is associated with a small pleural effusion.'), Score: 0.6255
+('Normal mediastinal width.', 'A nodule is located in the posterior basal segment.'), Score: 0.6222
+('Hilar structures are normal in size and shape.', 'A nodule demonstrates air bronchograms within it.'), Score: 0.6178
+('Vascular markings are normal.', 'A nodule is associated with satellite nodules.'), Score: 0.6060
+
+Iteration 340:
+('No significant lymphadenopathy is present.', 'A nodule is associated with atelectasis.'), Score: 0.6751
+('Diaphragm is smooth and well-defined.', 'A nodule with central cavitation is visible.'), Score: 0.6371
+('Normal bronchial wall thickness.', 'A nodule is associated with a small pleural effusion.'), Score: 0.6255
+('Normal mediastinal width.', 'A nodule is located in the posterior basal segment.'), Score: 0.6222
+('Hilar structures are normal in size and shape.', 'A nodule demonstrates air bronchograms within it.'), Score: 0.6178
+('Vascular markings are normal.', 'A nodule is associated with satellite nodules.'), Score: 0.6060
+
+Iteration 350:
+('No significant lymphadenopathy is present.', 'A nodule is associated with atelectasis.'), Score: 0.6751
+('Diaphragm is smooth and well-defined.', 'A nodule with central cavitation is visible.'), Score: 0.6371
+('Normal bronchial wall thickness.', 'A nodule is associated with a small pleural effusion.'), Score: 0.6255
+('Normal mediastinal width.', 'A nodule is located in the posterior basal segment.'), Score: 0.6222
+('Hilar structures are normal in size and shape.', 'A nodule demonstrates air bronchograms within it.'), Score: 0.6178
+('Vascular markings are normal.', 'A nodule is associated with satellite nodules.'), Score: 0.6060
+
+Iteration 360:
+('No significant lymphadenopathy is present.', 'A nodule is associated with atelectasis.'), Score: 0.6751
+('Diaphragm is smooth and well-defined.', 'A nodule with central cavitation is visible.'), Score: 0.6371
+('Normal bronchial wall thickness.', 'A nodule is associated with a small pleural effusion.'), Score: 0.6255
+('Normal mediastinal width.', 'A nodule is located in the posterior basal segment.'), Score: 0.6222
+('Hilar structures are normal in size and shape.', 'A nodule demonstrates air bronchograms within it.'), Score: 0.6178
+('Vascular markings are normal.', 'A nodule is associated with satellite nodules.'), Score: 0.6060
+
+Iteration 370:
+('No significant lymphadenopathy is present.', 'A nodule is associated with atelectasis.'), Score: 0.6751
+('Diaphragm is smooth and well-defined.', 'A nodule with central cavitation is visible.'), Score: 0.6371
+('Normal bronchial wall thickness.', 'A nodule is associated with a small pleural effusion.'), Score: 0.6255
+('Normal mediastinal width.', 'A nodule is located in the posterior basal segment.'), Score: 0.6222
+('Hilar structures are normal in size and shape.', 'A nodule demonstrates air bronchograms within it.'), Score: 0.6178
+('Vascular markings are normal.', 'A nodule is associated with satellite nodules.'), Score: 0.6060
+
+Iteration 380:
+('No significant lymphadenopathy is present.', 'A nodule is associated with atelectasis.'), Score: 0.6751
+('Diaphragm is smooth and well-defined.', 'A nodule with central cavitation is visible.'), Score: 0.6371
+('Normal bronchial wall thickness.', 'A nodule is associated with a small pleural effusion.'), Score: 0.6255
+('Normal mediastinal width.', 'A nodule is located in the posterior basal segment.'), Score: 0.6222
+('Hilar structures are normal in size and shape.', 'A nodule demonstrates air bronchograms within it.'), Score: 0.6178
+('Vascular markings are normal.', 'A nodule is associated with satellite nodules.'), Score: 0.6060
+
+Iteration 390:
+('No significant lymphadenopathy is present.', 'A nodule is associated with atelectasis.'), Score: 0.6751
+('Diaphragm is smooth and well-defined.', 'A nodule with central cavitation is visible.'), Score: 0.6371
+('Normal bronchial wall thickness.', 'A nodule is associated with a small pleural effusion.'), Score: 0.6255
+('Normal mediastinal width.', 'A nodule is located in the posterior basal segment.'), Score: 0.6222
+('Hilar structures are normal in size and shape.', 'A nodule demonstrates air bronchograms within it.'), Score: 0.6178
+('Vascular markings are normal.', 'A nodule is associated with satellite nodules.'), Score: 0.6060
+
+Iteration 400:
+('No significant lymphadenopathy is present.', 'A nodule is associated with atelectasis.'), Score: 0.6751
+('Diaphragm is smooth and well-defined.', 'A nodule with central cavitation is visible.'), Score: 0.6371
+('Normal bronchial wall thickness.', 'A nodule is associated with a small pleural effusion.'), Score: 0.6255
+('Normal mediastinal width.', 'A nodule is located in the posterior basal segment.'), Score: 0.6222
+('Hilar structures are normal in size and shape.', 'A nodule demonstrates air bronchograms within it.'), Score: 0.6178
+('Vascular markings are normal.', 'A nodule is associated with satellite nodules.'), Score: 0.6060
+
+Iteration 410:
+('No significant lymphadenopathy is present.', 'A nodule is associated with atelectasis.'), Score: 0.6751
+('Diaphragm is smooth and well-defined.', 'A nodule with central cavitation is visible.'), Score: 0.6371
+('Normal bronchial wall thickness.', 'A nodule is associated with a small pleural effusion.'), Score: 0.6255
+('Normal mediastinal width.', 'A nodule is located in the posterior basal segment.'), Score: 0.6222
+('Hilar structures are normal in size and shape.', 'A nodule demonstrates air bronchograms within it.'), Score: 0.6178
+('Vascular markings are normal.', 'A nodule is associated with satellite nodules.'), Score: 0.6060
+
+Iteration 420:
+('No significant lymphadenopathy is present.', 'A nodule is associated with atelectasis.'), Score: 0.6751
+('Diaphragm is smooth and well-defined.', 'A nodule with central cavitation is visible.'), Score: 0.6371
+('Normal bronchial wall thickness.', 'A nodule is associated with a small pleural effusion.'), Score: 0.6255
+('Normal mediastinal width.', 'A nodule is located in the posterior basal segment.'), Score: 0.6222
+('Hilar structures are normal in size and shape.', 'A nodule demonstrates air bronchograms within it.'), Score: 0.6178
+('Vascular markings are normal.', 'A nodule is associated with satellite nodules.'), Score: 0.6060
+
+Iteration 430:
+('No significant lymphadenopathy is present.', 'A nodule is associated with atelectasis.'), Score: 0.6751
+('Diaphragm is smooth and well-defined.', 'A nodule with central cavitation is visible.'), Score: 0.6371
+('Normal bronchial wall thickness.', 'A nodule is associated with a small pleural effusion.'), Score: 0.6255
+('Normal mediastinal width.', 'A nodule is located in the posterior basal segment.'), Score: 0.6222
+('Hilar structures are normal in size and shape.', 'A nodule demonstrates air bronchograms within it.'), Score: 0.6178
+('Vascular markings are normal.', 'A nodule is associated with satellite nodules.'), Score: 0.6060
+
+Iteration 440:
+('No significant lymphadenopathy is present.', 'A nodule is associated with atelectasis.'), Score: 0.6751
+('Diaphragm is smooth and well-defined.', 'A nodule with central cavitation is visible.'), Score: 0.6371
+('Normal bronchial wall thickness.', 'A nodule is associated with a small pleural effusion.'), Score: 0.6255
+('Normal mediastinal width.', 'A nodule is located in the posterior basal segment.'), Score: 0.6222
+('Hilar structures are normal in size and shape.', 'A nodule demonstrates air bronchograms within it.'), Score: 0.6178
+('Vascular markings are normal.', 'A nodule is associated with satellite nodules.'), Score: 0.6060
+
+Iteration 450:
+('No significant lymphadenopathy is present.', 'A nodule is associated with atelectasis.'), Score: 0.6751
+('Diaphragm is smooth and well-defined.', 'A nodule with central cavitation is visible.'), Score: 0.6371
+('Normal bronchial wall thickness.', 'A nodule is associated with a small pleural effusion.'), Score: 0.6255
+('Normal mediastinal width.', 'A nodule is located in the posterior basal segment.'), Score: 0.6222
+('Hilar structures are normal in size and shape.', 'A nodule demonstrates air bronchograms within it.'), Score: 0.6178
+('Vascular markings are normal.', 'A nodule is associated with satellite nodules.'), Score: 0.6060
+
+Iteration 460:
+('No significant lymphadenopathy is present.', 'A nodule is associated with atelectasis.'), Score: 0.6751
+('Diaphragm is smooth and well-defined.', 'A nodule with central cavitation is visible.'), Score: 0.6371
+('Normal bronchial wall thickness.', 'A nodule is associated with a small pleural effusion.'), Score: 0.6255
+('Normal mediastinal width.', 'A nodule is located in the posterior basal segment.'), Score: 0.6222
+('Hilar structures are normal in size and shape.', 'A nodule demonstrates air bronchograms within it.'), Score: 0.6178
+('Vascular markings are normal.', 'A nodule is associated with satellite nodules.'), Score: 0.6060
+
+Iteration 470:
+('No significant lymphadenopathy is present.', 'A nodule is associated with atelectasis.'), Score: 0.6751
+('Diaphragm is smooth and well-defined.', 'A nodule with central cavitation is visible.'), Score: 0.6371
+('Normal bronchial wall thickness.', 'A nodule is associated with a small pleural effusion.'), Score: 0.6255
+('Normal mediastinal width.', 'A nodule is located in the posterior basal segment.'), Score: 0.6222
+('Hilar structures are normal in size and shape.', 'A nodule demonstrates air bronchograms within it.'), Score: 0.6178
+('Vascular markings are normal.', 'A nodule is associated with satellite nodules.'), Score: 0.6060
+
+Iteration 480:
+('No significant lymphadenopathy is present.', 'A nodule is associated with atelectasis.'), Score: 0.6751
+('Diaphragm is smooth and well-defined.', 'A nodule with central cavitation is visible.'), Score: 0.6371
+('Normal bronchial wall thickness.', 'A nodule is associated with a small pleural effusion.'), Score: 0.6255
+('Normal mediastinal width.', 'A nodule is located in the posterior basal segment.'), Score: 0.6222
+('Hilar structures are normal in size and shape.', 'A nodule demonstrates air bronchograms within it.'), Score: 0.6178
+('Vascular markings are normal.', 'A nodule is associated with satellite nodules.'), Score: 0.6060
+
+Iteration 490:
+('No significant lymphadenopathy is present.', 'A nodule is associated with atelectasis.'), Score: 0.6751
+('Diaphragm is smooth and well-defined.', 'A nodule with central cavitation is visible.'), Score: 0.6371
+('Normal bronchial wall thickness.', 'A nodule is associated with a small pleural effusion.'), Score: 0.6255
+('Normal mediastinal width.', 'A nodule is located in the posterior basal segment.'), Score: 0.6222
+('Hilar structures are normal in size and shape.', 'A nodule demonstrates air bronchograms within it.'), Score: 0.6178
+('Vascular markings are normal.', 'A nodule is associated with satellite nodules.'), Score: 0.6060
+
+Iteration 500:
+('No significant lymphadenopathy is present.', 'A nodule is associated with atelectasis.'), Score: 0.6751
+('Diaphragm is smooth and well-defined.', 'A nodule with central cavitation is visible.'), Score: 0.6371
+('Normal bronchial wall thickness.', 'A nodule is associated with a small pleural effusion.'), Score: 0.6255
+('Normal mediastinal width.', 'A nodule is located in the posterior basal segment.'), Score: 0.6222
+('Hilar structures are normal in size and shape.', 'A nodule demonstrates air bronchograms within it.'), Score: 0.6178
+('Vascular markings are normal.', 'A nodule is associated with satellite nodules.'), Score: 0.6060
+
+Iteration 1:
+('Cardiac silhouette is normal in size and shape.', 'A nodule with central cavitation is observed in the right lower lobe.'), Score: 0.6271
+('Clear costophrenic angles.', 'A nodule is surrounded by a zone of consolidation.'), Score: 0.6101
+
+Iteration 10:
+('Cardiac silhouette is normal in size and shape.', 'A nodule with central cavitation is observed in the right lower lobe.'), Score: 0.6271
+('Clear costophrenic angles.', 'A nodule is surrounded by a zone of consolidation.'), Score: 0.6101
+('Hilar structures are normal in appearance.', 'A nodule demonstrates air bronchograms within its periphery.'), Score: 0.6011
+
+Iteration 20:
+('Cardiac silhouette is normal in size and shape.', 'A nodule with central cavitation is observed in the right lower lobe.'), Score: 0.6271
+('Clear costophrenic angles.', 'A nodule is surrounded by a zone of consolidation.'), Score: 0.6101
+('Hilar structures are normal in appearance.', 'A nodule demonstrates air bronchograms within its periphery.'), Score: 0.6011
+
+Iteration 30:
+('Cardiac silhouette is normal in size and shape.', 'A nodule with central cavitation is observed in the right lower lobe.'), Score: 0.6271
+('Clear costophrenic angles.', 'A nodule is surrounded by a zone of consolidation.'), Score: 0.6101
+('Hilar structures are normal in appearance.', 'A nodule demonstrates air bronchograms within its periphery.'), Score: 0.6011
+
+Iteration 40:
+('Cardiac silhouette is normal in size and shape.', 'A nodule with central cavitation is observed in the right lower lobe.'), Score: 0.6271
+('Clear costophrenic angles.', 'A nodule is surrounded by a zone of consolidation.'), Score: 0.6101
+('Hilar structures are normal in appearance.', 'A nodule demonstrates air bronchograms within its periphery.'), Score: 0.6011
+
