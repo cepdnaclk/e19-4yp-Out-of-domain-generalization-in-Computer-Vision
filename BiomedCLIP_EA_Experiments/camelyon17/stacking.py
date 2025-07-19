@@ -3,24 +3,115 @@ import torch
 import numpy as np
 from sklearn.linear_model import LogisticRegression
 from sklearn.tree import DecisionTreeClassifier, export_text
-from sklearn.metrics import accuracy_score, roc_auc_score
+from sklearn.ensemble import RandomForestClassifier, GradientBoostingClassifier
+from sklearn.neural_network import MLPClassifier
+from sklearn.svm import SVC
+from sklearn.naive_bayes import GaussianNB
+from sklearn.metrics import accuracy_score, roc_auc_score, precision_score, recall_score, f1_score
 from sklearn.preprocessing import StandardScaler
 import util
 
 
 def train_meta_models(P_train, y_train, max_depth=3, C=1.0):
     """
-    Fit a logistic regressor and a small decision tree.
-    Returns both models.
+    Fit multiple meta models and return them.
+    Returns a dictionary of trained models.
     """
-    logreg = LogisticRegression(
+    models = {}
+
+    # Logistic Regression
+    models['logistic'] = LogisticRegression(
         penalty='l2', C=C, solver='liblinear', max_iter=1000)
-    logreg.fit(P_train, y_train)
+    models['logistic'].fit(P_train, y_train)
 
-    tree = DecisionTreeClassifier(max_depth=max_depth)
-    tree.fit(P_train, y_train)
+    # Decision Tree
+    models['tree'] = DecisionTreeClassifier(max_depth=max_depth)
+    models['tree'].fit(P_train, y_train)
 
-    return logreg, tree
+    # Random Forest
+    models['random_forest'] = RandomForestClassifier(
+        n_estimators=100, max_depth=max_depth+2, random_state=42, n_jobs=-1)
+    models['random_forest'].fit(P_train, y_train)
+
+    # Gradient Boosting
+    models['gradient_boosting'] = GradientBoostingClassifier(
+        n_estimators=100, max_depth=max_depth, random_state=42)
+    models['gradient_boosting'].fit(P_train, y_train)
+
+    # Multi-layer Perceptron
+    models['mlp'] = MLPClassifier(
+        hidden_layer_sizes=(128, 64), max_iter=500, random_state=42,
+        alpha=0.01, early_stopping=True, validation_fraction=0.1)
+    models['mlp'].fit(P_train, y_train)
+
+    # Support Vector Machine (with probability estimates)
+    models['svm'] = SVC(probability=True, random_state=42, gamma='scale')
+    models['svm'].fit(P_train, y_train)
+
+    # Gaussian Naive Bayes
+    models['naive_bayes'] = GaussianNB()
+    models['naive_bayes'].fit(P_train, y_train)
+
+    return models
+
+
+def evaluate_meta_models(models, P_val, y_val):
+    """
+    Evaluate multiple meta models and return a comparison summary.
+    """
+    print("\n" + "="*60)
+    print("META-MODEL PERFORMANCE COMPARISON")
+    print("="*60)
+
+    results = {}
+
+    for name, model in models.items():
+        # Get positive class probabilities
+        y_pred_proba = model.predict_proba(P_val)[:, 1]
+        y_pred = model.predict(P_val)
+
+        # Calculate metrics
+        accuracy = np.mean(y_pred == y_val)
+        precision = precision_score(y_val, y_pred, zero_division=0)
+        recall = recall_score(y_val, y_pred, zero_division=0)
+        f1 = f1_score(y_val, y_pred, zero_division=0)
+        auc = roc_auc_score(y_val, y_pred_proba)
+
+        results[name] = {
+            'accuracy': accuracy,
+            'precision': precision,
+            'recall': recall,
+            'f1': f1,
+            'auc': auc,
+            'predictions': y_pred,
+            'probabilities': y_pred_proba
+        }
+
+        print(f"\n{name.upper().replace('_', ' ')} RESULTS:")
+        print(f"  Accuracy:  {accuracy:.4f}")
+        print(f"  Precision: {precision:.4f}")
+        print(f"  Recall:    {recall:.4f}")
+        print(f"  F1 Score:  {f1:.4f}")
+        print(f"  AUC:       {auc:.4f}")
+
+    # Find best model by AUC
+    best_model_name = max(results.keys(), key=lambda x: results[x]['auc'])
+
+    print("\n" + "-"*40)
+    print("SUMMARY:")
+    print(
+        f"Best model by AUC: {best_model_name.upper().replace('_', ' ')} (AUC: {results[best_model_name]['auc']:.4f})")
+
+    # Sort by AUC for ranking
+    sorted_models = sorted(
+        results.items(), key=lambda x: x[1]['auc'], reverse=True)
+    print("\nRanking by AUC:")
+    for i, (name, metrics) in enumerate(sorted_models, 1):
+        print(f"  {i}. {name.replace('_', ' ').title()}: {metrics['auc']:.4f}")
+
+    print("="*60)
+
+    return results, best_model_name
 
 
 def main():
@@ -58,16 +149,6 @@ def main():
     # Extract scores for normalization
     prompt_scores = np.array([score for _, score in prompt_population])
 
-    # Initialize and fit standard scaler
-    scaler = StandardScaler()
-    scores_standardized = scaler.fit_transform(
-        prompt_scores.reshape(-1, 1)).flatten()
-
-    print(
-        f"Original scores range: [{prompt_scores.min():.4f}, {prompt_scores.max():.4f}]")
-    print(
-        f"Standardized scores range: [{scores_standardized.min():.4f}, {scores_standardized.max():.4f}]")
-
     # 4. build train/test splits by center indices
     train_idxs = [0, 1, 2]
     test_idxs = [4]
@@ -83,7 +164,7 @@ def main():
 
         # Add standardized scores as additional features
         n_samples = P.shape[0]
-        scores_repeated = np.tile(scores_standardized, (n_samples, 1))
+        scores_repeated = np.tile(prompt_scores, (n_samples, 1))
 
         # Concatenate probability matrix with standardized scores
         P_with_scores = np.hstack([P, scores_repeated])
@@ -99,7 +180,7 @@ def main():
 
         # Add standardized scores as additional features
         n_samples = P.shape[0]
-        scores_repeated = np.tile(scores_standardized, (n_samples, 1))
+        scores_repeated = np.tile(prompt_scores, (n_samples, 1))
 
         # Concatenate probability matrix with standardized scores
         P_with_scores = np.hstack([P, scores_repeated])
@@ -120,38 +201,61 @@ def main():
         f"Feature shape: {P_train.shape[1]} ({n_prompts} prompt probs + {n_prompts} standardized scores)")
     print(f"Evaluating on centers {test_idxs}: {P_test.shape[0]} samples")
 
-    # 5. train and evaluate
-    logreg, tree = train_meta_models(P_train, y_train)
+    # 5. train and evaluate multiple meta models
+    models = train_meta_models(P_train, y_train)
 
-    # test metrics
-    y_prob = logreg.predict_proba(P_test)[:, 1]
-    y_pred = logreg.predict(P_test)
-    acc = accuracy_score(y_test, y_pred)
-    auc = roc_auc_score(y_test, y_prob)
+    # Create a subset of test data for validation during evaluation
+    P_val = P_test
+    y_val = y_test
 
-    print(f"\nTest Meta‑LogReg  →  Acc: {acc:.4f}, AUC: {auc:.4f}")
-    print("Prompt coefficients:")
-    for j, coef in enumerate(logreg.coef_[0]):
-        if j < n_prompts:
-            print(f"  Prompt #{j:2d} (prob):  β = {coef:.4f}")
-        else:
-            print(f"  Prompt #{j-n_prompts:2d} (score): β = {coef:.4f}")
+    # Evaluate all models
+    results, best_model_name = evaluate_meta_models(models, P_val, y_val)
 
-    # Decision tree evaluation
-    y_tree_pred = tree.predict(P_test)
-    tree_acc = accuracy_score(y_test, y_tree_pred)
-    tree_auc = roc_auc_score(y_test, tree.predict_proba(P_test)[:, 1])
+    # Display detailed results for best model
+    best_model = models[best_model_name]
+
+    print(f"\n{'='*60}")
     print(
-        f"\nTest Meta‑DecisionTree  →  Acc: {tree_acc:.4f}, AUC: {tree_auc:.4f}")
+        f"DETAILED ANALYSIS FOR BEST MODEL: {best_model_name.upper().replace('_', ' ')}")
+    print(f"{'='*60}")
 
-    print("\nDecision‑Tree rules:\n")
-    feature_names = []
-    for j in range(n_prompts):
-        feature_names.append(f"p{j}_prob")
-    for j in range(n_prompts):
-        feature_names.append(f"p{j}_score")
+    if hasattr(best_model, 'coef_'):  # Linear models have coefficients
+        print("Feature coefficients:")
+        for j, coef in enumerate(best_model.coef_[0]):
+            if j < n_prompts:
+                print(f"  Prompt #{j:2d} (prob):  β = {coef:.4f}")
+            else:
+                print(f"  Prompt #{j-n_prompts:2d} (score): β = {coef:.4f}")
 
-    print(export_text(tree, feature_names=feature_names))
+    if hasattr(best_model, 'feature_importances_'):  # Tree-based models
+        print("Feature importances:")
+        importances = best_model.feature_importances_
+        for j, importance in enumerate(importances):
+            if j < n_prompts:
+                print(
+                    f"  Prompt #{j:2d} (prob):  importance = {importance:.4f}")
+            else:
+                print(
+                    f"  Prompt #{j-n_prompts:2d} (score): importance = {importance:.4f}")
+
+    # Show decision tree rules if the best model is a tree-based model
+    if best_model_name in ['tree', 'random_forest'] and hasattr(best_model, 'estimators_'):
+        print("\nRandom Forest - First Tree Rules:")
+        feature_names = []
+        for j in range(n_prompts):
+            feature_names.append(f"p{j}_prob")
+        for j in range(n_prompts):
+            feature_names.append(f"p{j}_score")
+        print(export_text(best_model.estimators_[
+              0], feature_names=feature_names))
+    elif best_model_name == 'tree':
+        print("\nDecision Tree Rules:")
+        feature_names = []
+        for j in range(n_prompts):
+            feature_names.append(f"p{j}_prob")
+        for j in range(n_prompts):
+            feature_names.append(f"p{j}_score")
+        print(export_text(best_model, feature_names=feature_names))
 
 
 if __name__ == '__main__':
