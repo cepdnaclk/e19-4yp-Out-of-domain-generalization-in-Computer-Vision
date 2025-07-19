@@ -30,11 +30,14 @@ do
     echo "==============================="
     echo "Running optimization for $disease"
     echo "==============================="
-    
-    # Run with nohup and log output per disease
+
+    # Run with nohup, but wait for completion before starting next
     nohup python prompt_optimizer.py "$disease" > logs/"$disease"_output.log 2>&1
 
-    echo "Started optimization for $disease with nohup. Check logs/$disease_output.log for progress."
+    # Wait until the process finishes before starting next
+    wait
+
+    echo "Completed optimization for $disease"
 done
 
-echo "All diseases submitted (running sequentially under nohup)."
+echo "All diseases processed sequentially."
