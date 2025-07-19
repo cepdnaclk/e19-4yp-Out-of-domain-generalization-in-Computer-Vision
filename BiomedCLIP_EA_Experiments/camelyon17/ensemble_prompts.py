@@ -40,6 +40,10 @@ def main():
         len(pq))]  # Get all, sorted by score
     knee_analyzer = util.KneePointAnalysis(all_current_scores)
     recommended_n = knee_analyzer.find_knee_point()
+
+    print(
+        f"Recommended number of prompts after knee analysis: {recommended_n}")
+
     prompts_population = pq.get_best_n(recommended_n)
 
     for i in range(0, len(prompts_population), 1):
