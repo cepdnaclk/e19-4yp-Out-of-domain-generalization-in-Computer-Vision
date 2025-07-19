@@ -2,12 +2,12 @@
 
 # Define diseases list
 diseases=(
-    "Infiltration"
-    "Effusion"
-    "Atelectasis"
-    "Nodule"
-    "Mass"
-    "Pneumothorax"
+    # "Infiltration"
+    # "Effusion"
+    # "Atelectasis"
+    # "Nodule"
+    # "Mass"
+    # "Pneumothorax"
     "Consolidation"
     "Pleural_Thickening"
     "Cardiomegaly"
@@ -30,14 +30,11 @@ do
     echo "==============================="
     echo "Running optimization for $disease"
     echo "==============================="
-
-    # Run with nohup, but wait for completion before starting next
+    
+    # Run with nohup and log output per disease
     nohup python prompt_optimizer.py "$disease" > logs/"$disease"_output.log 2>&1
 
-    # Wait until the process finishes before starting next
-    wait
-
-    echo "Completed optimization for $disease"
+    echo "Started optimization for $disease with nohup. Check logs/$disease_output.log for progress."
 done
 
-echo "All diseases processed sequentially."
+echo "All diseases submitted (running sequentially under nohup)."
