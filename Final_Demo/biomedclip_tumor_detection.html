@@ -1,0 +1,849 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BiomedCLIP Histopathology Tumor Detection</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+
+        .title {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #4a5568;
+            font-size: 28px;
+            font-weight: 700;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #718096;
+            margin-bottom: 30px;
+            font-size: 16px;
+        }
+
+        .upload-section {
+            text-align: center;
+            padding: 40px;
+            border: 3px dashed #cbd5e0;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            background: #f8fafc;
+            transition: all 0.3s ease;
+        }
+
+        .upload-section:hover {
+            border-color: #4299e1;
+            background: #ebf8ff;
+        }
+
+        .upload-section.dragover {
+            border-color: #4299e1;
+            background: #ebf8ff;
+            transform: scale(1.02);
+        }
+
+        .upload-icon {
+            font-size: 48px;
+            margin-bottom: 20px;
+            color: #a0aec0;
+        }
+
+        .upload-text {
+            font-size: 18px;
+            color: #4a5568;
+            margin-bottom: 15px;
+        }
+
+        .file-input {
+            display: none;
+        }
+
+        .upload-btn {
+            background: #4299e1;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 25px;
+            font-size: 16px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .upload-btn:hover {
+            background: #3182ce;
+            transform: translateY(-2px);
+        }
+
+        .image-display {
+            display: none;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .uploaded-image {
+            max-width: 300px;
+            max-height: 300px;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+            margin-bottom: 15px;
+        }
+
+        .image-info {
+            background: #f0fff4;
+            padding: 15px;
+            border-radius: 10px;
+            display: inline-block;
+            color: #22543d;
+            font-weight: 600;
+        }
+
+        .loading-screen {
+            display: none;
+            text-align: center;
+            padding: 60px 40px;
+            background: #f8fafc;
+            border-radius: 15px;
+            margin-bottom: 30px;
+        }
+
+        .loading-spinner {
+            width: 80px;
+            height: 80px;
+            border: 8px solid #e2e8f0;
+            border-top: 8px solid #4299e1;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 30px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .loading-text {
+            font-size: 20px;
+            color: #4a5568;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .loading-subtext {
+            color: #718096;
+            font-size: 16px;
+        }
+
+        .analysis-section {
+            display: none;
+        }
+
+        .step {
+            background: #f8fafc;
+            border-radius: 15px;
+            padding: 25px;
+            border-left: 5px solid #4299e1;
+            margin-bottom: 30px;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease;
+        }
+
+        .step.active {
+            opacity: 1;
+            transform: translateY(0);
+            box-shadow: 0 10px 25px rgba(66, 153, 225, 0.2);
+        }
+
+        .step-title {
+            font-size: 20px;
+            font-weight: 600;
+            color: #2d3748;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .step-number {
+            background: #4299e1;
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .prompt-pairs {
+            background: #1a202c;
+            border-radius: 15px;
+            padding: 30px;
+            margin-top: 20px;
+            color: white;
+        }
+
+        .chart-container {
+            margin: 20px 0;
+        }
+
+        .chart-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            transition: all 0.4s ease;
+        }
+
+        .chart-item.processing {
+            transform: scale(1.02);
+            background: rgba(66, 153, 225, 0.1);
+            border-radius: 8px;
+            padding: 8px;
+        }
+
+        .chart-label {
+            width: 300px;
+            font-size: 14px;
+            font-weight: 500;
+            color: #e2e8f0;
+            text-align: left;
+            padding-right: 15px;
+        }
+
+        .fitness-score {
+            background: #ffd700;
+            color: #1a202c;
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: bold;
+            margin-left: 10px;
+            display: inline-block;
+            min-width: 40px;
+            text-align: center;
+        }
+
+        .chart-bar-container {
+            flex: 1;
+            height: 25px;
+            background: #2d3748;
+            border-radius: 12px;
+            position: relative;
+            margin: 0 15px;
+            overflow: hidden;
+        }
+
+        .chart-bar {
+            height: 100%;
+            border-radius: 12px;
+            transition: width 1.5s ease-out;
+            position: relative;
+        }
+
+        .chart-value {
+            position: absolute;
+            right: -45px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-weight: bold;
+            font-size: 14px;
+            color: #e2e8f0;
+            min-width: 40px;
+            text-align: center;
+        }
+
+        .chart-scale {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 15px;
+            padding: 0 15px;
+            font-size: 12px;
+            color: #a0aec0;
+        }
+
+        .chart-scale span {
+            position: relative;
+        }
+
+        .chart-scale span:after {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 1px;
+            height: 8px;
+            background: #4a5568;
+        }
+
+        .ensemble-calculation {
+            background: #f0fff4;
+            border: 2px solid #68d391;
+            border-radius: 15px;
+            padding: 25px;
+            margin-top: 20px;
+        }
+
+        .calculation-formula {
+            font-size: 18px;
+            text-align: center;
+            margin-bottom: 20px;
+            font-family: 'Courier New', monospace;
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            border-left: 5px solid #38a169;
+        }
+
+        .final-result {
+            text-align: center;
+            padding: 30px;
+            border-radius: 15px;
+            margin-top: 20px;
+            color: white;
+            font-size: 20px;
+        }
+
+        .final-result.tumor {
+            background: linear-gradient(135deg, #e53e3e, #c53030);
+        }
+
+        .final-result.no-tumor {
+            background: linear-gradient(135deg, #38a169, #2f855a);
+        }
+
+        .final-value {
+            font-size: 36px;
+            font-weight: bold;
+            margin: 15px 0;
+        }
+
+        .tumor-status {
+            font-size: 28px;
+            font-weight: bold;
+            margin: 20px 0;
+        }
+
+        .weight-display {
+            display: inline-block;
+            background: #ffeaa7;
+            color: #2d3436;
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-weight: bold;
+            font-size: 14px;
+            margin: 2px;
+        }
+
+        .controls {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .btn {
+            background: #4299e1;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 25px;
+            font-size: 16px;
+            cursor: pointer;
+            margin: 0 10px;
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+
+        .btn:hover {
+            background: #3182ce;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(66, 153, 225, 0.3);
+        }
+
+        .btn:disabled {
+            background: #a0aec0;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        .reset-btn {
+            background: #718096;
+        }
+
+        .reset-btn:hover {
+            background: #4a5568;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="title">🔬 BiomedCLIP Histopathology Tumor Detection</h1>
+        <p class="subtitle">Upload a histopathology image for AI-powered tumor analysis</p>
+        
+        <!-- Upload Section -->
+        <div class="upload-section" id="uploadSection">
+            <div class="upload-icon">📸</div>
+            <div class="upload-text">Upload Histopathology Image</div>
+            <p style="color: #718096; margin-bottom: 20px;">Drag and drop or click to select</p>
+            <input type="file" class="file-input" id="fileInput" accept="image/*">
+            <button class="upload-btn" onclick="document.getElementById('fileInput').click()">
+                Choose Image
+            </button>
+        </div>
+
+        <!-- Image Display -->
+        <div class="image-display" id="imageDisplay">
+            <img class="uploaded-image" id="uploadedImage" alt="Uploaded histopathology image">
+            <div class="image-info">
+                <span id="imageInfo">📋 Histopathology Image Uploaded</span>
+            </div>
+        </div>
+
+        <!-- Loading Screen -->
+        <div class="loading-screen" id="loadingScreen">
+            <div class="loading-spinner"></div>
+            <div class="loading-text">Analyzing Image with BiomedCLIP...</div>
+            <div class="loading-subtext">Processing through multiple prompt pairs and calculating ensemble prediction</div>
+        </div>
+
+        <!-- Analysis Section -->
+        <div class="analysis-section" id="analysisSection">
+            <div class="step" id="step1">
+                <div class="step-title">
+                    <div class="step-number">1</div>
+                    Prompt Pairs Analysis with Fitness Scores
+                </div>
+                <div class="prompt-pairs">
+                    <h3 style="color: white; margin-bottom: 25px; text-align: center; font-size: 18px;">
+                        🎯 BiomedCLIP Confidence Analysis - Probability of Tumor Detection
+                    </h3>
+                    
+                    <div class="chart-container">
+                        <div class="chart-item" data-pair="0">
+                            <div class="chart-label">
+                                Malignant tumor cells with irregular morphology
+                                <span class="fitness-score" id="fitness0">92</span>
+                            </div>
+                            <div class="chart-bar-container">
+                                <div class="chart-bar" id="bar0" style="width: 0%">
+                                    <div class="chart-value" id="value0">0.85</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="chart-item" data-pair="1">
+                            <div class="chart-label">
+                                Pathological tissue with neoplastic transformation
+                                <span class="fitness-score" id="fitness1">78</span>
+                            </div>
+                            <div class="chart-bar-container">
+                                <div class="chart-bar" id="bar1" style="width: 0%">
+                                    <div class="chart-value" id="value1">0.73</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="chart-item" data-pair="2">
+                            <div class="chart-label">
+                                Cancerous cells with high nuclear-cytoplasmic ratio
+                                <span class="fitness-score" id="fitness2">65</span>
+                            </div>
+                            <div class="chart-bar-container">
+                                <div class="chart-bar" id="bar2" style="width: 0%">
+                                    <div class="chart-value" id="value2">0.41</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="chart-item" data-pair="3">
+                            <div class="chart-label">
+                                Abnormal tissue architecture and cellular patterns
+                                <span class="fitness-score" id="fitness3">84</span>
+                            </div>
+                            <div class="chart-bar-container">
+                                <div class="chart-bar" id="bar3" style="width: 0%">
+                                    <div class="chart-value" id="value3">0.67</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="chart-item" data-pair="4">
+                            <div class="chart-label">
+                                Increased cellular density and mitotic activity
+                                <span class="fitness-score" id="fitness4">71</span>
+                            </div>
+                            <div class="chart-bar-container">
+                                <div class="chart-bar" id="bar4" style="width: 0%">
+                                    <div class="chart-value" id="value4">0.29</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="chart-scale">
+                        <span>0.0</span>
+                        <span>0.2</span>
+                        <span>0.4</span>
+                        <span>0.5</span>
+                        <span>0.6</span>
+                        <span>0.8</span>
+                        <span>1.0</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="step" id="step2">
+                <div class="step-title">
+                    <div class="step-number">2</div>
+                    Weighted Ensemble Calculation
+                </div>
+                <div class="ensemble-calculation">
+                    <div style="margin-bottom: 20px;">
+                        <strong>Normalized Weights Based on Fitness Scores:</strong><br>
+                        <span class="weight-display">w₁ = 0.24 (92/390)</span>
+                        <span class="weight-display">w₂ = 0.20 (78/390)</span>
+                        <span class="weight-display">w₃ = 0.17 (65/390)</span>
+                        <span class="weight-display">w₄ = 0.22 (84/390)</span>
+                        <span class="weight-display">w₅ = 0.18 (71/390)</span>
+                    </div>
+                    <div class="calculation-formula" id="formula">
+                        Final Output = 0.24 × 1 + 0.20 × 1 + 0.17 × 0 + 0.22 × 1 + 0.18 × 0
+                    </div>
+                    <div class="calculation-formula" id="calculation">
+                        = 0.24 + 0.20 + 0.00 + 0.22 + 0.00 = 0.66
+                    </div>
+                </div>
+                <div class="final-result tumor" id="finalResult">
+                    <div>🎯 Final Prediction</div>
+                    <div class="final-value" id="finalValue">0.66</div>
+                    <div class="tumor-status" id="tumorStatus">⚠️ CONTAINS TUMOR</div>
+                    <div>High confidence tumor detection based on weighted ensemble analysis</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="controls">
+            <button class="btn" id="analyzeBtn" onclick="startAnalysis()" disabled>
+                🔍 Start Analysis
+            </button>
+            <button class="btn reset-btn" onclick="resetApplication()">
+                🔄 Reset
+            </button>
+            <button class="btn" onclick="generateNewExample()" id="newExampleBtn" disabled>
+                🎲 New Example
+            </button>
+        </div>
+    </div>
+
+    <script>
+        let isAnalyzing = false;
+        let imageUploaded = false;
+        
+        // Example data sets for variation
+        const examples = [
+            {
+                scores: [92, 78, 65, 84, 71],
+                probabilities: [0.85, 0.73, 0.41, 0.67, 0.29],
+                tumorType: "Adenocarcinoma"
+            },
+            {
+                scores: [88, 72, 59, 66, 54],
+                probabilities: [0.42, 0.38, 0.29, 0.35, 0.22],
+                tumorType: "Benign"
+            },
+            {
+                scores: [95, 81, 70, 89, 76],
+                probabilities: [0.89, 0.67, 0.55, 0.78, 0.44],
+                tumorType: "Squamous Cell Carcinoma"
+            },
+            {
+                scores: [76, 68, 54, 62, 49],
+                probabilities: [0.48, 0.43, 0.35, 0.39, 0.31],
+                tumorType: "Normal Tissue"
+            }
+        ];
+        
+        let currentExample = 0;
+
+        // Function to generate color based on tumor probability - Red for tumor (>0.5), Green for no tumor (≤0.5)
+        function getTumorBasedColor(probability) {
+            if (probability > 0.5) {
+                // Red gradient for tumor detection
+                const intensity = Math.min((probability - 0.5) * 2, 1); // Scale 0.5-1.0 to 0-1
+                const lightness = 45 + intensity * 15; // Vary lightness
+                return `linear-gradient(90deg, hsl(0, 80%, ${lightness}%), hsl(0, 70%, ${lightness + 10}%))`;
+            } else {
+                // Green gradient for no tumor
+                const intensity = Math.min((0.5 - probability) * 2, 1); // Scale 0.5-0 to 0-1
+                const lightness = 45 + intensity * 15; // Vary lightness
+                return `linear-gradient(90deg, hsl(120, 70%, ${lightness}%), hsl(120, 60%, ${lightness + 10}%))`;
+            }
+        }
+
+        // File upload handling
+        document.getElementById('fileInput').addEventListener('change', handleFileUpload);
+        
+        // Drag and drop handling
+        const uploadSection = document.getElementById('uploadSection');
+        uploadSection.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            uploadSection.classList.add('dragover');
+        });
+        
+        uploadSection.addEventListener('dragleave', () => {
+            uploadSection.classList.remove('dragover');
+        });
+        
+        uploadSection.addEventListener('drop', (e) => {
+            e.preventDefault();
+            uploadSection.classList.remove('dragover');
+            const files = e.dataTransfer.files;
+            if (files.length > 0) {
+                displayImage(files[0]);
+            }
+        });
+
+        function handleFileUpload(event) {
+            const file = event.target.files[0];
+            if (file) {
+                displayImage(file);
+            }
+        }
+
+        function displayImage(file) {
+            if (!file.type.startsWith('image/')) {
+                alert('Please upload a valid image file');
+                return;
+            }
+
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const img = document.getElementById('uploadedImage');
+                img.src = e.target.result;
+                
+                document.getElementById('uploadSection').style.display = 'none';
+                document.getElementById('imageDisplay').style.display = 'block';
+                document.getElementById('imageInfo').textContent = `📋 ${file.name} - Ready for Analysis`;
+                
+                imageUploaded = true;
+                document.getElementById('analyzeBtn').disabled = false;
+            };
+            reader.readAsDataURL(file);
+        }
+
+        function startAnalysis() {
+            if (!imageUploaded || isAnalyzing) return;
+            
+            isAnalyzing = true;
+            document.getElementById('analyzeBtn').disabled = true;
+            document.getElementById('newExampleBtn').disabled = true;
+            
+            // Show loading screen
+            document.getElementById('loadingScreen').style.display = 'block';
+            document.getElementById('analysisSection').style.display = 'none';
+            
+            // Simulate loading time
+            setTimeout(() => {
+                document.getElementById('loadingScreen').style.display = 'none';
+                document.getElementById('analysisSection').style.display = 'block';
+                animateAnalysis();
+            }, 3000);
+        }
+
+        function animateAnalysis() {
+            // Show step 1
+            setTimeout(() => {
+                document.getElementById('step1').classList.add('active');
+                animatePromptPairs();
+            }, 500);
+            
+            // Show step 2
+            setTimeout(() => {
+                document.getElementById('step2').classList.add('active');
+                animateEnsembleCalculation();
+            }, 3500);
+            
+            setTimeout(() => {
+                isAnalyzing = false;
+                document.getElementById('newExampleBtn').disabled = false;
+            }, 7000);
+        }
+
+        function animatePromptPairs() {
+            const pairs = document.querySelectorAll('[data-pair]');
+            const currentData = examples[currentExample];
+            
+            pairs.forEach((pair, index) => {
+                setTimeout(() => {
+                    pair.classList.add('processing');
+                    
+                    // Animate the bar
+                    const bar = document.getElementById(`bar${index}`);
+                    const value = document.getElementById(`value${index}`);
+                    const fitnessScore = document.getElementById(`fitness${index}`);
+                    const probability = currentData.probabilities[index];
+                    const score = currentData.scores[index];
+                    const percentage = probability * 100;
+                    
+                    // Set color based on tumor detection (red for >0.5, green for ≤0.5)
+                    bar.style.background = getTumorBasedColor(probability);
+                    
+                    // Update fitness score
+                    fitnessScore.textContent = score;
+                    
+                    // Animate bar width
+                    setTimeout(() => {
+                        bar.style.width = percentage + '%';
+                        value.textContent = probability.toFixed(2);
+                    }, 200);
+                    
+                    setTimeout(() => {
+                        pair.classList.remove('processing');
+                    }, 1000);
+                }, index * 300);
+            });
+        }
+
+        function animateEnsembleCalculation() {
+            const formula = document.getElementById('formula');
+            const calculation = document.getElementById('calculation');
+            
+            setTimeout(() => {
+                formula.style.background = '#e6fffa';
+                formula.style.borderLeft = '5px solid #38b2ac';
+            }, 500);
+            
+            setTimeout(() => {
+                calculation.style.background = '#f0fff4';
+                calculation.style.borderLeft = '5px solid #38a169';
+                calculation.style.transform = 'scale(1.02)';
+            }, 1500);
+            
+            setTimeout(() => {
+                document.getElementById('finalResult').style.transform = 'scale(1.05)';
+                setTimeout(() => {
+                    document.getElementById('finalResult').style.transform = 'scale(1)';
+                }, 300);
+            }, 2500);
+        }
+
+        function generateNewExample() {
+            if (isAnalyzing) return;
+            
+            currentExample = (currentExample + 1) % examples.length;
+            const example = examples[currentExample];
+            
+            // Update chart bars and values
+            example.probabilities.forEach((prob, index) => {
+                const bar = document.getElementById(`bar${index}`);
+                const value = document.getElementById(`value${index}`);
+                const fitnessScore = document.getElementById(`fitness${index}`);
+                const percentage = prob * 100;
+                
+                // Set color based on tumor detection
+                bar.style.background = getTumorBasedColor(prob);
+                bar.style.width = percentage + '%';
+                value.textContent = prob.toFixed(2);
+                fitnessScore.textContent = example.scores[index];
+            });
+            
+            // Calculate new weights and final result
+            const totalScore = example.scores.reduce((a, b) => a + b, 0);
+            const weights = example.scores.map(score => score / totalScore);
+            const binaries = example.probabilities.map(prob => prob > 0.5 ? 1 : 0);
+            const finalResult = weights.reduce((sum, weight, index) => sum + weight * binaries[index], 0);
+            
+            // Update weight displays
+            const weightDisplays = document.querySelectorAll('.weight-display');
+            weightDisplays.forEach((element, index) => {
+                element.textContent = `w${index + 1} = ${weights[index].toFixed(2)} (${example.scores[index]}/${totalScore})`;
+            });
+            
+            // Update formula
+            const formulaParts = weights.map((weight, index) => `${weight.toFixed(2)} × ${binaries[index]}`);
+            document.getElementById('formula').textContent = `Final Output = ${formulaParts.join(' + ')}`;
+            
+            // Update calculation
+            const calculationParts = weights.map((weight, index) => (weight * binaries[index]).toFixed(2));
+            document.getElementById('calculation').textContent = 
+                `= ${calculationParts.join(' + ')} = ${finalResult.toFixed(2)}`;
+            
+            document.getElementById('finalValue').textContent = finalResult.toFixed(2);
+            
+            // Update tumor status and color
+            const finalResultDiv = document.getElementById('finalResult');
+            const tumorStatus = document.getElementById('tumorStatus');
+            
+            if (finalResult > 0.5) {
+                tumorStatus.innerHTML = `⚠️ CONTAINS TUMOR<br><small>${example.tumorType}</small>`;
+                finalResultDiv.className = 'final-result tumor';
+            } else {
+                tumorStatus.innerHTML = `✅ NO TUMOR DETECTED<br><small>Healthy Tissue</small>`;
+                finalResultDiv.className = 'final-result no-tumor';
+            }
+        }
+
+        function resetApplication() {
+            // Reset all states
+            isAnalyzing = false;
+            imageUploaded = false;
+            currentExample = 0;
+            
+            // Show upload section
+            document.getElementById('uploadSection').style.display = 'block';
+            document.getElementById('imageDisplay').style.display = 'none';
+            document.getElementById('loadingScreen').style.display = 'none';
+            document.getElementById('analysisSection').style.display = 'none';
+            
+            // Reset steps
+            document.querySelectorAll('.step').forEach(step => {
+                step.classList.remove('active');
+            });
+            
+            document.querySelectorAll('.prompt-pair').forEach(pair => {
+                pair.classList.remove('processing');
+            });
+            
+            // Reset buttons
+            document.getElementById('analyzeBtn').disabled = true;
+            document.getElementById('newExampleBtn').disabled = true;
+            
+            // Clear file input
+            document.getElementById('fileInput').value = '';
+            
+            // Reset styles
+            document.getElementById('formula').style.background = 'white';
+            document.getElementById('calculation').style.background = 'white';
+            document.getElementById('finalResult').style.transform = 'scale(1)';
+        }
+
+        // Initialize
+        resetApplication();
+    </script>
+</body>
+</html>
