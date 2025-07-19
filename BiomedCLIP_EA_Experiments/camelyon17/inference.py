@@ -8,10 +8,7 @@ import os
 
 def inference_on_images(
     image_paths: List[str],
-    prompts_file_path: str = "experiment_results/distinct_medical_concepts.txt",
-    use_knee_analysis: bool = True,
-    max_prompts: int = None,
-    unweighted: bool = False
+    prompts_file_path: str = "experiment_results/distinct_medical_concepts.txt"
 ) -> List[Dict[str, Any]]:
     """
     Run inference on a list of image file paths using optimized utility functions.
@@ -19,9 +16,6 @@ def inference_on_images(
     Args:
         image_paths: List of paths to image files
         prompts_file_path: Path to the prompts file
-        use_knee_analysis: Whether to use knee point analysis for prompt selection
-        max_prompts: Maximum number of prompts to use (if None, use knee analysis)
-        unweighted: Whether to use unweighted ensemble
 
     Returns:
         List of dictionaries containing results for each image
@@ -37,20 +31,36 @@ def inference_on_images(
     pq = util.PriorityQueue(
         max_capacity=1000, filter_threshold=0.6, initial=initial_prompts)
 
-    # 3. Select prompts using knee analysis or max_prompts
-    if use_knee_analysis and max_prompts is None:
-        all_current_scores = [score for _, score in pq.get_best_n(len(pq))]
-        knee_analyzer = util.KneePointAnalysis(all_current_scores)
-        recommended_n = knee_analyzer.find_knee_point()
-        print(
-            f"Recommended number of prompts after knee analysis: {recommended_n}")
-        prompts_population = pq.get_best_n(recommended_n)
-    else:
-        n_prompts = max_prompts if max_prompts is not None else len(pq)
-        prompts_population = pq.get_best_n(n_prompts)
-        print(f"Using {len(prompts_population)} prompts for inference.")
+    # 3. Select prompts using knee analysis (always)
+    all_current_scores = [score for _, score in pq.get_best_n(len(pq))]
+    knee_analyzer = util.KneePointAnalysis(all_current_scores)
+    recommended_n = knee_analyzer.find_knee_point()
+    print(
+        f"Recommended number of prompts after knee analysis: {recommended_n}")
+    prompts_population = pq.get_best_n(recommended_n)
 
-    # 4. Process each image
+    # Keep original prompts for detailed results
+    original_prompts_population = prompts_population
+
+    # 4. Normalize weights (always for weighted ensemble)
+    # Extract original scores
+    original_scores = np.array([score for _, score in prompts_population])
+
+    # Normalize weights to sum to 1
+    normalized_weights = original_scores / np.sum(original_scores)
+
+    # Reconstruct prompts_population with normalized weights
+    prompts_population = [(prompt_pair, weight)
+                          for (prompt_pair, _), weight
+                          in zip(prompts_population, normalized_weights)]
+
+    print(
+        f"Original scores range: [{original_scores.min():.4f}, {original_scores.max():.4f}]")
+    print(
+        f"Normalized weights range: [{normalized_weights.min():.4f}, {normalized_weights.max():.4f}]")
+    print(f"Normalized weights sum: {normalized_weights.sum():.6f}")
+
+    # 5. Process each image
     results = []
 
     for img_idx, image_path in enumerate(image_paths):
@@ -92,14 +102,14 @@ def inference_on_images(
 
             # Get ensemble probability using util.evaluate_prompt_list
             ensemble_result = util.evaluate_prompt_list(
-                prompts_population, image_features, dummy_labels, model, tokenizer, unweighted=unweighted
+                prompts_population, image_features, dummy_labels, model, tokenizer, unweighted=False
             )
             # Extract for single image
             final_probability = ensemble_result['ensemble_probs'][0]
 
-            # Build detailed results for each prompt
+            # Build detailed results for each prompt (use original scores for display)
             prompt_results = []
-            for j, (prompt_pair, prompt_score) in enumerate(prompts_population):
+            for j, (prompt_pair, original_score) in enumerate(original_prompts_population):
                 # Get individual evaluation for this prompt to get similarity scores
                 single_prompt_eval = util.evaluate_prompt_pair(
                     prompt_pair[1], prompt_pair[0], image_features, dummy_labels, model, tokenizer
@@ -122,11 +132,14 @@ def inference_on_images(
                     sim_negative = torch.cosine_similarity(
                         image_features, negative_features).item()
 
+                # Get the normalized weight used in ensemble
+                actual_weight = prompts_population[j][1]
+
                 prompt_results.append({
                     'prompt_index': j,
                     'prompt_pair': prompt_pair,
-                    'prompt_score': prompt_score,
-                    # From the probability matrix
+                    'prompt_score': original_score,  # Show original score
+                    'normalized_weight': actual_weight,  # Show weight used in ensemble
                     'probability': individual_probs[j],
                     'similarity_positive': sim_positive,
                     'similarity_negative': sim_negative
@@ -137,8 +150,8 @@ def inference_on_images(
                 'image_name': os.path.basename(image_path),
                 'prompt_probabilities': prompt_results,
                 'final_probability': final_probability,
-                'num_prompts_used': len(prompts_population),
-                'ensemble_type': 'unweighted' if unweighted else 'weighted'
+                'num_prompts_used': len(original_prompts_population),
+                'ensemble_type': 'weighted_normalized'
             })
 
             print(f"  Final probability: {final_probability:.4f}")
@@ -181,7 +194,11 @@ def print_detailed_results(results: List[Dict[str, Any]], show_all_prompts: bool
                     f"  Prompt {prompt_result['prompt_index']:2d}: {prompt_result['probability']:.4f}")
                 print(f"    Positive: '{prompt_result['prompt_pair'][0]}'")
                 print(f"    Negative: '{prompt_result['prompt_pair'][1]}'")
-                print(f"    Score: {prompt_result['prompt_score']:.4f}")
+                print(
+                    f"    Original Score: {prompt_result['prompt_score']:.4f}")
+                if 'normalized_weight' in prompt_result:
+                    print(
+                        f"    Normalized Weight: {prompt_result['normalized_weight']:.4f}")
                 print(f"    Sim+: {prompt_result['similarity_positive']:.4f}, "
                       f"Sim-: {prompt_result['similarity_negative']:.4f}")
                 print()
@@ -202,9 +219,7 @@ def main():
     # Run inference
     results = inference_on_images(
         image_paths=image_paths,
-        prompts_file_path="experiment_results/distinct_medical_concepts.txt",
-        use_knee_analysis=True,
-        unweighted=False
+        prompts_file_path="experiment_results/distinct_medical_concepts.txt"
     )
 
     # Print results
