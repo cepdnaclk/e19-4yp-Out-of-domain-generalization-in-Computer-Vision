@@ -2,20 +2,20 @@
 
 # Define diseases list
 diseases=(
-    # "Infiltration"
+    "Infiltration"
     # "Effusion"
     # "Atelectasis"
     # "Nodule"
     # "Mass"
     # "Pneumothorax"
-    "Consolidation"
-    "Pleural_Thickening"
-    "Cardiomegaly"
-    "Emphysema"
-    "Edema"
-    "Fibrosis"
-    "Pneumonia"
-    "Hernia"
+    # "Consolidation"
+    # "Pleural_Thickening"
+    # "Cardiomegaly"
+    # "Emphysema"
+    # "Edema"
+    # "Fibrosis"
+    # "Pneumonia"
+    # "Hernia"
 )
 
 # Create logs directory if it doesn't exist
