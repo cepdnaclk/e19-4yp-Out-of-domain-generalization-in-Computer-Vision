@@ -24,9 +24,6 @@ def train_meta_models(P_train, y_train, max_depth=5, C=1.0):
 
 
 def main():
-    # use CPU
-    util.DEVICE = torch.device("cpu")
-
     # 1. load model, preprocess, and tokenizer
     model, preprocess, tokenizer = util.load_clip_model()
     print("Model, preprocess, and tokenizer loaded successfully.")
