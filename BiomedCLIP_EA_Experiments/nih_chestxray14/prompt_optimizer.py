@@ -1,6 +1,7 @@
 """
 Optimization Only - No Evolutionary Algorithm (EA) - Prompt Optimization Script
 """
+import sys
 from typing import List
 import util
 import torch
@@ -74,7 +75,11 @@ def get_prompt_template(iteration_num: int, prompt_content: str, disease: str, g
 
 
 def main():
-    disease = "Emphysema"  # Set the disease for the prompt
+    if len(sys.argv) < 2:
+        print("Please provide the disease name as a command-line argument.")
+        sys.exit(1)
+    disease = sys.argv[1]
+
     # Name the experiment we are currently running
     experiment_name = "NIH_Train_Experiments-18_" + disease
     print(f"Running {experiment_name}...")
@@ -95,7 +100,8 @@ def main():
     features, labels = util.extract_embeddings(
         model=model,
         preprocess=preprocess,
-        train_or_test="train"
+        train_or_test="train",
+        target_label= disease,
     )
     
     # Convert to tensors - MODIFIED FOR MULTI-OBSERVATION SUPPORT
@@ -152,7 +158,7 @@ def main():
             results = util.evaluate_prompt_pair(
                 negative_prompt, positive_prompt, all_feats, all_labels, model, tokenizer)
             # print(f"Inverted BCE for prompt pair {i+1}: {results['inverted_bce']:.4f} {results['accuracy']}")
-            pq.insert((negative_prompt, positive_prompt), results['inverted_bce'])
+            pq.insert((negative_prompt, positive_prompt), results['auc'])
 
         n = 10
         print(f"\nCurrent Top {n} prompt pairs:")
