@@ -12725,3 +12725,192 @@ Iteration 220:
 ('No peribronchial cuffing.', 'Peribronchial cuffing present, indicating airway inflammation and fluid accumulation.'), Score: 0.6286
 ('No clear costal cartilage.', 'Ill-defined costal cartilage, potentially obscured by pleural effusion or edema.'), Score: 0.6279
 
+Iteration 1:
+('Air bronchograms are absent.', 'Air bronchograms visible within areas of consolidation.'), Score: 0.7465
+('No evidence of pleural effusion.', 'Pleural effusions present, appearing as dense opacities.'), Score: 0.7457
+('Normal lung compliance.', 'Reduced lung compliance indicated by opacities.'), Score: 0.7397
+('No evidence of alveolar flooding.', 'Alveolar flooding with diffuse opacities.'), Score: 0.7374
+('No evidence of pulmonary hypertension.', 'Pulmonary hypertension secondary to edema.'), Score: 0.7370
+('Normal pulmonary venous pressure.', 'Elevated pulmonary venous pressure.'), Score: 0.7364
+('Normal pulmonary artery wedge pressure.', 'Elevated pulmonary artery wedge pressure.'), Score: 0.7353
+('No increased opacity in the lower lobes.', 'Increased opacity in the lower lobes, consistent with edema.'), Score: 0.7317
+('No evidence of acute lung injury.', 'Acute lung injury with diffuse alveolar damage.'), Score: 0.7314
+('Normal cardiac silhouette size and shape.', 'Cardiomegaly with increased opacity in the lung bases.'), Score: 0.7301
+('No evidence of negative pressure pulmonary edema.', 'Negative pressure pulmonary edema.'), Score: 0.7247
+('No evidence of immersion pulmonary edema.', 'Immersion pulmonary edema.'), Score: 0.7243
+('No evidence of neurogenic pulmonary edema.', 'Neurogenic pulmonary edema following neurological event.'), Score: 0.7233
+('No evidence of high altitude pulmonary edema.', 'High altitude pulmonary edema with bilateral infiltrates.'), Score: 0.7218
+('No perivascular haze.', 'Perivascular haze present.'), Score: 0.7206
+('No signs of pulmonary edema.', 'Bilateral pulmonary edema with batwing distribution.'), Score: 0.7192
+('No evidence of cardiogenic pulmonary edema.', 'Cardiogenic pulmonary edema with central distribution.'), Score: 0.7189
+('No evidence of pulmonary congestion.', 'Increased pulmonary vascular congestion.'), Score: 0.7184
+('Clear and distinct lung boundaries.', 'Ill-defined lung boundaries due to fluid accumulation.'), Score: 0.7175
+('Normal pulmonary artery size.', 'Enlarged pulmonary artery suggesting pulmonary hypertension.'), Score: 0.7172
+('Normal mediastinal contours.', 'Irregular mediastinal contours.'), Score: 0.7172
+('Normal cardiac output.', 'Reduced cardiac output contributing to edema.'), Score: 0.7157
+('No evidence of drug-induced pulmonary edema.', 'Drug-induced pulmonary edema.'), Score: 0.7156
+('No evidence of non-cardiogenic edema.', 'Non-cardiogenic edema due to ARDS.'), Score: 0.7127
+('Sharp costal cartilage.', 'Ill-defined costal cartilage due to surrounding fluid.'), Score: 0.7125
+('Normal mediastinal width.', 'Widened mediastinum potentially related to fluid accumulation.'), Score: 0.7123
+('Normal alveolar-capillary membrane integrity.', 'Compromised alveolar-capillary membrane integrity.'), Score: 0.7122
+('No pleural thickening.', 'Pleural thickening with associated fluid.'), Score: 0.7091
+('No evidence of fluid overload.', 'Evidence of fluid overload with pulmonary edema.'), Score: 0.7040
+('No evidence of fluid in the minor fissure.', 'Fluid in the minor fissure.'), Score: 0.7028
+('Clear lung fields with sharp vascular markings.', 'Diffuse bilateral haziness obscuring vascular markings.'), Score: 0.6998
+('No evidence of interstitial thickening.', 'Interstitial thickening with reticular pattern.'), Score: 0.6986
+('Hilar structures are normal in size and position.', 'Hilar prominence with increased opacity.'), Score: 0.6957
+('Normal diaphragmatic excursion.', 'Reduced diaphragmatic excursion.'), Score: 0.6921
+('No alveolar infiltrates.', 'Fluffy, indistinct alveolar infiltrates present.'), Score: 0.6911
+('No signs of acute respiratory distress.', 'Signs of acute respiratory distress syndrome (ARDS) with diffuse infiltrates.'), Score: 0.6871
+('Normal heart border.', 'Diffuse cardiac border obscuration.'), Score: 0.6840
+('No peribronchial cuffing.', 'Peribronchial cuffing present, indicating airway inflammation.'), Score: 0.6804
+('No evidence of re-expansion pulmonary edema.', 'Re-expansion pulmonary edema following pneumothorax.'), Score: 0.6783
+('No signs of hydrostatic edema.', 'Hydrostatic edema with bilateral infiltrates.'), Score: 0.6780
+('No evidence of capillary leak.', 'Capillary leak syndrome causing pulmonary edema.'), Score: 0.6731
+('No interstitial markings.', 'Kerley B lines visible, indicating interstitial edema.'), Score: 0.6656
+('No evidence of lymphatic obstruction.', 'Lymphatic obstruction contributing to edema.'), Score: 0.6651
+('No evidence of Kerley lines.', 'Kerley A lines present, indicating interstitial edema.'), Score: 0.6516
+('Vascular pedicle within normal limits.', 'Prominent vascular pedicle suggesting fluid overload.'), Score: 0.6475
+('No evidence of pulmonary vascular redistribution.', 'Pulmonary vascular redistribution with increased flow to upper lobes.'), Score: 0.6354
+('No fluid in the fissures.', 'Fluid within the interlobar fissures.'), Score: 0.6276
+('Normal pulmonary vasculature.', 'Increased interstitial markings.'), Score: 0.6272
+('No evidence of transfusion-related acute lung injury (TRALI).', 'TRALI with non-cardiogenic pulmonary edema.'), Score: 0.6129
+('Clear costophrenic sulci.', 'Costophrenic sulci filled with fluid.'), Score: 0.6115
+('Lung parenchyma appears homogenous.', 'Patchy infiltrates throughout both lung fields.'), Score: 0.6105
+
+Iteration 10:
+('Air bronchograms are absent.', 'Air bronchograms visible within areas of consolidation.'), Score: 0.7465
+('Normal hilar vascular markings.', 'Hilar congestion and prominence.'), Score: 0.7460
+('No evidence of pleural effusion.', 'Pleural effusions present, appearing as dense opacities.'), Score: 0.7457
+('No pleural thickening.', 'Pleural thickening with associated pulmonary edema.'), Score: 0.7420
+('Normal lung compliance.', 'Reduced lung compliance indicated by opacities.'), Score: 0.7397
+('Normal pulmonary artery size.', 'Prominent pulmonary artery with signs of pulmonary hypertension secondary to edema.'), Score: 0.7395
+('Sharp diaphragmatic contours.', 'Diaphragmatic contour irregularity with possible effusions.'), Score: 0.7389
+('Normal air bronchograms.', 'Air bronchograms within areas of consolidation, suggestive of alveolar edema.'), Score: 0.7385
+('No air bronchograms.', 'Air bronchograms within areas of consolidation, suggestive of edema.'), Score: 0.7383
+('No evidence of air bronchograms.', 'Air bronchograms within areas of consolidation, suggestive of alveolar edema.'), Score: 0.7382
+('No evidence of alveolar flooding.', 'Alveolar flooding with diffuse opacities.'), Score: 0.7374
+('No apical pleurovascular bundles.', 'Apical pleurovascular bundles are prominent, indicating fluid overload.'), Score: 0.7371
+('No evidence of pulmonary hypertension.', 'Pulmonary hypertension secondary to edema.'), Score: 0.7370
+('Normal pulmonary venous pressure.', 'Elevated pulmonary venous pressure.'), Score: 0.7364
+('Normal pulmonary artery wedge pressure.', 'Elevated pulmonary artery wedge pressure.'), Score: 0.7353
+('No pleural thickening.', 'Pleural thickening, suggesting chronic fluid overload.'), Score: 0.7345
+('Normal pleural spaces.', 'Pleural thickening and effusions secondary to edema.'), Score: 0.7345
+('Normal cardiomediastinal silhouette.', 'Cardiomediastinal silhouette widening with cephalization of pulmonary vessels.'), Score: 0.7341
+('Homogeneous lung parenchyma.', 'Patchy or diffuse opacities in the lung parenchyma.'), Score: 0.7337
+('No pleural effusions are visible.', 'Pleural effusions present, layering posteriorly.'), Score: 0.7327
+('Diaphragm is smooth and well-defined.', 'Diaphragmatic elevation and flattening due to fluid overload.'), Score: 0.7323
+('Normal pulmonary venous pressure.', 'Elevated pulmonary venous pressure, contributing to edema.'), Score: 0.7320
+('No increased opacity in the lower lobes.', 'Increased opacity in the lower lobes, consistent with edema.'), Score: 0.7317
+('No pleural effusions.', 'Pleural effusions present, often associated with congestive heart failure and edema.'), Score: 0.7314
+('No evidence of acute lung injury.', 'Acute lung injury with diffuse alveolar damage.'), Score: 0.7314
+('No Kerley B lines.', 'Presence of Kerley B lines indicating interstitial edema.'), Score: 0.7307
+('Normal cardiac silhouette size and shape.', 'Cardiomegaly with increased opacity in the lung bases.'), Score: 0.7301
+('Normal cardiac apex.', 'Displaced cardiac apex suggesting cardiomegaly and fluid overload.'), Score: 0.7294
+('No interstitial markings.', 'Diffuse interstitial thickening consistent with pulmonary edema.'), Score: 0.7288
+('Normal pulmonary artery size.', 'Enlarged pulmonary artery with signs of pulmonary hypertension secondary to edema.'), Score: 0.7271
+('Sharp pulmonary vascular markings.', 'Diffuse haziness obscuring pulmonary vascular markings.'), Score: 0.7260
+('No thickening of interlobular septa.', 'Thickening of interlobular septa, a sign of interstitial edema.'), Score: 0.7250
+('No evidence of negative pressure pulmonary edema.', 'Negative pressure pulmonary edema.'), Score: 0.7247
+('Clear costal cartilage.', 'Hazy costal cartilage due to surrounding edema.'), Score: 0.7247
+('No Kerley B lines.', 'Kerley B lines present, indicating interstitial edema.'), Score: 0.7246
+('No evidence of immersion pulmonary edema.', 'Immersion pulmonary edema.'), Score: 0.7243
+('No pleural thickening.', 'Pleural thickening with associated fluid in the pleural space.'), Score: 0.7239
+('No evidence of neurogenic pulmonary edema.', 'Neurogenic pulmonary edema following neurological event.'), Score: 0.7233
+('Clear interlobular septa.', 'Thickened interlobular septa, suggestive of fluid accumulation.'), Score: 0.7233
+('Costophrenic angles are sharp and clear.', 'Blunted costophrenic angles due to pleural effusion secondary to edema.'), Score: 0.7232
+('No peribronchial cuffing.', 'Peribronchial cuffing suggestive of fluid accumulation in the lung parenchyma.'), Score: 0.7230
+('Normal pulmonary artery size.', 'Enlarged pulmonary artery, suggesting pulmonary hypertension secondary to edema.'), Score: 0.7222
+('No evidence of high altitude pulmonary edema.', 'High altitude pulmonary edema with bilateral infiltrates.'), Score: 0.7218
+('Normal cardiac apex.', 'Rounded cardiac apex suggesting pericardial effusion associated with edema.'), Score: 0.7207
+('No perivascular haze.', 'Perivascular haze present.'), Score: 0.7206
+('No pleural effusion.', 'Pleural effusion present, often accompanying pulmonary edema.'), Score: 0.7203
+('No signs of pulmonary edema.', 'Bilateral pulmonary edema with batwing distribution.'), Score: 0.7192
+('No evidence of cardiogenic pulmonary edema.', 'Cardiogenic pulmonary edema with central distribution.'), Score: 0.7189
+('No evidence of pulmonary congestion.', 'Increased pulmonary vascular congestion.'), Score: 0.7184
+('Normal pulmonary artery size.', 'Enlarged pulmonary artery suggesting pulmonary hypertension secondary to edema.'), Score: 0.7183
+('Clear and distinct lung boundaries.', 'Ill-defined lung boundaries due to fluid accumulation.'), Score: 0.7175
+('Normal pulmonary artery size.', 'Enlarged pulmonary artery suggesting pulmonary hypertension.'), Score: 0.7172
+('Normal mediastinal contours.', 'Irregular mediastinal contours.'), Score: 0.7172
+('Normal diaphragmatic contour.', 'Diaphragmatic elevation with associated pleural fluid.'), Score: 0.7157
+('Normal cardiac output.', 'Reduced cardiac output contributing to edema.'), Score: 0.7157
+('No evidence of drug-induced pulmonary edema.', 'Drug-induced pulmonary edema.'), Score: 0.7156
+('No increased lung density in the upper lobes.', 'Increased lung density in the upper lobes, potentially due to edema.'), Score: 0.7147
+('Mediastinal contours are smooth and well-defined.', 'Mediastinal widening suggestive of fluid accumulation.'), Score: 0.7142
+('Normal heart size and mediastinal width.', 'Mediastinal widening and cardiomegaly with pulmonary edema.'), Score: 0.7137
+('Sharp costophrenic angles.', 'Blunted costophrenic angles indicating pleural effusion associated with edema.'), Score: 0.7132
+('No evidence of non-cardiogenic edema.', 'Non-cardiogenic edema due to ARDS.'), Score: 0.7127
+('Sharp costal cartilage.', 'Ill-defined costal cartilage due to surrounding fluid.'), Score: 0.7125
+('Normal mediastinal width.', 'Widened mediastinum potentially related to fluid accumulation.'), Score: 0.7123
+('Normal alveolar-capillary membrane integrity.', 'Compromised alveolar-capillary membrane integrity.'), Score: 0.7122
+('No evidence of butterfly pattern.', 'Butterfly pattern of pulmonary edema, radiating from the hilum.'), Score: 0.7121
+('Clear costal diaphragm.', 'Hazy costal diaphragm suggestive of fluid accumulation.'), Score: 0.7118
+('Sharp costophrenic angles.', 'Blunting of costophrenic angles due to pleural effusion associated with edema.'), Score: 0.7105
+('Clear costophrenic angles.', 'Blunting of costophrenic angles due to pleural effusion associated with edema.'), Score: 0.7103
+('No pleural thickening.', 'Pleural thickening with associated fluid.'), Score: 0.7091
+('Hilar structures are normal in size and shape.', 'Hilar prominence due to vascular congestion.'), Score: 0.7090
+('Clear costophrenic angles.', 'Blunting of costophrenic angles due to pleural effusion secondary to edema.'), Score: 0.7087
+('No interstitial markings.', 'Prominent interstitial markings indicating fluid accumulation.'), Score: 0.7081
+('Lung fields are clear.', 'Bilateral hazy opacities in the lung fields indicating alveolar edema.'), Score: 0.7076
+('Sharp costophrenic angles.', 'Blunting of costophrenic angles due to pleural effusion secondary to edema.'), Score: 0.7059
+('Lung fields are clear.', 'Bilateral hilar congestion and increased lung opacity.'), Score: 0.7050
+('No evidence of pulmonary congestion.', 'Increased pulmonary venous congestion with cephalization of vessels.'), Score: 0.7049
+('No peribronchial cuffing.', 'Peribronchial cuffing indicating airway inflammation and edema.'), Score: 0.7044
+('Normal mediastinal width.', 'Widened mediastinum potentially due to cardiomegaly or fluid accumulation.'), Score: 0.7041
+('No evidence of fluid overload.', 'Evidence of fluid overload with pulmonary edema.'), Score: 0.7040
+('No evidence of fluid in the minor fissure.', 'Fluid in the minor fissure.'), Score: 0.7028
+('Normal mediastinal width.', 'Widened mediastinum potentially due to cardiomegaly or vascular congestion.'), Score: 0.7014
+('Clear lung fields with sharp vascular markings.', 'Diffuse bilateral haziness obscuring vascular markings.'), Score: 0.6998
+('Normal cardiac silhouette size.', 'Cardiomegaly with increased pulmonary venous congestion.'), Score: 0.6994
+('No evidence of interstitial thickening.', 'Interstitial thickening with reticular pattern.'), Score: 0.6986
+('No fluffy infiltrates.', 'Fluffy infiltrates in a bat-wing distribution characteristic of cardiogenic edema.'), Score: 0.6978
+('No peribronchial cuffing.', 'Peribronchial cuffing, a sign of fluid in the bronchial walls.'), Score: 0.6976
+('No alveolar infiltrates.', 'Fluffy, indistinct alveolar infiltrates, typical of pulmonary edema.'), Score: 0.6973
+('Normal cardiac silhouette size.', 'Cardiomegaly present, contributing to pulmonary edema.'), Score: 0.6959
+('Hilar structures are normal in size and position.', 'Hilar prominence with increased opacity.'), Score: 0.6957
+('No evidence of alveolar edema.', 'Fluffy, indistinct alveolar edema throughout both lung fields.'), Score: 0.6943
+('Trachea is midline.', 'Tracheal deviation suggesting mediastinal shift from fluid accumulation.'), Score: 0.6924
+('Normal pulmonary venous distribution.', 'Increased pulmonary venous congestion with cephalization.'), Score: 0.6922
+('Normal diaphragmatic excursion.', 'Reduced diaphragmatic excursion.'), Score: 0.6921
+('Normal cardiac silhouette size.', 'Cardiomegaly contributing to pulmonary edema.'), Score: 0.6918
+('No alveolar infiltrates.', 'Fluffy, indistinct alveolar infiltrates present.'), Score: 0.6911
+('No perivascular haze.', 'Perivascular haze indicating interstitial edema.'), Score: 0.6905
+('Lung vasculature is normal in caliber.', 'Prominent Kerley B lines indicating interstitial edema.'), Score: 0.6895
+('No interstitial thickening.', 'Diffuse interstitial thickening consistent with pulmonary edema.'), Score: 0.6876
+('No signs of acute respiratory distress.', 'Signs of acute respiratory distress syndrome (ARDS) with diffuse infiltrates.'), Score: 0.6871
+('Normal heart border.', 'Diffuse cardiac border obscuration.'), Score: 0.6840
+('No evidence of butterfly pattern.', 'Butterfly pattern of edema, radiating from the hila.'), Score: 0.6838
+('No peribronchial cuffing.', 'Peribronchial cuffing present, indicating airway inflammation.'), Score: 0.6804
+('No evidence of fluid in the minor fissure.', 'Fluid within the minor fissure, a sign of interstitial edema.'), Score: 0.6799
+('No evidence of re-expansion pulmonary edema.', 'Re-expansion pulmonary edema following pneumothorax.'), Score: 0.6783
+('Normal interstitial markings.', 'Kerley B lines present, indicating interstitial edema.'), Score: 0.6782
+('No signs of hydrostatic edema.', 'Hydrostatic edema with bilateral infiltrates.'), Score: 0.6780
+('No evidence of capillary leak.', 'Capillary leak syndrome causing pulmonary edema.'), Score: 0.6731
+('Trachea is midline.', 'Tracheal deviation potentially caused by mass effect from edema/effusion.'), Score: 0.6723
+('Normal vascular pedicle.', 'Prominent vascular pedicle indicating increased pulmonary venous pressure.'), Score: 0.6692
+('No Kerley B lines present.', 'Kerley B lines visible, indicating interstitial edema.'), Score: 0.6687
+('Cardiac silhouette is within normal limits.', 'Cardiomegaly with cephalization of pulmonary vessels.'), Score: 0.6687
+('No interstitial fluid.', 'Interstitial thickening and fluid accumulation.'), Score: 0.6684
+('No interstitial markings.', 'Kerley B lines visible, indicating interstitial edema.'), Score: 0.6656
+('No evidence of lymphatic obstruction.', 'Lymphatic obstruction contributing to edema.'), Score: 0.6651
+('No evidence of alveolar edema.', 'Fluffy, indistinct alveolar edema visible in both lung fields.'), Score: 0.6650
+('No peribronchial cuffing.', 'Peribronchial cuffing, indicating fluid around the bronchi.'), Score: 0.6627
+('No evidence of pulmonary congestion.', 'Pulmonary congestion with redistribution of blood flow to upper lobes.'), Score: 0.6556
+('No peribronchial cuffing.', 'Peribronchial cuffing, indicative of fluid accumulation around the bronchi.'), Score: 0.6542
+('No evidence of Kerley lines.', 'Kerley A lines present, indicating interstitial edema.'), Score: 0.6516
+('Lung fields are clear without consolidation.', 'Fluffy, indistinct infiltrates consistent with pulmonary edema.'), Score: 0.6515
+('No evidence of fluid in the fissures.', 'Fluid within the interlobular fissures, consistent with pulmonary edema.'), Score: 0.6496
+('No evidence of septal lines.', 'Septal lines visible, suggesting interstitial edema.'), Score: 0.6478
+('Vascular pedicle within normal limits.', 'Prominent vascular pedicle suggesting fluid overload.'), Score: 0.6475
+('Lung parenchyma appears homogenous.', 'Patchy areas of increased opacity in the lung parenchyma.'), Score: 0.6473
+('No Kerley B lines.', 'Presence of Kerley B lines, short horizontal lines at the lung periphery.'), Score: 0.6413
+('No evidence of pulmonary vascular redistribution.', 'Pulmonary vascular redistribution with increased flow to upper lobes.'), Score: 0.6354
+('No perivascular cuffing.', 'Perivascular edema, creating a hazy appearance around blood vessels.'), Score: 0.6326
+('No fluid in the fissures.', 'Fluid within the interlobar fissures.'), Score: 0.6276
+('Normal pulmonary vasculature.', 'Increased interstitial markings.'), Score: 0.6272
+('No increased perihilar haze.', 'Increased perihilar haze, consistent with fluid redistribution.'), Score: 0.6188
+('Vascular pedicle is not congested.', 'Congested vascular pedicle suggesting increased pulmonary venous pressure.'), Score: 0.6144
+('No evidence of transfusion-related acute lung injury (TRALI).', 'TRALI with non-cardiogenic pulmonary edema.'), Score: 0.6129
+('Clear costophrenic sulci.', 'Costophrenic sulci filled with fluid.'), Score: 0.6115
+('Lung parenchyma appears homogenous.', 'Patchy infiltrates throughout both lung fields.'), Score: 0.6105
+

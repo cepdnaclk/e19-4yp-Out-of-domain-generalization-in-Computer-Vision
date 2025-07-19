@@ -1,0 +1,891 @@
+Iteration 1:
+('No evidence of interstitial edema.', 'Interstitial thickening.'), Score: 0.7358
+('Lung volumes appear normal.', 'Significantly increased lung volumes.'), Score: 0.7270
+('Normal appearance of the pulmonary arteries.', 'Enlarged pulmonary arteries suggesting pulmonary hypertension.'), Score: 0.7269
+('Normal mediastinal contours.', 'Mediastinal shift may be observed in severe cases.'), Score: 0.7067
+('Normal retrocardiac space.', 'Increased retrocardiac space.'), Score: 0.7037
+('Mediastinum is of normal width.', 'Widened mediastinum potentially due to cardiac enlargement secondary to pulmonary hypertension.'), Score: 0.7035
+('No pleural effusions are present.', 'Possible subtle pleural effusions secondary to complications.'), Score: 0.6984
+('Normal esophageal contour.', 'Possible esophageal dilation due to increased intrathoracic pressure.'), Score: 0.6956
+('No evidence of pulmonary edema.', 'Signs of pulmonary edema secondary to heart failure.'), Score: 0.6928
+('No evidence of fibrosis.', 'Destruction of alveolar walls and airspace enlargement.'), Score: 0.6884
+('Normal lung apices.', 'Apical bullae or blebs.'), Score: 0.6876
+('Normal pulmonary veins.', 'Prominent pulmonary veins.'), Score: 0.6806
+('Heart size within normal limits.', 'Increased retrosternal airspace.'), Score: 0.6795
+('No evidence of skin changes.', 'Skin changes related to chronic hypoxia.'), Score: 0.6747
+('No evidence of aspiration.', 'Signs of aspiration pneumonia.'), Score: 0.6729
+('No signs of infection.', 'Evidence of secondary infection, such as pneumonia.'), Score: 0.6507
+('Hilar structures are normal in size and position.', 'Prominent hilar vessels.'), Score: 0.6424
+('No evidence of prior surgical changes.', 'Signs of prior lung volume reduction surgery.'), Score: 0.6351
+('Normal bronchial wall thickness.', 'Thinning and distortion of bronchial walls.'), Score: 0.6335
+('No evidence of bullae or blebs.', 'Presence of bullae or blebs, especially in the upper lobes.'), Score: 0.6308
+('Normal lung fields with sharp costophrenic angles.', 'Flattened diaphragms and hyperinflated lungs.'), Score: 0.6260
+('Normal vertebral column.', 'Possible vertebral compression fractures.'), Score: 0.6258
+('Normal appearance of the abdominal organs visible on the image.', 'Diaphragmatic flattening impacting abdominal organ visualization.'), Score: 0.6243
+('No evidence of pneumothorax.', 'Apical pneumothorax may be present due to bullae rupture.'), Score: 0.6171
+('No evidence of pneumoconiosis.', 'Signs of pneumoconiosis coexisting with emphysema.'), Score: 0.6154
+('No significant peribronchial thickening.', 'Peribronchial cuffing may be present.'), Score: 0.6110
+('No significant interstitial markings.', 'Reduced interstitial markings.'), Score: 0.6076
+('Normal soft tissue appearance.', 'Subcutaneous emphysema may be present.'), Score: 0.6075
+
+Iteration 10:
+('Normal appearance of the lung parenchyma.', 'Destruction of the lung parenchyma with increased interstitial markings.'), Score: 0.7546
+('Normal hilar prominence.', 'Increased hilar prominence.'), Score: 0.7470
+('Normal mediastinal fat.', 'Increased mediastinal fat stranding.'), Score: 0.7452
+('Normal vascular markings.', 'Decreased vascular markings due to lung destruction.'), Score: 0.7447
+('No evidence of interstitial edema.', 'Interstitial thickening.'), Score: 0.7358
+('Normal cardiac silhouette size.', 'Increased cardiac silhouette size due to pulmonary hypertension.'), Score: 0.7324
+('No evidence of bronchial wall thickening.', 'Bronchial wall thickening.'), Score: 0.7301
+('Lung volumes appear normal.', 'Significantly increased lung volumes.'), Score: 0.7270
+('Normal appearance of the pulmonary arteries.', 'Enlarged pulmonary arteries suggesting pulmonary hypertension.'), Score: 0.7269
+('Normal pulmonary artery size.', 'Enlarged pulmonary artery with central accentuation.'), Score: 0.7222
+('Normal cardiac angle.', 'Reduced cardiac angle.'), Score: 0.7210
+('No evidence of hyperlucency.', 'Generalized increased lung lucency.'), Score: 0.7191
+('Normal mediastinal contours.', 'Mediastinal shift or distortion secondary to lung changes.'), Score: 0.7169
+('Normal retrosternal space.', 'Increased retrosternal space.'), Score: 0.7160
+('No evidence of hyperlucency.', 'Presence of hyperlucent lung zones.'), Score: 0.7143
+('Normal bronchial wall thickness.', 'Thickened bronchial walls.'), Score: 0.7133
+('No significant bronchial wall thickening.', 'Bronchial wall thickening and distortion.'), Score: 0.7112
+('Normal lung parenchyma texture.', 'Coarse lung parenchyma texture with areas of lucency.'), Score: 0.7110
+('No signs of bronchial wall thickening.', 'Bronchial wall thickening.'), Score: 0.7092
+('Normal hilar prominence.', 'Reduced hilar vascularity and prominence.'), Score: 0.7080
+('Normal mediastinum width.', 'Widened mediastinum.'), Score: 0.7079
+('No evidence of bullae or blebs.', 'Presence of bullae or blebs in the lung parenchyma.'), Score: 0.7078
+('No evidence of bronchial wall thickening.', 'Visible bronchial wall thickening and distortion.'), Score: 0.7072
+('Normal mediastinal contours.', 'Mediastinal shift may be observed in severe cases.'), Score: 0.7067
+('No evidence of hyperlucency.', 'Generalized hyperlucency of the lung fields.'), Score: 0.7066
+('Normal lung field density.', 'Decreased lung field density, suggestive of air trapping.'), Score: 0.7058
+('No evidence of bronchial cuffing.', 'Bronchial cuffing and thickening, especially in the lower lobes.'), Score: 0.7048
+('Normal retrocardiac space.', 'Increased retrocardiac space.'), Score: 0.7037
+('Mediastinum is of normal width.', 'Widened mediastinum potentially due to cardiac enlargement secondary to pulmonary hypertension.'), Score: 0.7035
+('Normal pulmonary artery size.', 'Enlarged pulmonary artery.'), Score: 0.7017
+('Normal costal cartilage.', 'Destructive changes in costal cartilage.'), Score: 0.7015
+('Normal mediastinal width.', 'Widened mediastinum.'), Score: 0.7013
+('Normal cardiac silhouette size.', 'Increased cardiac silhouette size with emphysematous changes.'), Score: 0.7004
+('Normal lung field density.', 'Decreased lung field density with hyperlucency.'), Score: 0.6995
+('No pleural effusions are present.', 'Possible subtle pleural effusions secondary to complications.'), Score: 0.6984
+('Hilar vessels are normal in size.', 'Prominent hilar vessels due to pulmonary hypertension.'), Score: 0.6973
+('Normal esophageal contour.', 'Possible esophageal dilation due to increased intrathoracic pressure.'), Score: 0.6956
+('No evidence of pulmonary edema.', 'Signs of pulmonary edema secondary to heart failure.'), Score: 0.6928
+('No evidence of fibrosis.', 'Destruction of alveolar walls and airspace enlargement.'), Score: 0.6884
+('Normal lung apices.', 'Apical bullae or blebs.'), Score: 0.6876
+('Normal costophrenic angles.', 'Blunted costophrenic angles.'), Score: 0.6841
+('Normal pulmonary veins.', 'Prominent pulmonary veins.'), Score: 0.6806
+('Heart size within normal limits.', 'Increased retrosternal airspace.'), Score: 0.6795
+('Normal chest wall thickness.', 'Increased chest wall thickness due to chronic air trapping.'), Score: 0.6758
+('No evidence of skin changes.', 'Skin changes related to chronic hypoxia.'), Score: 0.6747
+('No evidence of aspiration.', 'Signs of aspiration pneumonia.'), Score: 0.6729
+('Normal pulmonary vascular markings.', 'Diminished pulmonary vascular markings.'), Score: 0.6725
+('Normal vascular pedicle width.', 'Widened vascular pedicle suggesting pulmonary hypertension.'), Score: 0.6707
+('No evidence of paraseptal emphysema.', 'Paraseptal emphysema with subpleural bullae.'), Score: 0.6699
+('Normal lung parenchyma texture.', 'Decreased lung markings or areas of lucency.'), Score: 0.6694
+('No evidence of flattened intercostal spaces.', 'Depressed intercostal spaces.'), Score: 0.6652
+('Normal cardiac silhouette size.', 'Possible cardiomegaly secondary to cor pulmonale.'), Score: 0.6651
+('No evidence of pulmonary congestion.', 'Vascular redistribution suggestive of early pulmonary congestion.'), Score: 0.6641
+('Normal pulmonary vasculature.', 'Diminished peripheral pulmonary vasculature.'), Score: 0.6580
+('Normal retrosternal airspace.', 'Increased retrosternal airspace.'), Score: 0.6550
+('Normal hemidiaphragm position.', 'Depressed hemidiaphragms with flattened diaphragmatic contours.'), Score: 0.6531
+('No signs of infection.', 'Evidence of secondary infection, such as pneumonia.'), Score: 0.6507
+('Normal chest wall thickness.', 'Increased anteroposterior diameter of the chest.'), Score: 0.6472
+('Hilar structures are normal in size and position.', 'Prominent hilar vessels.'), Score: 0.6424
+('No evidence of bronchial wall thickening.', 'Visible bronchial wall thickening.'), Score: 0.6411
+('Normal lung field vascularity.', 'Decreased lung field vascularity, particularly in the periphery.'), Score: 0.6374
+('Sharp diaphragmatic contours.', 'Flattened diaphragmatic contours.'), Score: 0.6359
+('No evidence of prior surgical changes.', 'Signs of prior lung volume reduction surgery.'), Score: 0.6351
+('Normal pleural surfaces.', 'Pleural thickening or adhesions.'), Score: 0.6343
+('Normal bronchial wall thickness.', 'Thinning and distortion of bronchial walls.'), Score: 0.6335
+('Normal diaphragmatic contour.', 'Flattened diaphragmatic contour.'), Score: 0.6332
+('No evidence of bullae or blebs.', 'Presence of bullae or blebs, especially in the upper lobes.'), Score: 0.6308
+('Normal pleural surfaces.', 'Presence of pleural blebs or bullae.'), Score: 0.6277
+('Clear costophrenic angles.', 'Blunting of costophrenic angles due to fluid or scarring.'), Score: 0.6267
+('Normal lung fields with sharp costophrenic angles.', 'Flattened diaphragms and hyperinflated lungs.'), Score: 0.6260
+('Normal vertebral column.', 'Possible vertebral compression fractures.'), Score: 0.6258
+('Normal appearance of the abdominal organs visible on the image.', 'Diaphragmatic flattening impacting abdominal organ visualization.'), Score: 0.6243
+('No evidence of pneumothorax.', 'Apical pneumothorax may be present due to bullae rupture.'), Score: 0.6171
+('Normal diaphragmatic contour.', 'Flattened diaphragmatic domes.'), Score: 0.6159
+('No evidence of pneumoconiosis.', 'Signs of pneumoconiosis coexisting with emphysema.'), Score: 0.6154
+('No significant peribronchial thickening.', 'Peribronchial cuffing may be present.'), Score: 0.6110
+('No significant interstitial markings.', 'Reduced interstitial markings.'), Score: 0.6076
+('Normal soft tissue appearance.', 'Subcutaneous emphysema may be present.'), Score: 0.6075
+('Clear costophrenic angles.', 'Obscuration of costophrenic angles due to hyperinflation.'), Score: 0.6034
+('Normal cardiac silhouette size.', 'Globular or hyperinflated cardiac silhouette.'), Score: 0.6021
+
+Iteration 20:
+('Normal appearance of the lung parenchyma.', 'Destruction of the lung parenchyma with increased interstitial markings.'), Score: 0.7546
+('Normal hilar prominence.', 'Increased hilar prominence.'), Score: 0.7470
+('Normal mediastinal fat.', 'Increased mediastinal fat stranding.'), Score: 0.7452
+('Normal vascular markings.', 'Decreased vascular markings due to lung destruction.'), Score: 0.7447
+('No evidence of interstitial edema.', 'Interstitial thickening.'), Score: 0.7358
+('Normal hilar prominence.', 'Hilar prominence.'), Score: 0.7336
+('Normal costophrenic angles are sharp and defined.', 'Blunted costophrenic angles suggesting pleural effusion or fluid accumulation.'), Score: 0.7328
+('Normal cardiac silhouette size.', 'Increased cardiac silhouette size due to pulmonary hypertension.'), Score: 0.7324
+('No evidence of bronchial wall thickening.', 'Bronchial wall thickening.'), Score: 0.7301
+('Normal cardiac silhouette size.', 'Increased cardiac silhouette size due to right ventricular hypertrophy.'), Score: 0.7300
+('Lung volumes appear normal.', 'Significantly increased lung volumes.'), Score: 0.7270
+('Normal appearance of the pulmonary arteries.', 'Enlarged pulmonary arteries suggesting pulmonary hypertension.'), Score: 0.7269
+('No evidence of hyperlucency.', 'Increased lung lucency, suggestive of air trapping.'), Score: 0.7269
+('No pleural effusions.', 'Presence of small pleural effusions, potentially related to underlying lung disease.'), Score: 0.7256
+('Normal chest wall thickness.', 'Increased chest wall thickness.'), Score: 0.7255
+('No pleural effusions.', 'Pleural effusions may be present in advanced cases.'), Score: 0.7255
+('Normal pulmonary artery size.', 'Enlarged pulmonary artery, indicating pulmonary hypertension.'), Score: 0.7252
+('Normal pulmonary artery size.', 'Enlarged pulmonary artery with central accentuation.'), Score: 0.7222
+('Normal cardiac angle.', 'Reduced cardiac angle.'), Score: 0.7210
+('Normal pulmonary artery size.', 'Enlarged pulmonary artery, suggestive of pulmonary hypertension.'), Score: 0.7208
+('Normal peripheral vascular markings.', 'Decreased peripheral vascular markings.'), Score: 0.7192
+('No evidence of hyperlucency.', 'Generalized increased lung lucency.'), Score: 0.7191
+('Normal retroesophageal space.', 'Increased retroesophageal space.'), Score: 0.7188
+('Normal mediastinal contours.', 'Mediastinal shift or distortion secondary to lung changes.'), Score: 0.7169
+('Normal retrosternal space.', 'Increased retrosternal space.'), Score: 0.7160
+('Normal pulmonary artery size.', 'Prominent pulmonary arteries with distal attenuation.'), Score: 0.7150
+('No evidence of hyperlucency.', 'Presence of hyperlucent lung zones.'), Score: 0.7143
+('Normal bronchial wall thickness.', 'Thickened bronchial walls.'), Score: 0.7133
+('Normal pulmonary vasculature.', 'Diminished pulmonary vasculature.'), Score: 0.7129
+('No evidence of hyperlucency.', 'Increased lung lucency bilaterally.'), Score: 0.7115
+('No significant bronchial wall thickening.', 'Bronchial wall thickening and distortion.'), Score: 0.7112
+('Normal lung parenchyma texture.', 'Coarse lung parenchyma texture with areas of lucency.'), Score: 0.7110
+('No evidence of hyperinflation.', 'Evidence of hyperinflation with flattened diaphragms and increased retrosternal airspace.'), Score: 0.7107
+('Normal vascular markings.', 'Decreased vascular markings in the lung periphery.'), Score: 0.7098
+('Normal lung parenchyma texture.', 'Decreased lung parenchyma texture with areas of lucency.'), Score: 0.7098
+('No signs of bronchial wall thickening.', 'Bronchial wall thickening.'), Score: 0.7092
+('Normal hilar prominence.', 'Reduced hilar vascularity and prominence.'), Score: 0.7080
+('Normal mediastinum width.', 'Widened mediastinum.'), Score: 0.7079
+('No evidence of bullae or blebs.', 'Presence of bullae or blebs in the lung parenchyma.'), Score: 0.7078
+('No evidence of bronchial wall thickening.', 'Visible bronchial wall thickening and distortion.'), Score: 0.7072
+('Normal costophrenic angles.', 'Blunted costophrenic angles due to basilar emphysema or fluid accumulation.'), Score: 0.7071
+('Normal mediastinal contours.', 'Mediastinal shift may be observed in severe cases.'), Score: 0.7067
+('No evidence of hyperlucency.', 'Generalized hyperlucency of the lung fields.'), Score: 0.7066
+('Normal appearance of the hemidiaphragms.', 'Depressed hemidiaphragms with increased lung fields.'), Score: 0.7065
+('Normal lung field density.', 'Decreased lung field density, suggestive of air trapping.'), Score: 0.7058
+('No evidence of bronchial cuffing.', 'Bronchial cuffing and thickening, especially in the lower lobes.'), Score: 0.7048
+('Normal cardiac silhouette.', 'Globular cardiac silhouette.'), Score: 0.7045
+('Normal retrocardiac space.', 'Increased retrocardiac space.'), Score: 0.7037
+('Mediastinum is of normal width.', 'Widened mediastinum potentially due to cardiac enlargement secondary to pulmonary hypertension.'), Score: 0.7035
+('Normal diaphragmatic contour.', 'Flattened diaphragmatic contour bilaterally.'), Score: 0.7030
+('No significant interstitial markings.', 'Increased interstitial markings indicating inflammation or fibrosis.'), Score: 0.7020
+('Normal pulmonary artery size.', 'Enlarged pulmonary artery.'), Score: 0.7017
+('Normal lung parenchyma texture.', 'Decreased lung parenchyma texture with areas of reticular opacities.'), Score: 0.7017
+('Normal costal cartilage.', 'Destructive changes in costal cartilage.'), Score: 0.7015
+('Normal hilar prominence.', 'Reduced hilar prominence.'), Score: 0.7014
+('Normal mediastinal width.', 'Widened mediastinum.'), Score: 0.7013
+('Normal apex-to-costophrenic angle distance.', 'Increased apex-to-costophrenic angle distance.'), Score: 0.7007
+('Normal lung vascular markings.', 'Decreased peripheral lung vascular markings.'), Score: 0.7006
+('Normal cardiac silhouette size.', 'Increased cardiac silhouette size with emphysematous changes.'), Score: 0.7004
+('Clear mediastinal contours.', 'Widened mediastinum.'), Score: 0.6998
+('Normal lung field density.', 'Decreased lung field density with hyperlucency.'), Score: 0.6995
+('No pleural effusions are present.', 'Possible subtle pleural effusions secondary to complications.'), Score: 0.6984
+('No evidence of subcutaneous emphysema.', 'Subcutaneous emphysema, indicating air leakage from the lungs.'), Score: 0.6978
+('Hilar vessels are normal in size.', 'Prominent hilar vessels due to pulmonary hypertension.'), Score: 0.6973
+('Normal esophageal contour.', 'Possible esophageal dilation due to increased intrathoracic pressure.'), Score: 0.6956
+('No evidence of pulmonary edema.', 'Signs of pulmonary edema secondary to heart failure.'), Score: 0.6928
+('No evidence of subcutaneous emphysema.', 'Presence of subcutaneous emphysema.'), Score: 0.6919
+('Normal cardiac-to-thoracic ratio.', 'Increased cardiac-to-thoracic ratio, potentially indicating right ventricular enlargement.'), Score: 0.6908
+('No evidence of air bronchograms.', 'Presence of air bronchograms within areas of consolidation or hyperinflation.'), Score: 0.6901
+('No evidence of fibrosis.', 'Destruction of alveolar walls and airspace enlargement.'), Score: 0.6884
+('Normal lung apices.', 'Apical bullae or blebs.'), Score: 0.6876
+('Normal costophrenic angles.', 'Blunted costophrenic angles.'), Score: 0.6841
+('Normal pulmonary veins.', 'Prominent pulmonary veins.'), Score: 0.6806
+('No evidence of bullae.', 'Presence of bullae or blebs in the lung parenchyma.'), Score: 0.6805
+('Heart size within normal limits.', 'Increased retrosternal airspace.'), Score: 0.6795
+('Hilar structures appear normal in size and position.', 'Prominent hilar vessels and lymph nodes.'), Score: 0.6768
+('Normal chest wall thickness.', 'Increased chest wall thickness due to chronic air trapping.'), Score: 0.6758
+('No evidence of pneumothorax.', 'Presence of a small pneumothorax, potentially secondary to ruptured bullae.'), Score: 0.6756
+('Normal heart-to-lung ratio.', 'Decreased heart-to-lung ratio.'), Score: 0.6754
+('No evidence of skin changes.', 'Skin changes related to chronic hypoxia.'), Score: 0.6747
+('No evidence of bullae or blebs.', 'Presence of bullae or blebs.'), Score: 0.6736
+('No evidence of aspiration.', 'Signs of aspiration pneumonia.'), Score: 0.6729
+('Normal pulmonary vascular markings.', 'Diminished pulmonary vascular markings.'), Score: 0.6725
+('Normal vascular pedicle width.', 'Widened vascular pedicle suggesting pulmonary hypertension.'), Score: 0.6707
+('No evidence of increased lucency.', 'Increased lung lucency indicating air trapping.'), Score: 0.6705
+('No evidence of paraseptal emphysema.', 'Paraseptal emphysema with subpleural bullae.'), Score: 0.6699
+('Normal lung parenchyma texture.', 'Decreased lung markings or areas of lucency.'), Score: 0.6694
+('Normal lung field clarity.', 'Increased lung field lucency with diminished vascularity.'), Score: 0.6662
+('No evidence of flattened intercostal spaces.', 'Depressed intercostal spaces.'), Score: 0.6652
+('Normal cardiac silhouette size.', 'Possible cardiomegaly secondary to cor pulmonale.'), Score: 0.6651
+('No evidence of pulmonary congestion.', 'Vascular redistribution suggestive of early pulmonary congestion.'), Score: 0.6641
+('Normal pulmonary vein size.', 'Prominent pulmonary veins.'), Score: 0.6621
+('Clear costophrenic angles.', 'Obscured costophrenic angles.'), Score: 0.6614
+('Normal pulmonary vasculature.', 'Diminished peripheral pulmonary vasculature.'), Score: 0.6580
+('Normal retrosternal airspace.', 'Increased retrosternal airspace.'), Score: 0.6550
+('Normal hemidiaphragm position.', 'Depressed hemidiaphragms with flattened diaphragmatic contours.'), Score: 0.6531
+('No signs of infection.', 'Evidence of secondary infection, such as pneumonia.'), Score: 0.6507
+('Normal chest wall thickness.', 'Increased anteroposterior diameter of the chest.'), Score: 0.6472
+('Hilar structures are normal in size and position.', 'Prominent hilar vessels.'), Score: 0.6424
+('No evidence of bronchial wall thickening.', 'Visible bronchial wall thickening.'), Score: 0.6411
+('Normal lung parenchyma.', 'Increased interstitial markings due to paraseptal emphysema.'), Score: 0.6376
+('Normal lung field vascularity.', 'Decreased lung field vascularity, particularly in the periphery.'), Score: 0.6374
+('Sharp diaphragmatic contours.', 'Flattened diaphragmatic contours.'), Score: 0.6359
+('No evidence of prior surgical changes.', 'Signs of prior lung volume reduction surgery.'), Score: 0.6351
+('Normal pleural surfaces.', 'Pleural thickening or adhesions.'), Score: 0.6343
+('Normal bronchial wall thickness.', 'Thinning and distortion of bronchial walls.'), Score: 0.6335
+('Normal diaphragmatic contour.', 'Flattened diaphragmatic contour.'), Score: 0.6332
+('No evidence of bullae or blebs.', 'Presence of bullae or blebs, especially in the upper lobes.'), Score: 0.6308
+('Normal pleural surfaces.', 'Presence of pleural blebs or bullae.'), Score: 0.6277
+('No evidence of subcutaneous emphysema.', 'Subcutaneous emphysema present.'), Score: 0.6272
+('Clear costophrenic angles.', 'Blunting of costophrenic angles due to fluid or scarring.'), Score: 0.6267
+('Normal lung fields with sharp costophrenic angles.', 'Flattened diaphragms and hyperinflated lungs.'), Score: 0.6260
+('Normal vertebral column.', 'Possible vertebral compression fractures.'), Score: 0.6258
+('Normal appearance of the abdominal organs visible on the image.', 'Diaphragmatic flattening impacting abdominal organ visualization.'), Score: 0.6243
+('No evidence of pneumothorax.', 'Apical pneumothorax may be present due to bullae rupture.'), Score: 0.6171
+('Normal cardiac silhouette size.', 'Increased cardiac silhouette size due to hyperinflation.'), Score: 0.6171
+('Normal diaphragmatic contour.', 'Flattened diaphragmatic domes.'), Score: 0.6159
+('No evidence of pneumoconiosis.', 'Signs of pneumoconiosis coexisting with emphysema.'), Score: 0.6154
+('No evidence of bullae.', 'Presence of bullae or blebs.'), Score: 0.6138
+('Clear costophrenic angles.', 'Blunted costophrenic angles.'), Score: 0.6116
+('No significant peribronchial thickening.', 'Peribronchial cuffing may be present.'), Score: 0.6110
+('No significant interstitial markings.', 'Reduced interstitial markings.'), Score: 0.6076
+('Normal soft tissue appearance.', 'Subcutaneous emphysema may be present.'), Score: 0.6075
+('No evidence of hyperinflation.', 'Evidence of hyperinflation with flattened diaphragm.'), Score: 0.6037
+('Clear costophrenic angles.', 'Obscuration of costophrenic angles due to hyperinflation.'), Score: 0.6034
+('Normal cardiac silhouette size.', 'Globular or hyperinflated cardiac silhouette.'), Score: 0.6021
+('Normal cardiac silhouette size.', 'Decreased cardiac silhouette size secondary to lung hyperinflation.'), Score: 0.6010
+
+Iteration 30:
+('Normal appearance of the lung parenchyma.', 'Destruction of the lung parenchyma with increased interstitial markings.'), Score: 0.7546
+('Normal mediastinal width.', 'Increased mediastinal width.'), Score: 0.7511
+('Normal hilar prominence.', 'Increased hilar prominence.'), Score: 0.7470
+('Normal mediastinal fat.', 'Increased mediastinal fat stranding.'), Score: 0.7452
+('Normal vascular markings.', 'Decreased vascular markings due to lung destruction.'), Score: 0.7447
+('Normal cardiac silhouette.', 'Increased cardiac silhouette with possible cardiomegaly.'), Score: 0.7393
+('No evidence of bronchial wall thickening.', 'Bronchial wall thickening and distortion.'), Score: 0.7369
+('No evidence of interstitial edema.', 'Interstitial thickening.'), Score: 0.7358
+('Normal hilar prominence.', 'Hilar prominence.'), Score: 0.7336
+('Normal costophrenic angles are sharp and defined.', 'Blunted costophrenic angles suggesting pleural effusion or fluid accumulation.'), Score: 0.7328
+('Normal cardiac silhouette size.', 'Increased cardiac silhouette size due to pulmonary hypertension.'), Score: 0.7324
+('No evidence of bronchial wall thickening.', 'Bronchial wall thickening.'), Score: 0.7301
+('Normal cardiac silhouette size.', 'Increased cardiac silhouette size due to right ventricular hypertrophy.'), Score: 0.7300
+('No evidence of bronchial wall thickening.', 'Bronchial wall thickening and dilation.'), Score: 0.7281
+('Lung volumes appear normal.', 'Significantly increased lung volumes.'), Score: 0.7270
+('Normal appearance of the pulmonary arteries.', 'Enlarged pulmonary arteries suggesting pulmonary hypertension.'), Score: 0.7269
+('No evidence of hyperlucency.', 'Increased lung lucency, suggestive of air trapping.'), Score: 0.7269
+('Normal lung expansion.', 'Reduced lung expansion with evidence of air trapping.'), Score: 0.7257
+('No pleural effusions.', 'Presence of small pleural effusions, potentially related to underlying lung disease.'), Score: 0.7256
+('Normal chest wall thickness.', 'Increased chest wall thickness.'), Score: 0.7255
+('No pleural effusions.', 'Pleural effusions may be present in advanced cases.'), Score: 0.7255
+('Normal pulmonary artery size.', 'Enlarged pulmonary artery, indicating pulmonary hypertension.'), Score: 0.7252
+('Normal pulmonary artery size.', 'Enlarged pulmonary artery with central accentuation.'), Score: 0.7222
+('Normal cardiac angle.', 'Reduced cardiac angle.'), Score: 0.7210
+('Normal pulmonary artery size.', 'Enlarged pulmonary artery, suggestive of pulmonary hypertension.'), Score: 0.7208
+('Normal lung field density.', 'Decreased lung field density with increased lucency.'), Score: 0.7205
+('Normal pulmonary parenchyma texture.', 'Destructive changes in the pulmonary parenchyma, with areas of lucency and bullae.'), Score: 0.7197
+('Normal peripheral vascular markings.', 'Decreased peripheral vascular markings.'), Score: 0.7192
+('No evidence of hyperlucency.', 'Generalized increased lung lucency.'), Score: 0.7191
+('Normal retroesophageal space.', 'Increased retroesophageal space.'), Score: 0.7188
+('Normal lung parenchyma.', 'Decreased lung parenchyma with increased interstitial markings.'), Score: 0.7169
+('Normal mediastinal contours.', 'Mediastinal shift or distortion secondary to lung changes.'), Score: 0.7169
+('Normal retrosternal space.', 'Increased retrosternal space.'), Score: 0.7160
+('Normal pulmonary artery size.', 'Prominent pulmonary arteries with distal attenuation.'), Score: 0.7150
+('No evidence of hyperlucency.', 'Presence of hyperlucent lung zones.'), Score: 0.7143
+('Normal bronchial wall thickness.', 'Thickened bronchial walls.'), Score: 0.7133
+('Normal pulmonary vasculature.', 'Diminished pulmonary vasculature.'), Score: 0.7129
+('No evidence of hyperlucency.', 'Increased lung lucency bilaterally.'), Score: 0.7115
+('No significant bronchial wall thickening.', 'Bronchial wall thickening and distortion.'), Score: 0.7112
+('Normal lung parenchyma texture.', 'Coarse lung parenchyma texture with areas of lucency.'), Score: 0.7110
+('No evidence of hyperinflation.', 'Evidence of hyperinflation with flattened diaphragms and increased retrosternal airspace.'), Score: 0.7107
+('Normal vascular markings.', 'Decreased vascular markings in the lung periphery.'), Score: 0.7098
+('Normal lung parenchyma texture.', 'Decreased lung parenchyma texture with areas of lucency.'), Score: 0.7098
+('No signs of bronchial wall thickening.', 'Bronchial wall thickening.'), Score: 0.7092
+('Normal mediastinal width.', 'Widened mediastinum, potentially due to air trapping.'), Score: 0.7085
+('Normal hilar prominence.', 'Reduced hilar vascularity and prominence.'), Score: 0.7080
+('Normal mediastinum width.', 'Widened mediastinum.'), Score: 0.7079
+('No evidence of bullae or blebs.', 'Presence of bullae or blebs in the lung parenchyma.'), Score: 0.7078
+('Normal cardiac silhouette.', 'Flattened cardiac silhouette.'), Score: 0.7075
+('No evidence of bronchial wall thickening.', 'Visible bronchial wall thickening and distortion.'), Score: 0.7072
+('Normal costophrenic angles.', 'Blunted costophrenic angles due to basilar emphysema or fluid accumulation.'), Score: 0.7071
+('Normal mediastinal contours.', 'Mediastinal shift may be observed in severe cases.'), Score: 0.7067
+('No evidence of hyperlucency.', 'Generalized hyperlucency of the lung fields.'), Score: 0.7066
+('Normal appearance of the hemidiaphragms.', 'Depressed hemidiaphragms with increased lung fields.'), Score: 0.7065
+('Normal lung field density.', 'Decreased lung field density, suggestive of air trapping.'), Score: 0.7058
+('No evidence of bronchial cuffing.', 'Bronchial cuffing and thickening, especially in the lower lobes.'), Score: 0.7048
+('Normal lung field density.', 'Decreased lung field density, indicating air trapping.'), Score: 0.7045
+('Normal cardiac silhouette.', 'Globular cardiac silhouette.'), Score: 0.7045
+('Normal retrocardiac space.', 'Increased retrocardiac space.'), Score: 0.7037
+('Mediastinum is of normal width.', 'Widened mediastinum potentially due to cardiac enlargement secondary to pulmonary hypertension.'), Score: 0.7035
+('Normal diaphragmatic contour.', 'Flattened diaphragmatic contour bilaterally.'), Score: 0.7030
+('No significant interstitial markings.', 'Increased interstitial markings indicating inflammation or fibrosis.'), Score: 0.7020
+('Normal pulmonary artery size.', 'Enlarged pulmonary artery.'), Score: 0.7017
+('Normal lung parenchyma texture.', 'Decreased lung parenchyma texture with areas of reticular opacities.'), Score: 0.7017
+('Normal costal cartilage.', 'Destructive changes in costal cartilage.'), Score: 0.7015
+('Normal hilar prominence.', 'Reduced hilar prominence.'), Score: 0.7014
+('Normal mediastinal width.', 'Widened mediastinum.'), Score: 0.7013
+('Normal apex-to-costophrenic angle distance.', 'Increased apex-to-costophrenic angle distance.'), Score: 0.7007
+('Normal lung vascular markings.', 'Decreased peripheral lung vascular markings.'), Score: 0.7006
+('Normal cardiac silhouette size.', 'Increased cardiac silhouette size with emphysematous changes.'), Score: 0.7004
+('Clear mediastinal contours.', 'Widened mediastinum.'), Score: 0.6998
+('Normal lung parenchyma texture.', 'Decreased lung parenchyma texture with increased lucency.'), Score: 0.6997
+('Normal lung field density.', 'Decreased lung field density with hyperlucency.'), Score: 0.6995
+('No pleural effusions are present.', 'Possible subtle pleural effusions secondary to complications.'), Score: 0.6984
+('No evidence of subcutaneous emphysema.', 'Subcutaneous emphysema, indicating air leakage from the lungs.'), Score: 0.6978
+('Hilar vessels are normal in size.', 'Prominent hilar vessels due to pulmonary hypertension.'), Score: 0.6973
+('Diaphragm is smooth and well-defined.', 'Flattened diaphragmatic domes with decreased costophrenic angle excursion.'), Score: 0.6967
+('Normal esophageal contour.', 'Possible esophageal dilation due to increased intrathoracic pressure.'), Score: 0.6956
+('No evidence of pulmonary edema.', 'Signs of pulmonary edema secondary to heart failure.'), Score: 0.6928
+('Normal heart border sharpness.', 'Blurred heart borders due to surrounding emphysematous lung.'), Score: 0.6923
+('Normal diaphragmatic excursion.', 'Reduced diaphragmatic excursion.'), Score: 0.6921
+('No evidence of subcutaneous emphysema.', 'Presence of subcutaneous emphysema.'), Score: 0.6919
+('No evidence of bronchial wall thickening.', 'Visible bronchial wall thickening and dilation.'), Score: 0.6916
+('Normal cardiac-to-thoracic ratio.', 'Increased cardiac-to-thoracic ratio, potentially indicating right ventricular enlargement.'), Score: 0.6908
+('Normal apical lung volume.', 'Increased apical lung volume with apical capping.'), Score: 0.6907
+('No evidence of air bronchograms.', 'Presence of air bronchograms within areas of consolidation or hyperinflation.'), Score: 0.6901
+('No evidence of increased anterior-posterior diameter of the chest.', 'Increased anterior-posterior diameter of the chest (barrel chest).'), Score: 0.6897
+('No evidence of fibrosis.', 'Destruction of alveolar walls and airspace enlargement.'), Score: 0.6884
+('Normal mediastinal contours.', 'Mediastinal shift.'), Score: 0.6883
+('Normal pleural surfaces.', 'Pleural thickening or bullae on pleural surfaces.'), Score: 0.6883
+('Normal lung apices.', 'Apical bullae or blebs.'), Score: 0.6876
+('No evidence of hyperlucency.', 'Generalized hyperlucency of the lungs.'), Score: 0.6857
+('Normal costophrenic angles.', 'Blunted costophrenic angles.'), Score: 0.6841
+('Normal appearance of the lung apices.', 'Hyperlucency of the lung apices with flattened diaphragms.'), Score: 0.6839
+('No evidence of paraseptal emphysema.', 'Presence of paraseptal emphysema with small subpleural bullae.'), Score: 0.6822
+('Normal pulmonary veins.', 'Prominent pulmonary veins.'), Score: 0.6806
+('No evidence of bullae.', 'Presence of bullae or blebs in the lung parenchyma.'), Score: 0.6805
+('Heart size within normal limits.', 'Increased retrosternal airspace.'), Score: 0.6795
+('Hilar structures appear normal in size and position.', 'Prominent hilar vessels and lymph nodes.'), Score: 0.6768
+('Normal heart border.', 'Right heart border obscuration.'), Score: 0.6761
+('Normal chest wall thickness.', 'Increased chest wall thickness due to chronic air trapping.'), Score: 0.6758
+('No evidence of pneumothorax.', 'Presence of a small pneumothorax, potentially secondary to ruptured bullae.'), Score: 0.6756
+('Normal heart-to-lung ratio.', 'Decreased heart-to-lung ratio.'), Score: 0.6754
+('No evidence of skin changes.', 'Skin changes related to chronic hypoxia.'), Score: 0.6747
+('No evidence of paraseptal emphysema.', 'Presence of paraseptal emphysema with subtle bullae adjacent to pleural surfaces.'), Score: 0.6744
+('No evidence of bullae or blebs.', 'Presence of bullae or blebs.'), Score: 0.6736
+('No evidence of aspiration.', 'Signs of aspiration pneumonia.'), Score: 0.6729
+('Normal pulmonary vascular markings.', 'Diminished pulmonary vascular markings.'), Score: 0.6725
+('Normal vascular pedicle width.', 'Widened vascular pedicle suggesting pulmonary hypertension.'), Score: 0.6707
+('No evidence of increased lucency.', 'Increased lung lucency indicating air trapping.'), Score: 0.6705
+('No signs of flattened diaphragm.', 'Flattened diaphragm indicating chronic air trapping.'), Score: 0.6704
+('No evidence of paraseptal emphysema.', 'Paraseptal emphysema with subpleural bullae.'), Score: 0.6699
+('Normal lung parenchyma texture.', 'Decreased lung markings or areas of lucency.'), Score: 0.6694
+('Normal appearance of the lung apices.', 'Hyperlucency of the lung apices, indicative of air trapping.'), Score: 0.6669
+('Normal heart border sharpness.', 'Obscured heart border due to surrounding emphysematous lung.'), Score: 0.6668
+('Normal lung field clarity.', 'Increased lung field lucency with diminished vascularity.'), Score: 0.6662
+('No evidence of flattened intercostal spaces.', 'Depressed intercostal spaces.'), Score: 0.6652
+('Normal cardiac silhouette size.', 'Possible cardiomegaly secondary to cor pulmonale.'), Score: 0.6651
+('No evidence of pulmonary congestion.', 'Vascular redistribution suggestive of early pulmonary congestion.'), Score: 0.6641
+('Normal lung field density.', 'Diffuse hyperlucency of the lung fields.'), Score: 0.6635
+('Normal pulmonary vein size.', 'Prominent pulmonary veins.'), Score: 0.6621
+('Clear costophrenic angles.', 'Obscured costophrenic angles.'), Score: 0.6614
+('Hilar structures are normal in size and position.', 'Prominent hilar structures suggesting pulmonary hypertension or vascular congestion.'), Score: 0.6612
+('Normal appearance of the trachea.', 'Flattened or distorted trachea.'), Score: 0.6612
+('Clear costal cartilage.', 'Erosion or irregularity of costal cartilage.'), Score: 0.6600
+('Normal pulmonary vasculature.', 'Diminished peripheral pulmonary vasculature.'), Score: 0.6580
+('No evidence of paraseptal emphysema.', 'Paraseptal emphysema with distinct bullae.'), Score: 0.6562
+('Normal retrosternal airspace.', 'Increased retrosternal airspace.'), Score: 0.6550
+('Normal hemidiaphragm position.', 'Depressed hemidiaphragms with flattened diaphragmatic contours.'), Score: 0.6531
+('No signs of infection.', 'Evidence of secondary infection, such as pneumonia.'), Score: 0.6507
+('Normal chest wall thickness.', 'Increased anteroposterior diameter of the chest.'), Score: 0.6472
+('No evidence of bullae.', 'Presence of bullae and blebs.'), Score: 0.6460
+('Hilar structures are normal in size and position.', 'Prominent hilar vessels.'), Score: 0.6424
+('Sharp costophrenic angles.', 'Blunted costophrenic angles.'), Score: 0.6413
+('No evidence of bronchial wall thickening.', 'Visible bronchial wall thickening.'), Score: 0.6411
+('Normal lung parenchyma.', 'Increased interstitial markings due to paraseptal emphysema.'), Score: 0.6376
+('Normal lung field vascularity.', 'Decreased lung field vascularity, particularly in the periphery.'), Score: 0.6374
+('Sharp diaphragmatic contours.', 'Flattened diaphragmatic contours.'), Score: 0.6359
+('No evidence of prior surgical changes.', 'Signs of prior lung volume reduction surgery.'), Score: 0.6351
+('Normal pleural surfaces.', 'Pleural thickening or adhesions.'), Score: 0.6343
+('Normal bronchial wall thickness.', 'Thinning and distortion of bronchial walls.'), Score: 0.6335
+('Normal diaphragmatic contour.', 'Flattened diaphragmatic contour.'), Score: 0.6332
+('Normal appearance of the hila.', 'Hilar prominence.'), Score: 0.6322
+('No evidence of bullae or blebs.', 'Presence of bullae or blebs, especially in the upper lobes.'), Score: 0.6308
+('Mediastinum within normal contours.', 'Widened mediastinum potentially indicating cardiac enlargement or other pathology.'), Score: 0.6283
+('Normal pleural surfaces.', 'Presence of pleural blebs or bullae.'), Score: 0.6277
+('No evidence of subcutaneous emphysema.', 'Subcutaneous emphysema present.'), Score: 0.6272
+('Clear costophrenic angles.', 'Blunting of costophrenic angles due to fluid or scarring.'), Score: 0.6267
+('Normal lung fields with sharp costophrenic angles.', 'Flattened diaphragms and hyperinflated lungs.'), Score: 0.6260
+('Normal vertebral column.', 'Possible vertebral compression fractures.'), Score: 0.6258
+('Normal appearance of the abdominal organs visible on the image.', 'Diaphragmatic flattening impacting abdominal organ visualization.'), Score: 0.6243
+('No evidence of bullae or blebs.', 'Presence of bullae or blebs, particularly in the upper lobes.'), Score: 0.6219
+('Sharp cardiomediastinal borders.', 'Blurred cardiomediastinal borders.'), Score: 0.6207
+('No evidence of interstitial markings.', 'Increased interstitial markings with a reticular pattern.'), Score: 0.6174
+('No evidence of pneumothorax.', 'Apical pneumothorax may be present due to bullae rupture.'), Score: 0.6171
+('Normal cardiac silhouette size.', 'Increased cardiac silhouette size due to hyperinflation.'), Score: 0.6171
+('Normal diaphragmatic contour.', 'Flattened diaphragmatic domes.'), Score: 0.6159
+('Clear costophrenic angles.', 'Obscuration of costophrenic angles.'), Score: 0.6155
+('No evidence of pneumoconiosis.', 'Signs of pneumoconiosis coexisting with emphysema.'), Score: 0.6154
+('Normal cardiac silhouette size.', 'Increased cardiac silhouette size due to lung hyperinflation.'), Score: 0.6141
+('No evidence of bullae.', 'Presence of bullae or blebs.'), Score: 0.6138
+('Clear costophrenic angles.', 'Blunted costophrenic angles.'), Score: 0.6116
+('No significant peribronchial thickening.', 'Peribronchial cuffing may be present.'), Score: 0.6110
+('Normal diaphragmatic contour.', 'Flattened diaphragmatic contour with decreased costophrenic angle.'), Score: 0.6096
+('No significant interstitial markings.', 'Reduced interstitial markings.'), Score: 0.6076
+('Normal soft tissue appearance.', 'Subcutaneous emphysema may be present.'), Score: 0.6075
+('No evidence of hyperinflation.', 'Evidence of hyperinflation with flattened diaphragm.'), Score: 0.6037
+('Clear costophrenic angles.', 'Obscuration of costophrenic angles due to hyperinflation.'), Score: 0.6034
+('Normal cardiac silhouette size.', 'Globular or hyperinflated cardiac silhouette.'), Score: 0.6021
+('Normal pulmonary vasculature.', 'Decreased pulmonary vascular markings.'), Score: 0.6011
+('Normal cardiac silhouette size.', 'Decreased cardiac silhouette size secondary to lung hyperinflation.'), Score: 0.6010
+
+Iteration 40:
+('Normal appearance of the lung parenchyma.', 'Destruction of the lung parenchyma with increased interstitial markings.'), Score: 0.7546
+('Normal mediastinal width.', 'Increased mediastinal width.'), Score: 0.7511
+('Normal hilar prominence.', 'Increased hilar prominence.'), Score: 0.7470
+('Normal mediastinal fat.', 'Increased mediastinal fat stranding.'), Score: 0.7452
+('Normal vascular markings.', 'Decreased vascular markings due to lung destruction.'), Score: 0.7447
+('Normal lung field homogeneity.', 'Heterogeneous lung field with areas of increased and decreased density.'), Score: 0.7438
+('Normal cardiac silhouette.', 'Increased cardiac silhouette with possible cardiomegaly.'), Score: 0.7393
+('No evidence of bronchial wall thickening.', 'Bronchial wall thickening and distortion.'), Score: 0.7369
+('No evidence of interstitial edema.', 'Interstitial thickening.'), Score: 0.7358
+('No evidence of air bronchograms.', 'Presence of air bronchograms within areas of consolidation.'), Score: 0.7355
+('Normal hilar prominence.', 'Hilar prominence.'), Score: 0.7336
+('Normal costophrenic angles are sharp and defined.', 'Blunted costophrenic angles suggesting pleural effusion or fluid accumulation.'), Score: 0.7328
+('Normal cardiac silhouette size.', 'Increased cardiac silhouette size due to pulmonary hypertension.'), Score: 0.7324
+('Normal peripheral lung density.', 'Areas of decreased peripheral lung density with possible bullous changes.'), Score: 0.7306
+('No signs of bronchial wall thickening.', 'Bronchial wall thickening, potentially from chronic inflammation.'), Score: 0.7302
+('No evidence of bronchial wall thickening.', 'Bronchial wall thickening.'), Score: 0.7301
+('Normal cardiac silhouette size.', 'Increased cardiac silhouette size due to right ventricular hypertrophy.'), Score: 0.7300
+('Normal pulmonary artery size.', 'Enlarged pulmonary artery with central accentuation of vessels.'), Score: 0.7283
+('No evidence of bronchial wall thickening.', 'Bronchial wall thickening and dilation.'), Score: 0.7281
+('Lung volumes appear normal.', 'Significantly increased lung volumes.'), Score: 0.7270
+('Normal appearance of the pulmonary arteries.', 'Enlarged pulmonary arteries suggesting pulmonary hypertension.'), Score: 0.7269
+('No evidence of hyperlucency.', 'Increased lung lucency, suggestive of air trapping.'), Score: 0.7269
+('No evidence of hyperinflation.', 'Evidence of hyperinflation with increased retrosternal airspace.'), Score: 0.7265
+('Normal lung expansion.', 'Reduced lung expansion with evidence of air trapping.'), Score: 0.7257
+('No pleural effusions.', 'Presence of small pleural effusions, potentially related to underlying lung disease.'), Score: 0.7256
+('Normal chest wall thickness.', 'Increased chest wall thickness.'), Score: 0.7255
+('No pleural effusions.', 'Pleural effusions may be present in advanced cases.'), Score: 0.7255
+('Normal pulmonary artery size.', 'Enlarged pulmonary artery, indicating pulmonary hypertension.'), Score: 0.7252
+('Normal hilar prominence.', 'Increased hilar prominence due to vascular congestion.'), Score: 0.7234
+('Normal pulmonary artery size.', 'Enlarged pulmonary artery with central accentuation.'), Score: 0.7222
+('Normal mediastinal width.', 'Increased mediastinal width due to airway enlargement.'), Score: 0.7218
+('No evidence of hyperlucency.', 'Generalized increased lung lucency indicating air trapping.'), Score: 0.7212
+('Normal cardiac angle.', 'Reduced cardiac angle.'), Score: 0.7210
+('Normal pulmonary artery size.', 'Enlarged pulmonary artery, suggestive of pulmonary hypertension.'), Score: 0.7208
+('Normal lung field density.', 'Decreased lung field density with increased lucency.'), Score: 0.7205
+('Normal pulmonary parenchyma texture.', 'Destructive changes in the pulmonary parenchyma, with areas of lucency and bullae.'), Score: 0.7197
+('Normal peripheral vascular markings.', 'Decreased peripheral vascular markings.'), Score: 0.7192
+('No evidence of hyperlucency.', 'Generalized increased lung lucency.'), Score: 0.7191
+('No evidence of pleural effusion.', 'Presence of small pleural effusions secondary to emphysema complications.'), Score: 0.7189
+('Normal retroesophageal space.', 'Increased retroesophageal space.'), Score: 0.7188
+('Normal pulmonary artery size.', 'Enlarged pulmonary artery suggesting pulmonary hypertension.'), Score: 0.7172
+('Normal lung parenchyma.', 'Decreased lung parenchyma with increased interstitial markings.'), Score: 0.7169
+('Normal mediastinal contours.', 'Mediastinal shift or distortion secondary to lung changes.'), Score: 0.7169
+('Normal lung volume.', 'Increased lung volumes with evidence of air trapping.'), Score: 0.7167
+('Normal retrosternal space.', 'Increased retrosternal space.'), Score: 0.7160
+('Normal pulmonary artery size.', 'Prominent pulmonary arteries with distal attenuation.'), Score: 0.7150
+('Normal pleural surfaces.', 'Pleural thickening or adhesions potentially secondary to chronic inflammation.'), Score: 0.7144
+('No evidence of hyperlucency.', 'Presence of hyperlucent lung zones.'), Score: 0.7143
+('Normal bronchial wall thickness.', 'Thickened bronchial walls.'), Score: 0.7133
+('Normal pulmonary vasculature.', 'Diminished pulmonary vasculature.'), Score: 0.7129
+('Normal cardiac silhouette size.', 'Increased cardiac silhouette size potentially related to cor pulmonale.'), Score: 0.7117
+('No evidence of hyperlucency.', 'Increased lung lucency bilaterally.'), Score: 0.7115
+('Normal lung parenchyma.', 'Destruction of lung parenchyma with reticular patterning.'), Score: 0.7114
+('No significant bronchial wall thickening.', 'Bronchial wall thickening and distortion.'), Score: 0.7112
+('Normal lung parenchyma texture.', 'Coarse lung parenchyma texture with areas of lucency.'), Score: 0.7110
+('No evidence of hyperinflation.', 'Evidence of hyperinflation with flattened diaphragms and increased retrosternal airspace.'), Score: 0.7107
+('Normal vascular markings.', 'Decreased vascular markings in the lung periphery.'), Score: 0.7098
+('Normal lung parenchyma texture.', 'Decreased lung parenchyma texture with areas of lucency.'), Score: 0.7098
+('No signs of bronchial wall thickening.', 'Bronchial wall thickening.'), Score: 0.7092
+('Normal vascular markings at lung bases.', 'Diminished vascular markings at lung bases indicating reduced blood flow.'), Score: 0.7091
+('No evidence of pleural effusion.', 'Presence of small pleural effusions.'), Score: 0.7086
+('Normal mediastinal width.', 'Widened mediastinum, potentially due to air trapping.'), Score: 0.7085
+('Normal hilar prominence.', 'Reduced hilar vascularity and prominence.'), Score: 0.7080
+('Normal mediastinum width.', 'Widened mediastinum.'), Score: 0.7079
+('No evidence of bullae or blebs.', 'Presence of bullae or blebs in the lung parenchyma.'), Score: 0.7078
+('Normal cardiac silhouette.', 'Flattened cardiac silhouette.'), Score: 0.7075
+('No evidence of bronchial wall thickening.', 'Visible bronchial wall thickening and distortion.'), Score: 0.7072
+('Normal costophrenic angles.', 'Blunted costophrenic angles due to basilar emphysema or fluid accumulation.'), Score: 0.7071
+('Normal mediastinal contours.', 'Mediastinal shift may be observed in severe cases.'), Score: 0.7067
+('No evidence of hyperlucency.', 'Generalized hyperlucency of the lung fields.'), Score: 0.7066
+('Normal appearance of the hemidiaphragms.', 'Depressed hemidiaphragms with increased lung fields.'), Score: 0.7065
+('Normal lung field density.', 'Decreased lung field density, suggestive of air trapping.'), Score: 0.7058
+('Normal lung base appearance.', 'Hyperlucent lung bases.'), Score: 0.7058
+('No evidence of bronchial cuffing.', 'Bronchial cuffing and thickening, especially in the lower lobes.'), Score: 0.7048
+('Normal lung field density.', 'Decreased lung field density, indicating air trapping.'), Score: 0.7045
+('Normal cardiac silhouette.', 'Globular cardiac silhouette.'), Score: 0.7045
+('Normal retrocardiac space.', 'Increased retrocardiac space.'), Score: 0.7037
+('Mediastinum is of normal width.', 'Widened mediastinum potentially due to cardiac enlargement secondary to pulmonary hypertension.'), Score: 0.7035
+('Normal diaphragmatic contour.', 'Flattened diaphragmatic contour bilaterally.'), Score: 0.7030
+('No significant interstitial markings.', 'Increased interstitial markings indicating inflammation or fibrosis.'), Score: 0.7020
+('Normal pulmonary artery size.', 'Enlarged pulmonary artery.'), Score: 0.7017
+('Normal lung parenchyma texture.', 'Decreased lung parenchyma texture with areas of reticular opacities.'), Score: 0.7017
+('Normal costal cartilage.', 'Destructive changes in costal cartilage.'), Score: 0.7015
+('Normal hilar prominence.', 'Reduced hilar prominence.'), Score: 0.7014
+('Normal mediastinal width.', 'Widened mediastinum.'), Score: 0.7013
+('Normal apex-to-costophrenic angle distance.', 'Increased apex-to-costophrenic angle distance.'), Score: 0.7007
+('Normal lung vascular markings.', 'Decreased peripheral lung vascular markings.'), Score: 0.7006
+('Normal cardiac silhouette size.', 'Increased cardiac silhouette size with emphysematous changes.'), Score: 0.7004
+('Clear mediastinal contours.', 'Widened mediastinum.'), Score: 0.6998
+('Normal lung parenchyma texture.', 'Decreased lung parenchyma texture with increased lucency.'), Score: 0.6997
+('Normal lung field density.', 'Decreased lung field density with hyperlucency.'), Score: 0.6995
+('Normal cardiac size and shape.', 'Increased cardiac diameter with a pear-shaped cardiac silhouette.'), Score: 0.6989
+('No pleural effusions are present.', 'Possible subtle pleural effusions secondary to complications.'), Score: 0.6984
+('No evidence of subcutaneous emphysema.', 'Subcutaneous emphysema, indicating air leakage from the lungs.'), Score: 0.6978
+('Hilar vessels are normal in size.', 'Prominent hilar vessels due to pulmonary hypertension.'), Score: 0.6973
+('Diaphragm is smooth and well-defined.', 'Flattened diaphragmatic domes with decreased costophrenic angle excursion.'), Score: 0.6967
+('Normal esophageal contour.', 'Possible esophageal dilation due to increased intrathoracic pressure.'), Score: 0.6956
+('No evidence of pulmonary edema.', 'Signs of pulmonary edema secondary to heart failure.'), Score: 0.6928
+('Normal apicobasal lung gradient.', 'Loss of apicobasal lung gradient.'), Score: 0.6928
+('Normal costophrenic angles are sharp.', 'Blunted costophrenic angles.'), Score: 0.6923
+('Normal heart border sharpness.', 'Blurred heart borders due to surrounding emphysematous lung.'), Score: 0.6923
+('Normal diaphragmatic excursion.', 'Reduced diaphragmatic excursion.'), Score: 0.6921
+('No evidence of subcutaneous emphysema.', 'Presence of subcutaneous emphysema.'), Score: 0.6919
+('No evidence of bronchial wall thickening.', 'Visible bronchial wall thickening and dilation.'), Score: 0.6916
+('Normal cardiac-to-thoracic ratio.', 'Increased cardiac-to-thoracic ratio, potentially indicating right ventricular enlargement.'), Score: 0.6908
+('Normal apical lung volume.', 'Increased apical lung volume with apical capping.'), Score: 0.6907
+('No evidence of air bronchograms.', 'Presence of air bronchograms within areas of consolidation or hyperinflation.'), Score: 0.6901
+('No evidence of increased anterior-posterior diameter of the chest.', 'Increased anterior-posterior diameter of the chest (barrel chest).'), Score: 0.6897
+('No evidence of fibrosis.', 'Destruction of alveolar walls and airspace enlargement.'), Score: 0.6884
+('Normal mediastinal contours.', 'Mediastinal shift.'), Score: 0.6883
+('Normal pleural surfaces.', 'Pleural thickening or bullae on pleural surfaces.'), Score: 0.6883
+('Normal lung apices.', 'Apical bullae or blebs.'), Score: 0.6876
+('No evidence of hyperlucency.', 'Generalized hyperlucency of the lungs.'), Score: 0.6857
+('Normal pulmonary vasculature.', 'Diminished pulmonary vasculature in the periphery.'), Score: 0.6843
+('Normal costophrenic angles.', 'Blunted costophrenic angles.'), Score: 0.6841
+('Normal appearance of the lung apices.', 'Hyperlucency of the lung apices with flattened diaphragms.'), Score: 0.6839
+('Normal lung field pattern.', 'Diffuse increased lung markings with a reticular pattern.'), Score: 0.6831
+('No evidence of paraseptal emphysema.', 'Presence of paraseptal emphysema with small subpleural bullae.'), Score: 0.6822
+('Normal pulmonary veins.', 'Prominent pulmonary veins.'), Score: 0.6806
+('No evidence of bullae.', 'Presence of bullae or blebs in the lung parenchyma.'), Score: 0.6805
+('Heart size within normal limits.', 'Increased retrosternal airspace.'), Score: 0.6795
+('No evidence of hyperlucency.', 'Increased lung lucency, particularly in the upper lobes.'), Score: 0.6792
+('No evidence of pleural thickening.', 'Pleural thickening or bullae adjacent to the pleura.'), Score: 0.6789
+('Hilar structures appear normal in size and position.', 'Prominent hilar vessels and lymph nodes.'), Score: 0.6768
+('Normal peripheral lung markings.', 'Sparse peripheral lung markings with areas of lucency.'), Score: 0.6761
+('Normal heart border.', 'Right heart border obscuration.'), Score: 0.6761
+('Normal chest wall thickness.', 'Increased chest wall thickness due to chronic air trapping.'), Score: 0.6758
+('No evidence of pneumothorax.', 'Presence of a small pneumothorax, potentially secondary to ruptured bullae.'), Score: 0.6756
+('Normal heart-to-lung ratio.', 'Decreased heart-to-lung ratio.'), Score: 0.6754
+('No evidence of skin changes.', 'Skin changes related to chronic hypoxia.'), Score: 0.6747
+('Normal costophrenic angles.', 'Blunted costophrenic angles secondary to air trapping.'), Score: 0.6747
+('No evidence of paraseptal emphysema.', 'Presence of paraseptal emphysema with subtle bullae adjacent to pleural surfaces.'), Score: 0.6744
+('No evidence of bullae or blebs.', 'Presence of bullae or blebs.'), Score: 0.6736
+('No evidence of aspiration.', 'Signs of aspiration pneumonia.'), Score: 0.6729
+('Normal pulmonary vascular markings.', 'Diminished pulmonary vascular markings.'), Score: 0.6725
+('Clear costophrenic angles.', 'Blunted costophrenic angles due to fluid or lung changes.'), Score: 0.6724
+('No evidence of bullous disease.', 'Presence of bullous disease with large, air-filled spaces in the lungs.'), Score: 0.6707
+('Normal vascular pedicle width.', 'Widened vascular pedicle suggesting pulmonary hypertension.'), Score: 0.6707
+('No evidence of increased lucency.', 'Increased lung lucency indicating air trapping.'), Score: 0.6705
+('No signs of flattened diaphragm.', 'Flattened diaphragm indicating chronic air trapping.'), Score: 0.6704
+('No evidence of paraseptal emphysema.', 'Paraseptal emphysema with subpleural bullae.'), Score: 0.6699
+('Normal lung parenchyma texture.', 'Decreased lung markings or areas of lucency.'), Score: 0.6694
+('Normal vascular markings are prominent.', 'Diminished and attenuated vascular markings.'), Score: 0.6690
+('Normal appearance of the lung apices.', 'Hyperlucency of the lung apices, indicative of air trapping.'), Score: 0.6669
+('Normal heart border sharpness.', 'Obscured heart border due to surrounding emphysematous lung.'), Score: 0.6668
+('Normal lung field clarity.', 'Increased lung field lucency with diminished vascularity.'), Score: 0.6662
+('No evidence of flattened intercostal spaces.', 'Depressed intercostal spaces.'), Score: 0.6652
+('Normal cardiac silhouette size.', 'Possible cardiomegaly secondary to cor pulmonale.'), Score: 0.6651
+('No evidence of pulmonary congestion.', 'Vascular redistribution suggestive of early pulmonary congestion.'), Score: 0.6641
+('Normal lung field density.', 'Diffuse hyperlucency of the lung fields.'), Score: 0.6635
+('Normal lung apex position.', 'Descending lung apices with flattened hemidiaphragms.'), Score: 0.6629
+('Normal thoracic shape.', 'Barrel-shaped chest.'), Score: 0.6627
+('Normal pulmonary vein size.', 'Prominent pulmonary veins.'), Score: 0.6621
+('No evidence of parabulbar densities.', 'Presence of parabulbar densities indicating bullous emphysema.'), Score: 0.6614
+('Clear costophrenic angles.', 'Obscured costophrenic angles.'), Score: 0.6614
+('Hilar structures are normal in size and position.', 'Prominent hilar structures suggesting pulmonary hypertension or vascular congestion.'), Score: 0.6612
+('Normal appearance of the trachea.', 'Flattened or distorted trachea.'), Score: 0.6612
+('Clear costal cartilage.', 'Erosion or irregularity of costal cartilage.'), Score: 0.6600
+('No evidence of subcutaneous emphysema.', 'Presence of subcutaneous emphysema around the chest wall.'), Score: 0.6585
+('Normal pulmonary vasculature.', 'Diminished peripheral pulmonary vasculature.'), Score: 0.6580
+('No evidence of paraseptal emphysema.', 'Paraseptal emphysema with distinct bullae.'), Score: 0.6562
+('Normal retrosternal airspace.', 'Increased retrosternal airspace.'), Score: 0.6550
+('No evidence of subcutaneous emphysema.', 'Presence of subcutaneous emphysema with air in the soft tissues.'), Score: 0.6531
+('Normal hemidiaphragm position.', 'Depressed hemidiaphragms with flattened diaphragmatic contours.'), Score: 0.6531
+('No signs of infection.', 'Evidence of secondary infection, such as pneumonia.'), Score: 0.6507
+('Normal chest wall thickness.', 'Increased anteroposterior diameter of the chest.'), Score: 0.6472
+('No evidence of bullae.', 'Presence of bullae and blebs.'), Score: 0.6460
+('Normal appearance of the trachea.', 'Flattened trachea.'), Score: 0.6449
+('Hilar structures are normal in size and position.', 'Prominent hilar vessels.'), Score: 0.6424
+('Sharp costophrenic angles.', 'Blunted costophrenic angles.'), Score: 0.6413
+('No evidence of bronchial wall thickening.', 'Visible bronchial wall thickening.'), Score: 0.6411
+('Normal pulmonary artery size.', 'Enlarged pulmonary arteries with central pruning.'), Score: 0.6394
+('Normal lung parenchyma.', 'Increased interstitial markings due to paraseptal emphysema.'), Score: 0.6376
+('Normal lung field vascularity.', 'Decreased lung field vascularity, particularly in the periphery.'), Score: 0.6374
+('Sharp diaphragmatic contours.', 'Flattened diaphragmatic contours.'), Score: 0.6359
+('No evidence of prior surgical changes.', 'Signs of prior lung volume reduction surgery.'), Score: 0.6351
+('Normal pleural surfaces.', 'Pleural thickening or adhesions.'), Score: 0.6343
+('Normal bronchial wall thickness.', 'Thinning and distortion of bronchial walls.'), Score: 0.6335
+('Normal diaphragmatic contour.', 'Flattened diaphragmatic contour.'), Score: 0.6332
+('No evidence of apical capping.', 'Apical capping with air trapping.'), Score: 0.6329
+('Normal mediastinum width.', 'Widened mediastinum, potentially due to bullae or hyperinflation.'), Score: 0.6328
+('Normal appearance of the hila.', 'Hilar prominence.'), Score: 0.6322
+('No evidence of bullae or blebs.', 'Presence of bullae or blebs, especially in the upper lobes.'), Score: 0.6308
+('Mediastinum within normal contours.', 'Widened mediastinum potentially indicating cardiac enlargement or other pathology.'), Score: 0.6283
+('Normal pleural surfaces.', 'Presence of pleural blebs or bullae.'), Score: 0.6277
+('No evidence of subcutaneous emphysema.', 'Subcutaneous emphysema present.'), Score: 0.6272
+('Clear costophrenic angles.', 'Blunting of costophrenic angles due to fluid or scarring.'), Score: 0.6267
+('Normal lung fields with sharp costophrenic angles.', 'Flattened diaphragms and hyperinflated lungs.'), Score: 0.6260
+('Normal vertebral column.', 'Possible vertebral compression fractures.'), Score: 0.6258
+('No evidence of subcutaneous emphysema.', 'Subcutaneous emphysema around the chest wall.'), Score: 0.6250
+('Normal appearance of the abdominal organs visible on the image.', 'Diaphragmatic flattening impacting abdominal organ visualization.'), Score: 0.6243
+('No evidence of interstitial markings.', 'Increased interstitial markings.'), Score: 0.6235
+('No evidence of bullae or blebs.', 'Presence of bullae or blebs, particularly in the upper lobes.'), Score: 0.6219
+('Sharp cardiomediastinal borders.', 'Blurred cardiomediastinal borders.'), Score: 0.6207
+('No evidence of interstitial markings.', 'Increased interstitial markings with a reticular pattern.'), Score: 0.6174
+('No evidence of pneumothorax.', 'Apical pneumothorax may be present due to bullae rupture.'), Score: 0.6171
+('Normal cardiac silhouette size.', 'Increased cardiac silhouette size due to hyperinflation.'), Score: 0.6171
+('Normal diaphragmatic contour.', 'Flattened diaphragmatic domes.'), Score: 0.6159
+('Clear costophrenic angles.', 'Obscuration of costophrenic angles.'), Score: 0.6155
+('Normal lung field vascularity.', 'Diminished peripheral vascularity with central vascular prominence.'), Score: 0.6154
+('No evidence of pneumoconiosis.', 'Signs of pneumoconiosis coexisting with emphysema.'), Score: 0.6154
+('Normal cardiac silhouette size.', 'Increased cardiac silhouette size due to lung hyperinflation.'), Score: 0.6141
+('No evidence of bullae.', 'Presence of bullae or blebs.'), Score: 0.6138
+('Clear costophrenic angles.', 'Blunted costophrenic angles.'), Score: 0.6116
+('No significant peribronchial thickening.', 'Peribronchial cuffing may be present.'), Score: 0.6110
+('Normal diaphragmatic contour.', 'Flattened diaphragmatic contour with decreased costophrenic angle.'), Score: 0.6096
+('No significant interstitial markings.', 'Reduced interstitial markings.'), Score: 0.6076
+('Normal soft tissue appearance.', 'Subcutaneous emphysema may be present.'), Score: 0.6075
+('No evidence of increased AP diameter.', 'Increased anteroposterior (AP) diameter of the chest.'), Score: 0.6066
+('No evidence of hyperinflation.', 'Evidence of hyperinflation with flattened diaphragm.'), Score: 0.6037
+('Clear costophrenic angles.', 'Obscuration of costophrenic angles due to hyperinflation.'), Score: 0.6034
+('Normal cardiac silhouette size.', 'Globular or hyperinflated cardiac silhouette.'), Score: 0.6021
+('Normal pulmonary vasculature.', 'Decreased pulmonary vascular markings.'), Score: 0.6011
+('Normal cardiac silhouette size.', 'Decreased cardiac silhouette size secondary to lung hyperinflation.'), Score: 0.6010
+
+Iteration 50:
+('Normal appearance of the lung parenchyma.', 'Destruction of the lung parenchyma with increased interstitial markings.'), Score: 0.7546
+('Normal mediastinal width.', 'Increased mediastinal width.'), Score: 0.7511
+('Normal hilar prominence.', 'Increased hilar prominence.'), Score: 0.7470
+('Normal mediastinal fat.', 'Increased mediastinal fat stranding.'), Score: 0.7452
+('Normal vascular markings.', 'Decreased vascular markings due to lung destruction.'), Score: 0.7447
+('Normal lung field homogeneity.', 'Heterogeneous lung field with areas of increased and decreased density.'), Score: 0.7438
+('Normal peripheral lung markings.', 'Decreased peripheral lung markings due to destruction of lung tissue.'), Score: 0.7432
+('Normal cardiac silhouette.', 'Increased cardiac silhouette with possible cardiomegaly.'), Score: 0.7393
+('Normal bronchial wall thickness.', 'Thickened bronchial walls due to chronic inflammation.'), Score: 0.7385
+('No evidence of bronchial wall thickening.', 'Bronchial wall thickening and distortion.'), Score: 0.7369
+('No evidence of interstitial edema.', 'Interstitial thickening.'), Score: 0.7358
+('No evidence of air bronchograms.', 'Presence of air bronchograms within areas of consolidation.'), Score: 0.7355
+('Normal hilar prominence.', 'Hilar prominence.'), Score: 0.7336
+('Normal costophrenic angles are sharp and defined.', 'Blunted costophrenic angles suggesting pleural effusion or fluid accumulation.'), Score: 0.7328
+('Normal cardiac silhouette size.', 'Increased cardiac silhouette size due to pulmonary hypertension.'), Score: 0.7324
+('Normal vascular caliber throughout lungs.', 'Diffuse attenuation of pulmonary vessels.'), Score: 0.7322
+('Normal peripheral lung density.', 'Areas of decreased peripheral lung density with possible bullous changes.'), Score: 0.7306
+('Normal peripheral lung markings.', 'Reduced peripheral lung markings with increased lucency.'), Score: 0.7304
+('No signs of bronchial wall thickening.', 'Bronchial wall thickening, potentially from chronic inflammation.'), Score: 0.7302
+('No evidence of bronchial wall thickening.', 'Bronchial wall thickening.'), Score: 0.7301
+('Normal cardiac silhouette size.', 'Increased cardiac silhouette size due to right ventricular hypertrophy.'), Score: 0.7300
+('Normal pulmonary artery size.', 'Enlarged pulmonary artery with central accentuation of vessels.'), Score: 0.7283
+('No evidence of bronchial wall thickening.', 'Bronchial wall thickening and dilation.'), Score: 0.7281
+('No evidence of lung distortion.', 'Evidence of lung distortion and traction bronchiectasis.'), Score: 0.7277
+('Lung volumes appear normal.', 'Significantly increased lung volumes.'), Score: 0.7270
+('Normal appearance of the pulmonary arteries.', 'Enlarged pulmonary arteries suggesting pulmonary hypertension.'), Score: 0.7269
+('Normal lung markings.', 'Diminished lung markings due to alveolar destruction.'), Score: 0.7269
+('No evidence of hyperlucency.', 'Increased lung lucency, suggestive of air trapping.'), Score: 0.7269
+('No evidence of hyperinflation.', 'Evidence of hyperinflation with increased retrosternal airspace.'), Score: 0.7265
+('Normal lung expansion.', 'Reduced lung expansion with evidence of air trapping.'), Score: 0.7257
+('No pleural effusions.', 'Presence of small pleural effusions, potentially related to underlying lung disease.'), Score: 0.7256
+('Normal chest wall thickness.', 'Increased chest wall thickness.'), Score: 0.7255
+('No pleural effusions.', 'Pleural effusions may be present in advanced cases.'), Score: 0.7255
+('Normal pulmonary artery size.', 'Enlarged pulmonary artery, indicating pulmonary hypertension.'), Score: 0.7252
+('Normal lung apex appearance.', 'Hyperlucent lung apices.'), Score: 0.7236
+('Normal hilar prominence.', 'Increased hilar prominence due to vascular congestion.'), Score: 0.7234
+('Normal pulmonary artery size.', 'Enlarged pulmonary artery with central accentuation.'), Score: 0.7222
+('Normal mediastinal width.', 'Increased mediastinal width due to airway enlargement.'), Score: 0.7218
+('No evidence of hyperlucency.', 'Generalized increased lung lucency indicating air trapping.'), Score: 0.7212
+('Normal cardiac angle.', 'Reduced cardiac angle.'), Score: 0.7210
+('Normal pulmonary artery size.', 'Enlarged pulmonary artery, suggestive of pulmonary hypertension.'), Score: 0.7208
+('Normal lung field density.', 'Decreased lung field density with increased lucency.'), Score: 0.7205
+('Normal pulmonary parenchyma texture.', 'Destructive changes in the pulmonary parenchyma, with areas of lucency and bullae.'), Score: 0.7197
+('Normal peripheral vascular markings.', 'Decreased peripheral vascular markings.'), Score: 0.7192
+('No evidence of hyperlucency.', 'Generalized increased lung lucency.'), Score: 0.7191
+('No evidence of pleural effusion.', 'Presence of small pleural effusions secondary to emphysema complications.'), Score: 0.7189
+('Normal retroesophageal space.', 'Increased retroesophageal space.'), Score: 0.7188
+('Normal pulmonary artery size.', 'Enlarged pulmonary artery suggesting pulmonary hypertension.'), Score: 0.7172
+('Normal lung parenchyma.', 'Decreased lung parenchyma with increased interstitial markings.'), Score: 0.7169
+('Normal mediastinal contours.', 'Mediastinal shift or distortion secondary to lung changes.'), Score: 0.7169
+('Normal lung volume.', 'Increased lung volumes with evidence of air trapping.'), Score: 0.7167
+('Normal retrosternal space.', 'Increased retrosternal space.'), Score: 0.7160
+('Normal apical lung density.', 'Increased lucency in the apical lung regions.'), Score: 0.7155
+('Normal pulmonary artery size.', 'Prominent pulmonary arteries with distal attenuation.'), Score: 0.7150
+('Normal pleural surfaces.', 'Pleural thickening or adhesions potentially secondary to chronic inflammation.'), Score: 0.7144
+('No evidence of hyperlucency.', 'Presence of hyperlucent lung zones.'), Score: 0.7143
+('Normal bronchial wall thickness.', 'Thickened bronchial walls.'), Score: 0.7133
+('Normal pulmonary vasculature.', 'Diminished pulmonary vasculature.'), Score: 0.7129
+('Normal mediastinal width.', 'Increased mediastinal width due to air trapping.'), Score: 0.7124
+('Normal hilar prominence.', 'Increased hilar prominence due to vascular congestion and airway enlargement.'), Score: 0.7124
+('Normal cardiac silhouette size.', 'Increased cardiac silhouette size potentially related to cor pulmonale.'), Score: 0.7117
+('No evidence of hyperlucency.', 'Increased lung lucency bilaterally.'), Score: 0.7115
+('Normal lung parenchyma.', 'Destruction of lung parenchyma with reticular patterning.'), Score: 0.7114
+('No significant bronchial wall thickening.', 'Bronchial wall thickening and distortion.'), Score: 0.7112
+('Normal lung parenchyma texture.', 'Coarse lung parenchyma texture with areas of lucency.'), Score: 0.7110
+('No evidence of hyperinflation.', 'Evidence of hyperinflation with flattened diaphragms and increased retrosternal airspace.'), Score: 0.7107
+('No evidence of paraseptal emphysema.', 'Presence of paraseptal emphysema with small bullae adjacent to pleural surfaces.'), Score: 0.7104
+('Normal vascular markings.', 'Decreased vascular markings in the lung periphery.'), Score: 0.7098
+('Normal lung parenchyma texture.', 'Decreased lung parenchyma texture with areas of lucency.'), Score: 0.7098
+('No signs of bronchial wall thickening.', 'Bronchial wall thickening.'), Score: 0.7092
+('Normal vascular markings at lung bases.', 'Diminished vascular markings at lung bases indicating reduced blood flow.'), Score: 0.7091
+('No evidence of pleural effusion.', 'Presence of small pleural effusions.'), Score: 0.7086
+('Normal mediastinal width.', 'Widened mediastinum, potentially due to air trapping.'), Score: 0.7085
+('Normal hilar prominence.', 'Reduced hilar vascularity and prominence.'), Score: 0.7080
+('Normal mediastinum width.', 'Widened mediastinum.'), Score: 0.7079
+('No evidence of bullae or blebs.', 'Presence of bullae or blebs in the lung parenchyma.'), Score: 0.7078
+('Normal cardiac silhouette.', 'Flattened cardiac silhouette.'), Score: 0.7075
+('No bullae or blebs.', 'Presence of bullae or blebs in the lung parenchyma.'), Score: 0.7074
+('No evidence of bronchial wall thickening.', 'Visible bronchial wall thickening and distortion.'), Score: 0.7072
+('Normal costophrenic angles.', 'Blunted costophrenic angles due to basilar emphysema or fluid accumulation.'), Score: 0.7071
+('Normal mediastinal contours.', 'Mediastinal shift may be observed in severe cases.'), Score: 0.7067
+('No evidence of hyperlucency.', 'Generalized hyperlucency of the lung fields.'), Score: 0.7066
+('Normal appearance of the hemidiaphragms.', 'Depressed hemidiaphragms with increased lung fields.'), Score: 0.7065
+('Normal lung field density.', 'Decreased lung field density, suggestive of air trapping.'), Score: 0.7058
+('Normal lung base appearance.', 'Hyperlucent lung bases.'), Score: 0.7058
+('Normal lung parenchymal density.', 'Decreased lung parenchymal density with hyperlucency.'), Score: 0.7049
+('No evidence of bronchial cuffing.', 'Bronchial cuffing and thickening, especially in the lower lobes.'), Score: 0.7048
+('Normal lung field density.', 'Decreased lung field density, indicating air trapping.'), Score: 0.7045
+('Normal cardiac silhouette.', 'Globular cardiac silhouette.'), Score: 0.7045
+('Normal retrocardiac space.', 'Increased retrocardiac space.'), Score: 0.7037
+('Mediastinum is of normal width.', 'Widened mediastinum potentially due to cardiac enlargement secondary to pulmonary hypertension.'), Score: 0.7035
+('Normal diaphragmatic contour.', 'Flattened diaphragmatic contour bilaterally.'), Score: 0.7030
+('Normal lung field density.', 'Diffuse increased lucency throughout both lung fields.'), Score: 0.7027
+('No evidence of flattened hemidiaphragms.', 'Bilaterally flattened hemidiaphragms.'), Score: 0.7025
+('No significant interstitial markings.', 'Increased interstitial markings indicating inflammation or fibrosis.'), Score: 0.7020
+('Normal pulmonary artery size.', 'Enlarged pulmonary artery.'), Score: 0.7017
+('Normal lung parenchyma texture.', 'Decreased lung parenchyma texture with areas of reticular opacities.'), Score: 0.7017
+('Normal costal cartilage.', 'Destructive changes in costal cartilage.'), Score: 0.7015
+('Normal hilar prominence.', 'Reduced hilar prominence.'), Score: 0.7014
+('Normal mediastinal width.', 'Widened mediastinum.'), Score: 0.7013
+('Normal apex-to-costophrenic angle distance.', 'Increased apex-to-costophrenic angle distance.'), Score: 0.7007
+('Normal lung vascular markings.', 'Decreased peripheral lung vascular markings.'), Score: 0.7006
+('Normal cardiac silhouette size.', 'Increased cardiac silhouette size with emphysematous changes.'), Score: 0.7004
+('Clear mediastinal contours.', 'Widened mediastinum.'), Score: 0.6998
+('Normal lung parenchyma texture.', 'Decreased lung parenchyma texture with increased lucency.'), Score: 0.6997
+('Normal lung field density.', 'Decreased lung field density with hyperlucency.'), Score: 0.6995
+('Normal cardiac size and shape.', 'Increased cardiac diameter with a pear-shaped cardiac silhouette.'), Score: 0.6989
+('Normal mediastinal width.', 'Widened mediastinum due to airway enlargement.'), Score: 0.6984
+('No pleural effusions are present.', 'Possible subtle pleural effusions secondary to complications.'), Score: 0.6984
+('Normal pulmonary artery size.', 'Enlarged pulmonary artery with central prominence.'), Score: 0.6981
+('No evidence of subcutaneous emphysema.', 'Subcutaneous emphysema, indicating air leakage from the lungs.'), Score: 0.6978
+('Hilar vessels are normal in size.', 'Prominent hilar vessels due to pulmonary hypertension.'), Score: 0.6973
+('Normal pleural contours.', 'Pleural thickening or bullous changes adjacent to the pleura.'), Score: 0.6970
+('Diaphragm is smooth and well-defined.', 'Flattened diaphragmatic domes with decreased costophrenic angle excursion.'), Score: 0.6967
+('Normal esophageal contour.', 'Possible esophageal dilation due to increased intrathoracic pressure.'), Score: 0.6956
+('Normal cardiac silhouette size.', 'Enlarged cardiac silhouette with increased retrosternal space.'), Score: 0.6930
+('No evidence of pulmonary edema.', 'Signs of pulmonary edema secondary to heart failure.'), Score: 0.6928
+('Normal apicobasal lung gradient.', 'Loss of apicobasal lung gradient.'), Score: 0.6928
+('Normal mediastinum shape.', 'Barrel-shaped chest with flattened mediastinum.'), Score: 0.6925
+('Normal costophrenic angles are sharp.', 'Blunted costophrenic angles.'), Score: 0.6923
+('Normal heart border sharpness.', 'Blurred heart borders due to surrounding emphysematous lung.'), Score: 0.6923
+('Normal diaphragmatic excursion.', 'Reduced diaphragmatic excursion.'), Score: 0.6921
+('No evidence of subcutaneous emphysema.', 'Presence of subcutaneous emphysema.'), Score: 0.6919
+('No evidence of bronchial wall thickening.', 'Visible bronchial wall thickening and dilation.'), Score: 0.6916
+('Normal cardiac-to-thoracic ratio.', 'Increased cardiac-to-thoracic ratio, potentially indicating right ventricular enlargement.'), Score: 0.6908
+('Normal apical lung volume.', 'Increased apical lung volume with apical capping.'), Score: 0.6907
+('No evidence of air bronchograms.', 'Presence of air bronchograms within areas of consolidation or hyperinflation.'), Score: 0.6901
+('No evidence of increased anterior-posterior diameter of the chest.', 'Increased anterior-posterior diameter of the chest (barrel chest).'), Score: 0.6897
+('No evidence of fibrosis.', 'Destruction of alveolar walls and airspace enlargement.'), Score: 0.6884
+('Normal mediastinal contours.', 'Mediastinal shift.'), Score: 0.6883
+('Normal pleural surfaces.', 'Pleural thickening or bullae on pleural surfaces.'), Score: 0.6883
+('Normal lung apices.', 'Apical bullae or blebs.'), Score: 0.6876
+('No evidence of hyperlucency.', 'Generalized hyperlucency of the lungs.'), Score: 0.6857
+('Normal pulmonary vasculature.', 'Diminished pulmonary vasculature in the periphery.'), Score: 0.6843
+('Normal cardiac silhouette size.', 'Hyperinflated lungs obscuring the cardiac silhouette.'), Score: 0.6841
+('Normal costophrenic angles.', 'Blunted costophrenic angles.'), Score: 0.6841
+('Normal chest wall thickness.', 'Increased chest wall thickness due to chronic air trapping and muscle hypertrophy.'), Score: 0.6840
+('Normal lung expansion.', 'Increased retrosternal airspace due to hyperinflation.'), Score: 0.6840
+('Normal appearance of the lung apices.', 'Hyperlucency of the lung apices with flattened diaphragms.'), Score: 0.6839
+('Normal lung field pattern.', 'Diffuse increased lung markings with a reticular pattern.'), Score: 0.6831
+('No evidence of bronchial cuffing.', 'Bronchial cuffing and thickening, particularly in the lower lobes.'), Score: 0.6826
+('No evidence of paraseptal emphysema.', 'Presence of paraseptal emphysema with small subpleural bullae.'), Score: 0.6822
+('Normal pulmonary veins.', 'Prominent pulmonary veins.'), Score: 0.6806
+('No evidence of bullae.', 'Presence of bullae or blebs in the lung parenchyma.'), Score: 0.6805
+('Heart size within normal limits.', 'Increased retrosternal airspace.'), Score: 0.6795
+('Normal lung parenchyma texture.', 'Coarse lung parenchyma texture.'), Score: 0.6793
+('No evidence of hyperlucency.', 'Increased lung lucency, particularly in the upper lobes.'), Score: 0.6792
+('No evidence of pleural thickening.', 'Pleural thickening or bullae adjacent to the pleura.'), Score: 0.6789
+('Normal pulmonary vascular markings.', 'Decreased pulmonary vascular markings, especially in the upper lobes.'), Score: 0.6782
+('Hilar structures appear normal in size and position.', 'Prominent hilar vessels and lymph nodes.'), Score: 0.6768
+('Normal lung volume.', 'Increased lung volume with flattened hemidiaphragms.'), Score: 0.6764
+('Normal peripheral lung markings.', 'Sparse peripheral lung markings with areas of lucency.'), Score: 0.6761
+('Normal heart border.', 'Right heart border obscuration.'), Score: 0.6761
+('Normal chest wall thickness.', 'Increased chest wall thickness due to chronic air trapping.'), Score: 0.6758
+('Sharp pulmonary fissure lines.', 'Blurred or indistinct pulmonary fissure lines.'), Score: 0.6758
+('No evidence of pneumothorax.', 'Presence of a small pneumothorax, potentially secondary to ruptured bullae.'), Score: 0.6756
+('Normal heart-to-lung ratio.', 'Decreased heart-to-lung ratio.'), Score: 0.6754
+('No evidence of skin changes.', 'Skin changes related to chronic hypoxia.'), Score: 0.6747
+('Normal costophrenic angles.', 'Blunted costophrenic angles secondary to air trapping.'), Score: 0.6747
+('No evidence of paraseptal emphysema.', 'Presence of paraseptal emphysema with subtle bullae adjacent to pleural surfaces.'), Score: 0.6744
+('No evidence of bullae or blebs.', 'Presence of bullae or blebs.'), Score: 0.6736
+('No evidence of aspiration.', 'Signs of aspiration pneumonia.'), Score: 0.6729
+('Normal pulmonary vascular markings.', 'Diminished pulmonary vascular markings.'), Score: 0.6725
+('Clear costophrenic angles.', 'Blunted costophrenic angles due to fluid or lung changes.'), Score: 0.6724
+('No evidence of bullous disease.', 'Presence of bullous disease with large, air-filled spaces in the lungs.'), Score: 0.6707
+('Normal vascular pedicle width.', 'Widened vascular pedicle suggesting pulmonary hypertension.'), Score: 0.6707
+('No evidence of increased lucency.', 'Increased lung lucency indicating air trapping.'), Score: 0.6705
+('No signs of flattened diaphragm.', 'Flattened diaphragm indicating chronic air trapping.'), Score: 0.6704
+('No evidence of paraseptal emphysema.', 'Paraseptal emphysema with subpleural bullae.'), Score: 0.6699
+('Normal lung texture.', 'Coarse reticular pattern throughout the lung fields.'), Score: 0.6698
+('Normal lung parenchyma texture.', 'Decreased lung markings or areas of lucency.'), Score: 0.6694
+('Normal vascular markings are prominent.', 'Diminished and attenuated vascular markings.'), Score: 0.6690
+('Normal appearance of the lung apices.', 'Hyperlucency of the lung apices, indicative of air trapping.'), Score: 0.6669
+('Normal heart border sharpness.', 'Obscured heart border due to surrounding emphysematous lung.'), Score: 0.6668
+('Normal lung field clarity.', 'Increased lung field lucency with diminished vascularity.'), Score: 0.6662
+('No evidence of flattened intercostal spaces.', 'Depressed intercostal spaces.'), Score: 0.6652
+('Normal cardiac silhouette size.', 'Possible cardiomegaly secondary to cor pulmonale.'), Score: 0.6651
+('No evidence of pulmonary congestion.', 'Vascular redistribution suggestive of early pulmonary congestion.'), Score: 0.6641
+('Normal lung field density.', 'Diffuse hyperlucency of the lung fields.'), Score: 0.6635
+('Normal lung apex position.', 'Descending lung apices with flattened hemidiaphragms.'), Score: 0.6629
+('Normal thoracic shape.', 'Barrel-shaped chest.'), Score: 0.6627
+('No evidence of blebs or bullae.', 'Presence of apical blebs or bullae.'), Score: 0.6623
+('Normal pulmonary vein size.', 'Prominent pulmonary veins.'), Score: 0.6621
+('No evidence of parabulbar densities.', 'Presence of parabulbar densities indicating bullous emphysema.'), Score: 0.6614
+('Clear costophrenic angles.', 'Obscured costophrenic angles.'), Score: 0.6614
+('Hilar structures are normal in size and position.', 'Prominent hilar structures suggesting pulmonary hypertension or vascular congestion.'), Score: 0.6612
+('No evidence of air bronchograms.', 'Presence of air bronchograms within areas of hyperlucency.'), Score: 0.6612
+('Normal appearance of the trachea.', 'Flattened or distorted trachea.'), Score: 0.6612
+('Clear costal cartilage.', 'Erosion or irregularity of costal cartilage.'), Score: 0.6600
+('No evidence of subcutaneous emphysema.', 'Presence of subcutaneous emphysema around the chest wall.'), Score: 0.6585
+('Normal pulmonary vasculature.', 'Diminished peripheral pulmonary vasculature.'), Score: 0.6580
+('No evidence of paraseptal emphysema.', 'Paraseptal emphysema with distinct bullae.'), Score: 0.6562
+('No signs of paraseptal emphysema.', 'Paraseptal emphysema with small subpleural bullae.'), Score: 0.6559
+('Normal appearance of the trachea.', 'Depressed trachea.'), Score: 0.6552
+('Normal retrosternal airspace.', 'Increased retrosternal airspace.'), Score: 0.6550
+('No interstitial markings.', 'Increased interstitial markings with reticular pattern.'), Score: 0.6547
+('No evidence of subcutaneous emphysema.', 'Presence of subcutaneous emphysema with air in the soft tissues.'), Score: 0.6531
+('Normal hemidiaphragm position.', 'Depressed hemidiaphragms with flattened diaphragmatic contours.'), Score: 0.6531
+('No signs of infection.', 'Evidence of secondary infection, such as pneumonia.'), Score: 0.6507
+('No evidence of pulmonary hypertension.', 'Signs of pulmonary hypertension (enlarged pulmonary arteries, right ventricular enlargement).'), Score: 0.6501
+('Normal chest wall thickness.', 'Increased anteroposterior diameter of the chest.'), Score: 0.6472
+('No evidence of bronchial distortion.', 'Bronchial distortion and tethering.'), Score: 0.6468
+('No evidence of bullae.', 'Presence of bullae and blebs.'), Score: 0.6460
+('No apical capping.', 'Apical capping with air trapping.'), Score: 0.6450
+('Normal appearance of the trachea.', 'Flattened trachea.'), Score: 0.6449
+('Normal lung parenchyma without cysts.', 'Presence of multiple small cysts throughout the lung parenchyma.'), Score: 0.6427
+('Hilar structures are normal in size and position.', 'Prominent hilar vessels.'), Score: 0.6424
+('Sharp costophrenic angles.', 'Blunted costophrenic angles.'), Score: 0.6413
+('No evidence of bronchial wall thickening.', 'Visible bronchial wall thickening.'), Score: 0.6411
+('Normal pulmonary artery size.', 'Enlarged pulmonary arteries with central pruning.'), Score: 0.6394
+('Normal lung parenchyma.', 'Increased interstitial markings due to paraseptal emphysema.'), Score: 0.6376
+('Normal lung field vascularity.', 'Decreased lung field vascularity, particularly in the periphery.'), Score: 0.6374
+('Sharp diaphragmatic contours.', 'Flattened diaphragmatic contours.'), Score: 0.6359
+('No evidence of prior surgical changes.', 'Signs of prior lung volume reduction surgery.'), Score: 0.6351
+('Normal pleural surfaces.', 'Pleural thickening or adhesions.'), Score: 0.6343
+('Clear lung apices.', 'Apical bullae or blebs.'), Score: 0.6339
+('Normal bronchial wall thickness.', 'Thinning and distortion of bronchial walls.'), Score: 0.6335
+('Normal diaphragmatic contour.', 'Flattened diaphragmatic contour.'), Score: 0.6332
+('No evidence of apical capping.', 'Apical capping with air trapping.'), Score: 0.6329
+('Normal mediastinum width.', 'Widened mediastinum, potentially due to bullae or hyperinflation.'), Score: 0.6328
+('Normal appearance of the hila.', 'Hilar prominence.'), Score: 0.6322
+('No evidence of bronchial ectasia.', 'Bronchial ectasia with dilated and distorted airways.'), Score: 0.6314
+('No evidence of bullae or blebs.', 'Presence of bullae or blebs, especially in the upper lobes.'), Score: 0.6308
+('Mediastinum within normal contours.', 'Widened mediastinum potentially indicating cardiac enlargement or other pathology.'), Score: 0.6283
+('Normal pleural surfaces.', 'Presence of pleural blebs or bullae.'), Score: 0.6277
+('No evidence of subcutaneous emphysema.', 'Subcutaneous emphysema present.'), Score: 0.6272
+('Clear costophrenic angles.', 'Blunting of costophrenic angles due to fluid or scarring.'), Score: 0.6267
+('Normal lung fields with sharp costophrenic angles.', 'Flattened diaphragms and hyperinflated lungs.'), Score: 0.6260
+('Normal vertebral column.', 'Possible vertebral compression fractures.'), Score: 0.6258
+('No evidence of subcutaneous emphysema.', 'Subcutaneous emphysema around the chest wall.'), Score: 0.6250
+('Normal appearance of the abdominal organs visible on the image.', 'Diaphragmatic flattening impacting abdominal organ visualization.'), Score: 0.6243
+('Normal diaphragmatic contour.', 'Flattened diaphragmatic contour with decreased costophrenic angles.'), Score: 0.6239
+('No evidence of interstitial markings.', 'Increased interstitial markings.'), Score: 0.6235
+('No evidence of bullae or blebs.', 'Presence of bullae or blebs, particularly in the upper lobes.'), Score: 0.6219
+('Sharp cardiomediastinal borders.', 'Blurred cardiomediastinal borders.'), Score: 0.6207
+('No evidence of interstitial markings.', 'Increased interstitial markings with a reticular pattern.'), Score: 0.6174
+('No evidence of pneumothorax.', 'Apical pneumothorax may be present due to bullae rupture.'), Score: 0.6171
+('Normal cardiac silhouette size.', 'Increased cardiac silhouette size due to hyperinflation.'), Score: 0.6171
+('Normal diaphragmatic contour.', 'Flattened diaphragmatic domes.'), Score: 0.6159
+('Clear costophrenic angles.', 'Obscuration of costophrenic angles.'), Score: 0.6155
+('Normal lung field vascularity.', 'Diminished peripheral vascularity with central vascular prominence.'), Score: 0.6154
+('No evidence of pneumoconiosis.', 'Signs of pneumoconiosis coexisting with emphysema.'), Score: 0.6154
+('Normal cardiac silhouette size.', 'Increased cardiac silhouette size due to lung hyperinflation.'), Score: 0.6141
+('No evidence of bullae.', 'Presence of bullae or blebs.'), Score: 0.6138
+('Normal lung expansion.', 'Hyperlucent lungs with increased anterior-posterior diameter.'), Score: 0.6117
+('Clear costophrenic angles.', 'Blunted costophrenic angles.'), Score: 0.6116
+('No bullae or blebs.', 'Presence of bullae or blebs with thin walls.'), Score: 0.6112
+('No significant peribronchial thickening.', 'Peribronchial cuffing may be present.'), Score: 0.6110
+('Normal diaphragmatic contour.', 'Flattened diaphragmatic contour with decreased costophrenic angle.'), Score: 0.6096
+('Normal heart size and silhouette.', 'Increased retrosternal airspace and a hyperinflated lung appearance.'), Score: 0.6093
+('No significant interstitial markings.', 'Reduced interstitial markings.'), Score: 0.6076
+('Normal soft tissue appearance.', 'Subcutaneous emphysema may be present.'), Score: 0.6075
+('No evidence of increased AP diameter.', 'Increased anteroposterior (AP) diameter of the chest.'), Score: 0.6066
+('No evidence of hyperinflation.', 'Evidence of hyperinflation with flattened diaphragm.'), Score: 0.6037
+('Clear costophrenic angles.', 'Obscuration of costophrenic angles due to hyperinflation.'), Score: 0.6034
+('Normal costal cartilage appearance.', 'Erosion or irregularity of costal cartilage.'), Score: 0.6033
+('Normal cardiac silhouette size.', 'Globular or hyperinflated cardiac silhouette.'), Score: 0.6021
+('Normal pulmonary vasculature.', 'Decreased pulmonary vascular markings.'), Score: 0.6011
+('Normal cardiac silhouette size.', 'Decreased cardiac silhouette size secondary to lung hyperinflation.'), Score: 0.6010
+
