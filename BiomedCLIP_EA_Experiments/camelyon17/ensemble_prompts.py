@@ -59,7 +59,7 @@ def main():
                 centers_labels[i],
                 model,
                 tokenizer,
-                unweighted=True
+                unweighted=False
             )
 
             print("\n--- Ensemble Evaluation Results ---")
