@@ -146,9 +146,6 @@ def main():
     prompt_population = pq.get_best_n(recommended_n)
     print(f"Selected {len(prompt_population)} prompts after knee analysis.")
 
-    # Extract scores for normalization
-    prompt_scores = np.array([score for _, score in prompt_population])
-
     # 4. build train/test splits by center indices
     train_idxs = [0, 1, 2]
     test_idxs = [4]
@@ -162,14 +159,7 @@ def main():
         P = util.compute_prompt_probs_matrix(
             prompt_population, feats, model, tokenizer)
 
-        # Add standardized scores as additional features
-        n_samples = P.shape[0]
-        scores_repeated = np.tile(prompt_scores, (n_samples, 1))
-
-        # Concatenate probability matrix with standardized scores
-        P_with_scores = np.hstack([P, scores_repeated])
-
-        P_train_list.append(P_with_scores)
+        P_train_list.append(P)
         y_train_list.append(labels)
 
     for idx in test_idxs:
@@ -178,14 +168,7 @@ def main():
         P = util.compute_prompt_probs_matrix(
             prompt_population, feats, model, tokenizer)
 
-        # Add standardized scores as additional features
-        n_samples = P.shape[0]
-        scores_repeated = np.tile(prompt_scores, (n_samples, 1))
-
-        # Concatenate probability matrix with standardized scores
-        P_with_scores = np.hstack([P, scores_repeated])
-
-        P_test_list.append(P_with_scores)
+        P_test_list.append(P)
         y_test_list.append(labels)
 
     # stack centers
@@ -198,7 +181,7 @@ def main():
     print(
         f"Training meta‑models on centers {train_idxs}: {P_train.shape[0]} samples")
     print(
-        f"Feature shape: {P_train.shape[1]} ({n_prompts} prompt probs + {n_prompts} standardized scores)")
+        f"Feature shape: {P_train.shape[1]} (prompt probabilities only)")
     print(f"Evaluating on centers {test_idxs}: {P_test.shape[0]} samples")
 
     # 5. train and evaluate multiple meta models
@@ -222,21 +205,13 @@ def main():
     if hasattr(best_model, 'coef_'):  # Linear models have coefficients
         print("Feature coefficients:")
         for j, coef in enumerate(best_model.coef_[0]):
-            if j < n_prompts:
-                print(f"  Prompt #{j:2d} (prob):  β = {coef:.4f}")
-            else:
-                print(f"  Prompt #{j-n_prompts:2d} (score): β = {coef:.4f}")
+            print(f"  Prompt #{j:2d} (prob):  β = {coef:.4f}")
 
     if hasattr(best_model, 'feature_importances_'):  # Tree-based models
         print("Feature importances:")
         importances = best_model.feature_importances_
         for j, importance in enumerate(importances):
-            if j < n_prompts:
-                print(
-                    f"  Prompt #{j:2d} (prob):  importance = {importance:.4f}")
-            else:
-                print(
-                    f"  Prompt #{j-n_prompts:2d} (score): importance = {importance:.4f}")
+            print(f"  Prompt #{j:2d} (prob):  importance = {importance:.4f}")
 
     # Show decision tree rules if the best model is a tree-based model
     if best_model_name in ['tree', 'random_forest'] and hasattr(best_model, 'estimators_'):
@@ -244,8 +219,6 @@ def main():
         feature_names = []
         for j in range(n_prompts):
             feature_names.append(f"p{j}_prob")
-        for j in range(n_prompts):
-            feature_names.append(f"p{j}_score")
         print(export_text(best_model.estimators_[
               0], feature_names=feature_names))
     elif best_model_name == 'tree':
@@ -253,8 +226,6 @@ def main():
         feature_names = []
         for j in range(n_prompts):
             feature_names.append(f"p{j}_prob")
-        for j in range(n_prompts):
-            feature_names.append(f"p{j}_score")
         print(export_text(best_model, feature_names=feature_names))
 
 
