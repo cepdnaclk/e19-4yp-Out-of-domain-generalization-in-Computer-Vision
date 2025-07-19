@@ -24,6 +24,9 @@ def train_meta_models(P_train, y_train, max_depth=5, C=1.0):
 
 
 def main():
+    # use CPU
+    util.DEVICE = torch.device("cpu")
+
     # 1. load model, preprocess, and tokenizer
     model, preprocess, tokenizer = util.load_clip_model()
     print("Model, preprocess, and tokenizer loaded successfully.")
@@ -43,9 +46,6 @@ def main():
     centers_features = [torch.from_numpy(feat) for feat in centers_features]
     centers_labels = [torch.from_numpy(label) for label in centers_labels]
     print("Center embeddings extracted successfully.")
-
-    # use CPU
-    util.DEVICE = torch.device("cpu")
 
     # 3. load and select prompts
     initial_prompts = util.load_initial_prompts(
