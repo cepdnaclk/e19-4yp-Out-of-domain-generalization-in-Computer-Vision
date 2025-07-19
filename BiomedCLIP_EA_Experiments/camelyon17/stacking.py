@@ -8,13 +8,13 @@ from sklearn.preprocessing import StandardScaler
 import util
 
 
-def train_meta_models(P_train, y_train, max_depth=5, C=1.0):
+def train_meta_models(P_train, y_train, max_depth=3, C=1.0):
     """
     Fit a logistic regressor and a small decision tree.
     Returns both models.
     """
     logreg = LogisticRegression(
-        penalty='l2', C=C, solver='liblinear', max_iter=100, l1_ratio=0.01)
+        penalty='l2', C=C, solver='liblinear', max_iter=1000)
     logreg.fit(P_train, y_train)
 
     tree = DecisionTreeClassifier(max_depth=max_depth)
