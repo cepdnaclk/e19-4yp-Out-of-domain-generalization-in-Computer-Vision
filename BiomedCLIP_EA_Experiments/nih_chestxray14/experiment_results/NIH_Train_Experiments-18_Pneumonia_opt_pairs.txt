@@ -2141,3 +2141,584 @@ Iteration 70:
 ('No apical capping.', 'Apical capping, indicative of tuberculosis or fungal infection.'), Score: 0.6019
 ('No focal areas of increased density.', 'Focal consolidation in the left lower lobe, consistent with pneumonia.'), Score: 0.6006
 
+Iteration 80:
+('No pleural thickening.', 'Pleural thickening, potentially indicating empyema or malignancy.'), Score: 0.7553
+('Normal mediastinal contours.', 'Irregular mediastinal contours with lymph node enlargement, potentially indicating complicated pneumonia or malignancy.'), Score: 0.7550
+('Diaphragm is smooth and well-defined.', 'Diaphragm is irregular and obscured by pleural fluid.'), Score: 0.7546
+('No pleural thickening.', 'Pleural thickening, indicative of chronic inflammation.'), Score: 0.7538
+('No interstitial infiltrates.', 'Interstitial infiltrates, suggestive of atypical pneumonia or viral infection.'), Score: 0.7530
+('Diaphragm is smooth and well-defined.', 'Diaphragm is obscured by pleural effusion.'), Score: 0.7526
+('No pleural thickening.', 'Pleural thickening, potentially indicating empyema or organized pneumonia.'), Score: 0.7512
+('No pleural thickening.', 'Pleural thickening, indicating chronic inflammation or infection.'), Score: 0.7508
+('No pleural thickening.', 'Pleural thickening, potentially due to infection or malignancy.'), Score: 0.7496
+('Normal pulmonary vasculature.', 'Increased pulmonary vascularity, potentially due to pulmonary hypertension secondary to pneumonia.'), Score: 0.7487
+('No pleural thickening.', 'Pleural thickening and effusion, potentially secondary to parapneumonic effusion.'), Score: 0.7486
+('No pleural thickening.', 'Pleural thickening present, potentially indicating empyema or parapneumonic effusion.'), Score: 0.7473
+('No pleural thickening.', 'Pleural thickening, suggesting pleural disease.'), Score: 0.7469
+('No pleural thickening.', 'Pleural thickening, suggesting empyema or complicated pneumonia.'), Score: 0.7468
+('Normal rib appearance.', 'Rib destruction or periosteal reaction, potentially due to metastatic disease.'), Score: 0.7465
+('Normal vascular markings.', 'Increased vascular markings with peribronchial cuffing, suggestive of inflammation.'), Score: 0.7464
+('No pleural thickening.', 'Pleural thickening, indicative of chronic inflammation or malignancy.'), Score: 0.7460
+('No air bronchograms.', 'Air bronchograms within an area of consolidation.'), Score: 0.7454
+('No pleural thickening.', 'Pleural thickening with associated effusion, potentially a parapneumonic effusion or empyema.'), Score: 0.7452
+('Normal vascular markings.', 'Increased interstitial markings, indicating pulmonary edema or early pneumonia.'), Score: 0.7451
+('No pleural thickening.', 'Pleural thickening, potentially due to prior infection or inflammation.'), Score: 0.7451
+('Normal vascular markings.', 'Increased vascular markings with peribronchial cuffing, indicative of early pneumonia.'), Score: 0.7448
+('No air bronchograms.', 'Air bronchograms within areas of consolidation.'), Score: 0.7447
+('Normal air bronchograms.', 'Air bronchograms within an area of consolidation.'), Score: 0.7444
+('No pleural thickening.', 'Pleural thickening with associated consolidation, suggestive of parapneumonic effusion.'), Score: 0.7443
+('No air bronchograms.', 'Air bronchograms within areas of consolidation, indicative of pneumonia.'), Score: 0.7439
+('No pleural thickening.', 'Pleural thickening, potentially secondary to empyema or prior infection.'), Score: 0.7438
+('Normal costal margins.', 'Irregular costal margins with associated soft tissue thickening, potentially due to empyema or chest wall infection.'), Score: 0.7438
+('No air bronchograms.', 'Air bronchograms within an area of consolidation, characteristic of pneumonia.'), Score: 0.7435
+('No evidence of air bronchograms.', 'Air bronchograms within an area of consolidation.'), Score: 0.7432
+('Normal diaphragmatic contour.', 'Irregular diaphragmatic contour, potentially due to pleural effusion or underlying lung disease.'), Score: 0.7432
+('No pleural thickening.', 'Pleural thickening, potentially indicating empyema or organizing pneumonia.'), Score: 0.7429
+('No perihilar haze.', 'Perihilar haze, indicating inflammation and fluid accumulation around the hilum.'), Score: 0.7426
+('No air bronchograms.', 'Presence of air bronchograms within areas of consolidation, indicative of pneumonia.'), Score: 0.7426
+('No air bronchograms.', 'Air bronchograms within an area of consolidation, indicative of pneumonia.'), Score: 0.7421
+('Normal vascular markings.', 'Prominent vascular markings, suggestive of pulmonary edema.'), Score: 0.7420
+('No evidence of air bronchograms.', 'Air bronchograms within an area of consolidation, indicative of pneumonia.'), Score: 0.7419
+('No cavitation within lung parenchyma.', 'Cavitation within a lung consolidation, suggestive of necrotizing pneumonia.'), Score: 0.7416
+('Clear vascular markings.', 'Prominent vascular markings with Kerley B lines, suggestive of pulmonary edema secondary to pneumonia.'), Score: 0.7416
+('No air bronchograms.', 'Air bronchograms within an area of consolidation, highly suggestive of pneumonia.'), Score: 0.7415
+('No air bronchograms.', 'Air bronchograms within an area of consolidation, indicating pneumonia.'), Score: 0.7409
+('Normal pulmonary vasculature.', 'Prominent pulmonary vasculature, indicating pulmonary hypertension.'), Score: 0.7407
+('No pleural thickening.', 'Pleural thickening with associated opacity, suggestive of empyema or organizing pneumonia.'), Score: 0.7405
+('No evidence of air bronchograms.', 'Presence of air bronchograms within an area of consolidation, indicative of pneumonia.'), Score: 0.7404
+('No air bronchograms.', 'Air bronchograms within an area of consolidation, consistent with pneumonia.'), Score: 0.7402
+('No visible infiltrates.', 'Diffuse bilateral infiltrates, consistent with atypical pneumonia.'), Score: 0.7402
+('Normal cardiac silhouette.', 'Cardiomegaly with increased opacity in the lower lobes, suggestive of pneumonia with associated heart failure.'), Score: 0.7400
+('No evidence of air bronchograms.', 'Air bronchograms within an area of consolidation, consistent with pneumonia.'), Score: 0.7398
+('Clear lung fields with sharp vascular markings, normal heart size.', 'Patchy opacities in the lower lobes, blurring of vascular markings.'), Score: 0.7394
+('Normal lung parenchyma.', 'Consolidation in the lung parenchyma, suggestive of pneumonia.'), Score: 0.7387
+('No air bronchograms.', 'Air bronchograms visible within an area of consolidation.'), Score: 0.7386
+('No evidence of air bronchograms.', 'Air bronchograms within an area of consolidation, indicating pneumonia.'), Score: 0.7386
+('No pleural thickening.', 'Pleural thickening and effusions, indicating advanced pneumonia or complications.'), Score: 0.7385
+('No pleural plaques.', 'Pleural plaques with associated effusions, potentially secondary to empyema or complicated pneumonia.'), Score: 0.7381
+('Normal cardiac silhouette.', 'Cardiomegaly with increased opacity in the lung bases, potentially secondary to heart failure and pulmonary edema from pneumonia.'), Score: 0.7381
+('No pleural thickening.', 'Pleural thickening with associated volume loss, suggesting organizing pneumonia or empyema.'), Score: 0.7377
+('No air bronchograms.', 'Presence of air bronchograms within an area of consolidation, highly suggestive of pneumonia.'), Score: 0.7377
+('No air bronchograms.', 'Air bronchograms within an area of consolidation, typical of pneumonia.'), Score: 0.7375
+('Normal air bronchograms.', 'Air bronchograms within an area of consolidation, consistent with pneumonia.'), Score: 0.7373
+('Normal cardiac silhouette.', 'Enlarged cardiac silhouette with pleural effusion.'), Score: 0.7368
+('No air bronchograms.', 'Air bronchograms within areas of consolidation, a hallmark of pneumonia.'), Score: 0.7368
+('Normal pulmonary vasculature.', 'Prominent pulmonary vasculature, suggestive of pulmonary hypertension secondary to pneumonia.'), Score: 0.7368
+('No evidence of cavitation.', 'Cavitation within a lung consolidation, suggestive of necrotizing pneumonia.'), Score: 0.7364
+('Normal pulmonary artery size.', 'Prominent pulmonary artery, suggestive of pulmonary hypertension.'), Score: 0.7361
+('No lobar consolidation.', 'Lobar consolidation with air bronchograms, classic sign of pneumonia.'), Score: 0.7359
+('Normal cardiac silhouette size.', 'Cardiomegaly with increased opacity in the lower lobes, potentially pneumonia and heart failure.'), Score: 0.7356
+('Normal heart size and shape.', 'Globular cardiac silhouette with cardiomegaly and pulmonary edema.'), Score: 0.7356
+('Normal cardiac silhouette.', 'Cardiomegaly with increased opacity in the lung fields, suggestive of pneumonia and heart failure.'), Score: 0.7349
+('No evidence of fibrosis.', 'Fibrotic changes in the lower lobes.'), Score: 0.7339
+('Normal pulmonary vasculature.', 'Increased pulmonary vascularity, potentially due to shunting in pneumonia.'), Score: 0.7339
+('Normal pulmonary vasculature.', 'Prominent pulmonary vasculature with cephalization, indicating pulmonary hypertension secondary to pneumonia.'), Score: 0.7336
+('No interstitial markings.', 'Interstitial thickening and reticular opacities, potentially atypical pneumonia.'), Score: 0.7331
+('No cavitation.', 'Cavitation within a pulmonary consolidation, suggestive of necrotizing pneumonia.'), Score: 0.7331
+('No air bronchograms.', 'Presence of air bronchograms within a consolidated area, highly suggestive of pneumonia.'), Score: 0.7329
+('Clear costal cartilage.', 'Erosion of costal cartilage, potentially due to invasive fungal pneumonia.'), Score: 0.7328
+('Clear costal cartilage.', 'Erosion or destruction of costal cartilage, potentially indicating infection or malignancy.'), Score: 0.7327
+('Normal heart size.', 'Cardiomegaly, potentially secondary to fluid overload or heart failure associated with pneumonia.'), Score: 0.7324
+('Diaphragm is smooth and well-defined.', 'Diaphragmatic elevation, possibly due to phrenic nerve paralysis or large pleural effusion.'), Score: 0.7323
+('Vascular markings are prominent but normal in distribution.', 'Vascular markings are obscured by widespread infiltrates.'), Score: 0.7321
+('Normal diaphragmatic contour.', 'Irregular diaphragmatic contour, potentially due to atelectasis or phrenic nerve palsy.'), Score: 0.7321
+('Normal interstitial markings.', 'Increased interstitial markings, suggestive of interstitial pneumonia.'), Score: 0.7321
+('Normal pulmonary vasculature.', 'Increased pulmonary vasculature, suggestive of pulmonary hypertension.'), Score: 0.7321
+('Normal vascular markings.', 'Prominent peribronchial cuffing, a sign of inflammation.'), Score: 0.7320
+('No evidence of cavitation.', 'Cavitation within a lung consolidation, suggestive of necrotizing pneumonia or abscess.'), Score: 0.7319
+('Normal lung vasculature.', 'Prominent pulmonary vessels with cephalization, potentially due to pulmonary hypertension secondary to pneumonia.'), Score: 0.7318
+('No evidence of cardiomegaly.', 'Cardiomegaly with Kerley B lines, suggestive of congestive heart failure.'), Score: 0.7313
+('No pleural effusion.', 'Pleural effusion with associated compressive atelectasis.'), Score: 0.7311
+('Normal rib cage appearance.', 'Rib destruction or periosteal reaction, suggesting invasive fungal pneumonia or other aggressive process.'), Score: 0.7304
+('No interstitial edema.', 'Interstitial edema, indicating fluid overload often associated with severe pneumonia.'), Score: 0.7303
+('Normal lung texture.', 'Increased lung texture, suggestive of interstitial lung disease.'), Score: 0.7302
+('No evidence of Kerley B lines.', 'Kerley B lines present, suggestive of pulmonary edema.'), Score: 0.7299
+('Normal heart silhouette.', 'Cardiomegaly with increased opacity, possibly secondary to pneumonia and heart failure.'), Score: 0.7296
+('Pulmonary vessels are normal in caliber.', 'Diffuse pulmonary vessel thickening, potentially due to pulmonary edema from pneumonia.'), Score: 0.7295
+('Normal vascular markings.', 'Increased vascular markings, potentially due to pulmonary edema or congestion.'), Score: 0.7293
+('Normal heart size.', 'Cardiomegaly, potentially due to fluid overload or cardiac strain.'), Score: 0.7293
+('Normal costophrenic angles.', 'Blunted costophrenic angles, indicative of pleural effusion.'), Score: 0.7292
+('Normal tracheal deviation.', 'Tracheal deviation to the right, potentially due to a mass effect or large pleural effusion.'), Score: 0.7292
+('Normal pulmonary vasculature.', 'Prominent pulmonary vasculature, possibly due to pulmonary hypertension.'), Score: 0.7291
+('Normal diaphragmatic contour.', 'Irregular diaphragmatic contour, potentially due to atelectasis or eventration.'), Score: 0.7287
+('Diaphragm is smooth and well-defined.', 'Diaphragmatic elevation on the left side.'), Score: 0.7282
+('Normal cardiac silhouette.', 'Cardiomegaly with increased opacity in the lung bases, possibly due to heart failure complicating pneumonia.'), Score: 0.7282
+('Normal cardiac silhouette.', 'Cardiomegaly with Kerley B lines, indicating heart failure and potential pulmonary edema.'), Score: 0.7280
+('Normal lung volumes.', 'Reduced lung volumes with increased opacity, indicative of severe pneumonia.'), Score: 0.7280
+('Normal costophrenic angles.', 'Blunted costophrenic angles, suggestive of pleural effusion.'), Score: 0.7279
+('No evidence of Kerley B lines.', 'Kerley B lines present, indicating interstitial edema.'), Score: 0.7276
+('No ground-glass opacities.', 'Diffuse ground-glass opacities bilaterally, suggestive of viral pneumonia.'), Score: 0.7276
+('No peribronchial cuffing.', 'Peribronchial cuffing, indicating inflammation around the bronchioles.'), Score: 0.7275
+('No evidence of pneumothorax.', 'Pneumothorax, air in the pleural space, potentially a complication of severe pneumonia.'), Score: 0.7273
+('Sharp diaphragmatic contours.', 'Irregular diaphragmatic contours, potentially due to atelectasis or scarring.'), Score: 0.7273
+('No evidence of pulmonary edema.', 'Diffuse bilateral infiltrates consistent with pulmonary edema secondary to pneumonia.'), Score: 0.7272
+('Normal heart size and contour.', 'Cardiomegaly with indistinct borders, potentially due to pericardial effusion associated with pneumonia.'), Score: 0.7268
+('Normal pulmonary artery size.', 'Enlarged pulmonary artery, potentially indicating pulmonary hypertension secondary to pneumonia.'), Score: 0.7267
+('Normal heart size and shape.', 'Enlarged cardiac silhouette with increased opacity in the lung bases, consistent with cardiogenic pulmonary edema.'), Score: 0.7266
+('Normal lung parenchyma.', 'Patchy infiltrates throughout both lungs, indicative of atypical pneumonia.'), Score: 0.7265
+('Normal lung parenchyma.', 'Patchy opacities in both lung fields, consistent with interstitial pneumonia.'), Score: 0.7263
+('Normal hemidiaphragm.', 'Elevation of the hemidiaphragm on the right side, potentially due to consolidation below.'), Score: 0.7261
+('No pleural thickening.', 'Pleural thickening with associated atelectasis.'), Score: 0.7260
+('Diaphragm is smooth and well-defined.', 'Diaphragmatic elevation, suggesting phrenic nerve palsy or effusion.'), Score: 0.7259
+('No focal airspace opacity.', 'Diffuse airspace opacity, consistent with acute respiratory distress syndrome (ARDS).'), Score: 0.7254
+('Normal heart size and contour.', 'Cardiomegaly with rounded cardiac silhouette.'), Score: 0.7252
+('Normal cardiac silhouette.', 'Cardiomegaly with increased opacity in the lung fields, potentially due to congestive heart failure secondary to pneumonia.'), Score: 0.7247
+('Normal cardiac silhouette.', 'Enlarged cardiac silhouette with associated pulmonary congestion.'), Score: 0.7243
+('Normal pulmonary vasculature.', 'Prominent pulmonary vasculature with Kerley B lines, indicating pulmonary edema secondary to pneumonia.'), Score: 0.7242
+('Normal heart size.', 'Cardiomegaly, indicating heart failure or pericardial effusion.'), Score: 0.7241
+('Normal lung fields.', 'Diffuse alveolar infiltrates.'), Score: 0.7240
+('No evidence of pneumothorax.', 'Small right pneumothorax, potentially secondary to necrotizing pneumonia.'), Score: 0.7240
+('No silhouette sign.', 'Silhouette sign obscuring the cardiac border, indicating lower lobe consolidation.'), Score: 0.7236
+('Clear vascular markings.', 'Kerley B lines, indicative of interstitial edema.'), Score: 0.7235
+('Normal lung markings.', 'Retronodular pattern, suggestive of viral pneumonia.'), Score: 0.7233
+('No pleural effusion.', 'Moderate right pleural effusion, compressing the lung parenchyma.'), Score: 0.7231
+('Normal pulmonary artery size.', 'Prominent pulmonary artery, suggestive of pulmonary embolism or hypertension.'), Score: 0.7231
+('Sharp diaphragmatic contours.', 'Diaphragmatic elevation on the right side, suggestive of underlying pneumonia with associated effusion.'), Score: 0.7231
+('Normal pulmonary vasculature.', 'Prominent pulmonary vasculature, indicating pulmonary hypertension or congestion.'), Score: 0.7229
+('Normal cardiac silhouette, no pleural effusions.', 'Enlarged cardiac silhouette, pleural effusion on the left side.'), Score: 0.7227
+('Diaphragm is smooth and well-defined.', 'Diaphragmatic elevation on the left, potentially due to phrenic nerve paralysis or pleural effusion.'), Score: 0.7226
+('Sharp costophrenic angles.', 'Blunted costophrenic angles due to pleural effusion associated with pneumonia.'), Score: 0.7226
+('Normal costal cartilage.', 'Erosion of costal cartilage, potentially due to empyema or chest wall infection.'), Score: 0.7224
+('Sharp diaphragmatic contours.', 'Irregular diaphragmatic contours, suggestive of pleural effusion or atelectasis.'), Score: 0.7224
+('No visible pleural thickening.', 'Pleural thickening with associated basilar atelectasis, potentially secondary to pneumonia.'), Score: 0.7223
+('No cavitation.', 'Cavitation within a pulmonary infiltrate, suggestive of necrotizing pneumonia or abscess.'), Score: 0.7223
+('Normal diaphragmatic contour.', 'Flattened or obscured diaphragmatic contour, potentially due to pleural effusion or atelectasis.'), Score: 0.7219
+('Normal pulmonary vasculature.', 'Prominent pulmonary vasculature in the lower lobes, suggestive of fluid overload or pneumonia.'), Score: 0.7219
+('Normal cardiac silhouette.', 'Enlarged cardiac silhouette with associated pulmonary edema, potentially secondary to pneumonia-related heart strain.'), Score: 0.7213
+('Normal cardiac silhouette.', 'Cardiomegaly, indicating heart failure or pericardial effusion.'), Score: 0.7212
+('Clear lung fields bilaterally.', 'Diffuse interstitial infiltrates, consistent with atypical pneumonia.'), Score: 0.7210
+('No pleural thickening.', 'Pleural thickening with associated atelectasis, potentially due to prior infection or malignancy.'), Score: 0.7210
+('Normal pulmonary arteries.', 'Enlarged pulmonary arteries.'), Score: 0.7210
+('No evidence of pleural effusion.', 'Large pleural effusion.'), Score: 0.7206
+('Normal tracheal alignment.', 'Tracheal deviation to the right, potentially due to a mass effect or large pleural effusion associated with pneumonia.'), Score: 0.7205
+('No peribronchial cuffing.', 'Peribronchial cuffing, thickening of the bronchial walls, suggestive of inflammation.'), Score: 0.7204
+('No evidence of cavitation.', 'Cavitation within a lung consolidation, consider necrotizing pneumonia.'), Score: 0.7202
+('No pleural effusion.', 'Pleural effusion, fluid in the pleural space, often seen in parapneumonic effusions.'), Score: 0.7202
+('No evidence of cavitation.', 'Cavity formation within a lung infiltrate, consider necrotizing pneumonia or abscess.'), Score: 0.7201
+('Normal lung parenchyma.', 'Patchy infiltrates throughout both lungs, consistent with pneumonia.'), Score: 0.7200
+('Normal pulmonary artery size.', 'Prominent pulmonary artery, suggestive of pulmonary embolism.'), Score: 0.7198
+('Clear costophrenic angles.', 'Blunted costophrenic angles, suggestive of pleural effusion associated with pneumonia.'), Score: 0.7198
+('Normal mediastinal width.', 'Widened mediastinum, potentially due to lymphadenopathy associated with pneumonia.'), Score: 0.7196
+('Normal mediastinal width.', 'Widened mediastinum, consider pneumonia with mediastinal lymphadenopathy.'), Score: 0.7195
+('No evidence of cavitation.', 'Presence of cavitary lesions within a pulmonary infiltrate, raising concern for necrotizing pneumonia.'), Score: 0.7192
+('Normal pulmonary vessels.', 'Kerley B lines present, suggestive of interstitial edema.'), Score: 0.7192
+('Clear diaphragmatic contours.', 'Obscured diaphragmatic contours, potentially due to free air or pleural effusion.'), Score: 0.7191
+('No hilar adenopathy.', 'Hilar adenopathy, potentially indicating infection or malignancy.'), Score: 0.7189
+('Normal vascular markings.', 'Increased vascular markings, indicating pulmonary venous hypertension.'), Score: 0.7185
+('Clear lung fields.', 'Diffuse interstitial infiltrates, suggestive of atypical pneumonia.'), Score: 0.7184
+('No evidence of pneumothorax.', 'Pneumothorax, potentially a complication of necrotizing pneumonia.'), Score: 0.7184
+('Normal retrocardiac space.', 'Retrocardiac haze, potentially due to consolidation or effusion.'), Score: 0.7180
+('Normal cardiac silhouette.', 'Cardiomegaly, potentially due to fluid overload or underlying cardiac disease.'), Score: 0.7180
+('No interstitial edema.', 'Interstitial edema with Kerley A and B lines, indicating pulmonary congestion.'), Score: 0.7180
+('Normal heart border.', 'Irregular heart border, potentially indicating pericardial effusion or cardiomyopathy.'), Score: 0.7177
+('No hilar adenopathy.', 'Hilar adenopathy, suggestive of infection or malignancy.'), Score: 0.7173
+('No cardiomegaly.', 'Cardiomegaly with increased cardiac silhouette.'), Score: 0.7171
+('No evidence of pleural effusion.', 'Moderate right pleural effusion with associated compressive atelectasis.'), Score: 0.7171
+('Costophrenic angles are sharp and clear.', 'Blunting of the right costophrenic angle, suggestive of pleural effusion.'), Score: 0.7168
+('Normal pulmonary vasculature.', 'Prominent pulmonary vasculature with cephalization, suggestive of fluid overload in pneumonia.'), Score: 0.7163
+('Normal cardiac silhouette.', 'Cardiomegaly with blunting of the costophrenic angles, potentially secondary to pneumonia-related fluid overload.'), Score: 0.7162
+('Normal hemidiaphragm position.', 'Downward displacement of the right hemidiaphragm, potentially due to atelectasis or consolidation.'), Score: 0.7160
+('Normal diaphragmatic excursion.', 'Restricted diaphragmatic excursion.'), Score: 0.7159
+('No interstitial markings.', 'Increased interstitial markings, suggestive of interstitial pneumonia or pulmonary edema.'), Score: 0.7159
+('Normal pulmonary vasculature distribution.', 'Cephalization of pulmonary vessels, indicating fluid overload or pulmonary hypertension.'), Score: 0.7156
+('No consolidation or infiltrates.', 'Areas of consolidation in the right lower lobe, consistent with pneumonia.'), Score: 0.7155
+('Clear and symmetrical lung parenchyma.', 'Patchy consolidation in the right middle lobe.'), Score: 0.7151
+('Normal cardiac silhouette.', 'Cardiomegaly with increased cardiac-thoracic ratio, potentially secondary to pneumonia-related strain.'), Score: 0.7151
+('Normal bronchial markings.', 'Kerley B lines, indicating pulmonary edema.'), Score: 0.7151
+('Normal interstitial markings.', 'Increased interstitial markings, indicating pulmonary edema or fibrosis.'), Score: 0.7150
+('Normal pulmonary veins.', 'Enlarged pulmonary veins.'), Score: 0.7149
+('Clear costophrenic angles bilaterally.', 'Blunted costophrenic angles, suggestive of pleural effusion associated with pneumonia.'), Score: 0.7146
+('No pleural thickening.', 'Pleural thickening and calcification.'), Score: 0.7145
+('Clear costophrenic angles.', 'Blunted costophrenic angles, indicating pleural effusion.'), Score: 0.7144
+('Sharp cardiac silhouette.', 'Loss of cardiac silhouette, potentially due to large pericardial effusion.'), Score: 0.7144
+('Normal heart border.', 'Ill-defined heart border due to surrounding infiltrate, suggestive of pericardial effusion or pneumonia.'), Score: 0.7142
+('Normal cardiac silhouette size.', 'Enlarged cardiac silhouette with associated pulmonary edema.'), Score: 0.7139
+('Normal pulmonary artery size.', 'Enlarged pulmonary artery with peripheral wedging, suggestive of pulmonary embolism or pneumonia.'), Score: 0.7138
+('Sharp diaphragmatic silhouette.', 'Obscuration of the diaphragmatic silhouette due to underlying consolidation.'), Score: 0.7137
+('No interstitial markings.', 'Prominent interstitial markings, suggestive of atypical pneumonia or pulmonary fibrosis.'), Score: 0.7136
+('No peribronchial cuffing.', 'Peribronchial cuffing, suggesting airway inflammation associated with pneumonia.'), Score: 0.7136
+('Clear lung apices.', 'Apical consolidation, consider reactivation tuberculosis or pneumonia.'), Score: 0.7136
+('No evidence of cavitation.', 'Cavity formation within a lung infiltrate, raising suspicion for necrotizing pneumonia.'), Score: 0.7134
+('Clear costophrenic angles.', 'Obtuse costophrenic angles, suggestive of pleural effusion.'), Score: 0.7133
+('No evidence of pulmonary edema.', 'Bilateral fluffy infiltrates, suggestive of pulmonary edema.'), Score: 0.7132
+('No subsegmental atelectasis.', 'Subsegmental atelectasis with surrounding consolidation, potentially due to mucus plugging in pneumonia.'), Score: 0.7132
+('No hilar adenopathy.', 'Hilar adenopathy, suggestive of infectious or inflammatory process like pneumonia.'), Score: 0.7130
+('Normal lung volumes, no focal consolidation.', 'Reduced lung volume in the left lower lobe, with consolidation.'), Score: 0.7129
+('Sharp costophrenic angles.', 'Blunted costophrenic angles, suggestive of pleural effusion.'), Score: 0.7128
+('Sharp diaphragmatic angles.', 'Blunting of the diaphragmatic angles, potentially due to pleural effusion.'), Score: 0.7127
+('Mediastinum is within normal limits.', 'Widened mediastinum, potentially due to mass or effusion.'), Score: 0.7125
+('No pulmonary nodules.', 'Multiple pulmonary nodules, raising concern for metastatic disease or post-infectious changes after pneumonia.'), Score: 0.7124
+('Sharp diaphragmatic contours.', 'Obscuration of the diaphragmatic contours, suggesting subphrenic abscess or effusion.'), Score: 0.7123
+('Clear costophrenic angles.', 'Blunting of the right costophrenic angle with pleural effusion.'), Score: 0.7123
+('Normal pulmonary vasculature.', 'Prominent pulmonary vasculature, suggestive of pulmonary hypertension.'), Score: 0.7121
+('Normal mediastinal width.', 'Widened mediastinum, potentially due to mass or effusion.'), Score: 0.7119
+('Clear costophrenic angles.', 'Blunting of costophrenic angles, suggestive of pleural effusion associated with pneumonia.'), Score: 0.7119
+('No focal airspace opacities.', 'Patchy airspace consolidation in the left lower lobe.'), Score: 0.7118
+('Normal pulmonary vasculature.', 'Increased interstitial markings and vascular prominence, suggestive of early pneumonia.'), Score: 0.7118
+('Normal heart size.', 'Cardiomegaly, potentially secondary to pneumonia-related strain.'), Score: 0.7113
+('No pleural thickening.', 'Pleural thickening with associated volume loss, potentially due to prior infection or malignancy.'), Score: 0.7112
+('Normal heart borders.', 'Ill-defined heart borders, potentially due to pericardial effusion.'), Score: 0.7111
+('No perihilar haze.', 'Perihilar haze with indistinct lung markings, suggestive of pneumonia or pulmonary edema.'), Score: 0.7110
+('No interstitial markings.', 'Prominent interstitial markings and Kerley B lines, suggestive of pulmonary edema or atypical pneumonia.'), Score: 0.7110
+('Normal lung volumes.', 'Reduced lung volumes, potentially due to atelectasis secondary to pneumonia.'), Score: 0.7109
+('No evidence of pneumothorax.', 'Pneumothorax, air in the pleural space.'), Score: 0.7109
+('Normal lung parenchyma.', 'Reticulonodular pattern throughout both lung fields, suggestive of atypical pneumonia.'), Score: 0.7109
+('No evidence of ground-glass opacity.', 'Ground-glass opacity in the bilateral lungs, potentially viral pneumonia.'), Score: 0.7107
+('Sharp costophrenic angles.', 'Blunted costophrenic angles, suggesting pleural effusion.'), Score: 0.7107
+('No evidence of pleural effusion.', 'Large right pleural effusion with associated atelectasis.'), Score: 0.7106
+('Clear costophrenic angles.', 'Blunted costophrenic angles, suggestive of pleural effusion.'), Score: 0.7105
+('Normal rib cage.', 'Rib destruction, potentially due to metastatic disease.'), Score: 0.7105
+('Normal mediastinal width.', 'Widened mediastinum, possibly due to aortic dissection or mediastinal mass.'), Score: 0.7104
+('No peribronchial cuffing.', 'Peribronchial cuffing, indicating airway inflammation associated with pneumonia.'), Score: 0.7102
+('Normal lung parenchyma.', 'Patchy consolidation in the right lower lobe, suggestive of pneumonia.'), Score: 0.7098
+('No pleural effusion.', 'Large right pleural effusion with complete opacification of the hemithorax.'), Score: 0.7093
+('Normal pulmonary artery.', 'Enlarged pulmonary artery with peripheral wedging, suggestive of pulmonary embolism complicating pneumonia.'), Score: 0.7092
+('Normal pulmonary vasculature.', 'Increased pulmonary vascular markings, indicating pulmonary congestion secondary to pneumonia.'), Score: 0.7086
+('No pleural effusion.', 'Large pleural effusion with complete opacification of the hemithorax.'), Score: 0.7086
+('Normal mediastinal width.', 'Mediastinal shift to the right, potentially due to a large pleural effusion or pneumothorax.'), Score: 0.7084
+('Normal diaphragmatic contour.', 'Diaphragmatic elevation on the right, potentially due to underlying consolidation.'), Score: 0.7084
+('No interstitial markings.', 'Prominent interstitial markings with Kerley lines, indicating pulmonary edema or interstitial pneumonia.'), Score: 0.7084
+('No evidence of pneumothorax.', 'Small right pneumothorax with underlying lung consolidation.'), Score: 0.7083
+('No interstitial markings.', 'Reticular interstitial markings, suggestive of interstitial pneumonia.'), Score: 0.7083
+('No interstitial markings.', 'Prominent interstitial markings, indicating interstitial pneumonia or pulmonary edema.'), Score: 0.7082
+('Sharp costophrenic angles bilaterally.', 'Blunted costophrenic angles, indicating pleural effusion associated with pneumonia.'), Score: 0.7081
+('No pleural effusion.', 'Loculated pleural effusion in the right thorax, commonly seen in parapneumonic effusions.'), Score: 0.7080
+('Normal rib cage.', 'Rib destruction or periosteal reaction, suggesting invasive fungal pneumonia or other complications.'), Score: 0.7073
+('Clear costophrenic angles.', 'Blunted costophrenic angles bilaterally, indicating pleural effusion.'), Score: 0.7073
+('Normal cardiac silhouette.', 'Cardiomegaly, indicating heart enlargement.'), Score: 0.7072
+('Normal mediastinum width.', 'Widened mediastinum, potentially due to aortic dissection, mediastinal mass, or lymphadenopathy.'), Score: 0.7072
+('No visible subcutaneous emphysema.', 'Subcutaneous emphysema, air in the soft tissues, indicating a pneumothorax or esophageal rupture.'), Score: 0.7067
+('Normal heart size.', 'Cardiomegaly, potentially due to fluid overload or underlying cardiac disease complicating pneumonia.'), Score: 0.7064
+('Normal cardiac silhouette size.', 'Cardiomegaly, enlarged cardiac silhouette.'), Score: 0.7064
+('Normal lung volumes.', 'Reduced lung volumes, potentially due to fibrosis.'), Score: 0.7063
+('No interstitial markings.', 'Retinodular pattern with Kerley B lines, suggestive of pulmonary edema secondary to pneumonia.'), Score: 0.7057
+('Normal costal cartilage.', 'Costal cartilage erosion or inflammation, potentially related to spread of infection from pneumonia.'), Score: 0.7056
+('No interstitial markings.', 'Prominent interstitial markings, suggestive of pulmonary edema or fibrosis.'), Score: 0.7054
+('Clear costophrenic angles.', 'Blunted costophrenic angles, indicative of pleural effusion.'), Score: 0.7053
+('Normal diaphragmatic contour.', 'Irregular diaphragmatic contour, possibly due to atelectasis or scarring.'), Score: 0.7052
+('No interstitial markings.', 'Prominent interstitial markings with reticular pattern, indicating interstitial pneumonia.'), Score: 0.7050
+('Normal cardiac silhouette.', 'Cardiomegaly with increased pulmonary vascular markings.'), Score: 0.7049
+('No interstitial markings.', 'Interstitial thickening or reticular pattern, suggestive of interstitial lung disease.'), Score: 0.7049
+('No atelectasis.', 'Atelectasis, collapse of lung tissue, resulting in increased opacity.'), Score: 0.7045
+('No apical capping.', 'Apical capping, suggestive of reactivation tuberculosis or fungal pneumonia mimicking bacterial pneumonia.'), Score: 0.7045
+('Normal cardiac silhouette.', 'Cardiomegaly with increased opacity in the left lung base, potentially due to pneumonia-related fluid overload.'), Score: 0.7043
+('No pleural effusions are present.', 'Large pleural effusion with associated atelectasis.'), Score: 0.7043
+('Clear trachea.', 'Tracheal deviation to the left, potentially due to mediastinal shift from a large pleural effusion associated with pneumonia.'), Score: 0.7041
+('No subsegmental atelectasis.', 'Subsegmental atelectasis with adjacent consolidation, potentially representing pneumonia.'), Score: 0.7040
+('No interstitial markings.', 'Bilateral interstitial infiltrates, suggestive of viral pneumonia.'), Score: 0.7040
+('No air bronchograms.', 'Air bronchograms within a consolidated area, a hallmark of pneumonia.'), Score: 0.7039
+('No peribronchial cuffing.', 'Peribronchial cuffing, indicating airway inflammation.'), Score: 0.7038
+('Clear lung fields.', 'Right lower lobe consolidation with air bronchograms.'), Score: 0.7038
+('No evidence of pleural effusion.', 'Large right pleural effusion with mediastinal shift.'), Score: 0.7037
+('No interstitial markings.', 'Interstitial infiltrates throughout both lung fields.'), Score: 0.7035
+('Normal lung parenchyma.', 'Patchy consolidation in the right lower lobe, consistent with pneumonia.'), Score: 0.7034
+('Normal bony thorax.', 'Destructive lesion in the rib, suggestive of malignancy.'), Score: 0.7034
+('No pleural thickening.', 'Pleural thickening or masses.'), Score: 0.7026
+('Normal lung volumes.', 'Reduced lung volumes.'), Score: 0.7026
+('Normal pulmonary vasculature.', 'Increased pulmonary vascular markings, potentially due to pulmonary hypertension secondary to pneumonia.'), Score: 0.7025
+('Normal mediastinal width.', 'Widened mediastinum, potentially due to lymphadenopathy or aortic dissection (consider pneumonia-related complications).'), Score: 0.7024
+('No pulmonary nodules.', 'Multiple pulmonary nodules of varying sizes, requiring further investigation for malignancy.'), Score: 0.7024
+('No evidence of interstitial thickening.', 'Interstitial thickening with Kerley B lines, indicative of pulmonary edema secondary to pneumonia.'), Score: 0.7022
+('No vascular congestion.', 'Increased pulmonary vascular congestion, potentially due to heart failure or fluid overload.'), Score: 0.7021
+('Normal mediastinal width, trachea midline.', 'Widened mediastinum, tracheal deviation to the right.'), Score: 0.7015
+('Sharp and well-defined pulmonary arteries.', 'Prominent pulmonary arteries with peripheral wedging, suggestive of pulmonary embolism or infarction.'), Score: 0.7014
+('No peribronchial cuffing.', 'Peribronchial cuffing, indicating bronchial wall thickening due to inflammation from pneumonia.'), Score: 0.7012
+('Sharp diaphragmatic contours.', 'Obscuration of the right hemidiaphragm, suggesting subphrenic abscess or consolidation.'), Score: 0.7010
+('No hilar adenopathy.', 'Right hilar adenopathy, potentially representing infection or malignancy.'), Score: 0.7009
+('No evidence of cavitation.', 'Cavitation within a lung nodule, suggestive of necrotizing pneumonia.'), Score: 0.7007
+('No cavitation.', 'Cavitation within a pulmonary infiltrate, potentially indicating necrotizing pneumonia.'), Score: 0.7006
+('No interstitial markings.', 'Interstitial markings indicating pulmonary edema or fibrosis.'), Score: 0.7004
+('Normal mediastinal width.', 'Widened mediastinum, potentially due to aortic dissection or mediastinal mass.'), Score: 0.7003
+('Normal pulmonary vasculature.', 'Increased pulmonary vascular markings, suggestive of pulmonary edema or venous congestion.'), Score: 0.7002
+('Normal cardiac size.', 'Cardiomegaly with pulmonary congestion, potentially secondary to pneumonia-related heart strain.'), Score: 0.7000
+('No evidence of lobar consolidation.', 'Complete consolidation of the left lower lobe.'), Score: 0.6997
+('Normal costophrenic sulci.', 'Obliteration of the right costophrenic sulcus, indicative of pleural effusion.'), Score: 0.6994
+('Normal costal cartilage.', 'Erosion of costal cartilage, potentially due to infection or malignancy.'), Score: 0.6994
+('No subsegmental atelectasis.', 'Subsegmental atelectasis with adjacent consolidation, suggestive of pneumonia.'), Score: 0.6990
+('Clear costophrenic angles.', 'Blunting of the costophrenic angles, suggestive of pleural effusion.'), Score: 0.6990
+('No consolidation.', 'Lobar consolidation, characteristic of bacterial pneumonia.'), Score: 0.6989
+('Clear costovertebral angles.', 'Obscuration of costovertebral angles, suggestive of pleural effusion or consolidation.'), Score: 0.6989
+('No interstitial edema.', 'Interstitial edema with Kerley B lines.'), Score: 0.6987
+('No peribronchial cuffing.', 'Peribronchial cuffing, indicative of bronchial inflammation.'), Score: 0.6987
+('No hilar prominence.', 'Hilar prominence, potentially due to lymph node enlargement associated with pneumonia.'), Score: 0.6985
+('Normal pulmonary vasculature.', 'Increased pulmonary vascular markings, suggestive of pulmonary congestion.'), Score: 0.6984
+('No evidence of pleural effusion.', 'Large right pleural effusion, causing mediastinal shift.'), Score: 0.6982
+('No interstitial markings.', 'Retinodular pattern, indicating interstitial pneumonia.'), Score: 0.6982
+('No hilar adenopathy.', 'Hilar adenopathy, potentially representing infectious or inflammatory process.'), Score: 0.6982
+('Normal hemidiaphragm.', 'Elevated hemidiaphragm with loss of costophrenic angle, indicating possible pleural effusion or phrenic nerve paralysis.'), Score: 0.6980
+('No ground-glass opacities.', 'Ground-glass opacities, often seen in viral or atypical pneumonias.'), Score: 0.6978
+('No evidence of pneumothorax.', 'Small pneumothorax with underlying consolidation, potentially due to ruptured bulla in the setting of pneumonia.'), Score: 0.6977
+('No peribronchial cuffing.', 'Peribronchial cuffing, indicating inflammation around the bronchioles, common in pneumonia.'), Score: 0.6972
+('No cavitation.', 'Cavitation within a pulmonary consolidation, suggesting necrotizing pneumonia or abscess.'), Score: 0.6968
+('Clear costal pleura.', 'Visible pleural effusion along the costal pleura, suggesting pneumonia or related complication.'), Score: 0.6968
+('Clear costophrenic angles.', 'Blunting of the costophrenic angles, indicative of pleural effusion.'), Score: 0.6968
+('Normal mediastinal width.', 'Widened mediastinum, consider pneumonia with associated mediastinitis.'), Score: 0.6967
+('Normal diaphragmatic contour.', 'Diaphragmatic elevation, possibly due to phrenic nerve paralysis or ascites.'), Score: 0.6967
+('No peribronchial cuffing.', 'Peribronchial cuffing, indicating airway inflammation common in pneumonia.'), Score: 0.6966
+('Normal lung parenchyma.', 'Patchy opacities in the right lower lobe, consistent with pneumonia.'), Score: 0.6963
+('Normal diaphragmatic contour.', 'Flattened right hemidiaphragm, potentially due to atelectasis or effusion.'), Score: 0.6959
+('Clear lung apices.', 'Apical cap or infiltrates, suggestive of reactivation tuberculosis or fungal pneumonia.'), Score: 0.6959
+('No consolidation.', 'Lobar consolidation with air bronchograms, classic for bacterial pneumonia.'), Score: 0.6955
+('No focal opacity.', 'Focal opacity in the lower lobe, consistent with pneumonia.'), Score: 0.6954
+('Hila are normal in size and contour.', 'Right hilar enlargement with associated pulmonary opacity.'), Score: 0.6953
+('No evidence of pneumothorax.', 'Pneumothorax as a complication of severe pneumonia.'), Score: 0.6953
+('Normal mediastinal width.', 'Widened mediastinum, potentially due to aortic dissection or mass.'), Score: 0.6950
+('Clear costophrenic sulci.', 'Pleural effusion layering along the posterior costophrenic sulcus, potentially secondary to pneumonia.'), Score: 0.6948
+('Normal vascular pedicle width.', 'Widened vascular pedicle, potentially due to pulmonary hypertension or fluid overload.'), Score: 0.6947
+('Normal cardiac silhouette size.', 'Enlarged cardiac silhouette, potentially due to pericardial effusion or heart failure complicating pneumonia.'), Score: 0.6945
+('Normal lung parenchyma.', 'Patchy infiltrates in the left lower lobe, consistent with pneumonia.'), Score: 0.6944
+('Normal lung volumes.', 'Reduced lung volumes, potentially due to atelectasis or restrictive lung disease.'), Score: 0.6942
+('No subcutaneous emphysema.', 'Subcutaneous emphysema, indicating air leakage from the lungs.'), Score: 0.6942
+('No pulmonary edema.', 'Kerley B lines, indicating pulmonary edema secondary to pneumonia or heart failure.'), Score: 0.6938
+('No air bronchograms.', 'Air bronchograms, indicating alveolar filling.'), Score: 0.6938
+('Normal mediastinal width.', 'Widened mediastinum, potentially due to lymphadenopathy or aortic dissection, consider pneumonia related causes.'), Score: 0.6938
+('Normal peribronchial cuffing.', 'Peribronchial cuffing, indicating airway inflammation consistent with pneumonia.'), Score: 0.6937
+('No evidence of pneumothorax.', 'Pneumothorax with apical air collection.'), Score: 0.6932
+('Normal pulmonary vasculature.', 'Increased pulmonary vascular markings, suggestive of pulmonary hypertension.'), Score: 0.6931
+('No evidence of cardiomegaly.', 'Gross cardiomegaly.'), Score: 0.6930
+('No pleural masses.', 'Pleural mass, potentially representing a tumor or organized effusion.'), Score: 0.6929
+('Normal vascularity.', 'Increased vascularity in the affected lung field, indicating inflammation.'), Score: 0.6929
+('No peribronchial cuffing.', 'Peribronchial cuffing, indicating airway inflammation often seen in pneumonia.'), Score: 0.6929
+('Normal mediastinal width.', 'Widened mediastinum, potentially due to mediastinal lymphadenopathy or aortic dissection.'), Score: 0.6923
+('Normal vascular pedicle.', 'Prominent vascular pedicle, indicating pulmonary hypertension or fluid overload.'), Score: 0.6923
+('Normal esophageal contour.', 'Esophageal dilation.'), Score: 0.6919
+('Clear costophrenic angles.', 'Blunting of the right costophrenic angle, suggestive of pleural effusion.'), Score: 0.6918
+('No interstitial markings.', 'Prominent interstitial markings, potentially due to pulmonary edema or early pneumonia.'), Score: 0.6915
+('Sharp costophrenic angles, no interstitial markings.', 'Blunted costophrenic angles, reticular opacities throughout both lungs.'), Score: 0.6913
+('Clear lung apices.', 'Apical cap with consolidation, potentially indicating prior or resolving pneumonia.'), Score: 0.6912
+('Normal lung volumes.', 'Reduced lung volumes, suggestive of restrictive lung disease.'), Score: 0.6912
+('No evidence of pneumothorax.', 'Small pneumothorax, potentially a complication of severe pneumonia.'), Score: 0.6911
+('No pleural thickening.', 'Pleural thickening with associated volume loss.'), Score: 0.6911
+('No peribronchial cuffing.', 'Peribronchial cuffing, indicating airway inflammation, common in pneumonia.'), Score: 0.6910
+('Normal lung volumes.', 'Decreased lung volume on the affected side, suggestive of lobar pneumonia.'), Score: 0.6907
+('Clear costovertebral angles.', 'Obscuration of costovertebral angles, potentially due to pleural effusion.'), Score: 0.6907
+('Normal lung parenchyma.', 'Patchy consolidation in the right middle lobe.'), Score: 0.6907
+('No focal airspace opacity.', 'Focal airspace opacity in the left lower lobe, suggestive of pneumonia.'), Score: 0.6905
+('Clear lung fields bilaterally.', 'Left lower lobe consolidation with air bronchograms.'), Score: 0.6898
+('No subcutaneous emphysema.', 'Subcutaneous emphysema present, potentially due to ruptured alveoli.'), Score: 0.6894
+('Normal cardiac silhouette.', 'Cardiomegaly, potentially contributing to pulmonary congestion.'), Score: 0.6893
+('No hilar prominence.', 'Hilar prominence, potentially due to lymph node enlargement from infection.'), Score: 0.6893
+('Normal hilar structures.', 'Hilar enlargement with indistinct borders, potentially due to lymph node involvement.'), Score: 0.6893
+('Clear costophrenic angles.', 'Blunting of the right costophrenic angle, indicating possible pleural effusion.'), Score: 0.6892
+('Clear costophrenic angles.', 'Costophrenic angle blunting, suggestive of pleural effusion.'), Score: 0.6890
+('Sharp cardiac borders.', 'Cardiomegaly with indistinct cardiac borders.'), Score: 0.6889
+('Normal mediastinal width.', 'Widened mediastinum, potentially due to lymphadenopathy or aortic dissection.'), Score: 0.6889
+('Normal diaphragmatic contour.', 'Diaphragmatic elevation, potentially due to phrenic nerve palsy or effusion.'), Score: 0.6884
+('No air bronchograms.', 'Air bronchograms visible, indicating alveolar filling.'), Score: 0.6879
+('Normal lung parenchyma.', 'Ground-glass opacities bilaterally, potentially due to viral pneumonia.'), Score: 0.6879
+('Normal diaphragmatic contour.', 'Diaphragmatic elevation, potentially due to phrenic nerve paralysis or ascites.'), Score: 0.6879
+('Normal mediastinal width.', 'Widened mediastinum, suggestive of aortic dissection or mediastinal mass.'), Score: 0.6877
+('No interstitial markings.', 'Interstitial markings, indicating pulmonary edema or fibrosis.'), Score: 0.6875
+('No pleural effusions.', 'Moderate left pleural effusion with associated consolidation.'), Score: 0.6873
+('Normal hilar structures.', 'Hilar lymphadenopathy, enlarged hilar nodes.'), Score: 0.6871
+('Normal diaphragmatic contour.', 'Blunting of the right hemidiaphragm, suggesting pleural effusion.'), Score: 0.6871
+('Normal lung apices.', 'Apical cap or scarring in the lung apices, suggestive of old tuberculosis.'), Score: 0.6871
+('No evidence of cavitation.', 'Cavitation within a lung nodule, suggestive of necrotizing pneumonia or abscess.'), Score: 0.6864
+('No evidence of consolidation.', 'Lobular consolidation.'), Score: 0.6862
+('No subcutaneous emphysema.', 'Subcutaneous emphysema, a severe complication of pneumonia with airway rupture.'), Score: 0.6861
+('Normal lung parenchyma.', 'Ground-glass opacities diffusely throughout the lungs.'), Score: 0.6859
+('No air space opacity.', 'Patchy air space opacity in the left lower lobe, highly suggestive of pneumonia.'), Score: 0.6859
+('Sharp costophrenic angles.', 'Blunting of the right costophrenic angle, suggestive of pleural effusion.'), Score: 0.6859
+('Normal diaphragmatic contour.', 'Elevated hemidiaphragm, potentially due to phrenic nerve paralysis or subphrenic abscess.'), Score: 0.6858
+('No evidence of pneumothorax.', 'Pneumothorax as a complication of severe pneumonia or mechanical ventilation.'), Score: 0.6856
+('No peribronchial cuffing.', 'Peribronchial cuffing, indicating inflammation of the airways.'), Score: 0.6855
+('Clear costovertebral angles.', 'Obscuration of costovertebral angles, potentially due to pleural effusion or posterior pneumonia.'), Score: 0.6855
+('No evidence of bronchiectasis.', 'Bronchiectasis with dilated airways.'), Score: 0.6855
+('Clear lung fields.', 'Patchy infiltrates in the bilateral lower lobes, potentially viral pneumonia.'), Score: 0.6854
+('Normal hemidiaphragm position.', 'Elevated hemidiaphragm, potentially due to phrenic nerve paralysis or abdominal distension.'), Score: 0.6854
+('Normal heart borders.', 'Cardiomegaly, enlarged cardiac silhouette.'), Score: 0.6851
+('No cavitation.', 'Cavitation within a lung nodule, highly suggestive of necrotizing pneumonia.'), Score: 0.6848
+('Normal cardiac silhouette size.', 'Enlarged cardiac silhouette, potentially indicating cardiac failure complicating pneumonia.'), Score: 0.6836
+('No apical capping.', 'Apical capping, suggestive of bacterial pneumonia.'), Score: 0.6834
+('Normal costophrenic angles.', 'Blunted costophrenic angles bilaterally.'), Score: 0.6833
+('No perivascular congestion.', 'Perivascular congestion, suggesting vascular engorgement associated with inflammation.'), Score: 0.6825
+('No interstitial markings.', 'Reticular opacities throughout both lung fields, suggestive of interstitial pneumonia.'), Score: 0.6824
+('No hilar enlargement.', 'Hilar enlargement, suggestive of infection or malignancy complicating pneumonia.'), Score: 0.6823
+('No apical capping.', 'Apical capping, indicating early pulmonary edema or chronic lung disease exacerbation with pneumonia.'), Score: 0.6823
+('No pleural effusion.', 'Moderate pleural effusion on the left side.'), Score: 0.6819
+('Normal hilar structures.', 'Hilar enlargement, potentially due to lymphadenopathy.'), Score: 0.6817
+('Normal hilar structures.', 'Hilar enlargement, possibly due to lymph node involvement.'), Score: 0.6817
+('No evidence of miliary pattern.', 'Miliary pattern throughout the lungs.'), Score: 0.6812
+('Mediastinum is within normal limits in width.', 'Widened mediastinum, consider pneumonia with associated mediastinal lymphadenopathy.'), Score: 0.6810
+('No silhouette sign.', 'Silhouette sign, obscuration of the cardiac border, indicative of left lower lobe consolidation.'), Score: 0.6810
+('No subcutaneous emphysema.', 'Subcutaneous emphysema, indicating air leakage into the tissues.'), Score: 0.6808
+('No evidence of hilar adenopathy.', 'Hilar adenopathy, indicating enlarged lymph nodes potentially due to infection or malignancy complicating pneumonia.'), Score: 0.6806
+('Normal lung parenchyma.', 'Ground-glass opacities in both lungs.'), Score: 0.6806
+('No evidence of abscess.', 'Lung abscess with air-fluid level.'), Score: 0.6798
+('No hilar adenopathy.', 'Prominent hilar adenopathy, potentially indicating lymphoma or infection.'), Score: 0.6797
+('Costophrenic sinuses are clear.', 'Opacification of the costophrenic sinuses, indicating fluid.'), Score: 0.6793
+('No evidence of pneumothorax.', 'Small right pneumothorax secondary to ruptured bulla in the setting of pneumonia.'), Score: 0.6792
+('No apical capping.', 'Apical capping, suggestive of tuberculosis or fungal pneumonia.'), Score: 0.6791
+('No evidence of pulmonary nodules.', 'Multiple small pulmonary nodules with surrounding ground-glass opacity, potentially representing organizing pneumonia.'), Score: 0.6787
+('Normal mediastinal silhouette.', 'Ill-defined mediastinal borders, potentially due to lymphadenopathy or mass effect.'), Score: 0.6785
+('Normal pulmonary vasculature.', 'Increased pulmonary vascular markings, potentially due to pulmonary hypertension.'), Score: 0.6784
+('Normal pulmonary vasculature.', 'Vascular redistribution, indicating fluid overload.'), Score: 0.6782
+('Normal diaphragmatic contour.', 'Diaphragmatic elevation on the right side, potentially due to phrenic nerve palsy or pleural effusion.'), Score: 0.6779
+('No pleural effusion or pneumothorax.', 'Pleural effusion with a horizontal fluid level on the left.'), Score: 0.6778
+('Normal lung volumes.', 'Reduced lung volumes, indicating restriction.'), Score: 0.6776
+('Normal diaphragmatic contour.', 'Diaphragmatic elevation, potentially due to phrenic nerve paralysis or subphrenic abscess.'), Score: 0.6772
+('Sharp and well-defined cardiac borders.', 'Cardiomegaly with indistinct cardiac borders.'), Score: 0.6772
+('Normal trachea.', 'Tracheal deviation to the right, potentially due to mediastinal mass.'), Score: 0.6771
+('No pleural effusions.', 'Large pleural effusion with associated mediastinal shift.'), Score: 0.6770
+('Clear costal cartilage.', 'Erosion of costal cartilage, suggestive of emphysema.'), Score: 0.6766
+('Normal bronchial wall thickness.', 'Thickened bronchial walls, suggestive of chronic bronchitis.'), Score: 0.6764
+('Normal mediastinal contours.', 'Mediastinal shift to the left, potentially due to a mass or pneumothorax.'), Score: 0.6760
+('No visible pneumothorax.', 'Apical pneumothorax with visceral pleural line.'), Score: 0.6753
+('No evidence of atelectasis.', 'Plate-like atelectasis, potentially secondary to mucus plugging in pneumonia.'), Score: 0.6752
+('No subcutaneous emphysema.', 'Subcutaneous emphysema, a rare but serious complication of severe pneumonia.'), Score: 0.6751
+('No evidence of fluid in the fissures.', 'Fluid within the interlobar fissures, suggestive of pulmonary edema or pneumonia.'), Score: 0.6748
+('Normal lung volumes.', 'Reduced lung volumes bilaterally.'), Score: 0.6747
+('Normal diaphragmatic contour.', 'Irregular diaphragmatic contour with sinus tenderness, potentially due to pleurisy.'), Score: 0.6733
+('No consolidation near the hilum.', 'Consolidation abutting the hilum, potentially representing a pneumonic process or lymphadenopathy.'), Score: 0.6729
+('No interstitial markings.', 'Reticular opacities throughout both lungs, consistent with interstitial pneumonia.'), Score: 0.6727
+('Normal heart-lung ratio.', 'Increased heart-lung ratio, suggestive of cardiomegaly.'), Score: 0.6725
+('No interstitial markings.', 'Reticular pattern in the lungs, suggestive of interstitial pneumonia.'), Score: 0.6725
+('Normal bronchial wall thickness.', 'Bronchial wall thickening, suggestive of bronchitis.'), Score: 0.6715
+('No evidence of pleural plaques.', 'Pleural plaques with calcifications, potentially indicating prior asbestos exposure or empyema.'), Score: 0.6711
+('No hilar prominence.', 'Hilar prominence, potentially due to lymphadenopathy associated with pneumonia.'), Score: 0.6710
+('Normal aortic knob.', 'Enlarged aortic knob, potentially indicating aortic dissection or aneurysm.'), Score: 0.6707
+('Mediastinum is within normal limits.', 'Widened mediastinum, consider aortic dissection or mass.'), Score: 0.6706
+('No evidence of lobar collapse.', 'Lobar collapse with volume loss, potentially due to pneumonia or obstruction.'), Score: 0.6704
+('No pneumothorax.', 'Pneumothorax, potentially a complication of severe pneumonia or mechanical ventilation.'), Score: 0.6692
+('No mediastinal widening.', 'Mediastinal widening, potentially due to lymphadenopathy or mediastinitis related to pneumonia.'), Score: 0.6691
+('No pulmonary nodules.', 'Multiple pulmonary nodules with surrounding halo sign, suggestive of infectious etiology like pneumonia.'), Score: 0.6691
+('Clear lung fields.', 'Bilateral interstitial infiltrates, suggestive of viral pneumonia.'), Score: 0.6690
+('Normal mediastinal width.', 'Mediastinal shift to the left, potentially due to tension pneumothorax.'), Score: 0.6689
+('No apical capping.', 'Apical capping, suggestive of chronic tuberculosis or fungal infection.'), Score: 0.6687
+('No evidence of pneumomediastinum.', 'Pneumomediastinum, air in the mediastinum.'), Score: 0.6686
+('Normal mediastinal width.', 'Widened mediastinum, potentially due to lymphadenopathy or aortic dissection complicating pneumonia.'), Score: 0.6685
+('No evidence of cavitation.', 'Cavitation within a lung nodule, potentially indicating necrotizing pneumonia.'), Score: 0.6677
+('No interstitial markings.', 'Reticular opacities throughout both lungs, suggestive of interstitial lung disease.'), Score: 0.6676
+('Normal lung parenchyma.', 'Ground-glass opacities scattered throughout both lungs.'), Score: 0.6675
+('Normal rib cage appearance.', 'Rib fractures or bony abnormalities.'), Score: 0.6675
+('Normal cardiac apex.', 'Blunted cardiac apex.'), Score: 0.6674
+('No increased opacity in the costophrenic angles.', 'Blunting of the right costophrenic angle due to pleural effusion, often associated with pneumonia.'), Score: 0.6668
+('No interstitial markings.', 'Reticular interstitial markings, consistent with interstitial lung disease.'), Score: 0.6666
+('Normal lung volumes bilaterally.', 'Hyperinflation of the lungs, potentially secondary to pneumonia and associated bronchospasm.'), Score: 0.6662
+('No interstitial markings.', 'Reticulonodular pattern, suggestive of interstitial lung disease.'), Score: 0.6653
+('No consolidation near the hilum.', 'Consolidation radiating from the hilum, suggestive of bronchopneumonia.'), Score: 0.6650
+('No signs of pneumothorax.', 'Apical pneumothorax with lung collapse.'), Score: 0.6648
+('No focal opacity.', 'Focal opacity in the lung field, potentially representing a mass or pneumonia.'), Score: 0.6647
+('Clear retrocardiac space.', 'Opacification of the retrocardiac space.'), Score: 0.6647
+('No evidence of pulmonary nodules.', 'Multiple pulmonary nodules of varying sizes.'), Score: 0.6647
+('No interstitial edema.', 'Kerley B lines present, indicating interstitial edema secondary to heart failure or pneumonia.'), Score: 0.6645
+('No interstitial markings.', 'Reticular interstitial markings, suggestive of interstitial lung disease.'), Score: 0.6643
+('Sharp and well-defined mediastinal borders.', 'Widened mediastinum, suggestive of aortic dissection or mediastinal mass.'), Score: 0.6642
+('No lobar collapse.', 'Left lower lobe collapse with associated volume loss, potentially due to mucus plugging in pneumonia.'), Score: 0.6642
+('Normal soft tissues.', 'Soft tissue swelling.'), Score: 0.6639
+('No evidence of pneumothorax.', 'Presence of a pneumothorax with visceral pleural line, potentially complicating pneumonia.'), Score: 0.6638
+('Normal diaphragmatic contours.', 'Sinusoidal diaphragmatic contour, suggestive of phrenic nerve paralysis.'), Score: 0.6636
+('Normal mediastinal width.', 'Widened mediastinum with a visible mass.'), Score: 0.6636
+('No consolidation.', 'Areas of consolidation in the lower lobes, typical of lobar pneumonia.'), Score: 0.6628
+('Homogeneous lung parenchyma, well-defined diaphragm.', 'Ill-defined consolidation in the right middle lobe, air bronchograms present.'), Score: 0.6627
+('No pneumothorax.', 'Apical pneumothorax, air in the pleural space.'), Score: 0.6626
+('No apical capping.', 'Apical capping with consolidation, suggestive of bacterial pneumonia.'), Score: 0.6625
+('Normal vertebral bodies.', 'Compression fracture of a vertebral body.'), Score: 0.6621
+('Normal diaphragmatic contour.', 'Diaphragmatic elevation, suggestive of phrenic nerve paralysis.'), Score: 0.6618
+('No interstitial markings.', 'Reticulonodular pattern throughout both lung fields, indicative of interstitial pneumonia.'), Score: 0.6612
+('Sharp costophrenic angles bilaterally.', 'Blunted costophrenic angle on the right, suggestive of pleural effusion.'), Score: 0.6612
+('No mediastinal shift.', 'Mediastinal shift to the left, potentially due to a large pleural effusion or pneumothorax.'), Score: 0.6606
+('No pleural effusion.', 'Pleural effusion, blunting the costophrenic angle, often seen in pneumonia.'), Score: 0.6606
+('No ground-glass opacity.', 'Ground-glass opacity, commonly seen in viral pneumonia.'), Score: 0.6601
+('No evidence of lobar collapse.', 'Lobar collapse, often seen in severe pneumonia with airway obstruction.'), Score: 0.6597
+('No pleural effusions.', 'Pleural effusion in the right hemithorax.'), Score: 0.6587
+('No interstitial markings.', 'Retinodular pattern in the lungs, suggestive of viral or atypical pneumonia.'), Score: 0.6584
+('No evidence of pulmonary hypertension.', 'Signs of pulmonary hypertension.'), Score: 0.6578
+('Mediastinum within normal limits.', 'Widened mediastinum with deviation towards the affected side, indicating possible mass effect from pneumonia or abscess.'), Score: 0.6576
+('No mediastinal shift.', 'Left mediastinal shift, potentially due to a large left pleural effusion or lung collapse.'), Score: 0.6561
+('Normal vertebral bodies.', 'Vertebral compression fractures.'), Score: 0.6556
+('Normal pulmonary hila.', 'Hilar enlargement with indistinct borders, potentially due to lymphadenopathy associated with pneumonia.'), Score: 0.6550
+('No interstitial edema.', 'Kerley B lines present, indicating interstitial edema secondary to pneumonia.'), Score: 0.6542
+('Normal trachea.', 'Tracheal deviation to the right, potentially due to mediastinal mass or tension pneumothorax complicating pneumonia.'), Score: 0.6533
+('Normal diaphragmatic contour.', 'Elevated hemidiaphragm on the left.'), Score: 0.6532
+('Clear lung apices.', 'Apical cap or ghost triangle, suggestive of prior tuberculosis or fungal pneumonia.'), Score: 0.6531
+('Clear lung apex.', 'Apical cap or infiltrate, consistent with prior or active tuberculosis or pneumonia.'), Score: 0.6526
+('No evidence of pleural plaques.', 'Pleural plaques.'), Score: 0.6523
+('Normal vascular distribution.', 'Vascular redistribution, suggestive of pulmonary edema.'), Score: 0.6518
+('No apical capping.', 'Apical capping, indicative of reactivation tuberculosis or fungal pneumonia.'), Score: 0.6516
+('Clear lung fields.', 'Consolidation in the right lower lobe, suggestive of pneumonia.'), Score: 0.6510
+('No pleural effusions.', 'Pleural effusion with associated mediastinal shift.'), Score: 0.6508
+('Hilar structures are normal in size and contour.', 'Hilar lymphadenopathy, enlarged hilar nodes.'), Score: 0.6507
+('No focal consolidation.', 'Focal consolidation in the lower lobe, consistent with lobar pneumonia.'), Score: 0.6502
+('Clear cardiac silhouette.', 'Cardiomegaly with increased cardiac silhouette.'), Score: 0.6500
+('No pneumothorax.', 'Apical pneumothorax with associated lung collapse, potentially complicated pneumonia.'), Score: 0.6479
+('Normal mediastinal width.', 'Widened mediastinum with left paratracheal lymphadenopathy, consider infection or malignancy.'), Score: 0.6476
+('No pleural thickening.', 'Pleural thickening with blunting of the costophrenic angle, potentially due to empyema.'), Score: 0.6465
+('No focal consolidation.', 'Patchy consolidation in the right lower lobe, suggestive of pneumonia.'), Score: 0.6458
+('Normal mediastinal contours.', 'Mass in the anterior mediastinum.'), Score: 0.6456
+('Mediastinum is within normal limits.', 'Widened mediastinum, potentially due to lymphadenopathy or aortic dissection.'), Score: 0.6454
+('No consolidation.', 'Lobular consolidation in the right lower lobe, highly suggestive of bacterial pneumonia.'), Score: 0.6448
+('No evidence of cavitation.', 'Cavitary lesion within a lung infiltrate, raising suspicion for necrotizing pneumonia or abscess.'), Score: 0.6447
+('No subsegmental atelectasis.', 'Subsegmental atelectasis with adjacent consolidation, indicating pneumonia or post-obstructive changes.'), Score: 0.6437
+('No pneumothorax.', 'Pneumothorax, air in the pleural space.'), Score: 0.6436
+('Lung fields are clear without focal opacities.', 'Patchy infiltrates in the right lower lobe, consistent with pneumonia.'), Score: 0.6430
+('No ground-glass opacity.', 'Ground-glass opacity in the right upper lobe, consistent with early or atypical pneumonia.'), Score: 0.6427
+('No interstitial markings.', 'Retinacular pattern throughout both lung fields, consistent with interstitial pneumonia.'), Score: 0.6413
+('Clear lung fields.', 'Bilateral interstitial infiltrates, indicating possible viral pneumonia.'), Score: 0.6412
+('Ribs are intact.', 'Fractured ribs with associated hematoma.'), Score: 0.6411
+('Sharp and well-defined mediastinal borders.', 'Blunting of the right costophrenic angle, potentially due to pleural effusion.'), Score: 0.6400
+('Clear lung fields.', 'Patchy consolidation in the right lower lobe.'), Score: 0.6396
+('No interstitial markings.', 'Reticular pattern throughout the lungs, indicative of interstitial pneumonia.'), Score: 0.6391
+('No cavitation.', 'Cavitation within a pulmonary nodule or infiltrate, suggestive of necrotizing pneumonia or abscess.'), Score: 0.6358
+('Normal vascular pedicle.', 'Prominent vascular pedicle, potentially indicating pulmonary hypertension.'), Score: 0.6353
+('Lung fields are clear without focal consolidation.', 'Patchy consolidation in the right lower lobe, consistent with pneumonia.'), Score: 0.6353
+('No interstitial markings.', 'Retinacular (net-like) pattern in the lungs, suggestive of interstitial pneumonia.'), Score: 0.6352
+('Normal rib cage.', 'Rib fractures, potentially due to trauma.'), Score: 0.6347
+('Sharp diaphragmatic contours.', 'Diaphragmatic elevation on the left, possibly due to phrenic nerve palsy or effusion.'), Score: 0.6345
+('Clear costophrenic angles bilaterally.', 'Blunting of the right costophrenic angle, indicating pleural effusion.'), Score: 0.6340
+('Normal lung vasculature.', 'Prominent peribronchial cuffing, suggestive of bronchitis or pneumonia.'), Score: 0.6339
+('Mediastinum within normal limits.', 'Widened mediastinum, potentially indicating aortic dissection or mass.'), Score: 0.6339
+('No consolidation present.', 'Consolidation in the right lower lobe, indicating pneumonia.'), Score: 0.6331
+('No pleural effusion.', 'Blunting of the costophrenic angle with pleural effusion, suggesting parapneumonic effusion.'), Score: 0.6319
+('No subcutaneous emphysema.', 'Subcutaneous emphysema, air under the skin, indicating a pneumothorax or esophageal rupture.'), Score: 0.6308
+('Clear costal cartilage.', 'Erosion or irregularity of the costal cartilage.'), Score: 0.6301
+('No lung consolidation.', 'Patchy consolidation in the right lower lobe.'), Score: 0.6284
+('No hilar adenopathy.', 'Bilateral hilar enlargement, potentially due to lymphadenopathy associated with pneumonia or other infection.'), Score: 0.6278
+('No focal opacities.', 'Focal opacity in the right lower lobe, consistent with consolidation.'), Score: 0.6265
+('Normal trachea.', 'Tracheal deviation, potentially due to tension pneumothorax or mediastinal mass.'), Score: 0.6257
+('Normal clavicular appearance.', 'Clavicular fracture or deformity.'), Score: 0.6257
+('Normal pulmonary vasculature.', 'Prominent pulmonary vasculature with cephalization.'), Score: 0.6256
+('No evidence of interstitial markings.', 'Prominent interstitial markings.'), Score: 0.6247
+('No subsegmental atelectasis.', 'Subsegmental atelectasis, often seen in pneumonia.'), Score: 0.6238
+('No interstitial markings.', 'Reticular pattern throughout the lungs, indicating interstitial lung disease.'), Score: 0.6234
+('Normal tracheal position.', 'Tracheal deviation to the right, potentially due to mediastinal mass or pneumothorax.'), Score: 0.6228
+('Clear costophrenic sulci bilaterally.', 'Costophrenic angle obliteration on the right side, suggesting pleural effusion.'), Score: 0.6226
+('No evidence of consolidation.', 'Consolidation in the right middle lobe.'), Score: 0.6218
+('No interstitial thickening.', 'Kerley B lines, indicating interstitial thickening and possible fluid overload in pneumonia.'), Score: 0.6212
+('Normal lung bases.', 'Basal atelectasis.'), Score: 0.6200
+('No evidence of cavitation.', 'Cavitation within a lung nodule, suggestive of necrotizing pneumonia or tuberculosis.'), Score: 0.6190
+('No lobar opacity.', 'Complete opacity of the left upper lobe, suggestive of lobar pneumonia.'), Score: 0.6183
+('No hilar prominence.', 'Bilateral hilar prominence, potentially due to lymphadenopathy associated with pneumonia.'), Score: 0.6181
+('No evidence of cavitation.', 'Cavitation within a lung nodule, consider abscess or necrotizing pneumonia.'), Score: 0.6171
+('No evidence of atelectasis.', 'Atelectasis of the left lower lobe, with volume loss.'), Score: 0.6161
+('Normal hilar structures.', 'Hilar lymphadenopathy, potentially due to infection or malignancy.'), Score: 0.6159
+('Mediastinum within normal limits.', 'Widened mediastinum, potentially due to aortic dissection or mass.'), Score: 0.6159
+('No subcutaneous emphysema.', 'Subcutaneous emphysema, characterized by air under the skin.'), Score: 0.6151
+('Sharp costophrenic angles bilaterally.', 'Blunting of the right costophrenic angle, suggestive of pleural effusion.'), Score: 0.6150
+('No subcutaneous emphysema.', 'Subcutaneous emphysema, air under the skin.'), Score: 0.6146
+('Normal hilar prominence.', 'Hilar enlargement, potentially due to lymphadenopathy related to pneumonia.'), Score: 0.6142
+('Normal mediastinal width.', 'Widened mediastinum, possibly due to mediastinal lymphadenopathy or aortic dissection (rule out with clinical context).'), Score: 0.6128
+('Clear costophrenic angles bilaterally.', 'Blunting of the right costophrenic angle, suggestive of pleural effusion.'), Score: 0.6127
+('Normal pulmonary vasculature.', 'Prominent pulmonary arteries, suggestive of pulmonary hypertension.'), Score: 0.6126
+('Clear costophrenic angles.', 'Costophrenic angle obliteration on the left, indicating fluid or atelectasis.'), Score: 0.6115
+('No evidence of cavitation.', 'Cavitation within a pulmonary lesion, raising concern for necrotizing pneumonia or abscess.'), Score: 0.6109
+('No subcutaneous emphysema.', 'Subcutaneous emphysema, air in the soft tissues.'), Score: 0.6105
+('No evidence of pulmonary embolism.', 'Wedge-shaped peripheral opacity, suggestive of pulmonary embolism.'), Score: 0.6102
+('Unremarkable mediastinum.', 'Widened mediastinum with left hilar prominence, consider pneumonia or other mediastinal pathology.'), Score: 0.6100
+('Lung parenchyma appears clear.', 'Ground-glass opacities in both lungs, concerning for atypical pneumonia.'), Score: 0.6094
+('Normal mediastinal width.', 'Mediastinal widening, potentially due to lymphadenopathy or aortic dissection.'), Score: 0.6092
+('No evidence of cavitation.', 'Cavity within a lung nodule, potentially due to necrotizing pneumonia.'), Score: 0.6091
+('Normal trachea, midline position.', 'Tracheal deviation to the right, potentially due to pneumothorax or mass effect.'), Score: 0.6086
+('No visible foreign body.', 'Radiopaque foreign body within the airway, causing obstruction.'), Score: 0.6076
+('No interstitial markings.', 'Reticular pattern throughout both lung fields.'), Score: 0.6063
+('Clear lung fields.', 'Infiltrates in the left upper lobe, potentially indicative of pneumonia.'), Score: 0.6045
+('No hilar enlargement.', 'Hilar enlargement, potentially due to lymphadenopathy associated with pneumonia.'), Score: 0.6041
+('No subcutaneous air.', 'Subcutaneous emphysema, indicating air leakage from the lungs.'), Score: 0.6027
+('Normal hilar prominence.', 'Hilar enlargement with indistinct margins, potentially due to lymphadenopathy.'), Score: 0.6025
+('No evidence of pneumothorax.', 'Apical pneumothorax with visible pleural line.'), Score: 0.6023
+('No hilar adenopathy.', 'Hilar adenopathy, enlarged lymph nodes in the hilum.'), Score: 0.6021
+('No apical capping.', 'Apical capping, indicative of tuberculosis or fungal infection.'), Score: 0.6019
+('Clear costophrenic angles bilaterally.', 'Blunting of the right costophrenic angle, indicating possible pleural effusion.'), Score: 0.6009
+('No focal areas of increased density.', 'Focal consolidation in the left lower lobe, consistent with pneumonia.'), Score: 0.6006
+('No focal opacity.', 'Focal opacity in the left lower lobe, concerning for pneumonia or mass.'), Score: 0.6004
+
