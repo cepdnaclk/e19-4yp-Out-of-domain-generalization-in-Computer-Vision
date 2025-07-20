@@ -96,7 +96,6 @@ Provide the output as follows: list[list[index:int]]. Make sure to include all p
 Let's think step by step."""
 
     deleted_num = 0
-    best_prompt_pairs_with_scores = []
 
     for i in range(crowding_iterations):
         print(f"=== Iteration {i+1} of {crowding_iterations} ===")
@@ -162,20 +161,16 @@ Let's think step by step."""
         # Delete the top n prompts from the priority queue
         pq.delete_top_n(number_of_prompts_to_group)
 
-        # Add the best prompts back to the priority queue
+        # Add the selected unique prompts back to the priority queue
         for prompt_pair, score in best_prompt_pairs_with_scores:
             pq.insert(prompt_pair, score)
 
         # Print the number of deleted prompts
-        deleted_num += (number_of_prompts_to_group - len(unique_indexes))
+        deleted_this_iteration = number_of_prompts_to_group - \
+            len(unique_indexes)
+        deleted_num += deleted_this_iteration
         print(
-            f"Iteration {i+1} completed. Deleted {deleted_num} duplicate prompts so far.")
-
-    # Final cleanup and display results
-    if best_prompt_pairs_with_scores:
-        pq.delete_top_n(pq.max_capacity)  # Clear the queue
-        for prompt_pair, score in best_prompt_pairs_with_scores:
-            pq.insert(prompt_pair, score)  # Reinsert the best prompts
+            f"Iteration {i+1} completed. Deleted {deleted_this_iteration} duplicates this iteration. Total deleted: {deleted_num}")
 
     print(f"\nCrowding completed. Total prompts deleted: {deleted_num}")
     print(f"Final queue size: {len(pq)}")
