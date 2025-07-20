@@ -172,6 +172,11 @@ Let's think step by step."""
         print(
             f"Iteration {i+1} completed. Deleted {deleted_this_iteration} duplicates this iteration. Total deleted: {deleted_num}")
 
+    pq.delete_top_n(pq.max_capacity)  # Clear the queue at the end
+    for prompt_pair, score in best_prompt_pairs_with_scores:
+        # Reinsert the best prompts into the queue
+        pq.insert(prompt_pair, score)
+
     print(f"\nCrowding completed. Total prompts deleted: {deleted_num}")
     print(f"Final queue size: {len(pq)}")
 
