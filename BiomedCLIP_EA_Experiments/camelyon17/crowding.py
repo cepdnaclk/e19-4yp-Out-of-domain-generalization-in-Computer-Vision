@@ -45,7 +45,7 @@ def get_grouped_indexes_from_llm(llm_prompt: str, client, max_retries: int) -> L
 
 
 def perform_crowding_pruning(
-    initial_prompts_path: str = "experiment_results/medical_concepts.txt",
+    initial_prompts: List[util.InitialItem],
     number_of_prompts_to_group: int = 30,
     crowding_iterations: int = 20,
     max_retries: int = 5,
@@ -66,7 +66,6 @@ def perform_crowding_pruning(
     """
 
     # Load initial prompts
-    initial_prompts = util.load_initial_prompts(initial_prompts_path)
     pq = util.PriorityQueue(
         max_capacity=1000, filter_threshold=0.6, initial=initial_prompts)
 
@@ -186,7 +185,22 @@ Let's think step by step."""
 
 def main():
     """Main function to run crowding pruning."""
-    pq = perform_crowding_pruning()
+
+    intial_prompts = util.load_initial_prompts(
+        "experiment_results/medical_concepts.txt")
+
+    if not intial_prompts:
+        print("No initial prompts found. Exiting.")
+        return
+
+    print(f"Loaded {len(intial_prompts)} initial prompts.")
+    pq = perform_crowding_pruning(
+        initial_prompts=intial_prompts,
+        number_of_prompts_to_group=30,
+        crowding_iterations=20,
+        max_retries=5,
+        provider='gemini'
+    )
 
     # Display final results
     final_prompts = pq.get_best_n(n=min(30, len(pq)))
