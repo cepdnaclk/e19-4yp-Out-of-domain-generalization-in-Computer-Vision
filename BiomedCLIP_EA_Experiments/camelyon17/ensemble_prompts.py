@@ -29,7 +29,7 @@ def main():
 
     # 3. load prompts
     initial_prompts = util.load_last_iteration_prompts(
-        "experiment_results/Experiment-66-strategy-inv-bce-gemma3-32shot_opt_pairs.txt")
+        "experiment_results/Experiment-67-strategy-inv-bce-gemma3-2shot_opt_pairs.txt")
 
     print(f"Initial prompts loaded: {len(initial_prompts)} prompts.")
 
@@ -48,7 +48,7 @@ def main():
     )
 
     # save crowded prompts
-    crowded_prompts_filename = "experiment_results/Experiment-66-crowded_prompts.txt"
+    crowded_prompts_filename = "experiment_results/Experiment-67-crowded_prompts.txt"
     with open(crowded_prompts_filename, 'w') as f:
         for (neg_prompt, pos_prompt), score in pq.get_best_n(len(pq)):
             f.write(f"('{neg_prompt}', '{pos_prompt}'), Score: {score}\n")

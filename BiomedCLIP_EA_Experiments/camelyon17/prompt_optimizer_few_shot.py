@@ -50,10 +50,10 @@ def get_prompt_template(iteration_num: int, prompt_content: str, generate_n: int
 
 def main():
     # Few-shot learning configuration
-    n_shots = 32  # Number of samples per class to use for training
+    n_shots = 2  # Number of samples per class to use for training
 
     # Name the experiment we are currently running
-    experiment_name = f"Experiment-66-strategy-inv-bce-gemma3-{n_shots}shot"
+    experiment_name = f"Experiment-67-strategy-inv-bce-gemma3-{n_shots}shot"
     print(f"Running {experiment_name} with {n_shots} shots per class...")
 
     # Create experiment results directory
@@ -126,7 +126,7 @@ def main():
         max_capacity=1000, filter_threshold=0.6)
     prompt_content = ""
 
-    for j in range(100):
+    for j in range(300):
         if j == 0:
             prompts = util.get_prompt_pairs(meta_init_prompt, client)
         else:
