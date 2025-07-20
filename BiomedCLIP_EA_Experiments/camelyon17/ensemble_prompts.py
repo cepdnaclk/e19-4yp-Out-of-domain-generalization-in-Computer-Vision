@@ -47,6 +47,12 @@ def main():
         max_retries=5
     )
 
+    # save crowded prompts
+    crowded_prompts_filename = "experiment_results/Experiment-40-crowded_prompts.txt"
+    with open(crowded_prompts_filename, 'w') as f:
+        for (neg_prompt, pos_prompt), score in pq.get_best_n(len(pq)):
+            f.write(f"('{neg_prompt}', '{pos_prompt}'), Score: {score}\n")
+
     # knee point analysis
     all_current_scores = [score for _, score in pq.get_best_n(
         len(pq))]  # Get all, sorted by score
