@@ -53,16 +53,16 @@ def main():
     #     for (neg_prompt, pos_prompt), score in pq.get_best_n(len(pq)):
     #         f.write(f"('{neg_prompt}', '{pos_prompt}'), Score: {score}\n")
 
-    # # knee point analysis
-    # all_current_scores = [score for _, score in pq.get_best_n(
-    #     len(pq))]  # Get all, sorted by score
-    # knee_analyzer = util.KneePointAnalysis(all_current_scores)
-    # recommended_n = knee_analyzer.find_knee_point()
+    # knee point analysis
+    all_current_scores = [score for _, score in pq.get_best_n(
+        len(pq))]  # Get all, sorted by score
+    knee_analyzer = util.KneePointAnalysis(all_current_scores)
+    recommended_n = knee_analyzer.find_knee_point()
 
-    # print(
-    #     f"Recommended number of prompts after knee analysis: {recommended_n}")
+    print(
+        f"Recommended number of prompts after knee analysis: {recommended_n}")
 
-    prompts_population = pq.get_best_n(len(pq))
+    prompts_population = pq.get_best_n(recommended_n)
     print(f"Using {len(prompts_population)} prompts for evaluation.")
 
     # Run the evaluation
