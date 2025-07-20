@@ -43,7 +43,7 @@ def main():
     pq = crowding.perform_crowding_pruning(
         initial_prompts=initial_prompts,
         number_of_prompts_to_group=30,
-        crowding_iterations=10,
+        crowding_iterations=2,
         max_retries=5
     )
 
