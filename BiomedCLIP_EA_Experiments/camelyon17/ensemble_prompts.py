@@ -38,14 +38,14 @@ def main():
         return
 
     # 4. Perform crowding pruning
-    # pq = util.PriorityQueue(
-    #     max_capacity=1000, filter_threshold=0.6, initial=initial_prompts)
-    pq = crowding.perform_crowding_pruning(
-        initial_prompts=initial_prompts,
-        number_of_prompts_to_group=30,
-        crowding_iterations=10,
-        max_retries=5
-    )
+    pq = util.PriorityQueue(
+        max_capacity=1000, filter_threshold=0.6, initial=initial_prompts)
+    # pq = crowding.perform_crowding_pruning(
+    #     initial_prompts=initial_prompts,
+    #     number_of_prompts_to_group=30,
+    #     crowding_iterations=10,
+    #     max_retries=5
+    # )
 
     # save crowded prompts
     crowded_prompts_filename = "experiment_results/Experiment-67-crowded_prompts.txt"
