@@ -1,0 +1,28 @@
+('No fibrosis is present.', 'Desmoplastic reaction with extensive fibrosis is observed.'), Score: 0.9943
+('Cells demonstrate uniform size and shape.', 'Cells exhibit pleomorphism with varying size and shape.'), Score: 0.9895
+('No granulomas are observed.', 'Granulomas with multinucleated giant cells are present.'), Score: 0.9755
+('Cytoplasm is scant and unremarkable.', 'Cytoplasm is abundant and eosinophilic.'), Score: 0.9664
+('No eosinophilic inclusions are present.', 'Eosinophilic inclusions are observed within cells.'), Score: 0.9535
+('No syncytial formation is observed.', 'Syncytial formation is observed among tumor cells.'), Score: 0.9526
+('No discernible mitotic figures.', 'Frequent mitotic figures are observed.'), Score: 0.9385
+('No discernible nucleoli.', 'Prominent nucleoli are visible.'), Score: 0.9354
+('Lymphocytes are small and round with hyperchromatic nuclei.', 'Lymphocytes are large and atypical with irregular nuclei.'), Score: 0.9243
+('No perineural invasion is identified.', 'Perineural invasion by tumor cells is observed.'), Score: 0.9061
+('No capsular involvement.', 'Capsular involvement or extension is present.'), Score: 0.8958
+('No irregular chromatin distribution is present.', 'Irregular chromatin distribution and clumping are observed.'), Score: 0.8926
+('No reactive germinal centers.', 'Reactive germinal centers are present with atypical features.'), Score: 0.8906
+('Lymphocytes exhibit normal nuclear-to-cytoplasmic ratio.', 'Lymphocytes exhibit increased nuclear-to-cytoplasmic ratio.'), Score: 0.8771
+('No evidence of extra-nodular extension.', 'Extra-nodular extension of tumor cells is present.'), Score: 0.8764
+('Normal follicular architecture is maintained.', 'Follicular effacement is observed.'), Score: 0.8707
+('No ductal differentiation is observed.', 'Ductal differentiation is evident within the tumor cells.'), Score: 0.8655
+('No atypical cells are present.', 'Atypical cells are identified.'), Score: 0.8607
+('No irregular nuclear contours are observed.', 'Cells exhibit irregular nuclear contours.'), Score: 0.8539
+('No tumor cells are present within lymphatic channels.', 'Tumor cells are identified within lymphatic channels.'), Score: 0.849
+('No nuclear pleomorphism is present.', 'Nuclear pleomorphism is evident.'), Score: 0.8466
+('No calcifications are present.', 'Calcifications are observed within the tissue.'), Score: 0.846
+('No vascular invasion is observed.', 'Vascular invasion by tumor cells is present.'), Score: 0.8457
+('No giant cells are present.', 'Giant cells are present within the tissue.'), Score: 0.8398
+('No evidence of tumor cell infiltration into surrounding tissues.', 'Tumor cell infiltration into surrounding tissues present.'), Score: 0.838
+('Lymphocytes are predominantly small and mature.', 'Lymphocytes are large and atypical with prominent nucleoli.'), Score: 0.8364
+('No evidence of ductal structures.', 'Ductal structures present.'), Score: 0.8331
+('No significant increase in eosinophils.', 'Significant increase in eosinophils observed.'), Score: 0.8331

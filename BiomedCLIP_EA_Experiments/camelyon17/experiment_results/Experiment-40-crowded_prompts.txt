@@ -1,0 +1,27 @@
+('No atypical cells infiltrating the stroma.', 'Atypical cells infiltrating the stroma, disrupting normal architecture.'), Score: 0.7882
+('Follicular architecture is preserved.', 'Disrupted follicular architecture with loss of polarity.'), Score: 0.7792
+('No evidence of tangles of collagen.', 'Presence of collagen tangles surrounding tumor nests.'), Score: 0.7712
+('Lymphocytes are small and reactive.', 'Lymphocytes are large and atypical with prominent nucleoli.'), Score: 0.7634
+('No tumor giant cells.', 'Presence of tumor giant cells with multiple nuclei.'), Score: 0.7633
+('No intranuclear inclusions.', 'Presence of intranuclear inclusions within tumor cells.'), Score: 0.7628
+('No evidence of perineural invasion.', 'Evidence of perineural invasion with tumor cells surrounding nerves.'), Score: 0.7607
+('No prominent eosinophilic nucleoli.', 'Large, prominent eosinophilic nucleoli within tumor cell nuclei.'), Score: 0.7591
+('No increase in eosinophilic cytoplasm.', 'Increased eosinophilic cytoplasm in tumor cells.'), Score: 0.7544
+('No background histiocytic infiltrate.', 'Prominent background histiocytic infiltrate.'), Score: 0.7533
+('No increased mitotic activity index.', 'High mitotic activity index with numerous dividing cells.'), Score: 0.7428
+('No prominent chromatin clumping.', 'Coarse, irregular chromatin clumping within nuclei.'), Score: 0.7417
+('No eosinophilic infiltrates.', 'Eosinophilic infiltrates surrounding tumor nests.'), Score: 0.7416
+('No high-grade nuclear features.', 'Presence of high-grade nuclei with prominent nucleoli and irregular chromatin.'), Score: 0.7409
+('No cells with large granular bodies.', 'Presence of cells with large, prominent granular bodies in the cytoplasm.'), Score: 0.7374
+('No prominent plasma cell differentiation.', 'Plasma cell differentiation within tumor cells.'), Score: 0.7361
+('No evidence of extracellular mucin.', 'Presence of extracellular mucin surrounding tumor cells.'), Score: 0.7317
+('No prominent lymphoid cuffing.', 'Prominent lymphoid cuffing around tumor nests.'), Score: 0.731
+('No granulomas present.', 'Presence of non-caseating granulomas surrounding tumor nests.'), Score: 0.7309
+('No loss of nuclear polarity.', 'Loss of nuclear polarity with irregular nuclear arrangement.'), Score: 0.7284
+('No increased cytoplasmic basophilia.', 'Cells with increased cytoplasmic basophilia and prominent nucleoli.'), Score: 0.7278
+('No significant interfollicular proliferation.', 'Increased interfollicular proliferation of atypical cells.'), Score: 0.7265
+('No increased number of macrophages.', 'Increased number of macrophages infiltrating the tissue.'), Score: 0.7264
+('No plasmacytoid differentiation.', 'Plasmacytoid differentiation of tumor cells with abundant cytoplasm.'), Score: 0.7262
+('No prominent tumor cell pleomorphism.', 'Marked tumor cell pleomorphism with variations in size and shape.'), Score: 0.7262
+('No reactive lymphoid aggregates.', 'Aggregates of atypical lymphoid cells resembling tumor clusters.'), Score: 0.7256
+('No tumor cells infiltrating follicular mantle zone.', 'Tumor cells infiltrating follicular mantle zone.'), Score: 0.7247
