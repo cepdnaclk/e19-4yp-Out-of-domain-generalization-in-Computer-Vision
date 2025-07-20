@@ -126,7 +126,7 @@ def main():
         max_capacity=1000, filter_threshold=0.6)
     prompt_content = ""
 
-    for j in range(1000):
+    for j in range(100):
         if j == 0:
             prompts = util.get_prompt_pairs(meta_init_prompt, client)
         else:
