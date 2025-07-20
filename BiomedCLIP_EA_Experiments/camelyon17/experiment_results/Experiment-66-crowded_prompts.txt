@@ -1,0 +1,27 @@
+('No capsular involvement.', 'Capsular involvement.'), Score: 0.7661
+('No hemorrhage.', 'Evidence of hemorrhage.'), Score: 0.7577
+('No vascular invasion.', 'Vascular invasion is present.'), Score: 0.7457
+('Small, round nuclei.', 'Large, pleomorphic nuclei.'), Score: 0.7454
+('Uniform cell size.', 'Variable cell size.'), Score: 0.7255
+('No increased nuclear-to-cytoplasmic ratio.', 'Increased nuclear-to-cytoplasmic ratio.'), Score: 0.7175
+('No loss of nuclear polarity.', 'Loss of nuclear polarity.'), Score: 0.7116
+('No angiolymphatic spaces.', 'Tumor cells infiltrating angiolymphatic spaces.'), Score: 0.7001
+('No evidence of tumor cells.', 'Presence of tumor cells.'), Score: 0.6933
+('No perinuclear halo.', 'Prominent perinuclear halo.'), Score: 0.6895
+('No fibrosis.', 'Fibrosis present.'), Score: 0.6876
+('No eosinophilic inclusions.', 'Eosinophilic inclusions are present.'), Score: 0.6856
+('Thin nuclear membrane.', 'Thickened nuclear membrane.'), Score: 0.6845
+('No perineural invasion.', 'Evidence of perineural invasion.'), Score: 0.6779
+('Uniform nuclear staining.', 'Heterogeneous nuclear staining.'), Score: 0.6776
+('No prominent nucleolus.', 'Large and vesicular nucleoli.'), Score: 0.6768
+('No vascular congestion.', 'Vascular congestion present.'), Score: 0.6703
+('Absence of giant cells.', 'Presence of multinucleated giant cells.'), Score: 0.6702
+('Fine chromatin pattern.', 'Coarse chromatin pattern.'), Score: 0.6573
+('No lymphoglandular bodies.', 'Lymphoglandular bodies are visible.'), Score: 0.6447
+('Cytoplasm is scant.', 'Abundant eosinophilic cytoplasm.'), Score: 0.6363
+('No eosinophilic granules.', 'Eosinophilic granules are visible.'), Score: 0.6246
+('No atypical lymphocytes.', 'Presence of atypical lymphocytes.'), Score: 0.6151
+('No chromatin clumping.', 'Marked chromatin clumping is present.'), Score: 0.6138
+('Background stroma is unremarkable.', 'Desmoplastic reaction in the stroma.'), Score: 0.6128
+('Normal follicular architecture.', 'Disrupted follicular architecture.'), Score: 0.609
+('Regular nuclear spacing.', 'Irregular/Crowded nuclear spacing.'), Score: 0.6061

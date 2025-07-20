@@ -1,0 +1,27 @@
+('Uniform nuclear size and shape.', 'Pleomorphic nuclei with variable size and shape.'), Score: 0.9028
+('No evidence of capsular invasion.', 'Evidence of capsular invasion.'), Score: 0.8487
+('No increased N/C ratio.', 'Markedly increased nuclear-to-cytoplasmic ratio.'), Score: 0.8293
+('No evidence of tumor-associated macrophages (TAMs).', 'Presence of tumor-associated macrophages (TAMs).'), Score: 0.8244
+('No hemorrhage.', 'Hemorrhage present.'), Score: 0.8168
+('No eosinophilic inclusions.', 'Eosinophilic inclusions present within cells.'), Score: 0.8047
+('No atypical cells are present.', 'Presence of atypical cells with enlarged nuclei.'), Score: 0.7854
+('No perivascular lymphocytic cuffing.', 'Perivascular lymphocytic cuffing.'), Score: 0.7851
+('No crush artifact.', 'Significant crush artifact.'), Score: 0.7605
+('Regular follicular arrangement.', 'Disrupted follicular arrangement.'), Score: 0.7601
+('No evidence of lymphovascular invasion.', 'Lymphovascular invasion present.'), Score: 0.7381
+('Uniform small lymphocytes.', 'Pleomorphic large lymphocytes.'), Score: 0.7363
+('No angiolymphatic invasion.', 'Angiolymphatic invasion observed.'), Score: 0.7264
+('Scant cytoplasm in lymphocytes.', 'Abundant cytoplasm in lymphocytes.'), Score: 0.7215
+('No evidence of tumor cell palisading.', 'Evidence of tumor cell palisading.'), Score: 0.7182
+('Uniform nuclear staining.', 'Heterogeneous nuclear staining.'), Score: 0.7179
+('No giant cells present.', 'Presence of multinucleated giant cells.'), Score: 0.7172
+('No intranuclear inclusions.', 'Presence of intranuclear inclusions.'), Score: 0.7141
+('No eosinophilic granular bodies.', 'Presence of eosinophilic granular bodies.'), Score: 0.714
+('No stromal desmoplasia.', 'Prominent stromal desmoplasia with collagen deposition.'), Score: 0.7128
+('No tingible body macrophages.', 'Numerous tingible body macrophages.'), Score: 0.7068
+('No reactive lymphoid aggregates.', 'Presence of atypical lymphoid aggregates.'), Score: 0.7017
+('No tumor cells infiltrating sinusoids.', 'Tumor cells infiltrating sinusoids.'), Score: 0.6983
+('No nuclear fragmentation.', 'Presence of nuclear fragmentation.'), Score: 0.6964
+('Normal staining of collagen.', 'Increased staining of collagen.'), Score: 0.6941
+('No ductal involvement.', 'Ductal involvement by tumor cells.'), Score: 0.6929
+('No fibrosis.', 'Prominent fibrosis.'), Score: 0.688
