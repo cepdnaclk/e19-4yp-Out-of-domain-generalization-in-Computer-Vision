@@ -53,7 +53,7 @@ def main():
     n_shots = 16  # Number of samples per class to use for training
 
     # Name the experiment we are currently running
-    experiment_name = f"Experiment-62-strategy-4-inv-bce-gemma3-{n_shots}shot"
+    experiment_name = f"Experiment-62-strategy-inv-bce-gemma3-{n_shots}shot"
     print(f"Running {experiment_name} with {n_shots} shots per class...")
 
     # Create experiment results directory
