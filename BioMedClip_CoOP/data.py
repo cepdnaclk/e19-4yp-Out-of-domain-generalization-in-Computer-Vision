@@ -118,7 +118,7 @@ def get_dataloaders(metadata_path, data_root, batch_size):
         transform=train_transform,
         split=0 , # train split,
         few_shot=True,  # Few-shot learning enabled
-        few_shot_no=2
+        few_shot_no=32
     )
     
     # In-distribution test sets (test splits from centers 0,1,2)
@@ -140,7 +140,7 @@ def get_dataloaders(metadata_path, data_root, batch_size):
         root_dir=data_root,
         transform=test_transform,
         few_shot=True,  # Few-shot learning enabled
-        few_shot_no=4
+        few_shot_no=64
 
     )
     

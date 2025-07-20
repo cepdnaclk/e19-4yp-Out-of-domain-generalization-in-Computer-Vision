@@ -24,7 +24,7 @@ def load_dataloader(path):
 def main():
    
     args = {
-    'keyword': 'Universal_Trained_on_Center_0_4_examples',   
+    'keyword': 'Universal_Trained_on_Center_0_64_examples',   
     'metadata_path': '/storage/projects3/e19-fyp-out-of-domain-gen-in-cv/camelyon17WILDS/metadata.csv',
     'organized_data_path': '/storage/projects3/e19-fyp-out-of-domain-gen-in-cv/camelyon17WILDS/organized_by_center',
     'data_path': '/storage/projects3/e19-fyp-out-of-domain-gen-in-cv/camelyon17WILDS/patches',
