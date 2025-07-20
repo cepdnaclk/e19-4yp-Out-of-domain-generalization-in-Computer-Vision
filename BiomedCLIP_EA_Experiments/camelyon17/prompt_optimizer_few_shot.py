@@ -42,40 +42,19 @@ def get_prompt_template(iteration_num: int, prompt_content: str, generate_n: int
     {iteration_specific_instruction}
     Only provide the output as Python code in the following format: prompts = list[tuple[negative: str, positive: str]]. Let's think step-by-step
     """
-
-    if 1 <= iteration_num <= 1000:
-        # Iterations 1-50: Basic exploration
-        return base_meta_prompt_template.format(
-            content=prompt_content,
-            iteration_specific_instruction=instruction_map["strategy"]
-        )
-    elif 2001 <= iteration_num <= 3000:
-        # Iterations 51-100: Concept combination
-        return base_meta_prompt_template.format(
-            content=prompt_content,
-            iteration_specific_instruction=instruction_map["combined_medical_concepts"]
-        )
-    elif 3001 <= iteration_num <= 4000:
-        # Iterations 101-200: Language style variation
-        return base_meta_prompt_template.format(
-            content=prompt_content,
-            iteration_specific_instruction=instruction_map["similar"]
-        )
-    elif iteration_num > 4001:
-        # Iterations 201+: Fine-tuning with slight modifications
-        return base_meta_prompt_template.format(
-            content=prompt_content,
-            iteration_specific_instruction=instruction_map["slight_changes"]
-        )
-    else:
-        # Fallback (shouldn't happen with normal iteration numbering)
-        raise IndexError("Error occured when getting prompt template")
+    return base_meta_prompt_template.format(
+        content=prompt_content,
+        iteration_specific_instruction=instruction_map["strategy"]
+    )
 
 
 def main():
+    # Few-shot learning configuration
+    n_shots = 2  # Number of samples per class to use for training
+
     # Name the experiment we are currently running
-    experiment_name = "Experiment-60-combined-inv-bce-gemma3"
-    print(f"Running {experiment_name}...")
+    experiment_name = f"Experiment-61-strategy-4-inv-bce-gemma3-{n_shots}shot"
+    print(f"Running {experiment_name} with {n_shots} shots per class...")
 
     # Create experiment results directory
     results_dir = "experiment_results"
@@ -96,7 +75,7 @@ def main():
     centers_features, centers_labels = util.extract_center_embeddings(
         model=model,
         preprocess=preprocess,
-        num_centers=3,  # trained only on center 0
+        num_centers=1,  # trained only on center 0
     )
 
     # 2) Concatenate and convert—annotate the resulting tensors
@@ -109,6 +88,28 @@ def main():
     ).long()    # shape: (N_total,), dtype=torch.int64
 
     print("Center embeddings extracted successfully.")
+    print(f"Total samples before few-shot selection: {len(all_labels)}")
+    print(f"Class distribution: {torch.bincount(all_labels)}")
+
+    # 3. Few-shot sampling: select first 'n_shots' samples from each class
+    label_0_indices = torch.where(all_labels == 0)[
+        0][:n_shots]  # First n normal samples
+    label_1_indices = torch.where(all_labels == 1)[
+        0][:n_shots]  # First n tumor samples
+
+    # Combine indices
+    selected_indices = torch.cat([label_0_indices, label_1_indices])
+
+    # Select the few-shot subset
+    few_shot_feats = all_feats[selected_indices]
+    few_shot_labels = all_labels[selected_indices]
+
+    print(f"Few-shot samples selected: {len(few_shot_labels)} total")
+    print(f"Few-shot class distribution: {torch.bincount(few_shot_labels)}")
+    print(
+        f"Using {len(label_0_indices)} normal samples and {len(label_1_indices)} tumor samples")
+
+    print("Few-shot dataset prepared successfully.")
 
     # 3. load initial prompts (optional)
     # initial_prompts = util.load_initial_prompts()
@@ -121,16 +122,13 @@ def main():
     meta_init_prompt = """Give 50 distinct textual descriptions of pairs of visual discriminative features to identify whether the central region of a histopathological image patch contains tumor tissue or not. The patch is extracted from an H&E‑stained whole‑slide image of a lymph node section. Only provide the output as Python code in the following format: prompts = list[tuple[negative: str, positive: str]]. Let's think step-by-step"""
 
     # Optimization loop
-    initial_prompts = util.load_initial_prompts(
-        "experiment_results/distinct_medical_concepts.txt")
     pq = util.PriorityQueue(
-        max_capacity=1000, filter_threshold=0.4, initial=initial_prompts)
+        max_capacity=1000, filter_threshold=0.6)
     prompt_content = ""
 
     for j in range(1000):
         if j == 0:
             prompts = util.get_prompt_pairs(meta_init_prompt, client)
-            # prompts = INITIAL_CHATGPT_PROMPTS
         else:
             meta_prompt = get_prompt_template(
                 iteration_num=j, prompt_content=prompt_content, generate_n=10)
@@ -143,28 +141,15 @@ def main():
                 continue
             negative_prompt, positive_prompt = prompt_pair
             results = util.evaluate_prompt_pair(
-                negative_prompt, positive_prompt, all_feats, all_labels, model, tokenizer)
-            # print(
-            #     f"Inverted BCE for prompt pair {i+1}: {results['inverted_bce']:.4f} {results['accuracy']}")
+                negative_prompt, positive_prompt, few_shot_feats, few_shot_labels, model, tokenizer)
             pq.insert((negative_prompt, positive_prompt),
                       results['inverted_bce'])
 
         n = 10
         print(f"\nCurrent Top {n} prompt pairs:")
 
-        # Selector Operator: Roulette Wheel Selection or Best N Prompts
-        # Use Roulette Wheel Selection for the first 250 iterations
-        # After 250 iterations, use the best n prompts
-        # This is to ensure diversity in the early stages of optimization
-        # if j < 250:
-        #     selected_prompts = pq.get_roulette_wheel_selection(
-        #         n, isNormalizedInts=False)
-        # else:
-        #     selected_prompts = pq.get_best_n(n)
-
         selected_prompts = pq.get_roulette_wheel_selection(
             n, isNormalizedInts=True)
-        # selected_prompts = pq.get_best_n(n)
         # reverse the order to set it to acsending order: Recency Bias
         selected_prompts = sorted(
             selected_prompts, key=lambda x: x[1], reverse=False)
@@ -173,8 +158,6 @@ def main():
         prompt_content = f"Current Top {n} prompt pairs:\n"
         for i, (prompt_pair, score) in enumerate(selected_prompts):
             print(f"{i+1}. {prompt_pair}, Score: {score}")
-            # prompt_content += f"{i+1}. {prompt_pair}, Score: {score:.2f}\n"
-            # for ascending order
             prompt_content += f"{prompt_pair}, Score: {score:.2f}\n"
 
         # Save the best prompt pairs to a file, every 10 iterations
