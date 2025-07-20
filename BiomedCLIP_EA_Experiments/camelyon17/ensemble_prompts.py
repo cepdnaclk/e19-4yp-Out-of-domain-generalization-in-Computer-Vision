@@ -29,7 +29,7 @@ def main():
 
     # 3. load prompts
     initial_prompts = util.load_last_iteration_prompts(
-        "experiment_results/Experiment-68-strategy-inv-bce-gemma3-8shot_opt_pairs.txt")
+        "experiment_results/Experiment-69-strategy-inv-bce-gemma3-32shot_opt_pairs.txt")
 
     print(f"Initial prompts loaded: {len(initial_prompts)} prompts.")
 
