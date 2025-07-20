@@ -12,7 +12,7 @@ from tqdm import tqdm
 import copy
 
 class CamelyonDataset(Dataset):
-    def __init__(self, centers, metadata_path, root_dir, transform=None, split=None, include_test=False):
+    def __init__(self, centers, metadata_path, root_dir, transform=None, split=None, include_test=False,few_shot=False):
         """
         Args:
             centers (list): List of center indices to include (e.g., [0,1,2])
@@ -45,12 +45,13 @@ class CamelyonDataset(Dataset):
         for _, row in self.metadata.iterrows():
             # take first two tumor and non-tumor images only
             # Added by Mansitha Few Shot
-            tumor_counts = getattr(self, 'tumor_counts', {0: 0, 1: 0})
-            label = int(row['tumor'])
-            if tumor_counts[label] >= 2:
-                continue
-            tumor_counts[label] += 1
-            self.tumor_counts = tumor_counts
+            if few_shot:
+                tumor_counts = getattr(self, 'tumor_counts', {0: 0, 1: 0})
+                label = int(row['tumor'])
+                if tumor_counts[label] >= 2:
+                    continue
+                tumor_counts[label] += 1
+                self.tumor_counts = tumor_counts
 
             patient = f"{int(row['patient']):03d}"
             node = int(row['node'])
@@ -113,7 +114,8 @@ def get_dataloaders(metadata_path, data_root, batch_size):
         metadata_path=metadata_path,
         root_dir=data_root,
         transform=train_transform,
-        split=0  # train split
+        split=0  # train split,
+        few_shot=True  # Few-shot learning enabled
     )
     
     # In-distribution test sets (test splits from centers 0,1,2)
