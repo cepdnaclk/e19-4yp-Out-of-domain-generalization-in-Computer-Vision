@@ -1,0 +1,319 @@
+Iteration 1:
+('Normal staining of stromal components.', 'Abnormal staining of stromal components.'), Score: 0.6522
+('No evidence of extracellular matrix changes.', 'Extracellular matrix changes present.'), Score: 0.6310
+('Absence of giant cells.', 'Presence of multinucleated giant cells.'), Score: 0.6286
+('Clear, well-defined boundaries between cells.', 'Loss of cellular boundaries, cells appearing crowded and overlapping.'), Score: 0.6061
+('Thin nuclear membrane.', 'Thickened, irregular nuclear membrane.'), Score: 0.6057
+
+Iteration 10:
+('Normal staining of stromal components.', 'Abnormal staining of stromal components.'), Score: 0.6522
+('Normal lymphocyte morphology.', 'Atypical lymphocyte morphology.'), Score: 0.6374
+('No evidence of extracellular matrix changes.', 'Extracellular matrix changes present.'), Score: 0.6310
+('Uniform nuclear size and shape.', 'Pleomorphic nuclei with varying sizes and shapes.'), Score: 0.6306
+('Absence of giant cells.', 'Presence of multinucleated giant cells.'), Score: 0.6286
+('No discernible necrosis.', 'Areas of tumor necrosis present.'), Score: 0.6141
+('Normal spindle-shaped cells.', 'Presence of atypical spindle cells.'), Score: 0.6125
+('Clear, well-defined boundaries between cells.', 'Loss of cellular boundaries, cells appearing crowded and overlapping.'), Score: 0.6061
+('Thin nuclear membrane.', 'Thickened, irregular nuclear membrane.'), Score: 0.6057
+
+Iteration 20:
+('Normal staining of stromal components.', 'Abnormal staining of stromal components.'), Score: 0.6522
+('No vascular invasion.', 'Evidence of vascular or perineural invasion.'), Score: 0.6476
+('Normal lymphocyte morphology.', 'Atypical lymphocyte morphology.'), Score: 0.6374
+('No evidence of extracellular matrix changes.', 'Extracellular matrix changes present.'), Score: 0.6310
+('Uniform nuclear size and shape.', 'Pleomorphic nuclei with varying sizes and shapes.'), Score: 0.6306
+('Absence of giant cells.', 'Presence of multinucleated giant cells.'), Score: 0.6286
+('Absence of lymphovascular space invasion.', 'Lymphovascular space invasion present.'), Score: 0.6272
+('No prominent nucleoli.', 'Large, prominent nucleoli within the nuclei.'), Score: 0.6214
+('Normal mitotic activity.', 'Increased and atypical mitotic activity.'), Score: 0.6207
+('No discernible necrosis.', 'Areas of tumor necrosis present.'), Score: 0.6141
+('Normal spindle-shaped cells.', 'Presence of atypical spindle cells.'), Score: 0.6125
+('No plasmacytoid differentiation.', 'Presence of plasmacytoid differentiation.'), Score: 0.6072
+('Clear, well-defined boundaries between cells.', 'Loss of cellular boundaries, cells appearing crowded and overlapping.'), Score: 0.6061
+('Thin nuclear membrane.', 'Thickened, irregular nuclear membrane.'), Score: 0.6057
+('Normal spindle shape of stromal cells.', 'Altered spindle shape and increased cellularity of stromal cells.'), Score: 0.6023
+
+Iteration 30:
+('No capsular involvement.', 'Capsular involvement or extension present.'), Score: 0.6881
+('Normal staining of stromal components.', 'Abnormal staining of stromal components.'), Score: 0.6522
+('No vascular invasion.', 'Evidence of vascular or perineural invasion.'), Score: 0.6476
+('Uniform nuclear size and shape.', 'Nuclear pleomorphism with varying size and shape.'), Score: 0.6389
+('Normal lymphocyte morphology.', 'Atypical lymphocyte morphology.'), Score: 0.6374
+('No evidence of extracellular matrix changes.', 'Extracellular matrix changes present.'), Score: 0.6310
+('Uniform nuclear size and shape.', 'Pleomorphic nuclei with varying sizes and shapes.'), Score: 0.6306
+('Absence of giant cells.', 'Presence of multinucleated giant cells.'), Score: 0.6286
+('No fibrosis in the stroma.', 'Desmoplastic reaction with increased fibrosis.'), Score: 0.6275
+('Absence of lymphovascular space invasion.', 'Lymphovascular space invasion present.'), Score: 0.6272
+('No prominent nucleoli.', 'Large, prominent nucleoli within the nuclei.'), Score: 0.6214
+('Normal mitotic activity.', 'Increased and atypical mitotic activity.'), Score: 0.6207
+('No perivascular lymphocytic cuffing.', 'Perivascular lymphocytic cuffing present.'), Score: 0.6182
+('No discernible necrosis.', 'Areas of tumor necrosis present.'), Score: 0.6141
+('Normal spindle-shaped cells.', 'Presence of atypical spindle cells.'), Score: 0.6125
+('No plasmacytoid differentiation.', 'Presence of plasmacytoid differentiation.'), Score: 0.6072
+('Clear, well-defined boundaries between cells.', 'Loss of cellular boundaries, cells appearing crowded and overlapping.'), Score: 0.6061
+('Thin nuclear membrane.', 'Thickened, irregular nuclear membrane.'), Score: 0.6057
+('Normal spindle shape of stromal cells.', 'Altered spindle shape and increased cellularity of stromal cells.'), Score: 0.6023
+
+Iteration 40:
+('No capsular involvement.', 'Capsular involvement or extension present.'), Score: 0.6881
+('Normal staining of stromal components.', 'Abnormal staining of stromal components.'), Score: 0.6522
+('No vascular invasion.', 'Evidence of vascular or perineural invasion.'), Score: 0.6476
+('Uniform nuclear size and shape.', 'Nuclear pleomorphism with varying size and shape.'), Score: 0.6389
+('Normal lymphocyte morphology.', 'Atypical lymphocyte morphology.'), Score: 0.6374
+('No evidence of extracellular matrix changes.', 'Extracellular matrix changes present.'), Score: 0.6310
+('Uniform nuclear size and shape.', 'Pleomorphic nuclei with varying sizes and shapes.'), Score: 0.6306
+('Absence of giant cells.', 'Presence of multinucleated giant cells.'), Score: 0.6286
+('No fibrosis in the stroma.', 'Desmoplastic reaction with increased fibrosis.'), Score: 0.6275
+('Absence of lymphovascular space invasion.', 'Lymphovascular space invasion present.'), Score: 0.6272
+('No prominent nucleoli.', 'Large, prominent nucleoli within the nuclei.'), Score: 0.6214
+('Normal mitotic activity.', 'Increased and atypical mitotic activity.'), Score: 0.6207
+('No perivascular lymphocytic cuffing.', 'Perivascular lymphocytic cuffing present.'), Score: 0.6182
+('No discernible necrosis.', 'Areas of tumor necrosis present.'), Score: 0.6141
+('Normal spindle-shaped cells.', 'Presence of atypical spindle cells.'), Score: 0.6125
+('No plasmacytoid differentiation.', 'Presence of plasmacytoid differentiation.'), Score: 0.6072
+('Clear, well-defined boundaries between cells.', 'Loss of cellular boundaries, cells appearing crowded and overlapping.'), Score: 0.6061
+('Thin nuclear membrane.', 'Thickened, irregular nuclear membrane.'), Score: 0.6057
+('Normal spindle shape of stromal cells.', 'Altered spindle shape and increased cellularity of stromal cells.'), Score: 0.6023
+
+Iteration 50:
+('No capsular involvement.', 'Capsular involvement or extension present.'), Score: 0.6881
+('No ductal involvement.', 'Ductal involvement by atypical cells.'), Score: 0.6714
+('No discernible chromatin clumping.', 'Coarse chromatin clumping within nuclei.'), Score: 0.6654
+('Normal staining of stromal components.', 'Abnormal staining of stromal components.'), Score: 0.6522
+('No evidence of lymphovascular invasion.', 'Lymphovascular invasion present.'), Score: 0.6509
+('No vascular invasion.', 'Evidence of vascular or perineural invasion.'), Score: 0.6476
+('Uniform nuclear size and shape.', 'Nuclear pleomorphism with varying size and shape.'), Score: 0.6389
+('No atypical cells infiltrating the stroma.', 'Atypical cells infiltrating the stroma.'), Score: 0.6387
+('Normal lymphocyte morphology.', 'Atypical lymphocyte morphology.'), Score: 0.6374
+('No evidence of extracellular matrix changes.', 'Extracellular matrix changes present.'), Score: 0.6310
+('Uniform nuclear size and shape.', 'Pleomorphic nuclei with varying sizes and shapes.'), Score: 0.6306
+('No loss of nuclear polarity.', 'Loss of nuclear polarity.'), Score: 0.6294
+('Absence of giant cells.', 'Presence of multinucleated giant cells.'), Score: 0.6286
+('No fibrosis in the stroma.', 'Desmoplastic reaction with increased fibrosis.'), Score: 0.6275
+('Absence of lymphovascular space invasion.', 'Lymphovascular space invasion present.'), Score: 0.6272
+('No sinus histiocytosis.', 'Sinus histiocytosis present.'), Score: 0.6221
+('No prominent nucleoli.', 'Large, prominent nucleoli within the nuclei.'), Score: 0.6214
+('Normal mitotic activity.', 'Increased and atypical mitotic activity.'), Score: 0.6207
+('Small, round nuclei.', 'Large, irregular nuclei.'), Score: 0.6200
+('No perivascular lymphocytic cuffing.', 'Perivascular lymphocytic cuffing present.'), Score: 0.6182
+('No discernible necrosis.', 'Areas of tumor necrosis present.'), Score: 0.6141
+('Normal spindle-shaped cells.', 'Presence of atypical spindle cells.'), Score: 0.6125
+('No plasmacytoid differentiation.', 'Presence of plasmacytoid differentiation.'), Score: 0.6072
+('No prominent nucleoli.', 'Presence of prominent nucleoli within nuclei.'), Score: 0.6067
+('Clear, well-defined boundaries between cells.', 'Loss of cellular boundaries, cells appearing crowded and overlapping.'), Score: 0.6061
+('Thin nuclear membrane.', 'Thickened, irregular nuclear membrane.'), Score: 0.6057
+('No sinusoidal involvement.', 'Sinusoidal involvement by tumor cells.'), Score: 0.6031
+('Normal spindle shape of stromal cells.', 'Altered spindle shape and increased cellularity of stromal cells.'), Score: 0.6023
+
+Iteration 60:
+('No capsular involvement.', 'Capsular involvement or extension present.'), Score: 0.6881
+('No ductal involvement.', 'Ductal involvement by atypical cells.'), Score: 0.6714
+('No discernible chromatin clumping.', 'Coarse chromatin clumping within nuclei.'), Score: 0.6654
+('No atypical cells.', 'Presence of atypical cells with large nuclei.'), Score: 0.6640
+('Normal staining of stromal components.', 'Abnormal staining of stromal components.'), Score: 0.6522
+('No evidence of lymphovascular invasion.', 'Lymphovascular invasion present.'), Score: 0.6509
+('No vascular invasion.', 'Evidence of vascular or perineural invasion.'), Score: 0.6476
+('Uniform nuclear size and shape.', 'Nuclear pleomorphism with varying size and shape.'), Score: 0.6389
+('Regular sinusoidal pattern.', 'Irregular sinusoidal pattern.'), Score: 0.6388
+('No atypical cells infiltrating the stroma.', 'Atypical cells infiltrating the stroma.'), Score: 0.6387
+('Normal lymphocyte morphology.', 'Atypical lymphocyte morphology.'), Score: 0.6374
+('No evidence of extracellular matrix changes.', 'Extracellular matrix changes present.'), Score: 0.6310
+('Uniform nuclear size and shape.', 'Pleomorphic nuclei with varying sizes and shapes.'), Score: 0.6306
+('No loss of nuclear polarity.', 'Loss of nuclear polarity.'), Score: 0.6294
+('Absence of giant cells.', 'Presence of multinucleated giant cells.'), Score: 0.6286
+('No fibrosis in the stroma.', 'Desmoplastic reaction with increased fibrosis.'), Score: 0.6275
+('Absence of lymphovascular space invasion.', 'Lymphovascular space invasion present.'), Score: 0.6272
+('No sinus histiocytosis.', 'Sinus histiocytosis present.'), Score: 0.6221
+('No prominent nucleoli.', 'Large, prominent nucleoli within the nuclei.'), Score: 0.6214
+('Normal mitotic activity.', 'Increased and atypical mitotic activity.'), Score: 0.6207
+('Small, round nuclei.', 'Large, irregular nuclei.'), Score: 0.6200
+('No perivascular lymphocytic cuffing.', 'Perivascular lymphocytic cuffing present.'), Score: 0.6182
+('No perinuclear halo.', 'Prominent perinuclear halo.'), Score: 0.6142
+('No discernible necrosis.', 'Areas of tumor necrosis present.'), Score: 0.6141
+('Normal spindle-shaped cells.', 'Presence of atypical spindle cells.'), Score: 0.6125
+('No plasmacytoid differentiation.', 'Presence of plasmacytoid differentiation.'), Score: 0.6072
+('No prominent nucleoli.', 'Presence of prominent nucleoli within nuclei.'), Score: 0.6067
+('Clear, well-defined boundaries between cells.', 'Loss of cellular boundaries, cells appearing crowded and overlapping.'), Score: 0.6061
+('Thin nuclear membrane.', 'Thickened, irregular nuclear membrane.'), Score: 0.6057
+('No sinusoidal involvement.', 'Sinusoidal involvement by tumor cells.'), Score: 0.6031
+('Normal spindle shape of stromal cells.', 'Altered spindle shape and increased cellularity of stromal cells.'), Score: 0.6023
+('No prominent nucleoli.', 'Prominent nucleoli within the nuclei.'), Score: 0.6007
+
+Iteration 70:
+('No capsular involvement.', 'Capsular involvement or extension present.'), Score: 0.6881
+('No ductal involvement.', 'Ductal involvement by atypical cells.'), Score: 0.6714
+('No discernible chromatin clumping.', 'Coarse chromatin clumping within nuclei.'), Score: 0.6654
+('No atypical cells.', 'Presence of atypical cells with large nuclei.'), Score: 0.6640
+('Stroma with normal collagen content.', 'Desmoplastic reaction with abundant collagen.'), Score: 0.6534
+('Normal staining of stromal components.', 'Abnormal staining of stromal components.'), Score: 0.6522
+('No evidence of lymphovascular invasion.', 'Lymphovascular invasion present.'), Score: 0.6509
+('No vascular invasion.', 'Evidence of vascular or perineural invasion.'), Score: 0.6476
+('Uniform nuclear size and shape.', 'Pleomorphic nuclei with irregular contours.'), Score: 0.6450
+('Small, round nuclei.', 'Large, irregular nuclei with prominent chromatin.'), Score: 0.6438
+('Uniform nuclear size and shape.', 'Nuclear pleomorphism with varying size and shape.'), Score: 0.6389
+('Regular sinusoidal pattern.', 'Irregular sinusoidal pattern.'), Score: 0.6388
+('No atypical cells infiltrating the stroma.', 'Atypical cells infiltrating the stroma.'), Score: 0.6387
+('Normal lymphocyte morphology.', 'Atypical lymphocyte morphology.'), Score: 0.6374
+('No evidence of extracellular matrix changes.', 'Extracellular matrix changes present.'), Score: 0.6310
+('Uniform nuclear size and shape.', 'Pleomorphic nuclei with varying sizes and shapes.'), Score: 0.6306
+('No loss of nuclear polarity.', 'Loss of nuclear polarity.'), Score: 0.6294
+('Absence of giant cells.', 'Presence of multinucleated giant cells.'), Score: 0.6286
+('No fibrosis in the stroma.', 'Desmoplastic reaction with increased fibrosis.'), Score: 0.6275
+('Absence of lymphovascular space invasion.', 'Lymphovascular space invasion present.'), Score: 0.6272
+('No sinus histiocytosis.', 'Sinus histiocytosis present.'), Score: 0.6221
+('No prominent nucleoli.', 'Large, prominent nucleoli within the nuclei.'), Score: 0.6214
+('Normal mitotic activity.', 'Increased and atypical mitotic activity.'), Score: 0.6207
+('Small, round nuclei.', 'Large, irregular nuclei.'), Score: 0.6200
+('No perivascular lymphocytic cuffing.', 'Perivascular lymphocytic cuffing present.'), Score: 0.6182
+('No perinuclear halo.', 'Prominent perinuclear halo.'), Score: 0.6142
+('No discernible necrosis.', 'Areas of tumor necrosis present.'), Score: 0.6141
+('Normal spindle-shaped cells.', 'Presence of atypical spindle cells.'), Score: 0.6125
+('No plasmacytoid differentiation.', 'Presence of plasmacytoid differentiation.'), Score: 0.6072
+('No prominent nucleoli.', 'Presence of prominent nucleoli within nuclei.'), Score: 0.6067
+('Clear, well-defined boundaries between cells.', 'Loss of cellular boundaries, cells appearing crowded and overlapping.'), Score: 0.6061
+('Thin nuclear membrane.', 'Thickened, irregular nuclear membrane.'), Score: 0.6057
+('No sinusoidal involvement.', 'Sinusoidal involvement by tumor cells.'), Score: 0.6031
+('Normal spindle shape of stromal cells.', 'Altered spindle shape and increased cellularity of stromal cells.'), Score: 0.6023
+('No intranuclear inclusions.', 'Presence of intranuclear inclusions.'), Score: 0.6023
+('No prominent nucleoli.', 'Prominent nucleoli within the nuclei.'), Score: 0.6007
+
+Iteration 80:
+('Uniform nuclear staining.', 'Heterogeneous nuclear staining.'), Score: 0.7057
+('No capsular involvement.', 'Capsular involvement or extension present.'), Score: 0.6881
+('No ductal involvement.', 'Ductal involvement by atypical cells.'), Score: 0.6714
+('No discernible chromatin clumping.', 'Coarse chromatin clumping within nuclei.'), Score: 0.6654
+('Regular nuclear morphology.', 'Irregular nuclear contours and shapes.'), Score: 0.6643
+('No atypical cells.', 'Presence of atypical cells with large nuclei.'), Score: 0.6640
+('Stroma with normal collagen content.', 'Desmoplastic reaction with abundant collagen.'), Score: 0.6534
+('Normal staining of stromal components.', 'Abnormal staining of stromal components.'), Score: 0.6522
+('No evidence of lymphovascular invasion.', 'Lymphovascular invasion present.'), Score: 0.6509
+('No vascular invasion.', 'Evidence of vascular or perineural invasion.'), Score: 0.6476
+('Uniform nuclear size and shape.', 'Pleomorphic nuclei with irregular contours.'), Score: 0.6450
+('Small, round nuclei.', 'Large, irregular nuclei with prominent chromatin.'), Score: 0.6438
+('Uniform nuclear size and shape.', 'Nuclear pleomorphism with varying size and shape.'), Score: 0.6389
+('Regular sinusoidal pattern.', 'Irregular sinusoidal pattern.'), Score: 0.6388
+('No atypical cells infiltrating the stroma.', 'Atypical cells infiltrating the stroma.'), Score: 0.6387
+('Normal lymphocyte morphology.', 'Atypical lymphocyte morphology.'), Score: 0.6374
+('No evidence of extracellular matrix changes.', 'Extracellular matrix changes present.'), Score: 0.6310
+('Uniform nuclear size and shape.', 'Pleomorphic nuclei with varying sizes and shapes.'), Score: 0.6306
+('No loss of nuclear polarity.', 'Loss of nuclear polarity.'), Score: 0.6294
+('Absence of giant cells.', 'Presence of multinucleated giant cells.'), Score: 0.6286
+('No fibrosis in the stroma.', 'Desmoplastic reaction with increased fibrosis.'), Score: 0.6275
+('Absence of lymphovascular space invasion.', 'Lymphovascular space invasion present.'), Score: 0.6272
+('No sinus histiocytosis.', 'Sinus histiocytosis present.'), Score: 0.6221
+('No prominent nucleoli.', 'Large, prominent nucleoli within the nuclei.'), Score: 0.6214
+('Normal mitotic activity.', 'Increased and atypical mitotic activity.'), Score: 0.6207
+('Small, round nuclei.', 'Large, irregular nuclei.'), Score: 0.6200
+('No extra-capsular extension.', 'Extra-capsular extension present.'), Score: 0.6192
+('No perivascular lymphocytic cuffing.', 'Perivascular lymphocytic cuffing present.'), Score: 0.6182
+('Normal follicular dendritic cell meshwork.', 'Loss of follicular dendritic cell meshwork.'), Score: 0.6159
+('No perinuclear halo.', 'Prominent perinuclear halo.'), Score: 0.6142
+('No discernible necrosis.', 'Areas of tumor necrosis present.'), Score: 0.6141
+('Normal spindle-shaped cells.', 'Presence of atypical spindle cells.'), Score: 0.6125
+('No plasmacytoid differentiation.', 'Presence of plasmacytoid differentiation.'), Score: 0.6072
+('No prominent nucleoli.', 'Presence of prominent nucleoli within nuclei.'), Score: 0.6067
+('Clear, well-defined boundaries between cells.', 'Loss of cellular boundaries, cells appearing crowded and overlapping.'), Score: 0.6061
+('Thin nuclear membrane.', 'Thickened, irregular nuclear membrane.'), Score: 0.6057
+('Regular nuclear membrane.', 'Irregular or jagged nuclear membrane.'), Score: 0.6048
+('No sinusoidal involvement.', 'Sinusoidal involvement by tumor cells.'), Score: 0.6031
+('Normal spindle shape of stromal cells.', 'Altered spindle shape and increased cellularity of stromal cells.'), Score: 0.6023
+('No intranuclear inclusions.', 'Presence of intranuclear inclusions.'), Score: 0.6023
+('No prominent nucleoli.', 'Prominent nucleoli within the nuclei.'), Score: 0.6007
+
+Iteration 90:
+('Uniform nuclear staining.', 'Heterogeneous nuclear staining.'), Score: 0.7057
+('No capsular involvement.', 'Capsular involvement or extension present.'), Score: 0.6881
+('No ductal involvement.', 'Ductal involvement by atypical cells.'), Score: 0.6714
+('No increase in mitotic activity.', 'Increased mitotic activity.'), Score: 0.6674
+('No discernible chromatin clumping.', 'Coarse chromatin clumping within nuclei.'), Score: 0.6654
+('Regular nuclear morphology.', 'Irregular nuclear contours and shapes.'), Score: 0.6643
+('No atypical cells.', 'Presence of atypical cells with large nuclei.'), Score: 0.6640
+('No ductal involvement.', 'Ductal involvement with cellular atypia.'), Score: 0.6575
+('Stroma with normal collagen content.', 'Desmoplastic reaction with abundant collagen.'), Score: 0.6534
+('Normal staining of stromal components.', 'Abnormal staining of stromal components.'), Score: 0.6522
+('No evidence of lymphovascular invasion.', 'Lymphovascular invasion present.'), Score: 0.6509
+('No prominent nucleoli.', 'Large and prominent nucleoli within nuclei.'), Score: 0.6489
+('No vascular invasion.', 'Evidence of vascular or perineural invasion.'), Score: 0.6476
+('Uniform nuclear size and shape.', 'Pleomorphic nuclei with irregular contours.'), Score: 0.6450
+('Small, round nuclei.', 'Large, irregular nuclei with prominent chromatin.'), Score: 0.6438
+('Uniform nuclear size and shape.', 'Nuclear pleomorphism with varying size and shape.'), Score: 0.6389
+('Regular sinusoidal pattern.', 'Irregular sinusoidal pattern.'), Score: 0.6388
+('No atypical cells infiltrating the stroma.', 'Atypical cells infiltrating the stroma.'), Score: 0.6387
+('Normal lymphocyte morphology.', 'Atypical lymphocyte morphology.'), Score: 0.6374
+('No evidence of extracellular matrix changes.', 'Extracellular matrix changes present.'), Score: 0.6310
+('Uniform nuclear size and shape.', 'Pleomorphic nuclei with varying sizes and shapes.'), Score: 0.6306
+('No loss of nuclear polarity.', 'Loss of nuclear polarity.'), Score: 0.6294
+('Absence of giant cells.', 'Presence of multinucleated giant cells.'), Score: 0.6286
+('No fibrosis in the stroma.', 'Desmoplastic reaction with increased fibrosis.'), Score: 0.6275
+('Absence of lymphovascular space invasion.', 'Lymphovascular space invasion present.'), Score: 0.6272
+('No sinus histiocytosis.', 'Sinus histiocytosis present.'), Score: 0.6221
+('No prominent nucleoli.', 'Large, prominent nucleoli within the nuclei.'), Score: 0.6214
+('Normal mitotic activity.', 'Increased and atypical mitotic activity.'), Score: 0.6207
+('Small, round nuclei.', 'Large, irregular nuclei.'), Score: 0.6200
+('No extra-capsular extension.', 'Extra-capsular extension present.'), Score: 0.6192
+('No perivascular lymphocytic cuffing.', 'Perivascular lymphocytic cuffing present.'), Score: 0.6182
+('Normal follicular dendritic cell meshwork.', 'Loss of follicular dendritic cell meshwork.'), Score: 0.6159
+('No perinuclear halo.', 'Prominent perinuclear halo.'), Score: 0.6142
+('No discernible necrosis.', 'Areas of tumor necrosis present.'), Score: 0.6141
+('Normal spindle-shaped cells.', 'Presence of atypical spindle cells.'), Score: 0.6125
+('No plasmacytoid differentiation.', 'Presence of plasmacytoid differentiation.'), Score: 0.6072
+('No prominent nucleoli.', 'Presence of prominent nucleoli within nuclei.'), Score: 0.6067
+('Clear, well-defined boundaries between cells.', 'Loss of cellular boundaries, cells appearing crowded and overlapping.'), Score: 0.6061
+('Thin nuclear membrane.', 'Thickened, irregular nuclear membrane.'), Score: 0.6057
+('Regular nuclear membrane.', 'Irregular or jagged nuclear membrane.'), Score: 0.6048
+('No sinusoidal involvement.', 'Sinusoidal involvement by tumor cells.'), Score: 0.6031
+('Normal spindle shape of stromal cells.', 'Altered spindle shape and increased cellularity of stromal cells.'), Score: 0.6023
+('No intranuclear inclusions.', 'Presence of intranuclear inclusions.'), Score: 0.6023
+('No prominent nucleoli.', 'Prominent nucleoli within the nuclei.'), Score: 0.6007
+
+Iteration 100:
+('Uniform nuclear staining.', 'Heterogeneous nuclear staining.'), Score: 0.7057
+('No capsular involvement.', 'Capsular involvement or extension present.'), Score: 0.6881
+('No ductal involvement.', 'Ductal involvement by atypical cells.'), Score: 0.6714
+('No increase in mitotic activity.', 'Increased mitotic activity.'), Score: 0.6674
+('No discernible chromatin clumping.', 'Coarse chromatin clumping within nuclei.'), Score: 0.6654
+('Regular nuclear morphology.', 'Irregular nuclear contours and shapes.'), Score: 0.6643
+('No atypical cells.', 'Presence of atypical cells with large nuclei.'), Score: 0.6640
+('No ductal involvement.', 'Ductal involvement with cellular atypia.'), Score: 0.6575
+('Stroma with normal collagen content.', 'Desmoplastic reaction with abundant collagen.'), Score: 0.6534
+('Normal staining of stromal components.', 'Abnormal staining of stromal components.'), Score: 0.6522
+('No eosinophilic inclusions.', 'Eosinophilic inclusions within cells.'), Score: 0.6511
+('No evidence of lymphovascular invasion.', 'Lymphovascular invasion present.'), Score: 0.6509
+('No prominent nucleoli.', 'Large and prominent nucleoli within nuclei.'), Score: 0.6489
+('No vascular invasion.', 'Evidence of vascular or perineural invasion.'), Score: 0.6476
+('Uniform nuclear size and shape.', 'Pleomorphic nuclei with irregular contours.'), Score: 0.6450
+('Small, round nuclei.', 'Large, irregular nuclei with prominent chromatin.'), Score: 0.6438
+('Uniform nuclear size and shape.', 'Nuclear pleomorphism with varying size and shape.'), Score: 0.6389
+('Regular sinusoidal pattern.', 'Irregular sinusoidal pattern.'), Score: 0.6388
+('No atypical cells infiltrating the stroma.', 'Atypical cells infiltrating the stroma.'), Score: 0.6387
+('No loss of follicular polarity.', 'Loss of follicular polarity.'), Score: 0.6376
+('Normal lymphocyte morphology.', 'Atypical lymphocyte morphology.'), Score: 0.6374
+('No evidence of extracellular matrix changes.', 'Extracellular matrix changes present.'), Score: 0.6310
+('Uniform nuclear size and shape.', 'Pleomorphic nuclei with varying sizes and shapes.'), Score: 0.6306
+('No loss of nuclear polarity.', 'Loss of nuclear polarity.'), Score: 0.6294
+('Absence of giant cells.', 'Presence of multinucleated giant cells.'), Score: 0.6286
+('No fibrosis in the stroma.', 'Desmoplastic reaction with increased fibrosis.'), Score: 0.6275
+('Absence of lymphovascular space invasion.', 'Lymphovascular space invasion present.'), Score: 0.6272
+('Lymphocytes are evenly distributed.', 'Lymphocytes are arranged in sheets or clusters.'), Score: 0.6233
+('No sinus histiocytosis.', 'Sinus histiocytosis present.'), Score: 0.6221
+('No prominent nucleoli.', 'Large, prominent nucleoli within the nuclei.'), Score: 0.6214
+('Normal mitotic activity.', 'Increased and atypical mitotic activity.'), Score: 0.6207
+('Small, round nuclei.', 'Large, irregular nuclei.'), Score: 0.6200
+('No extra-capsular extension.', 'Extra-capsular extension present.'), Score: 0.6192
+('No perivascular lymphocytic cuffing.', 'Perivascular lymphocytic cuffing present.'), Score: 0.6182
+('Normal follicular dendritic cell meshwork.', 'Loss of follicular dendritic cell meshwork.'), Score: 0.6159
+('No perinuclear halo.', 'Prominent perinuclear halo.'), Score: 0.6142
+('No discernible necrosis.', 'Areas of tumor necrosis present.'), Score: 0.6141
+('Normal spindle-shaped cells.', 'Presence of atypical spindle cells.'), Score: 0.6125
+('No plasmacytoid differentiation.', 'Presence of plasmacytoid differentiation.'), Score: 0.6072
+('No prominent nucleoli.', 'Presence of prominent nucleoli within nuclei.'), Score: 0.6067
+('Clear, well-defined boundaries between cells.', 'Loss of cellular boundaries, cells appearing crowded and overlapping.'), Score: 0.6061
+('Thin nuclear membrane.', 'Thickened, irregular nuclear membrane.'), Score: 0.6057
+('Regular nuclear membrane.', 'Irregular or jagged nuclear membrane.'), Score: 0.6048
+('Lymphocytes evenly distributed.', 'Lymphocytes arranged in sheets or clusters.'), Score: 0.6031
+('No sinusoidal involvement.', 'Sinusoidal involvement by tumor cells.'), Score: 0.6031
+('No atypical plasma cells.', 'Presence of atypical plasma cells.'), Score: 0.6025
+('Normal spindle shape of stromal cells.', 'Altered spindle shape and increased cellularity of stromal cells.'), Score: 0.6023
+('No intranuclear inclusions.', 'Presence of intranuclear inclusions.'), Score: 0.6023
+('No prominent nucleoli.', 'Prominent nucleoli within the nuclei.'), Score: 0.6007
+

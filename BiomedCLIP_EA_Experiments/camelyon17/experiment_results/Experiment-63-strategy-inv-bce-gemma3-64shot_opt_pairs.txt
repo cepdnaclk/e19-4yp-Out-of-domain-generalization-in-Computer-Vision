@@ -1,0 +1,249 @@
+Iteration 1:
+('Normal collagen fibers.', 'Disrupted collagen fibers.'), Score: 0.6756
+('Normal reticular fibers.', 'Disrupted reticular fibers.'), Score: 0.6468
+('Normal adipose tissue.', 'Atypical adipose tissue.'), Score: 0.6331
+('Absence of giant cells.', 'Presence of multinucleated giant cells.'), Score: 0.6329
+('Normal basophilic granules.', 'Abnormal basophilic granules.'), Score: 0.6120
+('Normal angiogenesis.', 'Increased angiogenesis.'), Score: 0.6115
+('Thin nuclear membrane.', 'Thickened, irregular nuclear membrane.'), Score: 0.6110
+('Clear, well-defined boundaries between cells.', 'Loss of cellular boundaries, cells appearing crowded and overlapping.'), Score: 0.6098
+('Normal basement membrane.', 'Disrupted basement membrane.'), Score: 0.6046
+
+Iteration 10:
+('Normal collagen fibers.', 'Disrupted collagen fibers.'), Score: 0.6756
+('Small, round lymphocytes.', 'Large, atypical lymphocytes.'), Score: 0.6748
+('Normal reticular fibers.', 'Disrupted reticular fibers.'), Score: 0.6468
+('Normal adipose tissue.', 'Atypical adipose tissue.'), Score: 0.6331
+('Absence of giant cells.', 'Presence of multinucleated giant cells.'), Score: 0.6329
+('Regular nuclear morphology.', 'Irregular nuclear contours and chromatin distribution.'), Score: 0.6243
+('Normal basophilic granules.', 'Abnormal basophilic granules.'), Score: 0.6120
+('Normal angiogenesis.', 'Increased angiogenesis.'), Score: 0.6115
+('Thin nuclear membrane.', 'Thickened, irregular nuclear membrane.'), Score: 0.6110
+('Clear, well-defined boundaries between cells.', 'Loss of cellular boundaries, cells appearing crowded and overlapping.'), Score: 0.6098
+('Normal basement membrane.', 'Disrupted basement membrane.'), Score: 0.6046
+
+Iteration 20:
+('Normal collagen fibers.', 'Disrupted collagen fibers.'), Score: 0.6756
+('Small, round lymphocytes.', 'Large, atypical lymphocytes.'), Score: 0.6748
+('Normal reticular fibers.', 'Disrupted reticular fibers.'), Score: 0.6468
+('Normal adipose tissue.', 'Atypical adipose tissue.'), Score: 0.6331
+('Absence of giant cells.', 'Presence of multinucleated giant cells.'), Score: 0.6329
+('Regular nuclear morphology.', 'Irregular nuclear contours and chromatin distribution.'), Score: 0.6243
+('Normal basophilic granules.', 'Abnormal basophilic granules.'), Score: 0.6120
+('Normal angiogenesis.', 'Increased angiogenesis.'), Score: 0.6115
+('Thin nuclear membrane.', 'Thickened, irregular nuclear membrane.'), Score: 0.6110
+('Clear, well-defined boundaries between cells.', 'Loss of cellular boundaries, cells appearing crowded and overlapping.'), Score: 0.6098
+('Normal basement membrane.', 'Disrupted basement membrane.'), Score: 0.6046
+
+Iteration 30:
+('Normal collagen fibers.', 'Disrupted collagen fibers.'), Score: 0.6756
+('Small, round lymphocytes.', 'Large, atypical lymphocytes.'), Score: 0.6748
+('Normal reticular fibers.', 'Disrupted reticular fibers.'), Score: 0.6468
+('Normal adipose tissue.', 'Atypical adipose tissue.'), Score: 0.6331
+('Absence of giant cells.', 'Presence of multinucleated giant cells.'), Score: 0.6329
+('Regular nuclear morphology.', 'Irregular nuclear contours and chromatin distribution.'), Score: 0.6243
+('Normal basophilic granules.', 'Abnormal basophilic granules.'), Score: 0.6120
+('Normal angiogenesis.', 'Increased angiogenesis.'), Score: 0.6115
+('Thin nuclear membrane.', 'Thickened, irregular nuclear membrane.'), Score: 0.6110
+('Clear, well-defined boundaries between cells.', 'Loss of cellular boundaries, cells appearing crowded and overlapping.'), Score: 0.6098
+('Normal basement membrane.', 'Disrupted basement membrane.'), Score: 0.6046
+
+Iteration 40:
+('Normal collagen fibers.', 'Disrupted collagen fibers.'), Score: 0.6756
+('Small, round lymphocytes.', 'Large, atypical lymphocytes.'), Score: 0.6748
+('Normal reticular fibers.', 'Disrupted reticular fibers.'), Score: 0.6468
+('Normal adipose tissue.', 'Atypical adipose tissue.'), Score: 0.6331
+('Absence of giant cells.', 'Presence of multinucleated giant cells.'), Score: 0.6329
+('Regular nuclear morphology.', 'Irregular nuclear contours and chromatin distribution.'), Score: 0.6243
+('Normal basophilic granules.', 'Abnormal basophilic granules.'), Score: 0.6120
+('Normal angiogenesis.', 'Increased angiogenesis.'), Score: 0.6115
+('Thin nuclear membrane.', 'Thickened, irregular nuclear membrane.'), Score: 0.6110
+('Clear, well-defined boundaries between cells.', 'Loss of cellular boundaries, cells appearing crowded and overlapping.'), Score: 0.6098
+('Normal basement membrane.', 'Disrupted basement membrane.'), Score: 0.6046
+
+Iteration 50:
+('Normal collagen fibers.', 'Disrupted collagen fibers.'), Score: 0.6756
+('No evidence of capsular invasion.', 'Capsular invasion present.'), Score: 0.6748
+('Small, round lymphocytes.', 'Large, atypical lymphocytes.'), Score: 0.6748
+('Normal reticular fibers.', 'Disrupted reticular fibers.'), Score: 0.6468
+('Normal adipose tissue.', 'Atypical adipose tissue.'), Score: 0.6331
+('Absence of giant cells.', 'Presence of multinucleated giant cells.'), Score: 0.6329
+('Normal stromal density.', 'Increased stromal density/fibrosis.'), Score: 0.6276
+('Regular nuclear morphology.', 'Irregular nuclear contours and chromatin distribution.'), Score: 0.6243
+('Normal basophilic granules.', 'Abnormal basophilic granules.'), Score: 0.6120
+('Normal angiogenesis.', 'Increased angiogenesis.'), Score: 0.6115
+('Thin nuclear membrane.', 'Thickened, irregular nuclear membrane.'), Score: 0.6110
+('Clear, well-defined boundaries between cells.', 'Loss of cellular boundaries, cells appearing crowded and overlapping.'), Score: 0.6098
+('Normal basement membrane.', 'Disrupted basement membrane.'), Score: 0.6046
+
+Iteration 60:
+('Normal collagen fibers.', 'Disrupted collagen fibers.'), Score: 0.6756
+('Regular nuclear morphology.', 'Irregular nuclear contours and indentations.'), Score: 0.6751
+('No evidence of capsular invasion.', 'Capsular invasion present.'), Score: 0.6748
+('Small, round lymphocytes.', 'Large, atypical lymphocytes.'), Score: 0.6748
+('Intact basement membrane.', 'Basement membrane disruption or invasion.'), Score: 0.6474
+('Normal reticular fibers.', 'Disrupted reticular fibers.'), Score: 0.6468
+('Normal immunohistochemical staining for lymphoid markers.', 'Loss of lymphoid marker expression.'), Score: 0.6460
+('No perinuclear halo.', 'Prominent perinuclear halo.'), Score: 0.6393
+('Normal adipose tissue.', 'Atypical adipose tissue.'), Score: 0.6331
+('Absence of giant cells.', 'Presence of multinucleated giant cells.'), Score: 0.6329
+('Normal stromal density.', 'Increased stromal density/fibrosis.'), Score: 0.6276
+('No lymphovascular invasion.', 'Lymphovascular invasion present.'), Score: 0.6271
+('Regular nuclear morphology.', 'Irregular nuclear contours and chromatin distribution.'), Score: 0.6243
+('Small, round nuclei.', 'Large, vesicular nuclei.'), Score: 0.6232
+('Normal mitotic activity.', 'Atypical mitotic figures.'), Score: 0.6230
+('Intact germinal centers.', 'Lost germinal centers.'), Score: 0.6177
+('Normal basophilic granules.', 'Abnormal basophilic granules.'), Score: 0.6120
+('Normal angiogenesis.', 'Increased angiogenesis.'), Score: 0.6115
+('Thin nuclear membrane.', 'Thickened, irregular nuclear membrane.'), Score: 0.6110
+('Normal stromal collagen.', 'Increased stromal collagen deposition (fibrosis).'), Score: 0.6103
+('Clear, well-defined boundaries between cells.', 'Loss of cellular boundaries, cells appearing crowded and overlapping.'), Score: 0.6098
+('Normal basement membrane.', 'Disrupted basement membrane.'), Score: 0.6046
+
+Iteration 70:
+('No evidence of capsular invasion.', 'Evidence of capsular invasion.'), Score: 0.7126
+('Normal collagen fibers.', 'Disrupted collagen fibers.'), Score: 0.6756
+('Regular nuclear morphology.', 'Irregular nuclear contours and indentations.'), Score: 0.6751
+('No evidence of capsular invasion.', 'Capsular invasion present.'), Score: 0.6748
+('Small, round lymphocytes.', 'Large, atypical lymphocytes.'), Score: 0.6748
+('Uniform lymphocyte distribution.', 'Heterogeneous lymphocyte distribution.'), Score: 0.6487
+('Intact basement membrane.', 'Basement membrane disruption or invasion.'), Score: 0.6474
+('Normal reticular fibers.', 'Disrupted reticular fibers.'), Score: 0.6468
+('Normal immunohistochemical staining for lymphoid markers.', 'Loss of lymphoid marker expression.'), Score: 0.6460
+('No prominent nucleoli.', 'Prominent nucleoli within cells.'), Score: 0.6446
+('No perinuclear halo.', 'Prominent perinuclear halo.'), Score: 0.6393
+('Normal adipose tissue.', 'Atypical adipose tissue.'), Score: 0.6331
+('Absence of giant cells.', 'Presence of multinucleated giant cells.'), Score: 0.6329
+('Normal stromal density.', 'Increased stromal density/fibrosis.'), Score: 0.6276
+('No lymphovascular invasion.', 'Lymphovascular invasion present.'), Score: 0.6271
+('Regular nuclear morphology.', 'Irregular nuclear contours and chromatin distribution.'), Score: 0.6243
+('Small, round nuclei.', 'Large, vesicular nuclei.'), Score: 0.6232
+('Normal mitotic activity.', 'Atypical mitotic figures.'), Score: 0.6230
+('Intact germinal centers.', 'Lost germinal centers.'), Score: 0.6177
+('Normal mitotic count.', 'Increased mitotic activity.'), Score: 0.6171
+('Normal basophilic granules.', 'Abnormal basophilic granules.'), Score: 0.6120
+('Normal angiogenesis.', 'Increased angiogenesis.'), Score: 0.6115
+('Thin nuclear membrane.', 'Thickened, irregular nuclear membrane.'), Score: 0.6110
+('Normal stromal collagen.', 'Increased stromal collagen deposition (fibrosis).'), Score: 0.6103
+('Clear, well-defined boundaries between cells.', 'Loss of cellular boundaries, cells appearing crowded and overlapping.'), Score: 0.6098
+('Absence of granulomas.', 'Presence of granulomas.'), Score: 0.6096
+('Normal lymphocyte morphology.', 'Atypical lymphocyte morphology.'), Score: 0.6086
+('Normal basement membrane.', 'Disrupted basement membrane.'), Score: 0.6046
+('Uniform cell size.', 'Pleomorphic cell population.'), Score: 0.6018
+
+Iteration 80:
+('No evidence of capsular invasion.', 'Evidence of capsular invasion.'), Score: 0.7126
+('Normal collagen fibers.', 'Disrupted collagen fibers.'), Score: 0.6756
+('Regular nuclear morphology.', 'Irregular nuclear contours and indentations.'), Score: 0.6751
+('No evidence of capsular invasion.', 'Capsular invasion present.'), Score: 0.6748
+('Small, round lymphocytes.', 'Large, atypical lymphocytes.'), Score: 0.6748
+('Regular nuclear morphology.', 'Irregular nuclear morphology.'), Score: 0.6489
+('Uniform lymphocyte distribution.', 'Heterogeneous lymphocyte distribution.'), Score: 0.6487
+('Intact basement membrane.', 'Broken or fragmented basement membrane.'), Score: 0.6474
+('Intact basement membrane.', 'Basement membrane disruption or invasion.'), Score: 0.6474
+('Normal reticular fibers.', 'Disrupted reticular fibers.'), Score: 0.6468
+('Normal immunohistochemical staining for lymphoid markers.', 'Loss of lymphoid marker expression.'), Score: 0.6460
+('No prominent nucleoli.', 'Prominent nucleoli within cells.'), Score: 0.6446
+('No perinuclear halo.', 'Prominent perinuclear halo.'), Score: 0.6393
+('Intact basement membrane.', 'Basement membrane disruption.'), Score: 0.6362
+('Normal adipose tissue.', 'Atypical adipose tissue.'), Score: 0.6331
+('Absence of giant cells.', 'Presence of multinucleated giant cells.'), Score: 0.6329
+('Normal stromal density.', 'Increased stromal density/fibrosis.'), Score: 0.6276
+('No lymphovascular invasion.', 'Lymphovascular invasion present.'), Score: 0.6271
+('Regular nuclear morphology.', 'Irregular nuclear contours and chromatin distribution.'), Score: 0.6243
+('Small, round nuclei.', 'Large, vesicular nuclei.'), Score: 0.6232
+('Normal mitotic activity.', 'Atypical mitotic figures.'), Score: 0.6230
+('Intact germinal centers.', 'Lost germinal centers.'), Score: 0.6177
+('Normal mitotic count.', 'Increased mitotic activity.'), Score: 0.6171
+('Normal collagen density.', 'Increased collagen deposition/fibrosis.'), Score: 0.6155
+('Normal basophilic granules.', 'Abnormal basophilic granules.'), Score: 0.6120
+('Normal angiogenesis.', 'Increased angiogenesis.'), Score: 0.6115
+('Thin nuclear membrane.', 'Thickened, irregular nuclear membrane.'), Score: 0.6110
+('Normal stromal collagen.', 'Increased stromal collagen deposition (fibrosis).'), Score: 0.6103
+('Clear, well-defined boundaries between cells.', 'Loss of cellular boundaries, cells appearing crowded and overlapping.'), Score: 0.6098
+('Absence of granulomas.', 'Presence of granulomas.'), Score: 0.6096
+('Normal lymphocyte morphology.', 'Atypical lymphocyte morphology.'), Score: 0.6086
+('Normal basement membrane.', 'Disrupted basement membrane.'), Score: 0.6046
+('No granulomas.', 'Presence of granulomas.'), Score: 0.6024
+('Uniform cell size.', 'Pleomorphic cell population.'), Score: 0.6018
+
+Iteration 90:
+('No evidence of capsular invasion.', 'Evidence of capsular invasion.'), Score: 0.7126
+('Normal collagen fibers.', 'Disrupted collagen fibers.'), Score: 0.6756
+('Regular nuclear morphology.', 'Irregular nuclear contours and indentations.'), Score: 0.6751
+('No evidence of capsular invasion.', 'Capsular invasion present.'), Score: 0.6748
+('Small, round lymphocytes.', 'Large, atypical lymphocytes.'), Score: 0.6748
+('Regular nuclear morphology.', 'Irregular nuclear morphology.'), Score: 0.6489
+('Uniform lymphocyte distribution.', 'Heterogeneous lymphocyte distribution.'), Score: 0.6487
+('No ductal involvement.', 'Ductal involvement/infiltration.'), Score: 0.6480
+('Intact basement membrane.', 'Broken or fragmented basement membrane.'), Score: 0.6474
+('Intact basement membrane.', 'Basement membrane disruption or invasion.'), Score: 0.6474
+('Normal reticular fibers.', 'Disrupted reticular fibers.'), Score: 0.6468
+('Normal immunohistochemical staining for lymphoid markers.', 'Loss of lymphoid marker expression.'), Score: 0.6460
+('No prominent nucleoli.', 'Prominent nucleoli within cells.'), Score: 0.6446
+('No perinuclear halo.', 'Prominent perinuclear halo.'), Score: 0.6393
+('Intact basement membrane.', 'Basement membrane disruption.'), Score: 0.6362
+('Normal adipose tissue.', 'Atypical adipose tissue.'), Score: 0.6331
+('Absence of giant cells.', 'Presence of multinucleated giant cells.'), Score: 0.6329
+('Normal stromal density.', 'Increased stromal density/fibrosis.'), Score: 0.6276
+('No lymphovascular invasion.', 'Lymphovascular invasion present.'), Score: 0.6271
+('Regular nuclear morphology.', 'Irregular nuclear contours and chromatin distribution.'), Score: 0.6243
+('Small, round nuclei.', 'Large, vesicular nuclei.'), Score: 0.6232
+('Normal mitotic activity.', 'Atypical mitotic figures.'), Score: 0.6230
+('Intact germinal centers.', 'Lost germinal centers.'), Score: 0.6177
+('Normal mitotic count.', 'Increased mitotic activity.'), Score: 0.6171
+('Normal collagen density.', 'Increased collagen deposition/fibrosis.'), Score: 0.6155
+('Normal basophilic granules.', 'Abnormal basophilic granules.'), Score: 0.6120
+('Normal angiogenesis.', 'Increased angiogenesis.'), Score: 0.6115
+('Thin nuclear membrane.', 'Thickened, irregular nuclear membrane.'), Score: 0.6110
+('Normal stromal collagen.', 'Increased stromal collagen deposition (fibrosis).'), Score: 0.6103
+('Clear, well-defined boundaries between cells.', 'Loss of cellular boundaries, cells appearing crowded and overlapping.'), Score: 0.6098
+('Absence of granulomas.', 'Presence of granulomas.'), Score: 0.6096
+('Normal lymphocyte morphology.', 'Atypical lymphocyte morphology.'), Score: 0.6086
+('Normal basement membrane.', 'Disrupted basement membrane.'), Score: 0.6046
+('No granulomas.', 'Presence of granulomas.'), Score: 0.6024
+('Uniform cell size.', 'Pleomorphic cell population.'), Score: 0.6018
+
+Iteration 100:
+('No evidence of capsular invasion.', 'Evidence of capsular invasion.'), Score: 0.7126
+('Normal collagen fibers.', 'Disrupted collagen fibers.'), Score: 0.6756
+('Regular nuclear morphology.', 'Irregular nuclear contours and indentations.'), Score: 0.6751
+('No evidence of capsular invasion.', 'Capsular invasion present.'), Score: 0.6748
+('Small, round lymphocytes.', 'Large, atypical lymphocytes.'), Score: 0.6748
+('Uniform nuclear size and shape.', 'Pleomorphic nuclei with varying sizes and shapes.'), Score: 0.6655
+('Regular nuclear morphology.', 'Irregular nuclear morphology.'), Score: 0.6489
+('Uniform lymphocyte distribution.', 'Heterogeneous lymphocyte distribution.'), Score: 0.6487
+('No ductal involvement.', 'Ductal involvement/infiltration.'), Score: 0.6480
+('Intact basement membrane.', 'Broken or fragmented basement membrane.'), Score: 0.6474
+('Intact basement membrane.', 'Basement membrane disruption or invasion.'), Score: 0.6474
+('Normal reticular fibers.', 'Disrupted reticular fibers.'), Score: 0.6468
+('Small, round nuclei.', 'Large, pleomorphic nuclei.'), Score: 0.6465
+('Normal immunohistochemical staining for lymphoid markers.', 'Loss of lymphoid marker expression.'), Score: 0.6460
+('Regular nuclear morphology.', 'Irregular nuclear shapes and sizes.'), Score: 0.6448
+('No prominent nucleoli.', 'Prominent nucleoli within cells.'), Score: 0.6446
+('No perinuclear halo.', 'Prominent perinuclear halo.'), Score: 0.6393
+('Intact basement membrane.', 'Basement membrane disruption.'), Score: 0.6362
+('Normal adipose tissue.', 'Atypical adipose tissue.'), Score: 0.6331
+('Absence of giant cells.', 'Presence of multinucleated giant cells.'), Score: 0.6329
+('Normal stromal density.', 'Increased stromal density/fibrosis.'), Score: 0.6276
+('No lymphovascular invasion.', 'Lymphovascular invasion present.'), Score: 0.6271
+('Normal mitotic activity.', 'Increased and atypical mitotic figures.'), Score: 0.6250
+('Regular nuclear morphology.', 'Irregular nuclear contours and chromatin distribution.'), Score: 0.6243
+('Small, round nuclei.', 'Large, vesicular nuclei.'), Score: 0.6232
+('Normal mitotic activity.', 'Atypical mitotic figures.'), Score: 0.6230
+('Intact germinal centers.', 'Lost germinal centers.'), Score: 0.6177
+('Normal mitotic count.', 'Increased mitotic activity.'), Score: 0.6171
+('Normal collagen density.', 'Increased collagen deposition/fibrosis.'), Score: 0.6155
+('Normal basophilic granules.', 'Abnormal basophilic granules.'), Score: 0.6120
+('Normal angiogenesis.', 'Increased angiogenesis.'), Score: 0.6115
+('Thin nuclear membrane.', 'Thickened, irregular nuclear membrane.'), Score: 0.6110
+('Normal stromal collagen.', 'Increased stromal collagen deposition (fibrosis).'), Score: 0.6103
+('Clear, well-defined boundaries between cells.', 'Loss of cellular boundaries, cells appearing crowded and overlapping.'), Score: 0.6098
+('Absence of granulomas.', 'Presence of granulomas.'), Score: 0.6096
+('Normal lymphocyte morphology.', 'Atypical lymphocyte morphology.'), Score: 0.6086
+('No increased number of mitotic figures.', 'Increased mitotic activity with atypical forms.'), Score: 0.6069
+('Normal basement membrane.', 'Disrupted basement membrane.'), Score: 0.6046
+('No granulomas.', 'Presence of granulomas.'), Score: 0.6024
+('Uniform cell size.', 'Pleomorphic cell population.'), Score: 0.6018
+('No evidence of lymphovascular invasion.', 'Evidence of lymphovascular invasion.'), Score: 0.6008
+
