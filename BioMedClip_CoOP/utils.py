@@ -97,8 +97,9 @@ def send_slack_message(message: str) -> None:
         Exception: For any Slack API errors
 
     """
-    # print("Sending message to Slack...")
-    # print(f"Message: {message}")
+    print("Sending message to Slack...")
+    print(f"Message: {message}")
+    return 1
     # Load environment variables from .env file
     load_dotenv()
     
