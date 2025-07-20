@@ -807,10 +807,17 @@ class PriorityQueue:
         """
         if n <= 0:
             return
-        for _ in range(min(n, len(self._heap))):
-            if self._heap:
-                score, pair = heapq.heappop(self._heap)
-                self._set.remove(pair)
+
+        # Get the top n items (highest scores)
+        top_items = sorted(self._heap, key=lambda x: x[0], reverse=True)[:n]
+
+        # Remove each top item from both heap and set
+        for score, pair in top_items:
+            self._heap.remove((score, pair))
+            self._set.remove(pair)
+
+        # Restore heap property after removals
+        heapq.heapify(self._heap)
 
 
 def load_initial_prompts(path: str) -> List[InitialItem]:
