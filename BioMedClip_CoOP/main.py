@@ -24,7 +24,7 @@ def load_dataloader(path):
 def main():
    
     args = {
-    'keyword': 'Universal_Trained on Center 0',   
+    'keyword': 'Universal_Trained_on_Center_0_4_examples',   
     'metadata_path': '/storage/projects3/e19-fyp-out-of-domain-gen-in-cv/camelyon17WILDS/metadata.csv',
     'organized_data_path': '/storage/projects3/e19-fyp-out-of-domain-gen-in-cv/camelyon17WILDS/organized_by_center',
     'data_path': '/storage/projects3/e19-fyp-out-of-domain-gen-in-cv/camelyon17WILDS/patches',
@@ -55,7 +55,7 @@ def main():
     print(f"Starting CoOp-BiomedCLIP... KeyWord: {args['keyword']}")
     send_slack_message(f"Starting CoOp-BiomedCLIP... KeyWord: {args['keyword']}")
 
-    cache_dir = "caches"
+    cache_dir = f"caches_{args['keyword']}"
     os.makedirs(cache_dir, exist_ok=True)
     args['cache_dir'] = cache_dir
 

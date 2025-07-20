@@ -12,7 +12,7 @@ from tqdm import tqdm
 import copy
 
 class CamelyonDataset(Dataset):
-    def __init__(self, centers, metadata_path, root_dir, transform=None, split=None, include_test=False):
+    def __init__(self, centers, metadata_path, root_dir, transform=None, split=None, include_test=False,few_shot=False,few_shot_no=2):
         """
         Args:
             centers (list): List of center indices to include (e.g., [0,1,2])
@@ -43,6 +43,16 @@ class CamelyonDataset(Dataset):
         # Create mapping from image paths to labels
         self.samples = []
         for _, row in self.metadata.iterrows():
+            # take first two tumor and non-tumor images only
+            # Added by Mansitha Few Shot
+            if few_shot:
+                tumor_counts = getattr(self, 'tumor_counts', {0: 0, 1: 0})
+                label = int(row['tumor'])
+                if tumor_counts[label] >= few_shot_no:
+                    continue
+                tumor_counts[label] += 1
+                self.tumor_counts = tumor_counts
+
             patient = f"{int(row['patient']):03d}"
             node = int(row['node'])
             x_coord = int(row['x_coord'])
@@ -54,6 +64,8 @@ class CamelyonDataset(Dataset):
             img_path = os.path.join(root_dir, f"patient_{patient}_node_{node}", img_name)
             if os.path.exists(img_path):  # Only add if file exists
                 self.samples.append((img_path, label))
+        if few_shot:
+            print(f"Number of samples in dataset: {len(self.samples)} and those are {self.samples}")
 
     def __len__(self):
         return len(self.samples)
@@ -100,11 +112,13 @@ def get_dataloaders(metadata_path, data_root, batch_size):
     
     # Main training set (train splits from centers 0,1,2)
     train_dataset = CamelyonDataset(
-        centers=[0, 1, 2],
+        centers=[0],
         metadata_path=metadata_path,
         root_dir=data_root,
         transform=train_transform,
-        split=0  # train split
+        split=0 , # train split,
+        few_shot=True,  # Few-shot learning enabled
+        few_shot_no=2
     )
     
     # In-distribution test sets (test splits from centers 0,1,2)
@@ -124,7 +138,10 @@ def get_dataloaders(metadata_path, data_root, batch_size):
         centers=[3],
         metadata_path=metadata_path,
         root_dir=data_root,
-        transform=test_transform
+        transform=test_transform,
+        few_shot=True,  # Few-shot learning enabled
+        few_shot_no=4
+
     )
     
     # Test set (all of center 4)
