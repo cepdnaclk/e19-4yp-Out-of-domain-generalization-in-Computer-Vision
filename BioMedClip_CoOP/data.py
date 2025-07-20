@@ -43,6 +43,15 @@ class CamelyonDataset(Dataset):
         # Create mapping from image paths to labels
         self.samples = []
         for _, row in self.metadata.iterrows():
+            # take first two tumor and non-tumor images only
+            # Added by Mansitha Few Shot
+            tumor_counts = getattr(self, 'tumor_counts', {0: 0, 1: 0})
+            label = int(row['tumor'])
+            if tumor_counts[label] >= 2:
+                continue
+            tumor_counts[label] += 1
+            self.tumor_counts = tumor_counts
+
             patient = f"{int(row['patient']):03d}"
             node = int(row['node'])
             x_coord = int(row['x_coord'])
@@ -100,7 +109,7 @@ def get_dataloaders(metadata_path, data_root, batch_size):
     
     # Main training set (train splits from centers 0,1,2)
     train_dataset = CamelyonDataset(
-        centers=[0, 1, 2],
+        centers=[0],
         metadata_path=metadata_path,
         root_dir=data_root,
         transform=train_transform,
