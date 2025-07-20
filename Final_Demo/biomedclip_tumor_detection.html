@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BiomedCLIP Histopathology Tumor Detection</title>
+    <title>BiomedXPro Histopathology Tumor Detection</title>
     <style>
         * {
             margin: 0;
@@ -406,7 +406,7 @@
 </head>
 <body>
     <div class="container">
-        <h1 class="title">🔬 BiomedCLIP Histopathology Tumor Detection</h1>
+        <h1 class="title">🔬 BiomedXPro Histopathology Tumor Detection</h1>
         <p class="subtitle">Upload a histopathology image for AI-powered tumor analysis</p>
         
         <!-- Upload Section -->
@@ -575,7 +575,7 @@
                         <span class="weight-display" id="weight7">w₈ = 0.12 (88/712)</span>
                     </div>
                     <div class="calculation-formula" id="formula">
-                        Final Output = 0.13 × 1 + 0.13 × 1 + 0.13 × 1 + 0.12 × 1 + 0.12 × 1 + 0.12 × 1 + 0.12 × 1 + 0.12 × 1
+                        Final Weighted Score = 0.13 × 1 + 0.13 × 1 + 0.13 × 1 + 0.12 × 1 + 0.12 × 1 + 0.12 × 1 + 0.12 × 1 + 0.12 × 1
                     </div>
                     <div class="calculation-formula" id="calculation">
                         = 0.13 + 0.13 + 0.13 + 0.12 + 0.12 + 0.12 + 0.12 + 0.12 = 0.99
@@ -583,9 +583,9 @@
                 </div>
                 <div class="final-result tumor" id="finalResult">
                     <div>🎯 Final Prediction</div>
-                    <div class="final-value" id="finalValue">0.99</div>
+                    <!-- <div class="final-value" id="finalValue">0.99</div> -->
                     <div class="tumor-status" id="tumorStatus">⚠️ CONTAINS TUMOR</div>
-                    <div>High confidence tumor detection based on weighted ensemble analysis</div>
+                    <!-- <div>High confidence tumor detection based on weighted ensemble analysis</div> -->
                 </div>
             </div>
         </div>
@@ -847,7 +847,7 @@
             
             // Update formula
             const formulaParts = weights.map((weight, index) => `${weight.toFixed(2)} × ${binaries[index]}`);
-            formula.textContent = `Final Output = ${formulaParts.join(' + ')}`;
+            formula.textContent = `Final Weighted Score = ${formulaParts.join(' + ')}`;
             
             // Update calculation
             const calculationParts = weights.map((weight, index) => (weight * binaries[index]).toFixed(2));
@@ -929,7 +929,7 @@
             
             // Update formula
             const formulaParts = weights.map((weight, index) => `${weight.toFixed(2)} × ${binaries[index]}`);
-            document.getElementById('formula').textContent = `Final Output = ${formulaParts.join(' + ')}`;
+            document.getElementById('formula').textContent = `Final Weighted Score = ${formulaParts.join(' + ')}`;
             
             // Update calculation
             const calculationParts = weights.map((weight, index) => (weight * binaries[index]).toFixed(2));
