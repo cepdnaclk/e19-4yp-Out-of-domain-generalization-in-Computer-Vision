@@ -140,7 +140,7 @@ def main():
     #     "experiment_results/distinct_medical_concepts.txt"
     # )
     initial_prompts = util.load_initial_prompts(
-        "experiment_results/Experiment-40-crowded_prompts.txt")
+        "experiment_results/Experiment-61-crowded_prompts.txt")
     pq = util.PriorityQueue(
         max_capacity=1000, filter_threshold=0.6, initial=initial_prompts)
     all_scores = [s for _, s in pq.get_best_n(len(pq))]
