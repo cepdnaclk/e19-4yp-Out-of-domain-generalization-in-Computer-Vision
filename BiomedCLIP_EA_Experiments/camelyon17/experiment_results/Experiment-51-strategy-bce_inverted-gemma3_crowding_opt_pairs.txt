@@ -1,0 +1,114 @@
+Iteration 26:
+('No prominent nucleoli.', 'Presence of large, prominent nucleoli.'), Score: 0.7157
+('No prominent nucleoli.', 'Large and prominent nucleoli within cells.'), Score: 0.6901
+('No sinusoidal involvement.', 'Sinusoidal involvement by tumor cells.'), Score: 0.6870
+('No extrafollicular proliferation.', 'Extrafollicular proliferation of atypical cells.'), Score: 0.6842
+('No evidence of necrosis.', 'Presence of tumor necrosis.'), Score: 0.6789
+('No giant cells.', 'Presence of giant cells.'), Score: 0.6782
+('No evidence of necrosis.', 'Presence of tumor cell necrosis.'), Score: 0.6758
+('No angioinvasion.', 'Evidence of angioinvasion by tumor cells.'), Score: 0.6607
+('Normal stromal collagen.', 'Desmoplastic stromal reaction.'), Score: 0.6593
+('No angioinvasion.', 'Angioinvasion by tumor cells.'), Score: 0.6590
+('No increased eosinophilic staining.', 'Increased eosinophilic staining.'), Score: 0.6581
+('Small lymphocytes predominate.', 'Large, atypical lymphocytes predominate.'), Score: 0.6558
+('No prominent nucleoli.', 'Presence of prominent nucleoli.'), Score: 0.6533
+('No giant cells.', 'Presence of multinucleated giant cells.'), Score: 0.6481
+('Absence of atypical cells.', 'Presence of atypical cells with large nuclei and prominent nucleoli.'), Score: 0.6468
+('No perinuclear halo.', 'Prominent perinuclear halo.'), Score: 0.6449
+('Absence of atypical cells with prominent nucleoli.', 'Presence of atypical cells with prominent nucleoli.'), Score: 0.6383
+('No sinusoidal infiltration.', 'Sinusoidal infiltration by atypical cells.'), Score: 0.6357
+('No giant cells present.', 'Presence of multinucleated giant cells.'), Score: 0.6339
+('Low mitotic activity.', 'High mitotic activity.'), Score: 0.6337
+('No necrosis is observed.', 'Presence of tumor necrosis.'), Score: 0.6323
+('Absence of giant cells.', 'Presence of multinucleated giant cells.'), Score: 0.6318
+('Lymph node architecture is preserved.', 'Lymph node architecture is effaced or distorted.'), Score: 0.6296
+('No plasmacytoid differentiation.', 'Significant plasmacytoid differentiation.'), Score: 0.6263
+('No ductal involvement.', 'Ductal involvement by tumor cells.'), Score: 0.6247
+('No loss of lymphatic architecture.', 'Loss of lymphatic architecture.'), Score: 0.6223
+('Normal size and shape of lymphocytes.', 'Variable size and shape of cells.'), Score: 0.6113
+('No evidence of lymphangitis.', 'Evidence of lymphangitis.'), Score: 0.6088
+('Absence of atypical spindle cells.', 'Presence of atypical spindle cells.'), Score: 0.6086
+('No vascular invasion.', 'Evidence of vascular invasion by atypical cells.'), Score: 0.6049
+('Regular nuclear morphology of lymphocytes.', 'Irregular nuclear morphology of lymphocytes.'), Score: 0.6034
+('Regular sinusoidal pattern.', 'Irregular sinusoidal pattern.'), Score: 0.6033
+('No atypical lymphoid aggregates.', 'Presence of atypical lymphoid aggregates.'), Score: 0.6024
+('No significant plasma cell differentiation.', 'Increased plasma cell differentiation.'), Score: 0.6023
+('Sinus histiocytes are unremarkable.', 'Sinus histiocytes show erythrophagocytosis or atypia.'), Score: 0.6019
+('Small, reactive lymphocytes.', 'Large, atypical lymphocytes.'), Score: 0.6007
+('No evidence of tumor cell infiltration.', 'Evidence of tumor cell infiltration.'), Score: 0.5993
+('No emperipolesis.', 'Presence of emperipolesis (cells within cells).'), Score: 0.5966
+('Few apoptotic bodies.', 'Numerous apoptotic bodies.'), Score: 0.5934
+('Absent granulomas.', 'Presence of granulomas.'), Score: 0.5878
+('No plasmacytic differentiation.', 'Plasmacytic differentiation of tumor cells.'), Score: 0.5870
+('Normal paracortical T-cell zone.', 'Hyperplastic paracortical T-cell zone.'), Score: 0.5856
+('No capsular breach.', 'Capsular breach with extracapsular extension.'), Score: 0.5815
+('Stromal cells are spindle-shaped and uniform.', 'Stromal cells are pleomorphic and atypical.'), Score: 0.5811
+('Absence of atypical mitotic figures.', 'Presence of atypical mitotic figures.'), Score: 0.5806
+('No discernible nucleoli.', 'Prominent nucleoli.'), Score: 0.5802
+('Normal sinusoidal staining.', 'Sinusoidal staining with atypical cells.'), Score: 0.5797
+('No atypical lymphoid aggregates.', 'Presence of atypical lymphoid aggregates with loss of normal architecture.'), Score: 0.5780
+('No perinuclear halo.', 'Presence of a prominent perinuclear halo.'), Score: 0.5776
+('Normal lymphocyte morphology.', 'Atypical lymphocyte morphology.'), Score: 0.5769
+('No evidence of capsular involvement.', 'Capsular involvement by tumor cells.'), Score: 0.5759
+('Normal staining of the extracellular matrix.', 'Abnormal staining of the extracellular matrix.'), Score: 0.5753
+('No evidence of invasion.', 'Evidence of invasion into surrounding tissues.'), Score: 0.5734
+('Lymphocytes with normal nuclear-to-cytoplasmic ratio.', 'Lymphocytes with increased nuclear-to-cytoplasmic ratio.'), Score: 0.5691
+('No significant atypia in stromal cells.', 'Significant atypia in stromal cells.'), Score: 0.5638
+('No perinuclear halo.', 'Presence of perinuclear halo.'), Score: 0.5623
+('Low nuclear-to-cytoplasmic ratio in lymphocytes.', 'High nuclear-to-cytoplasmic ratio in lymphocytes.'), Score: 0.5621
+('No evidence of tumor cell nests.', 'Presence of tumor cell nests.'), Score: 0.5613
+('No angiolymphatic invasion.', 'Angiolymphatic invasion present.'), Score: 0.5564
+('No prominent nucleoli.', 'Cells with large, prominent nucleoli and irregular chromatin.'), Score: 0.5544
+('No eosinophilic inclusions.', 'Presence of eosinophilic inclusions within cells.'), Score: 0.5534
+('No significant inflammatory infiltrate.', 'Significant inflammatory infiltrate.'), Score: 0.5520
+('Uniform lymphocyte size and shape.', 'Pleomorphic lymphocyte size and shape.'), Score: 0.5519
+('Benign spindle cells.', 'Presence of malignant spindle cells with atypical features.'), Score: 0.5513
+('No angiolymphatic invasion.', 'Angiolymphatic invasion by tumor cells.'), Score: 0.5498
+('Absence of necrosis.', 'Presence of tumor necrosis.'), Score: 0.5475
+('No evidence of tumor cell clusters.', 'Presence of tumor cell clusters.'), Score: 0.5451
+('Lymphocytes with normal nuclear-to-cytoplasmic ratio.', 'Lymphocytes with high nuclear-to-cytoplasmic ratio.'), Score: 0.5449
+('Minimal mitotic activity.', 'Increased mitotic activity with atypical mitotic figures.'), Score: 0.5392
+('Small, round nuclei with evenly distributed chromatin.', 'Large, irregular nuclei with clumped chromatin.'), Score: 0.5358
+('Normal staining of cellular components.', 'Abnormal staining of cellular components.'), Score: 0.5351
+('Uniform staining intensity.', 'Heterogeneous staining intensity.'), Score: 0.5331
+('Low mitotic activity.', 'High mitotic activity with frequent mitoses.'), Score: 0.5314
+('No evidence of capsular invasion.', 'Capsular invasion by tumor cells.'), Score: 0.5301
+('Normal lymphocyte size.', 'Increased lymphocyte size.'), Score: 0.5292
+('No evidence of fibrosis.', 'Evidence of fibrosis.'), Score: 0.5280
+('Uniformly distributed small lymphocytes.', 'Pleomorphic lymphocyte population with size variation.'), Score: 0.5273
+('No eosinophilic inclusions.', 'Presence of eosinophilic inclusions.'), Score: 0.5271
+('Normal follicular architecture.', 'Disrupted follicular architecture.'), Score: 0.5267
+('Thin-walled blood vessels.', 'Thickened and irregular blood vessels.'), Score: 0.5240
+('Intact basement membrane around follicles.', 'Broken or absent basement membrane around follicles.'), Score: 0.5202
+('No capsular invasion.', 'Presence of capsular invasion.'), Score: 0.5199
+('Normal mitotic figures.', 'Atypical mitotic figures.'), Score: 0.5198
+('No evidence of necrosis.', 'Evidence of necrosis within the tissue.'), Score: 0.5177
+('No perivascular lymphocytic cuffing.', 'Prominent perivascular lymphocytic cuffing.'), Score: 0.5170
+('Normal lymphocyte to stromal cell ratio.', 'Increased lymphocyte to stromal cell ratio.'), Score: 0.5159
+('Absence of large granular lymphocytes.', 'Presence of large granular lymphocytes.'), Score: 0.5144
+('Lymphocytes with high N:C ratio.', 'Lymphocytes with low N:C ratio.'), Score: 0.5132
+('Uniform lymphocyte size and shape.', 'Pleomorphic lymphocytes with variable size and shape.'), Score: 0.5124
+('Lymphocytes with high N/C ratio.', 'Lymphocytes with low N/C ratio.'), Score: 0.5122
+('No capsular involvement.', 'Capsular involvement by tumor cells.'), Score: 0.5120
+('Absence of atypical plasma cells.', 'Presence of atypical plasma cells.'), Score: 0.5119
+('Organized lymphoid follicles with clear germinal centers.', 'Disrupted follicular architecture with absent or atypical germinal centers.'), Score: 0.5096
+('Minimal nuclear pleomorphism.', 'Marked nuclear pleomorphism.'), Score: 0.5093
+('Follicular mantle zone is clearly defined.', 'Follicular mantle zone is disrupted or absent.'), Score: 0.5081
+('No mitotic figures are present.', 'Increased number of mitotic figures.'), Score: 0.5069
+('No reactive hyperplasia.', 'Presence of reactive hyperplasia with atypical features.'), Score: 0.5055
+('Well-defined follicular architecture.', 'Disrupted follicular architecture.'), Score: 0.4929
+('No fibrosis or sclerosis.', 'Extensive fibrosis or sclerosis surrounding tumor cells.'), Score: 0.4927
+('No atypical cells are infiltrating the surrounding tissue.', 'Atypical cells infiltrating the surrounding tissue.'), Score: 0.4828
+('No plasma cell differentiation.', 'Significant plasma cell differentiation.'), Score: 0.4747
+('Normal collagen distribution.', 'Increased collagen deposition and fibrosis.'), Score: 0.4727
+('No increase in eosinophilic debris.', 'Increased eosinophilic debris and karyorrhexis.'), Score: 0.4657
+('Normal distribution of immune cells.', 'Disrupted immune cell distribution with clustering.'), Score: 0.4557
+('No significant inflammatory infiltrate.', 'Prominent inflammatory infiltrate with neutrophils and plasma cells.'), Score: 0.4555
+('Well-defined lymphocyte borders.', 'Ill-defined lymphocyte borders with cytoplasmic blurring.'), Score: 0.4480
+('Scant cytoplasm in lymphocytes.', 'Abundant cytoplasm in lymphocytes.'), Score: 0.4431
+('Uniformly distributed small lymphocytes.', 'Pleomorphic lymphocytes with irregular nuclear contours.'), Score: 0.4345
+('Follicles with regular germinal center.', 'Follicles with effaced or irregular germinal center.'), Score: 0.4325
+('Lymphocytes with smooth nuclear membranes.', 'Lymphocytes with irregular, crenated nuclear membranes.'), Score: 0.4113
+('Well-defined germinal centers.', 'Germinal centers are poorly defined or absent.'), Score: 0.4094
+('Lymphocytes with normal morphology.', 'Lymphocytes with atypical morphology and increased size.'), Score: 0.4037
+
