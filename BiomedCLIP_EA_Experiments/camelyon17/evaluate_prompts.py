@@ -28,7 +28,7 @@ def main():
 
     # 3. load prompts
     prompts = util.load_initial_prompts(
-        "experiment_results/distinct_medical_concepts.txt"
+        "experiment_results/zero_shot.txt"
     )
 
     for ((negative_prompt, positive_prompt), score) in prompts:
