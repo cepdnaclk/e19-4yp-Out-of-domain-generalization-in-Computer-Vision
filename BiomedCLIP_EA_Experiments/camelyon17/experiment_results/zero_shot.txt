@@ -1,2 +1,4 @@
 ('This is an image of a normal lymph node', 'This is an image of a tumor lymph node'), Score: 0.5
 ('Normal lymph node presented in image', 'Tumor lymph node presented in image'), Score: 0.5
+("This is an image of a tumor", "Tumor is not present in this image"), Score: 0.5
+("The region of tissue contains a tumor","The region of tissue is normal"), Score: 0.5
