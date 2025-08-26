@@ -1,5 +1,3 @@
-from API_KEY import GEMINI_API_KEY, CHATGPT_API_KEY, CHATGPT_ENDPOINT
-from openai import AzureOpenAI
 import heapq
 import tokenize
 import io
@@ -31,8 +29,13 @@ import ollama
 import torch.nn.functional as F
 
 # 1. Paths & constants
-METADATA_CSV = "/storage/projects3/e19-fyp-out-of-domain-gen-in-cv/camelyon17WILDS/metadata.csv"
-PATCHES_DIR = "/storage/projects3/e19-fyp-out-of-domain-gen-in-cv/camelyon17WILDS/patches"
+
+# Derm7pt paths
+DERM_META_CSV = os.path.join(os.path.dirname(__file__), '../../release_v0/meta/meta.csv')
+DERM_IMAGE_BASE = os.path.join(os.path.dirname(__file__), '../../release_v0/images/')
+DERM_TRAIN_INDEXES = os.path.join(os.path.dirname(__file__), '../../release_v0/meta/train_indexes.csv')
+DERM_VAL_INDEXES = os.path.join(os.path.dirname(__file__), '../../release_v0/meta/valid_indexes.csv')
+DERM_TEST_INDEXES = os.path.join(os.path.dirname(__file__), '../../release_v0/meta/test_indexes.csv')
 
 CONFIG_PATH = "/storage/projects3/e19-fyp-out-of-domain-gen-in-cv/e19-4yp-Out-of-domain-generalization-in-Computer-Vision/BioMedClip/checkpoints/open_clip_config.json"
 WEIGHTS_PATH = "/storage/projects3/e19-fyp-out-of-domain-gen-in-cv/e19-4yp-Out-of-domain-generalization-in-Computer-Vision/BioMedClip/checkpoints/open_clip_pytorch_model.bin"
@@ -47,37 +50,121 @@ InitialItem = Tuple[PromptPair, float]
 PromptList = List[Tuple[PromptPair, float]]
 
 
-class BiomedCLIPDataset(Dataset):
-    def __init__(self, df, preprocess):
-        self.filepaths = df["filepath"].tolist()
-        self.labels = df["tumor"].astype(int).tolist()
-        self.preproc = preprocess
+class KneePointAnalysis:
+    """
+    A utility class to perform knee-point (elbow) analysis on a collection of scores,
+    typically obtained from a PriorityQueue.
+    """
+
+    def __init__(self, scores: List[float]):
+        """
+        Initializes the analyzer with a list of scores.
+        Scores are expected to be in descending order for knee-point analysis.
+        Ensures scores are numeric by casting to float.
+        """
+        # Ensure all scores are floats before sorting and storing
+        self._scores = sorted([float(s) for s in scores], reverse=True)
+
+    def find_knee_point(self, k_range: Optional[List[int]] = None) -> int:
+        """
+        Finds the knee point (elbow) in the sorted scores using the 'distance from line' method.
+        This suggests a natural 'n' for selecting the best solutions.
+
+        Args:
+            k_range: An optional list of K values (number of solutions/ranks) to consider for analysis.
+                     If None, it considers all possible 'n' up to the number of scores.
+        Returns:
+            The recommended number of 'n' (solutions) based on the knee point.
+            Returns 0 if there are no scores or only one score.
+        """
+        if len(self._scores) <= 1:
+            return len(self._scores)
+
+        # Prepare x-values (ranks) and y-values (scores) for the full dataset
+        x_values_all = np.arange(1, len(self._scores) + 1)
+        # This conversion now should be safe as _scores are floats
+        y_values_all = np.array(self._scores)
+
+        # Determine the subset of data for analysis if k_range is provided
+        if k_range is None:
+            x_values_for_analysis = x_values_all
+            y_values_for_analysis = y_values_all
+        else:
+            # Filter x_values and y_values based on k_range
+            valid_indices = [i for i, k in enumerate(
+                x_values_all) if k in k_range and k <= len(self._scores)]
+            if not valid_indices:
+                print(
+                    "Warning: No valid ranks in k_range for the current data size. Returning 0.")
+                return 0
+            x_values_for_analysis = x_values_all[valid_indices]
+            y_values_for_analysis = y_values_all[valid_indices]
+
+        # Handle cases with insufficient points for line drawing
+        if len(x_values_for_analysis) < 2:
+            return len(x_values_for_analysis) if len(x_values_for_analysis) > 0 else 0
+
+        # If the analysis range is just two points, the knee is trivially the first point,
+        # or the second if the first is disproportionately high. For robustness, if only 2 points,
+        # the 'knee' concept is weak.
+        if len(x_values_for_analysis) == 2:
+            return x_values_for_analysis[0]
+
+        # Calculate the line between the first and last point of the *analysis subset*
+        p1 = (x_values_for_analysis[0], y_values_for_analysis[0])
+        p2 = (x_values_for_analysis[-1], y_values_for_analysis[-1])
+
+        # Calculate line equation: y = mx + c  =>  mx - y + c = 0
+        # Handle the edge case where x_values_for_analysis are all the same (vertical line)
+        if (p2[0] - p1[0]) == 0:
+            return x_values_for_analysis[0]  # Fallback to first point
+
+        m = (p2[1] - p1[1]) / (p2[0] - p1[0])
+        c = p1[1] - m * p1[0]
+
+        A, B, C = m, -1, c  # Coefficients for Ax + By + C = 0
+
+        distances = []
+        for i in range(len(x_values_for_analysis)):
+            x0, y0 = x_values_for_analysis[i], y_values_for_analysis[i]
+            dist = np.abs(A * x0 + B * y0 + C) / np.sqrt(A**2 + B**2)
+            distances.append(dist)
+
+        # The knee point is where the distance is maximized
+        knee_index = np.argmax(distances)
+        recommended_n = x_values_for_analysis[knee_index]  # The rank itself
+
+        return recommended_n
+
+
+
+
+class Derm7ptDataset(Dataset):
+    def __init__(self, meta_csv, image_base, indexes_csv, preprocess, diagnosis):
+        self.df = pd.read_csv(meta_csv)
+        idx_df = pd.read_csv(indexes_csv)
+        self.indexes = idx_df["indexes"].tolist()
+        self.df = self.df.iloc[self.indexes].reset_index(drop=True)
+        self.image_base = image_base
+        self.preprocess = preprocess
+        self.diagnosis = diagnosis
+        # Binary label: 1 if diagnosis matches, else 0
+        self.labels = (self.df["diagnosis"] == diagnosis).astype(int).tolist()
+        # Use the first image path column (clinic)
+        self.image_paths = [os.path.join(image_base, row["derm"]) for _, row in self.df.iterrows()]
 
     def __len__(self):
-        return len(self.filepaths)
+        return len(self.df)
 
     def __getitem__(self, idx):
-        with Image.open(self.filepaths[idx]) as img:
-            img = img.convert("RGB")
-            img = self.preproc(img)
+        img_path = self.image_paths[idx]
+        img = Image.open(img_path).convert("RGB")
+        img = self.preprocess(img)
         label = torch.tensor(self.labels[idx], dtype=torch.long)
         return img, label
 
 
-def append_filename_and_filepath(df):
-    df["filename"] = df.apply(
-        lambda r: f"patch_patient_{r.patient:03d}_node_{r.node}_x_{r.x_coord}_y_{r.y_coord}.png",
-        axis=1
-    )
-    df["filepath"] = df.apply(
-        lambda r: os.path.join(
-            PATCHES_DIR,
-            f"patient_{r.patient:03d}_node_{r.node}",
-            r.filename
-        ),
-        axis=1
-    )
-    return df
+
 
 
 def load_clip_model(
@@ -123,137 +210,47 @@ def load_clip_model(
     return model, preprocess, tokenizer
 
 
-def extract_center_embeddings(
-    model: torch.nn.Module,
-    preprocess: Callable,
-    num_centers: int = 1,
-    metadata_csv: str = METADATA_CSV,
-    isTrain: bool = True,
-) -> Tuple[List[torch.Tensor], List[torch.Tensor]]:
-    """
-    Reads metadata, splits into centers, and computes normalized image embeddings.
 
+def extract_embeddings(model, preprocess, diagnosis, split="train", cache_dir="./derm7pt_cache"):
+    """
+    Extract embeddings for derm7pt dataset for a given diagnosis and split.
     Args:
-        metadata_csv: Path to your metadata CSV.
-        preprocess: Preprocessing function for images.
-        model: A CLIP-style model with .encode_image().
-        device: torch.device (e.g. torch.device("cuda")).
-        batch_size: DataLoader batch size.
-        num_workers: Number of DataLoader workers.
-        num_centers: How many 'center' values you expect (default 4).
-
+        model: CLIP model
+        preprocess: preprocessing function
+        diagnosis: diagnosis string for positive class
+        split: 'train', 'val', or 'test'
+        cache_dir: directory to cache features/labels
     Returns:
-        centers_features: List of length `num_centers`, each a tensor of shape
-                          [N_i, D] with normalized embeddings.
-        centers_labels:   List of length `num_centers`, each a tensor of shape
-                          [N_i] with corresponding labels.
+        features_array: np.ndarray
+        labels_array: np.ndarray
     """
-    # Load and annotate metadata
-    metadata_df = pd.read_csv(metadata_csv, index_col=0)
-    metadata_df = append_filename_and_filepath(metadata_df)
-
-    # Filter for training split 0: train, 1: test
-    df = metadata_df[metadata_df.split == int(0 if isTrain else 1)]
-
-    # Build datasets per center
-    centers_ds = [
-        BiomedCLIPDataset(df[df.center == i], preprocess)
-        for i in range(num_centers)
-    ]
-
-    centers_features: List[torch.Tensor] = [[]
-                                            for _ in range(num_centers)]
-    centers_labels:   List[torch.Tensor] = [[]
-                                            for _ in range(num_centers)]
-
-    os.makedirs(f"{CACHE_PATH}/centers", exist_ok=True)
-    for i, ds in enumerate(centers_ds):
-        if isTrain:
-            feature_path = f"{CACHE_PATH}/centers/train-center{i}_features.npy"
-            label_path = f"{CACHE_PATH}/centers/train-center{i}_labels.npy"
-        else:
-            feature_path = f"{CACHE_PATH}/centers/test-center{i}_features.npy"
-            label_path = f"{CACHE_PATH}/centers/test-center{i}_labels.npy"
-
-        if os.path.exists(feature_path) and os.path.exists(label_path):
-            print(f"Loading cached features for center {i}...")
-            centers_features[i] = np.load(feature_path)
-            centers_labels[i] = np.load(label_path)
-            continue
-
-        print(f"Extracting features for center {i}...")
-
-        loader = DataLoader(ds, batch_size=BATCH_SIZE, shuffle=False,
-                            num_workers=NUM_WORKERS, pin_memory=True)
-
-        all_feats = []
-        all_labels = []
-
-        with torch.no_grad():
-            for imgs, labels in tqdm(loader, desc=f"Center {i}", unit="batch"):
-                imgs = imgs.to(DEVICE, non_blocking=True)
-                feats = model.encode_image(imgs)
-                feats = feats / feats.norm(dim=-1, keepdim=True)
-
-                all_feats.append(feats.cpu())
-                all_labels.append(labels)  # labels are already on CPU
-
-        centers_features[i] = torch.cat(all_feats).numpy()
-        centers_labels[i] = torch.cat(all_labels).numpy()
-
-        np.save(feature_path, centers_features[i])
-        np.save(label_path, centers_labels[i])
-
-    return centers_features, centers_labels
-
-
-def evaluate_prompt_pair(
-    negative_prompt: str,
-    positive_prompt: str,
-    image_feats: torch.Tensor,    # (N, D), precomputed
-    image_labels: torch.Tensor,   # (N,)
-    model,
-    tokenizer
-):
-    # encode prompts once
-    text_inputs = tokenizer(
-        [negative_prompt, positive_prompt],
-        context_length=CONTEXT_LENGTH
-    ).to(DEVICE)
-
+    split_map = {"train": DERM_TRAIN_INDEXES, "val": DERM_VAL_INDEXES, "test": DERM_TEST_INDEXES}
+    indexes_csv = split_map[split]
+    os.makedirs(cache_dir, exist_ok=True)
+    features_cache = os.path.join(cache_dir, f"{split}_features_{diagnosis}.npy")
+    labels_cache = os.path.join(cache_dir, f"{split}_labels_{diagnosis}.npy")
+    if os.path.exists(features_cache) and os.path.exists(labels_cache):
+        features_array = np.load(features_cache)
+        labels_array = np.load(labels_cache)
+        return features_array, labels_array
+    # Create dataset and dataloader
+    dataset = Derm7ptDataset(DERM_META_CSV, DERM_IMAGE_BASE, indexes_csv, preprocess, diagnosis)
+    loader = DataLoader(dataset, batch_size=BATCH_SIZE, shuffle=False, num_workers=NUM_WORKERS, pin_memory=True)
+    device = DEVICE
+    model = model.to(device).eval()
+    features, all_labels = [], []
     with torch.no_grad():
-        text_feats = model.encode_text(text_inputs)           # (2, D)
-        text_feats = text_feats / text_feats.norm(dim=1, keepdim=True)
-        logit_scale = model.logit_scale.exp()
+        for imgs, labels in tqdm(loader, desc=f"Extracting {split} embeddings for {diagnosis}"):
+            imgs = imgs.to(device)
+            feats = model.encode_image(imgs)
+            features.append(feats.cpu())
+            all_labels.append(labels.cpu().numpy())
+    features_array = torch.cat(features).numpy()
+    labels_array = np.concatenate(all_labels)
+    np.save(features_cache, features_array)
+    np.save(labels_cache, labels_array)
+    return features_array, labels_array
 
-        # move image feats to DEVICE for one matrix multiply
-        feats = image_feats.to(DEVICE)                        # (N, D)
-        labels = image_labels.to(DEVICE)                      # (N,)
-
-        # compute all logits at once: (N, 2)
-        logits = logit_scale * (feats @ text_feats.t())
-        probs = logits.softmax(dim=1)
-        preds = logits.argmax(dim=1)
-
-        y_pred = preds.cpu().numpy()
-        y_prob = probs[:, 1].cpu().numpy()    # tumor-class prob
-        y_true = labels.cpu().numpy()
-
-        # Compute Binary Cross-Entropy Loss
-        bce_loss = F.binary_cross_entropy(
-            input=torch.tensor(y_prob, device=DEVICE).float(),
-            target=torch.tensor(y_true, device=DEVICE).float()
-        ).item()
-
-        # Invert BCE loss: 1/(1 + loss) (so lower loss → higher value)
-        inverted_bce = 1.0 / (1.0 + bce_loss)
-
-    # metrics
-    acc = accuracy_score(y_true, y_pred)
-    auc = roc_auc_score(y_true, y_prob)
-    cm = confusion_matrix(y_true, y_pred)
-    report = classification_report(y_true, y_pred, digits=4)
-    return {'accuracy': acc, 'auc': auc, 'cm': cm, 'report': report, 'inverted_bce': inverted_bce}
 
 
 def evaluate_prompt_list(
@@ -268,6 +265,7 @@ def evaluate_prompt_list(
     total_weight = 0.0
 
     # Ensure image feats and labels are on the correct device once
+    print(f"shape of image_feats:dtype: {image_feats} ")
     feats = image_feats.to(DEVICE)
     labels = image_labels.to(DEVICE)
 
@@ -328,6 +326,55 @@ def evaluate_prompt_list(
 
     return {'accuracy': acc, 'auc': auc, 'cm': cm, 'report': report, 'ensemble_probs': ensemble_probs}
 
+def evaluate_prompt_pair(
+    negative_prompt: str,
+    positive_prompt: str,
+    image_feats: torch.Tensor,    # (N, D), precomputed
+    image_labels: torch.Tensor,   # (N,)
+    model,
+    tokenizer
+):
+    # encode prompts once
+    text_inputs = tokenizer(
+        [negative_prompt, positive_prompt],
+        context_length=CONTEXT_LENGTH
+    ).to(DEVICE)
+
+    with torch.no_grad():
+        text_feats = model.encode_text(text_inputs)           # (2, D)
+        text_feats = text_feats / text_feats.norm(dim=1, keepdim=True)
+        logit_scale = model.logit_scale.exp()
+
+        # move image feats to DEVICE for one matrix multiply
+        feats = image_feats.to(DEVICE)                        # (N, D)
+        labels = image_labels.to(DEVICE)                      # (N,)
+
+        # compute all logits at once: (N, 2)
+        logits = logit_scale * (feats @ text_feats.t())
+        probs = logits.softmax(dim=1)
+        preds = logits.argmax(dim=1)
+
+        y_pred = preds.cpu().numpy()
+        y_prob = probs[:, 1].cpu().numpy()    # tumor-class prob
+        y_true = labels.cpu().numpy()
+
+        # Compute Binary Cross-Entropy Loss
+        bce_loss = F.binary_cross_entropy(
+            input=torch.tensor(y_prob, device=DEVICE).float(),
+            target=torch.tensor(y_true, device=DEVICE).squeeze().float()
+        ).item()
+
+        # Invert BCE loss: 1/(1 + loss) (so lower loss → higher value)
+        inverted_bce = 1.0 / (1.0 + bce_loss)
+
+
+    # metrics
+    acc = accuracy_score(y_true, y_pred)
+    auc = roc_auc_score(y_true, y_prob)
+    cm = confusion_matrix(y_true, y_pred)
+    report = classification_report(y_true, y_pred, digits=4)
+    return {'accuracy': acc, 'auc': auc, 'cm': cm, 'report': report, 'inverted_bce': inverted_bce}
+
 
 def _force_double_quotes(code: str) -> str:
     """
@@ -381,47 +428,84 @@ def extract_and_parse_prompt_list(code: str) -> List[Tuple[str, str]]:
     # 4) convert to List[Tuple[str,str]]
     return [(str(a), str(b)) for a, b in data]
 
-
 def extract_and_parse_prompt_list_with_scores(code: str) -> List[Tuple[str, str, float]]:
     """
-    Extracts and parses the list defined after 'prompts:' in the format:
-        prompts:[
-            (("neg", "pos"), score),
-            ...
-        ]
+    From a string of Python code, finds the first occurrence of
+        prompts = [ ... ]
+    and parses that bracketed literal into a List[Tuple[str, str, float]].
+    Expects format: ("neg", "pos"), score,
 
-    Returns a list of (neg, pos, score) tuples.
-    Raises ValueError if malformed.
+    Raises:
+        ValueError if no list literal is found or it's malformed.
     """
-    # Step 1: Find the content inside prompts:[ ... ]
-    match = re.search(r'prompts\s*:\s*(\[\s*[\s\S]*?\])', code)
-    if not match:
-        raise ValueError("Could not find 'prompts:[...]' in the code")
+    # 1) Find the prompts list declaration
+    m = re.search(r'prompts\s*=\s*(\[\s*[\s\S]*?\])', code)
+    if not m:
+        raise ValueError("No 'prompts = [...]' list literal found in the code")
+    list_str = m.group(1)
 
-    list_str = match.group(1)
+    # 2) Clean and normalize the string
+    # Remove newlines and extra spaces for easier parsing
+    cleaned = ' '.join(list_str.split())
+    # Ensure we have proper comma separation between items
+    cleaned = cleaned.replace('),', '), ')
 
-    # Step 2: Parse using ast.literal_eval
-    try:
-        data = ast.literal_eval(list_str)
-    except Exception as e:
-        raise ValueError(f"Could not parse prompt list: {e}")
-
-    # Step 3: Validate and extract
-    parsed = []
-    for item in data:
-        if (
-            isinstance(item, tuple) and len(item) == 2 and
-            isinstance(item[0], tuple) and len(item[0]) == 2 and
-            all(isinstance(x, str) for x in item[0]) and
-            isinstance(item[1], (int, float))
-        ):
-            neg, pos = item[0]
-            score = float(item[1])
-            parsed.append((neg, pos, score))
+    # 3) Split into individual items while preserving structure
+    items = []
+    current_item = []
+    depth = 0  # track nesting level for tuples
+    buffer = ""
+    
+    for char in cleaned[1:-1]:  # skip outer brackets
+        if char == '(':
+            depth += 1
+            buffer += char
+        elif char == ')':
+            depth -= 1
+            buffer += char
+        elif char == ',' and depth == 0:
+            # Only split on top-level commas
+            if buffer.strip():
+                current_item.append(buffer.strip())
+                buffer = ""
+            if len(current_item) == 2:  # we have both tuple and score
+                items.append(tuple(current_item))
+                current_item = []
         else:
-            raise ValueError(f"Invalid format in item: {item}")
+            buffer += char
+    
+    # Add the last item if any
+    if buffer.strip():
+        current_item.append(buffer.strip())
+    if current_item:
+        items.append(tuple(current_item))
 
-    return parsed
+    # 4) Parse each item into (neg, pos, score)
+    parsed_items = []
+    for item in items:
+        if len(item) != 2:
+            raise ValueError(f"Expected tuple and score, got: {item}")
+        
+        # Parse the prompt tuple
+        try:
+            prompt_tuple = ast.literal_eval(item[0])
+            if not isinstance(prompt_tuple, tuple) or len(prompt_tuple) != 2:
+                raise ValueError(f"Expected 2-element tuple, got: {prompt_tuple}")
+            neg, pos = prompt_tuple
+        except (SyntaxError, ValueError) as e:
+            raise ValueError(f"Malformed prompt tuple: {e}")
+
+        # Parse the score
+        try:
+            score = float(item[1])
+        except ValueError as e:
+            raise ValueError(f"Malformed score value: {e}")
+
+        parsed_items.append((str(neg), str(pos), score))
+
+    return parsed_items
+
+
 
 
 def extract_and_parse_prompt_tuple(code: str) -> Tuple[str, str]:
@@ -471,53 +555,26 @@ def _force_double_quotes(code: str) -> str:
 
 class LLMClient:
     """
-    A unified client for interacting with Gemini, Ollama, or Azure OpenAI (ChatGPT).
-    Usage:
-        client = LLMClient(provider="gemini", ...)
-        client = LLMClient(provider="ollama", ...)
-        client = LLMClient(provider="azure_openai", ...)
-        response = client.get_llm_response(prompt)
+    A unified client for interacting with different LLM providers (Gemini, Ollama).
     """
 
-    def __init__(
-        self,
-        provider: str = "gemini",  # "gemini", "ollama", or "azure_openai"
-        gemini_model: str = "gemma-3-27b-it",
-        ollama_model: str = "hf.co/unsloth/medgemma-27b-text-it-GGUF:Q8_0",
-        azure_openai_model: str = "gpt-4.1",
-        azure_openai_endpoint: str = CHATGPT_ENDPOINT,
-        azure_openai_api_key: str = CHATGPT_API_KEY,
-        azure_openai_api_version: str = "2025-01-01-preview"
-    ):
-        self.provider = provider.lower()
-        self.gemini_model = gemini_model
-        self.ollama_model = ollama_model
-        self.azure_openai_model = azure_openai_model
-
-        # Gemini
+    def __init__(self, use_local_ollama: bool = False, ollama_model: str = "hf.co/unsloth/medgemma-27b-text-it-GGUF:Q8_0", gemini_model: str = "gemma-3-27b-it"):
+        self.use_local_ollama = use_local_ollama
         self.gemini_client = None
-        if self.provider == "gemini":
+        self.ollama_model = ollama_model  # Default Ollama model
+        self.gemini_model = gemini_model  # Default Gemini model
+        self.ollama_host = "http://[::1]:11434"
+        self._ollama_client_instance = ollama.Client(host=self.ollama_host)
+
+        if not use_local_ollama:
             if GEMINI_API_KEY:
                 self.gemini_client = genai.Client(api_key=GEMINI_API_KEY)
             else:
-                raise ValueError("Gemini API key must be provided.")
-
-        # Ollama
-        self.ollama_host = "http://[::1]:11434"
-        self._ollama_client_instance = None
-        if self.provider == "ollama":
-            self._ollama_client_instance = ollama.Client(host=self.ollama_host)
-
-        # Azure OpenAI
-        self.azure_openai_client = None
-        if self.provider == "azure_openai":
-            self.azure_openai_client = AzureOpenAI(
-                azure_endpoint=azure_openai_endpoint,
-                api_key=azure_openai_api_key,
-                api_version=azure_openai_api_version,
-            )
+                raise ValueError(
+                    "Gemini API key must be provided if not using local Ollama.")
 
     def _get_response_from_gemini(self, prompt: str) -> str:
+        """Sends a prompt to the Gemini client and returns the response text."""
         if not self.gemini_client:
             raise RuntimeError("Gemini client not initialized.")
         response = self.gemini_client.models.generate_content(
@@ -525,60 +582,26 @@ class LLMClient:
         return response.text
 
     def _get_response_from_ollama(self, prompt: str) -> str:
-        if not self._ollama_client_instance:
-            raise RuntimeError("Ollama client not initialized.")
+        """Sends a prompt to the Ollama client and returns the response text."""
+        # Use the initialized _ollama_client_instance
         response = self._ollama_client_instance.chat(
             model=self.ollama_model, messages=[
                 {"role": "user", "content": prompt}]
         )
         return response['message']['content']
-
-    def _get_response_from_azure_openai(self, prompt: str) -> str:
-        if not self.azure_openai_client:
-            raise RuntimeError("Azure OpenAI client not initialized.")
-
-        messages = [
-            {
-                "role": "user",
-                "content": [
-                    {"type": "text", "text": prompt}
-                ]
-            }
-        ]
-
-        completion = self.azure_openai_client.chat.completions.create(
-            model=self.azure_openai_model,
-            messages=messages,
-            max_tokens=5000,
-            temperature=1.0,
-            top_p=0.95,
-            frequency_penalty=0,
-            presence_penalty=0,
-            stop=None,
-            stream=False
-        )
-
-        # Parse the response to JSON, then extract the content
-        response = json.loads(completion.to_json())[
-            'choices'][0]['message']['content']
-        return response
+    # def _get_response_from_ollama(self, prompt: str) -> str:
+    #     """Sends a prompt to the Ollama client and returns the response text."""
+    #     # The ollama client typically manages its connection internally, no explicit 'client' object
+    #     response = ollama.chat(model=self.ollama_model, messages=[
+    #                            {"role": "user", "content": prompt}])
+    #     return response['message']['content']
 
     def get_llm_response(self, prompt: str) -> str:
-        """
-        Gets a response from the configured LLM provider.
-        Args:
-            prompt: Either a string (for Gemini/Ollama) or a list of messages (for Azure OpenAI).
-        Returns:
-            The response text from the LLM.
-        """
-        if self.provider == "gemini":
-            return self._get_response_from_gemini(prompt)
-        elif self.provider == "ollama":
+        """Gets a response from the configured LLM (Gemini or Ollama)."""
+        if self.use_local_ollama:
             return self._get_response_from_ollama(prompt)
-        elif self.provider == "azure_openai":
-            return self._get_response_from_azure_openai(prompt)
         else:
-            raise ValueError(f"Unknown provider: {self.provider}")
+            return self._get_response_from_gemini(prompt)
 
 
 def get_prompt_pairs(
@@ -609,7 +632,7 @@ def get_prompt_pairs(
         try:
             # Use the unified LLMClient to get the raw response
             raw = llm_client.get_llm_response(prompt)
-            print(f"Raw response on attempt {attempt}: {raw}...")
+            # print(f"Raw response on attempt {attempt}: {raw}...")
 
             # 1) extract the python block
 
@@ -807,17 +830,10 @@ class PriorityQueue:
         """
         if n <= 0:
             return
-
-        # Get the top n items (highest scores)
-        top_items = sorted(self._heap, key=lambda x: x[0], reverse=True)[:n]
-
-        # Remove each top item from both heap and set
-        for score, pair in top_items:
-            self._heap.remove((score, pair))
-            self._set.remove(pair)
-
-        # Restore heap property after removals
-        heapq.heapify(self._heap)
+        for _ in range(min(n, len(self._heap))):
+            if self._heap:
+                score, pair = heapq.heappop(self._heap)
+                self._set.remove(pair)
 
 
 def load_initial_prompts(path: str) -> List[InitialItem]:
@@ -855,175 +871,3 @@ def load_initial_prompts(path: str) -> List[InitialItem]:
                 continue
 
     return results
-
-
-def load_last_iteration_prompts(path: str) -> List[InitialItem]:
-    """
-    Reads the last iteration's prompt progression file, which has the format:
-    iteration 1: 
-    ('neg', 'pos'), Score: 0.9364
-    ('neg2', 'pos2'), Score: 0.8456
-    ....
-
-    iteration 'n': 
-    ('neg3', 'pos3'), Score: 0.9123
-    ('neg4', 'pos4'), Score: 0.7890
-
-    Returns a list of ((neg, pos), score) tuples from the last iteration.
-    """
-    last_iteration_prompts = []
-    current_iteration = None
-
-    with open(path, 'r', encoding='utf-8') as file:
-        for line_num, line in enumerate(file, 1):
-            line = line.strip()
-            if not line:  # Skip empty lines
-                continue
-
-            try:
-                # Check if this line indicates a new iteration
-                iteration_match = re.match(r'[Ii]teration (\d+):\s*$', line)
-                if iteration_match:
-                    # If we found a previous iteration, store its prompts
-                    if current_iteration is not None:
-                        last_iteration_prompts = []  # Reset for new iteration
-                    current_iteration = int(iteration_match.group(1))
-                    continue
-
-                # Try to parse prompt lines: ('neg', 'pos'), Score: 0.9364
-                pattern = r"\('([^']*)', '([^']*)'\), Score: ([\d.]+)"
-                match = re.match(pattern, line)
-
-                if match and current_iteration is not None:
-                    neg_prompt = match.group(1)
-                    pos_prompt = match.group(2)
-                    score = float(match.group(3))
-
-                    prompt_pair = (neg_prompt, pos_prompt)
-                    last_iteration_prompts.append((prompt_pair, score))
-                elif not iteration_match:  # Don't warn about iteration headers
-                    print(f"Warning: Could not parse line {line_num}: {line}")
-
-            except Exception as e:
-                print(f"Error parsing line {line_num}: {line}")
-                print(f"Error details: {e}")
-                continue
-
-    # Return the prompts from the last iteration found
-    return last_iteration_prompts
-
-
-class KneePointAnalysis:
-    """
-    A utility class to perform knee-point (elbow) analysis on a collection of scores,
-    typically obtained from a PriorityQueue.
-    """
-
-    def __init__(self, scores: List[float]):
-        """
-        Initializes the analyzer with a list of scores.
-        Scores are expected to be in descending order for knee-point analysis.
-        Ensures scores are numeric by casting to float.
-        """
-        # Ensure all scores are floats before sorting and storing
-        self._scores = sorted([float(s) for s in scores], reverse=True)
-
-    def find_knee_point(self, k_range: Optional[List[int]] = None) -> int:
-        """
-        Finds the knee point (elbow) in the sorted scores using the 'distance from line' method.
-        This suggests a natural 'n' for selecting the best solutions.
-
-        Args:
-            k_range: An optional list of K values (number of solutions/ranks) to consider for analysis.
-                     If None, it considers all possible 'n' up to the number of scores.
-        Returns:
-            The recommended number of 'n' (solutions) based on the knee point.
-            Returns 0 if there are no scores or only one score.
-        """
-        if len(self._scores) <= 1:
-            return len(self._scores)
-
-        # Prepare x-values (ranks) and y-values (scores) for the full dataset
-        x_values_all = np.arange(1, len(self._scores) + 1)
-        # This conversion now should be safe as _scores are floats
-        y_values_all = np.array(self._scores)
-
-        # Determine the subset of data for analysis if k_range is provided
-        if k_range is None:
-            x_values_for_analysis = x_values_all
-            y_values_for_analysis = y_values_all
-        else:
-            # Filter x_values and y_values based on k_range
-            valid_indices = [i for i, k in enumerate(
-                x_values_all) if k in k_range and k <= len(self._scores)]
-            if not valid_indices:
-                print(
-                    "Warning: No valid ranks in k_range for the current data size. Returning 0.")
-                return 0
-            x_values_for_analysis = x_values_all[valid_indices]
-            y_values_for_analysis = y_values_all[valid_indices]
-
-        # Handle cases with insufficient points for line drawing
-        if len(x_values_for_analysis) < 2:
-            return len(x_values_for_analysis) if len(x_values_for_analysis) > 0 else 0
-
-        # If the analysis range is just two points, the knee is trivially the first point,
-        # or the second if the first is disproportionately high. For robustness, if only 2 points,
-        # the 'knee' concept is weak.
-        if len(x_values_for_analysis) == 2:
-            return x_values_for_analysis[0]
-
-        # Calculate the line between the first and last point of the *analysis subset*
-        p1 = (x_values_for_analysis[0], y_values_for_analysis[0])
-        p2 = (x_values_for_analysis[-1], y_values_for_analysis[-1])
-
-        # Calculate line equation: y = mx + c  =>  mx - y + c = 0
-        # Handle the edge case where x_values_for_analysis are all the same (vertical line)
-        if (p2[0] - p1[0]) == 0:
-            return x_values_for_analysis[0]  # Fallback to first point
-
-        m = (p2[1] - p1[1]) / (p2[0] - p1[0])
-        c = p1[1] - m * p1[0]
-
-        A, B, C = m, -1, c  # Coefficients for Ax + By + C = 0
-
-        distances = []
-        for i in range(len(x_values_for_analysis)):
-            x0, y0 = x_values_for_analysis[i], y_values_for_analysis[i]
-            dist = np.abs(A * x0 + B * y0 + C) / np.sqrt(A**2 + B**2)
-            distances.append(dist)
-
-        # The knee point is where the distance is maximized
-        knee_index = np.argmax(distances)
-        recommended_n = x_values_for_analysis[knee_index]  # The rank itself
-
-        return recommended_n
-
-
-def compute_prompt_probs_matrix(
-    prompt_list: PromptList,
-    image_feats: torch.Tensor,  # (N, D), precomputed
-    model,
-    tokenizer,
-):
-    # Ensure image feats and labels are on the correct device once
-    feats = image_feats.to(DEVICE)
-    matrix = []
-
-    with torch.no_grad():
-        for (negative_prompt, positive_prompt), original_weight in prompt_list:
-            text_inputs = tokenizer(
-                [negative_prompt, positive_prompt],
-                context_length=CONTEXT_LENGTH
-            ).to(DEVICE)
-            text_feats = model.encode_text(text_inputs)  # (2, D)
-            text_feats = text_feats / text_feats.norm(dim=1, keepdim=True)
-            logit_scale = model.logit_scale.exp()
-
-            # compute all logits at once: (N, 2)
-            logits = logit_scale * (feats @ text_feats.t())
-            probs = logits.softmax(dim=1)
-            pos_probs = probs[:, 1].cpu().numpy()                # (N,)
-            matrix.append(pos_probs)
-    # shape: (n_prompts, N) → transpose → (N, n_prompts)
-    return np.vstack(matrix).T
