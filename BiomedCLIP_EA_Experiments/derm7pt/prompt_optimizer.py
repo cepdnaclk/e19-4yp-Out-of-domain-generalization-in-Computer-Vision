@@ -35,10 +35,11 @@ def get_prompt_template(iteration_num: int, prompt_content: str, diagnosis: str,
         "expert": f"Write {generate_n} new prompt pairs expanding each prompt by appending expert biomedical knowledge to score as high as possible.",
         "strategy": f"Write {generate_n} new prompt pairs that are different from the old ones and has a score as high as possible, formulate a strategy",
     }
-    meta_init_prompt = f" Give 50 distinct textual descriptions of pairs of discriptive observations to identify whether a dermoscopic image shows {diagnosis} or not. These descriptions should focus on observable characteristics within the image. Only provide the output as Python code in the following format: prompts = list[tuple[negative: str, positive: str]]. Let's think step-by-step"
+    meta_init_prompt = """Give 50 distinct textual descriptions of pairs of visual discriminative features to identify whether a dermoscopic image shows melanoma or not. Only provide the output as Python code in the following format: prompts = list[tuple[negative: str, positive: str]]. Let's think step-by-step"""
+
 
     # Base meta prompt template
-    base_meta_prompt_template = """The task is to generate distinct textual descriptions pairs of visual discriminative features to identify whether a dermoscopic image shows {diagnosis} or not. These descriptions should focus on observable characteristics within the image.
+    base_meta_prompt_template = """The task is to generate distinct textual descriptions pairs of visual discriminative features to identify whether a dermoscopic image shows melanoma or not. 
     Here are the best performing pairs in ascending order. High scores indicate higher quality visual discriminative features.
     {content}
     {iteration_specific_instruction}
@@ -121,8 +122,7 @@ def main():
 
 
     # Configure the prompt templates
-    # meta_init_prompt =  """Give 50 distinct textual descriptions of pairs of visual discriminative features to identify whether the central region of a histopathological image patch contains tumor tissue or not. The patch is extracted from an H&E‑stained whole‑slide image of a lymph node section. Only provide the output as Python code in the following format: prompts = list[tuple[negative: str, positive: str]]. Let's think step-by-step"""
-    meta_init_prompt = f" Give 50 distinct textual descriptions of pairs of discriptive observations to identify whether a dermoscopic image shows {diagnosis} or not. These descriptions should focus on observable characteristics within the image. Only provide the output as Python code in the following format: prompts = list[tuple[negative: str, positive: str]]. Let's think step-by-step"
+    meta_init_prompt = """Give 50 distinct textual descriptions of pairs of visual discriminative features to identify whether a dermoscopic image shows melanoma or not. Only provide the output as Python code in the following format: prompts = list[tuple[negative: str, positive: str]]. Let's think step-by-step"""
     
     
     # meta_prompt_template = """The task is to generate 50 textual descriptions pairs of visual discriminative features to identify whether the central region of an histopathological image patch contains tumor tissue or not. The patch is extracted from an H&E‑stained whole‑slide image of a lymph node section.
