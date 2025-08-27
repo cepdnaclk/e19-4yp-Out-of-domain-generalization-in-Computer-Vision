@@ -78,7 +78,7 @@ def get_prompt_template(iteration_num: int, prompt_content: str, diagnosis: str,
 
 def main():
     
-    diagnosis = "basal cell carcinoma"
+    diagnosis = "melanoma"
 
     # Name the experiment we are currently running
     experiment_name = "Derm7pt_Expertiment1_" + diagnosis
