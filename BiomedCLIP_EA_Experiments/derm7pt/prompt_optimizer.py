@@ -159,8 +159,8 @@ def main():
             negative_prompt, positive_prompt = prompt_pair
             results = util.evaluate_prompt_pair(
                 negative_prompt, positive_prompt, all_feats, all_labels, model, tokenizer)
-            # print(f"Inverted BCE for prompt pair {i+1}: {results['inverted_bce']:.4f} {results['accuracy']}")
-            pq.insert((negative_prompt, positive_prompt), results['auc'])
+            # print(f"F1 for prompt pair {i+1}: {results['f1']:.4f} {results['accuracy']}")
+            pq.insert((negative_prompt, positive_prompt), results['f1'])
 
         n = 10
         print(f"\nCurrent Top {n} prompt pairs:")
@@ -201,7 +201,7 @@ def main():
 
         # print the average score of the top n prompts
         print(
-            f"Iteration {j+1}: mean accuracy of top 10: {pq.get_average_score(10)}.\n")
+            f"Iteration {j+1}: mean Score of top 10: {pq.get_average_score(10)}.\n")
 
 
 if __name__ == "__main__":
