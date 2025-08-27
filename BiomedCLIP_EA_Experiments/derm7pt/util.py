@@ -31,11 +31,11 @@ import torch.nn.functional as F
 # 1. Paths & constants
 
 # Derm7pt paths
-DERM_META_CSV = os.path.join(os.path.dirname(__file__), '../../release_v0/meta/meta.csv')
-DERM_IMAGE_BASE = os.path.join(os.path.dirname(__file__), '../../release_v0/images/')
-DERM_TRAIN_INDEXES = os.path.join(os.path.dirname(__file__), '../../release_v0/meta/train_indexes.csv')
-DERM_VAL_INDEXES = os.path.join(os.path.dirname(__file__), '../../release_v0/meta/valid_indexes.csv')
-DERM_TEST_INDEXES = os.path.join(os.path.dirname(__file__), '../../release_v0/meta/test_indexes.csv')
+DERM_META_CSV = "/storage/projects3/e19-fyp-out-of-domain-gen-in-cv/Derm7pt/release_v0/meta/meta.csv"
+DERM_IMAGE_BASE = "/storage/projects3/e19-fyp-out-of-domain-gen-in-cv/Derm7pt/release_v0/images/"
+DERM_TRAIN_INDEXES = "/storage/projects3/e19-fyp-out-of-domain-gen-in-cv/Derm7pt/release_v0/meta/train_indexes.csv"
+DERM_VAL_INDEXES = "/storage/projects3/e19-fyp-out-of-domain-gen-in-cv/Derm7pt/release_v0/meta/valid_indexes.csv"
+DERM_TEST_INDEXES = "/storage/projects3/e19-fyp-out-of-domain-gen-in-cv/Derm7pt/release_v0/meta/test_indexes.csv"
 
 CONFIG_PATH = "/storage/projects3/e19-fyp-out-of-domain-gen-in-cv/e19-4yp-Out-of-domain-generalization-in-Computer-Vision/BioMedClip/checkpoints/open_clip_config.json"
 WEIGHTS_PATH = "/storage/projects3/e19-fyp-out-of-domain-gen-in-cv/e19-4yp-Out-of-domain-generalization-in-Computer-Vision/BioMedClip/checkpoints/open_clip_pytorch_model.bin"
