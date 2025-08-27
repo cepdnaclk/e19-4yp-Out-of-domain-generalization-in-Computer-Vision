@@ -27,6 +27,7 @@ from API_KEY import GEMINI_API_KEY
 from google import genai
 import ollama
 import torch.nn.functional as F
+from sklearn.metrics import f1_score
 
 # 1. Paths & constants
 
@@ -373,7 +374,8 @@ def evaluate_prompt_pair(
     auc = roc_auc_score(y_true, y_prob)
     cm = confusion_matrix(y_true, y_pred)
     report = classification_report(y_true, y_pred, digits=4)
-    return {'accuracy': acc, 'auc': auc, 'cm': cm, 'report': report, 'inverted_bce': inverted_bce}
+    f1 = f1_score(y_true, y_pred)
+    return {'accuracy': acc, 'auc': auc, 'cm': cm, 'report': report, 'inverted_bce': inverted_bce, 'f1': f1}
 
 
 def _force_double_quotes(code: str) -> str:
