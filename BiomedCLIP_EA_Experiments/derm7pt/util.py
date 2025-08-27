@@ -148,8 +148,8 @@ class Derm7ptDataset(Dataset):
         self.image_base = image_base
         self.preprocess = preprocess
         self.diagnosis = diagnosis
-        # Binary label: 1 if diagnosis matches, else 0
-        self.labels = (self.df["diagnosis"] == diagnosis).astype(int).tolist()
+        # Binary label: 1 if diagnosis column contains 'melanoma', else 0
+        self.labels = self.df["diagnosis"].str.contains("melanoma", case=False, na=False).astype(int).tolist()
         # Use the first image path column (clinic)
         self.image_paths = [os.path.join(image_base, row["derm"]) for _, row in self.df.iterrows()]
 
