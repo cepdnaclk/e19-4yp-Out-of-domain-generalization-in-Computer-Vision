@@ -62,7 +62,7 @@ def main():
     label_type = "pigment_network"
 
     # Name the experiment we are currently running
-    experiment_name = "Derm7pt_Expertiment6_WeightedinvertedBCE_" + label_type
+    experiment_name = "Derm7pt_Experiment7_F1_" + label_type
     print(f"Running {experiment_name}...")
 
     # Create experiment results directory
@@ -100,7 +100,7 @@ def main():
         use_local_ollama=False, ollama_model="hf.co/unsloth/medgemma-27b-text-it-GGUF:Q8_0")
 
     # Optimization loop
-    pq = util.PriorityQueue(max_capacity=1000)
+    pq = util.PriorityQueue(max_capacity=1000,filter_threshold=0.3)
     prompt_content = ""
 
     # 6. Optimization loop: generate, evaluate, and select prompts for 500 iterations
@@ -122,7 +122,7 @@ def main():
                 negative_prompt, positive_prompt, all_feats, all_labels, model, tokenizer)
             # Insert prompt pair and its score into the priority queue
             pq.insert((negative_prompt, positive_prompt),
-                      results['weighted_inverted_bce'])
+                      results['f1'])
 
         n = 10
         print(f"\nCurrent Top {n} prompt pairs:")
@@ -138,8 +138,8 @@ def main():
         # Prepare the content for the next meta prompt
         prompt_content = f"Current Top {n} prompt pairs:\n"
         for i, (prompt_pair, score) in enumerate(selected_prompts):
-            print(f"{i+1}. {prompt_pair}, Weighted Inverted BCE: {int(score)}")
-            prompt_content += f"{prompt_pair}, Weighted Inverted BCE: {int(score)}\n"
+            print(f"{i+1}. {prompt_pair}, F1: {int(score)}")
+            prompt_content += f"{prompt_pair}, F1: {int(score)}\n"
 
         # Save the best prompt pairs to a file every 10 iterations (and on the first iteration)
         if (j + 1) % 10 == 0 or j == 0:
@@ -150,9 +150,9 @@ def main():
                     f.write(f"{prompt_pair}, Score: {score:.4f}\n")
                 f.write("\n")
 
-        # Print the average Weighted Inverted BCE of the top n prompts
+        # Print the average F1 of the top n prompts
         print(
-            f"Iteration {j+1}: mean Weighted Inverted BCE of top 10: {pq.get_average_score(10)}.\n")
+            f"Iteration {j+1}: mean F1 of top 10: {pq.get_average_score(10)}.\n")
 
 
 # Entry point for the script
