@@ -394,7 +394,7 @@ def evaluate_prompt_pair(
         ).item()
         # Invert BCE loss: 1/(1 + loss) (so lower loss → higher value)
         weighted_inverted_bce = 1.0 / (1.0 + bce_loss)
-        print(f"weighted invertedBCE Loss - {weighted_inverted_bce}")
+        # print(f"weighted invertedBCE Loss - {weighted_inverted_bce}")
     # metrics
     acc = accuracy_score(y_true, y_pred)
     auc = roc_auc_score(y_true, y_prob)
