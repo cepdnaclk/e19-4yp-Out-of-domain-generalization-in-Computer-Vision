@@ -10,7 +10,7 @@ import os
 # from chatgpt_initial import INITIAL_CHATGPT_PROMPTS
 
 
-def get_prompt_template(prompt_content: str, generate_n: int = 10) -> str:
+def get_prompt_template(iteration: int, prompt_content: str, label_type: str, generate_n: int = 10) -> str:
     """
     Returns the appropriate instruction based on the iteration number range.
 
@@ -21,17 +21,35 @@ def get_prompt_template(prompt_content: str, generate_n: int = 10) -> str:
         String containing the iteration-specific instruction
 
     """
-    # define a dictionary to map iteration ranges to instructions
+    task_specific_description_map: dict[str] = {
+        "melanoma":  "shows melanoma or not",
+        "pigment_network": "shows absent, typical or atypical pigment network. Negative prompts should describe both absent and typical pigment networks, while positive prompts should describe atypical pigment networks.",
+        "blue_whitish_veil": "shows absence or presence of blue-whitish veil. Negative prompts should describe absence, while positive prompts should describe presence of blue-whitish veil.",
+        "streaks": "shows absence, regular or irregular streaks. Negative prompts should describe both absence and regular streaks, while positive prompts should describe irregular streaks.",
+        "vascular_structures": "shows absent, regular or irregular vascular structures. Negative prompts should describe all features corresponding to absent, arborizing, comma, hairpin, within regression and wreath vascular structures. Positive prompt should describe features related to both dotted and linear irregular vascular strcutures.",
+        "pigmentation": "shows absent, regualr or irregular pigmentation. Negative prompts should describe all features corresponding to absent, diffuse regular and localized regular pigmentation. Positive prompts should describe diffuse and localized irregular pigmentations.",
+        "dots_and_globules": "shows absent, regular or irregular dots and globules. Negative prompts should describe both absent and regular dots and globules, while positive prompts should describe irregular dots and globules.",
+        "regression_structures": "shows absence or presence of regression structures. Negative prompts should describe features corresponding to absent regression structures. Positive prompts should describe features corresponding to all blue areas, white areas and combinations of regression structures.",
+    }
+
+    # Configure the prompt templates
+    meta_init_prompt = """Give 50 distinct textual descriptions of pairs of visual discriminative features to identify whether a dermoscopic image {task_specific_description}. Only provide the output as Python code in the following format: prompts = list[tuple[negative: str, positive: str]]. Let's think step-by-step"""
 
     # Base meta prompt template
-    base_meta_prompt_template = """The task is to generate distinct textual descriptions pairs of visual discriminative features to identify whether a dermoscopic image shows melanoma or not. 
+    base_meta_prompt_template = """The task is to generate distinct textual descriptions pairs of visual discriminative features to identify whether a dermoscopic image {task_specific_description}. 
     Here are the best performing pairs in ascending order. High scores indicate higher quality visual discriminative features.
     {content}
     Write {generate_n} new prompt pairs that are different from the old ones and has a score as high as possible, formulate a strategy.
     Only provide the output as Python code in the following format: prompts = list[tuple[negative: str, positive: str]]. Let's think step-by-step
     """
 
+    if iteration == 0:
+        return meta_init_prompt.format(
+            task_specific_description=task_specific_description_map[label_type],
+        )
+
     return base_meta_prompt_template.format(
+        task_specific_description=task_specific_description_map[label_type],
         content=prompt_content,
         generate_n=generate_n,
     )
@@ -81,20 +99,6 @@ def main():
     client = util.LLMClient(
         use_local_ollama=False, ollama_model="hf.co/unsloth/medgemma-27b-text-it-GGUF:Q8_0")
 
-    # Configure the prompt templates
-    meta_init_prompt = """Give 50 distinct textual descriptions of pairs of visual discriminative features to identify whether a dermoscopic image shows melanoma or not. Only provide the output as Python code in the following format: prompts = list[tuple[negative: str, positive: str]]. Let's think step-by-step"""
-
-    # meta_prompt_template = """The task is to generate 50 textual descriptions pairs of visual discriminative features to identify whether the central region of an histopathological image patch contains tumor tissue or not. The patch is extracted from an H&E‑stained whole‑slide image of a lymph node section.
-    # Here are the best performing pairs. You should aim to get higher scores. Each description should be about 5-20 words.
-    # {content}
-    # 1-10: Generate the first 10 pairs exploring variations of the top 1 (best) given. Remove certain words, add words, change order and generate variations
-    # 11-20: Generate 10 pairs using the top 10, explore additional knowledge and expand on it.
-    # 21-30: The next 10 pairs should maintain similar content as middle pairs but use different language style and sentence structures.
-    # 31-40: The next 10 pairs should combine knowledge of top pairs and bottom pairs.
-    # 41-50: The remaining 10 pairs should be randomly generated.
-    # Only give the output as python code in the format - prompts: list[tuple[negative: str, positive: str]]
-    # """
-
     # Optimization loop
     # initial_prompts = util.load_initial_prompts(
     #     "experiment_results/medical_concepts.txt")
@@ -102,14 +106,10 @@ def main():
     prompt_content = ""
 
     for j in range(500):
-        if j == 0:
-            prompts = util.get_prompt_pairs(meta_init_prompt, client)
-            # prompts = INITIAL_CHATGPT_PROMPTS
-        else:
-            meta_prompt = get_prompt_template(
-                prompt_content=prompt_content, generate_n=10)
+        meta_prompt = get_prompt_template(
+            prompt_content=prompt_content, label_type=label_type, generate_n=10)
 
-            prompts = util.get_prompt_pairs(meta_prompt, client)
+        prompts = util.get_prompt_pairs(meta_prompt, client)
 
         for i, prompt_pair in enumerate(prompts):
             if len(prompt_pair) != 2:
