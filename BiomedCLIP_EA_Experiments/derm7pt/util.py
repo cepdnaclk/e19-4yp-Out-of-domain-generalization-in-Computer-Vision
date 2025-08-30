@@ -359,14 +359,20 @@ def evaluate_prompt_pair(
         y_prob = probs[:, 1].cpu().numpy()    # tumor-class prob
         y_true = labels.cpu().numpy()
 
-        # Compute Binary Cross-Entropy Loss
+        # Compute weighted Binary Cross-Entropy Loss for class imbalance
+        y_true_tensor = torch.tensor(y_true, device=DEVICE).float()
+        y_prob_tensor = torch.tensor(y_prob, device=DEVICE).float()
+        # Calculate weights: inverse frequency
+        pos_weight = (len(y_true_tensor) - y_true_tensor.sum()) / (y_true_tensor.sum() + 1e-8)
+        weights = torch.ones_like(y_true_tensor)
+        weights[y_true_tensor == 1] = pos_weight
         bce_loss = F.binary_cross_entropy(
-            input=torch.tensor(y_prob, device=DEVICE).float(),
-            target=torch.tensor(y_true, device=DEVICE).squeeze().float()
+            input=y_prob_tensor,
+            target=y_true_tensor,
+            weight=weights
         ).item()
-
         # Invert BCE loss: 1/(1 + loss) (so lower loss → higher value)
-        inverted_bce = 1.0 / (1.0 + bce_loss)
+        weighted_inverted_bce = 1.0 / (1.0 + bce_loss)
 
 
     # metrics
@@ -375,7 +381,7 @@ def evaluate_prompt_pair(
     cm = confusion_matrix(y_true, y_pred)
     report = classification_report(y_true, y_pred, digits=4)
     f1 = f1_score(y_true, y_pred)
-    return {'accuracy': acc, 'auc': auc, 'cm': cm, 'report': report, 'inverted_bce': inverted_bce, 'f1': f1}
+    return {'accuracy': acc, 'auc': auc, 'cm': cm, 'report': report, 'weighted_inverted_bce': weighted_inverted_bce, 'f1': f1}
 
 
 def _force_double_quotes(code: str) -> str:
