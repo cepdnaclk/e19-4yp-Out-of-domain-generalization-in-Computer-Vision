@@ -62,7 +62,7 @@ def main():
     label_type = "pigmentation_network"
 
     # Name the experiment we are currently running
-    experiment_name = "Derm7pt_Expertiment5_WeightedinvertedBCE_" + label_type
+    experiment_name = "Derm7pt_Expertiment6_WeightedinvertedBCE_" + label_type
     print(f"Running {experiment_name}...")
 
     # Create experiment results directory
