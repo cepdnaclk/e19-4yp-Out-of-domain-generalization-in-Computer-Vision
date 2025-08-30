@@ -59,7 +59,7 @@ def get_prompt_template(iteration: int, prompt_content: str, label_type: str, ge
 
 def main():
     # Set the dermoscopic feature to optimize prompts for
-    label_type = "pigment_network"
+    label_type = "melanoma"
 
     # Name the experiment we are currently running
     experiment_name = "Derm7pt_Experiment7_F1_" + label_type
@@ -138,8 +138,8 @@ def main():
         # Prepare the content for the next meta prompt
         prompt_content = f"Current Top {n} prompt pairs:\n"
         for i, (prompt_pair, score) in enumerate(selected_prompts):
-            print(f"{i+1}. {prompt_pair}, F1: {int(score)}")
-            prompt_content += f"{prompt_pair}, F1: {int(score)}\n"
+            print(f"{i+1}. {prompt_pair}, score: {int(score)}")
+            prompt_content += f"{prompt_pair}, score: {int(score)}\n"
 
         # Save the best prompt pairs to a file every 10 iterations (and on the first iteration)
         if (j + 1) % 10 == 0 or j == 0:
