@@ -42,7 +42,7 @@ def main():
     label_type = "melanoma"
 
     # Name the experiment we are currently running
-    experiment_name = "Derm7pt_Expertiment4_WeightedinvertedBCE_" + label_type
+    experiment_name = "Derm7pt_Expertiment5_WeightedinvertedBCE_" + label_type
     print(f"Running {experiment_name}...")
 
     # Create experiment results directory
@@ -134,8 +134,8 @@ def main():
         # Prepare the content for the meta prompt
         prompt_content = f"Current Top {n} prompt pairs:\n"
         for i, (prompt_pair, score) in enumerate(selected_prompts):
-            print(f"{i+1}. {prompt_pair}, Weighted Inverted BCE: {score:.4f}")
-            prompt_content += f"{prompt_pair}, Weighted Inverted BCE: {score:.4f}\n"
+            print(f"{i+1}. {prompt_pair}, Weighted Inverted BCE: {int(score)}")
+            prompt_content += f"{prompt_pair}, Weighted Inverted BCE: {int(score)}\n"
 
         # Save the best prompt pairs to a file, every 10 iterations
         if (j + 1) % 10 == 0 or j == 0:
