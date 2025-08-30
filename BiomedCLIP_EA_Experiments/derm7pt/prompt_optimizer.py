@@ -159,8 +159,8 @@ def main():
             negative_prompt, positive_prompt = prompt_pair
             results = util.evaluate_prompt_pair(
                 negative_prompt, positive_prompt, all_feats, all_labels, model, tokenizer)
-            # print(f"F1 for prompt pair {i+1}: {results['f1']:.4f} {results['accuracy']}")
-            pq.insert((negative_prompt, positive_prompt), results['f1'])
+            # print(f"Weighted Inverted BCE for prompt pair {i+1}: {results['weighted_inverted_bce']:.4f} {results['accuracy']} F1: {results['f1']:.4f}")
+            pq.insert((negative_prompt, positive_prompt), results['weighted_inverted_bce'])
 
         n = 10
         print(f"\nCurrent Top {n} prompt pairs:")
@@ -185,10 +185,8 @@ def main():
         # Prepare the content for the meta prompt
         prompt_content = f"Current Top {n} prompt pairs:\n"
         for i, (prompt_pair, score) in enumerate(selected_prompts):
-            print(f"{i+1}. {prompt_pair}, Score: {score}")
-            # prompt_content += f"{i+1}. {prompt_pair}, Score: {score:.2f}\n"
-            # for ascending order
-            prompt_content += f"{prompt_pair}, Score: {score:.2f}\n"
+            print(f"{i+1}. {prompt_pair}, Weighted Inverted BCE: {score:.4f}")
+            prompt_content += f"{prompt_pair}, Weighted Inverted BCE: {score:.4f}\n"
 
         # Save the best prompt pairs to a file, every 10 iterations
         if (j + 1) % 10 == 0 or j == 0:
@@ -199,9 +197,9 @@ def main():
                     f.write(f"{prompt_pair}, Score: {score:.4f}\n")
                 f.write("\n")
 
-        # print the average score of the top n prompts
+        # print the average Weighted Inverted BCE of the top n prompts
         print(
-            f"Iteration {j+1}: mean Score of top 10: {pq.get_average_score(10)}.\n")
+            f"Iteration {j+1}: mean Weighted Inverted BCE of top 10: {pq.get_average_score(10)}.\n")
 
 
 if __name__ == "__main__":
