@@ -59,7 +59,7 @@ def get_prompt_template(iteration: int, prompt_content: str, label_type: str, ge
 
 def main():
     # Set the dermoscopic feature to optimize prompts for
-    label_type = "pigmentation_network"
+    label_type = "pigment_network"
 
     # Name the experiment we are currently running
     experiment_name = "Derm7pt_Expertiment6_WeightedinvertedBCE_" + label_type
