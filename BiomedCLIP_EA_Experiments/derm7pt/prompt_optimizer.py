@@ -42,7 +42,7 @@ def main():
     label_type = "melanoma"
 
     # Name the experiment we are currently running
-    experiment_name = "Derm7pt_Expertiment2_F1Score_" + label_type
+    experiment_name = "Derm7pt_Expertiment4_WeightedinvertedBCE_" + label_type
     print(f"Running {experiment_name}...")
 
     # Create experiment results directory
