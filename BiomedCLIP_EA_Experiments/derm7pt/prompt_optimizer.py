@@ -10,7 +10,7 @@ import os
 # from chatgpt_initial import INITIAL_CHATGPT_PROMPTS
 
 
-def get_prompt_template(iteration_num: int, prompt_content: str, diagnosis: str, generate_n: int = 10) -> str:
+def get_prompt_template(prompt_content: str, generate_n: int = 10) -> str:
     """
     Returns the appropriate instruction based on the iteration number range.
 
@@ -22,66 +22,27 @@ def get_prompt_template(iteration_num: int, prompt_content: str, diagnosis: str,
 
     """
     # define a dictionary to map iteration ranges to instructions
-    instruction_map = {
-        "medical_concepts": f"Write {generate_n} new prompt pairs that are different from the old ones and has a score as high as possible.",
-        "similar": f"Write {generate_n} new prompt pairs that are more similar to the high scoring prompts.",
-        "combined_medical_concepts": f"Write {generate_n} new prompt pairs by combining multiple medical concepts only from the above prompts to make the score as high as possible.",
-        "language_styles": f"Write {generate_n} new prompt pairs by paraphrasing each of the above. Each pair should have distinct language style.",
-        "slight_changes": f"Write {generate_n} new prompt pairs similar to the above pairs only making slight changes to the language style to make the score as high as possible.",
-        "summarize_and_mutate": f"Please follow the instruction step-by-step to generate a better prompt pair with a score greater than 90.\nStep 1: Write one prompt pair that combines all the knowledge from the above prompts.\nStep 2:  Mutate the generated prompt pair in {generate_n} different ways so that each description cohesive.",
-        "explainability": "For each prompt pair, rewrite them by including a brief rationale for why each discriminative feature predicts tumor vs. non-tumor.",
-        "quantitative": f"Write {generate_n} new prompt pairs that adds quantitative cues to the qualitative prompts given above. Score as high as possible.",
-        "borderline": f"Write {generate_n} new prompt pairs appending rare or borderline patterns which are easily misclassified to score as high as possible.",
-        "expert": f"Write {generate_n} new prompt pairs expanding each prompt by appending expert biomedical knowledge to score as high as possible.",
-        "strategy": f"Write {generate_n} new prompt pairs that are different from the old ones and has a score as high as possible, formulate a strategy",
-    }
-    meta_init_prompt = """Give 50 distinct textual descriptions of pairs of visual discriminative features to identify whether a dermoscopic image shows melanoma or not. Only provide the output as Python code in the following format: prompts = list[tuple[negative: str, positive: str]]. Let's think step-by-step"""
-
 
     # Base meta prompt template
     base_meta_prompt_template = """The task is to generate distinct textual descriptions pairs of visual discriminative features to identify whether a dermoscopic image shows melanoma or not. 
     Here are the best performing pairs in ascending order. High scores indicate higher quality visual discriminative features.
     {content}
-    {iteration_specific_instruction}
+    Write {generate_n} new prompt pairs that are different from the old ones and has a score as high as possible, formulate a strategy.
     Only provide the output as Python code in the following format: prompts = list[tuple[negative: str, positive: str]]. Let's think step-by-step
     """
 
-    if 1 <= iteration_num <= 500:
-        # Iterations 1-50: Basic exploration
-        return base_meta_prompt_template.format(
-            content=prompt_content,
-            iteration_specific_instruction=instruction_map["strategy"],
-            diagnosis=diagnosis
-        )
-    # elif 201 <= iteration_num <= 300:
-    #     # Iterations 51-100: Concept combination
-    #     return base_meta_prompt_template.format(
-    #         content=prompt_content,
-    #         iteration_specific_instruction=instruction_map["combined_medical_concepts"]
-    #     )
-    # elif 301 <= iteration_num <= 400:
-    #     # Iterations 101-200: Language style variation
-    #     return base_meta_prompt_template.format(
-    #         content=prompt_content,
-    #         iteration_specific_instruction=instruction_map["similar"]
-    #     )
-    # elif iteration_num > 401:
-    #     # Iterations 201+: Fine-tuning with slight modifications
-    #     return base_meta_prompt_template.format(
-    #         content=prompt_content,
-    #         iteration_specific_instruction=instruction_map["slight_changes"]
-    #     )
-    else:
-        # Fallback (shouldn't happen with normal iteration numbering)
-        raise IndexError("Error occured when getting prompt template")
+    return base_meta_prompt_template.format(
+        content=prompt_content,
+        generate_n=generate_n,
+    )
 
 
 def main():
-    
-    diagnosis = "melanoma"
+
+    label_type = "melanoma"
 
     # Name the experiment we are currently running
-    experiment_name = "Derm7pt_Expertiment2_F1Score_" + diagnosis
+    experiment_name = "Derm7pt_Expertiment2_F1Score_" + label_type
     print(f"Running {experiment_name}...")
 
     # Create experiment results directory
@@ -101,15 +62,15 @@ def main():
         model=model,
         preprocess=preprocess,
         split="train",
-        diagnosis=diagnosis,
+        label_type=label_type,
     )
-    
+
     # Convert to tensors - MODIFIED FOR MULTI-OBSERVATION SUPPORT
     all_feats = torch.from_numpy(features).float()
     all_labels = torch.from_numpy(labels).long()
 
     # print(f"shape of all_feats: {all_feats.shape} and all_labels: {all_labels.shape}")
-    
+
     print(f"Loaded {len(all_feats)} Derm7pt embeddings")
 
     # 3. load initial prompts (optional)
@@ -120,11 +81,9 @@ def main():
     client = util.LLMClient(
         use_local_ollama=False, ollama_model="hf.co/unsloth/medgemma-27b-text-it-GGUF:Q8_0")
 
-
     # Configure the prompt templates
     meta_init_prompt = """Give 50 distinct textual descriptions of pairs of visual discriminative features to identify whether a dermoscopic image shows melanoma or not. Only provide the output as Python code in the following format: prompts = list[tuple[negative: str, positive: str]]. Let's think step-by-step"""
-    
-    
+
     # meta_prompt_template = """The task is to generate 50 textual descriptions pairs of visual discriminative features to identify whether the central region of an histopathological image patch contains tumor tissue or not. The patch is extracted from an H&E‑stained whole‑slide image of a lymph node section.
     # Here are the best performing pairs. You should aim to get higher scores. Each description should be about 5-20 words.
     # {content}
@@ -148,7 +107,7 @@ def main():
             # prompts = INITIAL_CHATGPT_PROMPTS
         else:
             meta_prompt = get_prompt_template(
-                iteration_num=j, prompt_content=prompt_content,diagnosis=diagnosis, generate_n=10)
+                prompt_content=prompt_content, generate_n=10)
 
             prompts = util.get_prompt_pairs(meta_prompt, client)
 
@@ -165,20 +124,9 @@ def main():
         n = 10
         print(f"\nCurrent Top {n} prompt pairs:")
 
-        # Selector Operator: Roulette Wheel Selection or Best N Prompts
-        # Use Roulette Wheel Selection for the first 250 iterations
-        # After 250 iterations, use the best n prompts
-        # This is to ensure diversity in the early stages of optimization
-        # if j < 250:
-        #     selected_prompts = pq.get_roulette_wheel_selection(
-        #         n, isNormalizedInts=False)
-        # else:
-        #     selected_prompts = pq.get_best_n(n)
-
         selected_prompts = pq.get_roulette_wheel_selection(
             n, isNormalizedInts=True)
-        # selected_prompts = pq.get_best_n(n)
-        # reverse the order to set it to acsending order: Recency Bias
+
         selected_prompts = sorted(
             selected_prompts, key=lambda x: x[1], reverse=False)
 

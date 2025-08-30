@@ -138,21 +138,42 @@ class KneePointAnalysis:
         return recommended_n
 
 
-
-
 class Derm7ptDataset(Dataset):
-    def __init__(self, meta_csv, image_base, indexes_csv, preprocess, diagnosis):
+    def __init__(self, meta_csv, image_base, indexes_csv, preprocess, label_type):
         self.df = pd.read_csv(meta_csv)
         idx_df = pd.read_csv(indexes_csv)
         self.indexes = idx_df["indexes"].tolist()
         self.df = self.df.iloc[self.indexes].reset_index(drop=True)
         self.image_base = image_base
         self.preprocess = preprocess
-        self.diagnosis = diagnosis
-        # Binary label: 1 if diagnosis column contains 'melanoma', else 0
-        self.labels = self.df["diagnosis"].str.contains("melanoma", case=False, na=False).astype(int).tolist()
+        self.label_type = label_type
+
+        def get_label(column, mapping, default=0):
+            return self.df[column].map(mapping).fillna(default).astype(int).tolist()
+
+        label_mappings = {
+            "melanoma": lambda df: df["diagnosis"].str.contains("melanoma", case=False, na=False).astype(int).tolist(),
+            "pigment_network": lambda df: get_label("pigment_network", {"absent": 0, "typical": 0, "atypical": 1}),
+            "blue_whitish_veil": lambda df: get_label("blue_whitish_veil", {"present": 1, "absent": 0}),
+            "vascular_structures": lambda df: get_label("vascular_structures", {
+                "absent": 0, "arborizing": 0, "within regression": 0,
+                "hairpin": 0, "comma": 0, "linear irregular": 1,
+                "wreath": 0, "dotted": 1
+            }),
+            "pigmentation": lambda df: get_label("pigmentation", {"absent": 0, "diffuse regular": 0, "localized regular": 0, "diffuse irregular": 1, "localized irregular": 1}),
+            "streaks": lambda df: get_label("streaks", {"absent": 0, "regular": 0, "irregular": 1}),
+            "dots_and_globules": lambda df: get_label("dots_and_globules", {"absent": 0, "regular": 0, "irregular": 1}),
+            "regression_structures": lambda df: get_label("regression_structures", {"absent": 0, "blue areas": 1, "white areas": 1, "combinations": 1}),
+        }
+
+        if self.label_type in label_mappings:
+            self.labels = label_mappings[self.label_type](self.df)
+        else:
+            raise ValueError(f"Unknown label_type: {self.label_type}")
+
         # Use the first image path column (clinic)
-        self.image_paths = [os.path.join(image_base, row["derm"]) for _, row in self.df.iterrows()]
+        self.image_paths = [os.path.join(
+            image_base, row["derm"]) for _, row in self.df.iterrows()]
 
     def __len__(self):
         return len(self.df)
@@ -163,9 +184,6 @@ class Derm7ptDataset(Dataset):
         img = self.preprocess(img)
         label = torch.tensor(self.labels[idx], dtype=torch.long)
         return img, label
-
-
-
 
 
 def load_clip_model(
@@ -211,37 +229,40 @@ def load_clip_model(
     return model, preprocess, tokenizer
 
 
-
-def extract_embeddings(model, preprocess, diagnosis, split="train", cache_dir="./derm7pt_cache"):
+def extract_embeddings(model, preprocess, label_type, split="train", cache_dir="./derm7pt_cache"):
     """
-    Extract embeddings for derm7pt dataset for a given diagnosis and split.
+    Extract embeddings for derm7pt dataset for a given label_type and split.
     Args:
         model: CLIP model
         preprocess: preprocessing function
-        diagnosis: diagnosis string for positive class
+        label_type: label_type indicating which label to use from the dataset: Eg: 'melanoma', 'pigment_network', etc.
         split: 'train', 'val', or 'test'
         cache_dir: directory to cache features/labels
     Returns:
         features_array: np.ndarray
         labels_array: np.ndarray
     """
-    split_map = {"train": DERM_TRAIN_INDEXES, "val": DERM_VAL_INDEXES, "test": DERM_TEST_INDEXES}
+    split_map = {"train": DERM_TRAIN_INDEXES,
+                 "val": DERM_VAL_INDEXES, "test": DERM_TEST_INDEXES}
     indexes_csv = split_map[split]
     os.makedirs(cache_dir, exist_ok=True)
-    features_cache = os.path.join(cache_dir, f"{split}_features_{diagnosis}.npy")
-    labels_cache = os.path.join(cache_dir, f"{split}_labels_{diagnosis}.npy")
+    features_cache = os.path.join(
+        cache_dir, f"{split}_features_{label_type}.npy")
+    labels_cache = os.path.join(cache_dir, f"{split}_labels_{label_type}.npy")
     if os.path.exists(features_cache) and os.path.exists(labels_cache):
         features_array = np.load(features_cache)
         labels_array = np.load(labels_cache)
         return features_array, labels_array
     # Create dataset and dataloader
-    dataset = Derm7ptDataset(DERM_META_CSV, DERM_IMAGE_BASE, indexes_csv, preprocess, diagnosis)
-    loader = DataLoader(dataset, batch_size=BATCH_SIZE, shuffle=False, num_workers=NUM_WORKERS, pin_memory=True)
+    dataset = Derm7ptDataset(
+        DERM_META_CSV, DERM_IMAGE_BASE, indexes_csv, preprocess, label_type)
+    loader = DataLoader(dataset, batch_size=BATCH_SIZE,
+                        shuffle=True, num_workers=NUM_WORKERS, pin_memory=True)
     device = DEVICE
     model = model.to(device).eval()
     features, all_labels = [], []
     with torch.no_grad():
-        for imgs, labels in tqdm(loader, desc=f"Extracting {split} embeddings for {diagnosis}"):
+        for imgs, labels in tqdm(loader, desc=f"Extracting {split} embeddings for {label_type}"):
             imgs = imgs.to(device)
             feats = model.encode_image(imgs)
             features.append(feats.cpu())
@@ -251,7 +272,6 @@ def extract_embeddings(model, preprocess, diagnosis, split="train", cache_dir=".
     np.save(features_cache, features_array)
     np.save(labels_cache, labels_array)
     return features_array, labels_array
-
 
 
 def evaluate_prompt_list(
@@ -327,6 +347,7 @@ def evaluate_prompt_list(
 
     return {'accuracy': acc, 'auc': auc, 'cm': cm, 'report': report, 'ensemble_probs': ensemble_probs}
 
+
 def evaluate_prompt_pair(
     negative_prompt: str,
     positive_prompt: str,
@@ -367,7 +388,6 @@ def evaluate_prompt_pair(
 
         # Invert BCE loss: 1/(1 + loss) (so lower loss → higher value)
         inverted_bce = 1.0 / (1.0 + bce_loss)
-
 
     # metrics
     acc = accuracy_score(y_true, y_pred)
@@ -430,6 +450,7 @@ def extract_and_parse_prompt_list(code: str) -> List[Tuple[str, str]]:
     # 4) convert to List[Tuple[str,str]]
     return [(str(a), str(b)) for a, b in data]
 
+
 def extract_and_parse_prompt_list_with_scores(code: str) -> List[Tuple[str, str, float]]:
     """
     From a string of Python code, finds the first occurrence of
@@ -457,7 +478,7 @@ def extract_and_parse_prompt_list_with_scores(code: str) -> List[Tuple[str, str,
     current_item = []
     depth = 0  # track nesting level for tuples
     buffer = ""
-    
+
     for char in cleaned[1:-1]:  # skip outer brackets
         if char == '(':
             depth += 1
@@ -475,7 +496,7 @@ def extract_and_parse_prompt_list_with_scores(code: str) -> List[Tuple[str, str,
                 current_item = []
         else:
             buffer += char
-    
+
     # Add the last item if any
     if buffer.strip():
         current_item.append(buffer.strip())
@@ -487,12 +508,13 @@ def extract_and_parse_prompt_list_with_scores(code: str) -> List[Tuple[str, str,
     for item in items:
         if len(item) != 2:
             raise ValueError(f"Expected tuple and score, got: {item}")
-        
+
         # Parse the prompt tuple
         try:
             prompt_tuple = ast.literal_eval(item[0])
             if not isinstance(prompt_tuple, tuple) or len(prompt_tuple) != 2:
-                raise ValueError(f"Expected 2-element tuple, got: {prompt_tuple}")
+                raise ValueError(
+                    f"Expected 2-element tuple, got: {prompt_tuple}")
             neg, pos = prompt_tuple
         except (SyntaxError, ValueError) as e:
             raise ValueError(f"Malformed prompt tuple: {e}")
@@ -506,8 +528,6 @@ def extract_and_parse_prompt_list_with_scores(code: str) -> List[Tuple[str, str,
         parsed_items.append((str(neg), str(pos), score))
 
     return parsed_items
-
-
 
 
 def extract_and_parse_prompt_tuple(code: str) -> Tuple[str, str]:
