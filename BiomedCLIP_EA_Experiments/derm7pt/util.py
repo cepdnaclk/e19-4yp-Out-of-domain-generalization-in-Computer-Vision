@@ -383,18 +383,22 @@ def evaluate_prompt_pair(
         # Compute weighted Binary Cross-Entropy Loss for class imbalance
         y_true_tensor = torch.tensor(y_true, device=DEVICE).float()
         y_prob_tensor = torch.tensor(y_prob, device=DEVICE).float()
-        # Calculate weights: inverse frequency
-        pos_weight = (len(y_true_tensor) - y_true_tensor.sum()) / (y_true_tensor.sum() + 1e-8)
+
+        # Calculate weights
+        pos_weight =  y_true_tensor.sum() / len(y_true_tensor)  # proportion of positive class
         weights = torch.ones_like(y_true_tensor)
         weights[y_true_tensor == 1] = pos_weight
+
         bce_loss = F.binary_cross_entropy(
             input=y_prob_tensor,
             target=y_true_tensor,
             weight=weights
         ).item()
+
         # Invert BCE loss: 1/(1 + loss) (so lower loss → higher value)
         weighted_inverted_bce = 1.0 / (1.0 + bce_loss)
         # print(f"weighted invertedBCE Loss - {weighted_inverted_bce}")
+        
     # metrics
     acc = accuracy_score(y_true, y_pred)
     auc = roc_auc_score(y_true, y_prob)
