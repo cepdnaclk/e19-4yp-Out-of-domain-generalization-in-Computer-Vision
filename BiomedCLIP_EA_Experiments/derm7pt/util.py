@@ -392,9 +392,9 @@ def evaluate_prompt_pair(
             target=y_true_tensor,
             weight=weights
         ).item()
+        print(f"BCE Loss - {bce_loss}")
         # Invert BCE loss: 1/(1 + loss) (so lower loss → higher value)
         weighted_inverted_bce = 1.0 / (1.0 + bce_loss)
-
     # metrics
     acc = accuracy_score(y_true, y_pred)
     auc = roc_auc_score(y_true, y_prob)
