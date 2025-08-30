@@ -59,10 +59,10 @@ def get_prompt_template(iteration: int, prompt_content: str, label_type: str, ge
 
 def main():
     # Set the dermoscopic feature to optimize prompts for
-    label_type = "melanoma"
+    label_type = "pigment_network"
 
     # Name the experiment we are currently running
-    experiment_name = "Derm7pt_Experiment7_F1_" + label_type
+    experiment_name = "Derm7pt_Experiment8_F1_" + label_type
     print(f"Running {experiment_name}...")
 
     # Create experiment results directory
@@ -100,7 +100,7 @@ def main():
         use_local_ollama=False, ollama_model="hf.co/unsloth/medgemma-27b-text-it-GGUF:Q8_0")
 
     # Optimization loop
-    pq = util.PriorityQueue(max_capacity=1000,filter_threshold=0.3)
+    pq = util.PriorityQueue(max_capacity=1000, filter_threshold=0.35)
     prompt_content = ""
 
     # 6. Optimization loop: generate, evaluate, and select prompts for 500 iterations
@@ -150,9 +150,9 @@ def main():
                     f.write(f"{prompt_pair}, Score: {score:.4f}\n")
                 f.write("\n")
 
-        # Print the average F1 of the top n prompts
+        # Print the average score of the top n prompts
         print(
-            f"Iteration {j+1}: mean F1 of top 10: {pq.get_average_score(10)}.\n")
+            f"Iteration {j+1}: mean score of top 10: {pq.get_average_score(10)}.\n")
 
 
 # Entry point for the script
