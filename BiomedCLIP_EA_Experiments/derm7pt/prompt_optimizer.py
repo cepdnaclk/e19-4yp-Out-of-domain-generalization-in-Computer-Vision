@@ -106,8 +106,8 @@ def main():
     # 6. Optimization loop: generate, evaluate, and select prompts for 500 iterations
     for j in range(500):
         # Generate the meta prompt for the LLM
-        meta_prompt = get_prompt_template(
-            prompt_content=prompt_content, label_type=label_type, generate_n=10)
+        meta_prompt = get_prompt_template(iteration=j,
+                                          prompt_content=prompt_content, label_type=label_type, generate_n=10)
 
         # Generate new prompt pairs using the LLM client
         prompts = util.get_prompt_pairs(meta_prompt, client)
