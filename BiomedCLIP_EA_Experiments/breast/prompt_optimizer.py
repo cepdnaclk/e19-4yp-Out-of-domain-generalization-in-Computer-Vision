@@ -154,7 +154,7 @@ def main():
             results = util.evaluate_prompt_pair(
                 negative_prompt, positive_prompt, all_feats, all_labels, model, tokenizer)
             # print(f"Inverted BCE for prompt pair {i+1}: {results['inverted_bce']:.4f} {results['accuracy']}")
-            pq.insert((negative_prompt, positive_prompt), results['auc'])
+            pq.insert((negative_prompt, positive_prompt), results['inverted_bce'])
 
         n = 10
         print(f"\nCurrent Top {n} prompt pairs:")
