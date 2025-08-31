@@ -29,11 +29,11 @@ import ollama
 import torch.nn.functional as F
 
 
-BREAST_CSV =  '/storage/projects3/e19-fyp-out-of-domain-gen-in-cv/e19-4yp-Out-of-domain-generalization-in-Computer-Vision/breast_dataset/metadata.csv'
-BREAST_IMAGE_DIR = "/storage/projects3/e19-fyp-out-of-domain-gen-in-cv/e19-4yp-Out-of-domain-generalization-in-Computer-Vision/breast_dataset/images/"
-BREAST_TRAIN_INDEXES = "/storage/projects3/e19-fyp-out-of-domain-gen-in-cv/e19-4yp-Out-of-domain-generalization-in-Computer-Vision/breast_dataset/split/train_indexes.csv"
-BREAST_VAL_INDEXES = "/storage/projects3/e19-fyp-out-of-domain-gen-in-cv/e19-4yp-Out-of-domain-generalization-in-Computer-Vision/breast_dataset/split/val_indexes.csv"
-BREAST_TEST_INDEXES = "/storage/projects3/e19-fyp-out-of-domain-gen-in-cv/e19-4yp-Out-of-domain-generalization-in-Computer-Vision/breast_dataset/split/test_indexes.csv"
+BREAST_CSV =  '/storage/projects3/e19-fyp-out-of-domain-gen-in-cv/breast_dataset/metadata.csv'
+BREAST_IMAGE_DIR = "/storage/projects3/e19-fyp-out-of-domain-gen-in-cv/breast_dataset/images/"
+BREAST_TRAIN_INDEXES = "/storage/projects3/e19-fyp-out-of-domain-gen-in-cv/breast_dataset/split/train_indexes.csv"
+BREAST_VAL_INDEXES = "/storage/projects3/e19-fyp-out-of-domain-gen-in-cv/breast_dataset/split/val_indexes.csv"
+BREAST_TEST_INDEXES = "/storage/projects3/e19-fyp-out-of-domain-gen-in-cv/breast_dataset/split/test_indexes.csv"
 CONFIG_PATH = "/storage/projects3/e19-fyp-out-of-domain-gen-in-cv/e19-4yp-Out-of-domain-generalization-in-Computer-Vision/BioMedClip/checkpoints/open_clip_config.json"
 WEIGHTS_PATH = "/storage/projects3/e19-fyp-out-of-domain-gen-in-cv/e19-4yp-Out-of-domain-generalization-in-Computer-Vision/BioMedClip/checkpoints/open_clip_pytorch_model.bin"
 MODEL_NAME = "biomedclip_local"
