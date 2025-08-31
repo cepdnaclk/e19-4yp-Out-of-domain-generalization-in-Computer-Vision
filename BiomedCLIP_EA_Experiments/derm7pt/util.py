@@ -441,6 +441,9 @@ def evaluate_prompt_set(
         y_true = labels.cpu().numpy()
         y_prob = probs.cpu().numpy()                          # (N, num_classes)
 
+        print(
+            f"shape of logits: {logits.shape}, shape of labels: {labels.shape}")
+
         # CrossEntropyLoss expects logits and integer labels
         ce_loss = F.cross_entropy(logits, labels).item()
         # Invert CE loss for scoring (lower loss → higher value)
