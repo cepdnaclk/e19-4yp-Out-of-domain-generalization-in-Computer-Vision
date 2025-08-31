@@ -59,10 +59,10 @@ def get_prompt_template(iteration: int, prompt_content: str, label_type: str, ge
 
 def main():
     # Set the dermoscopic feature to optimize prompts for
-    label_type = "pigment_network"
+    label_type = "melanoma"
 
     # Name the experiment we are currently running
-    experiment_name = "Derm7pt_Experiment8_F1_" + label_type
+    experiment_name = "Derm7pt_Experiment9_Accuracy_" + label_type
     print(f"Running {experiment_name}...")
 
     # Create experiment results directory
@@ -100,7 +100,7 @@ def main():
         use_local_ollama=False, ollama_model="hf.co/unsloth/medgemma-27b-text-it-GGUF:Q8_0")
 
     # Optimization loop
-    pq = util.PriorityQueue(max_capacity=1000, filter_threshold=0.35)
+    pq = util.PriorityQueue(max_capacity=1000, filter_threshold=0.5)
     prompt_content = ""
 
     # 6. Optimization loop: generate, evaluate, and select prompts for 500 iterations
@@ -122,7 +122,7 @@ def main():
                 negative_prompt, positive_prompt, all_feats, all_labels, model, tokenizer)
             # Insert prompt pair and its score into the priority queue
             pq.insert((negative_prompt, positive_prompt),
-                      results['f1'])
+                      results['accuracy'])  # Use accuracy as the score
 
         n = 10
         print(f"\nCurrent Top {n} prompt pairs:")
