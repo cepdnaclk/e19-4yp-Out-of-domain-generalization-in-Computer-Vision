@@ -250,6 +250,7 @@ def extract_embeddings(model, preprocess, label_type, split="train", cache_dir="
     split_map = {"train": DERM_TRAIN_INDEXES,
                  "val": DERM_VAL_INDEXES, "test": DERM_TEST_INDEXES}
     indexes_csv = split_map[split]
+
     os.makedirs(cache_dir, exist_ok=True)
     features_cache = os.path.join(
         cache_dir, f"{split}_features_{label_type}.npy")
@@ -258,24 +259,28 @@ def extract_embeddings(model, preprocess, label_type, split="train", cache_dir="
         features_array = np.load(features_cache)
         labels_array = np.load(labels_cache)
         return features_array, labels_array
+
     # Create dataset and dataloader
+    print("Creating dataset and dataloader...")
     dataset = Derm7ptDataset(
         DERM_META_CSV, DERM_IMAGE_BASE, indexes_csv, preprocess, label_type)
     loader = DataLoader(dataset, batch_size=BATCH_SIZE,
                         shuffle=True, num_workers=NUM_WORKERS, pin_memory=True)
-    device = DEVICE
-    model = model.to(device).eval()
+
+    model = model.to(DEVICE).eval()
     features, all_labels = [], []
     with torch.no_grad():
         for imgs, labels in tqdm(loader, desc=f"Extracting {split} embeddings for {label_type}"):
-            imgs = imgs.to(device)
+            imgs = imgs.to(DEVICE)
             feats = model.encode_image(imgs)
             features.append(feats.cpu())
             all_labels.append(labels.cpu().numpy())
+
     features_array = torch.cat(features).numpy()
     labels_array = np.concatenate(all_labels)
     np.save(features_cache, features_array)
     np.save(labels_cache, labels_array)
+
     return features_array, labels_array
 
 
