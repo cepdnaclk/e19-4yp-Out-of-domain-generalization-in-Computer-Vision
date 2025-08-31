@@ -153,7 +153,7 @@ class Derm7ptDataset(Dataset):
 
         label_mappings = {
             "melanoma": lambda df: df["diagnosis"].str.contains("melanoma", case=False, na=False).astype(int).tolist(),
-            "pigment_network": lambda df: get_label("pigment_network", {"absent": 0, "typical": 0, "atypical": 1}),
+            "pigment_network": lambda df: get_label("pigment_network", {"absent": 0, "typical": 1, "atypical": 2}),
             "blue_whitish_veil": lambda df: get_label("blue_whitish_veil", {"present": 1, "absent": 0}),
             "vascular_structures": lambda df: get_label("vascular_structures", {
                 "absent": 0, "arborizing": 0, "within regression": 0,
@@ -385,7 +385,8 @@ def evaluate_prompt_pair(
         y_prob_tensor = torch.tensor(y_prob, device=DEVICE).float()
 
         # Calculate weights
-        pos_weight =  y_true_tensor.sum() / len(y_true_tensor)  # proportion of positive class
+        # proportion of positive class
+        pos_weight = y_true_tensor.sum() / len(y_true_tensor)
         weights = torch.ones_like(y_true_tensor)
         weights[y_true_tensor == 1] = pos_weight
 
@@ -398,7 +399,7 @@ def evaluate_prompt_pair(
         # Invert BCE loss: 1/(1 + loss) (so lower loss → higher value)
         weighted_inverted_bce = 1.0 / (1.0 + bce_loss)
         # print(f"weighted invertedBCE Loss - {weighted_inverted_bce}")
-        
+
     # metrics
     acc = accuracy_score(y_true, y_pred)
     auc = roc_auc_score(y_true, y_prob)
@@ -406,6 +407,61 @@ def evaluate_prompt_pair(
     report = classification_report(y_true, y_pred, digits=4)
     f1 = f1_score(y_true, y_pred)
     return {'accuracy': acc, 'auc': auc, 'cm': cm, 'report': report, 'weighted_inverted_bce': weighted_inverted_bce, 'f1': f1}
+
+
+def evaluate_prompt_set(
+    prompt_set: tuple[str, ...],
+    image_feats: torch.Tensor,    # (N, D), precomputed
+    image_labels: torch.Tensor,   # (N,)
+    model,
+    tokenizer
+):
+    # Encode all prompts (one per class)
+    text_inputs = tokenizer(
+        list(prompt_set),
+        context_length=CONTEXT_LENGTH
+    ).to(DEVICE)
+
+    with torch.no_grad():
+        text_feats = model.encode_text(
+            text_inputs)           # (num_classes, D)
+        text_feats = text_feats / text_feats.norm(dim=1, keepdim=True)
+        logit_scale = model.logit_scale.exp()
+
+        feats = image_feats.to(DEVICE)                        # (N, D)
+        labels = image_labels.to(DEVICE)                      # (N,)
+
+        # Compute logits: (N, num_classes)
+        logits = logit_scale * (feats @ text_feats.t())
+        # (N, num_classes)
+        probs = logits.softmax(dim=1)
+        preds = logits.argmax(dim=1)                          # (N,)
+
+        y_pred = preds.cpu().numpy()
+        y_true = labels.cpu().numpy()
+        y_prob = probs.cpu().numpy()                          # (N, num_classes)
+
+        # CrossEntropyLoss expects logits and integer labels
+        ce_loss = F.cross_entropy(logits, labels).item()
+        # Invert CE loss for scoring (lower loss → higher value)
+        inverted_ce = 1.0 / (1.0 + ce_loss)
+
+    # metrics
+    acc = accuracy_score(y_true, y_pred)
+    cm = confusion_matrix(y_true, y_pred)
+    report = classification_report(y_true, y_pred, digits=4)
+    f1_macro = f1_score(y_true, y_pred, average='macro')
+    f1_weighted = f1_score(y_true, y_pred, average='weighted')
+
+    return {
+        'accuracy': acc,
+        'cm': cm,
+        'report': report,
+        'inverted_ce': inverted_ce,
+        'f1_macro': f1_macro,
+        'f1_weighted': f1_weighted,
+        'probs': y_prob
+    }
 
 
 def _force_double_quotes(code: str) -> str:
