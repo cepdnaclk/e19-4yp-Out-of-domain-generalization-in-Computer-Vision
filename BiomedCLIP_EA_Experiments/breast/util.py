@@ -238,7 +238,7 @@ def extract_embeddings(model, preprocess, split="train", cache_dir="./breast_cac
         return features_array, labels_array
     # Create dataset and dataloader
     dataset = BreastLesionDataset(BREAST_CSV, BREAST_IMAGE_DIR, indexes=indexes, preprocess=preprocess)
-    loader = DataLoader(dataset, batch_size=BATCH_SIZE, shuffle=False, num_workers=NUM_WORKERS, pin_memory=True)
+    loader = DataLoader(dataset, batch_size=BATCH_SIZE, shuffle=True, num_workers=NUM_WORKERS, pin_memory=True)
     device = DEVICE
     model = model.to(device).eval()
     features, all_labels = [], []
