@@ -49,7 +49,6 @@ def get_prompt_template(iteration_num: int, prompt_content: str, generate_n: int
         return base_meta_prompt_template.format(
             content=prompt_content,
             iteration_specific_instruction=instruction_map["strategy"],
-            disease=disease
         )
     # elif 201 <= iteration_num <= 300:
     #     # Iterations 51-100: Concept combination
