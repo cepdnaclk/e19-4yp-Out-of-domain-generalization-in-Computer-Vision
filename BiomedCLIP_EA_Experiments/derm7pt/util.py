@@ -171,6 +171,11 @@ class Derm7ptDataset(Dataset):
         else:
             raise ValueError(f"Unknown label_type: {self.label_type}")
 
+        print(
+            f"Loaded {len(self.df)} samples for label_type '{self.label_type}'.")
+        print("Label distribution:", pd.Series(
+            self.labels).value_counts().to_dict())
+
         # Use the first image path column (clinic)
         self.image_paths = [os.path.join(
             image_base, row["derm"]) for _, row in self.df.iterrows()]
@@ -440,9 +445,6 @@ def evaluate_prompt_set(
         y_pred = preds.cpu().numpy()
         y_true = labels.cpu().numpy()
         y_prob = probs.cpu().numpy()                          # (N, num_classes)
-
-        print(
-            f"shape of logits: {logits.shape}, shape of labels: {labels.shape}")
 
         # CrossEntropyLoss expects logits and integer labels
         ce_loss = F.cross_entropy(logits, labels).item()
