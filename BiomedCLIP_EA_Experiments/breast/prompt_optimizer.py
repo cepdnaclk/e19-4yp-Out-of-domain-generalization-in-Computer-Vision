@@ -37,7 +37,7 @@ def get_prompt_template(iteration_num: int, prompt_content: str, disease: str, g
     }
 
     # Base meta prompt template
-    base_meta_prompt_template = """The task is to generate distinct textual descriptions pairs of visual discriminative features to identify whether a chest X-ray image contains {disease} or not. These descriptions should focus on observable characteristics within the image.
+    base_meta_prompt_template = """The task is to generate distinct textual descriptions pairs of visual discriminative features to identify whether a ultrasound scan image of a breast contains benign lesion or malignant lesion. 
     Here are the best performing pairs in ascending order. High scores indicate higher quality visual discriminative features.
     {content}
     {iteration_specific_instruction}
@@ -96,8 +96,6 @@ def main():
     features, labels = util.extract_embeddings(
         model=model,
         preprocess=preprocess,
-        train_or_test="train",
-        target_label= disease,
     )
     
     # Convert to tensors - MODIFIED FOR MULTI-OBSERVATION SUPPORT
@@ -118,7 +116,7 @@ def main():
 
     # Configure the prompt templates
     # meta_init_prompt =  """Give 50 distinct textual descriptions of pairs of visual discriminative features to identify whether the central region of a histopathological image patch contains tumor tissue or not. The patch is extracted from an H&E‑stained whole‑slide image of a lymph node section. Only provide the output as Python code in the following format: prompts = list[tuple[negative: str, positive: str]]. Let's think step-by-step"""
-    meta_init_prompt = f" Give 50 distinct textual descriptions of pairs of discriptive observations to identify whether a chest X-ray image contains {disease} or not. These descriptions should focus on observable characteristics within the image. Only provide the output as Python code in the following format: prompts = list[tuple[negative: str, positive: str]]. Let's think step-by-step"
+    meta_init_prompt = f" Give 50 distinct textual descriptions of pairs of discriptive observations to identify whether a ultrasound scan image of a breast contains benign lesion or malignant lesion. Only provide the output as Python code in the following format: prompts = list[tuple[negative: str, positive: str]]. Let's think step-by-step"
     # meta_prompt_template = """The task is to generate 50 textual descriptions pairs of visual discriminative features to identify whether the central region of an histopathological image patch contains tumor tissue or not. The patch is extracted from an H&E‑stained whole‑slide image of a lymph node section.
     # Here are the best performing pairs. You should aim to get higher scores. Each description should be about 5-20 words.
     # {content}
@@ -129,6 +127,8 @@ def main():
     # 41-50: The remaining 10 pairs should be randomly generated.
     # Only give the output as python code in the format - prompts: list[tuple[negative: str, positive: str]]
     # """
+
+
 
     # Optimization loop
     # initial_prompts = util.load_initial_prompts(
