@@ -10,7 +10,7 @@ import os
 # from chatgpt_initial import INITIAL_CHATGPT_PROMPTS
 
 
-def get_prompt_template(iteration_num: int, prompt_content: str, disease: str, generate_n: int = 10) -> str:
+def get_prompt_template(iteration_num: int, prompt_content: str, generate_n: int = 10) -> str:
     """
     Returns the appropriate instruction based on the iteration number range.
 
@@ -142,7 +142,7 @@ def main():
             # prompts = INITIAL_CHATGPT_PROMPTS
         else:
             meta_prompt = get_prompt_template(
-                iteration_num=j, prompt_content=prompt_content,disease=disease, generate_n=10)
+                iteration_num=j, prompt_content=prompt_content, generate_n=10)
 
             prompts = util.get_prompt_pairs(meta_prompt, client)
 
@@ -179,10 +179,10 @@ def main():
         # Prepare the content for the meta prompt
         prompt_content = f"Current Top {n} prompt pairs:\n"
         for i, (prompt_pair, score) in enumerate(selected_prompts):
-            print(f"{i+1}. {prompt_pair}, Score: {score}")
+            print(f"{i+1}. {prompt_pair}, Score: {int(score)}")
             # prompt_content += f"{i+1}. {prompt_pair}, Score: {score:.2f}\n"
             # for ascending order
-            prompt_content += f"{prompt_pair}, Score: {score:.2f}\n"
+            prompt_content += f"{prompt_pair}, Score: {int(score)}\n"
 
         # Save the best prompt pairs to a file, every 10 iterations
         if (j + 1) % 10 == 0 or j == 0:
