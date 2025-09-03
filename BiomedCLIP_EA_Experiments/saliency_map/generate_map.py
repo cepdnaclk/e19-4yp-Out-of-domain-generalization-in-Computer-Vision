@@ -260,6 +260,7 @@ class BiomedCLIPSaliencyGenerator:
         Returns:
             Path to saved visualization
         """
+        print(f"Generating saliency map using {method}...")
         # Generate saliency map
         if method.lower() == 'gradcam':
             try:
