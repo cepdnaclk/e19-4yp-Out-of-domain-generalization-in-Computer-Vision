@@ -402,7 +402,8 @@ def main():
         negative_prompt=negative_prompt,
         method='gradcam',
         target_class=1,
-        alpha=0.4
+        alpha=0.4,
+        output_path="output/saliency_map.png"
     )
     
     # Analyze focus regions
