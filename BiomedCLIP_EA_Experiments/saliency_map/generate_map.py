@@ -403,7 +403,7 @@ def main():
         method='gradcam',
         target_class=1,
         alpha=0.4,
-        output_path="output/saliency_map.png"
+        output_path="./saliency_map.png"
     )
     
     # Analyze focus regions
