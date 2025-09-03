@@ -400,7 +400,7 @@ def main():
         image_path=image_path,
         positive_prompt=positive_prompt,
         negative_prompt=negative_prompt,
-        # method='gradcam',
+        method='gradient',
         target_class=1,
         alpha=0.4,
         output_path="./saliency_map.png"
