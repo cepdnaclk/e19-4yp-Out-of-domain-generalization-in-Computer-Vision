@@ -240,7 +240,7 @@ class BiomedCLIPSaliencyGenerator:
                          positive_prompt: str,
                          negative_prompt: str = None,
                          output_path: str = None,
-                         method: str = 'gradca',
+                         method: str = 'gradient',
                          target_class: int = 1,
                          alpha: float = 0.4,
                          colormap: str = 'jet') -> str:
