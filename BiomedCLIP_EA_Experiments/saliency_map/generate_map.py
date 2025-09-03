@@ -389,7 +389,7 @@ def main():
     generator = BiomedCLIPSaliencyGenerator()
     
     # Example usage
-    image_path = "/storage/projects3/e19-fyp-out-of-domain-gen-in-cv/camelyon17WILDS/patches/patch_patient_004_node_4_x_3328_y_21792.png"
+    image_path = "/storage/projects3/e19-fyp-out-of-domain-gen-in-cv/camelyon17WILDS/patches/patch_patient_004_node_4/patch_patient_004_node_4_x_3328_y_21792.png"
     prompt_pair = ('Lymphocytes have smooth, round nuclei with condensed chromatin and normal CD5 expression.', 'Tumor cells display irregular nuclei with coarse chromatin and altered CD5 expression.')
 
     positive_prompt = prompt_pair[1]
