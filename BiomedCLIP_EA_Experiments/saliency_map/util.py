@@ -1,32 +1,9 @@
-import heapq
-import tokenize
-import io
-import random
-from typing import Any, List, Optional, Set, Tuple
-import re
 import torch
-import ast
-from torch.utils.data import Dataset, DataLoader
-from sklearn.metrics import (
-    accuracy_score,
-    confusion_matrix,
-    classification_report,
-    roc_auc_score
-)
-from typing import Callable, List, Tuple
-import os
-import pandas as pd
-import numpy as np
-from PIL import Image
+
+from typing import Callable, Tuple
 from open_clip import create_model_and_transforms, get_tokenizer
 from open_clip.factory import HF_HUB_PREFIX, _MODEL_CONFIGS
 import json
-from tqdm import tqdm
-import time
-from API_KEY import GEMINI_API_KEY
-from google import genai
-import ollama
-import torch.nn.functional as F
 
 
 CONFIG_PATH = "/storage/projects3/e19-fyp-out-of-domain-gen-in-cv/e19-4yp-Out-of-domain-generalization-in-Computer-Vision/BioMedClip/checkpoints/open_clip_config.json"
