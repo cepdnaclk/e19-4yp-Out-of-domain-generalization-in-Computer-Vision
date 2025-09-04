@@ -120,11 +120,10 @@ def main():
             if len(prompt_pair) != 2:
                 print(f"Invalid prompt pair: {prompt_pair}")
                 continue
-            negative_prompt, positive_prompt = prompt_pair
-            results = util.evaluate_prompt_pair(
-                negative_prompt, positive_prompt, all_feats, all_labels, model, tokenizer)
+            results = util.evaluate_prompt_set(
+                prompt_pair, all_feats, all_labels, model, tokenizer)
             # Insert prompt pair and its score into the priority queue
-            pq.insert((negative_prompt, positive_prompt),
+            pq.insert(prompt_pair,
                       results['f1_macro'])  # Use accuracy as the score
 
         n = 10
