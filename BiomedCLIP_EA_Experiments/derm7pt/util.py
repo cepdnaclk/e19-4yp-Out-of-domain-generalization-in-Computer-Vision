@@ -47,6 +47,7 @@ BATCH_SIZE = 32
 NUM_WORKERS = 4
 DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 PromptPair = Tuple[str, str]
+PromptSet = Tuple[str, ...]  # For multi-class prompts
 InitialItem = Tuple[PromptPair, float]
 PromptList = List[Tuple[PromptPair, float]]
 
@@ -767,24 +768,25 @@ def get_prompt_pairs(
 
 class PriorityQueue:
     # type: ignore
-    def __init__(self, max_capacity: int = 10, initial: Optional[List[Tuple[PromptPair, float]]] = None, filter_threshold: float = 0.01):
+    def __init__(self, max_capacity: int = 10, initial: Optional[List[Tuple[PromptSet, float]]] = None, filter_threshold: float = 0.01):
 
         self.filter_threshold = filter_threshold
         self.max_capacity: int = max_capacity
-        # Store (score, prompt_pair); min-heap root is the lowest score.
-        self._heap: List[Tuple[float, PromptPair]] = []  # type: ignore
+        # Store (score, prompt_set); min-heap root is the lowest score.
+        self._heap: List[Tuple[float, PromptSet]] = []  # type: ignore
 
-        # Track prompts for O(1) membership checks
-        self._set: Set[PromptPair] = set()
+        # Track prompt sets for O(1) membership checks
+        self._set: Set[PromptSet] = set()
 
-        # If the user passed some initial prompt-pairs, insert them now:
+        # If the user passed some initial prompt-sets, insert them now:
         if initial is not None:
-            for prompt_pair, score in initial:
-                self.insert(prompt_pair, score)
+            for prompt_set, score in initial:
+                self.insert(prompt_set, score)
 
-    def insert(self, prompt_pair: PromptPair, score: float) -> None:  # type: ignore
-        # Skip if prompt pair already exists
-        if prompt_pair in self._set:
+    # type: ignore
+    def insert(self, prompt_set: PromptSet, score: float) -> None:
+        # Skip if prompt set already exists
+        if prompt_set in self._set:
             return
         # Skip low scores
         if score < self.filter_threshold:
@@ -792,25 +794,25 @@ class PriorityQueue:
 
         if len(self._heap) < self.max_capacity:
             # Add new entry
-            heapq.heappush(self._heap, (score, prompt_pair))
-            self._set.add(prompt_pair)
+            heapq.heappush(self._heap, (score, prompt_set))
+            self._set.add(prompt_set)
         else:
             # Only replace if new score beats the current minimum
             if score > self._heap[0][0]:
                 # Replace smallest entry, capturing the popped item
-                old_score, old_pair = heapq.heapreplace(
-                    self._heap, (score, prompt_pair))
+                old_score, old_set = heapq.heapreplace(
+                    self._heap, (score, prompt_set))
                 # Update prompt set
-                self._set.remove(old_pair)
-                self._set.add(prompt_pair)
+                self._set.remove(old_set)
+                self._set.add(prompt_set)
 
-    def get_best(self) -> Optional[Tuple[PromptPair, float]]:
+    def get_best(self) -> Optional[Tuple[PromptSet, float]]:
         if not self._heap:
             return None
-        best_score, best_pair = max(self._heap, key=lambda x: x[0])
-        return best_pair, best_score
+        best_score, best_set = max(self._heap, key=lambda x: x[0])
+        return best_set, best_score
 
-    def get_best_n(self, n: int, isNormalizedInts: bool = False) -> List[Tuple[PromptPair, float]]:
+    def get_best_n(self, n: int, isNormalizedInts: bool = False) -> List[Tuple[PromptSet, float]]:
         if n <= 0:
             return []
         top_n = sorted(self._heap, key=lambda x: x[0], reverse=True)[:n]
@@ -828,23 +830,23 @@ class PriorityQueue:
                 norm_scores = [max_score] * len(raw_scores)
             else:
                 norm_scores = [
-                    int(round((s - mn) / (mx - mn) *
+                    int(round((s - mn) / (mx - min_score) *
                         (max_score - min_score) + min_score))
                     for s in raw_scores
                 ]
 
-            return [(pair, norm) for (_, pair), norm in zip(top_n, norm_scores)]
+            return [(set_, norm) for (_, set_), norm in zip(top_n, norm_scores)]
 
-        return [(pair, score) for score, pair in top_n]
+        return [(set_, score) for score, set_ in top_n]
 
     def __len__(self) -> int:
         return len(self._heap)
 
     def __str__(self) -> str:
         ordered = sorted(self._heap, key=lambda x: x[0], reverse=True)
-        return str([(pair, score) for score, pair in ordered])
+        return str([(set_, score) for score, set_ in ordered])
 
-    def get_roulette_wheel_selection(self, n: int, isNormalizedInts: bool = True) -> List[Tuple[PromptPair, float]]:
+    def get_roulette_wheel_selection(self, n: int, isNormalizedInts: bool = True) -> List[Tuple[PromptSet, float]]:
         """
         Perform roulette-wheel (fitness-proportional) selection without replacement.
 
@@ -852,13 +854,13 @@ class PriorityQueue:
             n: number of items to select.
 
         Returns:
-            A list of up to n (prompt_pair, score) tuples,
+            A list of up to n (prompt_set, score) tuples,
             selected without replacement according to fitness weights.
         """
         # Work on a temporary copy of the heap data
-        pool = list(self._heap)  # each element is (score, prompt_pair)
+        pool = list(self._heap)  # each element is (score, prompt_set)
         total_fitness = sum(score for score, _ in pool)
-        selected: List[Tuple[PromptPair, float]] = []
+        selected: List[Tuple[PromptSet, float]] = []
 
         # Don't request more than available
         n = min(n, len(pool))
@@ -867,11 +869,11 @@ class PriorityQueue:
             # Normalize weights and pick one
             r = random.random() * total_fitness
             cum = 0.0
-            for idx, (score, pair) in enumerate(pool):
+            for idx, (score, set_) in enumerate(pool):
                 cum += score
                 if cum >= r:
                     # select this individual
-                    selected.append((pair, score))
+                    selected.append((set_, score))
                     # remove it from pool & update total fitness
                     total_fitness -= score
                     pool.pop(idx)
@@ -901,9 +903,9 @@ class PriorityQueue:
             ]
 
         # --- Step C: assemble final list ---
-        selected_normalized: List[Tuple[PromptPair, int]] = [
-            (pair, norm)
-            for (pair, _), norm in zip(selected, norm_scores)
+        selected_normalized: List[Tuple[PromptSet, int]] = [
+            (set_, norm)
+            for (set_, _), norm in zip(selected, norm_scores)
         ]
         return selected_normalized
 
@@ -929,8 +931,8 @@ class PriorityQueue:
             return
         for _ in range(min(n, len(self._heap))):
             if self._heap:
-                score, pair = heapq.heappop(self._heap)
-                self._set.remove(pair)
+                score, set_ = heapq.heappop(self._heap)
+                self._set.remove(set_)
 
 
 def load_initial_prompts(path: str) -> List[InitialItem]:
