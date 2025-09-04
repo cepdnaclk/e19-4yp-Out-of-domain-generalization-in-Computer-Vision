@@ -16,13 +16,13 @@ def main():
     print(f"  Saliency layer: {saliency_layer}")
     
     # # Generate GradCAM
-    # attention_map = generate_gradcam_for_biomedclip(
-    #     image_path=image_path,
-    #     caption=caption,
-    #     output_dir=output_dir,
-    #     saliency_layer=saliency_layer,
-    #     blur=True
-    # )
+    attention_map = generate_gradcam_for_biomedclip(
+        image_path=image_path,
+        caption=caption,
+        output_dir=output_dir,
+        saliency_layer=saliency_layer,
+        blur=True
+    )
     
     # print(f"\nGradCAM generation completed successfully!")
     # print(f"Attention map shape: {attention_map.shape}")
