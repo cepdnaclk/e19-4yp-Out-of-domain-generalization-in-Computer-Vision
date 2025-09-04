@@ -65,7 +65,7 @@ def main():
     label_type = "melanoma"
 
     # Name the experiment we are currently running
-    experiment_name = "Derm7pt_Experiment9_Accuracy_" + label_type
+    experiment_name = "Derm7pt_Experiment11_F1Macro_" + label_type
     print(f"Running {experiment_name}...")
 
     # Create experiment results directory
@@ -103,7 +103,7 @@ def main():
         use_local_ollama=False, ollama_model="hf.co/unsloth/medgemma-27b-text-it-GGUF:Q8_0")
 
     # Optimization loop
-    pq = util.PriorityQueue(max_capacity=1000, filter_threshold=0.3)
+    pq = util.PriorityQueue(max_capacity=1000, filter_threshold=0.4)
     prompt_content = ""
 
     # 6. Optimization loop: generate, evaluate, and select prompts for 500 iterations
@@ -125,7 +125,7 @@ def main():
                 negative_prompt, positive_prompt, all_feats, all_labels, model, tokenizer)
             # Insert prompt pair and its score into the priority queue
             pq.insert((negative_prompt, positive_prompt),
-                      results['accuracy'])  # Use accuracy as the score
+                      results['f1_macro'])  # Use accuracy as the score
 
         n = 10
         print(f"\nCurrent Top {n} prompt pairs:")
