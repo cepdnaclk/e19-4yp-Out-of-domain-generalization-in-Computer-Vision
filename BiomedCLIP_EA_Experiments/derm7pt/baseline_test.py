@@ -4,7 +4,7 @@ import util
 
 def main():
     # Set the dermoscopic feature to optimize prompts for
-    label_type = "pigment_network"
+    label_type = "melanoma"
 
     # 1. load model, process, and tokenizer
     model, preprocess, tokenizer = util.load_clip_model()
@@ -14,7 +14,7 @@ def main():
     features, labels = util.extract_embeddings(
         model=model,
         preprocess=preprocess,
-        split="train",
+        split="test",
         label_type=label_type,
     )
 
@@ -26,13 +26,21 @@ def main():
     print("all_labels:\n", all_labels)
 
     prompt_set = (
-        "A photo of an absent pigment network",
-        "A photo of a typical pigment network.",
-        "A photo of an atypical pigment network.",
+        "A dermoscopic image of a skin lesion showing benign features",
+        "A dermoscopic image of a skin lesion showing melanoma",
     )
+
     results = util.evaluate_prompt_set(
         prompt_set, all_feats, all_labels, model, tokenizer)
-    print("Evaluation results:\n", results)
+    print("Baseline Evaluation results:\n", results)
+
+    optimized_prompt_set = (
+        'Regression structures are minimal, appearing as subtle perifollicular hypopigmentation.', 'Regression structures are extensive, with large areas of depigmentation and scarring, resembling a moth-eaten appearance.'
+    )
+
+    optimized_results = util.evaluate_prompt_set(
+        optimized_prompt_set, all_feats, all_labels, model, tokenizer)
+    print("Optimized Evaluation results:\n", optimized_results)
 
 
 if __name__ == "__main__":
