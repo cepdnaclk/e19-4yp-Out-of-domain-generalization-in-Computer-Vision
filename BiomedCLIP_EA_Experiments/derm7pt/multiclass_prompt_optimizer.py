@@ -93,7 +93,7 @@ def main():
         use_local_ollama=False, ollama_model="hf.co/unsloth/medgemma-27b-text-it-GGUF:Q8_0")
 
     # Optimization loop
-    pq = util.PriorityQueue(max_capacity=1000, filter_threshold=0.5)
+    pq = util.PriorityQueue(max_capacity=1000, filter_threshold=0.2)
     prompt_content = ""
 
     # 6. Optimization loop: generate, evaluate, and select prompt sets for 500 iterations
