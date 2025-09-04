@@ -13,9 +13,18 @@ from util import load_clip_model, DEVICE, CONTEXT_LENGTH, CONFIG_PATH, WEIGHTS_P
 
 def normalize(x: np.ndarray) -> np.ndarray:
     # Normalize to [0, 1].
-    x = x - x.min()
-    if x.max() > 0:
-        x = x / x.max()
+    x_min = x.min()
+    x_max = x.max()
+    print(f"Normalize input - min: {x_min:.6f}, max: {x_max:.6f}")
+    
+    x = x - x_min
+    if x_max - x_min > 1e-8:  # Avoid division by very small numbers
+        x = x / (x_max - x_min)
+    else:
+        print("Warning: Very small range in attention map, setting to zeros")
+        x = np.zeros_like(x)
+    
+    print(f"Normalize output - min: {x.min():.6f}, max: {x.max():.6f}")
     return x
 
 # Modified from: https://github.com/salesforce/ALBEF/blob/main/visualization.ipynb
@@ -119,13 +128,33 @@ def gradCAM(
     with Hook(layer) as hook:        
         # Do a forward and backward pass.
         output = model(input)
-        output.backward(target)
+        
+        # Create a target tensor that focuses on similarity with text
+        # For CLIP models, we want to maximize the cosine similarity
+        target_scores = torch.sum(output * target, dim=-1)
+        target_loss = target_scores.mean()
+        
+        print(f"Output shape: {output.shape}")
+        print(f"Target shape: {target.shape}")
+        print(f"Target scores: {target_scores}")
+        print(f"Target loss: {target_loss}")
+        
+        target_loss.backward()
 
-        grad = hook.gradient.float()
-        act = hook.activation.float()
+        grad = hook.gradient
+        act = hook.activation
+        
+        if grad is None:
+            print("ERROR: No gradients captured!")
+            return torch.zeros_like(input)[:, :1]  # Return dummy tensor
+            
+        grad = grad.float()
+        act = act.float()
         
         print(f"Gradient shape: {grad.shape}")
         print(f"Activation shape: {act.shape}")
+        print(f"Gradient min/max: {grad.min():.6f} / {grad.max():.6f}")
+        print(f"Activation min/max: {act.min():.6f} / {act.max():.6f}")
     
         # Handle different tensor shapes for Vision Transformer vs CNN layers
         if len(grad.shape) == 3:  # Vision Transformer: (batch, seq_len, dim)
@@ -171,9 +200,12 @@ def gradCAM(
         # Weighted combination of activation maps over channel
         # dimension.
         gradcam = torch.sum(act * alpha, dim=1, keepdim=True)
+        print(f"GradCAM before clamp - min/max: {gradcam.min():.6f} / {gradcam.max():.6f}")
+        
         # We only want neurons with positive influence so we
         # clamp any negative ones.
         gradcam = torch.clamp(gradcam, min=0)
+        print(f"GradCAM after clamp - min/max: {gradcam.min():.6f} / {gradcam.max():.6f}")
 
     # Resize gradcam to input resolution.
     gradcam = F.interpolate(
@@ -181,6 +213,9 @@ def gradCAM(
         input.shape[2:],
         mode='bicubic',
         align_corners=False)
+    
+    print(f"Final GradCAM shape: {gradcam.shape}")
+    print(f"Final GradCAM min/max: {gradcam.min():.6f} / {gradcam.max():.6f}")
     
     # Restore gradient settings.
     for name, param in model.named_parameters():
@@ -218,60 +253,66 @@ def generate_gradcam_for_biomedclip(image_path, caption, output_dir=".", salienc
     image_np = load_image(image_path, 224)
     text_input = tokenizer([caption], context_length=CONTEXT_LENGTH).to(device)
     
-    # Get target layer
-    print(f"Model visual structure: {type(model.visual)}")
-    if hasattr(model.visual, 'trunk'):
-        print("Model has trunk attribute")
-        if saliency_layer == "blocks":
-            if hasattr(model.visual.trunk, 'blocks') and len(model.visual.trunk.blocks) > 0:
-                target_layer = model.visual.trunk.blocks[-1]
-                print(f"Using trunk.blocks[-1]: {type(target_layer)}")
-            else:
-                raise ValueError("No blocks found in model.visual.trunk")
-        elif saliency_layer == "norm_pre":
-            target_layer = model.visual.trunk.norm_pre
-        elif saliency_layer == "norm":
-            target_layer = model.visual.trunk.norm
-        elif saliency_layer == "head":
-            target_layer = model.visual.head if hasattr(model.visual, 'head') else model.visual.trunk.head
-        else:
-            target_layer = model.visual.trunk.blocks[-1]
-    else:
-        print("Model does not have trunk attribute")
-        if saliency_layer == "blocks":
-            if hasattr(model.visual, 'blocks') and len(model.visual.blocks) > 0:
-                target_layer = model.visual.blocks[-1]
-                print(f"Using blocks[-1]: {type(target_layer)}")
-            else:
-                # Try to find transformer blocks in other locations
-                for attr_name in dir(model.visual):
-                    attr = getattr(model.visual, attr_name)
-                    if hasattr(attr, 'blocks') and len(attr.blocks) > 0:
-                        target_layer = attr.blocks[-1]
-                        print(f"Found blocks in {attr_name}: {type(target_layer)}")
-                        break
-                else:
-                    raise ValueError("No blocks found in model.visual")
-        elif saliency_layer == "norm_pre":
-            target_layer = model.visual.norm_pre
-        elif saliency_layer == "norm":
-            target_layer = model.visual.norm
-        elif saliency_layer == "head":
-            target_layer = model.visual.head
-        else:
-            target_layer = model.visual.blocks[-1]
+    # Try multiple layers and pick the one with best variation
+    layer_candidates = []
     
-    print(f"Selected target layer: {target_layer}")
-    print(f"Target layer type: {type(target_layer)}")
+    if hasattr(model.visual, 'trunk') and hasattr(model.visual.trunk, 'blocks'):
+        # Try different transformer blocks
+        blocks = model.visual.trunk.blocks
+        layer_candidates.extend([
+            ("blocks[-1]", blocks[-1]),
+            ("blocks[-2]", blocks[-2] if len(blocks) > 1 else blocks[-1]),
+            ("blocks[-3]", blocks[-3] if len(blocks) > 2 else blocks[-1]),
+        ])
+        
+        # Try normalization layers
+        if hasattr(model.visual.trunk, 'norm'):
+            layer_candidates.append(("norm", model.visual.trunk.norm))
+        if hasattr(model.visual.trunk, 'norm_pre'):
+            layer_candidates.append(("norm_pre", model.visual.trunk.norm_pre))
     
-    # Generate GradCAM
-    attn_map = gradCAM(
-        model.visual,
-        image_input,
-        model.encode_text(text_input).float(),
-        target_layer
-    )
-    attn_map = attn_map.squeeze().detach().cpu().numpy()
+    elif hasattr(model.visual, 'blocks'):
+        blocks = model.visual.blocks
+        layer_candidates.extend([
+            ("blocks[-1]", blocks[-1]),
+            ("blocks[-2]", blocks[-2] if len(blocks) > 1 else blocks[-1]),
+        ])
+    
+    best_attn_map = None
+    best_variation = 0
+    best_layer_name = ""
+    
+    for layer_name, target_layer in layer_candidates:
+        print(f"\nTrying layer: {layer_name}")
+        try:
+            # Generate GradCAM for this layer
+            attn_map = gradCAM(
+                model.visual,
+                image_input,
+                model.encode_text(text_input).float(),
+                target_layer
+            )
+            attn_map_np = attn_map.squeeze().detach().cpu().numpy()
+            
+            # Calculate variation in attention map
+            variation = attn_map_np.max() - attn_map_np.min()
+            print(f"Layer {layer_name} variation: {variation:.6f}")
+            
+            if variation > best_variation:
+                best_variation = variation
+                best_attn_map = attn_map_np
+                best_layer_name = layer_name
+                
+        except Exception as e:
+            print(f"Error with layer {layer_name}: {e}")
+            continue
+    
+    if best_attn_map is None:
+        print("ERROR: Could not generate attention map from any layer!")
+        return np.zeros((224, 224))
+    
+    print(f"\nUsing layer {best_layer_name} with variation {best_variation:.6f}")
+    attn_map = best_attn_map
     
     # Create output paths
     os.makedirs(output_dir, exist_ok=True)
@@ -280,6 +321,8 @@ def generate_gradcam_for_biomedclip(image_path, caption, output_dir=".", salienc
     overlay_path = os.path.join(output_dir, f"{base_name}_gradcam_overlay.png")
     
     # Save visualizations
+    print(f"Saving comparison to: {comparison_path}")
+    print(f"Saving overlay to: {overlay_path}")
     viz_attn(image_np, attn_map, blur, save_path=comparison_path)
     save_heatmap_overlay(image_np, attn_map, blur, save_path=overlay_path)
     
