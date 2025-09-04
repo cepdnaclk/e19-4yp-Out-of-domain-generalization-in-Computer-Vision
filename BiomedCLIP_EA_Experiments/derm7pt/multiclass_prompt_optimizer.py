@@ -23,7 +23,7 @@ def get_prompt_template(iteration: int, prompt_content: str, label_type: str, ge
     """
 
     # Initial meta prompt for the first iteration
-    meta_init_prompt = """Give 20 distinct textual description sets to identify the pigment network of a dermoscopic image. Pigment Networks are labelled as absent, typical or atypical. 
+    meta_init_prompt = """Give 50 distinct textual description sets to identify the pigment network of a dermoscopic image. Pigment Networks are labelled as absent, typical or atypical. 
 Each description set must contain three distinct, contrasting features: one for an absent, one for a typical, and one for an atypical pigment network. These features should be direct, discriminating characteristics, not independent descriptions. You should NOT include any observations related to Blue Whitish Veil, Vascular Structures, Pigmentation, Streaks, Dots and Globules, Regression Structures. Only focus on the Pigment Network.
 Only provide the output as Python code in the following format: prompts = list[tuple[str, str, str]]. Let's think step-by-step"""
 
@@ -32,7 +32,7 @@ Only provide the output as Python code in the following format: prompts = list[t
         return meta_init_prompt
 
     meta_optimizer_prompt = """The task is to generate distinct textual description sets to identify the pigment network of a dermoscopic image. Pigment Networks are labelled as absent, typical or atypical. 
-Each description set must contain three distinct, contrasting features: one for an absent, one for a typical, and one for an atypical pigment network. These features should be direct, discriminating characteristics, not independent descriptions. You should only describe the pigment network aspect of the dermoscopic image.
+Each description set must contain three distinct, contrasting features: one for an absent, one for a typical, and one for an atypical pigment network. These features should be direct, discriminating characteristics, not independent descriptions.  You should NOT include any observations related to Blue Whitish Veil, Vascular Structures, Pigmentation, Streaks, Dots and Globules, Regression Structures. Only focus on the Pigment Network.
 Here are the best performing sets in ascending order. High scores indicate higher quality visual discriminative features.
 {content}
 {iteration_specific_instruction}
