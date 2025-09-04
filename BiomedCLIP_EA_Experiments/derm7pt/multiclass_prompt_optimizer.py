@@ -103,7 +103,7 @@ def main():
                                           prompt_content=prompt_content, label_type=label_type, generate_n=10)
 
         # Generate new prompt sets using the LLM client
-        prompt_sets = util.get_prompt_set(meta_prompt, client)
+        prompt_sets = util.get_prompts_from_llm(meta_prompt, client)
 
         # Evaluate each prompt set and insert into the priority queue
         for i, prompt_set in enumerate(prompt_sets):
