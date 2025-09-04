@@ -152,9 +152,9 @@ class BiomedCLIPSaliencyGenerator:
         gradients = None
         activations = None
         
-        def save_gradient(grad):
+        def save_gradient(module, grad_input, grad_output):
             nonlocal gradients
-            gradients = grad
+            gradients = grad_output[0]
         
         def save_activation(module, input, output):
             nonlocal activations
@@ -177,7 +177,7 @@ class BiomedCLIPSaliencyGenerator:
             target_module = dict(self.model.visual.named_modules())[target_layer]
         
         # Register hooks
-        handle_gradient = target_module.register_backward_hook(save_gradient)
+        handle_gradient = target_module.register_full_backward_hook(save_gradient)
         handle_activation = target_module.register_forward_hook(save_activation)
         
         try:
