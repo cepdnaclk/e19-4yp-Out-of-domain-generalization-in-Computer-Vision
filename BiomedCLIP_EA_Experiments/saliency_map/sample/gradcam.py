@@ -171,7 +171,7 @@ def generate_gradcam_for_biomedclip(image_path, caption, output_dir=".", salienc
     # Load BioMedCLIP model using checkpoints
     model, preprocess, tokenizer = load_clip_model()
     model = model.to(device).eval()
-    
+    print(f"Image path : {image_path}")
     # Check if image exists
     if not os.path.exists(image_path):
         raise FileNotFoundError(f"Image file not found: {image_path}")
