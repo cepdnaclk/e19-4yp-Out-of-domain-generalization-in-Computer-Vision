@@ -6,51 +6,48 @@ import os
 
 
 def main():
+    label_type = "melanoma"
+
     # 1. load model, process, and tokenizer
     model, preprocess, tokenizer = util.load_clip_model()
     print("Model, preprocess, and tokenizer loaded successfully.")
 
-    # 2. load dataset
-    # 1) Unpack—annotate what extract_center_embeddings returns
-    centers_features: List[np.ndarray]
-    centers_labels:   List[np.ndarray]
+    # 2. load dataset - MODIFIED FOR CHEXPERT
     features, labels = util.extract_embeddings(
         model=model,
         preprocess=preprocess,
-        train_or_test="test"  # Evaluating on test centers only
+        split="test",
+        label_type=label_type,
     )
-    print("embeddings extracted successfully.")
 
-    # Convert to torch tensors for each center
-    all_features = torch.from_numpy(features)
-    all_labels = torch.from_numpy(labels)
+    # Convert to tensors - MODIFIED FOR MULTI-OBSERVATION SUPPORT
+    all_feats = torch.from_numpy(features).float()
+    all_labels = torch.from_numpy(labels).long()
 
     # 3. load prompts
     prompts_population = util.load_initial_prompts(
-        "experiment_results/ensemble_sample.txt"
+        "experiment_results/distinct_medical_concepts.txt"
     )
 
-    for i in range(10, len(prompts_population), 10):
-        prompts = prompts_population[0:i + 1]
-        print(f"Using {len(prompts)} prompts for evaluation.")
+    print(f"Using {len(prompts_population)} prompts_population for evaluation.")
 
-        # Run the evaluation
-        # for i, _ in enumerate(all_features):
-            # print(f"Evaluating center {i}...")
-        results = util.evaluate_prompt_list(
-            prompts,
-            all_features,
-            all_labels,
-            model,
-            tokenizer,
-            unweighted=False
-        )
+    # Run the evaluation
+    # for i, _ in enumerate(all_features):
+    # print(f"Evaluating center {i}...")
+    results = util.evaluate_prompt_list(
+        prompts_population,
+        all_feats,
+        all_labels,
+        model,
+        tokenizer,
+        unweighted=True
+    )
 
-        print("\n--- Ensemble Evaluation Results ---")
-        print(f"Accuracy: {results['accuracy']:.4f}")
-        print(f"AUC: {results['auc']:.4f}")
-        print("Confusion Matrix:\n", results['cm'])
-        print("Classification Report:\n", results['report'])
+    print("\n--- Ensemble Evaluation Results ---")
+    print(f"Accuracy: {results['accuracy']:.4f}")
+    print(f"AUC: {results['auc']:.4f}")
+    print("Confusion Matrix:\n", results['cm'])
+    print("Classification Report:\n", results['report'])
 
 
 if __name__ == "__main__":
