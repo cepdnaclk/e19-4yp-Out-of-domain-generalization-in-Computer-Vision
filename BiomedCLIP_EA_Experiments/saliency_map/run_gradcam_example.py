@@ -5,7 +5,7 @@ warnings.filterwarnings("ignore")
 def main():
     # Example configuration
     image_path = "/storage/projects3/e19-fyp-out-of-domain-gen-in-cv/camelyon17WILDS/patches/patient_004_node_4/patch_patient_004_node_4_x_3328_y_21792.png"
-    caption = 'Tumor cells display irregular nuclei with coarse chromatin and altered CD5 expression.'
+    caption = 'This is a tumor'
     output_dir = "./"
     saliency_layer = "blocks"  # Options: "blocks", "norm_pre", "norm", "head"
     
