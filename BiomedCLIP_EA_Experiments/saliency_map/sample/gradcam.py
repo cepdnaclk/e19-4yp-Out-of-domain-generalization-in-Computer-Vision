@@ -123,10 +123,51 @@ def gradCAM(
 
         grad = hook.gradient.float()
         act = hook.activation.float()
+        
+        print(f"Gradient shape: {grad.shape}")
+        print(f"Activation shape: {act.shape}")
     
+        # Handle different tensor shapes for Vision Transformer vs CNN layers
+        if len(grad.shape) == 3:  # Vision Transformer: (batch, seq_len, dim)
+            print("Processing Vision Transformer output")
+            # For ViT, we need to reshape to spatial dimensions
+            # Assuming square patches, calculate patch grid size
+            batch_size, seq_len, dim = grad.shape
+            print(f"Original ViT shape: batch={batch_size}, seq_len={seq_len}, dim={dim}")
+            
+            # Skip CLS token if present (seq_len = num_patches + 1)
+            if seq_len == 197:  # 14x14 patches + 1 CLS token for 224x224 input
+                patch_size = 14
+                grad = grad[:, 1:, :]  # Remove CLS token
+                act = act[:, 1:, :]    # Remove CLS token
+                seq_len = 196
+                print("Removed CLS token, new seq_len:", seq_len)
+            elif seq_len == 196:  # 14x14 patches for 224x224 input
+                patch_size = 14
+            else:
+                # Calculate patch size dynamically
+                patch_size = int(seq_len ** 0.5)
+                print(f"Calculated patch_size: {patch_size}")
+            
+            # Reshape to spatial format: (batch, patch_h, patch_w, dim)
+            grad = grad.reshape(batch_size, patch_size, patch_size, dim)
+            act = act.reshape(batch_size, patch_size, patch_size, dim)
+            
+            # Transpose to (batch, dim, patch_h, patch_w) for compatibility
+            grad = grad.permute(0, 3, 1, 2)
+            act = act.permute(0, 3, 1, 2)
+            print(f"Reshaped gradient: {grad.shape}")
+            print(f"Reshaped activation: {act.shape}")
+        
         # Global average pool gradient across spatial dimension
         # to obtain importance weights.
-        alpha = grad.mean(dim=(2, 3), keepdim=True)
+        if len(grad.shape) == 4:  # (batch, channel/dim, height, width)
+            alpha = grad.mean(dim=(2, 3), keepdim=True)
+            print(f"Alpha shape: {alpha.shape}")
+        else:  # Fallback for other shapes
+            print(f"Using fallback for grad shape: {grad.shape}")
+            alpha = grad.mean(dim=tuple(range(2, len(grad.shape))), keepdim=True)
+            
         # Weighted combination of activation maps over channel
         # dimension.
         gradcam = torch.sum(act * alpha, dim=1, keepdim=True)
@@ -178,16 +219,50 @@ def generate_gradcam_for_biomedclip(image_path, caption, output_dir=".", salienc
     text_input = tokenizer([caption], context_length=CONTEXT_LENGTH).to(device)
     
     # Get target layer
-    if saliency_layer == "blocks":
-        target_layer = model.visual.trunk.blocks[-1] if hasattr(model.visual, 'trunk') else model.visual.blocks[-1]
-    elif saliency_layer == "norm_pre":
-        target_layer = model.visual.trunk.norm_pre if hasattr(model.visual, 'trunk') else model.visual.norm_pre
-    elif saliency_layer == "norm":
-        target_layer = model.visual.trunk.norm if hasattr(model.visual, 'trunk') else model.visual.norm
-    elif saliency_layer == "head":
-        target_layer = model.visual.head if hasattr(model.visual, 'head') else model.visual.trunk.head
+    print(f"Model visual structure: {type(model.visual)}")
+    if hasattr(model.visual, 'trunk'):
+        print("Model has trunk attribute")
+        if saliency_layer == "blocks":
+            if hasattr(model.visual.trunk, 'blocks') and len(model.visual.trunk.blocks) > 0:
+                target_layer = model.visual.trunk.blocks[-1]
+                print(f"Using trunk.blocks[-1]: {type(target_layer)}")
+            else:
+                raise ValueError("No blocks found in model.visual.trunk")
+        elif saliency_layer == "norm_pre":
+            target_layer = model.visual.trunk.norm_pre
+        elif saliency_layer == "norm":
+            target_layer = model.visual.trunk.norm
+        elif saliency_layer == "head":
+            target_layer = model.visual.head if hasattr(model.visual, 'head') else model.visual.trunk.head
+        else:
+            target_layer = model.visual.trunk.blocks[-1]
     else:
-        target_layer = model.visual.trunk.blocks[-1] if hasattr(model.visual, 'trunk') else model.visual.blocks[-1]
+        print("Model does not have trunk attribute")
+        if saliency_layer == "blocks":
+            if hasattr(model.visual, 'blocks') and len(model.visual.blocks) > 0:
+                target_layer = model.visual.blocks[-1]
+                print(f"Using blocks[-1]: {type(target_layer)}")
+            else:
+                # Try to find transformer blocks in other locations
+                for attr_name in dir(model.visual):
+                    attr = getattr(model.visual, attr_name)
+                    if hasattr(attr, 'blocks') and len(attr.blocks) > 0:
+                        target_layer = attr.blocks[-1]
+                        print(f"Found blocks in {attr_name}: {type(target_layer)}")
+                        break
+                else:
+                    raise ValueError("No blocks found in model.visual")
+        elif saliency_layer == "norm_pre":
+            target_layer = model.visual.norm_pre
+        elif saliency_layer == "norm":
+            target_layer = model.visual.norm
+        elif saliency_layer == "head":
+            target_layer = model.visual.head
+        else:
+            target_layer = model.visual.blocks[-1]
+    
+    print(f"Selected target layer: {target_layer}")
+    print(f"Target layer type: {type(target_layer)}")
     
     # Generate GradCAM
     attn_map = gradCAM(
