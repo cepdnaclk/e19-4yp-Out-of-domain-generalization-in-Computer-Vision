@@ -20,18 +20,18 @@ def main():
     print(f"  Output directory: {output_dir}")
     print(f"  Saliency layer: {saliency_layer}")
     
-    # Generate GradCAM
-    attention_map = generate_gradcam_for_biomedclip(
-        image_path=image_path,
-        caption=caption,
-        output_dir=output_dir,
-        saliency_layer=saliency_layer,
-        blur=True
-    )
+    # # Generate GradCAM
+    # attention_map = generate_gradcam_for_biomedclip(
+    #     image_path=image_path,
+    #     caption=caption,
+    #     output_dir=output_dir,
+    #     saliency_layer=saliency_layer,
+    #     blur=True
+    # )
     
-    print(f"\nGradCAM generation completed successfully!")
-    print(f"Attention map shape: {attention_map.shape}")
-    print(f"Check the '{output_dir}' directory for output images.")
+    # print(f"\nGradCAM generation completed successfully!")
+    # print(f"Attention map shape: {attention_map.shape}")
+    # print(f"Check the '{output_dir}' directory for output images.")
         
     
 
