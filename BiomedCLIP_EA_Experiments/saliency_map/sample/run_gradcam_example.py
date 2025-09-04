@@ -1,8 +1,3 @@
-#!/usr/bin/env python3
-"""
-Simple usage example for BioMedCLIP GradCAM
-"""
-
 import os
 import sys
 from gradcam import generate_gradcam_for_biomedclip
