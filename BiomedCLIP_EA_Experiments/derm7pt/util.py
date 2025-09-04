@@ -466,7 +466,6 @@ def evaluate_prompt_set(
         'inverted_ce': inverted_ce,
         'f1_macro': f1_macro,
         'f1_weighted': f1_weighted,
-        'probs': y_prob
     }
 
 
