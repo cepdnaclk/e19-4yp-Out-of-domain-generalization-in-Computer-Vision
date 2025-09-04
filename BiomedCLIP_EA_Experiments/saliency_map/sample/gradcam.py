@@ -7,13 +7,9 @@ from scipy import ndimage as filters
 from PIL import Image
 import os
 import sys
-# Add parent directory to path to import util
 from util import load_clip_model, DEVICE, CONTEXT_LENGTH, CONFIG_PATH, WEIGHTS_PATH, MODEL_NAME
 
-#@title Helper functions
 
-#@markdown Some helper functions for overlaying heatmaps on top
-#@markdown of images and visualizing with matplotlib.
 
 def normalize(x: np.ndarray) -> np.ndarray:
     # Normalize to [0, 1].
@@ -214,60 +210,4 @@ def generate_gradcam_for_biomedclip(image_path, caption, output_dir=".", salienc
     
     return attn_map
 
-
-# #@title Run
-
-# #@markdown #### Image & Caption settings
-# image_path = 'input_image.png' #@param {type:"string"}
-# image_caption = 'chest X-ray' #@param {type:"string"}
-# #@markdown ---
-# #@markdown #### BioMedCLIP model settings
-# saliency_layer = "blocks" #@param ["blocks", "norm_pre", "norm", "head"]
-# #@markdown ---
-# #@markdown #### Visualization settings
-# blur = True #@param {type:"boolean"}
-# output_path = 'gradcam_output.png' #@param {type:"string"}
-
-# device = DEVICE
-
-# # Load BioMedCLIP model using checkpoints
-# model, preprocess, tokenizer = load_clip_model()
-# model = model.to(device).eval()
-
-# # Load the provided image (no downloading)
-# if not os.path.exists(image_path):
-#     raise FileNotFoundError(f"Image file not found: {image_path}")
-
-# image_input = preprocess(Image.open(image_path)).unsqueeze(0).to(device)
-# image_np = load_image(image_path, 224)  # BioMedCLIP uses 224x224 input resolution
-# text_input = tokenizer([image_caption], context_length=CONTEXT_LENGTH).to(device)
-
-# # Get the appropriate layer for saliency visualization
-# # For Vision Transformer (BioMedCLIP), we target different layers than ResNet
-# if saliency_layer == "blocks":
-#     # Use the last transformer block for visualization
-#     target_layer = model.visual.trunk.blocks[-1] if hasattr(model.visual, 'trunk') else model.visual.blocks[-1]
-# elif saliency_layer == "norm_pre":
-#     target_layer = model.visual.trunk.norm_pre if hasattr(model.visual, 'trunk') else model.visual.norm_pre
-# elif saliency_layer == "norm":
-#     target_layer = model.visual.trunk.norm if hasattr(model.visual, 'trunk') else model.visual.norm
-# elif saliency_layer == "head":
-#     target_layer = model.visual.head if hasattr(model.visual, 'head') else model.visual.trunk.head
-# else:
-#     # Fallback to the last transformer block
-#     target_layer = model.visual.trunk.blocks[-1] if hasattr(model.visual, 'trunk') else model.visual.blocks[-1]
-
-# attn_map = gradCAM(
-#     model.visual,
-#     image_input,
-#     model.encode_text(text_input).float(),
-#     target_layer
-# )
-# attn_map = attn_map.squeeze().detach().cpu().numpy()
-
-# # Save side-by-side comparison
-# viz_attn(image_np, attn_map, blur, save_path=output_path)
-
-# # Save just the heatmap overlay
-# save_heatmap_overlay(image_np, attn_map, blur, save_path=output_path)
 
