@@ -26,7 +26,7 @@ def main():
     print("all_labels:\n", all_labels)
 
     prompt_set = (
-        "A dermoscopic image showing no signs of pigment network.",
+        "A dermoscopic image showing no signs of a pigment network.",
         "A dermoscopic image showing a normal pigment network.",
         "A dermoscopic image showing an atypical pigment network.",
     )

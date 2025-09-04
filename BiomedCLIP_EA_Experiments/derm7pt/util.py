@@ -495,11 +495,11 @@ def _force_double_quotes(code: str) -> str:
     return tokenize.untokenize(new_tokens)
 
 
-def extract_and_parse_prompt_list(code: str) -> List[Tuple[str, str]]:
+def extract_and_parse_prompt_list(code: str) -> List[Tuple[str, ...]]:
     """
     From a string of Python code, finds the first occurrence of
         = [ ... ]
-    and parses that bracketed literal into a List[Tuple[str,str]].
+    and parses that bracketed literal into a List[Tuple[str, ...]].
 
     Raises:
         ValueError if no list literal is found or it’s malformed.
@@ -518,13 +518,14 @@ def extract_and_parse_prompt_list(code: str) -> List[Tuple[str, str]]:
 
     # 3) validate shape
     if not isinstance(data, list) or not all(
-        isinstance(item, (list, tuple)) and len(item) == 2 for item in data
+        isinstance(item, (list, tuple)) and all(isinstance(x, str) for x in item) for item in data
     ):
         raise ValueError(
-            "Parsed object is not a list of 2-element lists/tuples")
+            "Parsed object is not a list of tuples/lists of strings"
+        )
 
-    # 4) convert to List[Tuple[str,str]]
-    return [(str(a), str(b)) for a, b in data]
+    # 4) convert to List[Tuple[str, ...]]
+    return [tuple(str(x) for x in item) for item in data]
 
 
 def extract_and_parse_prompt_list_with_scores(code: str) -> List[Tuple[str, str, float]]:
@@ -606,28 +607,26 @@ def extract_and_parse_prompt_list_with_scores(code: str) -> List[Tuple[str, str,
     return parsed_items
 
 
-def extract_and_parse_prompt_tuple(code: str) -> Tuple[str, str]:
+def extract_and_parse_prompt_tuple(code: str) -> Tuple[str, ...]:
     """
-    From a string of Python code, finds the first literal tuple of two strings
-    (e.g. ("neg prompt","pos prompt")) and returns it as (str, str).
+    From a string of Python code, finds the first literal tuple of strings
+    (e.g. ("neg prompt","pos prompt", ...)) and returns it as Tuple[str, ...].
 
     Raises:
-        ValueError if no suitable 2-element string tuple is found.
+        ValueError if no suitable tuple of strings is found.
     """
     # Parse into an AST
     tree = ast.parse(code)
 
-    # Walk the tree looking for a Tuple node with exactly two string constants
+    # Walk the tree looking for a Tuple node with all string constants
     for node in ast.walk(tree):
-        if isinstance(node, ast.Tuple) and len(node.elts) == 2:
-            a, b = node.elts
-            if (
-                isinstance(a, ast.Constant) and isinstance(a.value, str)
-                and isinstance(b, ast.Constant) and isinstance(b.value, str)
-            ):
-                return (a.value, b.value)
+        if isinstance(node, ast.Tuple) and all(
+            isinstance(elt, ast.Constant) and isinstance(elt.value, str)
+            for elt in node.elts
+        ):
+            return tuple(elt.value for elt in node.elts)
 
-    raise ValueError("No 2-element string tuple found in code")
+    raise ValueError("No tuple of strings found in code")
 
 
 def _force_double_quotes(code: str) -> str:
@@ -707,7 +706,7 @@ def get_prompt_pairs(
     llm_client: LLMClient,  # Accept the unified LLMClient instance
     parse_func: Callable = extract_and_parse_prompt_list,
     max_retries: int = 10
-) -> List[Tuple[str, str]]:
+) -> List[Tuple[str, ...]]:
     """
     Retrieves and parses a list of prompt-response pairs from an LLM.
 
@@ -746,7 +745,7 @@ def get_prompt_pairs(
 
             # 3) convert the string to a list of tuples
             prompts_list = parse_func(code)
-            prompts: List[Tuple[str, str]] = prompts_list
+            prompts: List[Tuple[str, ...]] = prompts_list
             print(f"Loaded {len(prompts)} prompt-pairs.")
             print("First pair:", prompts[0])
             return prompts
