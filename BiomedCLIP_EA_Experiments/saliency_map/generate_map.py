@@ -391,7 +391,8 @@ def main():
     
     # Example usage
     image_path = "/storage/projects3/e19-fyp-out-of-domain-gen-in-cv/camelyon17WILDS/patches/patient_004_node_4/patch_patient_004_node_4_x_3328_y_21792.png"
-    prompt_pair = ('Lymphocytes have smooth, round nuclei with condensed chromatin and normal CD5 expression.', 'Tumor cells display irregular nuclei with coarse chromatin and altered CD5 expression.')
+    # prompt_pair = ('Lymphocytes have smooth, round nuclei with condensed chromatin and normal CD5 expression.', 'Tumor cells display irregular nuclei with coarse chromatin and altered CD5 expression.')
+    prompt_pair = ('Kaushitha', 'Mansitha')
 
     positive_prompt = prompt_pair[1]
     negative_prompt = prompt_pair[0]
@@ -404,7 +405,7 @@ def main():
         method='gradient',
         target_class=1,
         alpha=0.4,
-        output_path="./saliency_map.png"
+        output_path="./saliency_map_dummy.png"
     )
     
     # Analyze focus regions
