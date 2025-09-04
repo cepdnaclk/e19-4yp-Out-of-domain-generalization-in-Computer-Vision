@@ -22,7 +22,9 @@ def get_prompt_template(iteration: int, prompt_content: str, label_type: str, ge
         String containing the iteration-specific instruction
     """
     task_specific_description_map: dict[str] = {
-        "melanoma":  "shows melanoma or not",
+        "melanoma":  """of a skin lesion shows melanoma or not. 
+These are the following features an expert would look for: Pigment Network, Blue Whitish Veil, Vascular Structures, Pigmentation, Streaks, Dots and Globules, Regression Structures.
+Each description pair must contain two contrasting features: one indicative of benign, and one indicative of a melanoma""",
         "pigment_network": "shows absent, typical or atypical pigment network. Negative prompts should describe both absent and typical pigment networks, while positive prompts should describe atypical pigment networks.",
         "blue_whitish_veil": "shows absence or presence of blue-whitish veil. Negative prompts should describe absence, while positive prompts should describe presence of blue-whitish veil.",
         "streaks": "shows absence, regular or irregular streaks. Negative prompts should describe both absence and regular streaks, while positive prompts should describe irregular streaks.",
@@ -33,7 +35,8 @@ def get_prompt_template(iteration: int, prompt_content: str, label_type: str, ge
     }
 
     # Initial meta prompt for the first iteration
-    meta_init_prompt = """Give 50 distinct textual descriptions of pairs of visual discriminative features to identify whether a dermoscopic image {task_specific_description}. Only provide the output as Python code in the following format: prompts = list[tuple[negative: str, positive: str]]. Let's think step-by-step"""
+    meta_init_prompt = """Give 50 distinct textual descriptions of pairs of visual discriminative features to identify whether a dermoscopic image {task_specific_description}.
+Only provide the output as Python code in the following format: prompts = list[tuple[negative: str, positive: str]]. Let's think step-by-step"""
 
     # Meta prompt template for subsequent iterations
     base_meta_prompt_template = """The task is to generate distinct textual descriptions pairs of visual discriminative features to identify whether a dermoscopic image {task_specific_description}. 
@@ -100,7 +103,7 @@ def main():
         use_local_ollama=False, ollama_model="hf.co/unsloth/medgemma-27b-text-it-GGUF:Q8_0")
 
     # Optimization loop
-    pq = util.PriorityQueue(max_capacity=1000, filter_threshold=0.5)
+    pq = util.PriorityQueue(max_capacity=1000, filter_threshold=0.3)
     prompt_content = ""
 
     # 6. Optimization loop: generate, evaluate, and select prompts for 500 iterations
@@ -110,7 +113,7 @@ def main():
                                           prompt_content=prompt_content, label_type=label_type, generate_n=10)
 
         # Generate new prompt pairs using the LLM client
-        prompts = util.get_prompt_pairs(meta_prompt, client)
+        prompts = util.get_prompts_from_llm(meta_prompt, client)
 
         # Evaluate each prompt pair and insert into the priority queue
         for i, prompt_pair in enumerate(prompts):
