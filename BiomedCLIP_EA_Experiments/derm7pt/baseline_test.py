@@ -26,9 +26,9 @@ def main():
     print("all_labels:\n", all_labels)
 
     prompt_set = (
-        "A dermoscopic image showing no signs of a pigment network.",
-        "A dermoscopic image showing a normal pigment network.",
-        "A dermoscopic image showing an atypical pigment network.",
+        "A photo of an absent pigment network",
+        "A photo of a typical pigment network.",
+        "A photo of an atypical pigment network.",
     )
     results = util.evaluate_prompt_set(
         prompt_set, all_feats, all_labels, model, tokenizer)
