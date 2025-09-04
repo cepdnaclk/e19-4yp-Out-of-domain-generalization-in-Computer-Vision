@@ -1,5 +1,3 @@
-import os
-import sys
 from gradcam import generate_gradcam_for_biomedclip
 import warnings
 warnings.filterwarnings("ignore")
