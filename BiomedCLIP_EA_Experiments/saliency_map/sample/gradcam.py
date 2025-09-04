@@ -8,8 +8,7 @@ from PIL import Image
 import os
 import sys
 # Add parent directory to path to import util
-sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-from util import load_clip_model, DEVICE, CONTEXT_LENGTH, CONFIG_PATH, WEIGHTS_PATH, MODEL_NAME
+from ..util import load_clip_model, DEVICE, CONTEXT_LENGTH, CONFIG_PATH, WEIGHTS_PATH, MODEL_NAME
 
 #@title Helper functions
 
