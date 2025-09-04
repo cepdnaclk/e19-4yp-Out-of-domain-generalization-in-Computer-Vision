@@ -8,7 +8,7 @@ from PIL import Image
 import os
 import sys
 # Add parent directory to path to import util
-from ..util import load_clip_model, DEVICE, CONTEXT_LENGTH, CONFIG_PATH, WEIGHTS_PATH, MODEL_NAME
+from util import load_clip_model, DEVICE, CONTEXT_LENGTH, CONFIG_PATH, WEIGHTS_PATH, MODEL_NAME
 
 #@title Helper functions
 
@@ -73,20 +73,6 @@ def load_image(img_path, resize=None):
     return np.asarray(image).astype(np.float32) / 255.
 
 
-#@title GradCAM: Gradient-weighted Class Activation Mapping for BioMedCLIP
-
-#@markdown Our gradCAM implementation registers a forward hook
-#@markdown on the model at the specified layer. This allows us
-#@markdown to save the intermediate activations and gradients
-#@markdown at that layer.
-
-#@markdown To visualize which parts of the image activate for
-#@markdown a given caption, we use the caption as the target
-#@markdown label and backprop through the network using the
-#@markdown image as the input.
-#@markdown In the case of BioMedCLIP models with Vision Transformer encoders,
-#@markdown we save the activation and gradients at the
-#@markdown transformer blocks or normalization layers.
 
 class Hook:
     """Attaches to a module and records its activations and gradients."""
