@@ -54,7 +54,7 @@ Each description set must contain five discriminating descriptions based on one 
 
 def main():
     # Name the experiment we are currently running
-    experiment_name = "Wbcatt_Experiment11_F1Macro_"
+    experiment_name = "Wbcatt_Experiment1_F1Macro_"
     print(f"Running {experiment_name}...")
 
     # Create experiment results directory
@@ -108,7 +108,7 @@ def main():
 
         # Evaluate each prompt set and insert into the priority queue
         for i, prompt_set in enumerate(prompt_sets):
-            if len(prompt_set) != 3:
+            if len(prompt_set) != 5:
                 print(f"Invalid prompt set: {prompt_set}")
                 continue
             results = util.evaluate_prompt_set(
