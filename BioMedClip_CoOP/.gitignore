@@ -1,7 +1,0 @@
-*.log
-*.pyc
-/_pycache__
-/caches
-/deprecated
-/open_clip
-*.env
