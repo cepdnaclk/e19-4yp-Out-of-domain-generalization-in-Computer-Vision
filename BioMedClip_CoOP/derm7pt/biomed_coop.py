@@ -263,7 +263,7 @@ class CoOpTrainer:
             lr=self.lr
         )
 
-    def train(self, train_loader, val_loader,test_loader,id_test_loaders):
+    def train(self, train_loader, val_loader,test_loader):
         """Main training loop"""
         best_acc = 0.0
         # print(f"device {self.device}")
@@ -337,7 +337,6 @@ class CoOpTrainer:
         
         Args:
             test_loader: DataLoader for main test set
-            id_test_loaders: Dict of DataLoaders for additional test sets (may be empty for derm7pt)
         """
         self.model.eval()
         results = {}
