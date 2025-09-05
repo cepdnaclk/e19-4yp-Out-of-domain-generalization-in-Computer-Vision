@@ -7,7 +7,6 @@ from sklearn.metrics import accuracy_score, f1_score
 # from open_clip import create_model_from_pretrained, get_tokenizer
 # from open_clip import create_model_and_transforms
 from open_clip.src.open_clip import create_model_and_transforms, get_tokenizer
-from utils import send_slack_message
 import json
 from open_clip.src.open_clip.factory import HF_HUB_PREFIX, _MODEL_CONFIGS
 class TextEncoder(nn.Module):
@@ -316,7 +315,6 @@ class CoOpTrainer:
         # Final evaluation
         self.model.load_state_dict(torch.load(f"best_coop_model_{self.args['keyword']}.pth"))
         test_acc = self.evaluate_test(test_loader=test_loader)
-        send_slack_message(f"Test Results: {test_acc}")
         return best_acc, test_acc
 
     def evaluate(self, loader):
