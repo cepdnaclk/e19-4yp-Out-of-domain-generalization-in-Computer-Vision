@@ -1,18 +1,10 @@
-('Regression structures are minimal, appearing as subtle perifollicular hypopigmentation.', 'Regression structures are extensive, with large areas of depigmentation and scarring, resembling a moth-eaten appearance.'), Score: 0.8087
-('The lesion exhibits a smooth, even surface texture.', 'The lesion exhibits an irregular, nodular, or ulcerated surface texture.'), Score: 0.7990
-('Pigment network is well-defined and consistent in width.', 'Pigment network is poorly defined and varies significantly in width.'), Score: 0.7990
-('Predominantly coiled telangiectasias, indicating a benign vascular pattern.', 'Polymorphous vascular structures including dotted vessels and arborizing vessels, suggestive of malignancy.'), Score: 0.7942
-('Globules are small and well-defined, with a smooth border.', 'Globules are large, poorly defined, and exhibit ulceration or bleeding.'), Score: 0.7942
-('Pigmentation is limited to the central portion of the lesion.', 'Pigmentation extends to the periphery with irregular borders and satellite lesions.'), Score: 0.7918
-('Vascular structures appear as fine, hair-like capillaries.', 'Vascular structures are dilated and resemble large, irregular blood lakes.'), Score: 0.7918
-('Dots and globules are monomorphic and exhibit a regular pattern.', 'Dots and globules are polymorphic, varying in size and shape, and arranged in an irregular, chaotic pattern.'), Score: 0.7893
-('Globules are small, well-defined, and symmetrical.', 'Globules are large, poorly defined, asymmetrical, and exhibit pagetoid spread.'), Score: 0.7893
-('Regression structures are subtle and limited to perifollicular areas.', 'Regression structures are prominent, with extensive fibrosis and textural disruption.'), Score: 0.7869
-('Pigment network with a consistent mesh-like pattern.', 'Pigment network with areas of disruption and asymmetry.'), Score: 0.7869
-('Vascular structures are telangiectasias, thin and punctate.', 'Vascular structures are prominent, dilated, and serpentine, with irregular branching.'), Score: 0.7869
-('Pigmentation is uniform and consistent across the lesion.', 'Pigmentation is variegated with areas of hypopigmentation and hyperpigmentation.'), Score: 0.7869
-('Regression structures appear as subtle, pale areas with preserved pigment network.', 'Regression structures are prominent, with complete loss of pigment network and scarring.'), Score: 0.7869
-('Pigmentation is uniform tan or light brown.', 'Pigmentation includes shades of black, grey, and blue, with an atypical color distribution.'), Score: 0.7869
-('Blue-whitish veil is absent, allowing clear visualization of the dermal-epidermal junction.', 'Blue-whitish veil is present and associated with dermal inflammation and nodularity.'), Score: 0.7845
-('Globules that are consistently round and well-defined.', 'Globules that are irregular, asymmetric, and poorly defined.'), Score: 0.7845
-('The lesion surface is flat and smooth, blending with surrounding skin.', 'The lesion surface is elevated, nodular, and ulcerated, with an irregular contour.'), Score: 0.7845
+('Pigmentation is light brown and homogenous.', 'Pigmentation is dark brown to black, with areas of blue-grey discoloration.'), Score: 0.6714
+('Regular, linear vessels with consistent diameter.', 'Irregular, branching vessels with varying diameters.'), Score: 0.6658
+('Globules are small, well-circumscribed, and exhibit a smooth surface.', 'Globules are large, poorly defined, and have an irregular, ulcerated surface.'), Score: 0.6578
+('Streaks are faint and radial, extending slightly from the lesion.', 'Streaks are broad, irregular, and pseudopod-like, extending significantly from the lesion.'), Score: 0.6544
+('Dots are small, monomorphic, and confined to the pigment network.', 'Dots are large, pleomorphic, and merge with surrounding pigmentation.'), Score: 0.6539
+('Blue whitish veil is absent or very subtle, with a clear demarcation between the lesion and surrounding skin.', 'Blue whitish veil is prominent and diffuse, obscuring the underlying structures and indicating dermal involvement.'), Score: 0.6535
+('Regression structures are absent or minimal, appearing as slight lightening of the skin tone.', 'Regression structures are extensive, with a grey-blue hue and surrounding halo of inflammation.'), Score: 0.6422
+('Pigmentation is limited to the central lesion area.', 'Pigmentation extends to the periphery of the lesion, with ill-defined borders.'), Score: 0.6371
+('Minimal variation in color across the lesion.', 'Significant color variation, including areas of black, red, and blue.'), Score: 0.6314
+('Pigment network is regular, with consistent mesh-like pattern throughout.', 'Pigment network is irregular, with variations in mesh size and areas of disruption.'), Score: 0.6304
