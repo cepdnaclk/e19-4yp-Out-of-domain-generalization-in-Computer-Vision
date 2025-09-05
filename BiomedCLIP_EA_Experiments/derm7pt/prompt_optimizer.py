@@ -23,6 +23,7 @@ def get_prompt_template(iteration: int, prompt_content: str, label_type: str, ge
     """
     task_specific_description_map: dict[str] = {
         "melanoma":  """of a skin lesion shows melanoma or not. 
+These are the following features an expert would look for: Pigment Network, Blue Whitish Veil, Vascular Structures, Pigmentation, Streaks, Dots and Globules, Regression Structures.
 Each description pair must contain two contrasting features: one indicative of benign, and one indicative of a melanoma""",
         "pigment_network": "shows absent, typical or atypical pigment network. Negative prompts should describe both absent and typical pigment networks, while positive prompts should describe atypical pigment networks.",
         "blue_whitish_veil": "shows absence or presence of blue-whitish veil. Negative prompts should describe absence, while positive prompts should describe presence of blue-whitish veil.",
@@ -64,7 +65,7 @@ def main():
     label_type = "melanoma"
 
     # Name the experiment we are currently running
-    experiment_name = "Derm7pt_Experiment12_F1Macro_No_Concepts" + label_type
+    experiment_name = "Derm7pt_Experiment11_F1Macro_" + label_type
     print(f"Running {experiment_name}...")
 
     # Create experiment results directory
