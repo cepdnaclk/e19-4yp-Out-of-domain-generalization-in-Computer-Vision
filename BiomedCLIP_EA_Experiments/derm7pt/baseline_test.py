@@ -34,9 +34,8 @@ def main():
         prompt_set, all_feats, all_labels, model, tokenizer)
     print("Baseline Evaluation results:\n", results)
 
-    optimized_prompt_set = (
-        'Regression structures are minimal, appearing as subtle perifollicular hypopigmentation.', 'Regression structures are extensive, with large areas of depigmentation and scarring, resembling a moth-eaten appearance.'
-    )
+    optimized_prompt_set = ('Pigmentation is light brown and homogenous.',
+                            'Pigmentation is dark brown to black, with areas of blue-grey discoloration.')
 
     optimized_results = util.evaluate_prompt_set(
         optimized_prompt_set, all_feats, all_labels, model, tokenizer)
