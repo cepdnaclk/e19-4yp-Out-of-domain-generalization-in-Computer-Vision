@@ -142,7 +142,7 @@ class WBCAttDataset(Dataset):
     def __init__(self, csv_path, image_base, preprocess):
         """
         WBCAtt Dataset for White Blood Cell classification.
-        
+
         Args:
             csv_path: Path to the CSV file (train/val/test)
             image_base: Base directory containing the images
@@ -151,18 +151,21 @@ class WBCAttDataset(Dataset):
         self.df = pd.read_csv(csv_path)
         self.image_base = image_base
         self.preprocess = preprocess
-        
+
         # Create label mapping from string labels to integers
         unique_labels = sorted(self.df['label'].unique())
-        self.label_to_idx = {label: idx for idx, label in enumerate(unique_labels)}
-        self.idx_to_label = {idx: label for label, idx in self.label_to_idx.items()}
-        
+        self.label_to_idx = {label: idx for idx,
+                             label in enumerate(unique_labels)}
+        self.idx_to_label = {idx: label for label,
+                             idx in self.label_to_idx.items()}
+
         # Convert labels to indices
         self.labels = [self.label_to_idx[label] for label in self.df['label']]
-        
+
         # Construct full image paths
-        self.image_paths = [os.path.join(image_base, row["path"]) for _, row in self.df.iterrows()]
-        
+        self.image_paths = [os.path.join(
+            image_base, row["path"]) for _, row in self.df.iterrows()]
+
         print(f"WBCAtt Dataset initialized with {len(self.df)} samples")
         print(f"Classes: {list(self.label_to_idx.keys())}")
         print(f"Label distribution:")
@@ -178,10 +181,10 @@ class WBCAttDataset(Dataset):
         img = self.preprocess(img)
         label = torch.tensor(self.labels[idx], dtype=torch.long)
         return img, label
-    
+
     def get_num_classes(self):
         return len(self.label_to_idx)
-    
+
     def get_class_names(self):
         return list(self.label_to_idx.keys())
 
@@ -229,7 +232,6 @@ def load_clip_model(
     return model, preprocess, tokenizer
 
 
-
 def extract_embeddings(model, preprocess, split="train", cache_dir="./wbcatt_cache"):
     """
     Extract embeddings for WBCAtt dataset for a given split.
@@ -245,7 +247,7 @@ def extract_embeddings(model, preprocess, split="train", cache_dir="./wbcatt_cac
     """
     split_map = {
         "train": WBCATT_TRAIN_CSV,
-        "val": WBCATT_VAL_CSV, 
+        "val": WBCATT_VAL_CSV,
         "test": WBCATT_TEST_CSV
     }
     csv_path = split_map[split]
@@ -253,14 +255,12 @@ def extract_embeddings(model, preprocess, split="train", cache_dir="./wbcatt_cac
     os.makedirs(cache_dir, exist_ok=True)
     features_cache = os.path.join(cache_dir, f"wbcatt_{split}_features.npy")
     labels_cache = os.path.join(cache_dir, f"wbcatt_{split}_labels.npy")
-    
+
     if os.path.exists(features_cache) and os.path.exists(labels_cache):
         print(f"Loading cached embeddings for {split} split...")
         features_array = np.load(features_cache)
         labels_array = np.load(labels_cache)
-        # Create dataset to get class information
-        dataset = WBCAttDataset(csv_path, WBCATT_IMAGE_BASE, preprocess)
-        return features_array, labels_array, dataset
+        return features_array, labels_array
 
     # Create dataset and dataloader
     print(f"Creating WBCAtt dataset and dataloader for {split} split...")
@@ -270,7 +270,7 @@ def extract_embeddings(model, preprocess, split="train", cache_dir="./wbcatt_cac
 
     model = model.to(DEVICE).eval()
     features, all_labels = [], []
-    
+
     print(f"Extracting embeddings for {len(dataset)} {split} samples...")
     with torch.no_grad():
         for imgs, labels in tqdm(loader, desc=f"Extracting WBCAtt {split} embeddings"):
@@ -281,7 +281,7 @@ def extract_embeddings(model, preprocess, split="train", cache_dir="./wbcatt_cac
 
     features_array = torch.cat(features).numpy()
     labels_array = np.concatenate(all_labels)
-    
+
     # Cache the results
     print(f"Caching embeddings to {features_cache} and {labels_cache}...")
     np.save(features_cache, features_array)
