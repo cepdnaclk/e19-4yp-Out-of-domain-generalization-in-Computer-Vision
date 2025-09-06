@@ -306,10 +306,10 @@ class XCoOpPromptLearner(nn.Module):
         all_token_embeddings = []
         all_class_text_features = []
         prompts = []
-        if cfg.DATASET.NAME == "Pneumonia":
+        if cfg.DATASET.NAME == "Camelyon17Custom":
             prompts = [
                 template_prompts[0].format(all_classnames[0]),  # normal
-                template_prompts[1].format(all_classnames[1]),  # pneumonia
+                template_prompts[1].format(all_classnames[1]),  # Tumor
                 ]
         else:  # NOTE: for other datasets
             print("Please create the hand-crafted prompts when using new datasets")
