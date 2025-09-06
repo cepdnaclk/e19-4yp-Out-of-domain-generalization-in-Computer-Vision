@@ -22,10 +22,13 @@ def load_dataloader(path):
 
 
 def main():
-   
+    import pandas as pd
+    train_csv_path = '/storage/projects3/e19-fyp-out-of-domain-gen-in-cv/wbc_att/pbc_attr_v1_train.csv'
+    train_df = pd.read_csv(train_csv_path)
+    sorted_classnames = sorted(train_df['label'].unique())
     args = {
         'keyword': 'WBCAtt_CoOp',
-        'train_csv': '/storage/projects3/e19-fyp-out-of-domain-gen-in-cv/wbc_att/pbc_attr_v1_train.csv',
+        'train_csv': train_csv_path,
         'val_csv': '/storage/projects3/e19-fyp-out-of-domain-gen-in-cv/wbc_att/pbc_attr_v1_val.csv',
         'test_csv': '/storage/projects3/e19-fyp-out-of-domain-gen-in-cv/wbc_att/pbc_attr_v1_test.csv',
         'image_base': '/storage/projects3/e19-fyp-out-of-domain-gen-in-cv/wbc_att/',
@@ -44,10 +47,10 @@ def main():
         'weight_decay': 0.0005,
         'warmup_epoch': 5,
         'ctx_init': None,
-        'few_shot': False,
-        'few_shot_no': 2,
         # Dataset-specific
-        # 'classnames': ["neutrophil", "eosinophil", "lymphocyte", "monocyte", "basophil"], # Example classes, update as needed
+        'classnames': list(sorted_classnames),
+        'few_shot': False,  # Set to True to enable few-shot learning
+        'few_shot_no': 2,   # Number of samples per class for few-shot
     }
 
 
