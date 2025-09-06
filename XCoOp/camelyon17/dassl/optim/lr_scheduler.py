@@ -19,6 +19,7 @@ class _BaseWarmupScheduler(_LRScheduler):
     ):
         self.successor = successor
         self.warmup_epoch = warmup_epoch
+        print(f"optimizer: {optimizer}, last_epoch: {last_epoch}, verbose: {verbose}")
         super().__init__(optimizer, last_epoch, verbose)
 
     def get_lr(self):
