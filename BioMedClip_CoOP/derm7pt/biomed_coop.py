@@ -4,6 +4,8 @@ import torch.nn.functional as F
 from tqdm import tqdm
 from torch.cuda.amp import GradScaler, autocast
 from sklearn.metrics import accuracy_score, f1_score
+from sklearn.utils.class_weight import compute_class_weight
+import numpy as np
 # from open_clip import create_model_from_pretrained, get_tokenizer
 # from open_clip import create_model_and_transforms
 from open_clip.src.open_clip import create_model_and_transforms, get_tokenizer
@@ -200,6 +202,36 @@ class CoOpTrainer:
         self.n_ctx = args.get('n_ctx', 4)
         self.class_token_position = args.get('class_token_position', 'end')
         self.csc = args.get('csc', True)
+        
+        # Class weights for weighted cross entropy (will be calculated later)
+        self.class_weights = None
+
+    def calculate_class_weights(self, train_loader):
+        """Calculate class weights for weighted cross entropy loss"""
+        print("Calculating class weights for weighted cross entropy...")
+        
+        # Collect all labels from the training set
+        all_labels = []
+        for _, labels in train_loader:
+            all_labels.extend(labels.numpy())
+        
+        all_labels = np.array(all_labels)
+        unique_classes = np.unique(all_labels)
+        
+        # Calculate class weights using sklearn's compute_class_weight
+        class_weights = compute_class_weight(
+            class_weight='balanced',
+            classes=unique_classes,
+            y=all_labels
+        )
+        
+        # Convert to tensor and move to device
+        class_weights_tensor = torch.FloatTensor(class_weights).to(self.device)
+        
+        print(f"Class distribution: {np.bincount(all_labels)}")
+        print(f"Class weights: {class_weights}")
+        
+        return class_weights_tensor
 
     def build_model(self, classnames):
         """Initialize BiomedCLIP model with CoOp prompt learning"""
@@ -265,6 +297,9 @@ class CoOpTrainer:
 
     def train(self, train_loader, val_loader,test_loader):
         """Main training loop"""
+        # Calculate class weights for weighted cross entropy
+        self.class_weights = self.calculate_class_weights(train_loader)
+        
         best_acc = 0.0
         # print(f"device {self.device}")
         for epoch in range(self.epochs):
@@ -279,10 +314,10 @@ class CoOpTrainer:
                 if self.precision == 'amp':
                     with autocast():
                         outputs = self.model(images)
-                        loss = F.cross_entropy(outputs, labels)
+                        loss = F.cross_entropy(outputs, labels, weight=self.class_weights)
                 else:
                     outputs = self.model(images)
-                    loss = F.cross_entropy(outputs, labels)
+                    loss = F.cross_entropy(outputs, labels, weight=self.class_weights)
                 
                 # Backward pass
                 self.optimizer.zero_grad()
