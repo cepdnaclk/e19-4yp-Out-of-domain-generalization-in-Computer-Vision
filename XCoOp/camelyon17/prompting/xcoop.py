@@ -145,7 +145,7 @@ class PromptLearner(nn.Module):
         all_token_embeddings = []
         all_class_text_features = []
         prompts = []
-        if cfg.DATASET.NAME == "Camelyon17":
+        if cfg.DATASET.NAME == "Camelyon17Custom":
             prompts = [
                 template_prompts[0].format(all_classnames[0]),  # non-tumor
                 template_prompts[1].format(all_classnames[1]),  # tumor
@@ -160,7 +160,7 @@ class PromptLearner(nn.Module):
             class_text_features = text_encoder_model(embedding_all_cls, tokenized_prompts_all_c).type(dtype)  # text features of the hand-crafted prompts
             all_class_text_features.append(class_text_features)  
             all_token_embeddings.append(embedding_all_cls)
-        
+
         self.register_buffer("class_token_embeddings", torch.stack(all_token_embeddings, dim=0))
         self.register_buffer("class_text_features", torch.stack(all_class_text_features, dim=0))
 
