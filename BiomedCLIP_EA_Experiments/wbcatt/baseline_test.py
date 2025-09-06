@@ -20,9 +20,9 @@ def main():
 
     print(f"Loaded {len(all_feats)} wbcatt embeddings")
 
-    blood_types = ["Basophil", "Eosinophil",
-                   "Lymphocyte", "Monocyte", "Neutrophil"]
-    template = "An image of a {blood_type} peripheral blood cell"
+    blood_types = ["basophil", "eosinophil",
+                   "lymphocyte", "monocyte", "neutrophil"]
+    template = "An image of a {blood_type} typed peripheral blood cell"
     prompt_set = tuple(template.format(blood_type=bt) for bt in blood_types)
 
     results = util.evaluate_prompt_set(
