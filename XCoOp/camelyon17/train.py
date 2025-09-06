@@ -99,7 +99,10 @@ def extend_cfg(cfg):
     cfg.TRAINER.XCoOp.ENABLE_W = False
     cfg.TRAINER.XCoOp.ENABLE_IMPLICIT_OP = 'sum' # mul
     cfg.TRAINER.XCoOp.PRETRAINED_PROMPTS_DIR = None
-    cfg.TRAINER.XCoOp.CLINICAL_PROMPTS = ['a photo of {}']
+    cfg.TRAINER.XCoOp.CLINICAL_PROMPTS = [
+      "a photo of a {}, no evidence of tumor present.",  # non-tumor
+      "a photo of a {}, tumor detected in tissue section.", # tumor
+    ]
     cfg.TRAINER.XCoOp.XCoOp_TOKEN_LOSS_WEIGHT = 1.0
     cfg.TRAINER.XCoOp.XCoOp_VOCAB_LOSS_WEIGHT = 0.0  
     cfg.TRAINER.XCoOp.VISUAL_FEATURE_NUMBER = 1
