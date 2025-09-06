@@ -154,14 +154,16 @@ class WBCAttDataset(Dataset):
 
         # Create label mapping from string labels to integers
         unique_labels = sorted(self.df['label'].unique())
+        print(f"Unique labels found: {unique_labels}")
         self.label_to_idx = {label: idx for idx,
                              label in enumerate(unique_labels)}
+        print(f"Label to index mapping: {self.label_to_idx}")
         self.idx_to_label = {idx: label for label,
                              idx in self.label_to_idx.items()}
-
+        print(f"Index to label mapping: {self.idx_to_label}")
         # Convert labels to indices
         self.labels = [self.label_to_idx[label] for label in self.df['label']]
-
+        print(f"Labels converted to indices: {self.labels}")
         # Construct full image paths
         self.image_paths = [os.path.join(
             image_base, row["path"]) for _, row in self.df.iterrows()]
