@@ -572,7 +572,7 @@ class XCoOp(TrainerX):
                         {"params": group2},]
         self.optim = build_optimizer(self.model, cfg.OPTIM, param_groups=param_groups)
         
-        self.sched = build_lr_scheduler(self.optim, cfg.OPTIM)
+        self.sched = None  # No scheduler, fixed learning rate
         self.register_model("prompt_learner", self.model, self.optim, self.sched)
 
         self.scaler = GradScaler() if cfg.TRAINER.XCoOp.PREC == "amp" else None

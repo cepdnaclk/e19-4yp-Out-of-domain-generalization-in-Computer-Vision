@@ -14,12 +14,9 @@ INPUT:
 
 OPTIM:
   NAME: "sgd"
-  LR: 0.032 
+  LR: 0.032
   MAX_EPOCH: 120
-  LR_SCHEDULER: "cosine"
-  WARMUP_EPOCH: 5
-  WARMUP_TYPE: "constant"
-  WARMUP_CONS_LR: 1e-5
+  LR_SCHEDULER: null
 
 TRAIN:
   PRINT_FREQ: 20
