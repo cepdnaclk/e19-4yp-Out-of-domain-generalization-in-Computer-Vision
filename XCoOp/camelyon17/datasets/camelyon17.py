@@ -8,8 +8,9 @@ class Camelyon17Custom(DatasetBase):
 
     def __init__(self, cfg):
         root = os.path.abspath(os.path.expanduser(cfg.DATASET.ROOT))
-        self.metadata_path = os.path.join(root, "metadata.csv")
-        self.root_dir = os.path.join(root, "images")
+        # Use absolute metadata path as specified
+        self.metadata_path = "/storage/projects3/e19-fyp-out-of-domain-gen-in-cv/camelyon17WILDS/metadata.csv"
+        self.root_dir = root
         self.all_class_names = ["non-tumor", "tumor"]
 
         train = self.read_data(split="train")
