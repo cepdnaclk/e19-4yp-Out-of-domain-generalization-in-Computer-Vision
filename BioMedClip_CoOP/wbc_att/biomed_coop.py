@@ -397,7 +397,7 @@ class CoOpTrainer:
                     all_labels.extend(labels.cpu().numpy())
             
             acc = total_correct / total_samples * 100
-            f1 = f1_score(all_labels, all_preds, average='binary') * 100
+            f1 = f1_score(all_labels, all_preds, average='weighted') * 100
             return acc, f1
         
         # Evaluate main test set
