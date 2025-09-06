@@ -44,9 +44,8 @@ class ConstantWarmupScheduler(_BaseWarmupScheduler):
         verbose=False
     ):
         self.cons_lr = cons_lr
-        super().__init__(
-            optimizer, successor, warmup_epoch, last_epoch, verbose
-        )
+        # Only pass optimizer, successor, warmup_epoch, last_epoch, verbose to _BaseWarmupScheduler
+        super().__init__(optimizer, successor, warmup_epoch, last_epoch, verbose)
 
     def get_lr(self):
         if self.last_epoch >= self.warmup_epoch:
