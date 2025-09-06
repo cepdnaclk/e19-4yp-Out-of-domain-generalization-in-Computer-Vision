@@ -179,6 +179,7 @@ def main():
 
     args = Args()
     args.root = dataset_root
+    args.metadata_path = metadata_path
     args.output_dir = output_dir
     args.resume = ""
     args.seed = seed
