@@ -150,8 +150,13 @@ class PromptLearner(nn.Module):
                 template_prompts[0].format(all_classnames[0]),  # non-tumor
                 template_prompts[1].format(all_classnames[1]),  # tumor
             ]
+            print(f"Using Camelyon17Custom clinical prompts. {prompts}")
         else:
-            print("Please create the hand-crafted prompts when using new datasets")
+             # Fallback: use generic prompts if not Camelyon17Custom
+            prompts = [
+                "a photo of a non-tumor.",
+                "a photo of a tumor."
+            ]
 
         tokenized_prompts_all_c = torch.cat([clip.tokenize(p) for p in prompts])
         text_encoder_model.cuda()
