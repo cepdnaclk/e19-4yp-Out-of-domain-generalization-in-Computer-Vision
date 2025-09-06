@@ -1,3 +1,4 @@
+
 import os
 os.environ['CUDA_VISIBLE_DEVICES'] = '0'  # TODO:  GPU choice
 
@@ -175,6 +176,7 @@ def main():
 
     class Args:
         pass
+
     args = Args()
     args.root = dataset_root
     args.output_dir = output_dir
@@ -224,3 +226,7 @@ def main_entry(args):
 
     if not args.no_train:
         trainer.train()
+
+# Entry point for script execution
+if __name__ == "__main__":
+    main()
