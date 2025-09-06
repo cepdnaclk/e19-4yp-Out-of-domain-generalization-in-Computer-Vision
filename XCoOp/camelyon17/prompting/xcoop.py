@@ -577,14 +577,14 @@ class XCoOp(TrainerX):
 
         self.scaler = GradScaler() if cfg.TRAINER.XCoOp.PREC == "amp" else None
 
-        # wandb initialization
-        if self.cfg.WANDB:
-            run = wandb.init(
-            project="XCoOp",
-            config=self.cfg,
-            name="Dataset_{}_Trainer_{}_Backbone_{}_epochs_{}_lr_{}".format(
-                self.cfg.DATASET.NAME, self.cfg.TRAINER.NAME, self.cfg.MODEL.BACKBONE.NAME, self.cfg.OPTIM.MAX_EPOCH, self.cfg.OPTIM.LR)
-            )
+        # # wandb initialization
+        # if self.cfg.WANDB:
+        #     run = wandb.init(
+        #     project="XCoOp",
+        #     config=self.cfg,
+        #     name="Dataset_{}_Trainer_{}_Backbone_{}_epochs_{}_lr_{}".format(
+        #         self.cfg.DATASET.NAME, self.cfg.TRAINER.NAME, self.cfg.MODEL.BACKBONE.NAME, self.cfg.OPTIM.MAX_EPOCH, self.cfg.OPTIM.LR)
+        #     )
 
         # use to record training
         self.batch_losses = []
