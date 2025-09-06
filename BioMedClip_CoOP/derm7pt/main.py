@@ -24,7 +24,7 @@ def load_dataloader(path):
 def main():
    
     args = {
-    'keyword': 'Derm7pt_Melanoma_CoOp',   
+    'keyword': 'Derm7pt_Melanoma_CoOp_weighted_ce',   
     'meta_csv': '/storage/projects3/e19-fyp-out-of-domain-gen-in-cv/Derm7pt/release_v0/meta/meta.csv',
     'image_base': '/storage/projects3/e19-fyp-out-of-domain-gen-in-cv/Derm7pt/release_v0/images/',
     'train_indexes_csv': '/storage/projects3/e19-fyp-out-of-domain-gen-in-cv/Derm7pt/release_v0/meta/train_indexes.csv',
