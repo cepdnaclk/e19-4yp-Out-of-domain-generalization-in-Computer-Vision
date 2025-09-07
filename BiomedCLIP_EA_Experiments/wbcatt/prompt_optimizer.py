@@ -27,17 +27,17 @@ Only provide the output as Python code in the following format: prompts = list[t
 
     # Meta prompt template for subsequent iterations
     base_meta_prompt_template = """The task is to generate distinct textual descriptions pairs of visual discriminative features to identify {task_specific_description}. 
-    Here are the best performing sets in ascending order. High scores indicate higher quality visual discriminative features.
-    {content}
-    Write {generate_n} new descriptions sets that are different from the old ones and has a score as high as possible, formulate a strategy.
-    Only provide the output as Python code in the following format: prompts = list[tuple[str, ...]. Let's think step-by-step
-    """
+Here are the best performing sets in ascending order. High scores indicate higher quality visual discriminative features.
+{content}
+Write {generate_n} new descriptions sets that are different from the old ones and has a score as high as possible, formulate a strategy.
+Only provide the output as Python code in the following format: prompts = list[tuple[str, ...]. Let's think step-by-step
+"""
 
     task_specific_description = """Basophil, Eosinophil, Lymphocyte, Monocyte, and Neutrophil peripheral blood cells.
 These are the following features an expert would look for: Cell Size, Cell Shape, Nucleus Shape, Nuclear-Cytoplasmic Ratio, Chromatin-Density, Cytoplasm-Vacuole, Cytoplasm-Texture, Cytoplasm-Color, Granule-Type, Granule-Color, Granularity
-Each description set must contain five discriminating descriptions based on one of the above features for each of the five cell types. 
+Each description set must contain five discriminating meaningful descriptions based on one of the above features for each of the five cell types. 
+Format: (<feature description for Basophil>, <feature description for Eosinophil>, <feature description for Lymphocyte>, <feature description for Monocyte>, <feature description for Neutrophil>)
 """
-
     # Use the initial prompt for the first iteration
     if iteration == 0:
         return meta_init_prompt.format(

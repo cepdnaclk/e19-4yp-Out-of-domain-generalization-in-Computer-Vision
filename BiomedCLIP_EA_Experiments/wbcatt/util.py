@@ -23,7 +23,7 @@ from open_clip.factory import HF_HUB_PREFIX, _MODEL_CONFIGS
 import json
 from tqdm import tqdm
 import time
-from API_KEY import GEMINI_API_KEY
+from API_KEY import GEMINI_API_KEY, CHATGPT_ENDPOINT, CHATGPT_API_KEY
 from google import genai
 import ollama
 import torch.nn.functional as F
@@ -45,6 +45,7 @@ CONTEXT_LENGTH = 256
 BATCH_SIZE = 32
 NUM_WORKERS = 4
 DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+
 PromptPair = Tuple[str, str]
 PromptSet = Tuple[str, ...]  # For multi-class prompts
 InitialItem = Tuple[PromptPair, float]
@@ -602,26 +603,53 @@ def _force_double_quotes(code: str) -> str:
 
 class LLMClient:
     """
-    A unified client for interacting with different LLM providers (Gemini, Ollama).
+    A unified client for interacting with Gemini, Ollama, or Azure OpenAI (ChatGPT).
+    Usage:
+        client = LLMClient(provider="gemini", ...)
+        client = LLMClient(provider="ollama", ...)
+        client = LLMClient(provider="azure_openai", ...)
+        response = client.get_llm_response(prompt)
     """
 
-    def __init__(self, use_local_ollama: bool = False, ollama_model: str = "hf.co/unsloth/medgemma-27b-text-it-GGUF:Q8_0", gemini_model: str = "gemma-3-27b-it"):
-        self.use_local_ollama = use_local_ollama
-        self.gemini_client = None
-        self.ollama_model = ollama_model  # Default Ollama model
-        self.gemini_model = gemini_model  # Default Gemini model
-        self.ollama_host = "http://[::1]:11434"
-        self._ollama_client_instance = ollama.Client(host=self.ollama_host)
+    def __init__(
+        self,
+        provider: str = "gemini",  # "gemini", "ollama", or "azure_openai"
+        gemini_model: str = "gemma-3-27b-it",
+        ollama_model: str = "hf.co/unsloth/medgemma-27b-text-it-GGUF:Q8_0",
+        azure_openai_model: str = "gpt-4.1",
+        azure_openai_endpoint: str = CHATGPT_ENDPOINT,
+        azure_openai_api_key: str = CHATGPT_API_KEY,
+        azure_openai_api_version: str = "2025-01-01-preview"
+    ):
+        self.provider = provider.lower()
+        self.gemini_model = gemini_model
+        self.ollama_model = ollama_model
+        self.azure_openai_model = azure_openai_model
 
-        if not use_local_ollama:
+        # Gemini
+        self.gemini_client = None
+        if self.provider == "gemini":
             if GEMINI_API_KEY:
                 self.gemini_client = genai.Client(api_key=GEMINI_API_KEY)
             else:
-                raise ValueError(
-                    "Gemini API key must be provided if not using local Ollama.")
+                raise ValueError("Gemini API key must be provided.")
+
+        # Ollama
+        self.ollama_host = "http://[::1]:11434"
+        self._ollama_client_instance = None
+        if self.provider == "ollama":
+            self._ollama_client_instance = ollama.Client(host=self.ollama_host)
+
+        # Azure OpenAI
+        self.azure_openai_client = None
+        if self.provider == "azure_openai":
+            self.azure_openai_client = AzureOpenAI(
+                azure_endpoint=azure_openai_endpoint,
+                api_key=azure_openai_api_key,
+                api_version=azure_openai_api_version,
+            )
 
     def _get_response_from_gemini(self, prompt: str) -> str:
-        """Sends a prompt to the Gemini client and returns the response text."""
         if not self.gemini_client:
             raise RuntimeError("Gemini client not initialized.")
         response = self.gemini_client.models.generate_content(
@@ -629,26 +657,60 @@ class LLMClient:
         return response.text
 
     def _get_response_from_ollama(self, prompt: str) -> str:
-        """Sends a prompt to the Ollama client and returns the response text."""
-        # Use the initialized _ollama_client_instance
+        if not self._ollama_client_instance:
+            raise RuntimeError("Ollama client not initialized.")
         response = self._ollama_client_instance.chat(
             model=self.ollama_model, messages=[
                 {"role": "user", "content": prompt}]
         )
         return response['message']['content']
-    # def _get_response_from_ollama(self, prompt: str) -> str:
-    #     """Sends a prompt to the Ollama client and returns the response text."""
-    #     # The ollama client typically manages its connection internally, no explicit 'client' object
-    #     response = ollama.chat(model=self.ollama_model, messages=[
-    #                            {"role": "user", "content": prompt}])
-    #     return response['message']['content']
+
+    def _get_response_from_azure_openai(self, prompt: str) -> str:
+        if not self.azure_openai_client:
+            raise RuntimeError("Azure OpenAI client not initialized.")
+
+        messages = [
+            {
+                "role": "user",
+                "content": [
+                    {"type": "text", "text": prompt}
+                ]
+            }
+        ]
+
+        completion = self.azure_openai_client.chat.completions.create(
+            model=self.azure_openai_model,
+            messages=messages,
+            max_tokens=5000,
+            temperature=1.0,
+            top_p=0.95,
+            frequency_penalty=0,
+            presence_penalty=0,
+            stop=None,
+            stream=False
+        )
+
+        # Parse the response to JSON, then extract the content
+        response = json.loads(completion.to_json())[
+            'choices'][0]['message']['content']
+        return response
 
     def get_llm_response(self, prompt: str) -> str:
-        """Gets a response from the configured LLM (Gemini or Ollama)."""
-        if self.use_local_ollama:
-            return self._get_response_from_ollama(prompt)
-        else:
+        """
+        Gets a response from the configured LLM provider.
+        Args:
+            prompt: Either a string (for Gemini/Ollama) or a list of messages (for Azure OpenAI).
+        Returns:
+            The response text from the LLM.
+        """
+        if self.provider == "gemini":
             return self._get_response_from_gemini(prompt)
+        elif self.provider == "ollama":
+            return self._get_response_from_ollama(prompt)
+        elif self.provider == "azure_openai":
+            return self._get_response_from_azure_openai(prompt)
+        else:
+            raise ValueError(f"Unknown provider: {self.provider}")
 
 
 def get_prompts_from_llm(
