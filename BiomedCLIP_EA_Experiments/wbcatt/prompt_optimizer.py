@@ -90,7 +90,7 @@ def main():
     client = util.LLMClient(provider="Gemini")
 
     # Optimization loop
-    pq = util.PriorityQueue(max_capacity=1000, filter_threshold=0.4)
+    pq = util.PriorityQueue(max_capacity=1000, filter_threshold=0.1)
     prompt_content = ""
 
     # 6. Optimization loop: generate, evaluate, and select prompts for 500 iterations
