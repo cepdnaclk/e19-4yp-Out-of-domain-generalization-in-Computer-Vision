@@ -87,8 +87,7 @@ def main():
 
     # 4. Initialize the LLM client for prompt generation
     # Set use_local_ollama to True to use a local Ollama server
-    client = util.LLMClient(
-        use_local_ollama=False, ollama_model="hf.co/unsloth/medgemma-27b-text-it-GGUF:Q8_0")
+    client = util.LLMClient(provider="Gemini")
 
     # Optimization loop
     pq = util.PriorityQueue(max_capacity=1000, filter_threshold=0.4)
