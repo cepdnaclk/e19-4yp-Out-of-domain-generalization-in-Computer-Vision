@@ -622,8 +622,8 @@ class XCoOp(TrainerX):
 
             # wandb record the epoch loss
             epoch_loss = sum(self.batch_losses) / len(self.batch_losses)
-            if self.cfg.WANDB:
-                wandb.log({"epoch_train_loss": epoch_loss})
+            # if self.cfg.WANDB:
+            #     wandb.log({"epoch_train_loss": epoch_loss})
             
         return loss_summary
 
@@ -717,12 +717,12 @@ class XCoOp(TrainerX):
             tag = f"{split}/{k}"
             self.write_scalar(tag, v, self.epoch)
         
-        # wandb record
-        if self.cfg.WANDB:
-            if split == "test":
-                for k, v in results.items():
-                    if k == "accuracy":
-                        wandb.log({"test_acc": v})
+        # # wandb record
+        # if self.cfg.WANDB:
+        #     if split == "test":
+        #         for k, v in results.items():
+        #             if k == "accuracy":
+        #                 wandb.log({"test_acc": v})
 
         with open(osp.join(self.output_dir, 'results.json'), 'w') as fp:
             json.dump(results, fp)
