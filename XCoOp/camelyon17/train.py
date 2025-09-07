@@ -68,7 +68,7 @@ def reset_cfg(cfg, args):
     if args.no_wandb:
         cfg.WANDB = False
     else:
-        cfg.WANDB = True
+        cfg.WANDB = False
 
 
 def extend_cfg(cfg):
