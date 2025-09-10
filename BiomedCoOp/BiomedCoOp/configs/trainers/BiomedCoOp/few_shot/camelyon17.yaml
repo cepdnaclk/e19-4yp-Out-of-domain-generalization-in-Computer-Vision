@@ -8,10 +8,11 @@ DATALOADER:
 
 TRAINER:
   BIOMEDCOOP:
-    PROMPT_DEPTH: 12
-    CSC: False
-    N_CTX: 4
-    CLASS_TOKEN_POSITION: end
+    CTX_INIT: "a histopathology image of a"
+    SCCM_LAMBDA: 5.0
+    KDSP_LAMBDA: 20.0
+    TAU: 1.75
+    N_PROMPTS: 50
 
 INPUT:
   SIZE: (224, 224)
