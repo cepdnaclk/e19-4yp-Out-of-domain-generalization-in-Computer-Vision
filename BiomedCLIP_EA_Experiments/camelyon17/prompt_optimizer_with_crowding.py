@@ -105,7 +105,6 @@ Let's think step by step."""
             print(f"=== Iteration {i+1} of {self.iterations} ===")
             # retrieve the best prompt pairs from the priority queue
             prompt_pairs = pq.get_best_n(n=self.group_size)
-            print("Debug: Length of prompt pairs:", len(prompt_pairs))
             prompt_pairs_str = "\n".join(
                 [f"{i+1}. ('{pair[0]}' , '{pair[1]}')" for i,
                  (pair, score) in enumerate(prompt_pairs)]
@@ -116,6 +115,7 @@ Let's think step by step."""
                     prompt_pairs_str=prompt_pairs_str, num_of_prompts=self.group_size),
             )
 
+            # Dealing with remaining indexes that were not grouped
             if self.group_size > len(prompt_pairs):
                 # we have pruned the queue to less than group size
                 remaining_indexes = self._get_remaining_indexes(
@@ -126,12 +126,6 @@ Let's think step by step."""
                     grouped_indexes, self.group_size)
 
             if len(remaining_indexes) > 0:
-                print(f"Remaining indexes: {remaining_indexes}")
-                print(f"Debug: ")
-                for original_idx in remaining_indexes:
-                    print(f"length: {len(prompt_pairs)}")
-                    print(f"{original_idx}. {prompt_pairs[original_idx-1][0]}")
-
                 retry_prompt_str = self.retry_prompt.format(
                     prompt_pairs_str=prompt_pairs_str,
                     current_grouped_indexes=str(grouped_indexes),
@@ -147,6 +141,8 @@ Let's think step by step."""
             print(f"Unique indexes: {unique_indexes}")
 
             # select the best prompts based on the unique indexes
+            print("Debug: Length of prompt pairs before selecting best:",
+                  len(prompt_pairs))
             best_prompt_pairs_with_scores = [
                 prompt_pairs[i-1] for i in unique_indexes]
 
