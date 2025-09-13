@@ -48,7 +48,7 @@ DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 PromptPair = Tuple[str, str]
 PromptSet = Tuple[str, ...]  # For multi-class prompts
-InitialItem = Tuple[PromptPair, float]
+InitialItem = Tuple[PromptSet, float]
 PromptList = List[Tuple[PromptSet, float]]
 
 
@@ -965,8 +965,8 @@ class PriorityQueue:
 def load_initial_prompts(path: str) -> List[InitialItem]:
     """
     Reads a text file where each line is of the form:
-    ('neg', 'pos'), Score: 0.9364
-    and returns a list of ((neg, pos), score) tuples.
+    ('feature_1', 'feature_2', 'feature_3', 'feature_4', 'feature_5'), Score: 0.9364
+    and returns a list of ((tuple of 5 strings), score) tuples.
     """
     results = []
 
@@ -977,17 +977,14 @@ def load_initial_prompts(path: str) -> List[InitialItem]:
                 continue
 
             try:
-                # Use regex to parse the line format: ('neg', 'pos'), Score: 0.9364
-                pattern = r"\('([^']*)', '([^']*)'\), Score: ([\d.]+)"
+                # Regex for 5 prompts: ('...', '...', '...', '...', '...'), Score: 0.9364
+                pattern = r"\('([^']*)', '([^']*)', '([^']*)', '([^']*)', '([^']*)'\), Score: ([\d.]+)"
                 match = re.match(pattern, line)
 
                 if match:
-                    neg_prompt = match.group(1)
-                    pos_prompt = match.group(2)
-                    score = float(match.group(3))
-
-                    prompt_pair = (neg_prompt, pos_prompt)
-                    results.append((prompt_pair, score))
+                    prompts = tuple(match.group(i) for i in range(1, 6))
+                    score = float(match.group(6))
+                    results.append((prompts, score))
                 else:
                     print(f"Warning: Could not parse line {line_num}: {line}")
 
