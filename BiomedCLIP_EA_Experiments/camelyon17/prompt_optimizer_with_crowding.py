@@ -35,7 +35,7 @@ class CrowdingManager:
         self.max_retries = max_retries
 
         self.group_prompt = """The task is to group textual description pairs of visual discriminative features for tumor detection in histopathology. 
-Current Prompt Pairs:
+Current Prompt Pairs: Format: <Index. Prompt Pair>
 {prompt_pairs_str}
 Group the prompt pairs that has exactly same observation but differ only in language variations. Give the indexes of the grouped pairs in the output.
 Provide the output as follows: list[list[index:int]]. Make sure to include all pairs in the output, even if they are not grouped with others.
