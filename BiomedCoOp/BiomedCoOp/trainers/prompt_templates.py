@@ -3125,7 +3125,7 @@ BIOMEDCOOP_TEMPLATES = {
         "an endoscopy showing ulcers with an adherent clot and overlying fibrinous exudate, suggestive of recent ulceration.",
         "an endoscopy highlighting ulcers with a serpiginous pattern along the gastric body, indicative of ulcer."
     ],
-    "tumor": [
+    "tumor_endoscopy": [
         "an endoscopy image showing a large, irregular mass protruding into the lumen, indicating a tumor.",
         "an endoscopy revealing a fungating growth with an uneven surface, suggesting a tumor.",
         "an endoscopy highlighting a lobulated, exophytic mass with a rough texture, indicative of a tumor.",
@@ -3172,9 +3172,9 @@ BIOMEDCOOP_TEMPLATES = {
         "an endoscopy highlighting tumors with a pedunculated base and mobile mobility within the lumen, indicative of tumor.",
         "an endoscopy scan showing tumors with an infiltrative growth along the gastric folds, suggestive of diffuse tumor.",
         "an endoscopy image displaying tumors with a smooth surface and underlying cystic changes, indicative of cystic tumor.",
-        "An endoscopy revealing a mass with irregular surface projections and surrounding mucosal distortion, indicative of tumor."
-        "An endoscopy scan showing tumors with a nodular appearance and central necrosis, suggestive of malignant growth."
-        "An endoscopy image displaying a tumor with a lobulated margin and adjacent mucosal erythema, characteristic of advanced neoplasm."
+        "An endoscopy revealing a mass with irregular surface projections and surrounding mucosal distortion, indicative of tumor.",
+        "An endoscopy scan showing tumors with a nodular appearance and central necrosis, suggestive of malignant growth.",
+        "An endoscopy image displaying a tumor with a lobulated margin and adjacent mucosal erythema, characteristic of advanced neoplasm.",
         "An endoscopy revealing tumors with a subepithelial origin and overlying intact mucosa, indicative of submucosal tumor."
     ],
     "normal endoscopy": [
