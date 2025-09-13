@@ -43,8 +43,9 @@ class Camelyon17Custom(DatasetBase):
             img_name = f"patch_patient_{patient}_node_{node}_x_{x_coord}_y_{y_coord}.png"
             img_path = os.path.join(self.root_dir, f"patient_{patient}_node_{node}", img_name)
             if os.path.exists(img_path):
+                print("Hii I am here.")
                 cls_name = self.all_class_names[label]
                 item = Datum(impath=img_path, label=label, classname=cls_name)
                 items.append(item)
-            print(f"Item {item}")
+                print(f"Item {item}")
         return items
