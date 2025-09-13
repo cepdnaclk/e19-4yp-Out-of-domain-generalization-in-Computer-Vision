@@ -121,6 +121,7 @@ Let's think step by step."""
                 print(f"Remaining indexes: {remaining_indexes}")
                 print(f"Debug: ")
                 for original_idx in remaining_indexes:
+                    print(f"length: {len(prompt_pairs)}")
                     print(f"{original_idx}. {prompt_pairs[original_idx-1][0]}")
 
                 retry_prompt_str = self.retry_prompt.format(
