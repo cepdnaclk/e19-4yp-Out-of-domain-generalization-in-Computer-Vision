@@ -54,7 +54,7 @@ Format: (<feature description for Basophil>, <feature description for Eosinophil
 
 def main():
     # Name the experiment we are currently running
-    experiment_name = "Wbcatt_Experiment1_F1Macro_"
+    experiment_name = "Wbcatt_Experiment3_F1Macro_"
     print(f"Running {experiment_name}...")
 
     # Create experiment results directory
@@ -99,10 +99,7 @@ def main():
         meta_prompt = get_prompt_template(iteration=j,
                                           prompt_content=prompt_content, generate_n=10)
 
-        # Generate new prompt pairs using the LLM client
-        prompts = util.get_prompts_from_llm(meta_prompt, client)
-
-       # Generate new prompt sets using the LLM client
+        # Generate new prompt sets using the LLM client
         prompt_sets = util.get_prompts_from_llm(meta_prompt, client)
 
         # Evaluate each prompt set and insert into the priority queue
