@@ -10,7 +10,7 @@ from dassl.engine import build_trainer
 
 # custom
 # dataset
-import datasets.pneumonia
+import datasets.camelyon17
 
 # trainer
 import prompting.xcoop

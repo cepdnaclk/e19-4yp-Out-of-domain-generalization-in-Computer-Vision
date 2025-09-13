@@ -132,6 +132,8 @@ def setup_cfg(args):
 
 
 def main(args):
+    # deprecated
+    return
     cfg = setup_cfg(args)
     if cfg.SEED >= 0:
         print("Setting fixed seed: {}".format(cfg.SEED))
@@ -159,6 +161,8 @@ def main(args):
 
 
 def main():
+    # deprecated
+    return
     # Hardcoded variables for camelyon17 dataset
     
     dataset_root = "/storage/projects3/e19-fyp-out-of-domain-gen-in-cv/camelyon17WILDS/patches" 

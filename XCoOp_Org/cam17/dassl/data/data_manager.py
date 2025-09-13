@@ -1,19 +1,13 @@
 import torch
 import torchvision.transforms as T
-from PIL import Image
+from tabulate import tabulate
 from torch.utils.data import Dataset as TorchDataset
 
 from dassl.utils import read_image
 
 from .datasets import build_dataset
 from .samplers import build_sampler
-from .transforms import build_transform
-
-INTERPOLATION_MODES = {
-    "bilinear": Image.BILINEAR,
-    "bicubic": Image.BICUBIC,
-    "nearest": Image.NEAREST,
-}
+from .transforms import INTERPOLATION_MODES, build_transform
 
 
 def build_data_loader(
@@ -25,7 +19,7 @@ def build_data_loader(
     n_ins=2,
     tfm=None,
     is_train=True,
-    dataset_wrapper=None,
+    dataset_wrapper=None
 ):
     # Build sampler
     sampler = build_sampler(
@@ -34,7 +28,7 @@ def build_data_loader(
         data_source=data_source,
         batch_size=batch_size,
         n_domain=n_domain,
-        n_ins=n_ins,
+        n_ins=n_ins
     )
 
     if dataset_wrapper is None:
@@ -47,8 +41,7 @@ def build_data_loader(
         sampler=sampler,
         num_workers=cfg.DATALOADER.NUM_WORKERS,
         drop_last=is_train and len(data_source) >= batch_size,
-        pin_memory = False
-        # pin_memory=(torch.cuda.is_available() and cfg.USE_CUDA),
+        pin_memory=(torch.cuda.is_available() and cfg.USE_CUDA)
     )
     assert len(data_loader) > 0
 
@@ -66,6 +59,7 @@ class DataManager:
     ):
         # Load dataset
         dataset = build_dataset(cfg)
+
         # Build transform
         if custom_tfm_train is None:
             tfm_train = build_transform(cfg, is_train=True)
@@ -89,7 +83,7 @@ class DataManager:
             n_ins=cfg.DATALOADER.TRAIN_X.N_INS,
             tfm=tfm_train,
             is_train=True,
-            dataset_wrapper=dataset_wrapper,
+            dataset_wrapper=dataset_wrapper
         )
 
         # Build train_loader_u
@@ -115,7 +109,7 @@ class DataManager:
                 n_ins=n_ins_,
                 tfm=tfm_train,
                 is_train=True,
-                dataset_wrapper=dataset_wrapper,
+                dataset_wrapper=dataset_wrapper
             )
 
         # Build val_loader
@@ -128,7 +122,7 @@ class DataManager:
                 batch_size=cfg.DATALOADER.TEST.BATCH_SIZE,
                 tfm=tfm_test,
                 is_train=False,
-                dataset_wrapper=dataset_wrapper,
+                dataset_wrapper=dataset_wrapper
             )
 
         # Build test_loader
@@ -139,7 +133,7 @@ class DataManager:
             batch_size=cfg.DATALOADER.TEST.BATCH_SIZE,
             tfm=tfm_test,
             is_train=False,
-            dataset_wrapper=dataset_wrapper,
+            dataset_wrapper=dataset_wrapper
         )
 
         # Attributes
@@ -170,26 +164,25 @@ class DataManager:
         return self._lab2cname
 
     def show_dataset_summary(self, cfg):
-        print("***** Dataset statistics *****")
+        dataset_name = cfg.DATASET.NAME
+        source_domains = cfg.DATASET.SOURCE_DOMAINS
+        target_domains = cfg.DATASET.TARGET_DOMAINS
 
-        print("  Dataset: {}".format(cfg.DATASET.NAME))
-
-        if cfg.DATASET.SOURCE_DOMAINS:
-            print("  Source domains: {}".format(cfg.DATASET.SOURCE_DOMAINS))
-        if cfg.DATASET.TARGET_DOMAINS:
-            print("  Target domains: {}".format(cfg.DATASET.TARGET_DOMAINS))
-
-        print("  # classes: {:,}".format(self.num_classes))
-
-        print("  # train_x: {:,}".format(len(self.dataset.train_x)))
-
+        table = []
+        table.append(["Dataset", dataset_name])
+        if source_domains:
+            table.append(["Source", source_domains])
+        if target_domains:
+            table.append(["Target", target_domains])
+        table.append(["# classes", f"{self.num_classes:,}"])
+        table.append(["# train_x", f"{len(self.dataset.train_x):,}"])
         if self.dataset.train_u:
-            print("  # train_u: {:,}".format(len(self.dataset.train_u)))
-
+            table.append(["# train_u", f"{len(self.dataset.train_u):,}"])
         if self.dataset.val:
-            print("  # val: {:,}".format(len(self.dataset.val)))
+            table.append(["# val", f"{len(self.dataset.val):,}"])
+        table.append(["# test", f"{len(self.dataset.test):,}"])
 
-        print("  # test: {:,}".format(len(self.dataset.test)))
+        print(tabulate(table))
 
 
 class DatasetWrapper(TorchDataset):
@@ -230,7 +223,8 @@ class DatasetWrapper(TorchDataset):
         output = {
             "label": item.label,
             "domain": item.domain,
-            "impath": item.impath
+            "impath": item.impath,
+            "index": idx
         }
 
         img0 = read_image(item.impath)
@@ -246,9 +240,11 @@ class DatasetWrapper(TorchDataset):
             else:
                 img = self._transform_image(self.transform, img0)
                 output["img"] = img
+        else:
+            output["img"] = img0
 
         if self.return_img0:
-            output["img0"] = self.to_tensor(img0)
+            output["img0"] = self.to_tensor(img0)  # without any augmentation
 
         return output
 

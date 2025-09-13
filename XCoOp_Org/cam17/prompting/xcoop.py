@@ -145,7 +145,7 @@ class PromptLearner(nn.Module):
         all_token_embeddings = []
         all_class_text_features = []
         prompts = []
-        if cfg.DATASET.NAME == "Pneumonia":
+        if cfg.DATASET.NAME == "Camelyon17Custom":
             prompts = [
                 template_prompts[0].format(all_classnames[0]),  # normal
                 template_prompts[1].format(all_classnames[1]),  # pneumonia
@@ -301,7 +301,7 @@ class XCoOpPromptLearner(nn.Module):
         all_token_embeddings = []
         all_class_text_features = []
         prompts = []
-        if cfg.DATASET.NAME == "Pneumonia":
+        if cfg.DATASET.NAME == "Camelyon17Custom":
             prompts = [
                 template_prompts[0].format(all_classnames[0]),  # normal
                 template_prompts[1].format(all_classnames[1]),  # pneumonia
@@ -572,14 +572,14 @@ class XCoOp(TrainerX):
 
         self.scaler = GradScaler() if cfg.TRAINER.XCoOp.PREC == "amp" else None
 
-        # wandb initialization
-        if self.cfg.WANDB:
-            run = wandb.init(
-            project="XCoOp",
-            config=self.cfg,
-            name="Dataset_{}_Trainer_{}_Backbone_{}_epochs_{}_lr_{}".format(
-                self.cfg.DATASET.NAME, self.cfg.TRAINER.NAME, self.cfg.MODEL.BACKBONE.NAME, self.cfg.OPTIM.MAX_EPOCH, self.cfg.OPTIM.LR)
-            )
+        # # wandb initialization
+        # if self.cfg.WANDB:
+        #     run = wandb.init(
+        #     project="XCoOp",
+        #     config=self.cfg,
+        #     name="Dataset_{}_Trainer_{}_Backbone_{}_epochs_{}_lr_{}".format(
+        #         self.cfg.DATASET.NAME, self.cfg.TRAINER.NAME, self.cfg.MODEL.BACKBONE.NAME, self.cfg.OPTIM.MAX_EPOCH, self.cfg.OPTIM.LR)
+        #     )
 
         # use to record training
         self.batch_losses = []
@@ -617,8 +617,8 @@ class XCoOp(TrainerX):
 
             # wandb record the epoch loss
             epoch_loss = sum(self.batch_losses) / len(self.batch_losses)
-            if self.cfg.WANDB:
-                wandb.log({"epoch_train_loss": epoch_loss})
+            # if self.cfg.WANDB:
+            #     wandb.log({"epoch_train_loss": epoch_loss})
             
         return loss_summary
 
@@ -712,12 +712,12 @@ class XCoOp(TrainerX):
             tag = f"{split}/{k}"
             self.write_scalar(tag, v, self.epoch)
         
-        # wandb record
-        if self.cfg.WANDB:
-            if split == "test":
-                for k, v in results.items():
-                    if k == "accuracy":
-                        wandb.log({"test_acc": v})
+        # # wandb record
+        # if self.cfg.WANDB:
+        #     if split == "test":
+        #         for k, v in results.items():
+        #             if k == "accuracy":
+        #                 wandb.log({"test_acc": v})
 
         with open(osp.join(self.output_dir, 'results.json'), 'w') as fp:
             json.dump(results, fp)

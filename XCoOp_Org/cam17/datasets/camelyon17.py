@@ -5,7 +5,7 @@ from dassl.data.datasets import DATASET_REGISTRY, Datum, DatasetBase
 
 @DATASET_REGISTRY.register()
 class Camelyon17Custom(DatasetBase):
-    dataset_dir = "camelyon17"
+    dataset_dir = "Camelyon17Custom"
 
     def __init__(self, cfg):
         root = os.path.abspath(os.path.expanduser(cfg.DATASET.ROOT))

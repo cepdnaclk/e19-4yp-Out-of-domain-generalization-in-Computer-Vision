@@ -31,11 +31,13 @@ _C.INPUT.INTERPOLATION = "bilinear"
 _C.INPUT.TRANSFORMS = ()
 # If True, tfm_train and tfm_test will be None
 _C.INPUT.NO_TRANSFORM = False
-# Default mean and std come from ImageNet
+# Mean and std (default: ImageNet)
 _C.INPUT.PIXEL_MEAN = [0.485, 0.456, 0.406]
 _C.INPUT.PIXEL_STD = [0.229, 0.224, 0.225]
-# Padding for random crop
+# Random crop
 _C.INPUT.CROP_PADDING = 4
+# Random resized crop
+_C.INPUT.RRCROP_SCALE = (0.08, 1.0)
 # Cutout
 _C.INPUT.CUTOUT_N = 1
 _C.INPUT.CUTOUT_LEN = 16
@@ -63,9 +65,9 @@ _C.DATASET = CN()
 # Directory where datasets are stored
 _C.DATASET.ROOT = ""
 _C.DATASET.NAME = ""
-# List of names of source domains
+# List of source/target domains' names (strings)
+# Do not apply to some datasets, which have pre-defined splits
 _C.DATASET.SOURCE_DOMAINS = ()
-# List of names of target domains
 _C.DATASET.TARGET_DOMAINS = ()
 # Number of labeled instances in total
 # Useful for the semi-supervised learning
@@ -153,6 +155,8 @@ _C.OPTIM.MOMENTUM = 0.9
 _C.OPTIM.SGD_DAMPNING = 0
 _C.OPTIM.SGD_NESTEROV = False
 _C.OPTIM.RMSPROP_ALPHA = 0.99
+# The following also apply to other
+# adaptive optimizers like adamw
 _C.OPTIM.ADAM_BETA1 = 0.9
 _C.OPTIM.ADAM_BETA2 = 0.999
 # STAGED_LR allows different layers to have
@@ -206,8 +210,9 @@ _C.TEST.COMPUTE_CMAT = False
 _C.TEST.NO_TEST = False
 # Use test or val set for FINAL evaluation
 _C.TEST.SPLIT = "test"
-# Which model to test after training
-# Either last_step or best_val
+# Which model to test after training (last_step or best_val)
+# If best_val, evaluation is done every epoch (if val data
+# is unavailable, test data will be used)
 _C.TEST.FINAL_MODEL = "last_step"
 
 ###########################
@@ -216,18 +221,28 @@ _C.TEST.FINAL_MODEL = "last_step"
 _C.TRAINER = CN()
 _C.TRAINER.NAME = ""
 
+######
+# DA
+######
 # MCD
 _C.TRAINER.MCD = CN()
 _C.TRAINER.MCD.N_STEP_F = 4  # number of steps to train F
 # MME
 _C.TRAINER.MME = CN()
 _C.TRAINER.MME.LMDA = 0.1  # weight for the entropy loss
-# SelfEnsembling
+# CDAC
+_C.TRAINER.CDAC = CN()
+_C.TRAINER.CDAC.CLASS_LR_MULTI = 10
+_C.TRAINER.CDAC.RAMPUP_COEF = 30
+_C.TRAINER.CDAC.RAMPUP_ITRS = 1000
+_C.TRAINER.CDAC.TOPK_MATCH = 5
+_C.TRAINER.CDAC.P_THRESH = 0.95
+_C.TRAINER.CDAC.STRONG_TRANSFORMS = ()
+# SE (SelfEnsembling)
 _C.TRAINER.SE = CN()
 _C.TRAINER.SE.EMA_ALPHA = 0.999
 _C.TRAINER.SE.CONF_THRE = 0.95
 _C.TRAINER.SE.RAMPUP = 300
-
 # M3SDA
 _C.TRAINER.M3SDA = CN()
 _C.TRAINER.M3SDA.LMDA = 0.5  # weight for the moment distance loss
@@ -238,12 +253,15 @@ _C.TRAINER.DAEL.WEIGHT_U = 0.5  # weight on the unlabeled loss
 _C.TRAINER.DAEL.CONF_THRE = 0.95  # confidence threshold
 _C.TRAINER.DAEL.STRONG_TRANSFORMS = ()
 
+######
+# DG
+######
 # CrossGrad
-_C.TRAINER.CG = CN()
-_C.TRAINER.CG.EPS_F = 1.0  # scaling parameter for D's gradients
-_C.TRAINER.CG.EPS_D = 1.0  # scaling parameter for F's gradients
-_C.TRAINER.CG.ALPHA_F = 0.5  # balancing weight for the label net's loss
-_C.TRAINER.CG.ALPHA_D = 0.5  # balancing weight for the domain net's loss
+_C.TRAINER.CROSSGRAD = CN()
+_C.TRAINER.CROSSGRAD.EPS_F = 1.0  # scaling parameter for D's gradients
+_C.TRAINER.CROSSGRAD.EPS_D = 1.0  # scaling parameter for F's gradients
+_C.TRAINER.CROSSGRAD.ALPHA_F = 0.5  # balancing weight for the label net's loss
+_C.TRAINER.CROSSGRAD.ALPHA_D = 0.5  # balancing weight for the domain net's loss
 # DDAIG
 _C.TRAINER.DDAIG = CN()
 _C.TRAINER.DDAIG.G_ARCH = ""  # generator's architecture
@@ -253,15 +271,28 @@ _C.TRAINER.DDAIG.CLAMP_MIN = -1.0
 _C.TRAINER.DDAIG.CLAMP_MAX = 1.0
 _C.TRAINER.DDAIG.WARMUP = 0
 _C.TRAINER.DDAIG.ALPHA = 0.5  # balancing weight for the losses
+# DAELDG (the DG version of DAEL)
+_C.TRAINER.DAELDG = CN()
+_C.TRAINER.DAELDG.WEIGHT_U = 0.5  # weight on the unlabeled loss
+_C.TRAINER.DAELDG.CONF_THRE = 0.95  # confidence threshold
+_C.TRAINER.DAELDG.STRONG_TRANSFORMS = ()
+# DOMAINMIX
+_C.TRAINER.DOMAINMIX = CN()
+_C.TRAINER.DOMAINMIX.TYPE = "crossdomain"
+_C.TRAINER.DOMAINMIX.ALPHA = 1.0
+_C.TRAINER.DOMAINMIX.BETA = 1.0
 
+######
+# SSL
+######
 # EntMin
 _C.TRAINER.ENTMIN = CN()
 _C.TRAINER.ENTMIN.LMDA = 1e-3  # weight on the entropy loss
 # Mean Teacher
-_C.TRAINER.MEANTEA = CN()
-_C.TRAINER.MEANTEA.WEIGHT_U = 1.0  # weight on the unlabeled loss
-_C.TRAINER.MEANTEA.EMA_ALPHA = 0.999
-_C.TRAINER.MEANTEA.RAMPUP = 5  # epochs used to ramp up the loss_u weight
+_C.TRAINER.MEANTEACHER = CN()
+_C.TRAINER.MEANTEACHER.WEIGHT_U = 1.0  # weight on the unlabeled loss
+_C.TRAINER.MEANTEACHER.EMA_ALPHA = 0.999
+_C.TRAINER.MEANTEACHER.RAMPUP = 5  # epochs used to ramp up the loss_u weight
 # MixMatch
 _C.TRAINER.MIXMATCH = CN()
 _C.TRAINER.MIXMATCH.WEIGHT_U = 100.0  # weight on the unlabeled loss

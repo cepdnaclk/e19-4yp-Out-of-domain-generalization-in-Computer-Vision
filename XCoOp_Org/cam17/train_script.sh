@@ -1,6 +1,6 @@
 # training script: an example
 DATASET=camelyon17
-ROOT=/storage/projects3/e19-fyp-out-of-domain-gen-in-cv/camelyon17
+ROOT=/storage/projects3/e19-fyp-out-of-domain-gen-in-cv/camelyon17WILDS/
 OUTPUT_DIR=./output
 
 if [ ${DATASET} == "camelyon17" ];
