@@ -3,8 +3,7 @@ DATASET=cam17
 ROOT=/storage/projects3/e19-fyp-out-of-domain-gen-in-cv/camelyon17
 OUTPUT_DIR=./output
 
-XCoOp_Org\configs\XCoOp\vit_b16_c4_batch32_camelyon17.yaml
-if [ ${DATASET} == "camelyon17" ];
+if [ ${DATASET} == "cam17" ];
 then
 python train.py \
  --config-file configs/XCoOp/vit_b16_c4_batch32_camelyon17.yaml \
