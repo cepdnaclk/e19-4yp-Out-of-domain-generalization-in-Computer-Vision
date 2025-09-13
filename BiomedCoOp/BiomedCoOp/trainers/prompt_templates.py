@@ -368,7 +368,7 @@ BIOMEDCOOP_TEMPLATES = {
             "MRI showing a pituitary tumor with irregular borders and heterogeneous internal structure.",
             "MRI image of a pituitary tumor with suprasellar extension and compression of optic chiasm."
         ],
-  "non tumor": [
+  "non-tumor": [
       "The tissue shows normal glandular architecture with well-formed ducts and acini.",
       "Inflammatory infiltrates composed of lymphocytes and plasma cells are scattered throughout the stroma.",
       "Granulomatous inflammation with multinucleated giant cells surrounds necrotic foci.",
