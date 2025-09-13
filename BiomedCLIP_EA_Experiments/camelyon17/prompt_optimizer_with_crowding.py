@@ -37,7 +37,7 @@ class CrowdingManager:
         self.group_prompt = """The task is to group textual description pairs of visual discriminative features for tumor detection in histopathology. 
 Current Prompt Pairs: Format: <Index. Prompt Pair>
 {prompt_pairs_str}
-Group the prompt pairs that has exactly same observation but differ only in language variations. Give the indexes of the grouped pairs in the output.
+Each pair corresponds to a feature of the same medical concept. Group the prompt pairs that has exactly same observation but differ only in language variations. Give the indexes of the grouped pairs in the output.
 Provide the output as follows: list[list[index:int]]. Make sure to include all pairs in the output, even if they are not grouped with others.
 Let's think step by step.
 """
@@ -143,6 +143,12 @@ Let's think step by step."""
             # select the best prompts based on the unique indexes
             print("Debug: Length of prompt pairs before selecting best:",
                   len(prompt_pairs))
+
+            # if any index is out of range, skip this iteration
+            if any(i < 1 or i > len(prompt_pairs) for i in unique_indexes):
+                print("Warning: Some indexes are out of range. Skipping this iteration.")
+                continue
+
             best_prompt_pairs_with_scores = [
                 prompt_pairs[i-1] for i in unique_indexes]
 
