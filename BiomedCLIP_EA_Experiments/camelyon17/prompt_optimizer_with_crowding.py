@@ -66,7 +66,15 @@ Let's think step by step."""
         return unique_indexes
 
     def _get_remaining_indexes(self, grouped_indexes: list[list[int]], total_count: int) -> list[int]:
-        flat_list = [item for sublist in grouped_indexes for item in sublist]
+        # sometimes the list from LLM is in the format of [[1, 2], [2, 3], 4, 5, 6]
+        # have to accommodate for that - flatten both nested lists and individual items
+        flat_list = []
+        for item in grouped_indexes:
+            if isinstance(item, list):
+                flat_list.extend(item)
+            else:
+                flat_list.append(item)
+
         missing_indexes = set(range(1, total_count + 1)) - set(flat_list)
         return list(missing_indexes)
 
