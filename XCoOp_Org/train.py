@@ -215,5 +215,5 @@ if __name__ == "__main__":
     )
 
     args = parser.parse_args()
-    print(f"Here u go {args.root}")
+    # print(f"Here u go {args.root}")
     main(args)
