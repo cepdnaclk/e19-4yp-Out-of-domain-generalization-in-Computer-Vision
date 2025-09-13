@@ -7,10 +7,13 @@ import ast
 from typing import List
 
 # --- Configuration ---
-CROWDING_INTERVAL = 10         # perform crowding every X iterations
-CROWDING_ITERATIONS = 5       # number of crowding passes
+CROWDING_INTERVAL = 20         # perform crowding every X iterations
+CROWDING_ITERATIONS = 3       # number of crowding passes
 NUMBER_OF_PROMPTS_TO_GROUP = 30
 MAX_RETRIES = 5
+
+
+FITNESS_METRIC = 'inverted_bce'  # 'accuracy', 'auc', 'f1_macro', 'inverted_bce'
 
 
 class CrowdingManager:
@@ -245,7 +248,7 @@ def main():
             # print(
             #     f"Inverted BCE for prompt pair {i+1}: {results['inverted_bce']:.4f} {results['accuracy']}")
             pq.insert((negative_prompt, positive_prompt),
-                      results['inverted_bce'])
+                      results[FITNESS_METRIC])
 
         n = 10
         print(f"\nCurrent Top {n} prompt pairs:")
@@ -279,7 +282,7 @@ def main():
 
         # print the average score of the top n prompts
         print(
-            f"Iteration {j+1}: mean accuracy of top 10: {pq.get_average_score(10)}.\n")
+            f"Iteration {j+1}: mean {FITNESS_METRIC} of top 10: {pq.get_average_score(10)}.\n")
 
 
 if __name__ == "__main__":
