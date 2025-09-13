@@ -116,10 +116,15 @@ Let's think step by step."""
                     prompt_pairs_str=prompt_pairs_str, num_of_prompts=self.group_size),
             )
 
-            print("Debug: Length of prompt pairs after grouping indexes:",
-                  len(prompt_pairs))
-            remaining_indexes = self._get_remaining_indexes(
-                grouped_indexes, self.group_size)
+            if self.group_size > len(prompt_pairs):
+                # we have pruned the queue to less than group size
+                remaining_indexes = self._get_remaining_indexes(
+                    grouped_indexes,  len(prompt_pairs))
+            else:
+                # usual scenario when the pq size is greater than the grouping size
+                remaining_indexes = self._get_remaining_indexes(
+                    grouped_indexes, self.group_size)
+
             if len(remaining_indexes) > 0:
                 print(f"Remaining indexes: {remaining_indexes}")
                 print(f"Debug: ")
