@@ -11,7 +11,7 @@ import os
 FITNESS_METRIC = 'inverted_weighted_ce'
 
 
-def get_prompt_template(iteration: int, prompt_content: str, generate_n: int = 10) -> str:
+def get_prompt_template(iteration: int, prompt_content: str, generate_n: int = 8) -> str:
     """
     Returns the appropriate instruction based on the iteration number range.
 
@@ -25,7 +25,7 @@ def get_prompt_template(iteration: int, prompt_content: str, generate_n: int = 1
     """
 
     # Initial meta prompt for the first iteration
-    meta_init_prompt = """Give 50 distinct textual description sets of visual discriminative features to identify {task_specific_description}.
+    meta_init_prompt = """Give 8 distinct textual description sets of visual discriminative features to identify {task_specific_description}.
 Only provide the output as Python code in the following format: prompts = list[tuple[str, ...]]. Let's think step-by-step"""
 
     # Meta prompt template for subsequent iterations
@@ -58,7 +58,7 @@ Format: (<feature description for Basophil>, <feature description for Eosinophil
 def main():
 
     # Name the experiment we are currently running
-    experiment_name = "Wbcatt_Experiment4_InvertedWCE"
+    experiment_name = "Wbcatt_Experiment5_InvertedWCE-Gen8"
     print(f"Running {experiment_name}...")
 
     # Create experiment results directory
@@ -101,7 +101,7 @@ def main():
     for j in range(500):
         # Generate the meta prompt for the LLM
         meta_prompt = get_prompt_template(iteration=j,
-                                          prompt_content=prompt_content, generate_n=10)
+                                          prompt_content=prompt_content, generate_n=8)
 
         # Generate new prompt sets using the LLM client
         prompt_sets = util.get_prompts_from_llm(meta_prompt, client)
