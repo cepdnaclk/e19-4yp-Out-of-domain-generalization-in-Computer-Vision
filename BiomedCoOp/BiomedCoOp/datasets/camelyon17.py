@@ -42,6 +42,7 @@ class Camelyon17Custom(DatasetBase):
             print(f"label is this {label}")
             img_name = f"patch_patient_{patient}_node_{node}_x_{x_coord}_y_{y_coord}.png"
             img_path = os.path.join(self.root_dir, f"patient_{patient}_node_{node}", img_name)
+            print(f"Hi I am the img path {img_path}")
             if os.path.exists(img_path):
                 print("Hii I am here.")
                 cls_name = self.all_class_names[label]
