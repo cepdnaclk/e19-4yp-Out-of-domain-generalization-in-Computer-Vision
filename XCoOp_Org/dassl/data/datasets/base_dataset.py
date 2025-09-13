@@ -60,6 +60,7 @@ class DatasetBase:
         self._train_u = train_u  # unlabeled training data (optional)
         self._val = val  # validation data (optional)
         self._test = test  # test data
+
         self._num_classes = self.get_num_classes(train_x)
         self._lab2cname, self._classnames = self.get_lab2cname(train_x)
 
@@ -91,8 +92,7 @@ class DatasetBase:
     def num_classes(self):
         return self._num_classes
 
-    @staticmethod
-    def get_num_classes(data_source):
+    def get_num_classes(self, data_source):
         """Count number of classes.
 
         Args:
@@ -103,8 +103,7 @@ class DatasetBase:
             label_set.add(item.label)
         return max(label_set) + 1
 
-    @staticmethod
-    def get_lab2cname(data_source):
+    def get_lab2cname(self, data_source):
         """Get a label-to-classname mapping (dict).
 
         Args:
@@ -120,8 +119,6 @@ class DatasetBase:
         return mapping, classnames
 
     def check_input_domains(self, source_domains, target_domains):
-        assert len(source_domains) > 0, "source_domains (list) is empty"
-        assert len(target_domains) > 0, "target_domains (list) is empty"
         self.is_input_domain_valid(source_domains)
         self.is_input_domain_valid(target_domains)
 
@@ -144,23 +141,14 @@ class DatasetBase:
 
         print("Extracting file ...")
 
-        if dst.endswith(".zip"):
+        try:
+            tar = tarfile.open(dst)
+            tar.extractall(path=osp.dirname(dst))
+            tar.close()
+        except:
             zip_ref = zipfile.ZipFile(dst, "r")
             zip_ref.extractall(osp.dirname(dst))
             zip_ref.close()
-
-        elif dst.endswith(".tar"):
-            tar = tarfile.open(dst, "r:")
-            tar.extractall(osp.dirname(dst))
-            tar.close()
-
-        elif dst.endswith(".tar.gz"):
-            tar = tarfile.open(dst, "r:gz")
-            tar.extractall(osp.dirname(dst))
-            tar.close()
-
-        else:
-            raise NotImplementedError
 
         print("File extracted to {}".format(osp.dirname(dst)))
 
@@ -171,7 +159,7 @@ class DatasetBase:
 
         This function is useful when one wants to evaluate a model
         in a few-shot learning setting where each class only contains
-        a small number of images.
+        a few number of images.
 
         Args:
             data_sources: each individual is a list containing Datum objects.

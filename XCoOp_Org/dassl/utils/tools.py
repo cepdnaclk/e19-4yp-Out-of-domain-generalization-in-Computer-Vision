@@ -117,7 +117,18 @@ def read_image(path):
     Returns:
         PIL image
     """
-    return Image.open(path).convert("RGB")
+    if not osp.exists(path):
+        raise IOError("No file exists at {}".format(path))
+
+    while True:
+        try:
+            img = Image.open(path).convert("RGB")
+            return img
+        except IOError:
+            print(
+                "Cannot read image from {}, "
+                "probably due to heavy IO. Will re-try".format(path)
+            )
 
 
 def collect_env_info():
