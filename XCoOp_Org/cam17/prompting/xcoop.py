@@ -145,6 +145,7 @@ class PromptLearner(nn.Module):
         all_token_embeddings = []
         all_class_text_features = []
         prompts = []
+        print(f"Dataset name is {cfg.DATASET.NAME}")
         if cfg.DATASET.NAME == "Camelyon17Custom":
             prompts = [
                 template_prompts[0].format(all_classnames[0]),  # normal
