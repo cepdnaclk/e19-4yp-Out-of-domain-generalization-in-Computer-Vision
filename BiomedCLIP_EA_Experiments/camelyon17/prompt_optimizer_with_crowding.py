@@ -39,7 +39,7 @@ Current Prompt Pairs:
 {prompt_pairs_str}
 Group the prompt pairs that has exactly same observation but differ only in language variations. Give the indexes of the grouped pairs in the output.
 Provide the output as follows: list[list[index:int]]. Make sure to include all pairs in the output, even if they are not grouped with others.
-Let's think step by step. Count from 1-{num_of_prompts} to verify each item is in the list.
+Let's think step by step.
 """
         self.retry_prompt = """The task is to group textual description pairs of visual discriminative features for tumor detection in histopathology. 
 Current Prompt Pairs:
