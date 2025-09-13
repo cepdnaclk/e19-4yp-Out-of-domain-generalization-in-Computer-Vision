@@ -1,9 +1,9 @@
 # training script: an example
-DATASET=cam17
+DATASET=camelyon17
 ROOT=/storage/projects3/e19-fyp-out-of-domain-gen-in-cv/camelyon17
 OUTPUT_DIR=./output
 
-if [ ${DATASET} == "cam17" ];
+if [ ${DATASET} == "camelyon17" ];
 then
 python train.py \
  --config-file configs/XCoOp/vit_b16_c4_batch32_camelyon17.yaml \
