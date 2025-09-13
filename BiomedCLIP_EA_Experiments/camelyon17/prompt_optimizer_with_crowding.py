@@ -7,8 +7,8 @@ import ast
 from typing import List
 
 # --- Configuration ---
-CROWDING_INTERVAL = 20         # perform crowding every X iterations
-CROWDING_ITERATIONS = 3       # number of crowding passes
+CROWDING_INTERVAL = 10         # perform crowding every X iterations
+CROWDING_ITERATIONS = 5      # number of crowding passes
 NUMBER_OF_PROMPTS_TO_GROUP = 30
 MAX_RETRIES = 5
 
