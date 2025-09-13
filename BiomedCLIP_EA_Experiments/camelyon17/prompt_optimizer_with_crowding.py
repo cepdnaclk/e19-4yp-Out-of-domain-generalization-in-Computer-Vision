@@ -84,9 +84,11 @@ Let's think step by step."""
             try:
                 response = self.client.get_llm_response(prompt=llm_prompt)
                 print(response)
-                m = re.search(r'```python\s*([\s\S]*?)\s*```', response)
+                # Try to extract code block with or without 'python'
+                m = re.search(r'```(?:python)?\s*([\s\S]*?)\s*```', response)
                 if not m:
-                    raise ValueError("No ```python ... ``` block found")
+                    raise ValueError(
+                        "No code block found between triple backticks")
                 list_str = m.group(1)
                 grouped_indexes = ast.literal_eval(list_str)
                 return grouped_indexes
