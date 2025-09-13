@@ -7,8 +7,8 @@ import torch
 import numpy as np
 import os
 
-# 'accuracy', 'auc', 'f1_macro', 'inverted_wce'
-FITNESS_METRIC = 'inverted_weighted_ce'
+# 'accuracy', 'auc', 'f1_macro', 'inverted_weighted_ce'
+FITNESS_METRIC = 'f1_macro'
 
 
 def get_prompt_template(iteration: int, prompt_content: str, generate_n: int = 8) -> str:
