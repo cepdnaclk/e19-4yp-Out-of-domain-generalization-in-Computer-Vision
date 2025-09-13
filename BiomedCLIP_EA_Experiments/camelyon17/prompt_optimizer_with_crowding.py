@@ -7,8 +7,8 @@ import ast
 from typing import List
 
 # --- Configuration ---
-CROWDING_INTERVAL = 2         # perform crowding every X iterations
-CROWDING_ITERATIONS = 5      # number of crowding passes
+CROWDING_INTERVAL = 10         # perform crowding every X iterations
+CROWDING_ITERATIONS = 3      # number of crowding passes
 NUMBER_OF_PROMPTS_TO_GROUP = 30
 MAX_RETRIES = 5
 
@@ -197,7 +197,7 @@ def get_prompt_template(iteration_num: int, prompt_content: str, generate_n: int
 
 def main():
     # Name the experiment we are currently running
-    experiment_name = "Experiment-1-bce_inverted-gemma3"
+    experiment_name = "Experiment-2-bce_inverted-gemma3"
     print(f"Running {experiment_name}...")
 
     # Create experiment results directory
