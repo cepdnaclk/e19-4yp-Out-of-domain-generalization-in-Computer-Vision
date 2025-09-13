@@ -105,6 +105,7 @@ Let's think step by step."""
             print(f"=== Iteration {i+1} of {self.iterations} ===")
             # retrieve the best prompt pairs from the priority queue
             prompt_pairs = pq.get_best_n(n=self.group_size)
+            print("Debug: Length of prompt pairs:", len(prompt_pairs))
             prompt_pairs_str = "\n".join(
                 [f"{i+1}. ('{pair[0]}' , '{pair[1]}')" for i,
                  (pair, score) in enumerate(prompt_pairs)]
@@ -115,6 +116,8 @@ Let's think step by step."""
                     prompt_pairs_str=prompt_pairs_str, num_of_prompts=self.group_size),
             )
 
+            print("Debug: Length of prompt pairs after grouping indexes:",
+                  len(prompt_pairs))
             remaining_indexes = self._get_remaining_indexes(
                 grouped_indexes, self.group_size)
             if len(remaining_indexes) > 0:
