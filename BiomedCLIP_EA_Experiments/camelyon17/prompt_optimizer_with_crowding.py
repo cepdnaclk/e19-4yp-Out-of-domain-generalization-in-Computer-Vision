@@ -61,11 +61,16 @@ Let's think step by step."""
     def _get_unique_indexes(self, grouped_indexes: list[list[int]]) -> list[int]:
         unique_indexes: list[int] = []
         for group in grouped_indexes:
-            # Append the first index of each group
-            unique_indexes.append(group[0])
+            # if the group is not a list and just an integer, let's just append it.
+            if isinstance(group, int):
+                unique_indexes.append(group)
+            else:
+                # Append the first index of each group
+                unique_indexes.append(group[0])
+
         return unique_indexes
 
-    def _get_remaining_indexes(self, grouped_indexes: list[list[int]], total_count: int) -> list[int]:
+    def _flatten_grouped_list(self, grouped_indexes: list[list[int]]) -> list[int]:
         # sometimes the list from LLM is in the format of [[1, 2], [2, 3], 4, 5, 6]
         # have to accommodate for that - flatten both nested lists and individual items
         flat_list = []
@@ -75,6 +80,10 @@ Let's think step by step."""
             else:
                 flat_list.append(item)
 
+        return flat_list
+
+    def _get_remaining_indexes(self, grouped_indexes: list[list[int]], total_count: int) -> list[int]:
+        flat_list = self._flatten_grouped_list(grouped_indexes)
         missing_indexes = set(range(1, total_count + 1)) - set(flat_list)
         return list(missing_indexes)
 
