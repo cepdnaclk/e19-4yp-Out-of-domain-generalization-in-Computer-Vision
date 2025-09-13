@@ -140,8 +140,7 @@ class PromptLearner(nn.Module):
         print("Initializing Clinical prompts...")
         template_prompts = cfg.TRAINER.XCoOp.CLINICAL_PROMPTS
         all_classnames = [name.replace("_", " ") for name in all_classnames]
-        print(f'Num of classes: {len(all_classnames)}')
-        print(f"********* Dataset name is {cfg.DATASET.NAME} ***********")
+        print(f'Num of classes: {cfg.DATASET.NAME} {len(all_classnames)}')
 
         all_token_embeddings = []
         all_class_text_features = []
