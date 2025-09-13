@@ -7,7 +7,7 @@ DATALOADER:
 
 TRAINER:
   BIOMEDCOOP:
-    CTX_INIT: "a histopathology image of a"
+    CTX_INIT: "a dermoscopy image of a"
     SCCM_LAMBDA: 5.0
     KDSP_LAMBDA: 20.0
     TAU: 1.75
@@ -19,7 +19,6 @@ INPUT:
   PIXEL_MEAN: [0.48145466, 0.4578275, 0.40821073]
   PIXEL_STD: [0.26862954, 0.26130258, 0.27577711]
   TRANSFORMS: ["random_resized_crop", "normalize"]
-
 
 OPTIM:
   NAME: "sgd"
@@ -38,6 +37,6 @@ MODEL:
     NAME: "ViT-B/16"
 
 DATASET:
-  ROOT: /storage/projects3/e19-fyp-out-of-domain-gen-in-cv/camelyon17WILDS
-  NAME: Camelyon17Custom
+  ROOT: /storage/projects3/e19-fyp-out-of-domain-gen-in-cv/Derm7pt/release_v0
+  NAME: Derm7pt
   NUM_SHOTS: 16
