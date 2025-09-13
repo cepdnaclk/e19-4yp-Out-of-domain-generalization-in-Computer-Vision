@@ -4,7 +4,7 @@ from dassl.data.datasets import DATASET_REGISTRY, Datum, DatasetBase
 
 
 @DATASET_REGISTRY.register()
-class Camelyon17(DatasetBase):
+class Camelyon17Custom(DatasetBase):
     dataset_dir = "camelyon17"
 
     def __init__(self, cfg):
@@ -39,7 +39,7 @@ class Camelyon17(DatasetBase):
             img_path = os.path.join(self.root_dir, f"patches/patient_{patient}_node_{node}", img_name)
             # print(f"Hi I am the img path {img_path}")
             if os.path.exists(img_path):
-                # print("Hii I am here.")
+                print("Hii I am here.")
                 cls_name = self.all_class_names[label]
                 item = Datum(impath=img_path, label=label, classname=cls_name)
                 items.append(item)
