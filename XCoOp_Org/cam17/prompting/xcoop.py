@@ -140,7 +140,7 @@ class PromptLearner(nn.Module):
         print("Initializing Clinical prompts...")
         template_prompts = cfg.TRAINER.XCoOp.CLINICAL_PROMPTS
         all_classnames = [name.replace("_", " ") for name in all_classnames]
-        print(f'Num of classes: {cfg.DATASET.NAME} {len(all_classnames)}')
+        print(f'Num of classes: {len(all_classnames)}')
 
         all_token_embeddings = []
         all_class_text_features = []
@@ -301,7 +301,7 @@ class XCoOpPromptLearner(nn.Module):
         all_token_embeddings = []
         all_class_text_features = []
         prompts = []
-        if cfg.DATASET.NAME == "Pneumonia":
+        if cfg.DATASET.NAME == "Camelyon17Custom":
             prompts = [
                 template_prompts[0].format(all_classnames[0]),  # normal
                 template_prompts[1].format(all_classnames[1]),  # pneumonia
