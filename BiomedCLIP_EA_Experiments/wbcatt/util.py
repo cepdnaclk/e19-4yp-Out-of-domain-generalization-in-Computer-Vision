@@ -408,6 +408,21 @@ def evaluate_prompt_set(
         # Invert CE loss for scoring (lower loss → higher value)
         inverted_ce = 1.0 / (1.0 + ce_loss)
 
+        # Weighted cross entropy (for imbalanced classes)
+        # Compute class weights: inverse frequency
+        class_counts = np.bincount(y_true, minlength=len(prompt_set))
+        class_weights = np.zeros(len(prompt_set), dtype=np.float32)
+        for i, count in enumerate(class_counts):
+            class_weights[i] = 1.0 / count if count > 0 else 0.0
+        # Normalize weights to sum to num_classes
+        class_weights = class_weights * len(prompt_set) / np.sum(class_weights)
+        class_weights_tensor = torch.tensor(
+            class_weights, dtype=torch.float32).to(DEVICE)
+
+        weighted_ce_loss = F.cross_entropy(
+            logits, labels, weight=class_weights_tensor).item()
+        inverted_weighted_ce = 1.0 / (1.0 + weighted_ce_loss)
+
     # metrics
     acc = accuracy_score(y_true, y_pred)
     cm = confusion_matrix(y_true, y_pred)
@@ -420,6 +435,7 @@ def evaluate_prompt_set(
         'cm': cm,
         'report': report,
         'inverted_ce': inverted_ce,
+        'inverted_weighted_ce': inverted_weighted_ce,
         'f1_macro': f1_macro,
         'f1_weighted': f1_weighted,
     }

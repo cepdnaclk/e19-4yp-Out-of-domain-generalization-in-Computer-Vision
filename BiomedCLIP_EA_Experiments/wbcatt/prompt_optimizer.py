@@ -7,6 +7,9 @@ import torch
 import numpy as np
 import os
 
+# 'accuracy', 'auc', 'f1_macro', 'inverted_wce'
+FITNESS_METRIC = 'inverted_weighted_ce'
+
 
 def get_prompt_template(iteration: int, prompt_content: str, generate_n: int = 10) -> str:
     """
@@ -53,8 +56,9 @@ Format: (<feature description for Basophil>, <feature description for Eosinophil
 
 
 def main():
+
     # Name the experiment we are currently running
-    experiment_name = "Wbcatt_Experiment3_F1Macro_"
+    experiment_name = "Wbcatt_Experiment4_InvertedWCE"
     print(f"Running {experiment_name}...")
 
     # Create experiment results directory
@@ -111,7 +115,7 @@ def main():
                 prompt_set, all_feats, all_labels, model, tokenizer)
             # Insert prompt set and its score into the priority queue
             # Use accuracy as the score
-            pq.insert(prompt_set, results['f1_macro'])
+            pq.insert(prompt_set, results[FITNESS_METRIC])
 
         n = 10
         print(f"\nCurrent Top {n} prompt sets:")
@@ -141,7 +145,7 @@ def main():
 
         # Print the average score of the top n prompt sets
         print(
-            f"Iteration {j+1}: mean score of top 10: {pq.get_average_score(10)}.\n")
+            f"Iteration {j+1}: mean {FITNESS_METRIC} of top 10: {pq.get_average_score(10)}.\n")
 
 
 # Entry point for the script
