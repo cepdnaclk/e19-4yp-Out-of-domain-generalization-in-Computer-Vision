@@ -76,6 +76,7 @@ class PromptLearner(nn.Module):
             all_teacher_features = []
 
             for i in range(cfg.TRAINER.BIOMEDCOOP.N_PROMPTS):
+                print(f"Processing prompt {i + 1}/{cfg.TRAINER.BIOMEDCOOP.N_PROMPTS}")
                 x_tokenized = torch.cat([self.tokenizer(BIOMEDCOOP_TEMPLATES[classname][i]) for classname in classnames])
                 text_features = biomedclip_model_temp.encode_text(x_tokenized.cuda())
                 all_teacher_features.append(text_features.unsqueeze(1))
