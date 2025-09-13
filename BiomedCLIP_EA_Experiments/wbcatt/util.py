@@ -426,9 +426,9 @@ def evaluate_prompt_set(
     # metrics
     acc = accuracy_score(y_true, y_pred)
     cm = confusion_matrix(y_true, y_pred)
-    report = classification_report(y_true, y_pred, digits=4)
-    f1_macro = f1_score(y_true, y_pred, average='macro')
-    f1_weighted = f1_score(y_true, y_pred, average='weighted')
+    report = classification_report(y_true, y_pred, digits=4, zero_division=0)
+    f1_macro = f1_score(y_true, y_pred, average='macro', zero_division=0)
+    f1_weighted = f1_score(y_true, y_pred, average='weighted', zero_division=0)
 
     return {
         'accuracy': acc,
