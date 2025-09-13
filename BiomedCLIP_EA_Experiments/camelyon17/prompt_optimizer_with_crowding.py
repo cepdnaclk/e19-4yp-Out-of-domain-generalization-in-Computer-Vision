@@ -7,7 +7,7 @@ import ast
 from typing import List
 
 # --- Configuration ---
-CROWDING_INTERVAL = 10         # perform crowding every X iterations
+CROWDING_INTERVAL = 2         # perform crowding every X iterations
 CROWDING_ITERATIONS = 5      # number of crowding passes
 NUMBER_OF_PROMPTS_TO_GROUP = 30
 MAX_RETRIES = 5
@@ -121,7 +121,7 @@ Let's think step by step."""
                     prompt_pairs_str=prompt_pairs_str,
                     current_grouped_indexes=str(grouped_indexes),
                     prompt_pairs_str_remaining="\n".join(
-                        [f"{original_idx}. ('{prompt_pairs[original_idx-1][0]}' , '{prompt_pairs[original_idx-1][1]}')" for original_idx in remaining_indexes]
+                        [f"{original_idx}. {prompt_pairs[original_idx-1][0]}" for original_idx in remaining_indexes]
                     )
                 )
                 grouped_indexes = self._get_grouped_indexes_from_llm(
