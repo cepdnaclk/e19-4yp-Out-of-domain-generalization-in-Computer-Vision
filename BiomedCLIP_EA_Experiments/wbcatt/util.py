@@ -49,7 +49,7 @@ DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 PromptPair = Tuple[str, str]
 PromptSet = Tuple[str, ...]  # For multi-class prompts
 InitialItem = Tuple[PromptPair, float]
-PromptList = List[Tuple[PromptPair, float]]
+PromptList = List[Tuple[PromptSet, float]]
 
 
 class KneePointAnalysis:
@@ -314,7 +314,7 @@ def evaluate_prompt_list(
     labels = image_labels.to(DEVICE)
 
     with torch.no_grad():
-        for (negative_prompt, positive_prompt), original_weight in prompt_list:
+        for prompt_set, original_weight in prompt_list:
             # Determine the effective weight
             effective_weight = 1.0 if unweighted else original_weight
 
@@ -322,10 +322,9 @@ def evaluate_prompt_list(
             if effective_weight == 0 and not unweighted:
                 continue
 
-            text_inputs = tokenizer(
-                [negative_prompt, positive_prompt],
-                context_length=CONTEXT_LENGTH
-            ).to(DEVICE)
+            text_inputs = tokenizer(list(prompt_set),
+                                    context_length=CONTEXT_LENGTH
+                                    ).to(DEVICE)
 
             text_feats = model.encode_text(text_inputs)  # (2, D)
             text_feats = text_feats / text_feats.norm(dim=1, keepdim=True)
@@ -335,12 +334,9 @@ def evaluate_prompt_list(
             logits = logit_scale * (feats @ text_feats.t())
             probs = logits.softmax(dim=1)
 
-            # Extract probability for the positive class (assuming index 1)
-            # If your tumor class is indeed index 0 as per your previous code, change `probs[:, 1]` to `probs[:, 0]`
-            current_positive_class_probs = probs[:, 1].cpu().numpy()
-
-            all_weighted_probs.append(
-                current_positive_class_probs * effective_weight)
+            # For multiclass: collect weighted probabilities for all classes
+            current_probs = probs.cpu().numpy()  # shape: (N, num_classes)
+            all_weighted_probs.append(current_probs * effective_weight)
             total_weight += effective_weight
 
     # Perform ensemble
@@ -356,19 +352,23 @@ def evaluate_prompt_list(
     # Convert list of arrays to a single array and sum along the first dimension
     ensemble_probs_unnormalized = np.sum(all_weighted_probs, axis=0)
     ensemble_probs = ensemble_probs_unnormalized / total_weight
+    # Convert list of arrays to a single array and sum along the first dimension
+    # For multiclass: shape (N, num_classes)
+    ensemble_probs_unnormalized = np.sum(all_weighted_probs, axis=0)
+    ensemble_probs = ensemble_probs_unnormalized / total_weight
 
-    # Convert probabilities to predictions
-    ensemble_preds = (ensemble_probs >= 0.5).astype(int)
+    # Convert probabilities to predictions (multiclass: argmax)
+    ensemble_preds = np.argmax(ensemble_probs, axis=1)
 
     y_true = labels.cpu().numpy()
 
     # metrics
     acc = accuracy_score(y_true, ensemble_preds)
-    auc = roc_auc_score(y_true, ensemble_probs)
     cm = confusion_matrix(y_true, ensemble_preds)
-    report = classification_report(y_true, ensemble_preds, digits=4)
+    report = classification_report(
+        y_true, ensemble_preds, digits=4, zero_division=0)
 
-    return {'accuracy': acc, 'auc': auc, 'cm': cm, 'report': report, 'ensemble_probs': ensemble_probs}
+    return {'accuracy': acc, 'cm': cm, 'report': report}
 
 
 def evaluate_prompt_set(
