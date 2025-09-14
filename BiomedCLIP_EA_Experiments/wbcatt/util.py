@@ -596,25 +596,37 @@ def extract_and_parse_prompt_tuple(code: str) -> Tuple[str, ...]:
     raise ValueError("No tuple of strings found in code")
 
 
-def _force_double_quotes(code: str) -> str:
+def _fix_quote_issues(code: str) -> str:
     """
-    Rewrites every Python string-literal in `code` to use double-quotes,
-    properly handling apostrophes and other special characters.
+    Fix common quote issues in LLM-generated code where
+    inner quotes break string literals.
+    - Converts single-quoted strings with inner single quotes to double-quoted.
+    - Escapes quotes if needed.
     """
-    tokens = tokenize.generate_tokens(io.StringIO(code).readline)
-    new_tokens = []
-    for toknum, tokval, start, end, line in tokens:
-        if toknum == tokenize.STRING:
-            # Get the actual string value
-            value = ast.literal_eval(tokval)
+    def fix_string_literal(match: re.Match) -> str:
+        s = match.group(0)  # full quoted string including quotes
+        quote = s[0]        # ' or "
+        inner = s[1:-1]
 
-            # Create a new string literal with double quotes
-            # Properly escape any double quotes or backslashes in the string
-            # This automatically handles escaping correctly
-            tokval = json.dumps(value)
+        if quote == "'":
+            if "'" in inner and not re.search(r"\\'", inner):
+                # switch outer to double quotes if safe
+                if '"' not in inner:
+                    return '"' + inner + '"'
+                else:
+                    # fall back to escaping
+                    return "'" + inner.replace("'", "\\'") + "'"
+        elif quote == '"':
+            if '"' in inner and not re.search(r'\\"', inner):
+                if "'" not in inner:
+                    return "'" + inner + "'"
+                else:
+                    return '"' + inner.replace('"', '\\"') + '"'
+        return s  # unchanged if no problem
 
-        new_tokens.append((toknum, tokval))
-    return tokenize.untokenize(new_tokens)
+    # Regex matches Python-like string literals (single-line only)
+    string_pattern = r"(?:'[^'\\]*(?:\\.[^'\\]*)*'|\"[^\"\\]*(?:\\.[^\"\\]*)*\")"
+    return re.sub(string_pattern, fix_string_literal, code)
 
 
 class LLMClient:
@@ -767,7 +779,7 @@ def get_prompts_from_llm(
             code = m.group(1)
 
             # 2) normalize all literals to double-quoted form
-            # code = _force_double_quotes(code)
+            code = _fix_quote_issues(code)
 
             # print(f"Normalized code on attempt {attempt}: {code}...")
 
