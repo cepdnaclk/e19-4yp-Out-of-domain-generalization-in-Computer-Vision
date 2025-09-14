@@ -46,8 +46,8 @@ def load_clip_to_cpu(cfg):
     model_name = "biomedclip_local"
     # 1. Read configuration
     with open(config_path, "r") as f:
-        cfg = json.load(f)
-    model_cfg, preproc_cfg = cfg["model_cfg"], cfg["preprocess_cfg"]
+        cfgs = json.load(f)
+    model_cfg, preproc_cfg = cfgs["model_cfg"], cfgs["preprocess_cfg"]
 
     # 2. Register local config if needed
     if (
