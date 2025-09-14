@@ -17,6 +17,9 @@ import datasets.retina
 import datasets.kneexray
 import datasets.dermamnist 
 import datasets.octmnist
+import datasets.camelyon17
+import datasets.derm7pt
+import datasets.wbc_att
 
 import trainers.Zeroshot.zeroshot
 import trainers.CoOp.coop_clip
