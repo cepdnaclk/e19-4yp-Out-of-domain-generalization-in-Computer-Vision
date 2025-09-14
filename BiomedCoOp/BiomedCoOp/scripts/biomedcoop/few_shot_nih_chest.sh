@@ -2,7 +2,7 @@
 
 # custom config
 DATA=/storage/projects3/e19-fyp-out-of-domain-gen-in-cv/NIH_Chest/
-DATASET=nih_chest
+DATASET=nihchest
 SHOTS=16
 MODEL=BiomedCLIP
 NCTX=4
