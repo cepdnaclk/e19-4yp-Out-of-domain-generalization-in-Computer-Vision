@@ -12,13 +12,13 @@ class NIHChestXray(DatasetBase):
 
     def __init__(self, cfg):
         root = os.path.abspath(os.path.expanduser(cfg.DATASET.ROOT))
-        self.root_dir = root
+        self.root_dir = os.path.join(root, "all_images")
         self.metadata_csv = os.path.join(root, "Data_Entry_2017.csv")
         self.train_val_list = os.path.join(root, "train_val_list.txt")
         self.test_list = os.path.join(root, "test_list.txt")
         
         # Binary classification: non-pneumonia vs pneumonia
-        self.all_class_names = ["Non-pneumonia", "Pneumonia"]
+        self.all_class_names = ["non-pneumonia", "pneumonia"]
 
         train = self.read_data(split="train")
         val = self.read_data(split="val")
@@ -51,11 +51,8 @@ class NIHChestXray(DatasetBase):
             if img_name not in split_files:
                 continue
 
-            print(f"root dir is {self.root_dir}")
             img_path = os.path.join(self.root_dir, img_name)
-            print("hi this is img path",img_path)
             if os.path.exists(img_path):
-                print("hi imahe path exists")
                 cls_name = self.all_class_names[label]
                 item = Datum(impath=img_path, label=label, classname=cls_name)
                 items.append(item)
