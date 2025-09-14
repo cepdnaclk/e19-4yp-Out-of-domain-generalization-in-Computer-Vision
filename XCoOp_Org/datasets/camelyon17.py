@@ -1,4 +1,5 @@
 import os
+from queue import Full
 import pandas as pd
 import sys
 import random
@@ -16,21 +17,21 @@ class Camelyon17Custom(DatasetBase):
         self.metadata_path = "/storage/projects3/e19-fyp-out-of-domain-gen-in-cv/camelyon17WILDS/metadata.csv"
         self.root_dir = root
         self.all_class_names = ["non-tumor", "tumor"]
-        self.num_shots = getattr(cfg.DATASET, "NUM_SHOTS", None)  # None for full dataset
+        self.num_shots = cfg.DATASET.NUM_SHOTS  
         self.seed = getattr(cfg.DATASET, "SEED", 42)
 
         # Load full splits first
         full_train = self.read_data(split="train")
         full_val = self.read_data(split="val")
         test = self.read_data(split="test")
-        # print(f"HI {self.num_shots} ")
-        # if self.num_shots is not None:
+        print(f"HI {self.num_shots} ")
+        if self.num_shots > 0:
             # Few-shot mode
-            # train, val = self.create_few_shot_split(full_train, self.num_shots, self.seed)
-        # else:
+            train, val = self.create_few_shot_split(full_train, self.num_shots, self.seed)
+        else:
             # Full dataset mode
-        train = full_train
-        val = full_val
+            train = full_train
+            val = full_val
 
         super().__init__(train_x=train, val=val, test=test)
 

@@ -34,6 +34,9 @@ def print_args(args, cfg):
 
 
 def reset_cfg(cfg, args):
+    if args.shots and args.shots > 0:
+        cfg.DATASET.NUM_SHOTS = args.shots
+
     if args.root:
         cfg.DATASET.ROOT = args.root
 
@@ -172,6 +175,9 @@ if __name__ == "__main__":
     )
     parser.add_argument(
         "--seed", type=int, default=-1, help="only positive value enables a fixed seed"
+    )
+    parser.add_argument(
+    "--shots", type=int, default=-1, help="number of shots (few-shot learning)"
     )
     parser.add_argument(
         "--source-domains", type=str, nargs="+", help="source domains for DA/DG"
