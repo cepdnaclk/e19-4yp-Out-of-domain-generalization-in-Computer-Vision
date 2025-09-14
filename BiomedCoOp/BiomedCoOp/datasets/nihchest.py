@@ -31,13 +31,13 @@ class NIHChestXray(DatasetBase):
         full_val = self.read_data(split="val")
         test = self.read_data(split="test")
 
-        if self.num_shots is not None:
-            # Few-shot mode
+        if self.num_shots == 0:
+            train, val = [], []
+        elif self.num_shots is not None:
             train, val = self.create_few_shot_split(full_train, self.num_shots, self.seed)
         else:
-            # Full dataset mode
-            train = full_train
-            val = full_val
+            train, val = full_train, full_val
+
 
         super().__init__(train_x=train, val=val, test=test)
 
