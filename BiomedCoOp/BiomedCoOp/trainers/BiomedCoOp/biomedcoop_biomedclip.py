@@ -303,7 +303,7 @@ class BiomedCoOp_BiomedCLIP(TrainerX):
 
     def forward_backward(self, batch):
         image, label = self.parse_batch_train(batch)
-
+        print(f"***MANS:Image shape: {image.shape}, label shape: {label.shape}")
         model = self.model
         optim = self.optim
         scaler = self.scaler
