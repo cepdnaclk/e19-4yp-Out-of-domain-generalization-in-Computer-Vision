@@ -1,6 +1,6 @@
 from .camelyon17 import Camelyon17Custom 
 from .derm7pt import Derm7pt
-from .wbcatt import WBCAtt
+from .wbc_att import WBCAtt
 
 dataset_list = {
     "Camelyon17": Camelyon17Custom,
