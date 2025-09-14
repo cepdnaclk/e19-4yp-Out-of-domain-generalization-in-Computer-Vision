@@ -45,4 +45,5 @@ TRAINER:
     TEXT_PROMPT_NUMBER: 4
 
 TEST:
+  NO_TEST: True
   FINAL_MODEL: best_val
