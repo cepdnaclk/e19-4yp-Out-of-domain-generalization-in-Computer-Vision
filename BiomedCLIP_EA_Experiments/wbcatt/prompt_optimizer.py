@@ -19,7 +19,8 @@ import numpy as np
 import os
 from gemini_pro_initial_prompts import INIT_PROMPTS
 # 'accuracy', 'auc', 'f1_macro', 'inverted_weighted_ce'
-FITNESS_METRIC = 'f1_macro'
+FITNESS_METRIC = 'accuracy'
+FEW_SHOT = 256
 
 
 def get_prompt_template(iteration: int, prompt_content: str, generate_n: int = 8) -> str:
@@ -86,7 +87,7 @@ Only provide the output as Python code in the following format: prompts = list[s
 def main():
 
     # Name the experiment we are currently running
-    experiment_name = f"Wbcatt_Experiment11_{FITNESS_METRIC}-Template"
+    experiment_name = f"Wbcatt_Experiment13_{FITNESS_METRIC}-Template-FEWSHOT{FEW_SHOT}"
     print(f"Running {experiment_name}...")
 
     # Create experiment results directory
@@ -114,6 +115,13 @@ def main():
 
     print(f"Loaded {len(all_feats)} wbcatt embeddings")
 
+    if FEW_SHOT > 0:
+        # Select a balanced few-shot subset
+        all_feats, all_labels = util.select_balanced_few_shot_subset(
+            all_feats, all_labels, n_per_class=FEW_SHOT)
+        print(
+            f"Selected balanced few-shot subset with {FEW_SHOT} samples per class.")
+
     # 3. Optionally load initial prompts (currently commented out)
     # initial_prompts = util.load_initial_prompts()
 
@@ -123,7 +131,7 @@ def main():
 
     # Optimization loop
     pq = util.PriorityQueue(
-        max_capacity=1000, filter_threshold=0.1)
+        max_capacity=1000, filter_threshold=0.01)
     prompt_content = ""
 
     # 6. Optimization loop: generate, evaluate, and select prompts for 500 iterations
