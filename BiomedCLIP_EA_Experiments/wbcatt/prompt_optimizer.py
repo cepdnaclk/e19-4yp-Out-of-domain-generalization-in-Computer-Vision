@@ -158,9 +158,9 @@ def main():
         prompt_content = f"Current Top {n} prompt sets:\n"
         for i, (prompt_set, score) in enumerate(selected_prompts):
             # get the first element of the prompt set which corresponds to Basophil and replace it by <cell_type>
-            prompt_template = prompt_set[0].replace("Basophil", "<cell_type>")
-            print(f"{i+1}. {prompt_template}, score: {int(score)}")
-            prompt_content += f"{prompt_template}, score: {int(score)}\n"
+            # prompt_template = prompt_set[0].replace("Basophil", "<cell_type>")
+            print(f"{i+1}. {prompt_set}, score: {int(score)}")
+            prompt_content += f"{prompt_set}, score: {int(score)}\n"
 
         # Save the best prompt sets to a file every 10 iterations (and on the first iteration)
         if (j + 1) % 10 == 0 or j == 0:
