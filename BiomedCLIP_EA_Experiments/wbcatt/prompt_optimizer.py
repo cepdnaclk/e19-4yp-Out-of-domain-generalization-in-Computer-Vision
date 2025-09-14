@@ -74,7 +74,7 @@ Format: <Features describing Basophil>, <Features describing Eosinophil>, <Featu
 def main():
 
     # Name the experiment we are currently running
-    experiment_name = f"Wbcatt_Experiment9_{FITNESS_METRIC}"
+    experiment_name = f"Wbcatt_Experiment10_{FITNESS_METRIC}-GPT5init"
     print(f"Running {experiment_name}...")
 
     # Create experiment results directory
@@ -103,14 +103,16 @@ def main():
     print(f"Loaded {len(all_feats)} wbcatt embeddings")
 
     # 3. Optionally load initial prompts (currently commented out)
-    # initial_prompts = util.load_initial_prompts()
+    initial_prompts = util.load_initial_prompts(
+        "experiment_results/initial_gpt5_prompt.txt")
 
     # 4. Initialize the LLM client for prompt generation
     # Set use_local_ollama to True to use a local Ollama server
     client = util.LLMClient(provider="Gemini")
 
     # Optimization loop
-    pq = util.PriorityQueue(max_capacity=1000, filter_threshold=0.1)
+    pq = util.PriorityQueue(
+        max_capacity=1000, filter_threshold=0.1, initial_prompts=initial_prompts)
     prompt_content = ""
 
     # 6. Optimization loop: generate, evaluate, and select prompts for 500 iterations
