@@ -303,7 +303,7 @@ class BiomedCoOp_BiomedCLIP(TrainerX):
 
     def forward_backward(self, batch):
         image, label = self.parse_batch_train(batch)
-
+        print(f"***MANS:Image shape: {image.shape}, label shape: {label.shape}")
         model = self.model
         optim = self.optim
         scaler = self.scaler
@@ -324,7 +324,7 @@ class BiomedCoOp_BiomedCLIP(TrainerX):
 
         loss_summary = {
             "loss": loss.item(),
-            "acc": compute_accuracy(logits, label)[0].item(),
+            "acc1": compute_accuracy(logits, label)[0].item(),
         }
 
         if (self.batch_idx + 1) == self.num_batches:
