@@ -13,7 +13,7 @@ class Derm7pt(DatasetBase):
     def __init__(self, cfg):
         root = os.path.abspath(os.path.expanduser(cfg.DATASET.ROOT))
         self.images_dir = os.path.join(root, "images")
-
+        print(f"Number of shots using HHH: {cfg.DATASET.NUM_SHOTS}")
         # Paths to metadata and index files
         self.meta_path = "/storage/projects3/e19-fyp-out-of-domain-gen-in-cv/Derm7pt/release_v0/meta/meta.csv"
         self.train_idx_path = "/storage/projects3/e19-fyp-out-of-domain-gen-in-cv/Derm7pt/release_v0/meta/train_indexes.csv"
