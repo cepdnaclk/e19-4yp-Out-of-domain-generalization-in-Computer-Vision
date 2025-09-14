@@ -1,7 +1,7 @@
 CFG=vit_b16
 DATA=$1
 DATASET=$2
-MODEL=$3
+MODEL=BiomedCLIP
 METHOD=Zeroshot
 TRAINER=Zeroshot${MODEL}
 

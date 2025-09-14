@@ -19,25 +19,54 @@ from .losses import contrastive_loss, contrastive_loss_token_level
 import wandb
 import numpy as np
 from torch.nn import functional as F
-
+from open_clip import create_model_and_transforms, get_tokenizer
+from open_clip.factory import HF_HUB_PREFIX, _MODEL_CONFIGS
+import json
 _tokenizer = _Tokenizer()
 
 def load_clip_to_cpu(cfg):
-    backbone_name = cfg.MODEL.BACKBONE.NAME  # ViT-B/16
-    url = clip._MODELS[backbone_name]
-    model_path = clip._download(url)
+    # backbone_name = cfg.MODEL.BACKBONE.NAME  # ViT-B/16
+    # url = clip._MODELS[backbone_name]
+    # model_path = clip._download(url)
 
-    try:
-        # loading JIT archive
-        model = torch.jit.load(model_path, map_location="cpu").eval()
-        state_dict = None
+    # try:
+    #     # loading JIT archive
+    #     model = torch.jit.load(model_path, map_location="cpu").eval()
+    #     state_dict = None
 
-    except RuntimeError:
-        state_dict = torch.load(model_path, map_location="cpu")
+    # except RuntimeError:
+    #     state_dict = torch.load(model_path, map_location="cpu")
 
-    model = clip.build_model(state_dict or model.state_dict())
+    # model = clip.build_model(state_dict or model.state_dict())
 
+    # return model
+    # My Implementation
+    config_path = "/storage/projects3/e19-fyp-out-of-domain-gen-in-cv/e19-4yp-Out-of-domain-generalization-in-Computer-Vision/BioMedClip/checkpoints/open_clip_config.json"
+    weights_path = "/storage/projects3/e19-fyp-out-of-domain-gen-in-cv/e19-4yp-Out-of-domain-generalization-in-Computer-Vision/BioMedClip/checkpoints/open_clip_pytorch_model.bin"
+    model_name = "biomedclip_local"
+    # 1. Read configuration
+    with open(config_path, "r") as f:
+        cfgs = json.load(f)
+    model_cfg, preproc_cfg = cfgs["model_cfg"], cfgs["preprocess_cfg"]
+
+    # 2. Register local config if needed
+    if (
+        not model_name.startswith(HF_HUB_PREFIX)
+        and model_name not in _MODEL_CONFIGS
+    ):
+        _MODEL_CONFIGS[model_name] = model_cfg
+
+    # 3. Build tokenizer, model, and preprocess
+    tokenizer = get_tokenizer(model_name)
+    model, _, preprocess = create_model_and_transforms(
+        model_name=model_name,
+        pretrained=weights_path,
+        **{f"image_{k}": v for k, v in preproc_cfg.items()}
+    )
+
+    model = model.eval()
     return model
+
 
 
 class TextEncoder(nn.Module):

@@ -1,9 +1,9 @@
 CFG=vit_b16
-DATA=$1
-DATASET=$2
+DATA=/storage/projects3/e19-fyp-out-of-domain-gen-in-cv/camelyon17WILDS/
+DATASET=camelyon17
 MODEL=BiomedCLIP
 METHOD=Zeroshot
-TRAINER=Zeroshot${MODEL}2
+TRAINER=Zeroshot${MODEL}
 
 python train.py \
 --root ${DATA} \
