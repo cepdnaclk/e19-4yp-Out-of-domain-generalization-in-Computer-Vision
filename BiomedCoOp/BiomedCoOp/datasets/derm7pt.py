@@ -46,7 +46,7 @@ class Derm7pt(DatasetBase):
         metadata = metadata.iloc[indexes]
 
         for _, row in metadata.iterrows():
-            img_name = row["image"]
+            img_name = row["derm"]
             # Binary label: 1 if melanoma, 0 otherwise
             label = int("melanoma" in str(row["diagnosis"]).lower())
 
