@@ -51,10 +51,8 @@ class NIHChestXray(DatasetBase):
             if img_name not in split_files:
                 continue
 
-            # Determine folder from filename prefix (images_001, images_002, etc.)
-            folder_idx = int(img_name.split("_")[0]) % 12 + 1
-            folder_name = f"images_{folder_idx:03d}"
-            img_path = os.path.join(self.root_dir, folder_name, img_name)
+            
+            img_path = os.path.join(self.root_dir, img_name)
 
             if os.path.exists(img_path):
                 cls_name = self.all_class_names[label]

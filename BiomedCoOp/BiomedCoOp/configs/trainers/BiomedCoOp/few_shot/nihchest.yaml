@@ -37,7 +37,7 @@ MODEL:
     NAME: "ViT-B/16"
 
 DATASET:
-  ROOT: /storage/projects3/e19-fyp-out-of-domain-gen-in-cv/NIH_Chest
+  ROOT: /storage/projects3/e19-fyp-out-of-domain-gen-in-cv/NIH_Chest/all_images
   NAME: NIHChestXray
   NUM_SHOTS: 16
 
