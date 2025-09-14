@@ -596,28 +596,25 @@ def extract_and_parse_prompt_tuple(code: str) -> Tuple[str, ...]:
     raise ValueError("No tuple of strings found in code")
 
 
-def _fix_quote_issues(code: str) -> str:
+def _force_double_quotes(code: str) -> str:
     """
-    Fix common quote issues in LLM-generated code.
+    Rewrites every Python string-literal in `code` to use double-quotes,
+    properly handling apostrophes and other special characters.
     """
-    import re
+    tokens = tokenize.generate_tokens(io.StringIO(code).readline)
+    new_tokens = []
+    for toknum, tokval, start, end, line in tokens:
+        if toknum == tokenize.STRING:
+            # Get the actual string value
+            value = ast.literal_eval(tokval)
 
-    # Pattern to find single quotes around words inside string literals
-    # This converts 'indistinct' to "indistinct"
-    fixed_code = re.sub(r"'([a-zA-Z]+)'", r'"\1"', code)
+            # Create a new string literal with double quotes
+            # Properly escape any double quotes or backslashes in the string
+            # This automatically handles escaping correctly
+            tokval = json.dumps(value)
 
-    # Pattern to find apostrophes in contractions/possessives
-    # This converts cluster's to cluster"s
-    fixed_code = re.sub(r"([a-zA-Z]+)'([a-zA-Z]*)", r'\1"\2', fixed_code)
-
-    # Finally, swap all single quotes to double and double quotes to single
-    # Use a placeholder to avoid conflicts during replacement
-    placeholder = "___TEMP_QUOTE___"
-    fixed_code = fixed_code.replace('"', placeholder)  # double -> placeholder
-    fixed_code = fixed_code.replace("'", '"')          # single -> double
-    fixed_code = fixed_code.replace(placeholder, "'")  # placeholder -> single
-
-    return fixed_code
+        new_tokens.append((toknum, tokval))
+    return tokenize.untokenize(new_tokens)
 
 
 class LLMClient:
@@ -770,7 +767,7 @@ def get_prompts_from_llm(
             code = m.group(1)
 
             # 2) normalize all literals to double-quoted form
-            code = _fix_quote_issues(code)
+            # code = _force_double_quotes(code)
 
             # print(f"Normalized code on attempt {attempt}: {code}...")
 
@@ -784,6 +781,7 @@ def get_prompts_from_llm(
         except Exception as e:
             print(
                 f"[Warning] get_prompt_pairs parse error on attempt {attempt}/{max_retries}: {e}")
+            print("raw response was:", raw)
             # sleep for 2 secs per attempt
             time.sleep(2 * attempt)  # exponential backoff
 
