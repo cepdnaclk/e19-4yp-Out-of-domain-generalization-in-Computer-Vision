@@ -1243,3 +1243,5 @@ def select_balanced_few_shot_subset(features: torch.Tensor, labels: torch.Tensor
     # Subset features and labels
     subset_features = features[selected_indices]
     subset_labels = labels[selected_indices]
+
+    return subset_features, subset_labels

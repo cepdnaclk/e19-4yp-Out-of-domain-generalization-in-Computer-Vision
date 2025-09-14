@@ -37,48 +37,36 @@ def get_prompt_template(iteration: int, prompt_content: str, generate_n: int = 8
     """
 
     # Initial meta prompt for the first iteration
-    meta_init_template = """The task is to generate 50 textual description templates for peripheral blood cells.
-Each template must be a single string that contains only one placeholder, which is "<cell_type>".
-The cell types are Basophil, Eosinophil, Lymphocyte, Monocyte, and Neutrophil.
-The template string should be a complete sentence that becomes a meaningful description when the <cell_type> placeholder is filled.
-Do not include any other placeholders, variables, or specific details about a single class of cell type's features.
+    meta_init_prompt = """Give 50 distinct textual description sets of visual discriminative features to identify {task_specific_description}.
+Only provide the output as Python code in the following format: prompts = list[tuple[str, ...]]. Let's think step-by-step"""
 
-These are the following features an expert would include in the description: Cell Size, Cell Shape, Nucleus Shape, Nuclear-Cytoplasmic Ratio, Chromatin-Density, Cytoplasm-Vacuole, Cytoplasm-Texture, Cytoplasm-Color, Granule-Type, Granule-Color, Granularity
-
-
-Example output format:
-prompts = [
-    "An image of a peripheral blood cell of type <cell_type>",
-    "A microscopic image of a <cell_type>",
-    "A blood smear showing a <cell_type>", 
-    "The cell size of the blood cell indicate a <cell_type>",
-    "A blood cell segmentation indicated its likely a <cell_type>"
-]
-
-Only provide the output as Python code in the following format: prompts = list[str]. Let's think step-by-step
-"""
     # Meta prompt template for subsequent iterations
-    base_meta_prompt_template = """The task is to generate {generate_n} textual description templates for peripheral blood cells.
-Each template must be a single string that contains only one placeholder, which is "<cell_type>".
-The cell types are Basophil, Eosinophil, Lymphocyte, Monocyte, and Neutrophil.
-The template string should be a complete sentence that becomes a meaningful description when the <cell_type> placeholder is filled.
-Do not include any other placeholders, variables, or specific details about the cell's features.
-
-These are the following features an expert would include in the description: Cell Size, Cell Shape, Nucleus Shape, Nuclear-Cytoplasmic Ratio, Chromatin-Density, Cytoplasm-Vacuole, Cytoplasm-Texture, Cytoplasm-Color, Granule-Type, Granule-Color, Granularity
-
-
-Here are the best performing templates in ascending order. High scores indicate higher quality visual discriminative features.
+    base_meta_prompt_template = """The task is to generate distinct textual descriptions pairs of visual discriminative features to identify {task_specific_description}. 
+Here are the best performing sets in ascending order. High scores indicate higher quality visual discriminative features.
 {content}
-Write {generate_n} new descriptions templates that are different from the old ones and has a score as high as possible, formulate a strategy.
-Only provide the output as Python code in the following format: prompts = list[str]. Let's think step-by-step
+Write {generate_n} new descriptions sets that are different from the old ones and has a score as high as possible, formulate a strategy.
+Only provide the output as Python code in the following format: prompts = list[tuple[str, ...]. Let's think step-by-step
 """
 
+    task_specific_description = """Basophil, Eosinophil, Lymphocyte, Monocyte, and Neutrophil peripheral blood cells.
+These are the following features an expert would look for: Cell Size, Cell Shape, Nucleus Shape, Nuclear-Cytoplasmic Ratio, Chromatin-Density, Cytoplasm-Vacuole, Cytoplasm-Texture, Cytoplasm-Color, Granule-Type, Granule-Color, Granularity
+Basophils: Nucleus=Segmented, NC Ratio=Low, Granularity=Yes, Color=Blue/Black (dense), Size=-
+Eosinophils: Nucleus=Segmented, NC Ratio=Low, Granularity=Yes, Color=Red, Size=-
+Lymphocytes: Nucleus=Unsegmented, NC Ratio=High, Granularity=No, Color=-, Size=Small
+Monocytes: Nucleus=Unsegmented, NC Ratio=Low, Granularity=No, Color=-, Size=-
+Neutrophils: Nucleus=Segmented, NC Ratio=Low, Granularity=Yes, Color=Blue, Size=-
+Each description set must contain five discriminating meaningful descriptions to identify each of the five cell types.
+Format: <Features describing Basophil>, <Features describing Eosinophil>, <Features describing Lymphocyte>, <Features describing Monocyte>, <Features describing Neutrophil> 
+    """
     # Use the initial prompt for the first iteration
     if iteration == 0:
-        return meta_init_template
+        return meta_init_prompt.format(
+            task_specific_description=task_specific_description,
+        )
 
     # Use the iterative prompt for subsequent iterations
     return base_meta_prompt_template.format(
+        task_specific_description=task_specific_description,
         content=prompt_content,
         generate_n=generate_n,
     )
@@ -142,7 +130,7 @@ def main():
 
         # Generate new prompt sets using the LLM client
         prompt_sets = util.get_prompts_from_llm(
-            meta_prompt, client, parse_func=util.extract_and_parse_prompt_list_of_templates)
+            meta_prompt, client)
 
         # Evaluate each prompt set and insert into the priority queue
         for i, prompt_set in enumerate(prompt_sets):
