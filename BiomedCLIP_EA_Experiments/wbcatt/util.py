@@ -45,6 +45,8 @@ CONTEXT_LENGTH = 256
 BATCH_SIZE = 32
 NUM_WORKERS = 4
 DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+CLASSES = ["Basophil", "Eosinophil", "Lymphocyte", "Monocyte", "Neutrophil"]
+
 
 PromptPair = Tuple[str, str]
 PromptSet = Tuple[str, ...]  # For multi-class prompts
@@ -162,6 +164,7 @@ class WBCAttDataset(Dataset):
             "Monocyte": 3,
             "Neutrophil": 4
         }
+
         print(f"Label to index mapping (hardcoded): {self.label_to_idx}")
         self.idx_to_label = {idx: label for label,
                              idx in self.label_to_idx.items()}
@@ -466,6 +469,44 @@ def _force_double_quotes(code: str) -> str:
 
         new_tokens.append((toknum, tokval))
     return tokenize.untokenize(new_tokens)
+
+
+def extract_and_parse_prompt_list_of_templates(code: str) -> List[str]:
+    """
+    From a string of Python code, finds the first occurrence of
+        = [ ... ]
+    and parses that bracketed literal into a List[str].
+
+    Raises:
+        ValueError if no list literal is found or it’s malformed.
+    """
+    import re
+    import ast
+
+    # 1) grab everything from the first '=' up to the matching ']'
+    m = re.search(r'=\s*(\[\s*[\s\S]*?\])', code)
+    if not m:
+        raise ValueError("No list literal found after an '=' in the code")
+    list_str = m.group(1)
+
+    # 2) safely evaluate it (only literals)
+    try:
+        data = ast.literal_eval(list_str)
+    except (SyntaxError, ValueError) as e:
+        raise ValueError(f"Malformed list literal: {e}")
+
+    # 3) validate shape
+    if not isinstance(data, list) or not all(isinstance(x, str) for x in data):
+        raise ValueError("Parsed object is not a list of strings")
+
+    prompt_templates = [str(x) for x in data]
+    prompts = []
+
+    for template in prompt_templates:
+        prompt_set = tuple(template.replace("<cell_type>", cls)
+                           for cls in CLASSES)
+        prompts.append(prompt_set)
+    return prompts
 
 
 def extract_and_parse_prompt_list(code: str) -> List[Tuple[str, ...]]:
@@ -935,23 +976,23 @@ def get_prompts_from_llm(
             m = re.search(r'```python\s*([\s\S]*?)\s*```', raw)
             if not m:
                 raise ValueError("No ```python ... ``` block found")
-            code = m.group(1)
+            code_block = m.group(1)
 
             # 2) normalize all literals to double-quoted form
-            code = _fix_quote_issues(code)
+            code_block = _fix_quote_issues(code_block)
 
             # print(f"Normalized code on attempt {attempt}: {code}...")
 
             # 3) convert the string to a list of tuples
-            prompts_list = parse_func(code)
+            prompts_list = parse_func(code_block)
             prompts: List[Tuple[str, ...]] = prompts_list
             print(f"Loaded {len(prompts)} prompt-pairs.")
-            print("First pair:", prompts[0])
+            print("First prompt:", prompts[0])
             return prompts
 
         except Exception as e:
             print(
-                f"[Warning] get_prompt_pairs parse error on attempt {attempt}/{max_retries}: {e}")
+                f"[Warning] get_prompts_from_llm parse error on attempt {attempt}/{max_retries}: {e}")
             print("raw response was:", raw)
             # sleep for 2 secs per attempt
             time.sleep(2 * attempt)  # exponential backoff
