@@ -2,7 +2,7 @@
 DATASET=camelyon17
 ROOT=/storage/projects3/e19-fyp-out-of-domain-gen-in-cv/camelyon17WILDS/
 OUTPUT_DIR=./output
-
+SHOTS=8
 if [ ${DATASET} == "camelyon17" ];
 then
 python train.py \
@@ -12,6 +12,7 @@ python train.py \
  --root ${ROOT} \
  --output-dir ${OUTPUT_DIR} \
  --seed 3407 \
- --resume false
+ --resume false \
+ --shots ${SHOTS}
 fi
 
