@@ -4,7 +4,7 @@ from dassl.data.datasets import DATASET_REGISTRY, Datum, DatasetBase
 
 @DATASET_REGISTRY.register()
 class WBCAtt(DatasetBase):
-    dataset_dir = "wbc_att"
+    dataset_dir = "WBCAtt"
 
     def __init__(self, cfg):
         root = os.path.abspath(os.path.expanduser(cfg.DATASET.ROOT))
