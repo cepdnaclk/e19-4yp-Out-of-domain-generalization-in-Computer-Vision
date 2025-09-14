@@ -3,7 +3,7 @@
 # custom config
 DATA=/storage/projects3/e19-fyp-out-of-domain-gen-in-cv/wbc_att/
 DATASET=wbc_att
-SHOTS=16
+SHOTS=8
 MODEL=BiomedCLIP
 NCTX=4
 CSC=False
