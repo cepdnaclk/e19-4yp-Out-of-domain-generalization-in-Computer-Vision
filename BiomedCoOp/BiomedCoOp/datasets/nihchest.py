@@ -12,7 +12,7 @@ class NIHChestXray(DatasetBase):
 
     def __init__(self, cfg):
         root = os.path.abspath(os.path.expanduser(cfg.DATASET.ROOT))
-        self.root_dir = root
+        self.root_dir = os.path.join(root, "all_images")
         self.metadata_csv = os.path.join(root, "Data_Entry_2017.csv")
         self.train_val_list = os.path.join(root, "train_val_list.txt")
         self.test_list = os.path.join(root, "test_list.txt")
