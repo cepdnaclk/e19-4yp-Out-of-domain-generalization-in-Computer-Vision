@@ -67,7 +67,7 @@ Format: <Features describing Basophil>, <Features describing Eosinophil>, <Featu
 def main():
 
     # Name the experiment we are currently running
-    experiment_name = f"Wbcatt_Experiment6_{FITNESS_METRIC}-Gen8-AllFeatures"
+    experiment_name = f"Wbcatt_Experiment7_{FITNESS_METRIC}-Gen8-NoConcepts"
     print(f"Running {experiment_name}...")
 
     # Create experiment results directory
