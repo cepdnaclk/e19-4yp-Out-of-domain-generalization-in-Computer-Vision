@@ -46,7 +46,7 @@ class NIHChestXray(DatasetBase):
             img_name = row["Image Index"]
             
             # Binary label: 0 = Non-Pneumonia, 1 = Pneumonia
-            label = 0 if row["Finding Labels"] == "No Finding" else 1
+            label = 1 if row["Finding Labels"] == "Pneumonia" else 0
 
             if img_name not in split_files:
                 continue
@@ -55,7 +55,7 @@ class NIHChestXray(DatasetBase):
             folder_idx = int(img_name.split("_")[0]) % 12 + 1
             folder_name = f"images_{folder_idx:03d}"
             img_path = os.path.join(self.root_dir, folder_name, img_name)
-
+            print("Hi I am the image path", img_path)
             if os.path.exists(img_path):
                 cls_name = self.all_class_names[label]
                 item = Datum(impath=img_path, label=label, classname=cls_name)
