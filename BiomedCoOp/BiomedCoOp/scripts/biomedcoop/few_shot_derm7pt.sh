@@ -3,7 +3,7 @@
 # custom config
 DATA=/storage/projects3/e19-fyp-out-of-domain-gen-in-cv/Derm7pt/release_v0/
 DATASET=derm7pt
-SHOTS=150
+SHOTS=16
 MODEL=BiomedCLIP
 NCTX=4
 CSC=False
