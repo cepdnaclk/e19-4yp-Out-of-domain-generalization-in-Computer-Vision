@@ -1,10 +1,10 @@
 #!/bin/bash
 
 # custom config
-DATA=$1
-DATASET=$2
-SHOTS=$3  # number of shots (1, 2, 4, 8, 16)
-MODEL=$4
+DATA=/storage/projects3/e19-fyp-out-of-domain-gen-in-cv/wbc_att/
+DATASET=wbc_att
+SHOTS=8
+MODEL=BiomedCLIP
 NCTX=4
 CSC=False
 CTP=end
