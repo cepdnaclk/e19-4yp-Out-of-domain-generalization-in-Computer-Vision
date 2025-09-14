@@ -156,11 +156,11 @@ class WBCAttDataset(Dataset):
         # Create label mapping from string labels to integers
         # Hardcoded label mapping
         self.label_to_idx = {
-            "Basophils": 0,
-            "Eosinophiles": 1,
-            "Lymphocytes": 2,
-            "Monocytes": 3,
-            "Neutrophils": 4
+            "Basophil": 0,
+            "Eosinophil": 1,
+            "Lymphocyte": 2,
+            "Monocyte": 3,
+            "Neutrophil": 4
         }
         print(f"Label to index mapping (hardcoded): {self.label_to_idx}")
         self.idx_to_label = {idx: label for label,
