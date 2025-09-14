@@ -17,7 +17,7 @@ import util
 import torch
 import numpy as np
 import os
-
+from gemini_pro_initial_prompts import INIT_PROMPTS
 # 'accuracy', 'auc', 'f1_macro', 'inverted_weighted_ce'
 FITNESS_METRIC = 'f1_macro'
 
@@ -74,7 +74,7 @@ Format: <Features describing Basophil>, <Features describing Eosinophil>, <Featu
 def main():
 
     # Name the experiment we are currently running
-    experiment_name = f"Wbcatt_Experiment10_{FITNESS_METRIC}-GPT5init"
+    experiment_name = f"Wbcatt_Experiment10_{FITNESS_METRIC}-GeminiProinit"
     print(f"Running {experiment_name}...")
 
     # Create experiment results directory
@@ -103,8 +103,7 @@ def main():
     print(f"Loaded {len(all_feats)} wbcatt embeddings")
 
     # 3. Optionally load initial prompts (currently commented out)
-    initial_prompts = util.load_initial_prompts(
-        "experiment_results/initial_gpt5_prompt.txt")
+    # initial_prompts = util.load_initial_prompts()
 
     # 4. Initialize the LLM client for prompt generation
     # Set use_local_ollama to True to use a local Ollama server
@@ -112,7 +111,7 @@ def main():
 
     # Optimization loop
     pq = util.PriorityQueue(
-        max_capacity=1000, filter_threshold=0.1, initial_prompts=initial_prompts)
+        max_capacity=1000, filter_threshold=0.1)
     prompt_content = ""
 
     # 6. Optimization loop: generate, evaluate, and select prompts for 500 iterations
@@ -124,7 +123,11 @@ def main():
         # Generate new prompt sets using the LLM client
         prompt_sets = util.get_prompts_from_llm(meta_prompt, client)
 
-        # Evaluate each prompt set and insert into the priority queue
+        if j == 0:
+            print(f"Initial prompts from Gemini Pro")
+            prompt_sets = INIT_PROMPTS
+
+         # Evaluate each prompt set and insert into the priority queue
         for i, prompt_set in enumerate(prompt_sets):
             if len(prompt_set) != 5:
                 print(f"Invalid prompt set: {prompt_set}")
