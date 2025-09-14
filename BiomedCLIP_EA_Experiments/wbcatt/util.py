@@ -1190,16 +1190,40 @@ def load_initial_prompts(path: str) -> List[InitialItem]:
                 continue
 
             try:
-                # Regex for 5 prompts: ('...', '...', '...', '...', '...'), Score: 0.9364
-                pattern = r"\('([^']*)', '([^']*)', '([^']*)', '([^']*)', '([^']*)'\), Score: ([\d.]+)"
-                match = re.match(pattern, line)
+                # Fix quote issues in the line first
+                fixed_line = _fix_quote_issues(f"prompts = [{line}]")
 
-                if match:
-                    prompts = tuple(match.group(i) for i in range(1, 6))
-                    score = float(match.group(6))
-                    results.append((prompts, score))
-                else:
-                    print(f"Warning: Could not parse line {line_num}: {line}")
+                # Extract the fixed content back (remove the wrapper)
+                m = re.search(r'\[(.*)\]', fixed_line)
+                if m:
+                    fixed_line = m.group(1)
+
+                # Now try to parse the tuple and score
+                # Split at the last comma to separate tuple from score
+                parts = fixed_line.rsplit(',', 1)
+                if len(parts) != 2:
+                    print(f"Warning: Could not split line {line_num}: {line}")
+                    continue
+
+                tuple_part = parts[0].strip()
+                score_part = parts[1].strip()
+
+                # Parse the tuple
+                prompts = ast.literal_eval(tuple_part)
+                if not isinstance(prompts, tuple) or len(prompts) != 5:
+                    print(
+                        f"Warning: Invalid tuple format at line {line_num}: {line}")
+                    continue
+
+                # Parse the score (remove "Score:" prefix)
+                score_match = re.search(r'Score:\s*([\d.]+)', score_part)
+                if not score_match:
+                    print(
+                        f"Warning: Could not parse score at line {line_num}: {line}")
+                    continue
+
+                score = float(score_match.group(1))
+                results.append((prompts, score))
 
             except Exception as e:
                 print(f"Error parsing line {line_num}: {line}")
@@ -1280,23 +1304,43 @@ def load_last_iteration_prompts(path: str) -> List[InitialItem]:
                     current_iteration = int(iteration_match.group(1))
                     continue
 
-                # Try to parse prompt lines with 5 elements: ('p1', 'p2', 'p3', 'p4', 'p5'), Score: 0.9364
-                pattern = r"\('([^']*)', '([^']*)', '([^']*)', '([^']*)', '([^']*)'\), Score: ([\d.]+)"
-                match = re.match(pattern, line)
+                # Skip iteration headers
+                if current_iteration is None:
+                    continue
 
-                if match and current_iteration is not None:
-                    # Extract all 5 prompts
-                    prompt1 = match.group(1)
-                    prompt2 = match.group(2)
-                    prompt3 = match.group(3)
-                    prompt4 = match.group(4)
-                    prompt5 = match.group(5)
-                    score = float(match.group(6))
+                # Fix quote issues in the line first
+                fixed_line = _fix_quote_issues(f"prompts = [{line}]")
 
-                    prompt_set = (prompt1, prompt2, prompt3, prompt4, prompt5)
-                    last_iteration_prompts.append((prompt_set, score))
-                elif not iteration_match:  # Don't warn about iteration headers
-                    print(f"Warning: Could not parse line {line_num}: {line}")
+                # Extract the fixed content back (remove the wrapper)
+                m = re.search(r'\[(.*)\]', fixed_line)
+                if m:
+                    fixed_line = m.group(1)
+
+                # Split at the last comma to separate tuple from score
+                parts = fixed_line.rsplit(',', 1)
+                if len(parts) != 2:
+                    print(f"Warning: Could not split line {line_num}: {line}")
+                    continue
+
+                tuple_part = parts[0].strip()
+                score_part = parts[1].strip()
+
+                # Parse the tuple
+                prompts = ast.literal_eval(tuple_part)
+                if not isinstance(prompts, tuple) or len(prompts) != 5:
+                    print(
+                        f"Warning: Invalid tuple format at line {line_num}: {line}")
+                    continue
+
+                # Parse the score (remove "Score:" prefix)
+                score_match = re.search(r'Score:\s*([\d.]+)', score_part)
+                if not score_match:
+                    print(
+                        f"Warning: Could not parse score at line {line_num}: {line}")
+                    continue
+
+                score = float(score_match.group(1))
+                last_iteration_prompts.append((prompts, score))
 
             except Exception as e:
                 print(f"Error parsing line {line_num}: {line}")
