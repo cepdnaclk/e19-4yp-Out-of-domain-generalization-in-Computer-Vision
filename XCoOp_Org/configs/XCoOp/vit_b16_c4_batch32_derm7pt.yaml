@@ -35,8 +35,8 @@ TRAINER:
     N_CTX: 4 
     CTX_INIT: "a photo of a"
     CLINICAL_PROMPTS: [
-      "a photo of a {}, no evidence of tumor present.",  # non-tumor
-      "a photo of a {}, tumor detected in tissue section.", # tumor
+      "a dermoscopic image of a {}, no evidence of melanoma present.",  # non-melanoma
+      "a dermoscopic image of a {}, melanoma detected in skin lesion." # melanoma
     ]
     PREC: "amp" 
     XCoOp_LOSS_WEIGHT: 5.0 

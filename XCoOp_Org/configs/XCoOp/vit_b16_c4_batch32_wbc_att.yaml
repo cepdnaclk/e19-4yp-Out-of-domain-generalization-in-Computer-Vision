@@ -35,8 +35,20 @@ TRAINER:
     N_CTX: 4 
     CTX_INIT: "a photo of a"
     CLINICAL_PROMPTS: [
-      "a photo of a {}, no evidence of tumor present.",  # non-tumor
-      "a photo of a {}, tumor detected in tissue section.", # tumor
+        # Basophil
+        "a microscopic image of a {}, healthy morphology, purple granules visible.",
+
+        # Eosinophil
+        "a microscopic image of a {}, showing normal eosinophil nucleus and granules.",
+
+        # Lymphocyte
+        "a microscopic image of a {}, healthy lymphocyte with dense nucleus.",
+
+        # Monocyte
+        "a microscopic image a {}, showing normal monocyte morphology.",
+
+        # Neutrophil
+        "a microscopic image of a {}, healthy neutrophil with segmented nucleus."
     ]
     PREC: "amp" 
     XCoOp_LOSS_WEIGHT: 5.0 

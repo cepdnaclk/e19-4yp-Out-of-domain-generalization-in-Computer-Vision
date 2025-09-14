@@ -36,7 +36,7 @@ TRAINER:
     CTX_INIT: "a photo of a"
     CLINICAL_PROMPTS: [
       "a photo of a {}, no evidence of tumor present.",  # non-tumor
-      "a photo of a {}, tumor detected in tissue section.", # tumor
+      "a photo of a {}, tumor detected in tissue section." # tumor
     ]
     PREC: "amp" 
     XCoOp_LOSS_WEIGHT: 5.0 

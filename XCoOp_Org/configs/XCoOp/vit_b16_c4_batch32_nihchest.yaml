@@ -35,8 +35,8 @@ TRAINER:
     N_CTX: 4 
     CTX_INIT: "a photo of a"
     CLINICAL_PROMPTS: [
-      "a photo of a {}, no evidence of tumor present.",  # non-tumor
-      "a photo of a {}, tumor detected in tissue section.", # tumor
+        "a chest X-ray showing {}, no signs of pneumonia.",  # non-pneumonia
+        "a chest X-ray showing {}, pneumonia detected in lungs." # pneumonia
     ]
     PREC: "amp" 
     XCoOp_LOSS_WEIGHT: 5.0 
