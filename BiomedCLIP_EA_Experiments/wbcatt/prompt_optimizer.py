@@ -59,7 +59,7 @@ prompts = [
 Only provide the output as Python code in the following format: prompts = list[str]. Let's think step-by-step
 """
     # Meta prompt template for subsequent iterations
-    base_meta_prompt_template = """The task is to generate 50 textual description templates for peripheral blood cells.
+    base_meta_prompt_template = """The task is to generate {generate_n} textual description templates for peripheral blood cells.
 Each template must be a single string that contains only one placeholder, which is "<cell_type>".
 The cell types are Basophil, Eosinophil, Lymphocyte, Monocyte, and Neutrophil.
 The template string should be a simple, complete sentence that becomes a meaningful description when the <cell_type> placeholder is filled.
