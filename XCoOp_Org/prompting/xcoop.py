@@ -732,6 +732,7 @@ class XCoOp(TrainerX):
             (self.epoch + 1) % self.cfg.TRAIN.CHECKPOINT_FREQ == 0
             if self.cfg.TRAIN.CHECKPOINT_FREQ > 0 else False
         )
+        print(f"THIS EPOCH IS {self.epoch}")
         if self.epoch == last_epoch:
             if do_test and self.cfg.TEST.FINAL_MODEL == "best_val":
                 test_result = self.test(split="test")
