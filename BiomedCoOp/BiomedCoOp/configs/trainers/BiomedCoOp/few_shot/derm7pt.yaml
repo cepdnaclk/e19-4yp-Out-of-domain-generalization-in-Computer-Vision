@@ -39,4 +39,4 @@ MODEL:
 DATASET:
   ROOT: /storage/projects3/e19-fyp-out-of-domain-gen-in-cv/Derm7pt/release_v0
   NAME: Derm7pt
-  NUM_SHOTS: 16
+  NUM_SHOTS: 100
