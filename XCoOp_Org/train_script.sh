@@ -1,8 +1,8 @@
 # training script: an example
 DATASET=camelyon17
 ROOT=/storage/projects3/e19-fyp-out-of-domain-gen-in-cv/camelyon17WILDS/
-OUTPUT_DIR=./output
 SHOTS=8
+OUTPUT_DIR=./output_${DATASET}_shot${SHOTS}
 if [ ${DATASET} == "camelyon17" ];
 then
 python train.py \
