@@ -1245,3 +1245,63 @@ def select_balanced_few_shot_subset(features: torch.Tensor, labels: torch.Tensor
     subset_labels = labels[selected_indices]
 
     return subset_features, subset_labels
+
+
+def load_last_iteration_prompts(path: str) -> List[InitialItem]:
+    """
+    Reads the last iteration's prompt progression file, which has the format:
+    iteration 1: 
+    ('prompt1', 'prompt2', 'prompt3', 'prompt4', 'prompt5'), Score: 0.9364
+    ('prompt1', 'prompt2', 'prompt3', 'prompt4', 'prompt5'), Score: 0.8456
+    ....
+
+    iteration 'n': 
+    ('prompt1', 'prompt2', 'prompt3', 'prompt4', 'prompt5'), Score: 0.9123
+    ('prompt1', 'prompt2', 'prompt3', 'prompt4', 'prompt5'), Score: 0.7890
+
+    Returns a list of ((tuple of 5 strings), score) tuples from the last iteration.
+    """
+    last_iteration_prompts = []
+    current_iteration = None
+
+    with open(path, 'r', encoding='utf-8') as file:
+        for line_num, line in enumerate(file, 1):
+            line = line.strip()
+            if not line:  # Skip empty lines
+                continue
+
+            try:
+                # Check if this line indicates a new iteration
+                iteration_match = re.match(r'[Ii]teration (\d+):\s*$', line)
+                if iteration_match:
+                    # If we found a previous iteration, store its prompts
+                    if current_iteration is not None:
+                        last_iteration_prompts = []  # Reset for new iteration
+                    current_iteration = int(iteration_match.group(1))
+                    continue
+
+                # Try to parse prompt lines with 5 elements: ('p1', 'p2', 'p3', 'p4', 'p5'), Score: 0.9364
+                pattern = r"\('([^']*)', '([^']*)', '([^']*)', '([^']*)', '([^']*)'\), Score: ([\d.]+)"
+                match = re.match(pattern, line)
+
+                if match and current_iteration is not None:
+                    # Extract all 5 prompts
+                    prompt1 = match.group(1)
+                    prompt2 = match.group(2)
+                    prompt3 = match.group(3)
+                    prompt4 = match.group(4)
+                    prompt5 = match.group(5)
+                    score = float(match.group(6))
+
+                    prompt_set = (prompt1, prompt2, prompt3, prompt4, prompt5)
+                    last_iteration_prompts.append((prompt_set, score))
+                elif not iteration_match:  # Don't warn about iteration headers
+                    print(f"Warning: Could not parse line {line_num}: {line}")
+
+            except Exception as e:
+                print(f"Error parsing line {line_num}: {line}")
+                print(f"Error details: {e}")
+                continue
+
+    # Return the prompts from the last iteration found
+    return last_iteration_prompts

@@ -19,8 +19,8 @@ import numpy as np
 import os
 from gemini_pro_initial_prompts import INIT_PROMPTS
 # 'accuracy', 'auc', 'f1_macro', 'inverted_weighted_ce'
-FITNESS_METRIC = 'accuracy'
-FEW_SHOT = 256
+FITNESS_METRIC = 'f1_macro'
+FEW_SHOT = 0
 
 
 def get_prompt_template(iteration: int, prompt_content: str, generate_n: int = 8) -> str:
@@ -55,7 +55,7 @@ Eosinophils: Nucleus=Segmented, NC Ratio=Low, Granularity=Yes, Color=Red, Size=-
 Lymphocytes: Nucleus=Unsegmented, NC Ratio=High, Granularity=No, Color=-, Size=Small
 Monocytes: Nucleus=Unsegmented, NC Ratio=Low, Granularity=No, Color=-, Size=-
 Neutrophils: Nucleus=Segmented, NC Ratio=Low, Granularity=Yes, Color=Blue, Size=-
-Each description set must contain five discriminating meaningful descriptions to identify each of the five cell types.
+Each description set must contain five discriminating meaningful descriptions to identify each of the five cell types. The features should be contrasting and discriminative.
 Format: <Features describing Basophil>, <Features describing Eosinophil>, <Features describing Lymphocyte>, <Features describing Monocyte>, <Features describing Neutrophil> 
     """
     # Use the initial prompt for the first iteration
@@ -75,7 +75,7 @@ Format: <Features describing Basophil>, <Features describing Eosinophil>, <Featu
 def main():
 
     # Name the experiment we are currently running
-    experiment_name = f"Wbcatt_Experiment13_{FITNESS_METRIC}-Template-FEWSHOT{FEW_SHOT}"
+    experiment_name = f"Wbcatt_Experiment14_{FITNESS_METRIC}-FEWSHOT{FEW_SHOT}"
     print(f"Running {experiment_name}...")
 
     # Create experiment results directory
@@ -111,7 +111,8 @@ def main():
             f"Selected balanced few-shot subset with {FEW_SHOT} samples per class.")
 
     # 3. Optionally load initial prompts (currently commented out)
-    # initial_prompts = util.load_initial_prompts()
+    initial_prompts = util.load_last_iteration_prompts(
+        "experiment_results/Wbcatt_Experiment13_accuracy-FEWSHOT256_opt_pairs.txt")
 
     # 4. Initialize the LLM client for prompt generation
     # Set use_local_ollama to True to use a local Ollama server
@@ -119,11 +120,11 @@ def main():
 
     # Optimization loop
     pq = util.PriorityQueue(
-        max_capacity=1000, filter_threshold=0.01)
+        max_capacity=1000, filter_threshold=0.01, initial=initial_prompts)
     prompt_content = ""
 
     # 6. Optimization loop: generate, evaluate, and select prompts for 500 iterations
-    for j in range(500):
+    for j in range(5000):
         # Generate the meta prompt for the LLM
         meta_prompt = get_prompt_template(iteration=j,
                                           prompt_content=prompt_content, generate_n=8)
