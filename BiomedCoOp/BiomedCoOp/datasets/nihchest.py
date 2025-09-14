@@ -51,11 +51,8 @@ class NIHChestXray(DatasetBase):
             if img_name not in split_files:
                 continue
 
-            print(f"root dir is {self.root_dir}")
             img_path = os.path.join(self.root_dir, img_name)
-            print("hi this is img path",img_path)
             if os.path.exists(img_path):
-                print("hi imahe path exists")
                 cls_name = self.all_class_names[label]
                 item = Datum(impath=img_path, label=label, classname=cls_name)
                 items.append(item)
