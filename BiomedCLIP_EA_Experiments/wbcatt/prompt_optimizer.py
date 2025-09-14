@@ -92,7 +92,7 @@ Only provide the output as Python code in the following format: prompts = list[s
 def main():
 
     # Name the experiment we are currently running
-    experiment_name = f"Wbcatt_Experiment10_{FITNESS_METRIC}-GeminiProinit"
+    experiment_name = f"Wbcatt_Experiment11_{FITNESS_METRIC}-Template"
     print(f"Running {experiment_name}...")
 
     # Create experiment results directory
@@ -142,11 +142,7 @@ def main():
         prompt_sets = util.get_prompts_from_llm(
             meta_prompt, client, parse_func=util.extract_and_parse_prompt_list_of_templates)
 
-        if j == 0:
-            print(f"Initial prompts from Gemini Pro")
-            prompt_sets = INIT_PROMPTS
-
-         # Evaluate each prompt set and insert into the priority queue
+        # Evaluate each prompt set and insert into the priority queue
         for i, prompt_set in enumerate(prompt_sets):
             if len(prompt_set) != 5:
                 print(f"Invalid prompt set: {prompt_set}")
