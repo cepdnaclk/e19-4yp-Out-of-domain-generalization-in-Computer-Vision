@@ -38,9 +38,14 @@ Only provide the output as Python code in the following format: prompts = list[t
 
     task_specific_description = """Basophil, Eosinophil, Lymphocyte, Monocyte, and Neutrophil peripheral blood cells.
 These are the following features an expert would look for: Cell Size, Cell Shape, Nucleus Shape, Nuclear-Cytoplasmic Ratio, Chromatin-Density, Cytoplasm-Vacuole, Cytoplasm-Texture, Cytoplasm-Color, Granule-Type, Granule-Color, Granularity
-Each description set must contain five discriminating meaningful descriptions based on one of the above features for each of the five cell types. 
-Format: (<feature description for Basophil>, <feature description for Eosinophil>, <feature description for Lymphocyte>, <feature description for Monocyte>, <feature description for Neutrophil>)
-"""
+Basophils: Nucleus=Segmented, NC Ratio=Low, Granularity=Yes, Color=Blue/Black (dense), Size=-
+Eosinophils: Nucleus=Segmented, NC Ratio=Low, Granularity=Yes, Color=Red, Size=-
+Lymphocytes: Nucleus=Unsegmented, NC Ratio=High, Granularity=No, Color=-, Size=Small
+Monocytes: Nucleus=Unsegmented, NC Ratio=Low, Granularity=No, Color=-, Size=-
+Neutrophils: Nucleus=Segmented, NC Ratio=Low, Granularity=Yes, Color=Blue, Size=-
+Each description set must contain five discriminating meaningful descriptions to identify each of the five cell types.
+Format: <Features describing Basophil>, <Features describing Eosinophil>, <Features describing Lymphocyte>, <Features describing Monocyte>, <Features describing Neutrophil> 
+    """
     # Use the initial prompt for the first iteration
     if iteration == 0:
         return meta_init_prompt.format(
