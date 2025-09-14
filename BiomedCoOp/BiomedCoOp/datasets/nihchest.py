@@ -46,7 +46,7 @@ class NIHChestXray(DatasetBase):
             img_name = row["Image Index"]
             
             # Binary label: 0 = Non-Pneumonia, 1 = Pneumonia
-            label = 0 if row["Finding Labels"] == "No Finding" else 1
+            label = 1 if row["Finding Labels"] == "Pneumonia" else 0
 
             if img_name not in split_files:
                 continue
