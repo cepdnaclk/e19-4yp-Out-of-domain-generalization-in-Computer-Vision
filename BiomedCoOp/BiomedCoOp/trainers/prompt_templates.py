@@ -1358,7 +1358,7 @@ BIOMEDCOOP_TEMPLATES = {
         "Basophil with partially degranulated cytoplasm, leaving scattered coarse granules.",
         "Basophil showing uneven granule distribution with perinuclear clear space."
     ],
-    "eosinophil": [
+    "Eosinophil": [
         "Eosinophil with bilobed nucleus and bright red-orange cytoplasmic granules.",
         "Eosinophil showing coarse, uniformly sized granules masking nuclear outline.",
         "Eosinophil with dense granules concentrated along the nuclear margin.",
@@ -1410,7 +1410,7 @@ BIOMEDCOOP_TEMPLATES = {
         "Eosinophil cytoplasm diffusely filled with large uniform granules.",
         "Eosinophil showing dense brick-red staining of cytoplasm due to hypergranulation."
     ],
-    "neutrophil": [
+    "Neutrophil": [
         "Neutrophil with multilobed nucleus connected by thin chromatin strands.",
         "Neutrophil showing 3-lobed nucleus with pale cytoplasm.",
         "Neutrophil with faintly pink cytoplasm containing small azurophilic granules.",
@@ -1462,7 +1462,7 @@ BIOMEDCOOP_TEMPLATES = {
         "Neutrophil cytoplasm showing faint pink dusting due to fine granules.",
         "Neutrophil nucleus hypersegmented and fragmented into multiple lobes."
     ],
-    "monocyte": [
+    "Monocyte": [
         "Monocyte with kidney-shaped nucleus occupying half the cell.",
         "Monocyte cytoplasm abundant, pale blue-gray with fine granules.",
         "Monocyte nucleus oval with delicate lacy chromatin.",
@@ -1514,7 +1514,7 @@ BIOMEDCOOP_TEMPLATES = {
         "Monocyte nucleus U-shaped, chromatin thin and lacy.",
         "Monocyte cytoplasm abundant and pale, with faint granular texture."
     ],
-    "lymphocyte": [
+    "Lymphocyte": [
         "Lymphocyte with large round nucleus occupying most of the cell.",
         "Lymphocyte cytoplasm scant and pale blue around nucleus.",
         "Lymphocyte nucleus condensed with coarse chromatin.",
