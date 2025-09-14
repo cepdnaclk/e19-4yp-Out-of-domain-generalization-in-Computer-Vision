@@ -1306,7 +1306,7 @@ BIOMEDCOOP_TEMPLATES = {
         "a clinical image with a lesion that has changed in size or texture, indicative of melanoma.",
         "a dermatological photo showing a mole with mixed pigmentation and irregular shape, consistent with melanoma."
     ],
-    "basophil": [
+    "Basophil": [
         "Basophil with a bi-lobed nucleus obscured by dense dark-purple granules.",
         "Basophil cytoplasm filled with coarse, unevenly distributed basophilic granules.",
         "Basophil showing large violet-black granules partially covering the nuclear outline.",
