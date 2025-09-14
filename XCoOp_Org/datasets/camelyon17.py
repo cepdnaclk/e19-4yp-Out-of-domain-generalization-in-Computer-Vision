@@ -23,7 +23,7 @@ class Camelyon17Custom(DatasetBase):
         full_train = self.read_data(split="train")
         full_val = self.read_data(split="val")
         test = self.read_data(split="test")
-
+        print(f"HI {self.num_shots} ")
         if self.num_shots is not None:
             # Few-shot mode
             train, val = self.create_few_shot_split(full_train, self.num_shots, self.seed)
