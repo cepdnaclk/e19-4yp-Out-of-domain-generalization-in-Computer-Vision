@@ -48,6 +48,13 @@ Only provide the output as Python code in the following format: prompts = list[t
 """
 
     task_specific_description = """Basophil, Eosinophil, Lymphocyte, Monocyte, and Neutrophil peripheral blood cells.
+These are the following features an expert would look for: Cell Size, Cell Shape, Nucleus Shape, Nuclear-Cytoplasmic Ratio, Chromatin-Density, Cytoplasm-Vacuole, Cytoplasm-Texture, Cytoplasm-Color, Granule-Type, Granule-Color, Granularity
+Basophils: Nucleus=Segmented, NC Ratio=Low, Granularity=Yes, Color=Blue/Black (dense), Size=-
+Eosinophils: Nucleus=Segmented, NC Ratio=Low, Granularity=Yes, Color=Red, Size=-
+Lymphocytes: Nucleus=Unsegmented, NC Ratio=High, Granularity=No, Color=-, Size=Small
+Monocytes: Nucleus=Unsegmented, NC Ratio=Low, Granularity=No, Color=-, Size=-
+Neutrophils: Nucleus=Segmented, NC Ratio=Low, Granularity=Yes, Color=Blue, Size=-
+Each description set must contain five discriminating meaningful descriptions to identify each of the five cell types.
 Format: <Features describing Basophil>, <Features describing Eosinophil>, <Features describing Lymphocyte>, <Features describing Monocyte>, <Features describing Neutrophil> 
     """
     # Use the initial prompt for the first iteration
@@ -67,7 +74,7 @@ Format: <Features describing Basophil>, <Features describing Eosinophil>, <Featu
 def main():
 
     # Name the experiment we are currently running
-    experiment_name = f"Wbcatt_Experiment7_{FITNESS_METRIC}-Gen8-NoConcepts"
+    experiment_name = f"Wbcatt_Experiment9_{FITNESS_METRIC}"
     print(f"Running {experiment_name}...")
 
     # Create experiment results directory
