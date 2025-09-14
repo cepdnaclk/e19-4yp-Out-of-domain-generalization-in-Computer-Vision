@@ -18,7 +18,7 @@ class NIHChestXray(DatasetBase):
         self.test_list = os.path.join(root, "test_list.txt")
         
         # Binary classification: non-pneumonia vs pneumonia
-        self.all_class_names = ["Non-pneumonia", "Pneumonia"]
+        self.all_class_names = ["non-pneumonia", "pneumonia"]
 
         train = self.read_data(split="train")
         val = self.read_data(split="val")
