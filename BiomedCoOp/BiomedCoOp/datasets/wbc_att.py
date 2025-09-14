@@ -12,7 +12,6 @@ class WBCAtt(DatasetBase):
         self.train_csv = os.path.join(root, "pbc_attr_v1_train.csv")
         self.val_csv = os.path.join(root, "pbc_attr_v1_val.csv")
         self.test_csv = os.path.join(root, "pbc_attr_v1_test.csv")
-        self.image_base = os.path.join(root, "PBC_dataset_normal_DIB")
 
         # Read unique labels from train split
         df_train = pd.read_csv(self.train_csv)
