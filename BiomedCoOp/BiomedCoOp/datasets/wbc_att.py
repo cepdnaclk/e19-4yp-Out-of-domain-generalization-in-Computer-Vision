@@ -34,7 +34,7 @@ class WBCAtt(DatasetBase):
         for _, row in df.iterrows():
             # image path is relative to PBC_dataset_normal_DIB
             img_path = os.path.join(self.image_base, row["path"])
-            print(f"Image path: {img_path}")
+            # print(f"Image path: {img_path}")
             label_name = row["label"]
             label = self.label_to_idx[label_name]
 
