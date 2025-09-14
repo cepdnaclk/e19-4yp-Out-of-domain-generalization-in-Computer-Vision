@@ -781,6 +781,7 @@ def get_prompts_from_llm(
         except Exception as e:
             print(
                 f"[Warning] get_prompt_pairs parse error on attempt {attempt}/{max_retries}: {e}")
+            print("raw response was:", raw)
             # sleep for 2 secs per attempt
             time.sleep(2 * attempt)  # exponential backoff
 
