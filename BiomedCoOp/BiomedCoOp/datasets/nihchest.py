@@ -8,7 +8,7 @@ from dassl.data.datasets import DATASET_REGISTRY, Datum, DatasetBase
 
 @DATASET_REGISTRY.register()
 class NIHChestXray(DatasetBase):
-    dataset_dir = "NIH_Chest"
+    dataset_dir = "NIHChestXray"
 
     def __init__(self, cfg):
         root = os.path.abspath(os.path.expanduser(cfg.DATASET.ROOT))

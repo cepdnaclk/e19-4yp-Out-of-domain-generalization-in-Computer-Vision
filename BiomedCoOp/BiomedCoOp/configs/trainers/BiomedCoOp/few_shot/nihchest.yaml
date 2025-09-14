@@ -38,6 +38,6 @@ MODEL:
 
 DATASET:
   ROOT: /storage/projects3/e19-fyp-out-of-domain-gen-in-cv/NIH_Chest
-  NAME: NIH_Chest
+  NAME: NIHChestXray
   NUM_SHOTS: 16
 
