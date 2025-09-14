@@ -11,6 +11,9 @@ from dassl.engine import build_trainer
 # custom
 # dataset
 import datasets.camelyon17
+import datasets.derm7pt
+import datasets.nihchest
+import datasets.wbc_att
 
 # trainer
 import prompting.xcoop
