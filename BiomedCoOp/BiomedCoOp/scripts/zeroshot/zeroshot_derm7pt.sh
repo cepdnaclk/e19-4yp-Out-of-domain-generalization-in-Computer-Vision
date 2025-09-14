@@ -12,3 +12,4 @@ python train.py \
 --config-file configs/trainers/${METHOD}/${CFG}.yaml \
 --output-dir output/${DATASET}/${TRAINER}/${CFG} \
 --eval-only
+DATASET.NUM_SHOTS 0
