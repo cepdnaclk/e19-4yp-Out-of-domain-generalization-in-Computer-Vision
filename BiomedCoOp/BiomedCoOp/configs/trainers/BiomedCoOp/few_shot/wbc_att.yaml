@@ -38,6 +38,6 @@ MODEL:
 
 DATASET:
   ROOT: /storage/projects3/e19-fyp-out-of-domain-gen-in-cv/wbc_att
-  NAME: wbc_att
+  NAME: WBCAtt
   NUM_SHOTS: 16
 
