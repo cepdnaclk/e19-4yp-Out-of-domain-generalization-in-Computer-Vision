@@ -18,6 +18,7 @@ class WBCAtt(DatasetBase):
         df_train = pd.read_csv(self.train_csv)
         unique_labels = sorted(df_train["label"].unique())
         self.all_class_names = list(unique_labels)
+        print(unique_labels)
         self.label_to_idx = {label: idx for idx, label in enumerate(self.all_class_names)}
 
         # Build splits
