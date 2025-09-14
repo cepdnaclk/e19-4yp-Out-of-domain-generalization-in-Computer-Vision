@@ -40,7 +40,4 @@ DATASET:
   ROOT: /storage/projects3/e19-fyp-out-of-domain-gen-in-cv/wbc_att
   NAME: wbc_att
   NUM_SHOTS: 16
-  TRAIN_FILE: pbc_attr_v1_train.csv
-  VAL_FILE: pbc_attr_v1_val.csv
-  TEST_FILE: pbc_attr_v1_test.csv
-  IMAGE_DIR: PBC_dataset_normal_DIB
+
