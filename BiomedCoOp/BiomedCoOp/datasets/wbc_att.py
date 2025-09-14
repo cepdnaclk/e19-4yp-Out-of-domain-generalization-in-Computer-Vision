@@ -21,19 +21,20 @@ class WBCAtt(DatasetBase):
         self.label_to_idx = {label: idx for idx, label in enumerate(self.all_class_names)}
 
         # Build splits
-        train = self.read_split(self.train_csv)
-        val = self.read_split(self.val_csv)
-        test = self.read_split(self.test_csv)
+        train = self.read_data(self.train_csv)
+        val = self.read_data(self.val_csv)
+        test = self.read_data(self.test_csv)
 
         super().__init__(train_x=train, val=val, test=test)
 
-    def read_split(self, csv_path):
+    def read_data(self, csv_path):
         items = []
         df = pd.read_csv(csv_path)
 
         for _, row in df.iterrows():
             # image path is relative to PBC_dataset_normal_DIB
             img_path = os.path.join(self.image_base, row["path"])
+            print(f"Image path: {img_path}")
             label_name = row["label"]
             label = self.label_to_idx[label_name]
 
