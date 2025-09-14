@@ -25,7 +25,7 @@ def get_prompt_template(iteration: int, prompt_content: str, generate_n: int = 8
     """
 
     # Initial meta prompt for the first iteration
-    meta_init_prompt = """Give 8 distinct textual description sets of visual discriminative features to identify {task_specific_description}.
+    meta_init_prompt = """Give 50 distinct textual description sets of visual discriminative features to identify {task_specific_description}.
 Only provide the output as Python code in the following format: prompts = list[tuple[str, ...]]. Let's think step-by-step"""
 
     # Meta prompt template for subsequent iterations
