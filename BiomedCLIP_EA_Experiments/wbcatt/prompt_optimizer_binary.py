@@ -50,6 +50,7 @@ def get_prompt_template(iteration: int, prompt_content: str, generate_n: int = 8
     meta_init_prompt = f"""Give 50 distinct textual descriptions of pairs of visual discriminative features to identify whether the peripheral blood cell is a {BINARY_LABEL} or not. Other cell types include {other_labels_str}. 
 These are the following features an expert would look for: Cell Size, Cell Shape, Nucleus Shape, Nuclear-Cytoplasmic Ratio, Chromatin-Density, Cytoplasm-Vacuole, Cytoplasm-Texture, Cytoplasm-Color, Granule-Type, Granule-Color, Granularity
 {MEDICAL_CONCEPTS_MAPPING[BINARY_LABEL]}
+Avoid using names of cell types in the descriptions.
 Only provide the output as Python code in the following format: prompts = list[tuple[negative: str, positive: str]]. Let's think step-by-step"""
     # Meta prompt template for subsequent iterations
     # Base meta prompt template
@@ -60,6 +61,7 @@ Here are the best performing pairs in ascending order. High scores indicate high
 {content}
 
 Write {generate_n} new prompt pairs that are different to from the old ones and has a score as high as possible. Formulate a strategy",
+Avoid using names of cell types in the descriptions.
 Only provide the output as Python code in the following format: prompts = list[tuple[negative: str, positive: str]]. Let's think step-by-step
 """
 
@@ -126,14 +128,14 @@ def main():
 
     # Optimization loop
     pq = util.PriorityQueue(
-        max_capacity=1000, filter_threshold=0.1)
+        max_capacity=1000, filter_threshold=0.5)
     prompt_content = ""
 
     # 6. Optimization loop: generate, evaluate, and select prompts for 500 iterations
     for j in range(1000):
         # Generate the meta prompt for the LLM
         meta_prompt = get_prompt_template(iteration=j,
-                                          prompt_content=prompt_content, generate_n=8)
+                                          prompt_content=prompt_content, generate_n=10)
 
         # Generate new prompt sets using the LLM client
         prompts = util.get_prompts_from_llm(
