@@ -142,7 +142,7 @@ class KneePointAnalysis:
 
 
 class WBCAttDataset(Dataset):
-    def __init__(self, csv_path, image_base, preprocess):
+    def __init__(self, csv_path, image_base, preprocess, binary_label: str = None):
         """
         WBCAtt Dataset for White Blood Cell classification.
 
@@ -157,13 +157,18 @@ class WBCAttDataset(Dataset):
 
         # Create label mapping from string labels to integers
         # Hardcoded label mapping
-        self.label_to_idx = {
-            "Basophil": 0,
-            "Eosinophil": 1,
-            "Lymphocyte": 2,
-            "Monocyte": 3,
-            "Neutrophil": 4
-        }
+        if binary_label is None:
+            self.label_to_idx = {
+                "Basophil": 0,
+                "Eosinophil": 1,
+                "Lymphocyte": 2,
+                "Monocyte": 3,
+                "Neutrophil": 4
+            }
+        else:
+            # Map the binary_label to 1, all others to 0
+            self.label_to_idx = {
+                label: (1 if label == binary_label else 0) for label in CLASSES}
 
         print(f"Label to index mapping (hardcoded): {self.label_to_idx}")
         self.idx_to_label = {idx: label for label,
@@ -302,6 +307,78 @@ def extract_embeddings(model, preprocess, split="train", cache_dir="./wbcatt_cac
     print(f"Extracted embeddings shape: {features_array.shape}")
     print(f"Labels shape: {labels_array.shape}")
     print(f"Unique labels: {np.unique(labels_array)}")
+
+    return features_array, labels_array
+
+
+def extract_embeddings_for_binary_classification(model, preprocess, binary_label, split="train", cache_dir="./wbcatt_cache"):
+    """
+    Extract embeddings for WBCAtt dataset for binary classification of a specific cell type.
+    Args:
+        model: CLIP model
+        preprocess: preprocessing function
+        binary_label: The cell type to classify as positive (e.g., "Basophil", "Eosinophil", etc.)
+                     All other cell types will be labeled as negative (0)
+        split: 'train', 'val', or 'test'
+        cache_dir: directory to cache features/labels
+    Returns:
+        features_array: np.ndarray
+        labels_array: np.ndarray (binary: 0 for other classes, 1 for binary_label)
+    """
+    split_map = {
+        "train": WBCATT_TRAIN_CSV,
+        "val": WBCATT_VAL_CSV,
+        "test": WBCATT_TEST_CSV
+    }
+    csv_path = split_map[split]
+
+    os.makedirs(cache_dir, exist_ok=True)
+    # Create binary-label-specific cache files
+    features_cache = os.path.join(
+        cache_dir, f"wbcatt_{split}_{binary_label}_binary_features.npy")
+    labels_cache = os.path.join(
+        cache_dir, f"wbcatt_{split}_{binary_label}_binary_labels.npy")
+
+    if os.path.exists(features_cache) and os.path.exists(labels_cache):
+        print(
+            f"Loading cached binary embeddings for {split} split (binary_label: {binary_label})...")
+        features_array = np.load(features_cache)
+        labels_array = np.load(labels_cache)
+        return features_array, labels_array
+
+    # Create dataset and dataloader with binary classification
+    print(
+        f"Creating WBCAtt binary dataset and dataloader for {split} split (binary_label: {binary_label})...")
+    dataset = WBCAttDataset(csv_path, WBCATT_IMAGE_BASE,
+                            preprocess, binary_label=binary_label)
+    loader = DataLoader(dataset, batch_size=BATCH_SIZE,
+                        shuffle=False, num_workers=NUM_WORKERS, pin_memory=True)
+
+    model = model.to(DEVICE).eval()
+    features, all_labels = [], []
+
+    print(
+        f"Extracting binary embeddings for {len(dataset)} {split} samples (binary_label: {binary_label})...")
+    with torch.no_grad():
+        for imgs, labels in tqdm(loader, desc=f"Extracting WBCAtt {split} binary embeddings ({binary_label})"):
+            imgs = imgs.to(DEVICE)
+            feats = model.encode_image(imgs)
+            features.append(feats.cpu())
+            all_labels.append(labels.cpu().numpy())
+
+    features_array = torch.cat(features).numpy()
+    labels_array = np.concatenate(all_labels)
+
+    # Cache the results
+    print(
+        f"Caching binary embeddings to {features_cache} and {labels_cache}...")
+    np.save(features_cache, features_array)
+    np.save(labels_cache, labels_array)
+
+    print(f"Extracted binary embeddings shape: {features_array.shape}")
+    print(f"Binary labels shape: {labels_array.shape}")
+    print(
+        f"Binary label distribution: {np.bincount(labels_array)} (0: other classes, 1: {binary_label})")
 
     return features_array, labels_array
 
@@ -1190,16 +1267,40 @@ def load_initial_prompts(path: str) -> List[InitialItem]:
                 continue
 
             try:
-                # Regex for 5 prompts: ('...', '...', '...', '...', '...'), Score: 0.9364
-                pattern = r"\('([^']*)', '([^']*)', '([^']*)', '([^']*)', '([^']*)'\), Score: ([\d.]+)"
-                match = re.match(pattern, line)
+                # Fix quote issues in the line first
+                fixed_line = _fix_quote_issues(f"prompts = [{line}]")
 
-                if match:
-                    prompts = tuple(match.group(i) for i in range(1, 6))
-                    score = float(match.group(6))
-                    results.append((prompts, score))
-                else:
-                    print(f"Warning: Could not parse line {line_num}: {line}")
+                # Extract the fixed content back (remove the wrapper)
+                m = re.search(r'\[(.*)\]', fixed_line)
+                if m:
+                    fixed_line = m.group(1)
+
+                # Now try to parse the tuple and score
+                # Split at the last comma to separate tuple from score
+                parts = fixed_line.rsplit(',', 1)
+                if len(parts) != 2:
+                    print(f"Warning: Could not split line {line_num}: {line}")
+                    continue
+
+                tuple_part = parts[0].strip()
+                score_part = parts[1].strip()
+
+                # Parse the tuple
+                prompts = ast.literal_eval(tuple_part)
+                if not isinstance(prompts, tuple) or len(prompts) != 5:
+                    print(
+                        f"Warning: Invalid tuple format at line {line_num}: {line}")
+                    continue
+
+                # Parse the score (remove "Score:" prefix)
+                score_match = re.search(r'Score:\s*([\d.]+)', score_part)
+                if not score_match:
+                    print(
+                        f"Warning: Could not parse score at line {line_num}: {line}")
+                    continue
+
+                score = float(score_match.group(1))
+                results.append((prompts, score))
 
             except Exception as e:
                 print(f"Error parsing line {line_num}: {line}")
@@ -1245,3 +1346,83 @@ def select_balanced_few_shot_subset(features: torch.Tensor, labels: torch.Tensor
     subset_labels = labels[selected_indices]
 
     return subset_features, subset_labels
+
+
+def load_last_iteration_prompts(path: str) -> List[InitialItem]:
+    """
+    Reads the last iteration's prompt progression file, which has the format:
+    iteration 1: 
+    ('prompt1', 'prompt2', 'prompt3', 'prompt4', 'prompt5'), Score: 0.9364
+    ('prompt1', 'prompt2', 'prompt3', 'prompt4', 'prompt5'), Score: 0.8456
+    ....
+
+    iteration 'n': 
+    ('prompt1', 'prompt2', 'prompt3', 'prompt4', 'prompt5'), Score: 0.9123
+    ('prompt1', 'prompt2', 'prompt3', 'prompt4', 'prompt5'), Score: 0.7890
+
+    Returns a list of ((tuple of 5 strings), score) tuples from the last iteration.
+    """
+    last_iteration_prompts = []
+    current_iteration = None
+
+    with open(path, 'r', encoding='utf-8') as file:
+        for line_num, line in enumerate(file, 1):
+            line = line.strip()
+            if not line:  # Skip empty lines
+                continue
+
+            try:
+                # Check if this line indicates a new iteration
+                iteration_match = re.match(r'[Ii]teration (\d+):\s*$', line)
+                if iteration_match:
+                    # If we found a previous iteration, store its prompts
+                    if current_iteration is not None:
+                        last_iteration_prompts = []  # Reset for new iteration
+                    current_iteration = int(iteration_match.group(1))
+                    continue
+
+                # Skip iteration headers
+                if current_iteration is None:
+                    continue
+
+                # Fix quote issues in the line first
+                fixed_line = _fix_quote_issues(f"prompts = [{line}]")
+
+                # Extract the fixed content back (remove the wrapper)
+                m = re.search(r'\[(.*)\]', fixed_line)
+                if m:
+                    fixed_line = m.group(1)
+
+                # Split at the last comma to separate tuple from score
+                parts = fixed_line.rsplit(',', 1)
+                if len(parts) != 2:
+                    print(f"Warning: Could not split line {line_num}: {line}")
+                    continue
+
+                tuple_part = parts[0].strip()
+                score_part = parts[1].strip()
+
+                # Parse the tuple
+                prompts = ast.literal_eval(tuple_part)
+                if not isinstance(prompts, tuple) or len(prompts) != 5:
+                    print(
+                        f"Warning: Invalid tuple format at line {line_num}: {line}")
+                    continue
+
+                # Parse the score (remove "Score:" prefix)
+                score_match = re.search(r'Score:\s*([\d.]+)', score_part)
+                if not score_match:
+                    print(
+                        f"Warning: Could not parse score at line {line_num}: {line}")
+                    continue
+
+                score = float(score_match.group(1))
+                last_iteration_prompts.append((prompts, score))
+
+            except Exception as e:
+                print(f"Error parsing line {line_num}: {line}")
+                print(f"Error details: {e}")
+                continue
+
+    # Return the prompts from the last iteration found
+    return last_iteration_prompts
