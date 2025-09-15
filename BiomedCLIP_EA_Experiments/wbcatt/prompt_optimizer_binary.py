@@ -96,10 +96,11 @@ def main():
     print("Model, preprocess, and tokenizer loaded successfully.")
 
     # 2. load dataset - MODIFIED FOR CHEXPERT
-    features, labels = util.extract_embeddings(
+    features, labels = util.extract_embeddings_for_binary_classification(
         model=model,
         preprocess=preprocess,
         split="train",
+        binary_label=BINARY_LABEL,
     )
 
     # Convert to tensors - MODIFIED FOR MULTI-OBSERVATION SUPPORT
@@ -135,19 +136,19 @@ def main():
                                           prompt_content=prompt_content, generate_n=8)
 
         # Generate new prompt sets using the LLM client
-        prompt_sets = util.get_prompts_from_llm(
+        prompts = util.get_prompts_from_llm(
             meta_prompt, client)
 
         # Evaluate each prompt set and insert into the priority queue
-        for i, prompt_set in enumerate(prompt_sets):
-            if len(prompt_set) != 2:
-                print(f"Invalid prompt set: {prompt_set}")
+        for i, prompt_pair in enumerate(prompts):
+            if len(prompt_pair) != 2:
+                print(f"Invalid prompt set: {prompt_pair}")
                 continue
             results = util.evaluate_prompt_set(
-                prompt_set, all_feats, all_labels, model, tokenizer)
+                prompt_pair, all_feats, all_labels, model, tokenizer)
             # Insert prompt set and its score into the priority queue
             # Use accuracy as the score
-            pq.insert(prompt_set, results[FITNESS_METRIC])
+            pq.insert(prompt_pair, results[FITNESS_METRIC])
 
         n = 10
         print(f"\nCurrent Top {n} prompt sets:")
@@ -162,17 +163,17 @@ def main():
 
         # Prepare the content for the next meta prompt
         prompt_content = f"Current Top {n} prompt sets:\n"
-        for i, (prompt_set, score) in enumerate(selected_prompts):
-            print(f"{i+1}. {prompt_set}, score: {int(score)}")
-            prompt_content += f"{prompt_set}, score: {int(score)}\n"
+        for i, (prompt_pair, score) in enumerate(selected_prompts):
+            print(f"{i+1}. {prompt_pair}, score: {int(score)}")
+            prompt_content += f"{prompt_pair}, score: {int(score)}\n"
 
         # Save the best prompt sets to a file every 10 iterations (and on the first iteration)
         if (j + 1) % 10 == 0 or j == 0:
             top_prompts = pq.get_best_n(1000)
             with open(results_filename, "a") as f:
                 f.write(f"Iteration {j+1}:\n")
-                for prompt_set, score in top_prompts:
-                    f.write(f"{prompt_set}, Score: {score:.4f}\n")
+                for prompt_pair, score in top_prompts:
+                    f.write(f"{prompt_pair}, Score: {score:.4f}\n")
                 f.write("\n")
 
         # Print the average score of the top n prompt sets

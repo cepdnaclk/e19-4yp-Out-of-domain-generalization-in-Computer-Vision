@@ -311,6 +311,78 @@ def extract_embeddings(model, preprocess, split="train", cache_dir="./wbcatt_cac
     return features_array, labels_array
 
 
+def extract_embeddings_for_binary_classification(model, preprocess, binary_label, split="train", cache_dir="./wbcatt_cache"):
+    """
+    Extract embeddings for WBCAtt dataset for binary classification of a specific cell type.
+    Args:
+        model: CLIP model
+        preprocess: preprocessing function
+        binary_label: The cell type to classify as positive (e.g., "Basophil", "Eosinophil", etc.)
+                     All other cell types will be labeled as negative (0)
+        split: 'train', 'val', or 'test'
+        cache_dir: directory to cache features/labels
+    Returns:
+        features_array: np.ndarray
+        labels_array: np.ndarray (binary: 0 for other classes, 1 for binary_label)
+    """
+    split_map = {
+        "train": WBCATT_TRAIN_CSV,
+        "val": WBCATT_VAL_CSV,
+        "test": WBCATT_TEST_CSV
+    }
+    csv_path = split_map[split]
+
+    os.makedirs(cache_dir, exist_ok=True)
+    # Create binary-label-specific cache files
+    features_cache = os.path.join(
+        cache_dir, f"wbcatt_{split}_{binary_label}_binary_features.npy")
+    labels_cache = os.path.join(
+        cache_dir, f"wbcatt_{split}_{binary_label}_binary_labels.npy")
+
+    if os.path.exists(features_cache) and os.path.exists(labels_cache):
+        print(
+            f"Loading cached binary embeddings for {split} split (binary_label: {binary_label})...")
+        features_array = np.load(features_cache)
+        labels_array = np.load(labels_cache)
+        return features_array, labels_array
+
+    # Create dataset and dataloader with binary classification
+    print(
+        f"Creating WBCAtt binary dataset and dataloader for {split} split (binary_label: {binary_label})...")
+    dataset = WBCAttDataset(csv_path, WBCATT_IMAGE_BASE,
+                            preprocess, binary_label=binary_label)
+    loader = DataLoader(dataset, batch_size=BATCH_SIZE,
+                        shuffle=False, num_workers=NUM_WORKERS, pin_memory=True)
+
+    model = model.to(DEVICE).eval()
+    features, all_labels = [], []
+
+    print(
+        f"Extracting binary embeddings for {len(dataset)} {split} samples (binary_label: {binary_label})...")
+    with torch.no_grad():
+        for imgs, labels in tqdm(loader, desc=f"Extracting WBCAtt {split} binary embeddings ({binary_label})"):
+            imgs = imgs.to(DEVICE)
+            feats = model.encode_image(imgs)
+            features.append(feats.cpu())
+            all_labels.append(labels.cpu().numpy())
+
+    features_array = torch.cat(features).numpy()
+    labels_array = np.concatenate(all_labels)
+
+    # Cache the results
+    print(
+        f"Caching binary embeddings to {features_cache} and {labels_cache}...")
+    np.save(features_cache, features_array)
+    np.save(labels_cache, labels_array)
+
+    print(f"Extracted binary embeddings shape: {features_array.shape}")
+    print(f"Binary labels shape: {labels_array.shape}")
+    print(
+        f"Binary label distribution: {np.bincount(labels_array)} (0: other classes, 1: {binary_label})")
+
+    return features_array, labels_array
+
+
 def evaluate_prompt_list(
     prompt_list: PromptList,
     image_feats: torch.Tensor,  # (N, D), precomputed
