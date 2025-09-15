@@ -116,8 +116,8 @@ def main():
             f"Selected balanced few-shot subset with {FEW_SHOT} samples per class.")
 
     # 3. Optionally load initial prompts (currently commented out)
-    initial_prompts = util.load_last_iteration_prompts(
-        "experiment_results/Wbcatt_Experiment13_accuracy-FEWSHOT256_opt_pairs.txt")
+    # initial_prompts = util.load_last_iteration_prompts(
+    #     "experiment_results/Wbcatt_Experiment13_accuracy-FEWSHOT256_opt_pairs.txt")
 
     # 4. Initialize the LLM client for prompt generation
     # Set use_local_ollama to True to use a local Ollama server
@@ -125,7 +125,7 @@ def main():
 
     # Optimization loop
     pq = util.PriorityQueue(
-        max_capacity=1000, filter_threshold=0.1, initial=initial_prompts)
+        max_capacity=1000, filter_threshold=0.1)
     prompt_content = ""
 
     # 6. Optimization loop: generate, evaluate, and select prompts for 500 iterations
@@ -140,7 +140,7 @@ def main():
 
         # Evaluate each prompt set and insert into the priority queue
         for i, prompt_set in enumerate(prompt_sets):
-            if len(prompt_set) != 5:
+            if len(prompt_set) != 2:
                 print(f"Invalid prompt set: {prompt_set}")
                 continue
             results = util.evaluate_prompt_set(
@@ -163,8 +163,6 @@ def main():
         # Prepare the content for the next meta prompt
         prompt_content = f"Current Top {n} prompt sets:\n"
         for i, (prompt_set, score) in enumerate(selected_prompts):
-            # get the first element of the prompt set which corresponds to Basophil and replace it by <cell_type>
-            # prompt_template = prompt_set[0].replace("Basophil", "<cell_type>")
             print(f"{i+1}. {prompt_set}, score: {int(score)}")
             prompt_content += f"{prompt_set}, score: {int(score)}\n"
 
