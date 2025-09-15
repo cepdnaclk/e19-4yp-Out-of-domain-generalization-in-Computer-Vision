@@ -1,6 +1,5 @@
 """
-Optimization Only - No Evolutionary Algorithm (EA) - Prompt Optimization Script
-
+Binary Classification Prompt Optimizer for WBCATT Dataset
 
 # medical concepts
 These are the following features an expert would look for: Cell Size, Cell Shape, Nucleus Shape, Nuclear-Cytoplasmic Ratio, Chromatin-Density, Cytoplasm-Vacuole, Cytoplasm-Texture, Cytoplasm-Color, Granule-Type, Granule-Color, Granularity
@@ -19,8 +18,17 @@ import numpy as np
 import os
 from gemini_pro_initial_prompts import INIT_PROMPTS
 # 'accuracy', 'auc', 'f1_macro', 'inverted_weighted_ce'
+BINARY_LABEL = "Basophil"
 FITNESS_METRIC = 'f1_macro'
 FEW_SHOT = 0
+
+MEDICAL_CONCEPTS_MAPPING = {
+    "Basophil": "Nucleus=Segmented, NC Ratio=Low, Granularity=Yes, Color=Blue/Black (dense)",
+    "Eosinophil": "Nucleus=Segmented, NC Ratio=Low, Granularity=Yes, Color=Red",
+    "Lymphocyte": "Nucleus=Unsegmented, NC Ratio=High, Granularity=No, Size=Small",
+    "Monocyte": "Nucleus=Unsegmented, NC Ratio=Low, Granularity=No",
+    "Neutrophil": "Nucleus=Segmented, NC Ratio=Low, Granularity=Yes, Color=Blue",
+}
 
 
 def get_prompt_template(iteration: int, prompt_content: str, generate_n: int = 8) -> str:
@@ -37,41 +45,42 @@ def get_prompt_template(iteration: int, prompt_content: str, generate_n: int = 8
     """
 
     # Initial meta prompt for the first iteration
-    meta_init_prompt = """Give 50 distinct textual description sets of visual discriminative features to identify {task_specific_description}.
-Only provide the output as Python code in the following format: prompts = list[tuple[str, ...]]. Let's think step-by-step"""
-
+    other_labels = [label for label in util.CLASSES if label != BINARY_LABEL]
+    other_labels_str = ", ".join(other_labels)
+    meta_init_prompt = f"""Give 50 distinct textual descriptions of pairs of visual discriminative features to identify whether the peripheral blood cell is a {BINARY_LABEL} or not. Other cell types include {other_labels_str}. 
+These are the following features an expert would look for: Cell Size, Cell Shape, Nucleus Shape, Nuclear-Cytoplasmic Ratio, Chromatin-Density, Cytoplasm-Vacuole, Cytoplasm-Texture, Cytoplasm-Color, Granule-Type, Granule-Color, Granularity
+{MEDICAL_CONCEPTS_MAPPING[BINARY_LABEL]}
+Only provide the output as Python code in the following format: prompts = list[tuple[negative: str, positive: str]]. Let's think step-by-step"""
     # Meta prompt template for subsequent iterations
-    base_meta_prompt_template = """The task is to generate distinct textual descriptions pairs of visual discriminative features to identify {task_specific_description}. 
-Here are the best performing sets in ascending order. High scores indicate higher quality visual discriminative features.
+    # Base meta prompt template
+    base_meta_prompt_template = """The task is to generate distinct textual descriptions of pairs of visual discriminative features to identify whether the peripheral blood cell is a {binary_label} or not. Other cell types include {other_labels_str}. 
+These are the following features an expert would look for: Cell Size, Cell Shape, Nucleus Shape, Nuclear-Cytoplasmic Ratio, Chromatin-Density, Cytoplasm-Vacuole, Cytoplasm-Texture, Cytoplasm-Color, Granule-Type, Granule-Color, Granularity
+{medical_concepts}
+Here are the best performing pairs in ascending order. High scores indicate higher quality visual discriminative features.
 {content}
-Write {generate_n} new descriptions sets that are different from the old ones and has a score as high as possible, formulate a strategy.
-Only provide the output as Python code in the following format: prompts = list[tuple[str, ...]. Let's think step-by-step
+
+Write {generate_n} new prompt pairs that are different to from the old ones and has a score as high as possible. Formulate a strategy",
+Only provide the output as Python code in the following format: prompts = list[tuple[negative: str, positive: str]]. Let's think step-by-step
 """
 
-    task_specific_description = """Basophil, Eosinophil, Lymphocyte, Monocyte, and Neutrophil peripheral blood cells.
-These are the following features an expert would look for: Cell Size, Cell Shape, Nucleus Shape, Nuclear-Cytoplasmic Ratio, Chromatin-Density, Cytoplasm-Vacuole, Cytoplasm-Texture, Cytoplasm-Color, Granule-Type, Granule-Color, Granularity
-
-Each description set must contain five discriminating meaningful descriptions to identify each of the five cell types. The features should be discriminative.
-Format: <Features describing Basophil>, <Features describing Eosinophil>, <Features describing Lymphocyte>, <Features describing Monocyte>, <Features describing Neutrophil> 
-    """
     # Use the initial prompt for the first iteration
     if iteration == 0:
-        return meta_init_prompt.format(
-            task_specific_description=task_specific_description,
-        )
+        return meta_init_prompt
 
     # Use the iterative prompt for subsequent iterations
     return base_meta_prompt_template.format(
-        task_specific_description=task_specific_description,
         content=prompt_content,
         generate_n=generate_n,
+        medical_concepts=MEDICAL_CONCEPTS_MAPPING[BINARY_LABEL],
+        binary_label=BINARY_LABEL,
+        other_labels_str=other_labels_str,
     )
 
 
 def main():
 
     # Name the experiment we are currently running
-    experiment_name = f"Wbcatt_Experiment14_{FITNESS_METRIC}-FEWSHOT{FEW_SHOT}"
+    experiment_name = f"Wbcatt_Experiment15_{FITNESS_METRIC}-FEWSHOT{FEW_SHOT}-{BINARY_LABEL}"
     print(f"Running {experiment_name}...")
 
     # Create experiment results directory
@@ -116,11 +125,11 @@ def main():
 
     # Optimization loop
     pq = util.PriorityQueue(
-        max_capacity=1000, filter_threshold=0.01, initial=initial_prompts)
+        max_capacity=1000, filter_threshold=0.1, initial=initial_prompts)
     prompt_content = ""
 
     # 6. Optimization loop: generate, evaluate, and select prompts for 500 iterations
-    for j in range(5000):
+    for j in range(1000):
         # Generate the meta prompt for the LLM
         meta_prompt = get_prompt_template(iteration=j,
                                           prompt_content=prompt_content, generate_n=8)

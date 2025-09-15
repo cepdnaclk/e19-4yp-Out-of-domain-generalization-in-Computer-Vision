@@ -142,7 +142,7 @@ class KneePointAnalysis:
 
 
 class WBCAttDataset(Dataset):
-    def __init__(self, csv_path, image_base, preprocess):
+    def __init__(self, csv_path, image_base, preprocess, binary_label: str = None):
         """
         WBCAtt Dataset for White Blood Cell classification.
 
@@ -157,13 +157,18 @@ class WBCAttDataset(Dataset):
 
         # Create label mapping from string labels to integers
         # Hardcoded label mapping
-        self.label_to_idx = {
-            "Basophil": 0,
-            "Eosinophil": 1,
-            "Lymphocyte": 2,
-            "Monocyte": 3,
-            "Neutrophil": 4
-        }
+        if binary_label is None:
+            self.label_to_idx = {
+                "Basophil": 0,
+                "Eosinophil": 1,
+                "Lymphocyte": 2,
+                "Monocyte": 3,
+                "Neutrophil": 4
+            }
+        else:
+            # Map the binary_label to 1, all others to 0
+            self.label_to_idx = {
+                label: (1 if label == binary_label else 0) for label in CLASSES}
 
         print(f"Label to index mapping (hardcoded): {self.label_to_idx}")
         self.idx_to_label = {idx: label for label,
