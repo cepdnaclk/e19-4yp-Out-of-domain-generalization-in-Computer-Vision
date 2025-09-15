@@ -3,7 +3,7 @@
 # custom config
 DATA=/storage/projects3/e19-fyp-out-of-domain-gen-in-cv/camelyon17WILDS/
 DATASET=camelyon17
-SHOTS=16
+SHOTS=$1
 MODEL=BiomedCLIP
 NCTX=4
 CSC=False
