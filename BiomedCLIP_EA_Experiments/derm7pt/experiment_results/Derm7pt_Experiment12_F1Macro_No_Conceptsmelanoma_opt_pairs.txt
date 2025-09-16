@@ -1,0 +1,166 @@
+Iteration 1:
+('No pigment clods', 'Pigment clods present'), Score: 0.6054
+('Network of pigment is regular and consistent', 'Network of pigment is irregular and broken'), Score: 0.5774
+('No involvement of surrounding skin', 'Involvement of surrounding skin'), Score: 0.5645
+('No melanophages in the dermis', 'Melanophages in the dermis'), Score: 0.5599
+('Homogeneous background color', 'Variable background color'), Score: 0.5566
+('No spindle cells', 'Presence of spindle cells'), Score: 0.5558
+('No negative network', 'Negative network'), Score: 0.5486
+("No Hutchinson's sign (pigment around nail)", "Presence of Hutchinson's sign"), Score: 0.5420
+('No satellite lesions', 'Presence of satellite lesions'), Score: 0.5299
+('Low cellularity', 'High cellularity'), Score: 0.4994
+('Uniform, consistent color', 'Multiple colors - black, brown, red, blue'), Score: 0.4989
+('No dermal invasion', 'Dermal invasion present'), Score: 0.4925
+('No itching or discomfort', 'Itching, pain, or discomfort'), Score: 0.4804
+('No history of sun exposure', 'Significant history of sun exposure'), Score: 0.4790
+('No mitoses', 'Presence of mitoses'), Score: 0.4720
+('Round or oval shape', 'Asymmetrical shape'), Score: 0.4618
+('No parallel ridge pattern', 'Parallel ridge pattern'), Score: 0.4577
+('No granular pattern', 'Granular pattern'), Score: 0.4549
+('No visible ulceration', 'Presence of ulceration or bleeding'), Score: 0.4549
+('Presence of skin markings extending into the lesion', 'Abrupt cut-off of skin markings at the lesion border'), Score: 0.4416
+('No personal history of atypical moles', 'Personal history of atypical moles'), Score: 0.4389
+('No hairpin structures', 'Hairpin structures present'), Score: 0.4389
+('No family history of melanoma', 'Family history of melanoma'), Score: 0.4381
+('Globules are small and evenly distributed', 'Globules are large and atypical'), Score: 0.4381
+('Small diameter, less than 6mm', 'Large diameter, greater than 6mm'), Score: 0.4381
+('No streaks', 'Presence of streaks'), Score: 0.4358
+('Low elevation, flat lesion', 'Raised or nodular lesion'), Score: 0.4335
+('No regression structures', 'Regression structures present'), Score: 0.4211
+('Well-defined, clear edges', 'Ill-defined, blurred edges'), Score: 0.4014
+
+Iteration 10:
+('No hypopigmentation', 'Presence of hypopigmentation'), Score: 0.6305
+('No pseudopods', 'Pseudopods present'), Score: 0.6121
+('No pigment clods', 'Pigment clods present'), Score: 0.6054
+('No pigmented network', 'Pigmented network disruption'), Score: 0.5963
+('No spitz nevus-like features', 'Presence of spitz nevus-like features (atypical melanocytes)'), Score: 0.5946
+('No pigmented dots', 'Presence of pigmented dots'), Score: 0.5846
+('Network of pigment is regular and consistent', 'Network of pigment is irregular and broken'), Score: 0.5774
+('No arborizing vessels', 'Arborizing vessels present'), Score: 0.5727
+('No involvement of surrounding skin', 'Involvement of surrounding skin'), Score: 0.5645
+('Fine, regular pigment network', 'Coarse, atypical pigment network'), Score: 0.5614
+('No melanophages in the dermis', 'Melanophages in the dermis'), Score: 0.5599
+('Homogeneous background color', 'Variable background color'), Score: 0.5566
+('No spindle cells', 'Presence of spindle cells'), Score: 0.5558
+('Symmetrical lesion shape', 'Asymmetrical lesion shape'), Score: 0.5527
+('No negative network', 'Negative network'), Score: 0.5486
+("No Hutchinson's sign (pigment around nail)", "Presence of Hutchinson's sign"), Score: 0.5420
+('No streaks', 'Streaks present'), Score: 0.5319
+('No satellite lesions', 'Presence of satellite lesions'), Score: 0.5299
+('No ulceration', 'Presence of ulceration'), Score: 0.5253
+('Uniform color', 'Multiple colors present'), Score: 0.5211
+('Homogeneous texture', 'Heterogeneous texture'), Score: 0.5151
+('No cobblestone pattern', 'Cobblestone pattern present'), Score: 0.5071
+('No atypical vascular patterns', 'Atypical vascular patterns present'), Score: 0.5066
+('Low cellularity', 'High cellularity'), Score: 0.4994
+('Uniform, consistent color', 'Multiple colors - black, brown, red, blue'), Score: 0.4989
+('No dermal invasion', 'Dermal invasion present'), Score: 0.4925
+('No scarring', 'Presence of scarring'), Score: 0.4872
+('No itching or discomfort', 'Itching, pain, or discomfort'), Score: 0.4804
+('No globules', 'Presence of globules'), Score: 0.4798
+('No history of sun exposure', 'Significant history of sun exposure'), Score: 0.4790
+('No globular pattern', 'Globular pattern present'), Score: 0.4764
+('No mitoses', 'Presence of mitoses'), Score: 0.4720
+('No Y-shaped structures', 'Y-shaped structures present'), Score: 0.4708
+('Round or oval shape', 'Asymmetrical shape'), Score: 0.4618
+('No dotted vessels', 'Polymorphous vessels present'), Score: 0.4583
+('No parallel ridge pattern', 'Parallel ridge pattern'), Score: 0.4577
+('No Y-pattern', 'Y-pattern present'), Score: 0.4568
+('No granular pattern', 'Granular pattern'), Score: 0.4549
+('No visible ulceration', 'Presence of ulceration or bleeding'), Score: 0.4549
+('No regression', 'Presence of regression structures'), Score: 0.4546
+('No papillae or nodules', 'Papillae or nodules present'), Score: 0.4505
+('Globules are small and regular', 'Globules are large and atypical'), Score: 0.4496
+('No dermal involvement', 'Dermal involvement present'), Score: 0.4425
+('Presence of skin markings extending into the lesion', 'Abrupt cut-off of skin markings at the lesion border'), Score: 0.4416
+('Few atypical vessels', 'Numerous, polymorphic vessels'), Score: 0.4399
+('No personal history of atypical moles', 'Personal history of atypical moles'), Score: 0.4389
+('No hairpin structures', 'Hairpin structures present'), Score: 0.4389
+('Globules are small and evenly distributed', 'Globules are large and atypical'), Score: 0.4381
+('No family history of melanoma', 'Family history of melanoma'), Score: 0.4381
+('Small diameter, less than 6mm', 'Large diameter, greater than 6mm'), Score: 0.4381
+('Homogeneous color', 'Variable color distribution'), Score: 0.4366
+('No streaks', 'Presence of streaks'), Score: 0.4358
+('Flat lesion profile', 'Raised, nodular lesion profile'), Score: 0.4346
+('Low elevation, flat lesion', 'Raised or nodular lesion'), Score: 0.4335
+('No regression structures', 'Regression structures present'), Score: 0.4211
+('Smooth, well-defined border', 'Irregular, notched, or blurred border'), Score: 0.4185
+('Well-defined, clear edges', 'Ill-defined, blurred edges'), Score: 0.4014
+
+Iteration 20:
+('No hypopigmentation', 'Presence of hypopigmentation'), Score: 0.6305
+('No pseudopods', 'Pseudopods present'), Score: 0.6121
+('No pigment clods', 'Pigment clods present'), Score: 0.6054
+('No spitz nevus-like features', 'Spitz nevus-like features present'), Score: 0.6015
+('No pigmented network', 'Pigmented network disruption'), Score: 0.5963
+('No spitz nevus-like features', 'Presence of spitz nevus-like features (atypical melanocytes)'), Score: 0.5946
+('No pigmented dots', 'Presence of pigmented dots'), Score: 0.5846
+('Network of pigment is regular and consistent', 'Network of pigment is irregular and broken'), Score: 0.5774
+('No arborizing vessels', 'Arborizing vessels present'), Score: 0.5727
+('No globules', 'Globules present'), Score: 0.5704
+('No involvement of surrounding skin', 'Involvement of surrounding skin'), Score: 0.5645
+('Fine, regular pigment network', 'Coarse, atypical pigment network'), Score: 0.5614
+('No melanophages in the dermis', 'Melanophages in the dermis'), Score: 0.5599
+('Homogeneous background color', 'Variable background color'), Score: 0.5566
+('No spindle cells', 'Presence of spindle cells'), Score: 0.5558
+('Symmetrical lesion shape', 'Asymmetrical lesion shape'), Score: 0.5527
+('No regression areas', 'Regression areas present'), Score: 0.5508
+('No negative network', 'Negative network'), Score: 0.5486
+("No Hutchinson's sign (pigment around nail)", "Presence of Hutchinson's sign"), Score: 0.5420
+('No streaks', 'Streaks present'), Score: 0.5319
+('No satellite lesions', 'Presence of satellite lesions'), Score: 0.5299
+('No ulceration', 'Presence of ulceration'), Score: 0.5253
+('Uniform color', 'Multiple colors present'), Score: 0.5211
+('No ulceration', 'Ulceration present'), Score: 0.5194
+('Homogeneous texture', 'Heterogeneous texture'), Score: 0.5151
+('Uniform color', 'Variable color'), Score: 0.5130
+('Uniform coloration', 'Multiple colors present'), Score: 0.5125
+('No cobblestone pattern', 'Cobblestone pattern present'), Score: 0.5071
+('No atypical vascular patterns', 'Atypical vascular patterns present'), Score: 0.5066
+('Low cellularity', 'High cellularity'), Score: 0.4994
+('Uniform, consistent color', 'Multiple colors - black, brown, red, blue'), Score: 0.4989
+('No dermal invasion', 'Dermal invasion present'), Score: 0.4925
+('No scarring', 'Presence of scarring'), Score: 0.4872
+('No Bowen’s reaction', 'Bowen’s reaction present'), Score: 0.4859
+('No granular pattern', 'Granular pattern present'), Score: 0.4833
+('No itching or discomfort', 'Itching, pain, or discomfort'), Score: 0.4804
+('No globules', 'Presence of globules'), Score: 0.4798
+('No history of sun exposure', 'Significant history of sun exposure'), Score: 0.4790
+('No regression', 'Regression present'), Score: 0.4768
+('No globular pattern', 'Globular pattern present'), Score: 0.4764
+('No mitoses', 'Presence of mitoses'), Score: 0.4720
+('No Y-shaped structures', 'Y-shaped structures present'), Score: 0.4708
+('Round or oval shape', 'Asymmetrical shape'), Score: 0.4618
+('No dotted vessels', 'Polymorphous vessels present'), Score: 0.4583
+('No parallel ridge pattern', 'Parallel ridge pattern'), Score: 0.4577
+('Symmetrical lesion', 'Asymmetrical lesion'), Score: 0.4576
+('No Y-pattern', 'Y-pattern present'), Score: 0.4568
+('No granular pattern', 'Granular pattern'), Score: 0.4549
+('No visible ulceration', 'Presence of ulceration or bleeding'), Score: 0.4549
+('No regression', 'Presence of regression structures'), Score: 0.4546
+('No papillae or nodules', 'Papillae or nodules present'), Score: 0.4505
+('No rhomboidal structures', 'Rhomboidal structures present'), Score: 0.4504
+('Globules are small and regular', 'Globules are large and atypical'), Score: 0.4496
+('Few vessels', 'Polymorphous vessels'), Score: 0.4476
+('No dermal involvement', 'Dermal involvement present'), Score: 0.4425
+('Presence of skin markings extending into the lesion', 'Abrupt cut-off of skin markings at the lesion border'), Score: 0.4416
+('Smooth lesion surface', 'Rough or textured lesion surface'), Score: 0.4408
+('No atypical vascular pattern', 'Atypical vascular pattern present (e.g., dotted vessels, arborizing vessels)'), Score: 0.4407
+('Few atypical vessels', 'Numerous, polymorphic vessels'), Score: 0.4399
+('No personal history of atypical moles', 'Personal history of atypical moles'), Score: 0.4389
+('No hairpin structures', 'Hairpin structures present'), Score: 0.4389
+('Globules are small and evenly distributed', 'Globules are large and atypical'), Score: 0.4381
+('No family history of melanoma', 'Family history of melanoma'), Score: 0.4381
+('Small diameter, less than 6mm', 'Large diameter, greater than 6mm'), Score: 0.4381
+('Homogeneous color', 'Variable color distribution'), Score: 0.4366
+('Well-defined borders', 'Ill-defined borders'), Score: 0.4363
+('No streaks', 'Presence of streaks'), Score: 0.4358
+('No pseudopods', 'Presence of pseudopods'), Score: 0.4350
+('Flat lesion profile', 'Raised, nodular lesion profile'), Score: 0.4346
+('Low elevation, flat lesion', 'Raised or nodular lesion'), Score: 0.4335
+('No regression structures', 'Regression structures present'), Score: 0.4211
+('Smooth, well-defined border', 'Irregular, notched, or blurred border'), Score: 0.4185
+('No atypical vascular patterns', 'Atypical vascular patterns (e.g., dotted vessels, arborizing vessels)'), Score: 0.4130
+('Well-defined, clear edges', 'Ill-defined, blurred edges'), Score: 0.4014
+
