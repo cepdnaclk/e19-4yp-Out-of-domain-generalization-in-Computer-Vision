@@ -12,7 +12,7 @@ CTP=end
 METHOD=BiomedCoOp
 TRAINER=BiomedCoOp_${MODEL}
 
-for SEED in 1 2 3
+for SEED in 1
 do
         DIR=output/${DATASET}/shots_${SHOTS}/${TRAINER}/nctx${NCTX}_csc${CSC}_ctp${CTP}/seed${SEED}
         # if [ -d "$DIR" ]; then
