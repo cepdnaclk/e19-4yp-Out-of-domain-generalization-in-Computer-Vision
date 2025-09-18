@@ -306,6 +306,10 @@ class XCoOpPromptLearner(nn.Module):
         prompts = [
             template_prompts[0].format(all_classnames[0]),  # normal
             template_prompts[1].format(all_classnames[1]),  # condition
+            template_prompts[2].format(all_classnames[2]),  # condition
+            template_prompts[3].format(all_classnames[3]),  # condition
+            template_prompts[4].format(all_classnames[4]),  # condition
+
             ]
         # else:  # NOTE: for other datasets
         #     print("Please create the hand-crafted prompts when using new datasets")
