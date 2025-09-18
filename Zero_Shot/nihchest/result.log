@@ -1,0 +1,6 @@
+Loaded 10416 NIHChest embeddings
+all_labels:
+ tensor([0, 0, 1,  ..., 0, 0, 0])
+Baseline Evaluation results:
+ {'accuracy': 0.6599462365591398, 'cm': array([[6470, 3391],
+       [ 151,  404]]), 'report': '              precision    recall  f1-score   support\n\n           0     0.9772    0.6561    0.7851      9861\n           1     0.1065    0.7279    0.1857       555\n\n    accuracy                         0.6599     10416\n   macro avg     0.5418    0.6920    0.4854     10416\nweighted avg     0.9308    0.6599    0.7532     10416\n', 'inverted_ce': 0.46891437085956483, 'f1_macro': 0.48542301110092934, 'f1_weighted': 0.7531633896228723}
