@@ -244,7 +244,7 @@ def main():
     # Step 1: Load initial prompts and create priority queue
     print("\n=== Step 1: Loading Initial Prompts ===")
     initial_prompts = util.load_last_iteration_prompts(
-        f"final_results/Experiment-70-strategy-inv-bce-gemma3-{args.few_shot}shot_opt_pairs.txt"
+        f"final_results/Derm7pt_Experiment1_n{args.few_shot}_metricinverted_ce_melanoma_opt_pairs.txt"
     )
     pq = util.PriorityQueue(
         max_capacity=args.max_capacity,
