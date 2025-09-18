@@ -28,6 +28,7 @@ from API_KEY import GEMINI_API_KEY
 from google import genai
 import ollama
 import torch.nn.functional as F
+PromptSet = Tuple[str, ...]  # For multi-class prompts
 
 
 CONFIG_PATH = "/storage/projects3/e19-fyp-out-of-domain-gen-in-cv/e19-4yp-Out-of-domain-generalization-in-Computer-Vision/BioMedClip/checkpoints/open_clip_config.json"
