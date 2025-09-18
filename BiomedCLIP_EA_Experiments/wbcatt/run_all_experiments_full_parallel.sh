@@ -1,7 +1,7 @@
 #!/bin/bash
 
-# WBCATT Binary Classification Experiment Runner
-# This script runs prompt optimization experiments for all combinations of:
+# WBCATT Binary Classification Experiment Runner - Full Parallel Version
+# This script runs prompt optimization experiments for all combinations in parallel:
 # - Few-shot sizes: 1, 2, 4, 8
 # - Classes: 0 (Basophil), 1 (Eosinophil), 2 (Lymphocyte), 3 (Monocyte), 4 (Neutrophil)
 # - Fitness metric: inverted_weighted_ce (can be modified)
@@ -45,24 +45,6 @@ run_experiment() {
     echo ""
 }
 
-# Function to run all few-shot experiments for a single class in parallel
-run_class_experiments() {
-    local class_idx=$1
-    local class_name=${CLASS_NAMES[$class_idx]}
-    
-    echo "Starting all few-shot experiments for class: $class_name (index: $class_idx)"
-    
-    # Run all few-shot sizes for this class in parallel
-    for few_shot in "${FEW_SHOTS[@]}"; do
-        run_experiment $class_idx $few_shot &
-    done
-    
-    # Wait for all few-shot experiments for this class to complete
-    wait
-    echo "All few-shot experiments completed for class: $class_name"
-    echo ""
-}
-
 # Print experiment plan
 echo "=========================================="
 echo "WBCATT Binary Classification Experiments"
@@ -71,15 +53,21 @@ echo "Total experiments planned: $((${#FEW_SHOTS[@]} * ${#CLASSES[@]}))"
 echo "Few-shot sizes: ${FEW_SHOTS[*]}"
 echo "Classes: ${CLASS_NAMES[*]}"
 echo "Fitness metric: $FITNESS_METRIC"
-echo "Parallelization: Each class runs all few-shot sizes in parallel"
+echo "Parallelization: ALL experiments run in parallel"
 echo ""
-echo "Starting experiments..."
+echo "Starting all experiments in parallel..."
 echo ""
 
-# Run experiments for each class (classes run sequentially, but few-shot sizes within each class run in parallel)
+# Start all experiments in parallel
 for class_idx in "${CLASSES[@]}"; do
-    run_class_experiments $class_idx
+    for few_shot in "${FEW_SHOTS[@]}"; do
+        run_experiment $class_idx $few_shot &
+    done
 done
+
+# Wait for all experiments to complete
+echo "Waiting for all experiments to complete..."
+wait
 
 echo "=========================================="
 echo "All experiments completed!"
