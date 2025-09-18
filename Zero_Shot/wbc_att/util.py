@@ -23,7 +23,7 @@ from open_clip.factory import HF_HUB_PREFIX, _MODEL_CONFIGS
 import json
 from tqdm import tqdm
 import time
-from API_KEY import GEMINI_API_KEY, CHATGPT_ENDPOINT, CHATGPT_API_KEY
+from API_KEY import GEMINI_API_KEY
 from google import genai
 import ollama
 import torch.nn.functional as F
