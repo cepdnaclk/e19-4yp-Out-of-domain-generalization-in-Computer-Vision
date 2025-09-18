@@ -1,0 +1,12 @@
+('Lymphocytes with regular nuclear membrane.', 'Irregular nuclear membrane with indentations.'), Score: 0.9938
+('Uniform small cell size.', 'Pleomorphic cell size with giant cells.'), Score: 0.9872
+('No necrosis observed.', 'Extensive tumor necrosis with karyorrhexis.'), Score: 0.9685
+('No reactive lymphoid hyperplasia.', 'Germinal center with dark and light zone disruption.'), Score: 0.9482
+('No fibrosis.', 'Desmoplastic reaction with dense fibrosis.'), Score: 0.9421
+('No discernible capsule.', 'Invasion through the capsule.'), Score: 0.941
+('No emperipolesis.', 'Emperipolesis of tumor cells within macrophages.'), Score: 0.9391
+('Cells are evenly distributed.', 'Cells clustered in irregular patterns.'), Score: 0.9366
+('Normal follicular dendritic cell meshwork.', 'Distorted follicular dendritic cell meshwork.'), Score: 0.9339
+('No discernible tumor nests.', 'Well-defined tumor nests with central necrosis.'), Score: 0.9326
+('No granulomas.', 'Presence of non-necrotizing granulomas.'), Score: 0.9041
+('No hemorrhage or vascular damage.', 'Hemorrhage and vascular damage present.'), Score: 0.888

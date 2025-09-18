@@ -1,0 +1,20 @@
+('No hemorrhage.', 'Focal hemorrhage within or around tumor nests.'), Score: 0.9862
+('No prominent nucleolus.', 'Tumor cells with large and vesicular nucleoli.'), Score: 0.978
+('No evidence of fibrosis.', 'Increased stromal fibrosis surrounding tumor cell clusters.'), Score: 0.9634
+('Lymphocytes show regular spacing.', 'Tumor cells exhibit crowding and loss of spacing.'), Score: 0.9628
+('No high-grade features.', 'High-grade features with marked pleomorphism.'), Score: 0.9559
+('Sparse cytoplasm in lymphocytes.', 'Abundant, eosinophilic cytoplasm in tumor cells.'), Score: 0.9519
+('No angioinvasion.', 'Evidence of angioinvasion by tumor cells.'), Score: 0.9479
+('No plasmacytoid differentiation.', 'Plasmacytoid differentiation observed in tumor cells.'), Score: 0.9419
+('No reactive lymphoid follicles.', 'Formation of atypical lymphoid aggregates resembling tumor nests.'), Score: 0.9383
+('No sinusoidal effacement.', 'Sinusoidal effacement by tumor cells.'), Score: 0.938
+('No atypical cells.', 'Presence of atypical cells with high nuclear-to-cytoplasmic ratio.'), Score: 0.9319
+('No eosinophilic inclusions.', 'Tumor cells containing eosinophilic inclusions.'), Score: 0.9306
+('No prominent plasma cell differentiation.', 'Plasma cell differentiation within the tumor.'), Score: 0.9246
+('Lymphocytes are small and mature-appearing.', 'Lymphocytes exhibit large cell transformation and pleomorphism.'), Score: 0.9236
+('No increase in mitotic count.', 'Increased mitotic activity.'), Score: 0.9228
+('No loss of B-cell markers.', 'Loss of B-cell markers in tumor cells.'), Score: 0.921
+('No reactive lymphoid hyperplasia.', 'Features of atypical lymphoid proliferation.'), Score: 0.9209
+('No increased eosinophilic cytoplasm.', 'Increased eosinophilic cytoplasm in tumor cells.'), Score: 0.9207
+('No prominent eosinophilic granules.', 'Presence of prominent eosinophilic granules within tumor cells.'), Score: 0.9143
+('No evidence of necrosis.', 'Extensive tumor necrosis with karyorrhexis.'), Score: 0.9131

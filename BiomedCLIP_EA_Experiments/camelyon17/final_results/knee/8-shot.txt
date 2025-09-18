@@ -1,0 +1,6 @@
+('Lymphocytes evenly distributed.', 'Tumor cells forming solid nests or sheets.'), Score: 0.9765
+('No mitotic activity in lymphocytes.', 'Frequent mitotic figures indicative of rapid proliferation.'), Score: 0.9465
+('No discernible nucleolus.', 'Large and distinct nucleoli visible.'), Score: 0.941
+('No angiolymphatic spaces.', 'Tumor cells within angiolymphatic spaces.'), Score: 0.9388
+('Uniform lymphocyte population.', 'Polymorphic tumor cell population.'), Score: 0.935
+('No fibrosis.', 'Increased fibrosis surrounding tumor nests.'), Score: 0.9225

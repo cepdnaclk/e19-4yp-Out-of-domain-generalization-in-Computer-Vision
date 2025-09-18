@@ -50,7 +50,7 @@ def get_prompt_template(iteration_num: int, prompt_content: str, generate_n: int
 
 def main():
     # Few-shot learning configuration
-    n_shots = 8  # Number of samples per class to use for training
+    n_shots = 1  # Number of samples per class to use for training
 
     # Name the experiment we are currently running
     experiment_name = f"Experiment-70-strategy-inv-bce-gemma3-{n_shots}shot"

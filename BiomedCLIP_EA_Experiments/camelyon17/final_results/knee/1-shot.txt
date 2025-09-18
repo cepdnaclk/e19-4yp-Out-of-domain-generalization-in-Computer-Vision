@@ -5,7 +5,3 @@
 ('No emperipolesis is observed.', 'Frequent emperipolesis is seen within tumor cells.'), Score: 0.9986
 ('Stroma is edematous with minimal cellularity.', 'Stroma is densely cellular with a myxoid appearance.'), Score: 0.9984
 ('Inflammatory infiltrate is minimal and lymphocytic.', 'Dense inflammatory infiltrate with neutrophils and eosinophils.'), Score: 0.998
-('Background shows normal lymphoid aggregates.', 'Background shows diffuse sheets of atypical cells.'), Score: 0.9973
-('Few reactive germinal centers.', 'Numerous large and atypical germinal centers with prominent nucleoli.'), Score: 0.9971
-('Lymphocytes show low proliferative activity.', 'Lymphocytes exhibit brisk proliferation with many dividing cells.'), Score: 0.9966
-('Normal vasculature with thin walls.', 'Thickened and irregular vasculature with increased blood flow.'), Score: 0.9962

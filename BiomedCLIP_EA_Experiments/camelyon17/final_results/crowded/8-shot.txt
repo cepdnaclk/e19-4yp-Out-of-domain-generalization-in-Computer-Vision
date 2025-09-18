@@ -1,0 +1,25 @@
+('Lymphocytes evenly distributed.', 'Tumor cells forming solid nests or sheets.'), Score: 0.9765
+('No mitotic activity in lymphocytes.', 'Frequent mitotic figures indicative of rapid proliferation.'), Score: 0.9465
+('No discernible nucleolus.', 'Large and distinct nucleoli visible.'), Score: 0.941
+('No angiolymphatic spaces.', 'Tumor cells within angiolymphatic spaces.'), Score: 0.9388
+('Uniform lymphocyte population.', 'Polymorphic tumor cell population.'), Score: 0.935
+('No fibrosis.', 'Increased fibrosis surrounding tumor nests.'), Score: 0.9225
+('No prominent eosinophilic granules.', 'Abundant eosinophilic granular bodies.'), Score: 0.9219
+('Low N/C ratio.', 'High N/C ratio (nuclear to cytoplasmic ratio).'), Score: 0.9216
+('No reactive germinal centers.', 'Blastic germinal centers with numerous mitoses.'), Score: 0.9177
+('No fibrosis surrounding follicles.', 'Prominent fibrosis surrounding follicles and tumor nests.'), Score: 0.9142
+('No evidence of extrafollicular proliferation.', 'Extrafollicular proliferation of atypical cells.'), Score: 0.9123
+('No reactive lymphoid follicles.', 'Formation of neoplastic lymphoid follicles.'), Score: 0.9091
+('Well-defined basement membrane.', 'Invasion of tumor cells through the basement membrane.'), Score: 0.9055
+('No evidence of extracellular matrix disruption.', 'Tumor cells disrupting the normal extracellular matrix.'), Score: 0.8981
+('No prominent inflammatory infiltrate.', 'Brisk inflammatory infiltrate surrounding tumor nests.'), Score: 0.8961
+('No hemorrhage.', 'Focal hemorrhage within the tumor nests.'), Score: 0.8853
+('Thin-walled blood vessels.', 'Thick-walled, irregular blood vessels within the tumor.'), Score: 0.8841
+('No sinusoidal pattern.', 'Sinusoidal growth pattern.'), Score: 0.8799
+('No crush artifact.', 'Tumor cells arranged in palisading necrosis due to crush artifact.'), Score: 0.8751
+('No emperipolesis.', 'Tumor cells exhibiting emperipolesis (cells within cells).'), Score: 0.8709
+('No evidence of necrosis.', 'Presence of tumor necrosis.'), Score: 0.8545
+('Clear cytoplasm in lymphocytes.', 'Cytoplasmic clearing/vacuolization in tumor cells.'), Score: 0.8539
+('Normal follicular architecture is preserved.', 'Disrupted follicular architecture with loss of polarity.'), Score: 0.8523
+('No perineural invasion.', 'Tumor cells surrounding or invading nerves (perineural invasion).'), Score: 0.8501
+('No atypical cells.', 'Presence of atypical cells with high nuclear-to-cytoplasmic ratio.'), Score: 0.8491

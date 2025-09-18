@@ -1,0 +1,17 @@
+('No infiltration of atypical cells.', 'Infiltration of atypical cells disrupting normal lymph node architecture.'), Score: 0.9998
+('No plasma cells are identified.', 'Numerous plasma cells with eccentric nuclei and abundant cytoplasm.'), Score: 0.9994
+('Immunocytes are rare.', 'Abundant immunocytes are present, forming rosettes.'), Score: 0.9988
+('Mature lymphocytes.', 'Immunoblasts and plasmablasts.'), Score: 0.9987
+('No emperipolesis is observed.', 'Frequent emperipolesis is seen within tumor cells.'), Score: 0.9986
+('Stroma is edematous with minimal cellularity.', 'Stroma is densely cellular with a myxoid appearance.'), Score: 0.9984
+('Inflammatory infiltrate is minimal and lymphocytic.', 'Dense inflammatory infiltrate with neutrophils and eosinophils.'), Score: 0.998
+('Background shows normal lymphoid aggregates.', 'Background shows diffuse sheets of atypical cells.'), Score: 0.9973
+('Few reactive germinal centers.', 'Numerous large and atypical germinal centers with prominent nucleoli.'), Score: 0.9971
+('Lymphocytes show low proliferative activity.', 'Lymphocytes exhibit brisk proliferation with many dividing cells.'), Score: 0.9966
+('Normal vasculature with thin walls.', 'Thickened and irregular vasculature with increased blood flow.'), Score: 0.9962
+('Low nuclear-to-cytoplasmic ratio in lymphocytes.', 'High nuclear-to-cytoplasmic ratio in tumor cells.'), Score: 0.9953
+('Adipose tissue is present in normal distribution.', 'Adipose tissue is compressed or replaced by tumor.'), Score: 0.9946
+('Few reactive lymphocytes.', 'Abundant reactive lymphocytes surrounding tumor cells.'), Score: 0.9943
+('Lymphocytes are small and uniform.', 'Tumor cells are large and pleomorphic.'), Score: 0.9941
+('Clear cytoplasm in lymphocytes.', 'Darkly stained, irregular cytoplasm in tumor cells.'), Score: 0.9941
+('Sinusoids show normal endothelial cells.', 'Sinusoids lined by atypical endothelial cells with increased mitotic activity.'), Score: 0.9931

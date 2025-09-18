@@ -1,0 +1,94 @@
+=== 2-Shot Evaluation Results ===
+Knee point: 10
+Number of prompts used: 10
+==================================================
+
+--- Center 0 Evaluation Results ---
+Accuracy: 0.7554
+AUC: 0.8981
+Confusion Matrix:
+[[2950   82]
+ [1388 1591]]
+Classification Report:
+              precision    recall  f1-score   support
+
+           0     0.6800    0.9730    0.8005      3032
+           1     0.9510    0.5341    0.6840      2979
+
+    accuracy                         0.7554      6011
+   macro avg     0.8155    0.7535    0.7423      6011
+weighted avg     0.8143    0.7554    0.7428      6011
+
+--------------------------------------------------
+
+--- Center 1 Evaluation Results ---
+Accuracy: 0.7133
+AUC: 0.8825
+Confusion Matrix:
+[[1638   81]
+ [ 915  840]]
+Classification Report:
+              precision    recall  f1-score   support
+
+           0     0.6416    0.9529    0.7669      1719
+           1     0.9121    0.4786    0.6278      1755
+
+    accuracy                         0.7133      3474
+   macro avg     0.7768    0.7158    0.6973      3474
+weighted avg     0.7782    0.7133    0.6966      3474
+
+--------------------------------------------------
+
+--- Center 2 Evaluation Results ---
+Accuracy: 0.6294
+AUC: 0.7474
+Confusion Matrix:
+[[3808  467]
+ [2706 1580]]
+Classification Report:
+              precision    recall  f1-score   support
+
+           0     0.5846    0.8908    0.7059      4275
+           1     0.7719    0.3686    0.4990      4286
+
+    accuracy                         0.6294      8561
+   macro avg     0.6782    0.6297    0.6024      8561
+weighted avg     0.6783    0.6294    0.6023      8561
+
+--------------------------------------------------
+
+--- Center 3 Evaluation Results ---
+Accuracy: 0.6817
+AUC: 0.8737
+Confusion Matrix:
+[[6204  279]
+ [3821 2575]]
+Classification Report:
+              precision    recall  f1-score   support
+
+           0     0.6189    0.9570    0.7516      6483
+           1     0.9022    0.4026    0.5568      6396
+
+    accuracy                         0.6817     12879
+   macro avg     0.7605    0.6798    0.6542     12879
+weighted avg     0.7596    0.6817    0.6549     12879
+
+--------------------------------------------------
+
+--- Center 4 Evaluation Results ---
+Accuracy: 0.6784
+AUC: 0.8402
+Confusion Matrix:
+[[6595  842]
+ [3876 3357]]
+Classification Report:
+              precision    recall  f1-score   support
+
+           0     0.6298    0.8868    0.7365      7437
+           1     0.7995    0.4641    0.5873      7233
+
+    accuracy                         0.6784     14670
+   macro avg     0.7147    0.6755    0.6619     14670
+weighted avg     0.7135    0.6784    0.6630     14670
+
+--------------------------------------------------
