@@ -17,7 +17,7 @@ def main():
         split="test",
         label_type=label_type,
     )
-
+    
     # Convert to tensors - MODIFIED FOR MULTI-OBSERVATION SUPPORT
     all_feats = torch.from_numpy(features).float()
     all_labels = torch.from_numpy(labels).long()
