@@ -1,7 +1,7 @@
 import subprocess
 
 methods = ["coop", "biomedcoop", "cocoop"]
-datasets = ["nih_chest", "camelyon17", "wbc_att", "derm7pt"]
+datasets = ["nih_chest", "wbc_att", "derm7pt"]
 
 shots = 16 
 
