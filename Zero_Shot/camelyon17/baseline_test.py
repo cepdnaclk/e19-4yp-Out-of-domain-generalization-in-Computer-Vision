@@ -26,7 +26,7 @@ def main():
     all_feats = torch.from_numpy(features).float()
     all_labels = torch.from_numpy(labels).long()
 
-    print(f"Loaded {len(all_feats)} Derm7pt embeddings")
+    print(f"Loaded {len(all_feats)} Camelyon17 embeddings")
     print("all_labels:\n", all_labels)
 
     prompt_set = (
