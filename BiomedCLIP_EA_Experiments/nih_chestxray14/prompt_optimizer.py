@@ -99,7 +99,7 @@ def main():
     client = util.LLMClient(
         use_local_ollama=False, ollama_model="hf.co/unsloth/medgemma-27b-text-it-GGUF:Q8_0")
 
-    pq = util.PriorityQueue(max_capacity=1000, filter_threshold=0.3)
+    pq = util.PriorityQueue(max_capacity=1000, filter_threshold=0.6)
     prompt_content = ""
 
     for j in range(500):
