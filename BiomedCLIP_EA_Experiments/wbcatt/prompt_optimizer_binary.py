@@ -16,13 +16,16 @@ import util
 import torch
 import numpy as np
 import os
+import argparse
 from gemini_pro_initial_prompts import INIT_PROMPTS
 # 'accuracy', 'auc', 'f1_macro', 'inverted_weighted_ce'
 
 
-BINARY_LABEL = util.CLASSES[0]  # Change this to target different cell types
+# Default value, will be overridden by command line
+BINARY_LABEL = util.CLASSES[0]
+# Default value, will be overridden by command line
 FITNESS_METRIC = 'inverted_weighted_ce'
-FEW_SHOT = 8
+FEW_SHOT = 8  # Default value, will be overridden by command line
 
 MEDICAL_CONCEPTS_MAPPING = {
     "Basophil": "Nucleus=Segmented, NC Ratio=Low, Granularity=Yes, Color=Blue/Black (dense)",
@@ -80,6 +83,30 @@ Only provide the output as Python code in the following format: prompts = list[t
 
 
 def main():
+    # Parse command line arguments
+    parser = argparse.ArgumentParser(
+        description='Binary Classification Prompt Optimizer for WBCATT Dataset')
+    parser.add_argument('--binary_label', type=int, required=True,
+                        help='Binary label class index (0-4): 0=Basophil, 1=Eosinophil, 2=Lymphocyte, 3=Monocyte, 4=Neutrophil')
+    parser.add_argument('--fitness_metric', type=str, required=True,
+                        choices=['accuracy', 'f1_macro', 'f1_weighted',
+                                 'inverted_ce', 'inverted_weighted_ce'],
+                        help='Fitness metric to optimize')
+    parser.add_argument('--few_shot', type=int, required=True,
+                        help='Number of few-shot samples per class (use 0 for full dataset)')
+
+    args = parser.parse_args()
+
+    # Set global variables from command line arguments
+    global BINARY_LABEL, FITNESS_METRIC, FEW_SHOT
+    BINARY_LABEL = util.CLASSES[args.binary_label]
+    FITNESS_METRIC = args.fitness_metric
+    FEW_SHOT = args.few_shot
+
+    print(f"Configuration:")
+    print(f"  Binary Label: {BINARY_LABEL} (class {args.binary_label})")
+    print(f"  Fitness Metric: {FITNESS_METRIC}")
+    print(f"  Few Shot: {FEW_SHOT}")
 
     # Name the experiment we are currently running
     experiment_name = f"Wbcatt_Experiment1_{FITNESS_METRIC}-FEWSHOT{FEW_SHOT}-{BINARY_LABEL}"
