@@ -257,7 +257,8 @@ def main():
 
     # Step 2: Perform crowding
     print("\n=== Step 2: Performing Crowding ===")
-    llm_client = util.LLMClient(provider=args.provider)
+    llm_client = util.LLMClient(
+        use_local_ollama=False, ollama_model="hf.co/unsloth/medgemma-27b-text-it-GGUF:Q8_0")
     crowding_manager = CrowdingManager(
         client=llm_client,
         iterations=args.crowding_iterations,
