@@ -217,8 +217,8 @@ def main():
                         help="LLM provider for crowding (default: gemini)")
     parser.add_argument("--max_capacity", type=int, default=1000,
                         help="Maximum capacity of priority queue (default: 1000)")
-    parser.add_argument("--filter_threshold", type=float, default=0.6,
-                        help="Filter threshold for priority queue (default: 0.6)")
+    parser.add_argument("--filter_threshold", type=float, default=0.0,
+                        help="Filter threshold for priority queue (default: 0.0)")
     parser.add_argument("--crowding_iterations", type=int, default=3,
                         help="Number of crowding iterations (default: 3)")
     parser.add_argument("--group_size", type=int, default=30,
