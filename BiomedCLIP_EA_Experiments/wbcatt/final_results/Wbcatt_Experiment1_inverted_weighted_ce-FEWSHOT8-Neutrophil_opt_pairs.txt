@@ -1,0 +1,338 @@
+Iteration 1:
+('Basophils stain intensely with basic dyes.', 'The cell does not exhibit intense basic dye staining.'), Score: 0.0682
+('Basophils are rare and have prominent, dark granules.', 'Neutrophils have numerous, but less prominent granules.'), Score: 0.0493
+('Cells with bilobed nuclei are often eosinophils.', 'The nucleus is clearly segmented, not bilobed.'), Score: 0.0493
+('Bright red granules indicate eosinophils.', 'Granules are typically faint and not intensely colored.'), Score: 0.0303
+('Monocytes have a bean-shaped nucleus.', 'Neutrophils have a segmented nucleus.'), Score: 0.0259
+('Monocytes are the largest cells in the peripheral blood.', 'Neutrophils are generally smaller than monocytes.'), Score: 0.0212
+('Dense, homogenous chromatin suggests a reactive lymphocyte.', 'Chromatin is finely dispersed and segmented, characteristic of a neutrophil nucleus.'), Score: 0.0176
+('Monocytes differentiate into macrophages.', 'Neutrophils have a short lifespan.'), Score: 0.0128
+('Lymphocytes have a high N/C ratio and condensed chromatin.', 'Neutrophils have a low N/C ratio and dispersed chromatin.'), Score: 0.0121
+('Lymphocytes have a small amount of cytoplasm.', 'Neutrophils have a moderate amount of cytoplasm.'), Score: 0.0118
+
+Iteration 10:
+('Basophils stain intensely with basic dyes.', 'The cell does not exhibit intense basic dye staining.'), Score: 0.0682
+('Eosinophils have large, refractile granules that are easily visible.', 'Neutrophils have smaller, less refractile granules that may require higher magnification.'), Score: 0.0502
+('Basophils are rare and have prominent, dark granules.', 'Neutrophils have numerous, but less prominent granules.'), Score: 0.0493
+('Cells with bilobed nuclei are often eosinophils.', 'The nucleus is clearly segmented, not bilobed.'), Score: 0.0493
+('Lymphocytes have a condensed chromatin pattern, often described as “smudged”.', 'Neutrophils have a finely granular chromatin pattern within each nuclear segment.'), Score: 0.0488
+('Lymphocytes have a generally spherical cell shape.', 'Neutrophils can exhibit a more irregular or slightly elongated cell shape.'), Score: 0.0474
+('Basophils have a round nucleus often obscured by granules.', 'Neutrophils have a segmented nucleus clearly visible despite the presence of granules.'), Score: 0.0445
+('Basophils have a round to oval cell shape.', 'Neutrophils often exhibit a round to slightly elongated cell shape, but can be more irregular.'), Score: 0.0416
+('Basophils have granules that obscure the nucleus.', 'Neutrophils have granules that do not typically obscure the segmented nucleus.'), Score: 0.0414
+('Lymphocytes exhibit condensed, dark chromatin.', 'Neutrophils display a more dispersed, lighter chromatin pattern.'), Score: 0.0382
+('Basophils have large, dark blue granules that often fill the cytoplasm.', 'Neutrophils have pale lilac granules sparsely distributed in the cytoplasm.'), Score: 0.0357
+('Lymphocytes have a high nuclear to cytoplasmic ratio, appearing as mostly nucleus.', 'Neutrophils have a low nuclear to cytoplasmic ratio, with a substantial amount of cytoplasm.'), Score: 0.0352
+('Eosinophils are characterized by their bilobed nucleus.', 'Neutrophils are characterized by their multi-lobed nucleus, typically 3-5 lobes.'), Score: 0.0351
+('Bright red granules indicate eosinophils.', 'Granules are typically faint and not intensely colored.'), Score: 0.0303
+('Lymphocytes generally lack prominent cytoplasmic vacuoles.', 'Neutrophils may contain small, scattered cytoplasmic vacuoles.'), Score: 0.0279
+('Monocytes often have a kidney-shaped or horseshoe-shaped nucleus.', 'Neutrophils consistently display a multi-lobed, segmented nucleus.'), Score: 0.0278
+('Eosinophils have a nucleus that is often bi-lobed or multi-lobed but less segmented than neutrophils.', 'Neutrophils consistently display a nucleus with 3-5 distinct lobes connected by thin strands.'), Score: 0.0278
+('Monocytes have a kidney-shaped or horseshoe-shaped nucleus.', 'Neutrophils have a nucleus that is segmented into distinct lobes connected by thin strands.'), Score: 0.0267
+('Monocytes typically display a large, convoluted nucleus.', 'Neutrophils exhibit a segmented nucleus with defined lobes.'), Score: 0.0262
+('Monocytes have a bean-shaped nucleus.', 'Neutrophils have a segmented nucleus.'), Score: 0.0259
+('Monocytes have a kidney-shaped or horseshoe-shaped nucleus.', 'Neutrophils have a distinctly segmented nucleus with 3-5 lobes.'), Score: 0.0253
+('Lymphocytes have a high N/C ratio and a densely packed nucleus.', 'Neutrophils have a low N/C ratio and a less densely packed nucleus.'), Score: 0.0253
+('Basophils have large, uniform granules that often obscure the nucleus.', 'Neutrophils have smaller, more variable granules that do not typically obscure the nucleus.'), Score: 0.0252
+('Lymphocytes have a cytoplasm that is typically a deep blue color.', 'Neutrophils have a cytoplasm that is a paler, more neutral blue or slightly pinkish hue.'), Score: 0.0251
+('Basophils have dark blue or purple granules that often completely fill the cytoplasm.', 'Neutrophils have granules that are less intensely colored and do not obscure the cytoplasm.'), Score: 0.0241
+('Eosinophils have a nucleus that is usually bi-lobed and symmetrical.', 'Neutrophils have a segmented nucleus with varying lobe sizes and asymmetry.'), Score: 0.0230
+('Lymphocytes have a high chromatin density, appearing darkly stained.', 'Neutrophils have a more dispersed chromatin pattern, appearing less intensely stained.'), Score: 0.0213
+('Monocytes are the largest cells in the peripheral blood.', 'Neutrophils are generally smaller than monocytes.'), Score: 0.0212
+('Monocytes have an irregular or kidney-shaped nucleus.', 'Neutrophils possess a segmented nucleus with typically 3-5 lobes.'), Score: 0.0203
+('Monocytes often have a kidney-bean or horseshoe-shaped nucleus.', 'Neutrophils have a segmented nucleus with typically 3-5 lobes.'), Score: 0.0202
+('Lymphocytes have a round or slightly indented nucleus.', 'Neutrophils exhibit a nucleus with distinct, connected segments.'), Score: 0.0199
+('Lymphocytes have scant cytoplasm.', 'Neutrophils have abundant cytoplasm.'), Score: 0.0191
+('Monocytes exhibit a folded or convoluted nuclear shape.', 'Neutrophils have a segmented nucleus with distinct, connected lobes.'), Score: 0.0177
+('Dense, homogenous chromatin suggests a reactive lymphocyte.', 'Chromatin is finely dispersed and segmented, characteristic of a neutrophil nucleus.'), Score: 0.0176
+('Eosinophils have a high granularity.', 'Neutrophils have moderate granularity.'), Score: 0.0161
+('Lymphocytes typically exhibit a smooth, homogenous cytoplasm.', 'Neutrophils display a granular cytoplasm with fine speckles.'), Score: 0.0160
+('Lymphocytes have a high nuclear to cytoplasmic ratio, appearing densely packed.', 'Neutrophils have a low nuclear to cytoplasmic ratio, with a more balanced appearance.'), Score: 0.0149
+('Cells with abundant, dark purple granules are likely basophils.', 'Neutrophils have sparse, pale granules that are not intensely colored.'), Score: 0.0147
+('Monocytes exhibit a pseudopod-like cytoplasmic extension.', 'Neutrophils generally have a uniform cytoplasmic border without pseudopods.'), Score: 0.0140
+('Basophils have a smooth, homogenous cytoplasm.', 'Neutrophils have a granular cytoplasm with visible texture.'), Score: 0.0135
+('Lymphocytes have densely packed chromatin.', 'Neutrophils have finely dispersed chromatin within the segmented nucleus.'), Score: 0.0132
+('Lymphocytes have a high nuclear to cytoplasmic ratio and a round nucleus.', 'Neutrophils have a low nuclear to cytoplasmic ratio and a segmented nucleus.'), Score: 0.0128
+('Monocytes differentiate into macrophages.', 'Neutrophils have a short lifespan.'), Score: 0.0128
+('Basophils have a cytoplasm that is often obscured by the sheer number of granules.', 'Neutrophils have a cytoplasm where granules are visible but do not completely dominate the cellular appearance.'), Score: 0.0126
+('Basophils frequently contain granules that completely mask the nucleus.', 'Neutrophils have granules that do not obscure the segmented nucleus.'), Score: 0.0124
+('Lymphocytes generally have a smooth, non-vacuolated cytoplasm.', 'Neutrophils often display a cytoplasm with fine, pale vacuoles.'), Score: 0.0123
+('Lymphocytes typically have a small cell size, around 7-10 μm.', 'Neutrophils are slightly larger, typically ranging from 10-15 μm.'), Score: 0.0123
+('Lymphocytes have a high N/C ratio and condensed chromatin.', 'Neutrophils have a low N/C ratio and dispersed chromatin.'), Score: 0.0121
+('Lymphocytes have a small amount of cytoplasm.', 'Neutrophils have a moderate amount of cytoplasm.'), Score: 0.0118
+('Monocytes have a cytoplasm that often contains vacuoles.', 'Neutrophils generally lack prominent cytoplasmic vacuoles.'), Score: 0.0118
+('Monocytes often have a ruffled or irregular cell border.', 'Neutrophils typically have well-defined, smooth cell borders.'), Score: 0.0115
+('Lymphocytes have a high N/C ratio and a deeply staining nucleus.', 'Neutrophils have a low N/C ratio and a less intensely staining nucleus.'), Score: 0.0114
+('Monocytes typically display a large amount of gray cytoplasm.', 'Neutrophils exhibit a pale pink to neutral cytoplasm.'), Score: 0.0112
+('Lymphocytes generally present with a smooth, homogenous cytoplasm.', 'Neutrophils often show cytoplasmic extensions or pseudopodia.'), Score: 0.0110
+('Monocytes have pseudopodia.', 'Neutrophils lack pseudopodia.'), Score: 0.0108
+('Lymphocytes typically have a high nuclear-cytoplasmic ratio, with a large nucleus occupying most of the cell volume.', 'Neutrophils exhibit a lower nuclear-cytoplasmic ratio, with a significant amount of cytoplasm surrounding the segmented nucleus.'), Score: 0.0106
+('Lymphocytes have a relatively uniform cytoplasm texture.', 'Neutrophils have a cytoplasm with a slightly textured appearance due to the presence of granules.'), Score: 0.0105
+('Lymphocytes generally have a smooth, non-vacuolated cytoplasm.', 'Neutrophils may show subtle cytoplasmic vacuoles, particularly in activated cells.'), Score: 0.0102
+('Lymphocytes have granules that are typically not visible without special staining.', 'Neutrophils have visible, neutral-staining granules throughout the cytoplasm.'), Score: 0.0102
+('Cells with a high N/C ratio and intensely blue cytoplasm are likely lymphocytes.', 'Cells with a low N/C ratio and pale pink/lilac cytoplasm are likely neutrophils.'), Score: 0.0100
+
+Iteration 20:
+('Basophils stain intensely with basic dyes.', 'The cell does not exhibit intense basic dye staining.'), Score: 0.0682
+('Basophils have large, uniform granules that often obscure the cytoplasm.', 'Neutrophils have smaller, variable-sized granules that are distributed throughout the cytoplasm.'), Score: 0.0586
+('Lymphocytes have a smooth, non-textured cytoplasm.', 'Neutrophils display a slightly granular cytoplasmic texture due to the presence of numerous granules.'), Score: 0.0574
+('Lymphocytes have a high N/C ratio and a small cytoplasmic rim.', 'Neutrophils have a low N/C ratio and a substantial cytoplasmic rim containing granules.'), Score: 0.0538
+('Eosinophils have large, refractile granules that are easily visible.', 'Neutrophils have smaller, less refractile granules that may require higher magnification.'), Score: 0.0502
+('Basophils are rare and have prominent, dark granules.', 'Neutrophils have numerous, but less prominent granules.'), Score: 0.0493
+('Cells with bilobed nuclei are often eosinophils.', 'The nucleus is clearly segmented, not bilobed.'), Score: 0.0493
+('Lymphocytes have a condensed chromatin pattern, often described as “smudged”.', 'Neutrophils have a finely granular chromatin pattern within each nuclear segment.'), Score: 0.0488
+('Monocytes have a variable cell size, often being the largest of the white blood cells.', 'Neutrophils have a relatively consistent cell size, typically smaller than monocytes.'), Score: 0.0480
+('Lymphocytes have a generally spherical cell shape.', 'Neutrophils can exhibit a more irregular or slightly elongated cell shape.'), Score: 0.0474
+('Basophils have a round nucleus often obscured by granules.', 'Neutrophils have a segmented nucleus clearly visible despite the presence of granules.'), Score: 0.0445
+('Basophils have a round to oval cell shape.', 'Neutrophils often exhibit a round to slightly elongated cell shape, but can be more irregular.'), Score: 0.0416
+('Basophils have intensely basophilic cytoplasm, often masking nuclear details.', 'Neutrophils have a cytoplasm that is lightly stained, allowing clear visualization of the segmented nucleus.'), Score: 0.0415
+('Basophils have granules that obscure the nucleus.', 'Neutrophils have granules that do not typically obscure the segmented nucleus.'), Score: 0.0414
+('Basophils have granules that completely or nearly completely obscure the nucleus.', 'Neutrophils have granules that are distributed throughout the cytoplasm but do not obscure the nucleus.'), Score: 0.0385
+('Lymphocytes exhibit condensed, dark chromatin.', 'Neutrophils display a more dispersed, lighter chromatin pattern.'), Score: 0.0382
+('Eosinophils have a cytoplasm that is often devoid of vacuoles.', 'Neutrophils frequently contain small, scattered cytoplasmic vacuoles.'), Score: 0.0378
+('Lymphocytes have a round, uniform cell shape.', 'Neutrophils can exhibit slight variations in cell shape, often appearing slightly irregular.'), Score: 0.0371
+('Basophils have large, dark blue granules that often fill the cytoplasm.', 'Neutrophils have pale lilac granules sparsely distributed in the cytoplasm.'), Score: 0.0357
+('Lymphocytes generally lack prominent cytoplasmic vacuoles.', 'Neutrophils often contain small, inconspicuous cytoplasmic vacuoles.'), Score: 0.0356
+('Basophils have granules that are consistently large and uniform in size.', 'Neutrophils have granules that are variable in size and shape.'), Score: 0.0353
+('Lymphocytes have a high nuclear to cytoplasmic ratio, appearing as mostly nucleus.', 'Neutrophils have a low nuclear to cytoplasmic ratio, with a substantial amount of cytoplasm.'), Score: 0.0352
+('Eosinophils are characterized by their bilobed nucleus.', 'Neutrophils are characterized by their multi-lobed nucleus, typically 3-5 lobes.'), Score: 0.0351
+('Basophils have a cytoplasm that is often obscured by numerous dark granules.', 'Neutrophils have a cytoplasm that is visible between the granules, allowing for assessment of texture and color.'), Score: 0.0335
+('Monocytes typically have a large, abundant cytoplasm.', 'Neutrophils generally have a moderate amount of cytoplasm relative to their nucleus.'), Score: 0.0328
+('Basophils have a round nucleus that is often obscured by granules.', 'Neutrophils have a segmented nucleus clearly visible despite the presence of granules.'), Score: 0.0317
+('Basophils have a nucleus that is often hidden or difficult to discern due to dense granules.', 'Neutrophils have a clearly defined, segmented nucleus that is easily identifiable.'), Score: 0.0316
+('Bright red granules indicate eosinophils.', 'Granules are typically faint and not intensely colored.'), Score: 0.0303
+('Lymphocytes generally lack prominent cytoplasmic vacuoles.', 'Neutrophils may contain small, scattered cytoplasmic vacuoles.'), Score: 0.0279
+('Monocytes often have a kidney-shaped or horseshoe-shaped nucleus.', 'Neutrophils consistently display a multi-lobed, segmented nucleus.'), Score: 0.0278
+('Eosinophils have a nucleus that is often bi-lobed or multi-lobed but less segmented than neutrophils.', 'Neutrophils consistently display a nucleus with 3-5 distinct lobes connected by thin strands.'), Score: 0.0278
+('Monocytes display a kidney-bean shaped nucleus with loose chromatin.', 'Neutrophils have a segmented nucleus with densely packed chromatin within each segment.'), Score: 0.0276
+('Basophils have large, dark blue granules that often overwhelm the cytoplasm.', 'Neutrophils possess smaller, more numerous, and paler lilac-colored granules.'), Score: 0.0275
+('Monocytes have a kidney-shaped or horseshoe-shaped nucleus.', 'Neutrophils have a nucleus that is segmented into distinct lobes connected by thin strands.'), Score: 0.0267
+('Monocytes have a nucleus that is often irregular in shape, sometimes folded or convoluted.', 'Neutrophils have a segmented nucleus with typically 3-5 lobes, connected by thin filaments.'), Score: 0.0266
+('Lymphocytes exhibit a consistently round and uniform cell shape.', 'Neutrophils can display a variable cell shape, often slightly irregular or lobulated.'), Score: 0.0262
+('Monocytes typically display a large, convoluted nucleus.', 'Neutrophils exhibit a segmented nucleus with defined lobes.'), Score: 0.0262
+('Monocytes have a bean-shaped nucleus.', 'Neutrophils have a segmented nucleus.'), Score: 0.0259
+('Monocytes have a kidney-shaped or horseshoe-shaped nucleus.', 'Neutrophils have a distinctly segmented nucleus with 3-5 lobes.'), Score: 0.0253
+('Lymphocytes have a high N/C ratio and a densely packed nucleus.', 'Neutrophils have a low N/C ratio and a less densely packed nucleus.'), Score: 0.0253
+('Basophils have large, uniform granules that often obscure the nucleus.', 'Neutrophils have smaller, more variable granules that do not typically obscure the nucleus.'), Score: 0.0252
+('Lymphocytes have a cytoplasm that is typically a deep blue color.', 'Neutrophils have a cytoplasm that is a paler, more neutral blue or slightly pinkish hue.'), Score: 0.0251
+('Lymphocytes have a relatively uniform chromatin distribution.', 'Neutrophils exhibit a segmented chromatin pattern, corresponding to the segmented nucleus.'), Score: 0.0245
+('Basophils have dark blue or purple granules that often completely fill the cytoplasm.', 'Neutrophils have granules that are less intensely colored and do not obscure the cytoplasm.'), Score: 0.0241
+('Eosinophils have a nucleus that is usually bi-lobed and symmetrical.', 'Neutrophils have a segmented nucleus with varying lobe sizes and asymmetry.'), Score: 0.0230
+('Lymphocytes have a high nuclear-cytoplasmic ratio, with a small amount of visible cytoplasm.', 'Neutrophils exhibit a low nuclear-cytoplasmic ratio, with a substantial amount of cytoplasm.'), Score: 0.0220
+('Lymphocytes have a densely packed nucleus that occupies most of the cell volume.', 'Neutrophils have a segmented nucleus with a relatively smaller nuclear area compared to the cytoplasm.'), Score: 0.0219
+('Monocytes often display a kidney-shaped or horseshoe-shaped nucleus.', 'Neutrophils exhibit a segmented nucleus with typically 3-5 lobes.'), Score: 0.0215
+('Monocytes exhibit a pseudopod-like extension of the cytoplasm.', 'Neutrophils maintain a consistent cell shape without pseudopods.'), Score: 0.0214
+('Basophils have granules that are typically uniform in size and shape.', 'Neutrophils exhibit granules that vary in size and shape, appearing more heterogeneous.'), Score: 0.0213
+('Lymphocytes have a high chromatin density, appearing darkly stained.', 'Neutrophils have a more dispersed chromatin pattern, appearing less intensely stained.'), Score: 0.0213
+('Monocytes are the largest cells in the peripheral blood.', 'Neutrophils are generally smaller than monocytes.'), Score: 0.0212
+('Monocytes have an irregular or kidney-shaped nucleus.', 'Neutrophils possess a segmented nucleus with typically 3-5 lobes.'), Score: 0.0203
+('Monocytes often have a kidney-bean or horseshoe-shaped nucleus.', 'Neutrophils have a segmented nucleus with typically 3-5 lobes.'), Score: 0.0202
+('Monocytes often contain cytoplasmic vacuoles, giving the cytoplasm a foamy appearance.', 'Neutrophils generally lack prominent cytoplasmic vacuoles.'), Score: 0.0201
+('Lymphocytes have a round or slightly indented nucleus.', 'Neutrophils exhibit a nucleus with distinct, connected segments.'), Score: 0.0199
+('Lymphocytes have a condensed chromatin structure, appearing dark and solid.', 'Neutrophils have a more open and segmented chromatin structure, appearing less dense overall.'), Score: 0.0198
+('Basophils have a cytoplasm that is densely packed with large, dark blue or purple granules.', 'Neutrophils have a cytoplasm containing smaller, more numerous granules that are less intensely colored.'), Score: 0.0197
+('Monocytes typically display a large, often kidney-shaped nucleus.', 'Neutrophils exhibit a segmented nucleus with typically 3-5 lobes.'), Score: 0.0193
+('Monocytes display a folded or irregular nuclear shape.', 'Neutrophils have a nucleus that is segmented into distinct lobes, appearing rounded or oval.'), Score: 0.0192
+('Lymphocytes have scant cytoplasm.', 'Neutrophils have abundant cytoplasm.'), Score: 0.0191
+('Lymphocytes have a high N/C ratio with a densely packed nucleus.', 'Neutrophils have a low N/C ratio with a segmented nucleus and less dense chromatin.'), Score: 0.0190
+('Lymphocytes have a relatively uniform cytoplasm color.', 'Neutrophils exhibit subtle variations in cytoplasmic color due to granule distribution.'), Score: 0.0188
+('Monocytes exhibit a folded or convoluted nuclear shape.', 'Neutrophils have a segmented nucleus with distinct, connected lobes.'), Score: 0.0177
+('Dense, homogenous chromatin suggests a reactive lymphocyte.', 'Chromatin is finely dispersed and segmented, characteristic of a neutrophil nucleus.'), Score: 0.0176
+('Lymphocytes have a relatively uniform chromatin distribution.', 'Neutrophils have a chromatin pattern that is segmented, corresponding to the nuclear lobes.'), Score: 0.0175
+('Monocytes have a kidney-shaped or horseshoe-shaped nucleus.', 'Neutrophils possess a segmented nucleus with typically 3-5 lobes.'), Score: 0.0171
+('Eosinophils have a high granularity.', 'Neutrophils have moderate granularity.'), Score: 0.0161
+('Lymphocytes typically exhibit a smooth, homogenous cytoplasm.', 'Neutrophils display a granular cytoplasm with fine speckles.'), Score: 0.0160
+('Lymphocytes exhibit a high chromatin density, resulting in a darkly stained nucleus.', 'Neutrophils display a more dispersed chromatin pattern, with lighter-staining nuclear segments.'), Score: 0.0154
+('Basophils have a cytoplasm that is almost entirely obscured by dark blue granules.', 'Neutrophils have a cytoplasm where the granules are dispersed and do not obscure the nucleus.'), Score: 0.0150
+('Lymphocytes have a high nuclear to cytoplasmic ratio, appearing densely packed.', 'Neutrophils have a low nuclear to cytoplasmic ratio, with a more balanced appearance.'), Score: 0.0149
+('Cells with abundant, dark purple granules are likely basophils.', 'Neutrophils have sparse, pale granules that are not intensely colored.'), Score: 0.0147
+('Lymphocytes have a high chromatin density, resulting in a dark-staining nucleus.', 'Neutrophils have a more dispersed chromatin pattern, giving the nucleus a lighter appearance.'), Score: 0.0146
+('Monocytes often have a ruffled or irregular cell shape.', 'Neutrophils generally maintain a more regular, rounded cell shape.'), Score: 0.0142
+('Monocytes exhibit a pseudopod-like cytoplasmic extension.', 'Neutrophils generally have a uniform cytoplasmic border without pseudopods.'), Score: 0.0140
+('Basophils have a smooth, homogenous cytoplasm.', 'Neutrophils have a granular cytoplasm with visible texture.'), Score: 0.0135
+('Lymphocytes generally lack visible cytoplasmic granules.', 'Neutrophils are characterized by the presence of numerous fine granules.'), Score: 0.0135
+('Monocytes exhibit a kidney-shaped or horseshoe-shaped nucleus.', 'Neutrophils display a nucleus with distinct, connected segments.'), Score: 0.0135
+('Monocytes often display a ruffled or irregular cell border.', 'Neutrophils typically have smooth, well-defined cell borders.'), Score: 0.0133
+('Lymphocytes have densely packed chromatin.', 'Neutrophils have finely dispersed chromatin within the segmented nucleus.'), Score: 0.0132
+('Lymphocytes have a high nuclear to cytoplasmic ratio and a round nucleus.', 'Neutrophils have a low nuclear to cytoplasmic ratio and a segmented nucleus.'), Score: 0.0128
+('Monocytes differentiate into macrophages.', 'Neutrophils have a short lifespan.'), Score: 0.0128
+('Basophils have a cytoplasm that is often obscured by the sheer number of granules.', 'Neutrophils have a cytoplasm where granules are visible but do not completely dominate the cellular appearance.'), Score: 0.0126
+('Basophils frequently contain granules that completely mask the nucleus.', 'Neutrophils have granules that do not obscure the segmented nucleus.'), Score: 0.0124
+('Lymphocytes generally have a smooth, non-vacuolated cytoplasm.', 'Neutrophils often display a cytoplasm with fine, pale vacuoles.'), Score: 0.0123
+('Lymphocytes typically have a small cell size, around 7-10 μm.', 'Neutrophils are slightly larger, typically ranging from 10-15 μm.'), Score: 0.0123
+('Lymphocytes have a consistently round cell shape.', 'Neutrophils can exhibit a more irregular or slightly elongated cell shape.'), Score: 0.0122
+('Lymphocytes have a high N/C ratio and condensed chromatin.', 'Neutrophils have a low N/C ratio and dispersed chromatin.'), Score: 0.0121
+('Monocytes often have a pseudopodial extension of the cytoplasm.', 'Neutrophils maintain a more consistent cell boundary without prominent pseudopods.'), Score: 0.0120
+('Eosinophils demonstrate a cytoplasm color dominated by bright orange-red hues.', 'Neutrophils exhibit a cytoplasm color ranging from pale blue to a neutral pinkish-white.'), Score: 0.0120
+('Lymphocytes have a high nuclear-cytoplasmic ratio, often appearing as mostly nucleus.', 'Neutrophils have a lower nuclear-cytoplasmic ratio, with a more balanced proportion of nucleus and cytoplasm.'), Score: 0.0119
+('Lymphocytes have a small amount of cytoplasm.', 'Neutrophils have a moderate amount of cytoplasm.'), Score: 0.0118
+('Monocytes have a cytoplasm that often contains vacuoles.', 'Neutrophils generally lack prominent cytoplasmic vacuoles.'), Score: 0.0118
+('Monocytes have a nucleus that is often eccentric in its position within the cell.', 'Neutrophils have a nucleus that is generally centrally located within the cell.'), Score: 0.0116
+('Monocytes often have a ruffled or irregular cell border.', 'Neutrophils typically have well-defined, smooth cell borders.'), Score: 0.0115
+('Lymphocytes have a high N/C ratio and a deeply staining nucleus.', 'Neutrophils have a low N/C ratio and a less intensely staining nucleus.'), Score: 0.0114
+('Monocytes typically display a large amount of gray cytoplasm.', 'Neutrophils exhibit a pale pink to neutral cytoplasm.'), Score: 0.0112
+('Lymphocytes generally present with a smooth, homogenous cytoplasm.', 'Neutrophils often show cytoplasmic extensions or pseudopodia.'), Score: 0.0110
+('Monocytes have pseudopodia.', 'Neutrophils lack pseudopodia.'), Score: 0.0108
+('Basophils have a smooth, non-textured cytoplasm.', 'Neutrophils display a slightly granular or textured cytoplasm even without considering the specific granules.'), Score: 0.0106
+('Lymphocytes typically have a high nuclear-cytoplasmic ratio, with a large nucleus occupying most of the cell volume.', 'Neutrophils exhibit a lower nuclear-cytoplasmic ratio, with a significant amount of cytoplasm surrounding the segmented nucleus.'), Score: 0.0106
+('Lymphocytes have a relatively uniform cytoplasm texture.', 'Neutrophils have a cytoplasm with a slightly textured appearance due to the presence of granules.'), Score: 0.0105
+('Basophils often display a nucleus that is obscured or difficult to discern due to dense granule coverage.', 'Neutrophils have a clearly visible, segmented nucleus with distinct lobes.'), Score: 0.0104
+('Lymphocytes generally have a smooth, non-vacuolated cytoplasm.', 'Neutrophils may show subtle cytoplasmic vacuoles, particularly in activated cells.'), Score: 0.0102
+('Lymphocytes have granules that are typically not visible without special staining.', 'Neutrophils have visible, neutral-staining granules throughout the cytoplasm.'), Score: 0.0102
+('Cells with a high N/C ratio and intensely blue cytoplasm are likely lymphocytes.', 'Cells with a low N/C ratio and pale pink/lilac cytoplasm are likely neutrophils.'), Score: 0.0100
+
+Iteration 30:
+('Basophils stain intensely with basic dyes.', 'The cell does not exhibit intense basic dye staining.'), Score: 0.0682
+('Lymphocytes have a condensed chromatin pattern.', 'Neutrophils exhibit a more dispersed chromatin pattern within the nuclear segments.'), Score: 0.0631
+('Basophils have large, uniform granules that often obscure the cytoplasm.', 'Neutrophils have smaller, variable-sized granules that are distributed throughout the cytoplasm.'), Score: 0.0586
+('Lymphocytes have a smooth, non-textured cytoplasm.', 'Neutrophils display a slightly granular cytoplasmic texture due to the presence of numerous granules.'), Score: 0.0574
+('Lymphocytes have a high N/C ratio and a small cytoplasmic rim.', 'Neutrophils have a low N/C ratio and a substantial cytoplasmic rim containing granules.'), Score: 0.0538
+('Eosinophils have large, refractile granules that are easily visible.', 'Neutrophils have smaller, less refractile granules that may require higher magnification.'), Score: 0.0502
+('Basophils are rare and have prominent, dark granules.', 'Neutrophils have numerous, but less prominent granules.'), Score: 0.0493
+('Cells with bilobed nuclei are often eosinophils.', 'The nucleus is clearly segmented, not bilobed.'), Score: 0.0493
+('Basophils demonstrate a nucleus that is often obscured by numerous granules.', 'Neutrophils have a clearly visible, segmented nucleus even with the presence of granules.'), Score: 0.0492
+('Lymphocytes have a condensed chromatin pattern, often described as “smudged”.', 'Neutrophils have a finely granular chromatin pattern within each nuclear segment.'), Score: 0.0488
+('Basophils have granules that often obscure the nucleus.', 'Neutrophils have granules that do not typically obscure the segmented nucleus.'), Score: 0.0482
+('Monocytes have a variable cell size, often being the largest of the white blood cells.', 'Neutrophils have a relatively consistent cell size, typically smaller than monocytes.'), Score: 0.0480
+('Lymphocytes have a generally spherical cell shape.', 'Neutrophils can exhibit a more irregular or slightly elongated cell shape.'), Score: 0.0474
+('Basophils have a round nucleus often obscured by granules.', 'Neutrophils have a segmented nucleus clearly visible despite the presence of granules.'), Score: 0.0445
+('Lymphocytes have a high nuclear-to-cytoplasmic ratio, often appearing as mostly nucleus.', 'Neutrophils have a lower nuclear-to-cytoplasmic ratio, with a significant amount of visible cytoplasm surrounding the segmented nucleus.'), Score: 0.0439
+('Basophils have a round to oval cell shape.', 'Neutrophils often exhibit a round to slightly elongated cell shape, but can be more irregular.'), Score: 0.0416
+('Basophils have intensely basophilic cytoplasm, often masking nuclear details.', 'Neutrophils have a cytoplasm that is lightly stained, allowing clear visualization of the segmented nucleus.'), Score: 0.0415
+('Lymphocytes have condensed nuclear chromatin.', 'Neutrophils have a more dispersed chromatin pattern within the segmented nucleus.'), Score: 0.0414
+('Basophils have granules that obscure the nucleus.', 'Neutrophils have granules that do not typically obscure the segmented nucleus.'), Score: 0.0414
+('Basophils have granules that completely or nearly completely obscure the nucleus.', 'Neutrophils have granules that are distributed throughout the cytoplasm but do not obscure the nucleus.'), Score: 0.0385
+('Lymphocytes exhibit condensed, dark chromatin.', 'Neutrophils display a more dispersed, lighter chromatin pattern.'), Score: 0.0382
+('Eosinophils have a cytoplasm that is often devoid of vacuoles.', 'Neutrophils frequently contain small, scattered cytoplasmic vacuoles.'), Score: 0.0378
+('Lymphocytes have a round, uniform cell shape.', 'Neutrophils can exhibit slight variations in cell shape, often appearing slightly irregular.'), Score: 0.0371
+('Basophils have large, dark blue granules that often fill the cytoplasm.', 'Neutrophils have pale lilac granules sparsely distributed in the cytoplasm.'), Score: 0.0357
+('Basophils have intensely basophilic granules that often mask the cytoplasm.', 'Neutrophils have granules that are less intensely stained, allowing the cytoplasm to be clearly visualized.'), Score: 0.0357
+('Lymphocytes generally lack prominent cytoplasmic vacuoles.', 'Neutrophils often contain small, inconspicuous cytoplasmic vacuoles.'), Score: 0.0356
+('Basophils have a cytoplasm that is often obscured by the abundance of dark granules.', 'Neutrophils have a cytoplasm where granules are visible but do not completely mask the underlying texture.'), Score: 0.0355
+('Lymphocytes have densely packed chromatin within the nucleus.', 'Neutrophils exhibit a more dispersed chromatin pattern within the segmented nucleus.'), Score: 0.0353
+('Basophils have granules that are consistently large and uniform in size.', 'Neutrophils have granules that are variable in size and shape.'), Score: 0.0353
+('Lymphocytes have a high nuclear to cytoplasmic ratio, appearing as mostly nucleus.', 'Neutrophils have a low nuclear to cytoplasmic ratio, with a substantial amount of cytoplasm.'), Score: 0.0352
+('Eosinophils are characterized by their bilobed nucleus.', 'Neutrophils are characterized by their multi-lobed nucleus, typically 3-5 lobes.'), Score: 0.0351
+('Basophils have a cytoplasm that is often obscured by numerous dark granules.', 'Neutrophils have a cytoplasm that is visible between the granules, allowing for assessment of texture and color.'), Score: 0.0335
+('Lymphocytes have a high nuclear-cytoplasmic ratio, often appearing as mostly nucleus.', 'Neutrophils have a lower nuclear-cytoplasmic ratio, with a significant amount of visible cytoplasm surrounding the segmented nucleus.'), Score: 0.0332
+('Monocytes typically have a large, abundant cytoplasm.', 'Neutrophils generally have a moderate amount of cytoplasm relative to their nucleus.'), Score: 0.0328
+('Basophils have a high nuclear-cytoplasmic ratio, with a relatively small amount of cytoplasm.', 'Neutrophils have a low nuclear-cytoplasmic ratio, with a substantial amount of cytoplasm.'), Score: 0.0326
+('Basophils have a round nucleus that is often obscured by granules.', 'Neutrophils have a segmented nucleus clearly visible despite the presence of granules.'), Score: 0.0317
+('Basophils have a nucleus that is often hidden or difficult to discern due to dense granules.', 'Neutrophils have a clearly defined, segmented nucleus that is easily identifiable.'), Score: 0.0316
+('Bright red granules indicate eosinophils.', 'Granules are typically faint and not intensely colored.'), Score: 0.0303
+('Monocytes typically exhibit a kidney-shaped or horseshoe-shaped nucleus.', 'Neutrophils display a nucleus with distinct, connected segments.'), Score: 0.0298
+('Basophils have large, irregular granules that often overlap the nucleus.', 'Neutrophils have granules that are evenly distributed and do not typically obscure the nucleus.'), Score: 0.0289
+('Lymphocytes generally lack prominent cytoplasmic vacuoles.', 'Neutrophils may contain small, scattered cytoplasmic vacuoles.'), Score: 0.0279
+('Monocytes often have a kidney-shaped or horseshoe-shaped nucleus.', 'Neutrophils consistently display a multi-lobed, segmented nucleus.'), Score: 0.0278
+('Eosinophils have a nucleus that is often bi-lobed or multi-lobed but less segmented than neutrophils.', 'Neutrophils consistently display a nucleus with 3-5 distinct lobes connected by thin strands.'), Score: 0.0278
+('Monocytes display a kidney-bean shaped nucleus with loose chromatin.', 'Neutrophils have a segmented nucleus with densely packed chromatin within each segment.'), Score: 0.0276
+('Basophils have large, dark blue granules that often overwhelm the cytoplasm.', 'Neutrophils possess smaller, more numerous, and paler lilac-colored granules.'), Score: 0.0275
+('Lymphocytes have a smooth nuclear membrane without significant indentations.', 'Neutrophils exhibit a segmented nucleus with deep indentations and distinct lobes connected by thin strands.'), Score: 0.0273
+('Lymphocytes typically have a smooth, non-textured cytoplasm.', 'Neutrophils have a cytoplasm that appears granular and textured due to the presence of numerous granules.'), Score: 0.0272
+('Monocytes have a kidney-shaped or horseshoe-shaped nucleus.', 'Neutrophils have a nucleus that is segmented into distinct lobes connected by thin strands.'), Score: 0.0267
+('Monocytes have a nucleus that is often irregular in shape, sometimes folded or convoluted.', 'Neutrophils have a segmented nucleus with typically 3-5 lobes, connected by thin filaments.'), Score: 0.0266
+('Monocytes exhibit a kidney-bean or horseshoe-shaped nucleus.', 'Neutrophils display a segmented nucleus, typically with 3-5 lobes connected by thin strands.'), Score: 0.0264
+('Lymphocytes exhibit a consistently round and uniform cell shape.', 'Neutrophils can display a variable cell shape, often slightly irregular or lobulated.'), Score: 0.0262
+('Monocytes typically display a large, convoluted nucleus.', 'Neutrophils exhibit a segmented nucleus with defined lobes.'), Score: 0.0262
+('Monocytes have a bean-shaped nucleus.', 'Neutrophils have a segmented nucleus.'), Score: 0.0259
+('Eosinophils have a nucleus that is often bilobed or multi-lobed, but the segments are typically distinct and rounded.', 'Neutrophils have a nucleus with segments that are often connected by thin strands of chromatin.'), Score: 0.0257
+('Lymphocytes generally have a smooth nuclear contour.', 'Neutrophils have a segmented nucleus with distinct, lobulated contours.'), Score: 0.0255
+('Monocytes have a kidney-shaped or horseshoe-shaped nucleus.', 'Neutrophils have a distinctly segmented nucleus with 3-5 lobes.'), Score: 0.0253
+('Lymphocytes have a high N/C ratio and a densely packed nucleus.', 'Neutrophils have a low N/C ratio and a less densely packed nucleus.'), Score: 0.0253
+('Basophils have large, uniform granules that often obscure the nucleus.', 'Neutrophils have smaller, more variable granules that do not typically obscure the nucleus.'), Score: 0.0252
+('Lymphocytes have a cytoplasm that is typically a deep blue color.', 'Neutrophils have a cytoplasm that is a paler, more neutral blue or slightly pinkish hue.'), Score: 0.0251
+('Lymphocytes have a relatively uniform chromatin distribution.', 'Neutrophils exhibit a segmented chromatin pattern, corresponding to the segmented nucleus.'), Score: 0.0245
+('Basophils have dark blue or purple granules that often completely fill the cytoplasm.', 'Neutrophils have granules that are less intensely colored and do not obscure the cytoplasm.'), Score: 0.0241
+('Monocytes typically have a large, irregular nucleus with a folded appearance.', 'Neutrophils have a segmented nucleus with a relatively consistent number of lobes (3-5) and thinner connections.'), Score: 0.0235
+('Eosinophils have a nucleus that is usually bi-lobed and symmetrical.', 'Neutrophils have a segmented nucleus with varying lobe sizes and asymmetry.'), Score: 0.0230
+('Monocytes exhibit a dull or grayish cytoplasm.', 'Neutrophils have a cytoplasm that appears pale pink or slightly bluish, depending on staining.'), Score: 0.0222
+('Lymphocytes have a high nuclear-cytoplasmic ratio, with a small amount of visible cytoplasm.', 'Neutrophils exhibit a low nuclear-cytoplasmic ratio, with a substantial amount of cytoplasm.'), Score: 0.0220
+('Lymphocytes have a densely packed nucleus that occupies most of the cell volume.', 'Neutrophils have a segmented nucleus with a relatively smaller nuclear area compared to the cytoplasm.'), Score: 0.0219
+('Monocytes often display a kidney-shaped or horseshoe-shaped nucleus.', 'Neutrophils exhibit a segmented nucleus with typically 3-5 lobes.'), Score: 0.0215
+('Monocytes exhibit a pseudopod-like extension of the cytoplasm.', 'Neutrophils maintain a consistent cell shape without pseudopods.'), Score: 0.0214
+('Basophils have granules that are typically uniform in size and shape.', 'Neutrophils exhibit granules that vary in size and shape, appearing more heterogeneous.'), Score: 0.0213
+('Lymphocytes have a high chromatin density, appearing darkly stained.', 'Neutrophils have a more dispersed chromatin pattern, appearing less intensely stained.'), Score: 0.0213
+('Monocytes are the largest cells in the peripheral blood.', 'Neutrophils are generally smaller than monocytes.'), Score: 0.0212
+('Basophils are larger than typical neutrophils.', 'Neutrophils are generally smaller than basophils and monocytes.'), Score: 0.0205
+('Monocytes have an irregular or kidney-shaped nucleus.', 'Neutrophils possess a segmented nucleus with typically 3-5 lobes.'), Score: 0.0203
+('Monocytes often have a kidney-bean or horseshoe-shaped nucleus.', 'Neutrophils have a segmented nucleus with typically 3-5 lobes.'), Score: 0.0202
+('Monocytes often contain cytoplasmic vacuoles, giving the cytoplasm a foamy appearance.', 'Neutrophils generally lack prominent cytoplasmic vacuoles.'), Score: 0.0201
+('Lymphocytes have a round or slightly indented nucleus.', 'Neutrophils exhibit a nucleus with distinct, connected segments.'), Score: 0.0199
+('Lymphocytes have a condensed chromatin structure, appearing dark and solid.', 'Neutrophils have a more open and segmented chromatin structure, appearing less dense overall.'), Score: 0.0198
+('Lymphocytes generally exhibit a homogenous cytoplasm with minimal color variation.', 'Neutrophils display a cytoplasm with a pale pink or neutral hue, often with subtle color gradients.'), Score: 0.0198
+('Basophils have a cytoplasm that is densely packed with large, dark blue or purple granules.', 'Neutrophils have a cytoplasm containing smaller, more numerous granules that are less intensely colored.'), Score: 0.0197
+('Monocytes typically display a large, often kidney-shaped nucleus.', 'Neutrophils exhibit a segmented nucleus with typically 3-5 lobes.'), Score: 0.0193
+('Monocytes display a folded or irregular nuclear shape.', 'Neutrophils have a nucleus that is segmented into distinct lobes, appearing rounded or oval.'), Score: 0.0192
+('Lymphocytes have scant cytoplasm.', 'Neutrophils have abundant cytoplasm.'), Score: 0.0191
+('Basophils have a cytoplasm that is often clear or pale blue between the granules.', 'Neutrophils have a cytoplasm that is typically a pale pink or neutral color, with granules dispersed throughout.'), Score: 0.0191
+('Lymphocytes have a high N/C ratio with a densely packed nucleus.', 'Neutrophils have a low N/C ratio with a segmented nucleus and less dense chromatin.'), Score: 0.0190
+('Lymphocytes have a condensed chromatin pattern with minimal visible space.', 'Neutrophils have a more dispersed chromatin pattern with visible space between the chromatin strands.'), Score: 0.0188
+('Lymphocytes have a relatively uniform cytoplasm color.', 'Neutrophils exhibit subtle variations in cytoplasmic color due to granule distribution.'), Score: 0.0188
+('Lymphocytes have a high N/C ratio and a dense, round nucleus.', 'Neutrophils have a low N/C ratio and a segmented nucleus with less dense chromatin.'), Score: 0.0184
+('Monocytes often have a nucleus that is eccentric in its position within the cell.', 'Neutrophils typically have a centrally located, segmented nucleus.'), Score: 0.0184
+('Basophils have granules that are uniform in size and shape.', 'Neutrophils exhibit granules that vary in size and shape, appearing more heterogeneous.'), Score: 0.0182
+('Basophils often exhibit a round or oval cell shape.', 'Neutrophils typically have a round to slightly irregular cell shape.'), Score: 0.0180
+('Monocytes exhibit a folded or convoluted nuclear shape.', 'Neutrophils have a segmented nucleus with distinct, connected lobes.'), Score: 0.0177
+('Dense, homogenous chromatin suggests a reactive lymphocyte.', 'Chromatin is finely dispersed and segmented, characteristic of a neutrophil nucleus.'), Score: 0.0176
+('Lymphocytes have a relatively uniform chromatin distribution.', 'Neutrophils have a chromatin pattern that is segmented, corresponding to the nuclear lobes.'), Score: 0.0175
+('Monocytes have a kidney-shaped or horseshoe-shaped nucleus.', 'Neutrophils possess a segmented nucleus with typically 3-5 lobes.'), Score: 0.0171
+('Lymphocytes have a smooth, condensed nuclear chromatin pattern.', 'Neutrophils display a finely granular chromatin pattern within the segmented nucleus.'), Score: 0.0169
+('Lymphocytes have a condensed chromatin pattern with minimal visible nucleoli.', 'Neutrophils display a more dispersed chromatin pattern with occasional visible nucleoli.'), Score: 0.0169
+('Monocytes often display a ruffled or irregular cell border.', 'Neutrophils generally have smooth, well-defined cell borders.'), Score: 0.0165
+('Lymphocytes generally have a round or slightly irregular cell shape.', 'Neutrophils often exhibit an irregular or amoeboid cell shape, changing with movement.'), Score: 0.0161
+('Eosinophils have a high granularity.', 'Neutrophils have moderate granularity.'), Score: 0.0161
+('Lymphocytes typically exhibit a smooth, homogenous cytoplasm.', 'Neutrophils display a granular cytoplasm with fine speckles.'), Score: 0.0160
+('Lymphocytes generally have a smooth, condensed chromatin pattern.', 'Neutrophils exhibit a more dispersed, finely granular chromatin pattern.'), Score: 0.0154
+('Basophils have a high cytoplasm-to-nucleus ratio, with granules often obscuring the nucleus.', 'Neutrophils have a relatively low cytoplasm-to-nucleus ratio, with a clearly defined segmented nucleus.'), Score: 0.0154
+('Lymphocytes exhibit a high chromatin density, resulting in a darkly stained nucleus.', 'Neutrophils display a more dispersed chromatin pattern, with lighter-staining nuclear segments.'), Score: 0.0154
+('Monocytes have a nucleus that is often irregular in shape, with a folded or indented appearance.', 'Neutrophils have a nucleus with clearly defined, rounded or elongated segments.'), Score: 0.0154
+('Monocytes exhibit a kidney-bean shaped nucleus.', 'Neutrophils possess a nucleus clearly divided into 2-5 distinct segments.'), Score: 0.0150
+('Basophils have a cytoplasm that is almost entirely obscured by dark blue granules.', 'Neutrophils have a cytoplasm where the granules are dispersed and do not obscure the nucleus.'), Score: 0.0150
+('Lymphocytes have a high nuclear to cytoplasmic ratio, appearing densely packed.', 'Neutrophils have a low nuclear to cytoplasmic ratio, with a more balanced appearance.'), Score: 0.0149
+('Cells with abundant, dark purple granules are likely basophils.', 'Neutrophils have sparse, pale granules that are not intensely colored.'), Score: 0.0147
+('Lymphocytes have a high chromatin density, resulting in a dark-staining nucleus.', 'Neutrophils have a more dispersed chromatin pattern, giving the nucleus a lighter appearance.'), Score: 0.0146
+('Monocytes often display a folded or indented nuclear membrane.', 'Neutrophils have a smooth, well-defined nuclear membrane between lobes.'), Score: 0.0143
+('Monocytes often have a ruffled or irregular cell shape.', 'Neutrophils generally maintain a more regular, rounded cell shape.'), Score: 0.0142
+('Monocytes exhibit a pseudopod-like cytoplasmic extension.', 'Neutrophils generally have a uniform cytoplasmic border without pseudopods.'), Score: 0.0140
+('Basophils have a cytoplasm filled with coarse, dark purple granules.', 'Neutrophils have a cytoplasm containing fine, evenly distributed granules.'), Score: 0.0139
+('Basophils have a smooth, homogenous cytoplasm.', 'Neutrophils have a granular cytoplasm with visible texture.'), Score: 0.0135
+('Lymphocytes generally lack visible cytoplasmic granules.', 'Neutrophils are characterized by the presence of numerous fine granules.'), Score: 0.0135
+('Monocytes exhibit a kidney-shaped or horseshoe-shaped nucleus.', 'Neutrophils display a nucleus with distinct, connected segments.'), Score: 0.0135
+('Monocytes often display a ruffled or irregular cell border.', 'Neutrophils typically have smooth, well-defined cell borders.'), Score: 0.0133
+('Lymphocytes have densely packed chromatin.', 'Neutrophils have finely dispersed chromatin within the segmented nucleus.'), Score: 0.0132
+('Monocytes are typically larger in size compared to other leukocytes.', 'Neutrophils are generally smaller in size, ranging from 10-12 micrometers.'), Score: 0.0131
+('Lymphocytes have a high nuclear to cytoplasmic ratio and a round nucleus.', 'Neutrophils have a low nuclear to cytoplasmic ratio and a segmented nucleus.'), Score: 0.0128
+('Monocytes differentiate into macrophages.', 'Neutrophils have a short lifespan.'), Score: 0.0128
+('Basophils have a cytoplasm that is often obscured by the sheer number of granules.', 'Neutrophils have a cytoplasm where granules are visible but do not completely dominate the cellular appearance.'), Score: 0.0126
+('Basophils frequently contain granules that completely mask the nucleus.', 'Neutrophils have granules that do not obscure the segmented nucleus.'), Score: 0.0124
+('Lymphocytes generally have a smooth, non-vacuolated cytoplasm.', 'Neutrophils often display a cytoplasm with fine, pale vacuoles.'), Score: 0.0123
+('Lymphocytes typically have a small cell size, around 7-10 μm.', 'Neutrophils are slightly larger, typically ranging from 10-15 μm.'), Score: 0.0123
+('Monocytes are typically larger in size compared to other leukocytes.', 'Neutrophils are generally medium-sized cells, smaller than monocytes.'), Score: 0.0123
+('Monocytes typically display a kidney-bean shaped nucleus.', 'Neutrophils exhibit a segmented nucleus with 3-5 lobes connected by thin strands.'), Score: 0.0122
+('Lymphocytes have a consistently round cell shape.', 'Neutrophils can exhibit a more irregular or slightly elongated cell shape.'), Score: 0.0122
+('Lymphocytes have a high N/C ratio and condensed chromatin.', 'Neutrophils have a low N/C ratio and dispersed chromatin.'), Score: 0.0121
+('Monocytes often have a pseudopodial extension of the cytoplasm.', 'Neutrophils maintain a more consistent cell boundary without prominent pseudopods.'), Score: 0.0120
+('Eosinophils demonstrate a cytoplasm color dominated by bright orange-red hues.', 'Neutrophils exhibit a cytoplasm color ranging from pale blue to a neutral pinkish-white.'), Score: 0.0120
+('Lymphocytes have a high nuclear-cytoplasmic ratio, often appearing as mostly nucleus.', 'Neutrophils have a lower nuclear-cytoplasmic ratio, with a more balanced proportion of nucleus and cytoplasm.'), Score: 0.0119
+('Lymphocytes have a small amount of cytoplasm.', 'Neutrophils have a moderate amount of cytoplasm.'), Score: 0.0118
+('Monocytes have a cytoplasm that often contains vacuoles.', 'Neutrophils generally lack prominent cytoplasmic vacuoles.'), Score: 0.0118
+('Basophils have abundant, dark blue-purple granules that often obscure the nucleus.', 'Neutrophils have granules that are less numerous and do not typically obscure the nucleus.'), Score: 0.0117
+('Monocytes have a nucleus that is often eccentric in its position within the cell.', 'Neutrophils have a nucleus that is generally centrally located within the cell.'), Score: 0.0116
+('Monocytes often have a ruffled or irregular cell border.', 'Neutrophils typically have well-defined, smooth cell borders.'), Score: 0.0115
+('Lymphocytes have a high N/C ratio and a deeply staining nucleus.', 'Neutrophils have a low N/C ratio and a less intensely staining nucleus.'), Score: 0.0114
+('Monocytes typically display a large amount of gray cytoplasm.', 'Neutrophils exhibit a pale pink to neutral cytoplasm.'), Score: 0.0112
+('Monocytes exhibit a variable cell shape, often with cytoplasmic extensions.', 'Neutrophils typically maintain a relatively consistent, round to oval cell shape.'), Score: 0.0111
+('Eosinophils have a cytoplasm that lacks visible vacuoles.', 'Neutrophils may occasionally exhibit small, inconspicuous vacuoles within their cytoplasm.'), Score: 0.0111
+('Lymphocytes generally present with a smooth, homogenous cytoplasm.', 'Neutrophils often show cytoplasmic extensions or pseudopodia.'), Score: 0.0110
+('Monocytes have pseudopodia.', 'Neutrophils lack pseudopodia.'), Score: 0.0108
+('Basophils have a smooth, non-textured cytoplasm.', 'Neutrophils display a slightly granular or textured cytoplasm even without considering the specific granules.'), Score: 0.0106
+('Lymphocytes typically have a high nuclear-cytoplasmic ratio, with a large nucleus occupying most of the cell volume.', 'Neutrophils exhibit a lower nuclear-cytoplasmic ratio, with a significant amount of cytoplasm surrounding the segmented nucleus.'), Score: 0.0106
+('Lymphocytes have a relatively uniform cytoplasm texture.', 'Neutrophils have a cytoplasm with a slightly textured appearance due to the presence of granules.'), Score: 0.0105
+('Basophils often display a nucleus that is obscured or difficult to discern due to dense granule coverage.', 'Neutrophils have a clearly visible, segmented nucleus with distinct lobes.'), Score: 0.0104
+('Lymphocytes generally have a smooth, non-vacuolated cytoplasm.', 'Neutrophils may show subtle cytoplasmic vacuoles, particularly in activated cells.'), Score: 0.0102
+('Lymphocytes generally lack prominent cytoplasmic granules.', 'Neutrophils are characterized by the presence of numerous visible granules.'), Score: 0.0102
+('Lymphocytes have granules that are typically not visible without special staining.', 'Neutrophils have visible, neutral-staining granules throughout the cytoplasm.'), Score: 0.0102
+('Eosinophils display prominent, large, and uniformly red-orange granules.', 'Neutrophils contain smaller, more numerous granules that stain a neutral pink or lilac color.'), Score: 0.0100
+('Cells with a high N/C ratio and intensely blue cytoplasm are likely lymphocytes.', 'Cells with a low N/C ratio and pale pink/lilac cytoplasm are likely neutrophils.'), Score: 0.0100
+('Lymphocytes generally have a homogenous, dense cytoplasm with minimal texture.', 'Neutrophils exhibit a granular cytoplasm with a visible texture due to the presence of numerous granules.'), Score: 0.0100
+
