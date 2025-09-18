@@ -68,6 +68,7 @@ def main():
         model=model,
         preprocess=preprocess,
         train_or_test="train",
+        target_label=CLASS,
     )
 
     # Convert to tensors - MODIFIED FOR MULTI-OBSERVATION SUPPORT
