@@ -230,6 +230,42 @@ def load_clip_model(
     return model, preprocess, tokenizer
 
 
+def select_balanced_few_shot_subset(features: torch.Tensor, labels: torch.Tensor, n_per_class: int = 8):
+    """
+    Selects a balanced few-shot subset from the dataset.
+    Returns features and labels for n_per_class samples per class.
+
+    Args:
+        features (torch.Tensor): Feature tensor of shape (N, D)
+        labels (torch.Tensor): Label tensor of shape (N,)
+        n_per_class (int): Number of samples to select per class
+
+    Returns:
+        (torch.Tensor, torch.Tensor): Subset features and labels
+    """
+    # Find unique classes
+    classes = torch.unique(labels)
+    selected_indices = []
+
+    for cls in classes:
+        # Get indices for this class
+        cls_indices = (labels == cls).nonzero(as_tuple=True)[0]
+        # Shuffle indices
+        cls_indices = cls_indices[torch.randperm(len(cls_indices))]
+        # Select up to n_per_class samples
+        selected_indices.extend(cls_indices[:n_per_class].tolist())
+
+    # Shuffle all selected indices to mix classes
+    selected_indices = torch.tensor(selected_indices)
+    selected_indices = selected_indices[torch.randperm(len(selected_indices))]
+
+    # Subset features and labels
+    subset_features = features[selected_indices]
+    subset_labels = labels[selected_indices]
+
+    return subset_features, subset_labels
+
+
 def extract_embeddings(model, preprocess, label_type, split="train", cache_dir="./derm7pt_cache"):
     """
     Extract embeddings for derm7pt dataset for a given label_type and split.

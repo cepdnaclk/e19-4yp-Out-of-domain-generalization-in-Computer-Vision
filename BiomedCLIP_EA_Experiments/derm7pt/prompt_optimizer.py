@@ -7,6 +7,9 @@ import torch
 import numpy as np
 import os
 
+FITNESS_METRIC = 'inverted_ce'
+FEW_SHOT = 1
+
 
 def get_prompt_template(iteration: int, prompt_content: str, label_type: str, generate_n: int = 10) -> str:
     """
@@ -65,11 +68,11 @@ def main():
     label_type = "melanoma"
 
     # Name the experiment we are currently running
-    experiment_name = "Derm7pt_Experiment11_F1Macro_" + label_type
+    experiment_name = f"Derm7pt_Experiment1_n{FEW_SHOT}_metric{FITNESS_METRIC}_{label_type}"
     print(f"Running {experiment_name}...")
 
     # Create experiment results directory
-    results_dir = "experiment_results"
+    results_dir = "final_results"
     os.makedirs(results_dir, exist_ok=True)
 
     # Create filename with experiment name
@@ -92,6 +95,13 @@ def main():
     all_feats = torch.from_numpy(features).float()
     all_labels = torch.from_numpy(labels).long()
 
+    if FEW_SHOT > 0:
+        # Select a balanced few-shot subset
+        all_feats, all_labels = util.select_balanced_few_shot_subset(
+            all_feats, all_labels, n_per_class=FEW_SHOT)
+        print(
+            f"Selected balanced few-shot subset with {FEW_SHOT} samples per class.")
+
     print(f"Loaded {len(all_feats)} Derm7pt embeddings")
 
     # 3. Optionally load initial prompts (currently commented out)
@@ -103,7 +113,7 @@ def main():
         use_local_ollama=False, ollama_model="hf.co/unsloth/medgemma-27b-text-it-GGUF:Q8_0")
 
     # Optimization loop
-    pq = util.PriorityQueue(max_capacity=1000, filter_threshold=0.4)
+    pq = util.PriorityQueue(max_capacity=1000, filter_threshold=0.6)
     prompt_content = ""
 
     # 6. Optimization loop: generate, evaluate, and select prompts for 500 iterations
@@ -124,7 +134,7 @@ def main():
                 prompt_pair, all_feats, all_labels, model, tokenizer)
             # Insert prompt pair and its score into the priority queue
             pq.insert(prompt_pair,
-                      results['f1_macro'])  # Use accuracy as the score
+                      results[FITNESS_METRIC])  # Use accuracy as the score
 
         n = 10
         print(f"\nCurrent Top {n} prompt pairs:")
