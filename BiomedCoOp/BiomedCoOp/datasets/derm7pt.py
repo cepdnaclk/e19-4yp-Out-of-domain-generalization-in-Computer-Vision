@@ -33,10 +33,8 @@ class Derm7pt(DatasetBase):
         full_val = self.read_data(split="val")
         test = self.read_data(split="test")
 
-        print("Hi I am Mansitha")
-        if self.num_shots == 0:
-            train, val = [], []
-        elif self.num_shots is not None:
+        
+        if self.num_shots > 0:
             train, val = self.create_few_shot_split(full_train, self.num_shots, self.seed)
         else:
             print(f"{self.num_shots} Using full training set with samples.")
