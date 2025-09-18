@@ -50,14 +50,14 @@ def get_prompt_template(iteration_num: int, prompt_content: str, generate_n: int
 
 def main():
     # Few-shot learning configuration
-    n_shots = 32  # Number of samples per class to use for training
+    n_shots = 8  # Number of samples per class to use for training
 
     # Name the experiment we are currently running
     experiment_name = f"Experiment-70-strategy-inv-bce-gemma3-{n_shots}shot"
     print(f"Running {experiment_name} with {n_shots} shots per class...")
 
     # Create experiment results directory
-    results_dir = "experiment_results"
+    results_dir = "final_results"
     os.makedirs(results_dir, exist_ok=True)
 
     # Create filename with experiment name
@@ -91,14 +91,34 @@ def main():
     print(f"Total samples before few-shot selection: {len(all_labels)}")
     print(f"Class distribution: {torch.bincount(all_labels)}")
 
-    # 3. Few-shot sampling: select first 'n_shots' samples from each class
-    label_0_indices = torch.where(all_labels == 0)[
-        0][:n_shots]  # First n normal samples
-    label_1_indices = torch.where(all_labels == 1)[
-        0][:n_shots]  # First n tumor samples
+    # 3. Few-shot sampling: select n_shots samples from each class
+    # First, find all indices for each class
+    label_0_indices = torch.where(all_labels == 0)[0]  # Normal samples
+    label_1_indices = torch.where(all_labels == 1)[0]  # Tumor samples
 
-    # Combine indices
-    selected_indices = torch.cat([label_0_indices, label_1_indices])
+    # Check if we have enough samples of each class
+    if len(label_0_indices) < n_shots:
+        print(
+            f"Warning: Only {len(label_0_indices)} normal samples available, but {n_shots} requested")
+        n_shots_class_0 = len(label_0_indices)
+    else:
+        n_shots_class_0 = n_shots
+
+    if len(label_1_indices) < n_shots:
+        print(
+            f"Warning: Only {len(label_1_indices)} tumor samples available, but {n_shots} requested")
+        n_shots_class_1 = len(label_1_indices)
+    else:
+        n_shots_class_1 = n_shots
+
+    # Randomly select n_shots from each class (without manual seed)
+    selected_label_0 = label_0_indices[torch.randperm(
+        len(label_0_indices))[:n_shots_class_0]]
+    selected_label_1 = label_1_indices[torch.randperm(
+        len(label_1_indices))[:n_shots_class_1]]
+
+    # Combine selected indices
+    selected_indices = torch.cat([selected_label_0, selected_label_1])
 
     # Select the few-shot subset
     few_shot_feats = all_feats[selected_indices]
@@ -107,7 +127,7 @@ def main():
     print(f"Few-shot samples selected: {len(few_shot_labels)} total")
     print(f"Few-shot class distribution: {torch.bincount(few_shot_labels)}")
     print(
-        f"Using {len(label_0_indices)} normal samples and {len(label_1_indices)} tumor samples")
+        f"Using {n_shots_class_0} normal samples and {n_shots_class_1} tumor samples")
 
     print("Few-shot dataset prepared successfully.")
 
@@ -126,7 +146,7 @@ def main():
         max_capacity=1000, filter_threshold=0.6)
     prompt_content = ""
 
-    for j in range(2000):
+    for j in range(500):
         if j == 0:
             prompts = util.get_prompt_pairs(meta_init_prompt, client)
         else:
