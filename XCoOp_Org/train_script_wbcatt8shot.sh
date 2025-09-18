@@ -1,12 +1,12 @@
 # training script: an example
-DATA=/storage/projects3/e19-fyp-out-of-domain-gen-in-cv/NIH_Chest/
-DATASET=nihchest
-SHOTS=$1
+DATASET=wbc_att
+ROOT=/storage/projects3/e19-fyp-out-of-domain-gen-in-cv/wbc_att/
+SHOTS=8
 OUTPUT_DIR=./output_${DATASET}_shot${SHOTS}
 
 python train.py \
- --config-file configs/XCoOp/vit_b16_c4_batch32_nihchest.yaml\
- --dataset-config-file configs/datasets/nihchest.yaml \
+ --config-file configs/XCoOp/vit_b16_c4_batch32_wbc_att.yaml \
+ --dataset-config-file configs/datasets/wbc_att.yaml \
  --trainer XCoOp \
  --root ${ROOT} \
  --output-dir ${OUTPUT_DIR} \
