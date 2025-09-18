@@ -30,6 +30,8 @@ class Camelyon17Custom(DatasetBase):
             train, val = self.create_few_shot_split(full_train, self.num_shots, self.seed)
         else:
             # Full dataset mode
+            print(f"Using full training set with samples.")
+
             train = full_train
             val = full_val
 
