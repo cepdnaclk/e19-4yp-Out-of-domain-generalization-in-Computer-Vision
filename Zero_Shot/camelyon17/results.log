@@ -1,0 +1,6 @@
+Loaded 14670 Camelyon17 embeddings
+all_labels:
+ tensor([1, 1, 1,  ..., 0, 0, 0])
+Baseline Evaluation results:
+ {'accuracy': 0.7683708248125426, 'cm': array([[4127, 3310],
+       [  88, 7145]]), 'report': '              precision    recall  f1-score   support\n\n           0     0.9791    0.5549    0.7084      7437\n           1     0.6834    0.9878    0.8079      7233\n\n    accuracy                         0.7684     14670\n   macro avg     0.8313    0.7714    0.7581     14670\nweighted avg     0.8333    0.7684    0.7574     14670\n', 'inverted_ce': 0.6734952270248232, 'f1_macro': 0.7581343004106889, 'f1_weighted': 0.7574423683437643}

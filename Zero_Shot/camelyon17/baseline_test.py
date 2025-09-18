@@ -30,8 +30,8 @@ def main():
     print("all_labels:\n", all_labels)
 
     prompt_set = (
-        "A histopathological image contains no tumor",
-        "A histopathological image contains tumor",
+        "This is an image of a normal lymph node",
+        "This is an image of a tumor lymph node",
     )
 
     results = util.evaluate_prompt_set(
