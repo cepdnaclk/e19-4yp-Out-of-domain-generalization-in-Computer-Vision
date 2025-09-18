@@ -1131,15 +1131,15 @@ def load_last_iteration_prompts(path: str) -> List[InitialItem]:
     """
     Reads the last iteration's prompt progression file, which has the format:
     iteration 1: 
-    ('prompt1', 'prompt2', 'prompt3', 'prompt4', 'prompt5'), Score: 0.9364
-    ('prompt1', 'prompt2', 'prompt3', 'prompt4', 'prompt5'), Score: 0.8456
+    ('neg', 'pos'), Score: 0.9364
+    ('neg2', 'pos2'), Score: 0.8456
     ....
 
     iteration 'n': 
-    ('prompt1', 'prompt2', 'prompt3', 'prompt4', 'prompt5'), Score: 0.9123
-    ('prompt1', 'prompt2', 'prompt3', 'prompt4', 'prompt5'), Score: 0.7890
+    ('neg3', 'pos3'), Score: 0.9123
+    ('neg4', 'pos4'), Score: 0.7890
 
-    Returns a list of ((tuple of 5 strings), score) tuples from the last iteration.
+    Returns a list of ((neg, pos), score) tuples from the last iteration.
     """
     last_iteration_prompts = []
     current_iteration = None
@@ -1160,43 +1160,22 @@ def load_last_iteration_prompts(path: str) -> List[InitialItem]:
                     current_iteration = int(iteration_match.group(1))
                     continue
 
-                # Skip iteration headers
-                if current_iteration is None:
-                    continue
+                # Fix quote issues in the line to ensure proper parsing
+                line = _fix_quote_issues(f"prompts = [{line}]")
 
-                # Fix quote issues in the line first
-                fixed_line = _fix_quote_issues(f"prompts = [{line}]")
+                # Try to parse prompt lines: ('neg', 'pos'), Score: 0.9364
+                pattern = r"\('([^']*)', '([^']*)'\), Score: ([\d.]+)"
+                match = re.match(pattern, line)
 
-                # Extract the fixed content back (remove the wrapper)
-                m = re.search(r'\[(.*)\]', fixed_line)
-                if m:
-                    fixed_line = m.group(1)
+                if match and current_iteration is not None:
+                    neg_prompt = match.group(1)
+                    pos_prompt = match.group(2)
+                    score = float(match.group(3))
 
-                # Split at the last comma to separate tuple from score
-                parts = fixed_line.rsplit(',', 1)
-                if len(parts) != 2:
-                    print(f"Warning: Could not split line {line_num}: {line}")
-                    continue
-
-                tuple_part = parts[0].strip()
-                score_part = parts[1].strip()
-
-                # Parse the tuple
-                prompts = ast.literal_eval(tuple_part)
-                if not isinstance(prompts, tuple) or len(prompts) != 5:
-                    print(
-                        f"Warning: Invalid tuple format at line {line_num}: {line}")
-                    continue
-
-                # Parse the score (remove "Score:" prefix)
-                score_match = re.search(r'Score:\s*([\d.]+)', score_part)
-                if not score_match:
-                    print(
-                        f"Warning: Could not parse score at line {line_num}: {line}")
-                    continue
-
-                score = float(score_match.group(1))
-                last_iteration_prompts.append((prompts, score))
+                    prompt_pair = (neg_prompt, pos_prompt)
+                    last_iteration_prompts.append((prompt_pair, score))
+                elif not iteration_match:  # Don't warn about iteration headers
+                    print(f"Warning: Could not parse line {line_num}: {line}")
 
             except Exception as e:
                 print(f"Error parsing line {line_num}: {line}")
