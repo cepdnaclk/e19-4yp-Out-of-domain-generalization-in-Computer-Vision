@@ -34,12 +34,7 @@ def main():
         prompt_set, all_feats, all_labels, model, tokenizer)
     print("Baseline Evaluation results:\n", results)
 
-    optimized_prompt_set = ('Pigmentation is light brown and homogenous.',
-                            'Pigmentation is dark brown to black, with areas of blue-grey discoloration.')
-
-    optimized_results = util.evaluate_prompt_set(
-        optimized_prompt_set, all_feats, all_labels, model, tokenizer)
-    print("Optimized Evaluation results:\n", optimized_results)
+    
 
 
 if __name__ == "__main__":
