@@ -22,3 +22,14 @@ Do evaluation on test set
 * macro_f1: 33.73%
 Elapsed: 0:02:53
 
+Checkpoint saved to "output/camelyon17/shots_16/BiomedCoOp_BiomedCLIP/nctx4_cscFalse_ctpend/seed1/prompt_learner/model.pth.tar-100"
+Finished training
+Do evaluation on test set
+100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████| 147/147 [12:29<00:00,  5.10s/it]
+=> result
+* total: 146,722
+* correct: 91,818
+* accuracy: 62.58%
+* error: 37.42%
+* macro_f1: 56.94%
+Elapsed: 0:13:39
