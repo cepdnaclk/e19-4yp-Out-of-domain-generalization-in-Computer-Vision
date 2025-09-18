@@ -1160,9 +1160,6 @@ def load_last_iteration_prompts(path: str) -> List[InitialItem]:
                     current_iteration = int(iteration_match.group(1))
                     continue
 
-                # Fix quote issues in the line to ensure proper parsing
-                line = _fix_quote_issues(f"prompts = [{line}]")
-
                 # Try to parse prompt lines: ('neg', 'pos'), Score: 0.9364
                 pattern = r"\('([^']*)', '([^']*)'\), Score: ([\d.]+)"
                 match = re.match(pattern, line)
