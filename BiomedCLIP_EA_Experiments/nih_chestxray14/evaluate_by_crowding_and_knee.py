@@ -284,8 +284,8 @@ def main():
     features, labels = util.extract_embeddings(
         model=model,
         preprocess=preprocess,
-        split="test",
-        label_type=label_type,
+        train_or_test="test",
+        target_label=label_type,
     )
 
     # Convert to tensors
