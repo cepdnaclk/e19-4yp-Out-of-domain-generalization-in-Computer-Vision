@@ -210,6 +210,10 @@ def save_evaluation_results(results, center_id, filename):
         f.write(f"\n--- Center {center_id} Evaluation Results ---\n")
         f.write(f"Accuracy: {results['accuracy']:.4f}\n")
         f.write(f"AUC: {results['auc']:.4f}\n")
+        if 'f1_macro' in results:
+            f.write(f"F1_macro: {results['f1_macro']:.4f}\n")
+        if 'f1_weighted' in results:
+            f.write(f"F1_weighted: {results['f1_weighted']:.4f}\n")
         f.write(f"Confusion Matrix:\n{results['cm']}\n")
         f.write(f"Classification Report:\n{results['report']}\n")
         f.write("-" * 50 + "\n")
@@ -270,28 +274,12 @@ def main():
 
     print(f"Crowding completed. Reduced to {len(crowded_results)} prompts.")
 
-    # Step 3: Find knee point
-    print("\n=== Step 3: Finding Knee Point ===")
-    scores = [score for (_, score) in pq.get_best_n(n=1000)]
-    knee_point_analyzer = util.KneePointAnalysis(scores)
-    knee_point = knee_point_analyzer.find_knee_point()
-
-    print(f"Knee point found at: {knee_point}")
-
-    # Save knee point results
-    knee_results = pq.get_best_n(n=knee_point)
-    knee_filename = f"final_results/knee/{args.few_shot}-shot.txt"
-    save_results_to_file(knee_results, knee_filename)
-
-    # Step 4: Final performance evaluation
-    print("\n=== Step 4: Final Performance Evaluation ===")
-
-    # Load model, process, and tokenizer
-    print("Loading CLIP model...")
+    # Load model, process, and tokenizer (shared for both evaluations)
+    print("\nLoading CLIP model...")
     model, preprocess, tokenizer = util.load_clip_model()
     print("Model, preprocess, and tokenizer loaded successfully.")
 
-    # Load dataset
+    # Load dataset (shared for both evaluations)
     print("Extracting center embeddings...")
     centers_features: List[np.ndarray]
     centers_labels: List[np.ndarray]
@@ -307,21 +295,28 @@ def main():
     centers_features = [torch.from_numpy(feat) for feat in centers_features]
     centers_labels = [torch.from_numpy(label) for label in centers_labels]
 
-    # Evaluate each center
-    evaluation_filename = f"final_results/evaluation/{args.few_shot}-shot-results.txt"
+    # Step 3: Pre-Knee Point Evaluation (using all crowded prompts)
+    print("\n=== Step 3: Pre-Knee Point Evaluation ===")
+
+    # Use all available prompts from the crowded priority queue
+    all_crowded_prompts = pq.get_best_n(n=1000)  # Get all available prompts
+    pre_knee_filename = f"final_results/pre_knee_evaluation/{args.few_shot}-shot-results.txt"
 
     # Clear previous results file
-    os.makedirs(os.path.dirname(evaluation_filename), exist_ok=True)
-    with open(evaluation_filename, 'w') as f:
-        f.write(f"=== {args.few_shot}-Shot Evaluation Results ===\n")
-        f.write(f"Knee point: {knee_point}\n")
-        f.write(f"Number of prompts used: {len(knee_results)}\n")
+    os.makedirs(os.path.dirname(pre_knee_filename), exist_ok=True)
+    with open(pre_knee_filename, 'w') as f:
+        f.write(
+            f"=== {args.few_shot}-Shot Pre-Knee Point Evaluation Results ===\n")
+        f.write(f"Number of prompts used: {len(all_crowded_prompts)}\n")
         f.write("=" * 50 + "\n")
 
+    print(
+        f"Evaluating with {len(all_crowded_prompts)} crowded prompts (before knee point analysis)...")
+
     for i, _ in enumerate(centers_features):
-        print(f"Evaluating center {i}...")
+        print(f"Evaluating center {i} (pre-knee point)...")
         results = util.evaluate_prompt_list(
-            pq.get_best_n(n=knee_point),
+            all_crowded_prompts,
             centers_features[i],
             centers_labels[i],
             model,
@@ -330,20 +325,97 @@ def main():
         )
 
         # Print results
-        print(f"\n--- Center {i} Ensemble Evaluation Results ---")
+        print(f"\n--- Center {i} Pre-Knee Point Evaluation Results ---")
         print(f"Accuracy: {results['accuracy']:.4f}")
         print(f"AUC: {results['auc']:.4f}")
         print("Confusion Matrix:\n", results['cm'])
         print("Classification Report:\n", results['report'])
+        if 'f1_macro' in results:
+            print("F1_macro: ", results['f1_macro'])
+        if 'f1_weighted' in results:
+            print("F1_Weighted: ", results['f1_weighted'])
 
         # Save results to file
-        save_evaluation_results(results, i, evaluation_filename)
+        save_evaluation_results(results, i, pre_knee_filename)
+
+    # Step 4: Find knee point
+    print("\n=== Step 4: Finding Knee Point ===")
+    scores = [score for (_, score) in pq.get_best_n(n=1000)]
+    knee_point_analyzer = util.KneePointAnalysis(scores)
+    knee_point = knee_point_analyzer.find_knee_point()
+
+    print(f"Knee point found at: {knee_point}")
+
+    # Save knee point results
+    knee_results = pq.get_best_n(n=knee_point)
+    knee_filename = f"final_results/knee/{args.few_shot}-shot.txt"
+    save_results_to_file(knee_results, knee_filename)
+
+    # Step 5: Post-Knee Point Evaluation (using optimal number of prompts)
+    print("\n=== Step 5: Post-Knee Point Evaluation ===")
+
+    # Evaluate each center with knee point optimized prompts
+    post_knee_filename = f"final_results/post_knee_evaluation/{args.few_shot}-shot-results.txt"
+
+    # Clear previous results file
+    os.makedirs(os.path.dirname(post_knee_filename), exist_ok=True)
+    with open(post_knee_filename, 'w') as f:
+        f.write(
+            f"=== {args.few_shot}-Shot Post-Knee Point Evaluation Results ===\n")
+        f.write(f"Knee point: {knee_point}\n")
+        f.write(f"Number of prompts used: {len(knee_results)}\n")
+        f.write("=" * 50 + "\n")
+
+    print(
+        f"Evaluating with {knee_point} optimal prompts (after knee point analysis)...")
+
+    for i, _ in enumerate(centers_features):
+        print(f"Evaluating center {i} (post-knee point)...")
+        results = util.evaluate_prompt_list(
+            knee_results,
+            centers_features[i],
+            centers_labels[i],
+            model,
+            tokenizer,
+            unweighted=False
+        )
+
+        # Print results
+        print(f"\n--- Center {i} Post-Knee Point Evaluation Results ---")
+        print(f"Accuracy: {results['accuracy']:.4f}")
+        print(f"AUC: {results['auc']:.4f}")
+        print("Confusion Matrix:\n", results['cm'])
+        print("Classification Report:\n", results['report'])
+        if 'f1_macro' in results:
+            print("F1_macro: ", results['f1_macro'])
+        if 'f1_weighted' in results:
+            print("F1_Weighted: ", results['f1_weighted'])
+
+        # Save results to file
+        save_evaluation_results(results, i, post_knee_filename)
 
     print(f"\n=== Evaluation Complete ===")
     print(f"Results saved to:")
     print(f"  - Crowded prompts: {crowded_filename}")
     print(f"  - Knee point prompts: {knee_filename}")
-    print(f"  - Evaluation results: {evaluation_filename}")
+    print(f"  - Pre-knee point evaluation: {pre_knee_filename}")
+    print(f"  - Post-knee point evaluation: {post_knee_filename}")
+
+    # Create comparison summary
+    comparison_filename = f"final_results/comparison/{args.few_shot}-shot-comparison.txt"
+    os.makedirs(os.path.dirname(comparison_filename), exist_ok=True)
+    with open(comparison_filename, 'w') as f:
+        f.write(f"=== {args.few_shot}-Shot Evaluation Comparison ===\n")
+        f.write(f"Pre-knee point prompts used: {len(all_crowded_prompts)}\n")
+        f.write(f"Post-knee point prompts used: {knee_point}\n")
+        f.write(
+            f"Knee point reduction: {len(all_crowded_prompts) - knee_point} prompts removed\n")
+        f.write("=" * 50 + "\n")
+        f.write("For detailed results, see:\n")
+        f.write(f"  - Pre-knee point: {pre_knee_filename}\n")
+        f.write(f"  - Post-knee point: {post_knee_filename}\n")
+
+    print(f"  - Comparison summary: {comparison_filename}")
 
 
 if __name__ == "__main__":
