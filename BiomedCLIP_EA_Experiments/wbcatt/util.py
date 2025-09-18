@@ -1310,7 +1310,7 @@ def load_initial_prompts(path: str) -> List[InitialItem]:
     return results
 
 
-def select_balanced_few_shot_subset(features: torch.Tensor, labels: torch.Tensor, n_per_class: int = 8):
+def select_balanced_few_shot_subset(features: torch.Tensor, labels: torch.Tensor, n_per_class: int = 8, seed: int = 42):
     """
     Selects a balanced few-shot subset from the dataset.
     Returns features and labels for n_per_class samples per class.
@@ -1319,11 +1319,13 @@ def select_balanced_few_shot_subset(features: torch.Tensor, labels: torch.Tensor
         features (torch.Tensor): Feature tensor of shape (N, D)
         labels (torch.Tensor): Label tensor of shape (N,)
         n_per_class (int): Number of samples to select per class
+        seed (int): Random seed for reproducibility
 
     Returns:
         (torch.Tensor, torch.Tensor): Subset features and labels
     """
-    import torch
+    # Set random seed for reproducibility
+    generator = torch.Generator().manual_seed(seed)
 
     # Find unique classes
     classes = torch.unique(labels)
@@ -1332,14 +1334,16 @@ def select_balanced_few_shot_subset(features: torch.Tensor, labels: torch.Tensor
     for cls in classes:
         # Get indices for this class
         cls_indices = (labels == cls).nonzero(as_tuple=True)[0]
-        # Shuffle indices
-        cls_indices = cls_indices[torch.randperm(len(cls_indices))]
+        # Shuffle indices with the seeded generator
+        cls_indices = cls_indices[torch.randperm(
+            len(cls_indices), generator=generator)]
         # Select up to n_per_class samples
         selected_indices.extend(cls_indices[:n_per_class].tolist())
 
-    # Shuffle all selected indices to mix classes
+    # Shuffle all selected indices to mix classes with the seeded generator
     selected_indices = torch.tensor(selected_indices)
-    selected_indices = selected_indices[torch.randperm(len(selected_indices))]
+    selected_indices = selected_indices[torch.randperm(
+        len(selected_indices), generator=generator)]
 
     # Subset features and labels
     subset_features = features[selected_indices]
