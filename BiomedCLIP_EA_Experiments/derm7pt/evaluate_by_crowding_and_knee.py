@@ -7,7 +7,7 @@ It performs the following operations:
 1. Load initial prompts and create a priority queue
 2. Perform crowding using LLM to group similar prompts
 3. Find knee point for optimal prompt selection
-4. Evaluate final performance on all test centers
+4. Evaluate final performance on the test dataset
 
 Usage:
     python evaluate_by_crowding_and_knee.py [--few_shot N] [--provider PROVIDER]
@@ -49,15 +49,15 @@ class CrowdingManager:
         self.group_size = group_size
         self.max_retries = max_retries
 
-        self.group_prompt = """The task is to group textual description pairs of visual discriminative features for tumor detection in histopathology. 
+        self.group_prompt = """The task is to group textual description pairs of visual discriminative features for melanoma detection in a skin lesion. 
 Current Prompt Pairs: Format: <Index. Prompt Pair>
 {prompt_pairs_str}
 Each pair corresponds to a feature of the same medical concept. Group the prompt pairs that has exactly same observation but differ only in language variations. Give the indexes of the grouped pairs in the output.
 Provide the output as follows: list[list[index:int]]. Make sure to include all pairs in the output, even if they are not grouped with others.
 Let's think step by step.
 """
-        self.retry_prompt = """The task is to group textual description pairs of visual discriminative features for tumor detection in histopathology. 
-Current Prompt Pairs:
+        self.retry_prompt = """The task is to group textual description pairs of visual discriminative features for melanoma detection in a skin lesion. 
+Current Prompt Pairs: Format: <Index. Prompt Pair> 
 {prompt_pairs_str}
 
 You've already grouped some pairs, but there are still ungrouped pairs remaining.
@@ -203,11 +203,10 @@ def save_results_to_file(prompt_pairs_with_scores, filename):
     print(f"Results saved to {filename}")
 
 
-def save_evaluation_results(results, center_id, filename):
+def save_evaluation_results(results, filename):
     """Save evaluation results to a file."""
     os.makedirs(os.path.dirname(filename), exist_ok=True)
     with open(filename, 'a') as f:
-        f.write(f"\n--- Center {center_id} Evaluation Results ---\n")
         f.write(f"Accuracy: {results['accuracy']:.4f}\n")
         f.write(f"AUC: {results['auc']:.4f}\n")
         if 'f1_macro' in results:
@@ -241,11 +240,11 @@ def main():
     print(
         f"Starting crowd pruning and knee point analysis with {args.few_shot}-shot configuration...")
     print(f"Using {args.provider} as LLM provider")
-
+    label_type = "melanoma"
     # Step 1: Load initial prompts and create priority queue
     print("\n=== Step 1: Loading Initial Prompts ===")
     initial_prompts = util.load_last_iteration_prompts(
-        f"final_results/Experiment-70-strategy-inv-bce-gemma3-{args.few_shot}shot_opt_pairs.txt"
+        f"final_results/Derm7pt_Experiment1_n{args.few_shot}_metricinverted_ce_melanoma_opt_pairs.txt"
     )
     pq = util.PriorityQueue(
         max_capacity=args.max_capacity,
@@ -258,7 +257,8 @@ def main():
 
     # Step 2: Perform crowding
     print("\n=== Step 2: Performing Crowding ===")
-    llm_client = util.LLMClient(provider=args.provider)
+    llm_client = util.LLMClient(
+        use_local_ollama=False, ollama_model="hf.co/unsloth/medgemma-27b-text-it-GGUF:Q8_0")
     crowding_manager = CrowdingManager(
         client=llm_client,
         iterations=args.crowding_iterations,
@@ -279,21 +279,19 @@ def main():
     model, preprocess, tokenizer = util.load_clip_model()
     print("Model, preprocess, and tokenizer loaded successfully.")
 
-    # Load dataset (shared for both evaluations)
-    print("Extracting center embeddings...")
-    centers_features: List[np.ndarray]
-    centers_labels: List[np.ndarray]
-    centers_features, centers_labels = util.extract_center_embeddings(
+    # Load dataset
+    print("Extracting embeddings...")
+    features, labels = util.extract_embeddings(
         model=model,
         preprocess=preprocess,
-        num_centers=5,  # evaluating on all centers
-        isTrain=False,  # Evaluating on test centers only
+        split="test",
+        label_type=label_type,
     )
-    print("Center embeddings extracted successfully.")
 
-    # Convert to torch tensors for each center
-    centers_features = [torch.from_numpy(feat) for feat in centers_features]
-    centers_labels = [torch.from_numpy(label) for label in centers_labels]
+    # Convert to tensors
+    all_feats = torch.from_numpy(features).float()
+    all_labels = torch.from_numpy(labels).long()
+    print("Dataset embeddings extracted successfully.")
 
     # Step 3: Pre-Knee Point Evaluation (using all crowded prompts)
     print("\n=== Step 3: Pre-Knee Point Evaluation ===")
@@ -313,30 +311,29 @@ def main():
     print(
         f"Evaluating with {len(all_crowded_prompts)} crowded prompts (before knee point analysis)...")
 
-    for i, _ in enumerate(centers_features):
-        print(f"Evaluating center {i} (pre-knee point)...")
-        results = util.evaluate_prompt_list(
-            all_crowded_prompts,
-            centers_features[i],
-            centers_labels[i],
-            model,
-            tokenizer,
-            unweighted=False
-        )
+    print("Performing pre-knee point evaluation...")
+    results = util.evaluate_prompt_list(
+        all_crowded_prompts,
+        all_feats,
+        all_labels,
+        model,
+        tokenizer,
+        unweighted=False
+    )
 
-        # Print results
-        print(f"\n--- Center {i} Pre-Knee Point Evaluation Results ---")
-        print(f"Accuracy: {results['accuracy']:.4f}")
-        print(f"AUC: {results['auc']:.4f}")
-        print("Confusion Matrix:\n", results['cm'])
-        print("Classification Report:\n", results['report'])
-        if 'f1_macro' in results:
-            print("F1_macro: ", results['f1_macro'])
-        if 'f1_weighted' in results:
-            print("F1_Weighted: ", results['f1_weighted'])
+    # Print results
+    print(f"\n--- Pre-Knee Point Evaluation Results ---")
+    print(f"Accuracy: {results['accuracy']:.4f}")
+    print(f"AUC: {results['auc']:.4f}")
+    print("Confusion Matrix:\n", results['cm'])
+    print("Classification Report:\n", results['report'])
+    if 'f1_macro' in results:
+        print("F1_macro: ", results['f1_macro'])
+    if 'f1_weighted' in results:
+        print("F1_Weighted: ", results['f1_weighted'])
 
-        # Save results to file
-        save_evaluation_results(results, i, pre_knee_filename)
+    # Save results to file
+    save_evaluation_results(results, pre_knee_filename)
 
     # Step 4: Find knee point
     print("\n=== Step 4: Finding Knee Point ===")
@@ -354,7 +351,7 @@ def main():
     # Step 5: Post-Knee Point Evaluation (using optimal number of prompts)
     print("\n=== Step 5: Post-Knee Point Evaluation ===")
 
-    # Evaluate each center with knee point optimized prompts
+    # Evaluate with knee point optimized prompts
     post_knee_filename = f"final_results/post_knee_evaluation/{args.few_shot}-shot-results.txt"
 
     # Clear previous results file
@@ -369,30 +366,29 @@ def main():
     print(
         f"Evaluating with {knee_point} optimal prompts (after knee point analysis)...")
 
-    for i, _ in enumerate(centers_features):
-        print(f"Evaluating center {i} (post-knee point)...")
-        results = util.evaluate_prompt_list(
-            knee_results,
-            centers_features[i],
-            centers_labels[i],
-            model,
-            tokenizer,
-            unweighted=False
-        )
+    print("Performing post-knee point evaluation...")
+    results = util.evaluate_prompt_list(
+        knee_results,
+        all_feats,
+        all_labels,
+        model,
+        tokenizer,
+        unweighted=False
+    )
 
-        # Print results
-        print(f"\n--- Center {i} Post-Knee Point Evaluation Results ---")
-        print(f"Accuracy: {results['accuracy']:.4f}")
-        print(f"AUC: {results['auc']:.4f}")
-        print("Confusion Matrix:\n", results['cm'])
-        print("Classification Report:\n", results['report'])
-        if 'f1_macro' in results:
-            print("F1_macro: ", results['f1_macro'])
-        if 'f1_weighted' in results:
-            print("F1_Weighted: ", results['f1_weighted'])
+    # Print results
+    print(f"\n--- Post-Knee Point Evaluation Results ---")
+    print(f"Accuracy: {results['accuracy']:.4f}")
+    print(f"AUC: {results['auc']:.4f}")
+    print("Confusion Matrix:\n", results['cm'])
+    print("Classification Report:\n", results['report'])
+    if 'f1_macro' in results:
+        print("F1_macro: ", results['f1_macro'])
+    if 'f1_weighted' in results:
+        print("F1_Weighted: ", results['f1_weighted'])
 
-        # Save results to file
-        save_evaluation_results(results, i, post_knee_filename)
+    # Save results to file
+    save_evaluation_results(results, post_knee_filename)
 
     print(f"\n=== Evaluation Complete ===")
     print(f"Results saved to:")

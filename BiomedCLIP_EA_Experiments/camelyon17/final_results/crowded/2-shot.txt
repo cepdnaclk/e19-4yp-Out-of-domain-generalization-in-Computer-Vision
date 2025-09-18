@@ -1,5 +1,7 @@
 ('Lymphocytes with regular nuclear membrane.', 'Irregular nuclear membrane with indentations.'), Score: 0.9938
+('Clear cytoplasm in lymphocytes.', 'Granular cytoplasm in atypical cells.'), Score: 0.9899
 ('Uniform small cell size.', 'Pleomorphic cell size with giant cells.'), Score: 0.9872
+('Predominantly small, round lymphocytes.', 'Presence of large, atypical cells with prominent nucleoli.'), Score: 0.9795
 ('No necrosis observed.', 'Extensive tumor necrosis with karyorrhexis.'), Score: 0.9685
 ('No reactive lymphoid hyperplasia.', 'Germinal center with dark and light zone disruption.'), Score: 0.9482
 ('No fibrosis.', 'Desmoplastic reaction with dense fibrosis.'), Score: 0.9421
@@ -7,6 +9,11 @@
 ('No emperipolesis.', 'Emperipolesis of tumor cells within macrophages.'), Score: 0.9391
 ('Cells are evenly distributed.', 'Cells clustered in irregular patterns.'), Score: 0.9366
 ('Normal follicular dendritic cell meshwork.', 'Distorted follicular dendritic cell meshwork.'), Score: 0.9339
-('No discernible tumor nests.', 'Well-defined tumor nests with central necrosis.'), Score: 0.9326
+('Monotonous population of small lymphocytes.', 'Polymorphic population of large cells.'), Score: 0.9147
+('Lymphocytes are evenly distributed.', 'Lymphocytes arranged in perivascular cuffs.'), Score: 0.9142
+('Small, round nuclei with evenly distributed chromatin.', 'Large, irregular nuclei with coarse chromatin.'), Score: 0.906
 ('No granulomas.', 'Presence of non-necrotizing granulomas.'), Score: 0.9041
+('No reactive hyperplasia.', 'Significant reactive hyperplasia with atypical features.'), Score: 0.9022
+('Small, round nuclei.', 'Large, irregular nuclei.'), Score: 0.8988
+('Small, uniform lymphocytes.', 'Pleomorphic lymphocytes with irregular nuclei.'), Score: 0.8887
 ('No hemorrhage or vascular damage.', 'Hemorrhage and vascular damage present.'), Score: 0.888
