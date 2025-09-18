@@ -26,15 +26,18 @@ def get_prompt_template(iteration_num: int, prompt_content: str, generate_n: int
     """
     # Initial meta prompt for the first iteration
     meta_init_prompt = f"""Generate 50 distinct pairs of textual descriptions of visual discriminative features to identify whether a chest X-ray image shows {CLASS} or not.
-        Negative examples may display signs of other diseases, but should not indicate {CLASS}.
-        Only provide the output as Python code in the following format: prompts = list[tuple[negative: str, positive: str]].
-        Let's think step-by-step."""
+    Negative examples may display signs of other diseases such as Atelectasis, Cardiomegaly, Effusion, Infiltration, Mass, Nodule, Pneumothorax, Consolidation, Edema, Emphysema, Fibrosis, Pleural_Thickening, Hernia, but should not indicate {CLASS}.
+    Positive examples should clearly indicate {CLASS}.
+    Only provide the output as Python code in the following format: prompts = list[tuple[negative: str, positive: str]].
+    Let's think step-by-step."""
 
     if iteration_num == 0:
         return meta_init_prompt
 
     # Base meta prompt template
-    base_meta_prompt_template = """The task is to generate distinct textual descriptions pairs of visual discriminative features to identify whether a chest X-ray image contains {disease} or not. 
+    base_meta_prompt_template = """The task is to generate distinct textual descriptions pairs of visual discriminative features to identify whether a chest X-ray image shows {disease} or not. 
+    Negative examples may display signs of other diseases such as Atelectasis, Cardiomegaly, Effusion, Infiltration, Mass, Nodule, Pneumothorax, Consolidation, Edema, Emphysema, Fibrosis, Pleural_Thickening, Hernia, but should not indicate {CLASS}.
+    Positive examples should clearly indicate {CLASS}.    
     Here are the best performing pairs in ascending order. High scores indicate higher quality visual discriminative features.
     {content}
     Write {generate_n} new prompt pairs that are different from the old ones and has a score as high as possible, formulate a strategy
