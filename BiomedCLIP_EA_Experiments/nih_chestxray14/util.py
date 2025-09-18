@@ -166,7 +166,6 @@ class KneePointAnalysis:
         return recommended_n
 
 
-
 class NIHChestXRayDataset(Dataset):
     def __init__(self, df, image_dir, preprocess, target_label="Emphysema"):
         self.df = df[df['Finding Labels'].apply(
@@ -175,18 +174,18 @@ class NIHChestXRayDataset(Dataset):
         self.image_dir = image_dir
         self.preprocess = preprocess
         self.target_label = target_label
-        
+
     def __len__(self):
         return len(self.df)
-    
+
     def __getitem__(self, idx):
         row = self.df.iloc[idx]
         img_path = os.path.join(self.image_dir, row['Image Index'])
         img = Image.open(img_path).convert('RGB')
         img = self.preprocess(img)
-        
+
         # Create binary label (1 if target_label is present, 0 otherwise)
-        
+
         labels = 1 if self.target_label in row['Finding Labels'] else 0
         # print(f"labels: {labels}")
         return img, torch.tensor(labels)
@@ -251,39 +250,42 @@ def load_clip_model(
     return model, preprocess, tokenizer
 
 
-def extract_embeddings(model, preprocess, 
-                                metadata_csv="/storage/projects3/e19-fyp-out-of-domain-gen-in-cv/NIH_Chest/Data_Entry_2017.csv",
-                                image_list="/storage/projects3/e19-fyp-out-of-domain-gen-in-cv/NIH_Chest/test_list.txt",
-                                image_dir="/storage/projects3/e19-fyp-out-of-domain-gen-in-cv/NIH_Chest/all_images",
-                                cache_dir="./NIHchestxray_cache",
-                                target_label="Pneumonia",train_or_test= "test"):
+def extract_embeddings(model, preprocess,
+                       metadata_csv="/storage/projects3/e19-fyp-out-of-domain-gen-in-cv/NIH_Chest/Data_Entry_2017.csv",
+                       image_list="/storage/projects3/e19-fyp-out-of-domain-gen-in-cv/NIH_Chest/test_list.txt",
+                       image_dir="/storage/projects3/e19-fyp-out-of-domain-gen-in-cv/NIH_Chest/all_images",
+                       cache_dir="./NIHchestxray_cache",
+                       target_label="Pneumonia", train_or_test="test"):
     if train_or_test == "test":
         image_list = f"/storage/projects3/e19-fyp-out-of-domain-gen-in-cv/NIH_Chest/test_list.txt"
     else:
         image_list = f"/storage/projects3/e19-fyp-out-of-domain-gen-in-cv/NIH_Chest/train_val_list.txt"
     os.makedirs(cache_dir, exist_ok=True)
-    features_cache = os.path.join(cache_dir, f"{train_or_test}_chestxray_features.npy")
-    labels_cache = os.path.join(cache_dir, f"{train_or_test}_chestxray_labels.npy")
-    
+    features_cache = os.path.join(
+        cache_dir, f"{train_or_test}_chestxray_features.npy")
+    labels_cache = os.path.join(
+        cache_dir, f"{train_or_test}_chestxray_labels.npy")
+
     if os.path.exists(features_cache) and os.path.exists(labels_cache):
         print("Loading cached embeddings...")
         return np.load(features_cache), np.load(labels_cache)
-    
+
     # Load metadata and filter test images
     df = pd.read_csv(metadata_csv)
     with open(image_list, 'r') as f:
         images = [line.strip() for line in f.readlines()]
-    
+
     # Filter dataframe to only include test images
     df = df[df['Image Index'].isin(images)]
-    
+
     # Create dataset and dataloader
     dataset = NIHChestXRayDataset(df, image_dir, preprocess, target_label)
-    loader = DataLoader(dataset, batch_size=32, shuffle=False, num_workers=2, pin_memory=True)
-    
+    loader = DataLoader(dataset, batch_size=32, shuffle=False,
+                        num_workers=2, pin_memory=True)
+
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
     model = model.to(device).eval()
-    
+
     features, all_labels = [], []
     with torch.no_grad():
         for batch, labels in tqdm(loader, desc="Extracting embeddings"):
@@ -292,17 +294,16 @@ def extract_embeddings(model, preprocess,
             feats = feats / feats.norm(dim=-1, keepdim=True)
             features.append(feats.cpu())
             all_labels.append(labels.numpy())
-    
+
     features_array = torch.cat(features).numpy()
     # print(f"all labels {all_labels}")
     labels_array = np.concatenate(all_labels)
-    
+
     # Save to cache
     np.save(features_cache, features_array)
     np.save(labels_cache, labels_array)
-    
-    return features_array, labels_array
 
+    return features_array, labels_array
 
 
 def evaluate_prompt_list(
@@ -378,6 +379,7 @@ def evaluate_prompt_list(
 
     return {'accuracy': acc, 'auc': auc, 'cm': cm, 'report': report, 'ensemble_probs': ensemble_probs}
 
+
 def evaluate_prompt_pair(
     negative_prompt: str,
     positive_prompt: str,
@@ -418,7 +420,6 @@ def evaluate_prompt_pair(
 
         # Invert BCE loss: 1/(1 + loss) (so lower loss → higher value)
         inverted_bce = 1.0 / (1.0 + bce_loss)
-
 
     # metrics
     acc = accuracy_score(y_true, y_pred)
@@ -480,6 +481,7 @@ def extract_and_parse_prompt_list(code: str) -> List[Tuple[str, str]]:
     # 4) convert to List[Tuple[str,str]]
     return [(str(a), str(b)) for a, b in data]
 
+
 def extract_and_parse_prompt_list_with_scores(code: str) -> List[Tuple[str, str, float]]:
     """
     From a string of Python code, finds the first occurrence of
@@ -507,7 +509,7 @@ def extract_and_parse_prompt_list_with_scores(code: str) -> List[Tuple[str, str,
     current_item = []
     depth = 0  # track nesting level for tuples
     buffer = ""
-    
+
     for char in cleaned[1:-1]:  # skip outer brackets
         if char == '(':
             depth += 1
@@ -525,7 +527,7 @@ def extract_and_parse_prompt_list_with_scores(code: str) -> List[Tuple[str, str,
                 current_item = []
         else:
             buffer += char
-    
+
     # Add the last item if any
     if buffer.strip():
         current_item.append(buffer.strip())
@@ -537,12 +539,13 @@ def extract_and_parse_prompt_list_with_scores(code: str) -> List[Tuple[str, str,
     for item in items:
         if len(item) != 2:
             raise ValueError(f"Expected tuple and score, got: {item}")
-        
+
         # Parse the prompt tuple
         try:
             prompt_tuple = ast.literal_eval(item[0])
             if not isinstance(prompt_tuple, tuple) or len(prompt_tuple) != 2:
-                raise ValueError(f"Expected 2-element tuple, got: {prompt_tuple}")
+                raise ValueError(
+                    f"Expected 2-element tuple, got: {prompt_tuple}")
             neg, pos = prompt_tuple
         except (SyntaxError, ValueError) as e:
             raise ValueError(f"Malformed prompt tuple: {e}")
@@ -556,8 +559,6 @@ def extract_and_parse_prompt_list_with_scores(code: str) -> List[Tuple[str, str,
         parsed_items.append((str(neg), str(pos), score))
 
     return parsed_items
-
-
 
 
 def extract_and_parse_prompt_tuple(code: str) -> Tuple[str, str]:
