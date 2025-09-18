@@ -1,0 +1,24 @@
+Checkpoint saved to "output/nihchest/shots_16/CoCoOp_BiomedCLIP/nctx4_cscFalse_ctpend/seed1/prompt_learner/model.pth.tar-100"
+Finished training
+Do evaluation on test set
+100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████| 256/256 [08:39<00:00,  2.03s/it]
+=> result
+* total: 25,596
+* correct: 8,921
+* accuracy: 34.85%
+* error: 65.15%
+* macro_f1: 26.06%
+Elapsed: 0:10:54
+
+
+Checkpoint saved to "output/wbc_att/shots_16/CoCoOp_BiomedCLIP/nctx4_cscFalse_ctpend/seed1/prompt_learner/model.pth.tar-100"
+Finished training
+Do evaluation on test set
+100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████| 31/31 [01:02<00:00,  2.01s/it]
+=> result
+* total: 3,099
+* correct: 2,336
+* accuracy: 75.38%
+* error: 24.62%
+* macro_f1: 72.19%
+Elapsed: 0:10:52
