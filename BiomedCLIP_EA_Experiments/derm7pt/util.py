@@ -941,19 +941,205 @@ def load_initial_prompts(path: str) -> List[InitialItem]:
     return results
 
 
+def _fix_quote_issues(code: str) -> str:
+    """
+    Fix common malformed string literal issues inside the first list literal
+    that follows an '=' in the provided code string.
+
+    Approach:
+      - Find the first assignment to a list: locate the '[' that starts the list and its matching ']'.
+      - For each tuple inside that list, identify string elements and normalize them:
+        - Protect apostrophes inside words (cell's) so they are not misinterpreted.
+        - Convert inner single-quoted phrases (e.g. 'ground glass') to double-quoted phrases.
+        - Emit a safe Python string literal using json.dumps(...) (double-quoted, properly escaped).
+      - Rebuild and return corrected code (only the list region is changed).
+    """
+    # find the bracketed list following the first '='
+    eq_m = re.search(r'=\s*\[', code)
+    if not eq_m:
+        # nothing to fix
+        return code
+
+    list_start = code.find('[', eq_m.start())
+    if list_start == -1:
+        return code
+
+    # find matching closing ']' for the list (simple bracket counter)
+    depth = 0
+    list_end = None
+    for i in range(list_start, len(code)):
+        c = code[i]
+        if c == '[':
+            depth += 1
+        elif c == ']':
+            depth -= 1
+            if depth == 0:
+                list_end = i
+                break
+    if list_end is None:
+        # can't find end bracket: give up and return original
+        return code
+
+    list_region = code[list_start:list_end + 1]
+
+    def fix_tuple_region(tuple_region: str) -> str:
+        """
+        tuple_region contains '(' ... ')' inclusive. We fix each element string inside.
+        """
+        assert tuple_region.startswith('(') and tuple_region.endswith(')')
+        inner = tuple_region[1:-1]
+        out_parts: List[str] = ['(']
+        pos = 0
+        L = len(inner)
+
+        while pos < L:
+            # copy leading whitespace
+            ws_match = re.match(r'\s*', inner[pos:])
+            if ws_match:
+                ws = ws_match.group(0)
+                out_parts.append(ws)
+                pos += len(ws)
+
+            if pos >= L:
+                break
+
+            ch = inner[pos]
+            if ch in ("'", '"'):
+                # heuristically find the closing quote that is followed only by optional whitespace
+                # and then comma or end-of-tuple
+                quote = ch
+                j = pos + 1
+                found_closing = False
+                while j < L:
+                    if inner[j] == '\\':
+                        # skip escaped char
+                        j += 2
+                        continue
+                    if inner[j] == quote:
+                        # lookahead
+                        k = j + 1
+                        while k < L and inner[k].isspace():
+                            k += 1
+                        if k >= L or inner[k] in (',',):
+                            found_closing = True
+                            break
+                    j += 1
+
+                if not found_closing:
+                    # fallback: try to find a closing quote before the next top-level comma
+                    next_comma = inner.find(',', pos)
+                    if next_comma == -1:
+                        # take the rest
+                        j = L - 1
+                    else:
+                        # take up to just before the comma
+                        j = next_comma - 1
+                        # ensure j is within bounds
+                        if j < pos:
+                            j = pos
+
+                # element raw includes the quotes (pos .. j)
+                element_raw = inner[pos:j+1]
+                # find if there's trailing whitespace and a comma immediately after j
+                k = j + 1
+                trailing_ws = ''
+                while k < L and inner[k].isspace():
+                    trailing_ws += inner[k]
+                    k += 1
+                trailing_comma = ''
+                if k < L and inner[k] == ',':
+                    trailing_comma = ','
+                    k += 1
+
+                # original inner content (without the outer quotes)
+                orig_inner = element_raw[1:-1]
+
+                # --- transform inner text ---
+                temp = orig_inner
+
+                # protect word-internal apostrophes so they are not confused with quote-pairs
+                temp = re.sub(r"(?<=\w)'(?=\w)", "__APOST__", temp)
+
+                # convert inner single-quoted phrases to double-quoted phrases
+                # (only acts on remaining single-quote pairs)
+                temp = re.sub(r"'([^']*?)'", r'"\1"', temp)
+
+                # restore protected apostrophes
+                temp = temp.replace("__APOST__", "'")
+
+                # emit a safe Python literal using json.dumps (double-quoted and escaped)
+                safe_literal = json.dumps(temp)
+
+                out_parts.append(safe_literal)
+                if trailing_ws:
+                    out_parts.append(trailing_ws)
+                if trailing_comma:
+                    out_parts.append(trailing_comma)
+                pos = k
+            else:
+                # non-quoted token (e.g., stray tokens) -- copy until next comma
+                next_comma = inner.find(',', pos)
+                if next_comma == -1:
+                    out_parts.append(inner[pos:])
+                    pos = L
+                else:
+                    out_parts.append(inner[pos:next_comma])
+                    out_parts.append(',')
+                    pos = next_comma + 1
+
+        out_parts.append(')')
+        return ''.join(out_parts)
+
+    # Walk the list_region and replace each top-level tuple region with its fixed version.
+    fixed_list_builder: List[str] = []
+    i = 0
+    N = len(list_region)
+    while i < N:
+        c = list_region[i]
+        if c == '(':
+            # find matching ')'
+            p = i
+            depth = 0
+            while p < N:
+                if list_region[p] == '(':
+                    depth += 1
+                elif list_region[p] == ')':
+                    depth -= 1
+                    if depth == 0:
+                        break
+                p += 1
+            if p >= N:
+                # can't find matching ) - copy rest and break
+                fixed_list_builder.append(list_region[i:])
+                break
+            tup = list_region[i:p+1]
+            fixed_tup = fix_tuple_region(tup)
+            fixed_list_builder.append(fixed_tup)
+            i = p + 1
+        else:
+            fixed_list_builder.append(c)
+            i += 1
+
+    fixed_list_region = ''.join(fixed_list_builder)
+
+    # Rebuild the full code
+    fixed_code = code[:list_start] + fixed_list_region + code[list_end + 1:]
+    return fixed_code
+
+
 def load_last_iteration_prompts(path: str) -> List[InitialItem]:
     """
     Reads the last iteration's prompt progression file, which has the format:
     iteration 1: 
-    ('neg', 'pos'), Score: 0.9364
-    ('neg2', 'pos2'), Score: 0.8456
+    ('prompt1', 'prompt2', 'prompt3', 'prompt4', 'prompt5'), Score: 0.9364
+    ('prompt1', 'prompt2', 'prompt3', 'prompt4', 'prompt5'), Score: 0.8456
     ....
 
     iteration 'n': 
-    ('neg3', 'pos3'), Score: 0.9123
-    ('neg4', 'pos4'), Score: 0.7890
+    ('prompt1', 'prompt2', 'prompt3', 'prompt4', 'prompt5'), Score: 0.9123
+    ('prompt1', 'prompt2', 'prompt3', 'prompt4', 'prompt5'), Score: 0.7890
 
-    Returns a list of ((neg, pos), score) tuples from the last iteration.
+    Returns a list of ((tuple of 5 strings), score) tuples from the last iteration.
     """
     last_iteration_prompts = []
     current_iteration = None
@@ -974,19 +1160,43 @@ def load_last_iteration_prompts(path: str) -> List[InitialItem]:
                     current_iteration = int(iteration_match.group(1))
                     continue
 
-                # Try to parse prompt lines: ('neg', 'pos'), Score: 0.9364
-                pattern = r"\('([^']*)', '([^']*)'\), Score: ([\d.]+)"
-                match = re.match(pattern, line)
+                # Skip iteration headers
+                if current_iteration is None:
+                    continue
 
-                if match and current_iteration is not None:
-                    neg_prompt = match.group(1)
-                    pos_prompt = match.group(2)
-                    score = float(match.group(3))
+                # Fix quote issues in the line first
+                fixed_line = _fix_quote_issues(f"prompts = [{line}]")
 
-                    prompt_pair = (neg_prompt, pos_prompt)
-                    last_iteration_prompts.append((prompt_pair, score))
-                elif not iteration_match:  # Don't warn about iteration headers
-                    print(f"Warning: Could not parse line {line_num}: {line}")
+                # Extract the fixed content back (remove the wrapper)
+                m = re.search(r'\[(.*)\]', fixed_line)
+                if m:
+                    fixed_line = m.group(1)
+
+                # Split at the last comma to separate tuple from score
+                parts = fixed_line.rsplit(',', 1)
+                if len(parts) != 2:
+                    print(f"Warning: Could not split line {line_num}: {line}")
+                    continue
+
+                tuple_part = parts[0].strip()
+                score_part = parts[1].strip()
+
+                # Parse the tuple
+                prompts = ast.literal_eval(tuple_part)
+                if not isinstance(prompts, tuple) or len(prompts) != 5:
+                    print(
+                        f"Warning: Invalid tuple format at line {line_num}: {line}")
+                    continue
+
+                # Parse the score (remove "Score:" prefix)
+                score_match = re.search(r'Score:\s*([\d.]+)', score_part)
+                if not score_match:
+                    print(
+                        f"Warning: Could not parse score at line {line_num}: {line}")
+                    continue
+
+                score = float(score_match.group(1))
+                last_iteration_prompts.append((prompts, score))
 
             except Exception as e:
                 print(f"Error parsing line {line_num}: {line}")
