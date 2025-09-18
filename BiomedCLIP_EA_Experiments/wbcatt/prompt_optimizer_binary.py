@@ -18,9 +18,11 @@ import numpy as np
 import os
 from gemini_pro_initial_prompts import INIT_PROMPTS
 # 'accuracy', 'auc', 'f1_macro', 'inverted_weighted_ce'
-BINARY_LABEL = "Basophil"
-FITNESS_METRIC = 'f1_macro'
-FEW_SHOT = 0
+
+
+BINARY_LABEL = util.CLASSES[0]  # Change this to target different cell types
+FITNESS_METRIC = 'inverted_weighted_ce'
+FEW_SHOT = 8
 
 MEDICAL_CONCEPTS_MAPPING = {
     "Basophil": "Nucleus=Segmented, NC Ratio=Low, Granularity=Yes, Color=Blue/Black (dense)",
@@ -80,11 +82,11 @@ Only provide the output as Python code in the following format: prompts = list[t
 def main():
 
     # Name the experiment we are currently running
-    experiment_name = f"Wbcatt_Experiment15_{FITNESS_METRIC}-FEWSHOT{FEW_SHOT}-{BINARY_LABEL}"
+    experiment_name = f"Wbcatt_Experiment1_{FITNESS_METRIC}-FEWSHOT{FEW_SHOT}-{BINARY_LABEL}"
     print(f"Running {experiment_name}...")
 
     # Create experiment results directory
-    results_dir = "experiment_results"
+    results_dir = "final_results"
     os.makedirs(results_dir, exist_ok=True)
 
     # Create filename with experiment name
@@ -96,11 +98,10 @@ def main():
     print("Model, preprocess, and tokenizer loaded successfully.")
 
     # 2. load dataset - MODIFIED FOR CHEXPERT
-    features, labels = util.extract_embeddings_for_binary_classification(
+    features, labels = util.extract_embeddings(
         model=model,
         preprocess=preprocess,
         split="train",
-        binary_label=BINARY_LABEL,
     )
 
     # Convert to tensors - MODIFIED FOR MULTI-OBSERVATION SUPPORT
@@ -116,6 +117,12 @@ def main():
         print(
             f"Selected balanced few-shot subset with {FEW_SHOT} samples per class.")
 
+    # Convert to binary labels
+    binary_labels = (all_labels == util.CLASSES.index(BINARY_LABEL)).long()
+    all_labels = binary_labels
+    print(f"Converted to binary labels for {BINARY_LABEL} classification.")
+    print(f"Class distribution: {torch.bincount(all_labels)}")
+
     # 3. Optionally load initial prompts (currently commented out)
     # initial_prompts = util.load_last_iteration_prompts(
     #     "experiment_results/Wbcatt_Experiment13_accuracy-FEWSHOT256_opt_pairs.txt")
@@ -126,11 +133,11 @@ def main():
 
     # Optimization loop
     pq = util.PriorityQueue(
-        max_capacity=1000, filter_threshold=0.3)
+        max_capacity=1000, filter_threshold=0.2)
     prompt_content = ""
 
     # 6. Optimization loop: generate, evaluate, and select prompts for 500 iterations
-    for j in range(1000):
+    for j in range(500):
         # Generate the meta prompt for the LLM
         meta_prompt = get_prompt_template(iteration=j,
                                           prompt_content=prompt_content, generate_n=10)
