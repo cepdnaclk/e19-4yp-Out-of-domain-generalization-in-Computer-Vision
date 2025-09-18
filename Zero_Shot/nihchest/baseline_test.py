@@ -13,7 +13,7 @@ def main():
     features, labels = util.extract_embeddings(
         model=model,
         preprocess=preprocess,
-        split="test",
+        train_or_test="test",
     )
     
     # Convert to tensors - MODIFIED FOR MULTI-OBSERVATION SUPPORT
