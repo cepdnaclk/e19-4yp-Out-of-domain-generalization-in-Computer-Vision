@@ -16,11 +16,16 @@ import util
 import torch
 import numpy as np
 import os
+import argparse
 from gemini_pro_initial_prompts import INIT_PROMPTS
 # 'accuracy', 'auc', 'f1_macro', 'inverted_weighted_ce'
-BINARY_LABEL = "Basophil"
-FITNESS_METRIC = 'f1_macro'
-FEW_SHOT = 0
+
+
+# Default value, will be overridden by command line
+BINARY_LABEL = util.CLASSES[0]
+# Default value, will be overridden by command line
+FITNESS_METRIC = 'inverted_weighted_ce'
+FEW_SHOT = 8  # Default value, will be overridden by command line
 
 MEDICAL_CONCEPTS_MAPPING = {
     "Basophil": "Nucleus=Segmented, NC Ratio=Low, Granularity=Yes, Color=Blue/Black (dense)",
@@ -78,13 +83,37 @@ Only provide the output as Python code in the following format: prompts = list[t
 
 
 def main():
+    # Parse command line arguments
+    parser = argparse.ArgumentParser(
+        description='Binary Classification Prompt Optimizer for WBCATT Dataset')
+    parser.add_argument('--binary_label', type=int, required=True,
+                        help='Binary label class index (0-4): 0=Basophil, 1=Eosinophil, 2=Lymphocyte, 3=Monocyte, 4=Neutrophil')
+    parser.add_argument('--fitness_metric', type=str, required=True,
+                        choices=['accuracy', 'f1_macro', 'f1_weighted',
+                                 'inverted_ce', 'inverted_weighted_ce'],
+                        help='Fitness metric to optimize')
+    parser.add_argument('--few_shot', type=int, required=True,
+                        help='Number of few-shot samples per class (use 0 for full dataset)')
+
+    args = parser.parse_args()
+
+    # Set global variables from command line arguments
+    global BINARY_LABEL, FITNESS_METRIC, FEW_SHOT
+    BINARY_LABEL = util.CLASSES[args.binary_label]
+    FITNESS_METRIC = args.fitness_metric
+    FEW_SHOT = args.few_shot
+
+    print(f"Configuration:")
+    print(f"  Binary Label: {BINARY_LABEL} (class {args.binary_label})")
+    print(f"  Fitness Metric: {FITNESS_METRIC}")
+    print(f"  Few Shot: {FEW_SHOT}")
 
     # Name the experiment we are currently running
-    experiment_name = f"Wbcatt_Experiment15_{FITNESS_METRIC}-FEWSHOT{FEW_SHOT}-{BINARY_LABEL}"
+    experiment_name = f"Wbcatt_Experiment1_{FITNESS_METRIC}-FEWSHOT{FEW_SHOT}-{BINARY_LABEL}"
     print(f"Running {experiment_name}...")
 
     # Create experiment results directory
-    results_dir = "experiment_results"
+    results_dir = "final_results"
     os.makedirs(results_dir, exist_ok=True)
 
     # Create filename with experiment name
@@ -96,11 +125,10 @@ def main():
     print("Model, preprocess, and tokenizer loaded successfully.")
 
     # 2. load dataset - MODIFIED FOR CHEXPERT
-    features, labels = util.extract_embeddings_for_binary_classification(
+    features, labels = util.extract_embeddings(
         model=model,
         preprocess=preprocess,
         split="train",
-        binary_label=BINARY_LABEL,
     )
 
     # Convert to tensors - MODIFIED FOR MULTI-OBSERVATION SUPPORT
@@ -116,6 +144,12 @@ def main():
         print(
             f"Selected balanced few-shot subset with {FEW_SHOT} samples per class.")
 
+    # Convert to binary labels
+    binary_labels = (all_labels == util.CLASSES.index(BINARY_LABEL)).long()
+    all_labels = binary_labels
+    print(f"Converted to binary labels for {BINARY_LABEL} classification.")
+    print(f"Class distribution: {torch.bincount(all_labels)}")
+
     # 3. Optionally load initial prompts (currently commented out)
     # initial_prompts = util.load_last_iteration_prompts(
     #     "experiment_results/Wbcatt_Experiment13_accuracy-FEWSHOT256_opt_pairs.txt")
@@ -126,11 +160,11 @@ def main():
 
     # Optimization loop
     pq = util.PriorityQueue(
-        max_capacity=1000, filter_threshold=0.3)
+        max_capacity=1000, filter_threshold=0.01)
     prompt_content = ""
 
     # 6. Optimization loop: generate, evaluate, and select prompts for 500 iterations
-    for j in range(1000):
+    for j in range(500):
         # Generate the meta prompt for the LLM
         meta_prompt = get_prompt_template(iteration=j,
                                           prompt_content=prompt_content, generate_n=10)
