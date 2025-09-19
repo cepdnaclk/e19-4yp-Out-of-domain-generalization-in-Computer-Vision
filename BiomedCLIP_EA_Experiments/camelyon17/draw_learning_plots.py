@@ -113,7 +113,7 @@ def plot_learning_curves(data: Dict[str, Tuple[List[int], List[float]]],
     # Customize the plot with seaborn-style formatting
     ax.set_xlabel('Iteration', fontsize=12, fontweight='medium')
     ax.set_ylabel('Mean Score of Top 10', fontsize=12, fontweight='medium')
-    ax.set_title(title, fontsize=14, fontweight='bold', pad=20)
+    ax.set_title(title, fontsize=10, pad=20)
 
     # Customize grid
     ax.grid(True, alpha=0.3, linestyle='-', linewidth=0.5)
