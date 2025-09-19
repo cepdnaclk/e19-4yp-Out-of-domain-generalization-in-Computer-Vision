@@ -110,12 +110,29 @@ def plot_learning_curves(data: Dict[str, Tuple[List[int], List[float]]],
     # Set axis limits with some padding
     all_iterations = []
     all_scores = []
-    for iterations, scores in data.values():
-        all_iterations.extend(iterations)
-        all_scores.extend(scores)
+    max_iterations_per_experiment = []
 
-    if all_iterations:
-        plt.xlim(min(all_iterations) - 5, max(all_iterations) + 5)
+    for iterations, scores in data.values():
+        if iterations:  # Only process non-empty data
+            all_iterations.extend(iterations)
+            all_scores.extend(scores)
+            max_iterations_per_experiment.append(max(iterations))
+
+    if all_iterations and max_iterations_per_experiment:
+        # Use the minimum of the maximum iterations across all experiments
+        min_max_iterations = min(max_iterations_per_experiment)
+
+        # Filter data to only include iterations up to this limit
+        filtered_iterations = [
+            it for it in all_iterations if it <= min_max_iterations]
+
+        # Set x-axis limit based on the minimum common range
+        plt.xlim(min(all_iterations) - 5, min_max_iterations + 5)
+
+        print(
+            f"Setting x-axis limit to {min_max_iterations} (minimum of max iterations across experiments)")
+
+        # Set y-axis limits based on all scores
         score_range = max(all_scores) - min(all_scores)
         plt.ylim(min(all_scores) - score_range * 0.05,
                  max(all_scores) + score_range * 0.05)
