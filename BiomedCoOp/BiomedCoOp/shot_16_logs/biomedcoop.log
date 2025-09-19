@@ -1,0 +1,35 @@
+Checkpoint saved to "output/derm7pt/shots_16/BiomedCoOp_BiomedCLIP/nctx4_cscFalse_ctpend/seed1/prompt_learner/model.pth.tar-100"
+Finished training
+Do evaluation on test set
+100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 4/4 [00:01<00:00,  2.38it/s]
+=> result
+* total: 395
+* correct: 278
+* accuracy: 70.38%
+* error: 29.62%
+* macro_f1: 61.46%
+
+
+Checkpoint saved to "output/nihchest/shots_16/BiomedCoOp_BiomedCLIP/nctx4_cscFalse_ctpend/seed1/prompt_learner/model.pth.tar-100"
+Finished training
+Do evaluation on test set
+100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████| 256/256 [01:34<00:00,  2.70it/s]
+=> result
+* total: 25,596
+* correct: 12,830
+* accuracy: 50.13%
+* error: 49.87%
+* macro_f1: 33.73%
+Elapsed: 0:02:53
+
+Checkpoint saved to "output/camelyon17/shots_16/BiomedCoOp_BiomedCLIP/nctx4_cscFalse_ctpend/seed1/prompt_learner/model.pth.tar-100"
+Finished training
+Do evaluation on test set
+100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████| 147/147 [12:29<00:00,  5.10s/it]
+=> result
+* total: 146,722
+* correct: 91,818
+* accuracy: 62.58%
+* error: 37.42%
+* macro_f1: 56.94%
+Elapsed: 0:13:39

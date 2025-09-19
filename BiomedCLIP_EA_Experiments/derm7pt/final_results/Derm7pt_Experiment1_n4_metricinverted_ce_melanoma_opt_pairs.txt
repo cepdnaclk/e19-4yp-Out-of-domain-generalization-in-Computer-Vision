@@ -1,0 +1,153 @@
+Iteration 1:
+('No streaks extending beyond the lesion border.', 'Streaks extending significantly beyond the lesion border.'), Score: 0.7671
+
+Iteration 10:
+('No streaks extending beyond the lesion border.', 'Streaks extending significantly beyond the lesion border.'), Score: 0.7671
+
+Iteration 20:
+('No streaks extending beyond the lesion border.', 'Streaks extending significantly beyond the lesion border.'), Score: 0.7671
+
+Iteration 30:
+('No streaks extending beyond the lesion border.', 'Streaks extending significantly beyond the lesion border.'), Score: 0.7671
+
+Iteration 40:
+('No streaks extending beyond the lesion border.', 'Streaks extending significantly beyond the lesion border.'), Score: 0.7671
+
+Iteration 50:
+('No streaks extending beyond the lesion border.', 'Streaks extending significantly beyond the lesion border.'), Score: 0.7671
+
+Iteration 60:
+('No streaks extending beyond the lesion border.', 'Streaks extending significantly beyond the lesion border.'), Score: 0.7671
+
+Iteration 70:
+('No streaks extending beyond the lesion border.', 'Streaks extending significantly beyond the lesion border.'), Score: 0.7671
+
+Iteration 80:
+('No streaks extending beyond the lesion border.', 'Streaks extending significantly beyond the lesion border.'), Score: 0.7671
+
+Iteration 90:
+('No streaks extending beyond the lesion border.', 'Streaks extending significantly beyond the lesion border.'), Score: 0.7671
+
+Iteration 100:
+('No streaks extending beyond the lesion border.', 'Streaks extending significantly beyond the lesion border.'), Score: 0.7671
+
+Iteration 110:
+('No streaks extending beyond the lesion border.', 'Streaks extending significantly beyond the lesion border.'), Score: 0.7671
+
+Iteration 120:
+('No streaks extending beyond the lesion border.', 'Streaks extending significantly beyond the lesion border.'), Score: 0.7671
+
+Iteration 130:
+('No streaks extending beyond the lesion border.', 'Streaks extending significantly beyond the lesion border.'), Score: 0.7671
+
+Iteration 140:
+('No streaks extending beyond the lesion border.', 'Streaks extending significantly beyond the lesion border.'), Score: 0.7671
+
+Iteration 150:
+('No streaks extending beyond the lesion border.', 'Streaks extending significantly beyond the lesion border.'), Score: 0.7671
+
+Iteration 160:
+('No streaks extending beyond the lesion border.', 'Streaks extending significantly beyond the lesion border.'), Score: 0.7671
+
+Iteration 170:
+('No streaks extending beyond the lesion border.', 'Streaks extending significantly beyond the lesion border.'), Score: 0.7671
+
+Iteration 180:
+('No streaks extending beyond the lesion border.', 'Streaks extending significantly beyond the lesion border.'), Score: 0.7671
+
+Iteration 190:
+('No streaks extending beyond the lesion border.', 'Streaks extending significantly beyond the lesion border.'), Score: 0.7671
+
+Iteration 200:
+('No streaks extending beyond the lesion border.', 'Streaks extending significantly beyond the lesion border.'), Score: 0.7671
+
+Iteration 210:
+('No streaks extending beyond the lesion border.', 'Streaks extending significantly beyond the lesion border.'), Score: 0.7671
+
+Iteration 220:
+('No streaks extending beyond the lesion border.', 'Streaks extending significantly beyond the lesion border.'), Score: 0.7671
+
+Iteration 230:
+('No streaks extending beyond the lesion border.', 'Streaks extending significantly beyond the lesion border.'), Score: 0.7671
+
+Iteration 240:
+('No streaks extending beyond the lesion border.', 'Streaks extending significantly beyond the lesion border.'), Score: 0.7671
+
+Iteration 250:
+('No streaks extending beyond the lesion border.', 'Streaks extending significantly beyond the lesion border.'), Score: 0.7671
+
+Iteration 260:
+('No streaks extending beyond the lesion border.', 'Streaks extending significantly beyond the lesion border.'), Score: 0.7671
+
+Iteration 270:
+('No streaks extending beyond the lesion border.', 'Streaks extending significantly beyond the lesion border.'), Score: 0.7671
+
+Iteration 280:
+('No streaks extending beyond the lesion border.', 'Streaks extending significantly beyond the lesion border.'), Score: 0.7671
+
+Iteration 290:
+('No streaks extending beyond the lesion border.', 'Streaks extending significantly beyond the lesion border.'), Score: 0.7671
+
+Iteration 300:
+('No streaks extending beyond the lesion border.', 'Streaks extending significantly beyond the lesion border.'), Score: 0.7671
+
+Iteration 310:
+('No streaks extending beyond the lesion border.', 'Streaks extending significantly beyond the lesion border.'), Score: 0.7671
+
+Iteration 320:
+('No streaks extending beyond the lesion border.', 'Streaks extending significantly beyond the lesion border.'), Score: 0.7671
+
+Iteration 330:
+('No streaks extending beyond the lesion border.', 'Streaks extending significantly beyond the lesion border.'), Score: 0.7671
+
+Iteration 340:
+('No streaks extending beyond the lesion border.', 'Streaks extending significantly beyond the lesion border.'), Score: 0.7671
+
+Iteration 350:
+('No streaks extending beyond the lesion border.', 'Streaks extending significantly beyond the lesion border.'), Score: 0.7671
+
+Iteration 360:
+('No streaks extending beyond the lesion border.', 'Streaks extending significantly beyond the lesion border.'), Score: 0.7671
+
+Iteration 370:
+('No streaks extending beyond the lesion border.', 'Streaks extending significantly beyond the lesion border.'), Score: 0.7671
+
+Iteration 380:
+('No streaks extending beyond the lesion border.', 'Streaks extending significantly beyond the lesion border.'), Score: 0.7671
+
+Iteration 390:
+('No streaks extending beyond the lesion border.', 'Streaks extending significantly beyond the lesion border.'), Score: 0.7671
+
+Iteration 400:
+('No streaks extending beyond the lesion border.', 'Streaks extending significantly beyond the lesion border.'), Score: 0.7671
+
+Iteration 410:
+('No streaks extending beyond the lesion border.', 'Streaks extending significantly beyond the lesion border.'), Score: 0.7671
+
+Iteration 420:
+('No streaks extending beyond the lesion border.', 'Streaks extending significantly beyond the lesion border.'), Score: 0.7671
+
+Iteration 430:
+('No streaks extending beyond the lesion border.', 'Streaks extending significantly beyond the lesion border.'), Score: 0.7671
+
+Iteration 440:
+('No streaks extending beyond the lesion border.', 'Streaks extending significantly beyond the lesion border.'), Score: 0.7671
+
+Iteration 450:
+('No streaks extending beyond the lesion border.', 'Streaks extending significantly beyond the lesion border.'), Score: 0.7671
+
+Iteration 460:
+('No streaks extending beyond the lesion border.', 'Streaks extending significantly beyond the lesion border.'), Score: 0.7671
+
+Iteration 470:
+('No streaks extending beyond the lesion border.', 'Streaks extending significantly beyond the lesion border.'), Score: 0.7671
+
+Iteration 480:
+('No streaks extending beyond the lesion border.', 'Streaks extending significantly beyond the lesion border.'), Score: 0.7671
+
+Iteration 490:
+('No streaks extending beyond the lesion border.', 'Streaks extending significantly beyond the lesion border.'), Score: 0.7671
+
+Iteration 500:
+('No streaks extending beyond the lesion border.', 'Streaks extending significantly beyond the lesion border.'), Score: 0.7671
+

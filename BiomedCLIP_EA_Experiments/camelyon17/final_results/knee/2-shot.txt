@@ -1,0 +1,7 @@
+('Lymphocytes with regular nuclear membrane.', 'Irregular nuclear membrane with indentations.'), Score: 0.9938
+('Clear cytoplasm in lymphocytes.', 'Granular cytoplasm in atypical cells.'), Score: 0.9899
+('Uniform small cell size.', 'Pleomorphic cell size with giant cells.'), Score: 0.9872
+('Predominantly small, round lymphocytes.', 'Presence of large, atypical cells with prominent nucleoli.'), Score: 0.9795
+('No necrosis observed.', 'Extensive tumor necrosis with karyorrhexis.'), Score: 0.9685
+('No reactive lymphoid hyperplasia.', 'Germinal center with dark and light zone disruption.'), Score: 0.9482
+('No fibrosis.', 'Desmoplastic reaction with dense fibrosis.'), Score: 0.9421

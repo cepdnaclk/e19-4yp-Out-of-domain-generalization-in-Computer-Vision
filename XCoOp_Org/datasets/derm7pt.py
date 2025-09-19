@@ -33,11 +33,12 @@ class Derm7pt(DatasetBase):
         full_val = self.read_data(split="val")
         test = self.read_data(split="test")
 
-        if self.num_shots is not None:
+        if self.num_shots > 0:
             # Few-shot mode: sample from training set
             train, val = self.create_few_shot_split(full_train, self.num_shots, self.seed)
         else:
             # Full dataset mode
+            print(f"Using full training set with samples.")
             train = full_train
             val = full_val
 

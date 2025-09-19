@@ -316,6 +316,58 @@ def extract_embeddings(model, preprocess, label_type, split="train", cache_dir="
     return features_array, labels_array
 
 
+def evaluate_prompt_pair(
+    negative_prompt: str,
+    positive_prompt: str,
+    image_feats: torch.Tensor,    # (N, D), precomputed
+    image_labels: torch.Tensor,   # (N,)
+    model,
+    tokenizer
+):
+    # encode prompts once
+    text_inputs = tokenizer(
+        [negative_prompt, positive_prompt],
+        context_length=CONTEXT_LENGTH
+    ).to(DEVICE)
+
+    with torch.no_grad():
+        text_feats = model.encode_text(text_inputs)           # (2, D)
+        text_feats = text_feats / text_feats.norm(dim=1, keepdim=True)
+        logit_scale = model.logit_scale.exp()
+
+        # move image feats to DEVICE for one matrix multiply
+        feats = image_feats.to(DEVICE)                        # (N, D)
+        labels = image_labels.to(DEVICE)                      # (N,)
+
+        # compute all logits at once: (N, 2)
+        logits = logit_scale * (feats @ text_feats.t())
+        probs = logits.softmax(dim=1)
+        preds = logits.argmax(dim=1)
+
+        y_pred = preds.cpu().numpy()
+        y_prob = probs[:, 1].cpu().numpy()    # tumor-class prob
+        y_true = labels.cpu().numpy()
+
+        # Compute Binary Cross-Entropy Loss
+        bce_loss = F.binary_cross_entropy(
+            input=torch.tensor(y_prob, device=DEVICE).float(),
+            target=torch.tensor(y_true, device=DEVICE).float()
+        ).item()
+
+        # Invert BCE loss: 1/(1 + loss) (so lower loss → higher value)
+        inverted_bce = 1.0 / (1.0 + bce_loss)
+
+    # metrics
+    acc = accuracy_score(y_true, y_pred)
+    auc = roc_auc_score(y_true, y_prob)
+    cm = confusion_matrix(y_true, y_pred)
+    report = classification_report(y_true, y_pred, digits=4)
+    f1_macro = f1_score(y_true, y_pred, average='macro', zero_division=0)
+    f1_weighted = f1_score(y_true, y_pred, average='weighted', zero_division=0)
+
+    return {'accuracy': acc, 'auc': auc, 'cm': cm, 'report': report, 'inverted_bce': inverted_bce, "f1_macro": f1_macro, "f1_weighted": f1_weighted}
+
+
 def evaluate_prompt_list(
     prompt_list: PromptList,
     image_feats: torch.Tensor,  # (N, D), precomputed
@@ -328,7 +380,6 @@ def evaluate_prompt_list(
     total_weight = 0.0
 
     # Ensure image feats and labels are on the correct device once
-    print(f"shape of image_feats:dtype: {image_feats} ")
     feats = image_feats.to(DEVICE)
     labels = image_labels.to(DEVICE)
 
@@ -387,7 +438,13 @@ def evaluate_prompt_list(
     cm = confusion_matrix(y_true, ensemble_preds)
     report = classification_report(y_true, ensemble_preds, digits=4)
 
-    return {'accuracy': acc, 'auc': auc, 'cm': cm, 'report': report, 'ensemble_probs': ensemble_probs}
+    # calculate f1 scores
+    f1_macro = f1_score(y_true, ensemble_preds,
+                        average='macro', zero_division=0)
+    f1_weighted = f1_score(y_true, ensemble_preds,
+                           average='weighted', zero_division=0)
+
+    return {'accuracy': acc, 'auc': auc, 'cm': cm, 'report': report, 'ensemble_probs': ensemble_probs, "f1_macro": f1_macro, "f1_weighted": f1_weighted}
 
 
 def evaluate_prompt_set(
@@ -939,3 +996,245 @@ def load_initial_prompts(path: str) -> List[InitialItem]:
                 continue
 
     return results
+
+
+def _fix_quote_issues(code: str) -> str:
+    """
+    Fix common malformed string literal issues inside the first list literal
+    that follows an '=' in the provided code string.
+
+    Approach:
+      - Find the first assignment to a list: locate the '[' that starts the list and its matching ']'.
+      - For each tuple inside that list, identify string elements and normalize them:
+        - Protect apostrophes inside words (cell's) so they are not misinterpreted.
+        - Convert inner single-quoted phrases (e.g. 'ground glass') to double-quoted phrases.
+        - Emit a safe Python string literal using json.dumps(...) (double-quoted, properly escaped).
+      - Rebuild and return corrected code (only the list region is changed).
+    """
+    # find the bracketed list following the first '='
+    eq_m = re.search(r'=\s*\[', code)
+    if not eq_m:
+        # nothing to fix
+        return code
+
+    list_start = code.find('[', eq_m.start())
+    if list_start == -1:
+        return code
+
+    # find matching closing ']' for the list (simple bracket counter)
+    depth = 0
+    list_end = None
+    for i in range(list_start, len(code)):
+        c = code[i]
+        if c == '[':
+            depth += 1
+        elif c == ']':
+            depth -= 1
+            if depth == 0:
+                list_end = i
+                break
+    if list_end is None:
+        # can't find end bracket: give up and return original
+        return code
+
+    list_region = code[list_start:list_end + 1]
+
+    def fix_tuple_region(tuple_region: str) -> str:
+        """
+        tuple_region contains '(' ... ')' inclusive. We fix each element string inside.
+        """
+        assert tuple_region.startswith('(') and tuple_region.endswith(')')
+        inner = tuple_region[1:-1]
+        out_parts: List[str] = ['(']
+        pos = 0
+        L = len(inner)
+
+        while pos < L:
+            # copy leading whitespace
+            ws_match = re.match(r'\s*', inner[pos:])
+            if ws_match:
+                ws = ws_match.group(0)
+                out_parts.append(ws)
+                pos += len(ws)
+
+            if pos >= L:
+                break
+
+            ch = inner[pos]
+            if ch in ("'", '"'):
+                # heuristically find the closing quote that is followed only by optional whitespace
+                # and then comma or end-of-tuple
+                quote = ch
+                j = pos + 1
+                found_closing = False
+                while j < L:
+                    if inner[j] == '\\':
+                        # skip escaped char
+                        j += 2
+                        continue
+                    if inner[j] == quote:
+                        # lookahead
+                        k = j + 1
+                        while k < L and inner[k].isspace():
+                            k += 1
+                        if k >= L or inner[k] in (',',):
+                            found_closing = True
+                            break
+                    j += 1
+
+                if not found_closing:
+                    # fallback: try to find a closing quote before the next top-level comma
+                    next_comma = inner.find(',', pos)
+                    if next_comma == -1:
+                        # take the rest
+                        j = L - 1
+                    else:
+                        # take up to just before the comma
+                        j = next_comma - 1
+                        # ensure j is within bounds
+                        if j < pos:
+                            j = pos
+
+                # element raw includes the quotes (pos .. j)
+                element_raw = inner[pos:j+1]
+                # find if there's trailing whitespace and a comma immediately after j
+                k = j + 1
+                trailing_ws = ''
+                while k < L and inner[k].isspace():
+                    trailing_ws += inner[k]
+                    k += 1
+                trailing_comma = ''
+                if k < L and inner[k] == ',':
+                    trailing_comma = ','
+                    k += 1
+
+                # original inner content (without the outer quotes)
+                orig_inner = element_raw[1:-1]
+
+                # --- transform inner text ---
+                temp = orig_inner
+
+                # protect word-internal apostrophes so they are not confused with quote-pairs
+                temp = re.sub(r"(?<=\w)'(?=\w)", "__APOST__", temp)
+
+                # convert inner single-quoted phrases to double-quoted phrases
+                # (only acts on remaining single-quote pairs)
+                temp = re.sub(r"'([^']*?)'", r'"\1"', temp)
+
+                # restore protected apostrophes
+                temp = temp.replace("__APOST__", "'")
+
+                # emit a safe Python literal using json.dumps (double-quoted and escaped)
+                safe_literal = json.dumps(temp)
+
+                out_parts.append(safe_literal)
+                if trailing_ws:
+                    out_parts.append(trailing_ws)
+                if trailing_comma:
+                    out_parts.append(trailing_comma)
+                pos = k
+            else:
+                # non-quoted token (e.g., stray tokens) -- copy until next comma
+                next_comma = inner.find(',', pos)
+                if next_comma == -1:
+                    out_parts.append(inner[pos:])
+                    pos = L
+                else:
+                    out_parts.append(inner[pos:next_comma])
+                    out_parts.append(',')
+                    pos = next_comma + 1
+
+        out_parts.append(')')
+        return ''.join(out_parts)
+
+    # Walk the list_region and replace each top-level tuple region with its fixed version.
+    fixed_list_builder: List[str] = []
+    i = 0
+    N = len(list_region)
+    while i < N:
+        c = list_region[i]
+        if c == '(':
+            # find matching ')'
+            p = i
+            depth = 0
+            while p < N:
+                if list_region[p] == '(':
+                    depth += 1
+                elif list_region[p] == ')':
+                    depth -= 1
+                    if depth == 0:
+                        break
+                p += 1
+            if p >= N:
+                # can't find matching ) - copy rest and break
+                fixed_list_builder.append(list_region[i:])
+                break
+            tup = list_region[i:p+1]
+            fixed_tup = fix_tuple_region(tup)
+            fixed_list_builder.append(fixed_tup)
+            i = p + 1
+        else:
+            fixed_list_builder.append(c)
+            i += 1
+
+    fixed_list_region = ''.join(fixed_list_builder)
+
+    # Rebuild the full code
+    fixed_code = code[:list_start] + fixed_list_region + code[list_end + 1:]
+    return fixed_code
+
+
+def load_last_iteration_prompts(path: str) -> List[InitialItem]:
+    """
+    Reads the last iteration's prompt progression file, which has the format:
+    iteration 1: 
+    ('neg', 'pos'), Score: 0.9364
+    ('neg2', 'pos2'), Score: 0.8456
+    ....
+
+    iteration 'n': 
+    ('neg3', 'pos3'), Score: 0.9123
+    ('neg4', 'pos4'), Score: 0.7890
+
+    Returns a list of ((neg, pos), score) tuples from the last iteration.
+    """
+    last_iteration_prompts = []
+    current_iteration = None
+
+    with open(path, 'r', encoding='utf-8') as file:
+        for line_num, line in enumerate(file, 1):
+            line = line.strip()
+            if not line:  # Skip empty lines
+                continue
+
+            try:
+                # Check if this line indicates a new iteration
+                iteration_match = re.match(r'[Ii]teration (\d+):\s*$', line)
+                if iteration_match:
+                    # If we found a previous iteration, store its prompts
+                    if current_iteration is not None:
+                        last_iteration_prompts = []  # Reset for new iteration
+                    current_iteration = int(iteration_match.group(1))
+                    continue
+
+                # Try to parse prompt lines: ('neg', 'pos'), Score: 0.9364
+                pattern = r"\('([^']*)', '([^']*)'\), Score: ([\d.]+)"
+                match = re.match(pattern, line)
+
+                if match and current_iteration is not None:
+                    neg_prompt = match.group(1)
+                    pos_prompt = match.group(2)
+                    score = float(match.group(3))
+
+                    prompt_pair = (neg_prompt, pos_prompt)
+                    last_iteration_prompts.append((prompt_pair, score))
+                elif not iteration_match:  # Don't warn about iteration headers
+                    print(f"Warning: Could not parse line {line_num}: {line}")
+
+            except Exception as e:
+                print(f"Error parsing line {line_num}: {line}")
+                print(f"Error details: {e}")
+                continue
+
+    # Return the prompts from the last iteration found
+    return last_iteration_prompts

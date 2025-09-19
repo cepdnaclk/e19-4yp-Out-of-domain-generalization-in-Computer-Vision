@@ -1,0 +1,559 @@
+/home/e19094/miniconda3/envs/biomedclip/lib/python3.10/site-packages/transformers/utils/generic.py:441: FutureWarning: `torch.utils._pytree._register_pytree_node` is deprecated. Please use `torch.utils._pytree.register_pytree_node` instead.
+  _torch_pytree._register_pytree_node(
+/home/e19094/miniconda3/envs/biomedclip/lib/python3.10/site-packages/transformers/utils/generic.py:309: FutureWarning: `torch.utils._pytree._register_pytree_node` is deprecated. Please use `torch.utils._pytree.register_pytree_node` instead.
+  _torch_pytree._register_pytree_node(
+/home/e19094/miniconda3/envs/biomedclip/lib/python3.10/site-packages/timm/models/layers/__init__.py:48: FutureWarning: Importing from timm.models.layers is deprecated, please import via timm.layers
+  warnings.warn(f"Importing from {__name__} is deprecated, please import via timm.layers", FutureWarning)
+Setting fixed seed: 1
+***************
+** Arguments **
+***************
+backbone: 
+config_file: configs/trainers/CoOp/vit_b16.yaml
+dataset_config_file: configs/datasets/nihchest.yaml
+eval_only: False
+head: 
+load_epoch: None
+model_dir: 
+no_train: False
+opts: ['TRAINER.COOP.N_CTX', '4', 'TRAINER.COOP.CSC', 'False', 'TRAINER.COOP.CLASS_TOKEN_POSITION', 'end', 'DATASET.NUM_SHOTS', '16']
+output_dir: output/nihchest/shots_16/CoOp_BiomedCLIP/nctx4_cscFalse_ctpend/seed1
+resume: 
+root: /storage/projects3/e19-fyp-out-of-domain-gen-in-cv/NIH_Chest/
+seed: 1
+source_domains: None
+target_domains: None
+trainer: CoOp_BiomedCLIP
+transforms: None
+************
+** Config **
+************
+DATALOADER:
+  K_TRANSFORMS: 1
+  NUM_WORKERS: 8
+  RETURN_IMG0: False
+  TEST:
+    BATCH_SIZE: 100
+    SAMPLER: SequentialSampler
+  TRAIN_U:
+    BATCH_SIZE: 32
+    N_DOMAIN: 0
+    N_INS: 16
+    SAME_AS_X: True
+    SAMPLER: RandomSampler
+  TRAIN_X:
+    BATCH_SIZE: 16
+    N_DOMAIN: 0
+    N_INS: 16
+    SAMPLER: RandomSampler
+DATASET:
+  ALL_AS_UNLABELED: False
+  CIFAR_C_LEVEL: 1
+  CIFAR_C_TYPE: 
+  NAME: NIHChestXray
+  NUM_LABELED: -1
+  NUM_SHOTS: 16
+  ROOT: /storage/projects3/e19-fyp-out-of-domain-gen-in-cv/NIH_Chest/
+  SOURCE_DOMAINS: ()
+  STL10_FOLD: -1
+  SUBSAMPLE_CLASSES: all
+  TARGET_DOMAINS: ()
+  VAL_PERCENT: 0.1
+INPUT:
+  COLORJITTER_B: 0.4
+  COLORJITTER_C: 0.4
+  COLORJITTER_H: 0.1
+  COLORJITTER_S: 0.4
+  CROP_PADDING: 4
+  CUTOUT_LEN: 16
+  CUTOUT_N: 1
+  GB_K: 21
+  GB_P: 0.5
+  GN_MEAN: 0.0
+  GN_STD: 0.15
+  INTERPOLATION: bicubic
+  NO_TRANSFORM: False
+  PIXEL_MEAN: [0.48145466, 0.4578275, 0.40821073]
+  PIXEL_STD: [0.26862954, 0.26130258, 0.27577711]
+  RANDAUGMENT_M: 10
+  RANDAUGMENT_N: 2
+  RGS_P: 0.2
+  SIZE: (224, 224)
+  TRANSFORMS: ('random_resized_crop', 'normalize')
+MODEL:
+  BACKBONE:
+    NAME: ViT-B/16
+    PRETRAINED: True
+  HEAD:
+    ACTIVATION: relu
+    BN: True
+    DROPOUT: 0.0
+    HIDDEN_LAYERS: ()
+    NAME: 
+  INIT_WEIGHTS: 
+OPTIM:
+  ADAM_BETA1: 0.9
+  ADAM_BETA2: 0.999
+  BASE_LR_MULT: 0.1
+  GAMMA: 0.1
+  LR: 0.002
+  LR_SCHEDULER: cosine
+  MAX_EPOCH: 100
+  MOMENTUM: 0.9
+  NAME: sgd
+  NEW_LAYERS: ()
+  RMSPROP_ALPHA: 0.99
+  SGD_DAMPNING: 0
+  SGD_NESTEROV: False
+  STAGED_LR: False
+  STEPSIZE: (-1,)
+  WARMUP_CONS_LR: 1e-05
+  WARMUP_EPOCH: 1
+  WARMUP_MIN_LR: 1e-05
+  WARMUP_RECOUNT: True
+  WARMUP_TYPE: constant
+  WEIGHT_DECAY: 0.0005
+OUTPUT_DIR: output/nihchest/shots_16/CoOp_BiomedCLIP/nctx4_cscFalse_ctpend/seed1
+RESUME: 
+SEED: 1
+TEST:
+  COMPUTE_CMAT: False
+  EVALUATOR: Classification
+  FINAL_MODEL: last_step
+  NO_TEST: False
+  PER_CLASS_RESULT: False
+  SPLIT: test
+TRAIN:
+  CHECKPOINT_FREQ: 0
+  COUNT_ITER: train_x
+  PRINT_FREQ: 5
+TRAINER:
+  BIOMEDCOOP:
+    CLASS_TOKEN_POSITION: end
+    CSC: False
+    CTX_INIT: a photo of a
+    KDSP_LAMBDA: 1.0
+    N_CTX: 4
+    N_PROMPTS: 50
+    PREC: fp32
+    SCCM_LAMBDA: 1.0
+    TAU: 1.5
+  CG:
+    ALPHA_D: 0.5
+    ALPHA_F: 0.5
+    EPS_D: 1.0
+    EPS_F: 1.0
+  COCOOP:
+    CLASS_TOKEN_POSITION: end
+    CSC: False
+    CTX_INIT: 
+    N_CTX: 4
+    PREC: fp32
+  COOP:
+    CLASS_TOKEN_POSITION: end
+    CSC: False
+    CTX_INIT: a photo of a
+    N_CTX: 4
+    PREC: fp32
+  DAEL:
+    CONF_THRE: 0.95
+    STRONG_TRANSFORMS: ()
+    WEIGHT_U: 0.5
+  DDAIG:
+    ALPHA: 0.5
+    CLAMP: False
+    CLAMP_MAX: 1.0
+    CLAMP_MIN: -1.0
+    G_ARCH: 
+    LMDA: 0.3
+    WARMUP: 0
+  ENTMIN:
+    LMDA: 0.001
+  FIXMATCH:
+    CONF_THRE: 0.95
+    STRONG_TRANSFORMS: ()
+    WEIGHT_U: 1.0
+  KGCOOP:
+    CLASS_TOKEN_POSITION: end
+    CSC: False
+    CTX_INIT: a photo of a
+    N_CTX: 4
+    PREC: fp32
+    W: 1.0
+  M3SDA:
+    LMDA: 0.5
+    N_STEP_F: 4
+  MCD:
+    N_STEP_F: 4
+  MEANTEA:
+    EMA_ALPHA: 0.999
+    RAMPUP: 5
+    WEIGHT_U: 1.0
+  MIXMATCH:
+    MIXUP_BETA: 0.75
+    RAMPUP: 20000
+    TEMP: 2.0
+    WEIGHT_U: 100.0
+  MME:
+    LMDA: 0.1
+  NAME: CoOp_BiomedCLIP
+  PROGRAD:
+    ALPHA: 0.0
+    CLASS_TOKEN_POSITION: end
+    CSC: False
+    CTX_INIT: a photo of a
+    GM: False
+    LAMBDA: 1.0
+    NAME: 
+    N_CTX: 4
+    PREC: fp32
+    T: 1.0
+  SE:
+    CONF_THRE: 0.95
+    EMA_ALPHA: 0.999
+    RAMPUP: 300
+USE_CUDA: True
+VERBOSE: True
+VERSION: 1
+Collecting env info ...
+** System info **
+PyTorch version: 2.7.0+cu126
+Is debug build: False
+CUDA used to build PyTorch: 12.6
+ROCM used to build PyTorch: N/A
+
+OS: Ubuntu 22.04.5 LTS (x86_64)
+GCC version: (Ubuntu 11.4.0-1ubuntu1~22.04.2) 11.4.0
+Clang version: 14.0.0-1ubuntu1.1
+CMake version: version 3.24.2
+Libc version: glibc-2.35
+
+Python version: 3.10.16 (main, Dec 11 2024, 16:24:50) [GCC 11.2.0] (64-bit runtime)
+Python platform: Linux-6.8.0-79-generic-x86_64-with-glibc2.35
+Is CUDA available: True
+CUDA runtime version: Could not collect
+CUDA_MODULE_LOADING set to: LAZY
+GPU models and configuration: GPU 0: NVIDIA GeForce RTX 3090 Ti
+Nvidia driver version: 535.230.02
+cuDNN version: Could not collect
+HIP runtime version: N/A
+MIOpen runtime version: N/A
+Is XNNPACK available: True
+
+CPU:
+Architecture:                         x86_64
+CPU op-mode(s):                       32-bit, 64-bit
+Address sizes:                        46 bits physical, 48 bits virtual
+Byte Order:                           Little Endian
+CPU(s):                               32
+On-line CPU(s) list:                  0-31
+Vendor ID:                            GenuineIntel
+Model name:                           13th Gen Intel(R) Core(TM) i9-13900K
+CPU family:                           6
+Model:                                183
+Thread(s) per core:                   2
+Core(s) per socket:                   24
+Socket(s):                            1
+Stepping:                             1
+CPU max MHz:                          5800.0000
+CPU min MHz:                          800.0000
+BogoMIPS:                             5990.40
+Flags:                                fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx pdpe1gb rdtscp lm constant_tsc art arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc cpuid aperfmperf tsc_known_freq pni pclmulqdq dtes64 monitor ds_cpl vmx smx est tm2 ssse3 sdbg fma cx16 xtpr pdcm sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand lahf_lm abm 3dnowprefetch cpuid_fault epb cat_l2 cdp_l2 ssbd ibrs ibpb stibp ibrs_enhanced tpr_shadow flexpriority ept vpid ept_ad fsgsbase tsc_adjust bmi1 avx2 smep bmi2 erms invpcid rdt_a rdseed adx smap clflushopt clwb intel_pt sha_ni xsaveopt xsavec xgetbv1 xsaves split_lock_detect user_shstk avx_vnni dtherm ida arat pln pts hwp hwp_notify hwp_act_window hwp_epp hwp_pkg_req hfi vnmi umip pku ospke waitpkg gfni vaes vpclmulqdq tme rdpid movdiri movdir64b fsrm md_clear serialize pconfig arch_lbr ibt flush_l1d arch_capabilities
+Virtualization:                       VT-x
+L1d cache:                            896 KiB (24 instances)
+L1i cache:                            1.3 MiB (24 instances)
+L2 cache:                             32 MiB (12 instances)
+L3 cache:                             36 MiB (1 instance)
+NUMA node(s):                         1
+NUMA node0 CPU(s):                    0-31
+Vulnerability Gather data sampling:   Not affected
+Vulnerability Itlb multihit:          Not affected
+Vulnerability L1tf:                   Not affected
+Vulnerability Mds:                    Not affected
+Vulnerability Meltdown:               Not affected
+Vulnerability Mmio stale data:        Not affected
+Vulnerability Reg file data sampling: Mitigation; Clear Register File
+Vulnerability Retbleed:               Not affected
+Vulnerability Spec rstack overflow:   Not affected
+Vulnerability Spec store bypass:      Mitigation; Speculative Store Bypass disabled via prctl
+Vulnerability Spectre v1:             Mitigation; usercopy/swapgs barriers and __user pointer sanitization
+Vulnerability Spectre v2:             Mitigation; Enhanced / Automatic IBRS; IBPB conditional; RSB filling; PBRSB-eIBRS SW sequence; BHI BHI_DIS_S
+Vulnerability Srbds:                  Not affected
+Vulnerability Tsx async abort:        Not affected
+
+Versions of relevant libraries:
+[pip3] numpy==2.2.5
+[pip3] nvidia-cublas-cu12==12.6.4.1
+[pip3] nvidia-cuda-cupti-cu12==12.6.80
+[pip3] nvidia-cuda-nvrtc-cu12==12.6.77
+[pip3] nvidia-cuda-runtime-cu12==12.6.77
+[pip3] nvidia-cudnn-cu12==9.5.1.17
+[pip3] nvidia-cufft-cu12==11.3.0.4
+[pip3] nvidia-curand-cu12==10.3.7.77
+[pip3] nvidia-cusolver-cu12==11.7.1.2
+[pip3] nvidia-cusparse-cu12==12.5.4.2
+[pip3] nvidia-cusparselt-cu12==0.6.3
+[pip3] nvidia-nccl-cu12==2.26.2
+[pip3] nvidia-nvjitlink-cu12==12.6.85
+[pip3] nvidia-nvtx-cu12==12.6.77
+[pip3] open-clip-torch==2.23.0
+[pip3] torch==2.7.0
+[pip3] torchvision==0.22.0
+[pip3] triton==3.3.0
+[conda] numpy                     2.2.5                    pypi_0    pypi
+[conda] nvidia-cublas-cu12        12.6.4.1                 pypi_0    pypi
+[conda] nvidia-cuda-cupti-cu12    12.6.80                  pypi_0    pypi
+[conda] nvidia-cuda-nvrtc-cu12    12.6.77                  pypi_0    pypi
+[conda] nvidia-cuda-runtime-cu12  12.6.77                  pypi_0    pypi
+[conda] nvidia-cudnn-cu12         9.5.1.17                 pypi_0    pypi
+[conda] nvidia-cufft-cu12         11.3.0.4                 pypi_0    pypi
+[conda] nvidia-curand-cu12        10.3.7.77                pypi_0    pypi
+[conda] nvidia-cusolver-cu12      11.7.1.2                 pypi_0    pypi
+[conda] nvidia-cusparse-cu12      12.5.4.2                 pypi_0    pypi
+[conda] nvidia-cusparselt-cu12    0.6.3                    pypi_0    pypi
+[conda] nvidia-nccl-cu12          2.26.2                   pypi_0    pypi
+[conda] nvidia-nvjitlink-cu12     12.6.85                  pypi_0    pypi
+[conda] nvidia-nvtx-cu12          12.6.77                  pypi_0    pypi
+[conda] open-clip-torch           2.23.0                   pypi_0    pypi
+[conda] torch                     2.7.0                    pypi_0    pypi
+[conda] torchvision               0.22.0                   pypi_0    pypi
+[conda] triton                    3.3.0                    pypi_0    pypi
+        Pillow (11.2.1)
+
+Loading trainer: CoOp_BiomedCLIP
+Loading dataset: NIHChestXray
+Building transform_train
++ random resized crop (size=(224, 224))
++ to torch tensor of range [0, 1]
++ normalization (mean=[0.48145466, 0.4578275, 0.40821073], std=[0.26862954, 0.26130258, 0.27577711])
+Building transform_test
++ resize the smaller edge to 224
++ 224x224 center crop
++ to torch tensor of range [0, 1]
++ normalization (mean=[0.48145466, 0.4578275, 0.40821073], std=[0.26862954, 0.26130258, 0.27577711])
+***** Dataset statistics *****
+  Dataset: NIHChestXray
+  # classes: 2
+  # train_x: 32
+  # val: 32
+  # test: 25,596
+Loading BiomedCLIP (backbone: ViT-B/16)
+Building custom CLIP
+Initial context: "a photo of a"
+Number of context words (tokens): 4
+Turning off gradients in both the image and the text encoder
+Loading evaluator: Classification
+Trainer built successfully.
+No checkpoint found, train from scratch
+Initializing summary writer for tensorboard with log_dir=output/nihchest/shots_16/CoOp_BiomedCLIP/nctx4_cscFalse_ctpend/seed1/tensorboard
+epoch [1/100][1/2]	time 0.815 (0.815)	data 0.332 (0.332)	eta 0:02:42	loss 2.2526 (2.2526)	acc 56.2500 (56.2500)	lr 1.000000e-05
+epoch [1/100][2/2]	time 0.051 (0.433)	data 0.001 (0.166)	eta 0:01:25	loss 2.1036 (2.1781)	acc 43.7500 (50.0000)	lr 2.000000e-03
+epoch [2/100][1/2]	time 0.484 (0.484)	data 0.432 (0.432)	eta 0:01:35	loss 2.5643 (2.5643)	acc 50.0000 (50.0000)	lr 2.000000e-03
+epoch [2/100][2/2]	time 0.052 (0.268)	data 0.001 (0.217)	eta 0:00:52	loss 0.7793 (1.6718)	acc 62.5000 (56.2500)	lr 1.999507e-03
+epoch [3/100][1/2]	time 0.365 (0.365)	data 0.313 (0.313)	eta 0:01:11	loss 1.5898 (1.5898)	acc 43.7500 (43.7500)	lr 1.999507e-03
+epoch [3/100][2/2]	time 0.051 (0.208)	data 0.000 (0.157)	eta 0:00:40	loss 1.2118 (1.4008)	acc 56.2500 (50.0000)	lr 1.998027e-03
+epoch [4/100][1/2]	time 0.380 (0.380)	data 0.329 (0.329)	eta 0:01:13	loss 1.0604 (1.0604)	acc 50.0000 (50.0000)	lr 1.998027e-03
+epoch [4/100][2/2]	time 0.052 (0.216)	data 0.002 (0.165)	eta 0:00:41	loss 0.9803 (1.0203)	acc 37.5000 (43.7500)	lr 1.995562e-03
+epoch [5/100][1/2]	time 0.440 (0.440)	data 0.389 (0.389)	eta 0:01:24	loss 0.8089 (0.8089)	acc 56.2500 (56.2500)	lr 1.995562e-03
+epoch [5/100][2/2]	time 0.052 (0.246)	data 0.002 (0.195)	eta 0:00:46	loss 0.7423 (0.7756)	acc 62.5000 (59.3750)	lr 1.992115e-03
+epoch [6/100][1/2]	time 0.461 (0.461)	data 0.409 (0.409)	eta 0:01:27	loss 0.6521 (0.6521)	acc 62.5000 (62.5000)	lr 1.992115e-03
+epoch [6/100][2/2]	time 0.051 (0.256)	data 0.001 (0.205)	eta 0:00:48	loss 0.8223 (0.7372)	acc 56.2500 (59.3750)	lr 1.987688e-03
+epoch [7/100][1/2]	time 0.401 (0.401)	data 0.350 (0.350)	eta 0:01:14	loss 0.7783 (0.7783)	acc 43.7500 (43.7500)	lr 1.987688e-03
+epoch [7/100][2/2]	time 0.051 (0.226)	data 0.000 (0.175)	eta 0:00:41	loss 0.6535 (0.7159)	acc 62.5000 (53.1250)	lr 1.982287e-03
+epoch [8/100][1/2]	time 0.427 (0.427)	data 0.375 (0.375)	eta 0:01:18	loss 0.6592 (0.6592)	acc 62.5000 (62.5000)	lr 1.982287e-03
+epoch [8/100][2/2]	time 0.052 (0.239)	data 0.001 (0.188)	eta 0:00:44	loss 0.7129 (0.6861)	acc 50.0000 (56.2500)	lr 1.975917e-03
+epoch [9/100][1/2]	time 0.491 (0.491)	data 0.438 (0.438)	eta 0:01:29	loss 0.6846 (0.6846)	acc 43.7500 (43.7500)	lr 1.975917e-03
+epoch [9/100][2/2]	time 0.051 (0.271)	data 0.001 (0.219)	eta 0:00:49	loss 0.7628 (0.7237)	acc 43.7500 (43.7500)	lr 1.968583e-03
+epoch [10/100][1/2]	time 0.347 (0.347)	data 0.295 (0.295)	eta 0:01:02	loss 0.7245 (0.7245)	acc 50.0000 (50.0000)	lr 1.968583e-03
+epoch [10/100][2/2]	time 0.052 (0.199)	data 0.002 (0.149)	eta 0:00:35	loss 0.5792 (0.6519)	acc 87.5000 (68.7500)	lr 1.960294e-03
+epoch [11/100][1/2]	time 0.348 (0.348)	data 0.296 (0.296)	eta 0:01:02	loss 0.6751 (0.6751)	acc 43.7500 (43.7500)	lr 1.960294e-03
+epoch [11/100][2/2]	time 0.052 (0.200)	data 0.002 (0.149)	eta 0:00:35	loss 0.6699 (0.6725)	acc 50.0000 (46.8750)	lr 1.951057e-03
+epoch [12/100][1/2]	time 0.473 (0.473)	data 0.421 (0.421)	eta 0:01:23	loss 0.7391 (0.7391)	acc 56.2500 (56.2500)	lr 1.951057e-03
+epoch [12/100][2/2]	time 0.052 (0.262)	data 0.002 (0.211)	eta 0:00:46	loss 0.5768 (0.6580)	acc 81.2500 (68.7500)	lr 1.940881e-03
+epoch [13/100][1/2]	time 0.471 (0.471)	data 0.419 (0.419)	eta 0:01:22	loss 0.6606 (0.6606)	acc 56.2500 (56.2500)	lr 1.940881e-03
+epoch [13/100][2/2]	time 0.061 (0.266)	data 0.002 (0.211)	eta 0:00:46	loss 0.6002 (0.6304)	acc 56.2500 (56.2500)	lr 1.929776e-03
+epoch [14/100][1/2]	time 0.421 (0.421)	data 0.369 (0.369)	eta 0:01:12	loss 0.7762 (0.7762)	acc 25.0000 (25.0000)	lr 1.929776e-03
+epoch [14/100][2/2]	time 0.058 (0.239)	data 0.005 (0.187)	eta 0:00:41	loss 0.5259 (0.6510)	acc 81.2500 (53.1250)	lr 1.917755e-03
+epoch [15/100][1/2]	time 0.403 (0.403)	data 0.352 (0.352)	eta 0:01:08	loss 0.6765 (0.6765)	acc 50.0000 (50.0000)	lr 1.917755e-03
+epoch [15/100][2/2]	time 0.051 (0.227)	data 0.002 (0.177)	eta 0:00:38	loss 0.6712 (0.6739)	acc 50.0000 (50.0000)	lr 1.904827e-03
+epoch [16/100][1/2]	time 0.394 (0.394)	data 0.343 (0.343)	eta 0:01:06	loss 0.6703 (0.6703)	acc 56.2500 (56.2500)	lr 1.904827e-03
+epoch [16/100][2/2]	time 0.052 (0.223)	data 0.001 (0.172)	eta 0:00:37	loss 0.6796 (0.6750)	acc 68.7500 (62.5000)	lr 1.891007e-03
+epoch [17/100][1/2]	time 0.373 (0.373)	data 0.321 (0.321)	eta 0:01:02	loss 0.7057 (0.7057)	acc 50.0000 (50.0000)	lr 1.891007e-03
+epoch [17/100][2/2]	time 0.051 (0.212)	data 0.002 (0.161)	eta 0:00:35	loss 0.6577 (0.6817)	acc 56.2500 (53.1250)	lr 1.876307e-03
+epoch [18/100][1/2]	time 0.436 (0.436)	data 0.385 (0.385)	eta 0:01:12	loss 0.7298 (0.7298)	acc 37.5000 (37.5000)	lr 1.876307e-03
+epoch [18/100][2/2]	time 0.052 (0.244)	data 0.002 (0.194)	eta 0:00:40	loss 0.7285 (0.7292)	acc 56.2500 (46.8750)	lr 1.860742e-03
+epoch [19/100][1/2]	time 0.491 (0.491)	data 0.440 (0.440)	eta 0:01:20	loss 0.5814 (0.5814)	acc 68.7500 (68.7500)	lr 1.860742e-03
+epoch [19/100][2/2]	time 0.050 (0.271)	data 0.001 (0.221)	eta 0:00:43	loss 0.5874 (0.5844)	acc 75.0000 (71.8750)	lr 1.844328e-03
+epoch [20/100][1/2]	time 0.422 (0.422)	data 0.371 (0.371)	eta 0:01:07	loss 0.5655 (0.5655)	acc 62.5000 (62.5000)	lr 1.844328e-03
+epoch [20/100][2/2]	time 0.051 (0.236)	data 0.001 (0.186)	eta 0:00:37	loss 0.5380 (0.5517)	acc 81.2500 (71.8750)	lr 1.827081e-03
+epoch [21/100][1/2]	time 0.459 (0.459)	data 0.408 (0.408)	eta 0:01:13	loss 0.5900 (0.5900)	acc 56.2500 (56.2500)	lr 1.827081e-03
+epoch [21/100][2/2]	time 0.051 (0.255)	data 0.001 (0.205)	eta 0:00:40	loss 0.7309 (0.6605)	acc 50.0000 (53.1250)	lr 1.809017e-03
+epoch [22/100][1/2]	time 0.487 (0.487)	data 0.436 (0.436)	eta 0:01:16	loss 0.6442 (0.6442)	acc 56.2500 (56.2500)	lr 1.809017e-03
+epoch [22/100][2/2]	time 0.051 (0.269)	data 0.001 (0.218)	eta 0:00:41	loss 0.6483 (0.6462)	acc 50.0000 (53.1250)	lr 1.790155e-03
+epoch [23/100][1/2]	time 0.435 (0.435)	data 0.384 (0.384)	eta 0:01:07	loss 0.6328 (0.6328)	acc 75.0000 (75.0000)	lr 1.790155e-03
+epoch [23/100][2/2]	time 0.050 (0.243)	data 0.000 (0.192)	eta 0:00:37	loss 0.5867 (0.6098)	acc 81.2500 (78.1250)	lr 1.770513e-03
+epoch [24/100][1/2]	time 0.487 (0.487)	data 0.436 (0.436)	eta 0:01:14	loss 0.6229 (0.6229)	acc 68.7500 (68.7500)	lr 1.770513e-03
+epoch [24/100][2/2]	time 0.051 (0.269)	data 0.001 (0.218)	eta 0:00:40	loss 0.6251 (0.6240)	acc 56.2500 (62.5000)	lr 1.750111e-03
+epoch [25/100][1/2]	time 0.497 (0.497)	data 0.445 (0.445)	eta 0:01:14	loss 0.6486 (0.6486)	acc 62.5000 (62.5000)	lr 1.750111e-03
+epoch [25/100][2/2]	time 0.050 (0.273)	data 0.000 (0.223)	eta 0:00:41	loss 0.5586 (0.6036)	acc 68.7500 (65.6250)	lr 1.728969e-03
+epoch [26/100][1/2]	time 0.385 (0.385)	data 0.334 (0.334)	eta 0:00:57	loss 0.6124 (0.6124)	acc 75.0000 (75.0000)	lr 1.728969e-03
+epoch [26/100][2/2]	time 0.051 (0.218)	data 0.001 (0.168)	eta 0:00:32	loss 0.6542 (0.6333)	acc 62.5000 (68.7500)	lr 1.707107e-03
+epoch [27/100][1/2]	time 0.411 (0.411)	data 0.359 (0.359)	eta 0:01:00	loss 0.5771 (0.5771)	acc 87.5000 (87.5000)	lr 1.707107e-03
+epoch [27/100][2/2]	time 0.050 (0.230)	data 0.001 (0.180)	eta 0:00:33	loss 0.5855 (0.5813)	acc 75.0000 (81.2500)	lr 1.684547e-03
+epoch [28/100][1/2]	time 0.442 (0.442)	data 0.391 (0.391)	eta 0:01:04	loss 0.6605 (0.6605)	acc 68.7500 (68.7500)	lr 1.684547e-03
+epoch [28/100][2/2]	time 0.051 (0.246)	data 0.001 (0.196)	eta 0:00:35	loss 0.6003 (0.6304)	acc 62.5000 (65.6250)	lr 1.661312e-03
+epoch [29/100][1/2]	time 0.450 (0.450)	data 0.399 (0.399)	eta 0:01:04	loss 0.6621 (0.6621)	acc 50.0000 (50.0000)	lr 1.661312e-03
+epoch [29/100][2/2]	time 0.050 (0.250)	data 0.001 (0.200)	eta 0:00:35	loss 0.5809 (0.6215)	acc 68.7500 (59.3750)	lr 1.637424e-03
+epoch [30/100][1/2]	time 0.403 (0.403)	data 0.352 (0.352)	eta 0:00:56	loss 0.6531 (0.6531)	acc 62.5000 (62.5000)	lr 1.637424e-03
+epoch [30/100][2/2]	time 0.051 (0.227)	data 0.002 (0.177)	eta 0:00:31	loss 0.6266 (0.6398)	acc 56.2500 (59.3750)	lr 1.612907e-03
+epoch [31/100][1/2]	time 0.395 (0.395)	data 0.344 (0.344)	eta 0:00:54	loss 0.5903 (0.5903)	acc 68.7500 (68.7500)	lr 1.612907e-03
+epoch [31/100][2/2]	time 0.052 (0.223)	data 0.002 (0.173)	eta 0:00:30	loss 0.6282 (0.6092)	acc 75.0000 (71.8750)	lr 1.587785e-03
+epoch [32/100][1/2]	time 0.378 (0.378)	data 0.327 (0.327)	eta 0:00:51	loss 0.6976 (0.6976)	acc 56.2500 (56.2500)	lr 1.587785e-03
+epoch [32/100][2/2]	time 0.051 (0.214)	data 0.001 (0.164)	eta 0:00:29	loss 0.5184 (0.6080)	acc 81.2500 (68.7500)	lr 1.562083e-03
+epoch [33/100][1/2]	time 0.431 (0.431)	data 0.366 (0.366)	eta 0:00:58	loss 0.5977 (0.5977)	acc 68.7500 (68.7500)	lr 1.562083e-03
+epoch [33/100][2/2]	time 0.075 (0.253)	data 0.000 (0.183)	eta 0:00:33	loss 0.6014 (0.5996)	acc 62.5000 (65.6250)	lr 1.535827e-03
+epoch [34/100][1/2]	time 0.390 (0.390)	data 0.339 (0.339)	eta 0:00:51	loss 0.5457 (0.5457)	acc 81.2500 (81.2500)	lr 1.535827e-03
+epoch [34/100][2/2]	time 0.051 (0.221)	data 0.001 (0.170)	eta 0:00:29	loss 0.6956 (0.6206)	acc 56.2500 (68.7500)	lr 1.509041e-03
+epoch [35/100][1/2]	time 0.385 (0.385)	data 0.334 (0.334)	eta 0:00:50	loss 0.5556 (0.5556)	acc 68.7500 (68.7500)	lr 1.509041e-03
+epoch [35/100][2/2]	time 0.050 (0.218)	data 0.001 (0.167)	eta 0:00:28	loss 0.5520 (0.5538)	acc 68.7500 (68.7500)	lr 1.481754e-03
+epoch [36/100][1/2]	time 0.415 (0.415)	data 0.364 (0.364)	eta 0:00:53	loss 0.6353 (0.6353)	acc 75.0000 (75.0000)	lr 1.481754e-03
+epoch [36/100][2/2]	time 0.050 (0.233)	data 0.000 (0.182)	eta 0:00:29	loss 0.6127 (0.6240)	acc 62.5000 (68.7500)	lr 1.453990e-03
+epoch [37/100][1/2]	time 0.508 (0.508)	data 0.455 (0.455)	eta 0:01:04	loss 0.5980 (0.5980)	acc 62.5000 (62.5000)	lr 1.453990e-03
+epoch [37/100][2/2]	time 0.051 (0.280)	data 0.001 (0.228)	eta 0:00:35	loss 0.5968 (0.5974)	acc 68.7500 (65.6250)	lr 1.425779e-03
+epoch [38/100][1/2]	time 0.447 (0.447)	data 0.397 (0.397)	eta 0:00:55	loss 0.6758 (0.6758)	acc 56.2500 (56.2500)	lr 1.425779e-03
+epoch [38/100][2/2]	time 0.051 (0.249)	data 0.000 (0.199)	eta 0:00:30	loss 0.6360 (0.6559)	acc 62.5000 (59.3750)	lr 1.397148e-03
+epoch [39/100][1/2]	time 0.465 (0.465)	data 0.415 (0.415)	eta 0:00:57	loss 0.6400 (0.6400)	acc 62.5000 (62.5000)	lr 1.397148e-03
+epoch [39/100][2/2]	time 0.051 (0.258)	data 0.000 (0.207)	eta 0:00:31	loss 0.6170 (0.6285)	acc 68.7500 (65.6250)	lr 1.368125e-03
+epoch [40/100][1/2]	time 0.403 (0.403)	data 0.352 (0.352)	eta 0:00:48	loss 0.5571 (0.5571)	acc 68.7500 (68.7500)	lr 1.368125e-03
+epoch [40/100][2/2]	time 0.051 (0.227)	data 0.001 (0.176)	eta 0:00:27	loss 0.5183 (0.5377)	acc 87.5000 (78.1250)	lr 1.338738e-03
+epoch [41/100][1/2]	time 0.459 (0.459)	data 0.407 (0.407)	eta 0:00:54	loss 0.5468 (0.5468)	acc 81.2500 (81.2500)	lr 1.338738e-03
+epoch [41/100][2/2]	time 0.051 (0.255)	data 0.000 (0.204)	eta 0:00:30	loss 0.5760 (0.5614)	acc 62.5000 (71.8750)	lr 1.309017e-03
+epoch [42/100][1/2]	time 0.450 (0.450)	data 0.399 (0.399)	eta 0:00:52	loss 0.5957 (0.5957)	acc 75.0000 (75.0000)	lr 1.309017e-03
+epoch [42/100][2/2]	time 0.051 (0.250)	data 0.001 (0.200)	eta 0:00:29	loss 0.5327 (0.5642)	acc 87.5000 (81.2500)	lr 1.278991e-03
+epoch [43/100][1/2]	time 0.367 (0.367)	data 0.316 (0.316)	eta 0:00:42	loss 0.6177 (0.6177)	acc 75.0000 (75.0000)	lr 1.278991e-03
+epoch [43/100][2/2]	time 0.055 (0.211)	data 0.001 (0.158)	eta 0:00:24	loss 0.5337 (0.5757)	acc 75.0000 (75.0000)	lr 1.248690e-03
+epoch [44/100][1/2]	time 0.426 (0.426)	data 0.375 (0.375)	eta 0:00:48	loss 0.5828 (0.5828)	acc 68.7500 (68.7500)	lr 1.248690e-03
+epoch [44/100][2/2]	time 0.052 (0.239)	data 0.002 (0.188)	eta 0:00:26	loss 0.6825 (0.6327)	acc 62.5000 (65.6250)	lr 1.218143e-03
+epoch [45/100][1/2]	time 0.477 (0.477)	data 0.425 (0.425)	eta 0:00:52	loss 0.7603 (0.7603)	acc 43.7500 (43.7500)	lr 1.218143e-03
+epoch [45/100][2/2]	time 0.050 (0.264)	data 0.000 (0.213)	eta 0:00:28	loss 0.4874 (0.6238)	acc 93.7500 (68.7500)	lr 1.187381e-03
+epoch [46/100][1/2]	time 0.418 (0.418)	data 0.367 (0.367)	eta 0:00:45	loss 0.5813 (0.5813)	acc 75.0000 (75.0000)	lr 1.187381e-03
+epoch [46/100][2/2]	time 0.052 (0.235)	data 0.002 (0.184)	eta 0:00:25	loss 0.5693 (0.5753)	acc 75.0000 (75.0000)	lr 1.156434e-03
+epoch [47/100][1/2]	time 0.514 (0.514)	data 0.462 (0.462)	eta 0:00:54	loss 0.4844 (0.4844)	acc 81.2500 (81.2500)	lr 1.156434e-03
+epoch [47/100][2/2]	time 0.052 (0.283)	data 0.002 (0.232)	eta 0:00:29	loss 0.6049 (0.5446)	acc 68.7500 (75.0000)	lr 1.125333e-03
+epoch [48/100][1/2]	time 0.379 (0.379)	data 0.328 (0.328)	eta 0:00:39	loss 0.5674 (0.5674)	acc 68.7500 (68.7500)	lr 1.125333e-03
+epoch [48/100][2/2]	time 0.051 (0.215)	data 0.002 (0.165)	eta 0:00:22	loss 0.6090 (0.5882)	acc 62.5000 (65.6250)	lr 1.094108e-03
+epoch [49/100][1/2]	time 0.442 (0.442)	data 0.390 (0.390)	eta 0:00:45	loss 0.5531 (0.5531)	acc 68.7500 (68.7500)	lr 1.094108e-03
+epoch [49/100][2/2]	time 0.050 (0.246)	data 0.001 (0.195)	eta 0:00:25	loss 0.6006 (0.5768)	acc 81.2500 (75.0000)	lr 1.062791e-03
+epoch [50/100][1/2]	time 0.389 (0.389)	data 0.337 (0.337)	eta 0:00:39	loss 0.6702 (0.6702)	acc 56.2500 (56.2500)	lr 1.062791e-03
+epoch [50/100][2/2]	time 0.051 (0.220)	data 0.000 (0.169)	eta 0:00:21	loss 0.6757 (0.6729)	acc 56.2500 (56.2500)	lr 1.031411e-03
+epoch [51/100][1/2]	time 0.403 (0.403)	data 0.351 (0.351)	eta 0:00:39	loss 0.5626 (0.5626)	acc 81.2500 (81.2500)	lr 1.031411e-03
+epoch [51/100][2/2]	time 0.051 (0.227)	data 0.002 (0.177)	eta 0:00:22	loss 0.4585 (0.5105)	acc 87.5000 (84.3750)	lr 1.000000e-03
+epoch [52/100][1/2]	time 0.396 (0.396)	data 0.344 (0.344)	eta 0:00:38	loss 0.5596 (0.5596)	acc 75.0000 (75.0000)	lr 1.000000e-03
+epoch [52/100][2/2]	time 0.052 (0.224)	data 0.001 (0.173)	eta 0:00:21	loss 0.7466 (0.6531)	acc 56.2500 (65.6250)	lr 9.685892e-04
+epoch [53/100][1/2]	time 0.369 (0.369)	data 0.317 (0.317)	eta 0:00:35	loss 0.5159 (0.5159)	acc 81.2500 (81.2500)	lr 9.685892e-04
+epoch [53/100][2/2]	time 0.052 (0.210)	data 0.002 (0.160)	eta 0:00:19	loss 0.6180 (0.5669)	acc 75.0000 (78.1250)	lr 9.372095e-04
+epoch [54/100][1/2]	time 0.431 (0.431)	data 0.380 (0.380)	eta 0:00:40	loss 0.5801 (0.5801)	acc 75.0000 (75.0000)	lr 9.372095e-04
+epoch [54/100][2/2]	time 0.051 (0.241)	data 0.001 (0.191)	eta 0:00:22	loss 0.6187 (0.5994)	acc 62.5000 (68.7500)	lr 9.058917e-04
+epoch [55/100][1/2]	time 0.419 (0.419)	data 0.366 (0.366)	eta 0:00:38	loss 0.6201 (0.6201)	acc 62.5000 (62.5000)	lr 9.058917e-04
+epoch [55/100][2/2]	time 0.051 (0.235)	data 0.001 (0.184)	eta 0:00:21	loss 0.5718 (0.5959)	acc 68.7500 (65.6250)	lr 8.746668e-04
+epoch [56/100][1/2]	time 0.483 (0.483)	data 0.431 (0.431)	eta 0:00:42	loss 0.5513 (0.5513)	acc 75.0000 (75.0000)	lr 8.746668e-04
+epoch [56/100][2/2]	time 0.051 (0.267)	data 0.001 (0.216)	eta 0:00:23	loss 0.7970 (0.6742)	acc 43.7500 (59.3750)	lr 8.435655e-04
+epoch [57/100][1/2]	time 0.402 (0.402)	data 0.350 (0.350)	eta 0:00:34	loss 0.6036 (0.6036)	acc 68.7500 (68.7500)	lr 8.435655e-04
+epoch [57/100][2/2]	time 0.051 (0.226)	data 0.000 (0.175)	eta 0:00:19	loss 0.5545 (0.5790)	acc 62.5000 (65.6250)	lr 8.126187e-04
+epoch [58/100][1/2]	time 0.471 (0.471)	data 0.420 (0.420)	eta 0:00:39	loss 0.5285 (0.5285)	acc 81.2500 (81.2500)	lr 8.126187e-04
+epoch [58/100][2/2]	time 0.052 (0.261)	data 0.001 (0.210)	eta 0:00:21	loss 0.5080 (0.5182)	acc 81.2500 (81.2500)	lr 7.818568e-04
+epoch [59/100][1/2]	time 0.445 (0.445)	data 0.394 (0.394)	eta 0:00:36	loss 0.7190 (0.7190)	acc 56.2500 (56.2500)	lr 7.818568e-04
+epoch [59/100][2/2]	time 0.051 (0.248)	data 0.002 (0.198)	eta 0:00:20	loss 0.5745 (0.6468)	acc 68.7500 (62.5000)	lr 7.513101e-04
+epoch [60/100][1/2]	time 0.414 (0.414)	data 0.363 (0.363)	eta 0:00:33	loss 0.5222 (0.5222)	acc 81.2500 (81.2500)	lr 7.513101e-04
+epoch [60/100][2/2]	time 0.052 (0.233)	data 0.001 (0.182)	eta 0:00:18	loss 0.5089 (0.5156)	acc 75.0000 (78.1250)	lr 7.210089e-04
+epoch [61/100][1/2]	time 0.345 (0.345)	data 0.294 (0.294)	eta 0:00:27	loss 0.5692 (0.5692)	acc 62.5000 (62.5000)	lr 7.210089e-04
+epoch [61/100][2/2]	time 0.052 (0.198)	data 0.002 (0.148)	eta 0:00:15	loss 0.6109 (0.5901)	acc 62.5000 (62.5000)	lr 6.909830e-04
+epoch [62/100][1/2]	time 0.397 (0.397)	data 0.345 (0.345)	eta 0:00:30	loss 0.5299 (0.5299)	acc 75.0000 (75.0000)	lr 6.909830e-04
+epoch [62/100][2/2]	time 0.051 (0.224)	data 0.001 (0.173)	eta 0:00:17	loss 0.6043 (0.5671)	acc 68.7500 (71.8750)	lr 6.612621e-04
+epoch [63/100][1/2]	time 0.424 (0.424)	data 0.372 (0.372)	eta 0:00:31	loss 0.4954 (0.4954)	acc 87.5000 (87.5000)	lr 6.612621e-04
+epoch [63/100][2/2]	time 0.052 (0.238)	data 0.002 (0.187)	eta 0:00:17	loss 0.5350 (0.5152)	acc 75.0000 (81.2500)	lr 6.318754e-04
+epoch [64/100][1/2]	time 0.405 (0.405)	data 0.354 (0.354)	eta 0:00:29	loss 0.5496 (0.5496)	acc 81.2500 (81.2500)	lr 6.318754e-04
+epoch [64/100][2/2]	time 0.051 (0.228)	data 0.000 (0.177)	eta 0:00:16	loss 0.6063 (0.5780)	acc 68.7500 (75.0000)	lr 6.028521e-04
+epoch [65/100][1/2]	time 0.509 (0.509)	data 0.458 (0.458)	eta 0:00:36	loss 0.5225 (0.5225)	acc 68.7500 (68.7500)	lr 6.028521e-04
+epoch [65/100][2/2]	time 0.053 (0.281)	data 0.002 (0.230)	eta 0:00:19	loss 0.4777 (0.5001)	acc 75.0000 (71.8750)	lr 5.742207e-04
+epoch [66/100][1/2]	time 0.506 (0.506)	data 0.456 (0.456)	eta 0:00:34	loss 0.5032 (0.5032)	acc 75.0000 (75.0000)	lr 5.742207e-04
+epoch [66/100][2/2]	time 0.051 (0.279)	data 0.001 (0.229)	eta 0:00:18	loss 0.5418 (0.5225)	acc 68.7500 (71.8750)	lr 5.460095e-04
+epoch [67/100][1/2]	time 0.409 (0.409)	data 0.358 (0.358)	eta 0:00:27	loss 0.6258 (0.6258)	acc 81.2500 (81.2500)	lr 5.460095e-04
+epoch [67/100][2/2]	time 0.051 (0.230)	data 0.001 (0.179)	eta 0:00:15	loss 0.5582 (0.5920)	acc 75.0000 (78.1250)	lr 5.182463e-04
+epoch [68/100][1/2]	time 0.438 (0.438)	data 0.387 (0.387)	eta 0:00:28	loss 0.5328 (0.5328)	acc 81.2500 (81.2500)	lr 5.182463e-04
+epoch [68/100][2/2]	time 0.051 (0.245)	data 0.002 (0.194)	eta 0:00:15	loss 0.6224 (0.5776)	acc 81.2500 (81.2500)	lr 4.909586e-04
+epoch [69/100][1/2]	time 0.478 (0.478)	data 0.427 (0.427)	eta 0:00:30	loss 0.5181 (0.5181)	acc 68.7500 (68.7500)	lr 4.909586e-04
+epoch [69/100][2/2]	time 0.051 (0.265)	data 0.000 (0.214)	eta 0:00:16	loss 0.6051 (0.5616)	acc 62.5000 (65.6250)	lr 4.641732e-04
+epoch [70/100][1/2]	time 0.402 (0.402)	data 0.350 (0.350)	eta 0:00:24	loss 0.5083 (0.5083)	acc 87.5000 (87.5000)	lr 4.641732e-04
+epoch [70/100][2/2]	time 0.051 (0.227)	data 0.001 (0.176)	eta 0:00:13	loss 0.6592 (0.5838)	acc 75.0000 (81.2500)	lr 4.379166e-04
+epoch [71/100][1/2]	time 0.424 (0.424)	data 0.372 (0.372)	eta 0:00:25	loss 0.5893 (0.5893)	acc 68.7500 (68.7500)	lr 4.379166e-04
+epoch [71/100][2/2]	time 0.052 (0.238)	data 0.001 (0.186)	eta 0:00:13	loss 0.4787 (0.5340)	acc 87.5000 (78.1250)	lr 4.122147e-04
+epoch [72/100][1/2]	time 0.501 (0.501)	data 0.450 (0.450)	eta 0:00:28	loss 0.6589 (0.6589)	acc 62.5000 (62.5000)	lr 4.122147e-04
+epoch [72/100][2/2]	time 0.053 (0.277)	data 0.002 (0.226)	eta 0:00:15	loss 0.5061 (0.5825)	acc 81.2500 (71.8750)	lr 3.870929e-04
+epoch [73/100][1/2]	time 0.479 (0.479)	data 0.428 (0.428)	eta 0:00:26	loss 0.5198 (0.5198)	acc 75.0000 (75.0000)	lr 3.870929e-04
+epoch [73/100][2/2]	time 0.051 (0.265)	data 0.001 (0.214)	eta 0:00:14	loss 0.6004 (0.5601)	acc 75.0000 (75.0000)	lr 3.625760e-04
+epoch [74/100][1/2]	time 0.411 (0.411)	data 0.360 (0.360)	eta 0:00:21	loss 0.4574 (0.4574)	acc 75.0000 (75.0000)	lr 3.625760e-04
+epoch [74/100][2/2]	time 0.051 (0.231)	data 0.002 (0.181)	eta 0:00:12	loss 0.4360 (0.4467)	acc 87.5000 (81.2500)	lr 3.386881e-04
+epoch [75/100][1/2]	time 0.471 (0.471)	data 0.418 (0.418)	eta 0:00:24	loss 0.5952 (0.5952)	acc 68.7500 (68.7500)	lr 3.386881e-04
+epoch [75/100][2/2]	time 0.050 (0.261)	data 0.001 (0.209)	eta 0:00:13	loss 0.6049 (0.6000)	acc 62.5000 (65.6250)	lr 3.154529e-04
+epoch [76/100][1/2]	time 0.452 (0.452)	data 0.400 (0.400)	eta 0:00:22	loss 0.6144 (0.6144)	acc 75.0000 (75.0000)	lr 3.154529e-04
+epoch [76/100][2/2]	time 0.051 (0.252)	data 0.001 (0.201)	eta 0:00:12	loss 0.5573 (0.5858)	acc 68.7500 (71.8750)	lr 2.928932e-04
+epoch [77/100][1/2]	time 0.485 (0.485)	data 0.433 (0.433)	eta 0:00:22	loss 0.5059 (0.5059)	acc 75.0000 (75.0000)	lr 2.928932e-04
+epoch [77/100][2/2]	time 0.051 (0.268)	data 0.001 (0.217)	eta 0:00:12	loss 0.5794 (0.5426)	acc 68.7500 (71.8750)	lr 2.710314e-04
+epoch [78/100][1/2]	time 0.444 (0.444)	data 0.391 (0.391)	eta 0:00:19	loss 0.5622 (0.5622)	acc 75.0000 (75.0000)	lr 2.710314e-04
+epoch [78/100][2/2]	time 0.051 (0.248)	data 0.001 (0.196)	eta 0:00:10	loss 0.5119 (0.5371)	acc 81.2500 (78.1250)	lr 2.498889e-04
+epoch [79/100][1/2]	time 0.401 (0.401)	data 0.349 (0.349)	eta 0:00:17	loss 0.4743 (0.4743)	acc 68.7500 (68.7500)	lr 2.498889e-04
+epoch [79/100][2/2]	time 0.051 (0.226)	data 0.001 (0.175)	eta 0:00:09	loss 0.5678 (0.5210)	acc 75.0000 (71.8750)	lr 2.294868e-04
+epoch [80/100][1/2]	time 0.434 (0.434)	data 0.383 (0.383)	eta 0:00:17	loss 0.5245 (0.5245)	acc 68.7500 (68.7500)	lr 2.294868e-04
+epoch [80/100][2/2]	time 0.052 (0.243)	data 0.002 (0.192)	eta 0:00:09	loss 0.5812 (0.5529)	acc 62.5000 (65.6250)	lr 2.098450e-04
+epoch [81/100][1/2]	time 0.494 (0.494)	data 0.442 (0.442)	eta 0:00:19	loss 0.5513 (0.5513)	acc 75.0000 (75.0000)	lr 2.098450e-04
+epoch [81/100][2/2]	time 0.051 (0.273)	data 0.002 (0.222)	eta 0:00:10	loss 0.5663 (0.5588)	acc 68.7500 (71.8750)	lr 1.909830e-04
+epoch [82/100][1/2]	time 0.381 (0.381)	data 0.329 (0.329)	eta 0:00:14	loss 0.4555 (0.4555)	acc 93.7500 (93.7500)	lr 1.909830e-04
+epoch [82/100][2/2]	time 0.051 (0.216)	data 0.002 (0.165)	eta 0:00:07	loss 0.6053 (0.5304)	acc 75.0000 (84.3750)	lr 1.729194e-04
+epoch [83/100][1/2]	time 0.365 (0.365)	data 0.313 (0.313)	eta 0:00:12	loss 0.3866 (0.3866)	acc 93.7500 (93.7500)	lr 1.729194e-04
+epoch [83/100][2/2]	time 0.051 (0.208)	data 0.002 (0.158)	eta 0:00:07	loss 0.5529 (0.4698)	acc 68.7500 (81.2500)	lr 1.556721e-04
+epoch [84/100][1/2]	time 0.423 (0.423)	data 0.371 (0.371)	eta 0:00:13	loss 0.5772 (0.5772)	acc 62.5000 (62.5000)	lr 1.556721e-04
+epoch [84/100][2/2]	time 0.052 (0.237)	data 0.002 (0.186)	eta 0:00:07	loss 0.5914 (0.5843)	acc 81.2500 (71.8750)	lr 1.392580e-04
+epoch [85/100][1/2]	time 0.459 (0.459)	data 0.407 (0.407)	eta 0:00:14	loss 0.6067 (0.6067)	acc 68.7500 (68.7500)	lr 1.392580e-04
+epoch [85/100][2/2]	time 0.051 (0.255)	data 0.002 (0.204)	eta 0:00:07	loss 0.5904 (0.5986)	acc 68.7500 (68.7500)	lr 1.236933e-04
+epoch [86/100][1/2]	time 0.383 (0.383)	data 0.331 (0.331)	eta 0:00:11	loss 0.5582 (0.5582)	acc 68.7500 (68.7500)	lr 1.236933e-04
+epoch [86/100][2/2]	time 0.050 (0.217)	data 0.000 (0.166)	eta 0:00:06	loss 0.5683 (0.5633)	acc 68.7500 (68.7500)	lr 1.089935e-04
+epoch [87/100][1/2]	time 0.455 (0.455)	data 0.403 (0.403)	eta 0:00:12	loss 0.5334 (0.5334)	acc 62.5000 (62.5000)	lr 1.089935e-04
+epoch [87/100][2/2]	time 0.052 (0.253)	data 0.002 (0.202)	eta 0:00:06	loss 0.5945 (0.5639)	acc 68.7500 (65.6250)	lr 9.517295e-05
+epoch [88/100][1/2]	time 0.462 (0.462)	data 0.410 (0.410)	eta 0:00:11	loss 0.5901 (0.5901)	acc 62.5000 (62.5000)	lr 9.517295e-05
+epoch [88/100][2/2]	time 0.052 (0.257)	data 0.002 (0.206)	eta 0:00:06	loss 0.5366 (0.5633)	acc 68.7500 (65.6250)	lr 8.224537e-05
+epoch [89/100][1/2]	time 0.486 (0.486)	data 0.434 (0.434)	eta 0:00:11	loss 0.6529 (0.6529)	acc 68.7500 (68.7500)	lr 8.224537e-05
+epoch [89/100][2/2]	time 0.051 (0.268)	data 0.001 (0.217)	eta 0:00:05	loss 0.5851 (0.6190)	acc 56.2500 (62.5000)	lr 7.022351e-05
+epoch [90/100][1/2]	time 0.404 (0.404)	data 0.353 (0.353)	eta 0:00:08	loss 0.5314 (0.5314)	acc 75.0000 (75.0000)	lr 7.022351e-05
+epoch [90/100][2/2]	time 0.052 (0.228)	data 0.001 (0.177)	eta 0:00:04	loss 0.5667 (0.5490)	acc 68.7500 (71.8750)	lr 5.911923e-05
+epoch [91/100][1/2]	time 0.443 (0.443)	data 0.391 (0.391)	eta 0:00:08	loss 0.4115 (0.4115)	acc 81.2500 (81.2500)	lr 5.911923e-05
+epoch [91/100][2/2]	time 0.051 (0.247)	data 0.000 (0.196)	eta 0:00:04	loss 0.5301 (0.4708)	acc 75.0000 (78.1250)	lr 4.894348e-05
+epoch [92/100][1/2]	time 0.473 (0.473)	data 0.422 (0.422)	eta 0:00:08	loss 0.4685 (0.4685)	acc 81.2500 (81.2500)	lr 4.894348e-05
+epoch [92/100][2/2]	time 0.052 (0.263)	data 0.002 (0.212)	eta 0:00:04	loss 0.5523 (0.5104)	acc 62.5000 (71.8750)	lr 3.970631e-05
+epoch [93/100][1/2]	time 0.472 (0.472)	data 0.421 (0.421)	eta 0:00:07	loss 0.6275 (0.6275)	acc 68.7500 (68.7500)	lr 3.970631e-05
+epoch [93/100][2/2]	time 0.051 (0.262)	data 0.001 (0.211)	eta 0:00:03	loss 0.4626 (0.5450)	acc 81.2500 (75.0000)	lr 3.141684e-05
+epoch [94/100][1/2]	time 0.422 (0.422)	data 0.371 (0.371)	eta 0:00:05	loss 0.5822 (0.5822)	acc 75.0000 (75.0000)	lr 3.141684e-05
+epoch [94/100][2/2]	time 0.051 (0.237)	data 0.000 (0.186)	eta 0:00:02	loss 0.7322 (0.6572)	acc 50.0000 (62.5000)	lr 2.408324e-05
+epoch [95/100][1/2]	time 0.359 (0.359)	data 0.307 (0.307)	eta 0:00:03	loss 0.4995 (0.4995)	acc 81.2500 (81.2500)	lr 2.408324e-05
+epoch [95/100][2/2]	time 0.052 (0.206)	data 0.001 (0.154)	eta 0:00:02	loss 0.6621 (0.5808)	acc 62.5000 (71.8750)	lr 1.771275e-05
+epoch [96/100][1/2]	time 0.429 (0.429)	data 0.377 (0.377)	eta 0:00:03	loss 0.4848 (0.4848)	acc 75.0000 (75.0000)	lr 1.771275e-05
+epoch [96/100][2/2]	time 0.051 (0.240)	data 0.001 (0.189)	eta 0:00:01	loss 0.6571 (0.5710)	acc 68.7500 (71.8750)	lr 1.231166e-05
+epoch [97/100][1/2]	time 0.417 (0.417)	data 0.364 (0.364)	eta 0:00:02	loss 0.6589 (0.6589)	acc 56.2500 (56.2500)	lr 1.231166e-05
+epoch [97/100][2/2]	time 0.051 (0.234)	data 0.001 (0.182)	eta 0:00:01	loss 0.4221 (0.5405)	acc 87.5000 (71.8750)	lr 7.885299e-06
+epoch [98/100][1/2]	time 0.483 (0.483)	data 0.431 (0.431)	eta 0:00:02	loss 0.5768 (0.5768)	acc 68.7500 (68.7500)	lr 7.885299e-06
+epoch [98/100][2/2]	time 0.052 (0.267)	data 0.002 (0.216)	eta 0:00:01	loss 0.4362 (0.5065)	acc 81.2500 (75.0000)	lr 4.438035e-06
+epoch [99/100][1/2]	time 0.434 (0.434)	data 0.381 (0.381)	eta 0:00:01	loss 0.5929 (0.5929)	acc 68.7500 (68.7500)	lr 4.438035e-06
+epoch [99/100][2/2]	time 0.060 (0.247)	data 0.005 (0.193)	eta 0:00:00	loss 0.5849 (0.5889)	acc 81.2500 (75.0000)	lr 1.973272e-06
+epoch [100/100][1/2]	time 0.433 (0.433)	data 0.380 (0.380)	eta 0:00:00	loss 0.7129 (0.7129)	acc 68.7500 (68.7500)	lr 1.973272e-06
+epoch [100/100][2/2]	time 0.052 (0.242)	data 0.001 (0.191)	eta 0:00:00	loss 0.4278 (0.5703)	acc 81.2500 (75.0000)	lr 4.934396e-07
+Checkpoint saved to "output/nihchest/shots_16/CoOp_BiomedCLIP/nctx4_cscFalse_ctpend/seed1/prompt_learner/model.pth.tar-100"
+Finished training
+Do evaluation on test set
+  0%|          | 0/256 [00:00<?, ?it/s]  0%|          | 1/256 [00:03<13:35,  3.20s/it]  1%|          | 2/256 [00:03<06:04,  1.44s/it]  1%|          | 3/256 [00:03<03:40,  1.15it/s]  2%|▏         | 4/256 [00:04<04:00,  1.05it/s]  2%|▏         | 5/256 [00:04<02:51,  1.46it/s]  2%|▏         | 6/256 [00:06<04:00,  1.04it/s]  3%|▎         | 7/256 [00:06<02:57,  1.40it/s]  3%|▎         | 8/256 [00:06<02:16,  1.81it/s]  4%|▎         | 9/256 [00:07<01:49,  2.26it/s]  4%|▍         | 10/256 [00:07<01:31,  2.70it/s]  4%|▍         | 11/256 [00:07<01:18,  3.13it/s]  5%|▍         | 12/256 [00:07<01:09,  3.49it/s]  5%|▌         | 13/256 [00:07<01:05,  3.71it/s]  5%|▌         | 14/256 [00:08<01:53,  2.13it/s]  6%|▌         | 15/256 [00:10<03:18,  1.22it/s]  6%|▋         | 16/256 [00:12<04:42,  1.18s/it]  7%|▋         | 17/256 [00:12<03:31,  1.13it/s]  7%|▋         | 18/256 [00:12<02:41,  1.47it/s]  7%|▋         | 19/256 [00:13<02:07,  1.86it/s]  8%|▊         | 20/256 [00:13<01:43,  2.28it/s]  8%|▊         | 21/256 [00:14<02:58,  1.31it/s]  9%|▊         | 22/256 [00:14<02:18,  1.69it/s]  9%|▉         | 23/256 [00:15<01:50,  2.10it/s]  9%|▉         | 24/256 [00:15<01:31,  2.53it/s] 10%|▉         | 25/256 [00:15<01:18,  2.94it/s] 10%|█         | 26/256 [00:15<01:08,  3.34it/s] 11%|█         | 27/256 [00:15<01:01,  3.70it/s] 11%|█         | 28/256 [00:16<00:57,  4.00it/s] 11%|█▏        | 29/256 [00:16<00:53,  4.23it/s] 12%|█▏        | 30/256 [00:16<00:51,  4.39it/s] 12%|█▏        | 31/256 [00:16<00:49,  4.53it/s] 12%|█▎        | 32/256 [00:17<00:48,  4.63it/s] 13%|█▎        | 33/256 [00:17<00:47,  4.71it/s] 13%|█▎        | 34/256 [00:17<00:46,  4.77it/s] 14%|█▎        | 35/256 [00:17<00:46,  4.79it/s] 14%|█▍        | 36/256 [00:17<00:45,  4.81it/s] 14%|█▍        | 37/256 [00:18<00:45,  4.82it/s] 15%|█▍        | 38/256 [00:18<00:44,  4.85it/s] 15%|█▌        | 39/256 [00:18<00:44,  4.86it/s] 16%|█▌        | 40/256 [00:18<00:44,  4.82it/s] 16%|█▌        | 41/256 [00:18<00:44,  4.83it/s] 16%|█▋        | 42/256 [00:19<00:44,  4.85it/s] 17%|█▋        | 43/256 [00:19<00:43,  4.87it/s] 17%|█▋        | 44/256 [00:19<00:43,  4.86it/s] 18%|█▊        | 45/256 [00:19<00:43,  4.86it/s] 18%|█▊        | 46/256 [00:19<00:43,  4.86it/s] 18%|█▊        | 47/256 [00:20<00:42,  4.87it/s] 19%|█▉        | 48/256 [00:20<00:43,  4.82it/s] 19%|█▉        | 49/256 [00:20<00:42,  4.84it/s] 20%|█▉        | 50/256 [00:20<00:42,  4.86it/s] 20%|█▉        | 51/256 [00:20<00:42,  4.85it/s] 20%|██        | 52/256 [00:21<00:42,  4.85it/s] 21%|██        | 53/256 [00:21<00:41,  4.85it/s] 21%|██        | 54/256 [00:21<00:41,  4.86it/s] 21%|██▏       | 55/256 [00:21<00:41,  4.83it/s] 22%|██▏       | 56/256 [00:21<00:41,  4.84it/s] 22%|██▏       | 57/256 [00:22<00:41,  4.84it/s] 23%|██▎       | 58/256 [00:22<00:40,  4.85it/s] 23%|██▎       | 59/256 [00:22<00:40,  4.85it/s] 23%|██▎       | 60/256 [00:22<00:40,  4.86it/s] 24%|██▍       | 61/256 [00:22<00:40,  4.85it/s] 24%|██▍       | 62/256 [00:23<00:39,  4.86it/s] 25%|██▍       | 63/256 [00:23<00:39,  4.86it/s] 25%|██▌       | 64/256 [00:23<00:39,  4.86it/s] 25%|██▌       | 65/256 [00:23<00:39,  4.86it/s] 26%|██▌       | 66/256 [00:24<00:39,  4.85it/s] 26%|██▌       | 67/256 [00:24<00:38,  4.85it/s] 27%|██▋       | 68/256 [00:24<00:38,  4.85it/s] 27%|██▋       | 69/256 [00:24<00:38,  4.85it/s] 27%|██▋       | 70/256 [00:24<00:38,  4.85it/s] 28%|██▊       | 71/256 [00:25<00:38,  4.84it/s] 28%|██▊       | 72/256 [00:25<00:37,  4.85it/s] 29%|██▊       | 73/256 [00:25<00:37,  4.84it/s] 29%|██▉       | 74/256 [00:25<00:37,  4.85it/s] 29%|██▉       | 75/256 [00:25<00:37,  4.84it/s] 30%|██▉       | 76/256 [00:26<00:37,  4.81it/s] 30%|███       | 77/256 [00:26<00:37,  4.82it/s] 30%|███       | 78/256 [00:26<00:37,  4.80it/s] 31%|███       | 79/256 [00:26<00:36,  4.82it/s] 31%|███▏      | 80/256 [00:26<00:36,  4.81it/s] 32%|███▏      | 81/256 [00:27<00:36,  4.82it/s] 32%|███▏      | 82/256 [00:27<00:36,  4.82it/s] 32%|███▏      | 83/256 [00:27<00:35,  4.83it/s] 33%|███▎      | 84/256 [00:27<00:35,  4.80it/s] 33%|███▎      | 85/256 [00:27<00:35,  4.82it/s] 34%|███▎      | 86/256 [00:28<00:35,  4.79it/s] 34%|███▍      | 87/256 [00:28<00:35,  4.77it/s] 34%|███▍      | 88/256 [00:28<00:35,  4.79it/s] 35%|███▍      | 89/256 [00:28<00:34,  4.79it/s] 35%|███▌      | 90/256 [00:28<00:34,  4.80it/s] 36%|███▌      | 91/256 [00:29<00:34,  4.81it/s] 36%|███▌      | 92/256 [00:29<00:34,  4.82it/s] 36%|███▋      | 93/256 [00:29<00:33,  4.82it/s] 37%|███▋      | 94/256 [00:29<00:33,  4.83it/s] 37%|███▋      | 95/256 [00:30<00:33,  4.83it/s] 38%|███▊      | 96/256 [00:30<00:33,  4.83it/s] 38%|███▊      | 97/256 [00:30<00:32,  4.83it/s] 38%|███▊      | 98/256 [00:30<00:32,  4.83it/s] 39%|███▊      | 99/256 [00:30<00:32,  4.81it/s] 39%|███▉      | 100/256 [00:31<00:35,  4.39it/s] 39%|███▉      | 101/256 [00:31<00:38,  3.99it/s] 40%|███▉      | 102/256 [00:31<00:40,  3.76it/s] 40%|████      | 103/256 [00:32<00:42,  3.63it/s] 41%|████      | 104/256 [00:32<00:42,  3.54it/s] 41%|████      | 105/256 [00:32<00:41,  3.66it/s] 41%|████▏     | 106/256 [00:32<00:37,  3.95it/s] 42%|████▏     | 107/256 [00:33<00:35,  4.18it/s] 42%|████▏     | 108/256 [00:33<00:34,  4.34it/s] 43%|████▎     | 109/256 [00:33<00:32,  4.47it/s] 43%|████▎     | 110/256 [00:33<00:31,  4.57it/s] 43%|████▎     | 111/256 [00:33<00:31,  4.66it/s] 44%|████▍     | 112/256 [00:34<00:30,  4.70it/s] 44%|████▍     | 113/256 [00:34<00:30,  4.70it/s] 45%|████▍     | 114/256 [00:34<00:29,  4.74it/s] 45%|████▍     | 115/256 [00:34<00:29,  4.74it/s] 45%|████▌     | 116/256 [00:34<00:29,  4.77it/s] 46%|████▌     | 117/256 [00:35<00:29,  4.77it/s] 46%|████▌     | 118/256 [00:35<00:28,  4.78it/s] 46%|████▋     | 119/256 [00:35<00:28,  4.79it/s] 47%|████▋     | 120/256 [00:35<00:28,  4.80it/s] 47%|████▋     | 121/256 [00:35<00:28,  4.81it/s] 48%|████▊     | 122/256 [00:36<00:28,  4.78it/s] 48%|████▊     | 123/256 [00:36<00:27,  4.79it/s] 48%|████▊     | 124/256 [00:36<00:27,  4.80it/s] 49%|████▉     | 125/256 [00:36<00:27,  4.81it/s] 49%|████▉     | 126/256 [00:36<00:27,  4.78it/s] 50%|████▉     | 127/256 [00:37<00:26,  4.80it/s] 50%|█████     | 128/256 [00:37<00:26,  4.80it/s] 50%|█████     | 129/256 [00:37<00:26,  4.81it/s] 51%|█████     | 130/256 [00:37<00:26,  4.81it/s] 51%|█████     | 131/256 [00:38<00:25,  4.81it/s] 52%|█████▏    | 132/256 [00:38<00:25,  4.82it/s] 52%|█████▏    | 133/256 [00:38<00:25,  4.80it/s] 52%|█████▏    | 134/256 [00:38<00:25,  4.79it/s] 53%|█████▎    | 135/256 [00:38<00:25,  4.80it/s] 53%|█████▎    | 136/256 [00:39<00:24,  4.81it/s] 54%|█████▎    | 137/256 [00:39<00:24,  4.81it/s] 54%|█████▍    | 138/256 [00:39<00:24,  4.81it/s] 54%|█████▍    | 139/256 [00:39<00:24,  4.78it/s] 55%|█████▍    | 140/256 [00:39<00:24,  4.79it/s] 55%|█████▌    | 141/256 [00:40<00:23,  4.80it/s] 55%|█████▌    | 142/256 [00:40<00:23,  4.81it/s] 56%|█████▌    | 143/256 [00:40<00:23,  4.80it/s] 56%|█████▋    | 144/256 [00:40<00:23,  4.80it/s] 57%|█████▋    | 145/256 [00:40<00:23,  4.78it/s] 57%|█████▋    | 146/256 [00:41<00:22,  4.80it/s] 57%|█████▋    | 147/256 [00:41<00:22,  4.80it/s] 58%|█████▊    | 148/256 [00:41<00:22,  4.80it/s] 58%|█████▊    | 149/256 [00:41<00:22,  4.79it/s] 59%|█████▊    | 150/256 [00:41<00:22,  4.80it/s] 59%|█████▉    | 151/256 [00:42<00:21,  4.80it/s] 59%|█████▉    | 152/256 [00:42<00:21,  4.80it/s] 60%|█████▉    | 153/256 [00:42<00:21,  4.79it/s] 60%|██████    | 154/256 [00:42<00:21,  4.77it/s] 61%|██████    | 155/256 [00:43<00:21,  4.79it/s] 61%|██████    | 156/256 [00:43<00:21,  4.76it/s] 61%|██████▏   | 157/256 [00:43<00:20,  4.78it/s] 62%|██████▏   | 158/256 [00:43<00:22,  4.36it/s] 62%|██████▏   | 159/256 [00:43<00:22,  4.37it/s] 62%|██████▎   | 160/256 [00:44<00:21,  4.49it/s] 63%|██████▎   | 161/256 [00:44<00:20,  4.58it/s] 63%|██████▎   | 162/256 [00:44<00:20,  4.64it/s] 64%|██████▎   | 163/256 [00:44<00:19,  4.69it/s] 64%|██████▍   | 164/256 [00:44<00:19,  4.73it/s] 64%|██████▍   | 165/256 [00:45<00:19,  4.75it/s] 65%|██████▍   | 166/256 [00:45<00:18,  4.77it/s] 65%|██████▌   | 167/256 [00:45<00:18,  4.78it/s] 66%|██████▌   | 168/256 [00:45<00:18,  4.79it/s] 66%|██████▌   | 169/256 [00:46<00:18,  4.80it/s] 66%|██████▋   | 170/256 [00:46<00:17,  4.80it/s] 67%|██████▋   | 171/256 [00:46<00:17,  4.79it/s] 67%|██████▋   | 172/256 [00:46<00:17,  4.80it/s] 68%|██████▊   | 173/256 [00:46<00:17,  4.78it/s] 68%|██████▊   | 174/256 [00:47<00:17,  4.76it/s] 68%|██████▊   | 175/256 [00:47<00:16,  4.77it/s] 69%|██████▉   | 176/256 [00:47<00:16,  4.78it/s] 69%|██████▉   | 177/256 [00:47<00:16,  4.78it/s] 70%|██████▉   | 178/256 [00:47<00:16,  4.79it/s] 70%|██████▉   | 179/256 [00:48<00:16,  4.80it/s] 70%|███████   | 180/256 [00:48<00:15,  4.80it/s] 71%|███████   | 181/256 [00:48<00:15,  4.80it/s] 71%|███████   | 182/256 [00:48<00:15,  4.80it/s] 71%|███████▏  | 183/256 [00:48<00:15,  4.80it/s] 72%|███████▏  | 184/256 [00:49<00:15,  4.80it/s] 72%|███████▏  | 185/256 [00:49<00:14,  4.78it/s] 73%|███████▎  | 186/256 [00:49<00:14,  4.78it/s] 73%|███████▎  | 187/256 [00:49<00:14,  4.79it/s] 73%|███████▎  | 188/256 [00:49<00:14,  4.79it/s] 74%|███████▍  | 189/256 [00:50<00:13,  4.79it/s] 74%|███████▍  | 190/256 [00:50<00:13,  4.79it/s] 75%|███████▍  | 191/256 [00:50<00:13,  4.79it/s] 75%|███████▌  | 192/256 [00:50<00:13,  4.79it/s] 75%|███████▌  | 193/256 [00:51<00:13,  4.75it/s] 76%|███████▌  | 194/256 [00:51<00:13,  4.77it/s] 76%|███████▌  | 195/256 [00:51<00:12,  4.77it/s] 77%|███████▋  | 196/256 [00:51<00:12,  4.78it/s] 77%|███████▋  | 197/256 [00:51<00:12,  4.77it/s] 77%|███████▋  | 198/256 [00:52<00:12,  4.78it/s] 78%|███████▊  | 199/256 [00:52<00:12,  4.75it/s] 78%|███████▊  | 200/256 [00:52<00:11,  4.76it/s] 79%|███████▊  | 201/256 [00:52<00:11,  4.75it/s] 79%|███████▉  | 202/256 [00:52<00:11,  4.76it/s] 79%|███████▉  | 203/256 [00:53<00:11,  4.76it/s] 80%|███████▉  | 204/256 [00:53<00:10,  4.78it/s] 80%|████████  | 205/256 [00:53<00:10,  4.75it/s] 80%|████████  | 206/256 [00:53<00:11,  4.49it/s] 81%|████████  | 207/256 [00:54<00:11,  4.26it/s] 81%|████████▏ | 208/256 [00:54<00:10,  4.40it/s] 82%|████████▏ | 209/256 [00:54<00:10,  4.51it/s] 82%|████████▏ | 210/256 [00:54<00:10,  4.58it/s] 82%|████████▏ | 211/256 [00:54<00:09,  4.63it/s] 83%|████████▎ | 212/256 [00:55<00:09,  4.68it/s] 83%|████████▎ | 213/256 [00:55<00:09,  4.68it/s] 84%|████████▎ | 214/256 [00:55<00:08,  4.72it/s] 84%|████████▍ | 215/256 [00:55<00:08,  4.74it/s] 84%|████████▍ | 216/256 [00:55<00:08,  4.73it/s] 85%|████████▍ | 217/256 [00:56<00:08,  4.74it/s] 85%|████████▌ | 218/256 [00:56<00:08,  4.73it/s] 86%|████████▌ | 219/256 [00:56<00:07,  4.75it/s] 86%|████████▌ | 220/256 [00:56<00:07,  4.76it/s] 86%|████████▋ | 221/256 [00:57<00:07,  4.76it/s] 87%|████████▋ | 222/256 [00:57<00:07,  4.75it/s] 87%|████████▋ | 223/256 [00:57<00:06,  4.76it/s] 88%|████████▊ | 224/256 [00:57<00:06,  4.74it/s] 88%|████████▊ | 225/256 [00:57<00:06,  4.75it/s] 88%|████████▊ | 226/256 [00:58<00:06,  4.76it/s] 89%|████████▊ | 227/256 [00:58<00:06,  4.77it/s] 89%|████████▉ | 228/256 [00:58<00:05,  4.76it/s] 89%|████████▉ | 229/256 [00:58<00:05,  4.74it/s] 90%|████████▉ | 230/256 [00:58<00:05,  4.72it/s] 90%|█████████ | 231/256 [00:59<00:05,  4.72it/s] 91%|█████████ | 232/256 [00:59<00:05,  4.74it/s] 91%|█████████ | 233/256 [00:59<00:04,  4.75it/s] 91%|█████████▏| 234/256 [00:59<00:04,  4.75it/s] 92%|█████████▏| 235/256 [00:59<00:04,  4.76it/s] 92%|█████████▏| 236/256 [01:00<00:04,  4.77it/s] 93%|█████████▎| 237/256 [01:00<00:03,  4.78it/s] 93%|█████████▎| 238/256 [01:00<00:03,  4.75it/s] 93%|█████████▎| 239/256 [01:00<00:03,  4.72it/s] 94%|█████████▍| 240/256 [01:01<00:03,  4.74it/s] 94%|█████████▍| 241/256 [01:01<00:03,  4.74it/s] 95%|█████████▍| 242/256 [01:01<00:02,  4.74it/s] 95%|█████████▍| 243/256 [01:01<00:02,  4.75it/s] 95%|█████████▌| 244/256 [01:01<00:02,  4.75it/s] 96%|█████████▌| 245/256 [01:02<00:02,  4.76it/s] 96%|█████████▌| 246/256 [01:02<00:02,  4.76it/s] 96%|█████████▋| 247/256 [01:02<00:01,  4.76it/s] 97%|█████████▋| 248/256 [01:02<00:01,  4.76it/s] 97%|█████████▋| 249/256 [01:02<00:01,  4.77it/s] 98%|█████████▊| 250/256 [01:03<00:01,  4.77it/s] 98%|█████████▊| 251/256 [01:03<00:01,  4.77it/s] 98%|█████████▊| 252/256 [01:03<00:00,  4.77it/s] 99%|█████████▉| 253/256 [01:03<00:00,  4.78it/s] 99%|█████████▉| 254/256 [01:03<00:00,  4.78it/s]100%|█████████▉| 255/256 [01:04<00:00,  4.78it/s]100%|██████████| 256/256 [01:04<00:00,  4.36it/s]100%|██████████| 256/256 [01:04<00:00,  3.97it/s]
+=> result
+* total: 25,596
+* correct: 12,472
+* accuracy: 48.73%
+* error: 51.27%
+* macro_f1: 33.02%
+Elapsed: 0:01:56

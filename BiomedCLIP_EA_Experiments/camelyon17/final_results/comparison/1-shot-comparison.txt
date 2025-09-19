@@ -1,0 +1,8 @@
+=== 1-Shot Evaluation Comparison ===
+Pre-knee point prompts used: 24
+Post-knee point prompts used: 17
+Knee point reduction: 7 prompts removed
+==================================================
+For detailed results, see:
+  - Pre-knee point: final_results/pre_knee_evaluation/1-shot-results.txt
+  - Post-knee point: final_results/post_knee_evaluation/1-shot-results.txt

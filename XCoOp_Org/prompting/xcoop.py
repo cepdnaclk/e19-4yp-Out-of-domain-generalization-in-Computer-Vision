@@ -304,10 +304,8 @@ class XCoOpPromptLearner(nn.Module):
         prompts = []
         # if cfg.DATASET.NAME == "Camelyon17Custom":
         prompts = [
-            template_prompts[0].format(all_classnames[0]),  # normal
-            template_prompts[1].format(all_classnames[1])  # condition
-             # condition
-
+            template_prompts[i].format(all_classnames[i])  # normal
+            for i in range(len(template_prompts))
             ]
         # else:  # NOTE: for other datasets
         #     print("Please create the hand-crafted prompts when using new datasets")

@@ -13,7 +13,7 @@ CFG=vit_b16
 METHOD=CoCoOp
 TRAINER=CoCoOp_${MODEL}
 
-for SEED in 1
+for SEED in 3
 do
         DIR=output/${DATASET}/shots_${SHOTS}/${TRAINER}/nctx${NCTX}_csc${CSC}_ctp${CTP}/seed${SEED}
         # if [ -d "$DIR" ]; then

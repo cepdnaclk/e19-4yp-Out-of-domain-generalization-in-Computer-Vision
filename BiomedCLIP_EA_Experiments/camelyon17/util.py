@@ -13,6 +13,7 @@ from sklearn.metrics import (
     accuracy_score,
     confusion_matrix,
     classification_report,
+    f1_score,
     roc_auc_score
 )
 from typing import Callable, List, Tuple
@@ -253,7 +254,10 @@ def evaluate_prompt_pair(
     auc = roc_auc_score(y_true, y_prob)
     cm = confusion_matrix(y_true, y_pred)
     report = classification_report(y_true, y_pred, digits=4)
-    return {'accuracy': acc, 'auc': auc, 'cm': cm, 'report': report, 'inverted_bce': inverted_bce}
+    f1_macro = f1_score(y_true, y_pred, average='macro', zero_division=0)
+    f1_weighted = f1_score(y_true, y_pred, average='weighted', zero_division=0)
+
+    return {'accuracy': acc, 'auc': auc, 'cm': cm, 'report': report, 'inverted_bce': inverted_bce, "f1_macro": f1_macro, "f1_weighted": f1_weighted}
 
 
 def evaluate_prompt_list(
@@ -326,7 +330,13 @@ def evaluate_prompt_list(
     cm = confusion_matrix(y_true, ensemble_preds)
     report = classification_report(y_true, ensemble_preds, digits=4)
 
-    return {'accuracy': acc, 'auc': auc, 'cm': cm, 'report': report, 'ensemble_probs': ensemble_probs}
+    # calculate f1 scores
+    f1_macro = f1_score(y_true, ensemble_preds,
+                        average='macro', zero_division=0)
+    f1_weighted = f1_score(y_true, ensemble_preds,
+                           average='weighted', zero_division=0)
+
+    return {'accuracy': acc, 'auc': auc, 'cm': cm, 'report': report, 'ensemble_probs': ensemble_probs, "f1_macro": f1_macro, "f1_weighted": f1_weighted}
 
 
 def _force_double_quotes(code: str) -> str:
