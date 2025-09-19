@@ -50,14 +50,14 @@ def get_prompt_template(iteration_num: int, prompt_content: str, generate_n: int
 
 def main():
     # Few-shot learning configuration
-    n_shots = 1  # Number of samples per class to use for training
+    n_shots = 16  # Number of samples per class to use for training
 
     # Name the experiment we are currently running
-    experiment_name = f"Experiment-70-strategy-inv-bce-gemma3-{n_shots}shot"
+    experiment_name = f"Experiment-70-strategy-inv-bce-gemma3-{n_shots}shot-SELECT_best"
     print(f"Running {experiment_name} with {n_shots} shots per class...")
 
     # Create experiment results directory
-    results_dir = "final_results"
+    results_dir = "ablation/prompt_selection"
     os.makedirs(results_dir, exist_ok=True)
 
     # Create filename with experiment name
@@ -168,7 +168,7 @@ def main():
         n = 10
         print(f"\nCurrent Top {n} prompt pairs:")
 
-        selected_prompts = pq.get_roulette_wheel_selection(
+        selected_prompts = pq.get_best_n(
             n, isNormalizedInts=True)
         # reverse the order to set it to acsending order: Recency Bias
         selected_prompts = sorted(
