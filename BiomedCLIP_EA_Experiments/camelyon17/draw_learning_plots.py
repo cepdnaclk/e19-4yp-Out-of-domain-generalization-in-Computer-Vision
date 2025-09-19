@@ -32,8 +32,8 @@ def extract_iteration_scores(file_path: str) -> Tuple[List[int], List[float]]:
     iterations = []
     scores = []
 
-    # Pattern to match lines like "Iteration 20: mean accuracy of top 10: 0.3131"
-    pattern = r'Iteration\s+(\d+):\s+mean\s+\w+\s+of\s+top\s+\d+:\s+([\d.]+)'
+    # Pattern to match lines like "Iteration 20: mean accuracy of top 10: 0.3131" or "0.3131."
+    pattern = r'Iteration\s+(\d+):\s+mean\s+\w+\s+of\s+top\s+\d+:\s+([\d.]+)\.?'
 
     try:
         with open(file_path, 'r', encoding='utf-8') as f:
@@ -41,9 +41,16 @@ def extract_iteration_scores(file_path: str) -> Tuple[List[int], List[float]]:
                 match = re.search(pattern, line)
                 if match:
                     iteration = int(match.group(1))
-                    score = float(match.group(2))
-                    iterations.append(iteration)
-                    scores.append(score)
+                    # Clean the score string by removing any trailing periods
+                    score_str = match.group(2).rstrip('.')
+                    try:
+                        score = float(score_str)
+                        iterations.append(iteration)
+                        scores.append(score)
+                    except ValueError as ve:
+                        print(
+                            f"Warning: Could not parse score '{match.group(2)}' on line {line_num} in {file_path}: {ve}")
+                        continue
     except Exception as e:
         print(f"Error reading file {file_path}: {e}")
         return [], []
