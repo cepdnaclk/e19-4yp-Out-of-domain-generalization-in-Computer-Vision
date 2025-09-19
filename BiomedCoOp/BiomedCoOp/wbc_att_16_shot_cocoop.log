@@ -1,0 +1,390 @@
+/home/e19094/miniconda3/envs/biomedclip/lib/python3.10/site-packages/transformers/utils/generic.py:441: FutureWarning: `torch.utils._pytree._register_pytree_node` is deprecated. Please use `torch.utils._pytree.register_pytree_node` instead.
+  _torch_pytree._register_pytree_node(
+/home/e19094/miniconda3/envs/biomedclip/lib/python3.10/site-packages/transformers/utils/generic.py:309: FutureWarning: `torch.utils._pytree._register_pytree_node` is deprecated. Please use `torch.utils._pytree.register_pytree_node` instead.
+  _torch_pytree._register_pytree_node(
+/home/e19094/miniconda3/envs/biomedclip/lib/python3.10/site-packages/timm/models/layers/__init__.py:48: FutureWarning: Importing from timm.models.layers is deprecated, please import via timm.layers
+  warnings.warn(f"Importing from {__name__} is deprecated, please import via timm.layers", FutureWarning)
+Setting fixed seed: 1
+***************
+** Arguments **
+***************
+backbone: 
+config_file: configs/trainers/CoCoOp/vit_b16.yaml
+dataset_config_file: configs/datasets/wbc_att.yaml
+eval_only: False
+head: 
+load_epoch: None
+model_dir: 
+no_train: False
+opts: ['TRAINER.COCOOP.N_CTX', '4', 'TRAINER.COCOOP.CSC', 'False', 'TRAINER.COCOOP.CLASS_TOKEN_POSITION', 'end', 'DATASET.NUM_SHOTS', '16']
+output_dir: output/wbc_att/shots_16/CoCoOp_BiomedCLIP/nctx4_cscFalse_ctpend/seed1
+resume: 
+root: /storage/projects3/e19-fyp-out-of-domain-gen-in-cv/wbc_att/
+seed: 1
+source_domains: None
+target_domains: None
+trainer: CoCoOp_BiomedCLIP
+transforms: None
+************
+** Config **
+************
+DATALOADER:
+  K_TRANSFORMS: 1
+  NUM_WORKERS: 8
+  RETURN_IMG0: False
+  TEST:
+    BATCH_SIZE: 100
+    SAMPLER: SequentialSampler
+  TRAIN_U:
+    BATCH_SIZE: 32
+    N_DOMAIN: 0
+    N_INS: 16
+    SAME_AS_X: True
+    SAMPLER: RandomSampler
+  TRAIN_X:
+    BATCH_SIZE: 8
+    N_DOMAIN: 0
+    N_INS: 16
+    SAMPLER: RandomSampler
+DATASET:
+  ALL_AS_UNLABELED: False
+  CIFAR_C_LEVEL: 1
+  CIFAR_C_TYPE: 
+  NAME: WBCAtt
+  NUM_LABELED: -1
+  NUM_SHOTS: 16
+  ROOT: /storage/projects3/e19-fyp-out-of-domain-gen-in-cv/wbc_att/
+  SOURCE_DOMAINS: ()
+  STL10_FOLD: -1
+  SUBSAMPLE_CLASSES: all
+  TARGET_DOMAINS: ()
+  VAL_PERCENT: 0.1
+INPUT:
+  COLORJITTER_B: 0.4
+  COLORJITTER_C: 0.4
+  COLORJITTER_H: 0.1
+  COLORJITTER_S: 0.4
+  CROP_PADDING: 4
+  CUTOUT_LEN: 16
+  CUTOUT_N: 1
+  GB_K: 21
+  GB_P: 0.5
+  GN_MEAN: 0.0
+  GN_STD: 0.15
+  INTERPOLATION: bicubic
+  NO_TRANSFORM: False
+  PIXEL_MEAN: [0.48145466, 0.4578275, 0.40821073]
+  PIXEL_STD: [0.26862954, 0.26130258, 0.27577711]
+  RANDAUGMENT_M: 10
+  RANDAUGMENT_N: 2
+  RGS_P: 0.2
+  SIZE: (224, 224)
+  TRANSFORMS: ('random_resized_crop', 'normalize')
+MODEL:
+  BACKBONE:
+    NAME: ViT-B/16
+    PRETRAINED: True
+  HEAD:
+    ACTIVATION: relu
+    BN: True
+    DROPOUT: 0.0
+    HIDDEN_LAYERS: ()
+    NAME: 
+  INIT_WEIGHTS: 
+OPTIM:
+  ADAM_BETA1: 0.9
+  ADAM_BETA2: 0.999
+  BASE_LR_MULT: 0.1
+  GAMMA: 0.1
+  LR: 0.001
+  LR_SCHEDULER: cosine
+  MAX_EPOCH: 100
+  MOMENTUM: 0.9
+  NAME: sgd
+  NEW_LAYERS: ()
+  RMSPROP_ALPHA: 0.99
+  SGD_DAMPNING: 0
+  SGD_NESTEROV: False
+  STAGED_LR: False
+  STEPSIZE: (-1,)
+  WARMUP_CONS_LR: 1e-05
+  WARMUP_EPOCH: 1
+  WARMUP_MIN_LR: 1e-05
+  WARMUP_RECOUNT: True
+  WARMUP_TYPE: constant
+  WEIGHT_DECAY: 0.0005
+OUTPUT_DIR: output/wbc_att/shots_16/CoCoOp_BiomedCLIP/nctx4_cscFalse_ctpend/seed1
+RESUME: 
+SEED: 1
+TEST:
+  COMPUTE_CMAT: False
+  EVALUATOR: Classification
+  FINAL_MODEL: last_step
+  NO_TEST: False
+  PER_CLASS_RESULT: False
+  SPLIT: test
+TRAIN:
+  CHECKPOINT_FREQ: 0
+  COUNT_ITER: train_x
+  PRINT_FREQ: 20
+TRAINER:
+  BIOMEDCOOP:
+    CLASS_TOKEN_POSITION: end
+    CSC: False
+    CTX_INIT: a photo of a
+    KDSP_LAMBDA: 1.0
+    N_CTX: 4
+    N_PROMPTS: 50
+    PREC: fp32
+    SCCM_LAMBDA: 1.0
+    TAU: 1.5
+  CG:
+    ALPHA_D: 0.5
+    ALPHA_F: 0.5
+    EPS_D: 1.0
+    EPS_F: 1.0
+  COCOOP:
+    CLASS_TOKEN_POSITION: end
+    CSC: False
+    CTX_INIT: a photo of a
+    N_CTX: 4
+    PREC: fp32
+  COOP:
+    CLASS_TOKEN_POSITION: end
+    CSC: False
+    CTX_INIT: 
+    N_CTX: 4
+    PREC: fp32
+  DAEL:
+    CONF_THRE: 0.95
+    STRONG_TRANSFORMS: ()
+    WEIGHT_U: 0.5
+  DDAIG:
+    ALPHA: 0.5
+    CLAMP: False
+    CLAMP_MAX: 1.0
+    CLAMP_MIN: -1.0
+    G_ARCH: 
+    LMDA: 0.3
+    WARMUP: 0
+  ENTMIN:
+    LMDA: 0.001
+  FIXMATCH:
+    CONF_THRE: 0.95
+    STRONG_TRANSFORMS: ()
+    WEIGHT_U: 1.0
+  KGCOOP:
+    CLASS_TOKEN_POSITION: end
+    CSC: False
+    CTX_INIT: a photo of a
+    N_CTX: 4
+    PREC: fp32
+    W: 1.0
+  M3SDA:
+    LMDA: 0.5
+    N_STEP_F: 4
+  MCD:
+    N_STEP_F: 4
+  MEANTEA:
+    EMA_ALPHA: 0.999
+    RAMPUP: 5
+    WEIGHT_U: 1.0
+  MIXMATCH:
+    MIXUP_BETA: 0.75
+    RAMPUP: 20000
+    TEMP: 2.0
+    WEIGHT_U: 100.0
+  MME:
+    LMDA: 0.1
+  NAME: CoCoOp_BiomedCLIP
+  PROGRAD:
+    ALPHA: 0.0
+    CLASS_TOKEN_POSITION: end
+    CSC: False
+    CTX_INIT: a photo of a
+    GM: False
+    LAMBDA: 1.0
+    NAME: 
+    N_CTX: 4
+    PREC: fp32
+    T: 1.0
+  SE:
+    CONF_THRE: 0.95
+    EMA_ALPHA: 0.999
+    RAMPUP: 300
+USE_CUDA: True
+VERBOSE: True
+VERSION: 1
+Collecting env info ...
+** System info **
+PyTorch version: 2.7.0+cu126
+Is debug build: False
+CUDA used to build PyTorch: 12.6
+ROCM used to build PyTorch: N/A
+
+OS: Ubuntu 22.04.5 LTS (x86_64)
+GCC version: (Ubuntu 11.4.0-1ubuntu1~22.04.2) 11.4.0
+Clang version: 14.0.0-1ubuntu1.1
+CMake version: version 3.24.2
+Libc version: glibc-2.35
+
+Python version: 3.10.16 (main, Dec 11 2024, 16:24:50) [GCC 11.2.0] (64-bit runtime)
+Python platform: Linux-6.8.0-79-generic-x86_64-with-glibc2.35
+Is CUDA available: True
+CUDA runtime version: Could not collect
+CUDA_MODULE_LOADING set to: LAZY
+GPU models and configuration: GPU 0: NVIDIA GeForce RTX 3090 Ti
+Nvidia driver version: 535.230.02
+cuDNN version: Could not collect
+HIP runtime version: N/A
+MIOpen runtime version: N/A
+Is XNNPACK available: True
+
+CPU:
+Architecture:                         x86_64
+CPU op-mode(s):                       32-bit, 64-bit
+Address sizes:                        46 bits physical, 48 bits virtual
+Byte Order:                           Little Endian
+CPU(s):                               32
+On-line CPU(s) list:                  0-31
+Vendor ID:                            GenuineIntel
+Model name:                           13th Gen Intel(R) Core(TM) i9-13900K
+CPU family:                           6
+Model:                                183
+Thread(s) per core:                   2
+Core(s) per socket:                   24
+Socket(s):                            1
+Stepping:                             1
+CPU max MHz:                          5800.0000
+CPU min MHz:                          800.0000
+BogoMIPS:                             5990.40
+Flags:                                fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx pdpe1gb rdtscp lm constant_tsc art arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc cpuid aperfmperf tsc_known_freq pni pclmulqdq dtes64 monitor ds_cpl vmx smx est tm2 ssse3 sdbg fma cx16 xtpr pdcm sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand lahf_lm abm 3dnowprefetch cpuid_fault epb cat_l2 cdp_l2 ssbd ibrs ibpb stibp ibrs_enhanced tpr_shadow flexpriority ept vpid ept_ad fsgsbase tsc_adjust bmi1 avx2 smep bmi2 erms invpcid rdt_a rdseed adx smap clflushopt clwb intel_pt sha_ni xsaveopt xsavec xgetbv1 xsaves split_lock_detect user_shstk avx_vnni dtherm ida arat pln pts hwp hwp_notify hwp_act_window hwp_epp hwp_pkg_req hfi vnmi umip pku ospke waitpkg gfni vaes vpclmulqdq tme rdpid movdiri movdir64b fsrm md_clear serialize pconfig arch_lbr ibt flush_l1d arch_capabilities
+Virtualization:                       VT-x
+L1d cache:                            896 KiB (24 instances)
+L1i cache:                            1.3 MiB (24 instances)
+L2 cache:                             32 MiB (12 instances)
+L3 cache:                             36 MiB (1 instance)
+NUMA node(s):                         1
+NUMA node0 CPU(s):                    0-31
+Vulnerability Gather data sampling:   Not affected
+Vulnerability Itlb multihit:          Not affected
+Vulnerability L1tf:                   Not affected
+Vulnerability Mds:                    Not affected
+Vulnerability Meltdown:               Not affected
+Vulnerability Mmio stale data:        Not affected
+Vulnerability Reg file data sampling: Mitigation; Clear Register File
+Vulnerability Retbleed:               Not affected
+Vulnerability Spec rstack overflow:   Not affected
+Vulnerability Spec store bypass:      Mitigation; Speculative Store Bypass disabled via prctl
+Vulnerability Spectre v1:             Mitigation; usercopy/swapgs barriers and __user pointer sanitization
+Vulnerability Spectre v2:             Mitigation; Enhanced / Automatic IBRS; IBPB conditional; RSB filling; PBRSB-eIBRS SW sequence; BHI BHI_DIS_S
+Vulnerability Srbds:                  Not affected
+Vulnerability Tsx async abort:        Not affected
+
+Versions of relevant libraries:
+[pip3] numpy==2.2.5
+[pip3] nvidia-cublas-cu12==12.6.4.1
+[pip3] nvidia-cuda-cupti-cu12==12.6.80
+[pip3] nvidia-cuda-nvrtc-cu12==12.6.77
+[pip3] nvidia-cuda-runtime-cu12==12.6.77
+[pip3] nvidia-cudnn-cu12==9.5.1.17
+[pip3] nvidia-cufft-cu12==11.3.0.4
+[pip3] nvidia-curand-cu12==10.3.7.77
+[pip3] nvidia-cusolver-cu12==11.7.1.2
+[pip3] nvidia-cusparse-cu12==12.5.4.2
+[pip3] nvidia-cusparselt-cu12==0.6.3
+[pip3] nvidia-nccl-cu12==2.26.2
+[pip3] nvidia-nvjitlink-cu12==12.6.85
+[pip3] nvidia-nvtx-cu12==12.6.77
+[pip3] open-clip-torch==2.23.0
+[pip3] torch==2.7.0
+[pip3] torchvision==0.22.0
+[pip3] triton==3.3.0
+[conda] numpy                     2.2.5                    pypi_0    pypi
+[conda] nvidia-cublas-cu12        12.6.4.1                 pypi_0    pypi
+[conda] nvidia-cuda-cupti-cu12    12.6.80                  pypi_0    pypi
+[conda] nvidia-cuda-nvrtc-cu12    12.6.77                  pypi_0    pypi
+[conda] nvidia-cuda-runtime-cu12  12.6.77                  pypi_0    pypi
+[conda] nvidia-cudnn-cu12         9.5.1.17                 pypi_0    pypi
+[conda] nvidia-cufft-cu12         11.3.0.4                 pypi_0    pypi
+[conda] nvidia-curand-cu12        10.3.7.77                pypi_0    pypi
+[conda] nvidia-cusolver-cu12      11.7.1.2                 pypi_0    pypi
+[conda] nvidia-cusparse-cu12      12.5.4.2                 pypi_0    pypi
+[conda] nvidia-cusparselt-cu12    0.6.3                    pypi_0    pypi
+[conda] nvidia-nccl-cu12          2.26.2                   pypi_0    pypi
+[conda] nvidia-nvjitlink-cu12     12.6.85                  pypi_0    pypi
+[conda] nvidia-nvtx-cu12          12.6.77                  pypi_0    pypi
+[conda] open-clip-torch           2.23.0                   pypi_0    pypi
+[conda] torch                     2.7.0                    pypi_0    pypi
+[conda] torchvision               0.22.0                   pypi_0    pypi
+[conda] triton                    3.3.0                    pypi_0    pypi
+        Pillow (11.2.1)
+
+Loading trainer: CoCoOp_BiomedCLIP
+Loading dataset: WBCAtt
+Building transform_train
++ random resized crop (size=(224, 224))
++ to torch tensor of range [0, 1]
++ normalization (mean=[0.48145466, 0.4578275, 0.40821073], std=[0.26862954, 0.26130258, 0.27577711])
+Building transform_test
++ resize the smaller edge to 224
++ 224x224 center crop
++ to torch tensor of range [0, 1]
++ normalization (mean=[0.48145466, 0.4578275, 0.40821073], std=[0.26862954, 0.26130258, 0.27577711])
+***** Dataset statistics *****
+  Dataset: WBCAtt
+  # classes: 5
+  # train_x: 80
+  # val: 80
+  # test: 3,099
+Loading BiomedCLIP (backbone: ViT-B/16)
+Building custom CLIP
+Initial context: "a photo of a"
+Number of context words (tokens): 4
+Turning off gradients in both the image and the text encoder
+Parameters to be updated: {'prompt_learner.meta_net.linear2.weight', 'prompt_learner.meta_net.linear1.weight', 'prompt_learner.meta_net.linear2.bias', 'prompt_learner.meta_net.linear1.bias', 'prompt_learner.ctx'}
+Loading evaluator: Classification
+Trainer built successfully.
+No checkpoint found, train from scratch
+Initializing summary writer for tensorboard with log_dir=output/wbc_att/shots_16/CoCoOp_BiomedCLIP/nctx4_cscFalse_ctpend/seed1/tensorboard
+epoch [1/100][1/10]	time 1.239 (1.239)	data 0.393 (0.393)	eta 0:20:37	loss 4.6101 (4.6101)	lr 1.000000e-05
+epoch [1/100][2/10]	time 0.274 (0.757)	data 0.000 (0.197)	eta 0:12:35	loss 5.6908 (5.1505)	lr 1.000000e-05
+epoch [1/100][3/10]	time 0.275 (0.596)	data 0.000 (0.131)	eta 0:09:54	loss 7.0924 (5.7978)	lr 1.000000e-05
+epoch [1/100][4/10]	time 0.276 (0.516)	data 0.002 (0.099)	eta 0:08:33	loss 4.5885 (5.4955)	lr 1.000000e-05
+epoch [1/100][5/10]	time 0.274 (0.468)	data 0.000 (0.079)	eta 0:07:45	loss 5.0761 (5.4116)	lr 1.000000e-05
+epoch [1/100][6/10]	time 0.276 (0.436)	data 0.001 (0.066)	eta 0:07:12	loss 3.3036 (5.0603)	lr 1.000000e-05
+epoch [1/100][7/10]	time 0.275 (0.413)	data 0.000 (0.057)	eta 0:06:49	loss 3.5078 (4.8385)	lr 1.000000e-05
+epoch [1/100][8/10]	time 0.274 (0.395)	data 0.000 (0.050)	eta 0:06:32	loss 4.1331 (4.7503)	lr 1.000000e-05
+epoch [1/100][9/10]	time 0.275 (0.382)	data 0.001 (0.044)	eta 0:06:18	loss 5.3503 (4.8170)	lr 1.000000e-05
+epoch [1/100][10/10]	time 0.276 (0.371)	data 0.001 (0.040)	eta 0:06:07	loss 6.2444 (4.9597)	lr 1.000000e-03
+epoch [2/100][1/10]	time 0.511 (0.511)	data 0.236 (0.236)	eta 0:08:25	loss 7.5393 (7.5393)	lr 1.000000e-03
+epoch [2/100][2/10]	time 0.274 (0.393)	data 0.000 (0.118)	eta 0:06:28	loss 2.1247 (4.8320)	lr 1.000000e-03
+epoch [2/100][3/10]	time 0.274 (0.353)	data 0.000 (0.079)	eta 0:05:48	loss 0.9372 (3.5337)	lr 1.000000e-03
+epoch [2/100][4/10]	time 0.275 (0.334)	data 0.000 (0.059)	eta 0:05:28	loss 1.5149 (3.0290)	lr 1.000000e-03
+epoch [2/100][5/10]	time 0.286 (0.324)	data 0.002 (0.048)	eta 0:05:19	loss 2.3413 (2.8915)	lr 1.000000e-03
+epoch [2/100][6/10]	time 0.356 (0.330)	data 0.002 (0.040)	eta 0:05:24	loss 1.5449 (2.6670)	lr 1.000000e-03
+epoch [2/100][7/10]	time 0.368 (0.335)	data 0.000 (0.035)	eta 0:05:29	loss 1.1549 (2.4510)	lr 1.000000e-03
+epoch [2/100][8/10]	time 0.274 (0.327)	data 0.000 (0.030)	eta 0:05:21	loss 3.2176 (2.5468)	lr 1.000000e-03
+epoch [2/100][9/10]	time 0.276 (0.322)	data 0.002 (0.027)	eta 0:05:15	loss 1.5758 (2.4389)	lr 1.000000e-03
+epoch [2/100][10/10]	time 0.276 (0.317)	data 0.002 (0.025)	eta 0:05:10	loss 1.5388 (2.3489)	lr 9.997533e-04
+epoch [3/100][1/10]	time 0.498 (0.498)	data 0.223 (0.223)	eta 0:08:07	loss 2.9063 (2.9063)	lr 9.997533e-04
+epoch [3/100][2/10]	time 0.276 (0.387)	data 0.002 (0.112)	eta 0:06:18	loss 1.9776 (2.4419)	lr 9.997533e-04
+epoch [3/100][3/10]	time 0.276 (0.350)	data 0.003 (0.076)	eta 0:05:42	loss 1.3328 (2.0722)	lr 9.997533e-04
+epoch [3/100][4/10]	time 0.275 (0.331)	data 0.000 (0.057)	eta 0:05:23	loss 1.3466 (1.8908)	lr 9.997533e-04
+epoch [3/100][5/10]	time 0.277 (0.321)	data 0.003 (0.046)	eta 0:05:12	loss 1.5137 (1.8154)	lr 9.997533e-04
+epoch [3/100][6/10]	time 0.276 (0.313)	data 0.002 (0.039)	eta 0:05:05	loss 2.2156 (1.8821)	lr 9.997533e-04
+epoch [3/100][7/10]	time 0.275 (0.308)	data 0.000 (0.033)	eta 0:04:59	loss 1.5125 (1.8293)	lr 9.997533e-04
+epoch [3/100][8/10]	time 0.303 (0.307)	data 0.000 (0.029)	eta 0:04:58	loss 1.7675 (1.8216)	lr 9.997533e-04
+epoch [3/100][9/10]	time 0.341 (0.311)	data 0.000 (0.026)	eta 0:05:01	loss 1.3578 (1.7700)	lr 9.997533e-04
+epoch [3/100][10/10]	time 0.275 (0.307)	data 0.000 (0.023)	eta 0:04:58	loss 1.8649 (1.7795)	lr 9.990134e-04
+epoch [4/100][1/10]	time 0.456 (0.456)	data 0.181 (0.181)	eta 0:07:21	loss 2.0485 (2.0485)	lr 9.990134e-04
+epoch [4/100][2/10]	time 0.275 (0.365)	data 0.000 (0.091)	eta 0:05:53	loss 1.1791 (1.6138)	lr 9.990134e-04
+epoch [4/100][3/10]	time 0.275 (0.335)	data 0.000 (0.060)	eta 0:05:23	loss 2.8977 (2.0417)	lr 9.990134e-04
+epoch [4/100][4/10]	time 0.275 (0.320)	data 0.000 (0.045)	eta 0:05:09	loss 1.4224 (1.8869)	lr 9.990134e-04
+epoch [4/100][5/10]	time 0.276 (0.311)	data 0.002 (0.037)	eta 0:05:00	loss 1.6995 (1.8494)	lr 9.990134e-04
+epoch [4/100][6/10]	time 0.276 (0.305)	data 0.002 (0.031)	eta 0:04:54	loss 1.5428 (1.7983)	lr 9.990134e-04
+epoch [4/100][7/10]	time 0.274 (0.301)	data 0.000 (0.026)	eta 0:04:49	loss 1.3268 (1.7310)	lr 9.990134e-04
+epoch [4/100][8/10]	time 0.276 (0.298)	data 0.002 (0.023)	eta 0:04:46	loss 2.3241 (1.8051)	lr 9.990134e-04
+epoch [4/100][9/10]	time 0.277 (0.296)	data 0.002 (0.021)	eta 0:04:43	loss 1.5744 (1.7795)	lr 9.990134e-04
+epoch [4/100][10/10]	time 0.275 (0.293)	data 0.000 (0.019)	eta 0:04:41	loss 1.3018 (1.7317)	lr 9.977810e-04
+./scripts/cocoop/few_shot_wbc_att.sh: line 16: 102603 Killed                  python train.py --root ${DATA} --seed ${SEED} --trainer ${TRAINER} --dataset-config-file configs/datasets/${DATASET}.yaml --config-file configs/trainers/${METHOD}/${CFG}.yaml --output-dir ${DIR} TRAINER.COCOOP.N_CTX ${NCTX} TRAINER.COCOOP.CSC ${CSC} TRAINER.COCOOP.CLASS_TOKEN_POSITION ${CTP} DATASET.NUM_SHOTS ${SHOTS}

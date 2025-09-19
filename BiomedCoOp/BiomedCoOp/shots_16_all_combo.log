@@ -1,0 +1,14 @@
+nohup: ignoring input
+Running: nohup ./scripts/coop/few_shot_nih_chest.sh 16 > nih_chest_16_shot_coop.log 2>&1
+Running: nohup ./scripts/coop/few_shot_camelyon17.sh 16 > camelyon17_16_shot_coop.log 2>&1
+Running: nohup ./scripts/coop/few_shot_derm7pt.sh 16 > derm7pt_16_shot_coop.log 2>&1
+Running: nohup ./scripts/coop/few_shot_wbc_att.sh 16 > wbc_att_16_shot_coop.log 2>&1
+Running: nohup ./scripts/biomedcoop/few_shot_nih_chest.sh 16 > nih_chest_16_shot_biomedcoop.log 2>&1
+Running: nohup ./scripts/biomedcoop/few_shot_camelyon17.sh 16 > camelyon17_16_shot_biomedcoop.log 2>&1
+Running: nohup ./scripts/biomedcoop/few_shot_derm7pt.sh 16 > derm7pt_16_shot_biomedcoop.log 2>&1
+Running: nohup ./scripts/biomedcoop/few_shot_wbc_att.sh 16 > wbc_att_16_shot_biomedcoop.log 2>&1
+Running: nohup ./scripts/cocoop/few_shot_nih_chest.sh 16 > nih_chest_16_shot_cocoop.log 2>&1
+Running: nohup ./scripts/cocoop/few_shot_camelyon17.sh 16 > camelyon17_16_shot_cocoop.log 2>&1
+Running: nohup ./scripts/cocoop/few_shot_derm7pt.sh 16 > derm7pt_16_shot_cocoop.log 2>&1
+Running: nohup ./scripts/cocoop/few_shot_wbc_att.sh 16 > wbc_att_16_shot_cocoop.log 2>&1
+All 12 jobs launched.

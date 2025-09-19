@@ -1,0 +1,460 @@
+nohup: ignoring input
+/home/e19094/miniconda3/envs/biomedclip/lib/python3.10/site-packages/transformers/utils/generic.py:441: FutureWarning: `torch.utils._pytree._register_pytree_node` is deprecated. Please use `torch.utils._pytree.register_pytree_node` instead.
+  _torch_pytree._register_pytree_node(
+/home/e19094/miniconda3/envs/biomedclip/lib/python3.10/site-packages/transformers/utils/generic.py:309: FutureWarning: `torch.utils._pytree._register_pytree_node` is deprecated. Please use `torch.utils._pytree.register_pytree_node` instead.
+  _torch_pytree._register_pytree_node(
+/home/e19094/miniconda3/envs/biomedclip/lib/python3.10/site-packages/timm/models/layers/__init__.py:48: FutureWarning: Importing from timm.models.layers is deprecated, please import via timm.layers
+  warnings.warn(f"Importing from {__name__} is deprecated, please import via timm.layers", FutureWarning)
+Setting fixed seed: 1
+***************
+** Arguments **
+***************
+backbone: 
+config_file: configs/trainers/CoOp/vit_b16.yaml
+dataset_config_file: configs/datasets/derm7pt.yaml
+eval_only: False
+head: 
+load_epoch: None
+model_dir: 
+no_train: False
+opts: ['TRAINER.COOP.N_CTX', '4', 'TRAINER.COOP.CSC', 'False', 'TRAINER.COOP.CLASS_TOKEN_POSITION', 'end', 'DATASET.NUM_SHOTS', '2']
+output_dir: output/derm7pt/shots_2/CoOp_BiomedCLIP/nctx4_cscFalse_ctpend/seed1
+resume: 
+root: /storage/projects3/e19-fyp-out-of-domain-gen-in-cv/Derm7pt/release_v0/
+seed: 1
+source_domains: None
+target_domains: None
+trainer: CoOp_BiomedCLIP
+transforms: None
+************
+** Config **
+************
+DATALOADER:
+  K_TRANSFORMS: 1
+  NUM_WORKERS: 8
+  RETURN_IMG0: False
+  TEST:
+    BATCH_SIZE: 100
+    SAMPLER: SequentialSampler
+  TRAIN_U:
+    BATCH_SIZE: 32
+    N_DOMAIN: 0
+    N_INS: 16
+    SAME_AS_X: True
+    SAMPLER: RandomSampler
+  TRAIN_X:
+    BATCH_SIZE: 16
+    N_DOMAIN: 0
+    N_INS: 16
+    SAMPLER: RandomSampler
+DATASET:
+  ALL_AS_UNLABELED: False
+  CIFAR_C_LEVEL: 1
+  CIFAR_C_TYPE: 
+  NAME: Derm7pt
+  NUM_LABELED: -1
+  NUM_SHOTS: 2
+  ROOT: /storage/projects3/e19-fyp-out-of-domain-gen-in-cv/Derm7pt/release_v0/
+  SOURCE_DOMAINS: ()
+  STL10_FOLD: -1
+  SUBSAMPLE_CLASSES: all
+  TARGET_DOMAINS: ()
+  VAL_PERCENT: 0.1
+INPUT:
+  COLORJITTER_B: 0.4
+  COLORJITTER_C: 0.4
+  COLORJITTER_H: 0.1
+  COLORJITTER_S: 0.4
+  CROP_PADDING: 4
+  CUTOUT_LEN: 16
+  CUTOUT_N: 1
+  GB_K: 21
+  GB_P: 0.5
+  GN_MEAN: 0.0
+  GN_STD: 0.15
+  INTERPOLATION: bicubic
+  NO_TRANSFORM: False
+  PIXEL_MEAN: [0.48145466, 0.4578275, 0.40821073]
+  PIXEL_STD: [0.26862954, 0.26130258, 0.27577711]
+  RANDAUGMENT_M: 10
+  RANDAUGMENT_N: 2
+  RGS_P: 0.2
+  SIZE: (224, 224)
+  TRANSFORMS: ('random_resized_crop', 'normalize')
+MODEL:
+  BACKBONE:
+    NAME: ViT-B/16
+    PRETRAINED: True
+  HEAD:
+    ACTIVATION: relu
+    BN: True
+    DROPOUT: 0.0
+    HIDDEN_LAYERS: ()
+    NAME: 
+  INIT_WEIGHTS: 
+OPTIM:
+  ADAM_BETA1: 0.9
+  ADAM_BETA2: 0.999
+  BASE_LR_MULT: 0.1
+  GAMMA: 0.1
+  LR: 0.002
+  LR_SCHEDULER: cosine
+  MAX_EPOCH: 100
+  MOMENTUM: 0.9
+  NAME: sgd
+  NEW_LAYERS: ()
+  RMSPROP_ALPHA: 0.99
+  SGD_DAMPNING: 0
+  SGD_NESTEROV: False
+  STAGED_LR: False
+  STEPSIZE: (-1,)
+  WARMUP_CONS_LR: 1e-05
+  WARMUP_EPOCH: 1
+  WARMUP_MIN_LR: 1e-05
+  WARMUP_RECOUNT: True
+  WARMUP_TYPE: constant
+  WEIGHT_DECAY: 0.0005
+OUTPUT_DIR: output/derm7pt/shots_2/CoOp_BiomedCLIP/nctx4_cscFalse_ctpend/seed1
+RESUME: 
+SEED: 1
+TEST:
+  COMPUTE_CMAT: False
+  EVALUATOR: Classification
+  FINAL_MODEL: last_step
+  NO_TEST: False
+  PER_CLASS_RESULT: False
+  SPLIT: test
+TRAIN:
+  CHECKPOINT_FREQ: 0
+  COUNT_ITER: train_x
+  PRINT_FREQ: 5
+TRAINER:
+  BIOMEDCOOP:
+    CLASS_TOKEN_POSITION: end
+    CSC: False
+    CTX_INIT: a photo of a
+    KDSP_LAMBDA: 1.0
+    N_CTX: 4
+    N_PROMPTS: 50
+    PREC: fp32
+    SCCM_LAMBDA: 1.0
+    TAU: 1.5
+  CG:
+    ALPHA_D: 0.5
+    ALPHA_F: 0.5
+    EPS_D: 1.0
+    EPS_F: 1.0
+  COCOOP:
+    CLASS_TOKEN_POSITION: end
+    CSC: False
+    CTX_INIT: 
+    N_CTX: 4
+    PREC: fp32
+  COOP:
+    CLASS_TOKEN_POSITION: end
+    CSC: False
+    CTX_INIT: a photo of a
+    N_CTX: 4
+    PREC: fp32
+  DAEL:
+    CONF_THRE: 0.95
+    STRONG_TRANSFORMS: ()
+    WEIGHT_U: 0.5
+  DDAIG:
+    ALPHA: 0.5
+    CLAMP: False
+    CLAMP_MAX: 1.0
+    CLAMP_MIN: -1.0
+    G_ARCH: 
+    LMDA: 0.3
+    WARMUP: 0
+  ENTMIN:
+    LMDA: 0.001
+  FIXMATCH:
+    CONF_THRE: 0.95
+    STRONG_TRANSFORMS: ()
+    WEIGHT_U: 1.0
+  KGCOOP:
+    CLASS_TOKEN_POSITION: end
+    CSC: False
+    CTX_INIT: a photo of a
+    N_CTX: 4
+    PREC: fp32
+    W: 1.0
+  M3SDA:
+    LMDA: 0.5
+    N_STEP_F: 4
+  MCD:
+    N_STEP_F: 4
+  MEANTEA:
+    EMA_ALPHA: 0.999
+    RAMPUP: 5
+    WEIGHT_U: 1.0
+  MIXMATCH:
+    MIXUP_BETA: 0.75
+    RAMPUP: 20000
+    TEMP: 2.0
+    WEIGHT_U: 100.0
+  MME:
+    LMDA: 0.1
+  NAME: CoOp_BiomedCLIP
+  PROGRAD:
+    ALPHA: 0.0
+    CLASS_TOKEN_POSITION: end
+    CSC: False
+    CTX_INIT: a photo of a
+    GM: False
+    LAMBDA: 1.0
+    NAME: 
+    N_CTX: 4
+    PREC: fp32
+    T: 1.0
+  SE:
+    CONF_THRE: 0.95
+    EMA_ALPHA: 0.999
+    RAMPUP: 300
+USE_CUDA: True
+VERBOSE: True
+VERSION: 1
+Collecting env info ...
+** System info **
+PyTorch version: 2.7.0+cu126
+Is debug build: False
+CUDA used to build PyTorch: 12.6
+ROCM used to build PyTorch: N/A
+
+OS: Ubuntu 22.04.5 LTS (x86_64)
+GCC version: (Ubuntu 11.4.0-1ubuntu1~22.04.2) 11.4.0
+Clang version: 14.0.0-1ubuntu1.1
+CMake version: version 3.24.2
+Libc version: glibc-2.35
+
+Python version: 3.10.16 (main, Dec 11 2024, 16:24:50) [GCC 11.2.0] (64-bit runtime)
+Python platform: Linux-6.8.0-79-generic-x86_64-with-glibc2.35
+Is CUDA available: True
+CUDA runtime version: Could not collect
+CUDA_MODULE_LOADING set to: LAZY
+GPU models and configuration: GPU 0: NVIDIA GeForce RTX 3090 Ti
+Nvidia driver version: 535.230.02
+cuDNN version: Could not collect
+HIP runtime version: N/A
+MIOpen runtime version: N/A
+Is XNNPACK available: True
+
+CPU:
+Architecture:                         x86_64
+CPU op-mode(s):                       32-bit, 64-bit
+Address sizes:                        46 bits physical, 48 bits virtual
+Byte Order:                           Little Endian
+CPU(s):                               32
+On-line CPU(s) list:                  0-31
+Vendor ID:                            GenuineIntel
+Model name:                           13th Gen Intel(R) Core(TM) i9-13900K
+CPU family:                           6
+Model:                                183
+Thread(s) per core:                   2
+Core(s) per socket:                   24
+Socket(s):                            1
+Stepping:                             1
+CPU max MHz:                          5800.0000
+CPU min MHz:                          800.0000
+BogoMIPS:                             5990.40
+Flags:                                fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx pdpe1gb rdtscp lm constant_tsc art arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc cpuid aperfmperf tsc_known_freq pni pclmulqdq dtes64 monitor ds_cpl vmx smx est tm2 ssse3 sdbg fma cx16 xtpr pdcm sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand lahf_lm abm 3dnowprefetch cpuid_fault epb cat_l2 cdp_l2 ssbd ibrs ibpb stibp ibrs_enhanced tpr_shadow flexpriority ept vpid ept_ad fsgsbase tsc_adjust bmi1 avx2 smep bmi2 erms invpcid rdt_a rdseed adx smap clflushopt clwb intel_pt sha_ni xsaveopt xsavec xgetbv1 xsaves split_lock_detect user_shstk avx_vnni dtherm ida arat pln pts hwp hwp_notify hwp_act_window hwp_epp hwp_pkg_req hfi vnmi umip pku ospke waitpkg gfni vaes vpclmulqdq tme rdpid movdiri movdir64b fsrm md_clear serialize pconfig arch_lbr ibt flush_l1d arch_capabilities
+Virtualization:                       VT-x
+L1d cache:                            896 KiB (24 instances)
+L1i cache:                            1.3 MiB (24 instances)
+L2 cache:                             32 MiB (12 instances)
+L3 cache:                             36 MiB (1 instance)
+NUMA node(s):                         1
+NUMA node0 CPU(s):                    0-31
+Vulnerability Gather data sampling:   Not affected
+Vulnerability Itlb multihit:          Not affected
+Vulnerability L1tf:                   Not affected
+Vulnerability Mds:                    Not affected
+Vulnerability Meltdown:               Not affected
+Vulnerability Mmio stale data:        Not affected
+Vulnerability Reg file data sampling: Mitigation; Clear Register File
+Vulnerability Retbleed:               Not affected
+Vulnerability Spec rstack overflow:   Not affected
+Vulnerability Spec store bypass:      Mitigation; Speculative Store Bypass disabled via prctl
+Vulnerability Spectre v1:             Mitigation; usercopy/swapgs barriers and __user pointer sanitization
+Vulnerability Spectre v2:             Mitigation; Enhanced / Automatic IBRS; IBPB conditional; RSB filling; PBRSB-eIBRS SW sequence; BHI BHI_DIS_S
+Vulnerability Srbds:                  Not affected
+Vulnerability Tsx async abort:        Not affected
+
+Versions of relevant libraries:
+[pip3] numpy==2.2.5
+[pip3] nvidia-cublas-cu12==12.6.4.1
+[pip3] nvidia-cuda-cupti-cu12==12.6.80
+[pip3] nvidia-cuda-nvrtc-cu12==12.6.77
+[pip3] nvidia-cuda-runtime-cu12==12.6.77
+[pip3] nvidia-cudnn-cu12==9.5.1.17
+[pip3] nvidia-cufft-cu12==11.3.0.4
+[pip3] nvidia-curand-cu12==10.3.7.77
+[pip3] nvidia-cusolver-cu12==11.7.1.2
+[pip3] nvidia-cusparse-cu12==12.5.4.2
+[pip3] nvidia-cusparselt-cu12==0.6.3
+[pip3] nvidia-nccl-cu12==2.26.2
+[pip3] nvidia-nvjitlink-cu12==12.6.85
+[pip3] nvidia-nvtx-cu12==12.6.77
+[pip3] open-clip-torch==2.23.0
+[pip3] torch==2.7.0
+[pip3] torchvision==0.22.0
+[pip3] triton==3.3.0
+[conda] numpy                     2.2.5                    pypi_0    pypi
+[conda] nvidia-cublas-cu12        12.6.4.1                 pypi_0    pypi
+[conda] nvidia-cuda-cupti-cu12    12.6.80                  pypi_0    pypi
+[conda] nvidia-cuda-nvrtc-cu12    12.6.77                  pypi_0    pypi
+[conda] nvidia-cuda-runtime-cu12  12.6.77                  pypi_0    pypi
+[conda] nvidia-cudnn-cu12         9.5.1.17                 pypi_0    pypi
+[conda] nvidia-cufft-cu12         11.3.0.4                 pypi_0    pypi
+[conda] nvidia-curand-cu12        10.3.7.77                pypi_0    pypi
+[conda] nvidia-cusolver-cu12      11.7.1.2                 pypi_0    pypi
+[conda] nvidia-cusparse-cu12      12.5.4.2                 pypi_0    pypi
+[conda] nvidia-cusparselt-cu12    0.6.3                    pypi_0    pypi
+[conda] nvidia-nccl-cu12          2.26.2                   pypi_0    pypi
+[conda] nvidia-nvjitlink-cu12     12.6.85                  pypi_0    pypi
+[conda] nvidia-nvtx-cu12          12.6.77                  pypi_0    pypi
+[conda] open-clip-torch           2.23.0                   pypi_0    pypi
+[conda] torch                     2.7.0                    pypi_0    pypi
+[conda] torchvision               0.22.0                   pypi_0    pypi
+[conda] triton                    3.3.0                    pypi_0    pypi
+        Pillow (11.2.1)
+
+Loading trainer: CoOp_BiomedCLIP
+Loading dataset: Derm7pt
+Building transform_train
++ random resized crop (size=(224, 224))
++ to torch tensor of range [0, 1]
++ normalization (mean=[0.48145466, 0.4578275, 0.40821073], std=[0.26862954, 0.26130258, 0.27577711])
+Building transform_test
++ resize the smaller edge to 224
++ 224x224 center crop
++ to torch tensor of range [0, 1]
++ normalization (mean=[0.48145466, 0.4578275, 0.40821073], std=[0.26862954, 0.26130258, 0.27577711])
+***** Dataset statistics *****
+  Dataset: Derm7pt
+  # classes: 2
+  # train_x: 4
+  # val: 4
+  # test: 395
+Loading BiomedCLIP (backbone: ViT-B/16)
+Building custom CLIP
+Initial context: "a photo of a"
+Number of context words (tokens): 4
+Turning off gradients in both the image and the text encoder
+Loading evaluator: Classification
+Trainer built successfully.
+No checkpoint found, train from scratch
+Initializing summary writer for tensorboard with log_dir=output/derm7pt/shots_2/CoOp_BiomedCLIP/nctx4_cscFalse_ctpend/seed1/tensorboard
+epoch [1/100][1/1]	time 0.668 (0.668)	data 0.266 (0.266)	eta 0:01:06	loss 0.6738 (0.6738)	acc 50.0000 (50.0000)	lr 2.000000e-03
+epoch [2/100][1/1]	time 0.247 (0.247)	data 0.218 (0.218)	eta 0:00:24	loss 0.8828 (0.8828)	acc 25.0000 (25.0000)	lr 1.999507e-03
+epoch [3/100][1/1]	time 0.250 (0.250)	data 0.212 (0.212)	eta 0:00:24	loss 0.5255 (0.5255)	acc 75.0000 (75.0000)	lr 1.998027e-03
+epoch [4/100][1/1]	time 0.273 (0.273)	data 0.245 (0.245)	eta 0:00:26	loss 0.5896 (0.5896)	acc 50.0000 (50.0000)	lr 1.995562e-03
+epoch [5/100][1/1]	time 0.262 (0.262)	data 0.234 (0.234)	eta 0:00:24	loss 0.5536 (0.5536)	acc 75.0000 (75.0000)	lr 1.992115e-03
+epoch [6/100][1/1]	time 0.240 (0.240)	data 0.209 (0.209)	eta 0:00:22	loss 0.4954 (0.4954)	acc 75.0000 (75.0000)	lr 1.987688e-03
+epoch [7/100][1/1]	time 0.287 (0.287)	data 0.247 (0.247)	eta 0:00:26	loss 0.1337 (0.1337)	acc 100.0000 (100.0000)	lr 1.982287e-03
+epoch [8/100][1/1]	time 0.307 (0.307)	data 0.280 (0.280)	eta 0:00:28	loss 0.2024 (0.2024)	acc 100.0000 (100.0000)	lr 1.975917e-03
+epoch [9/100][1/1]	time 0.215 (0.215)	data 0.187 (0.187)	eta 0:00:19	loss 0.1301 (0.1301)	acc 100.0000 (100.0000)	lr 1.968583e-03
+epoch [10/100][1/1]	time 0.308 (0.308)	data 0.280 (0.280)	eta 0:00:27	loss 0.2357 (0.2357)	acc 100.0000 (100.0000)	lr 1.960294e-03
+epoch [11/100][1/1]	time 0.304 (0.304)	data 0.277 (0.277)	eta 0:00:27	loss 0.1710 (0.1710)	acc 100.0000 (100.0000)	lr 1.951057e-03
+epoch [12/100][1/1]	time 0.293 (0.293)	data 0.265 (0.265)	eta 0:00:25	loss 0.2567 (0.2567)	acc 100.0000 (100.0000)	lr 1.940881e-03
+epoch [13/100][1/1]	time 0.319 (0.319)	data 0.287 (0.287)	eta 0:00:27	loss 0.4168 (0.4168)	acc 75.0000 (75.0000)	lr 1.929776e-03
+epoch [14/100][1/1]	time 0.343 (0.343)	data 0.305 (0.305)	eta 0:00:29	loss 0.1339 (0.1339)	acc 100.0000 (100.0000)	lr 1.917755e-03
+epoch [15/100][1/1]	time 0.301 (0.301)	data 0.265 (0.265)	eta 0:00:25	loss 0.3522 (0.3522)	acc 75.0000 (75.0000)	lr 1.904827e-03
+epoch [16/100][1/1]	time 0.281 (0.281)	data 0.239 (0.239)	eta 0:00:23	loss 0.1118 (0.1118)	acc 100.0000 (100.0000)	lr 1.891007e-03
+epoch [17/100][1/1]	time 0.287 (0.287)	data 0.246 (0.246)	eta 0:00:23	loss 0.0725 (0.0725)	acc 100.0000 (100.0000)	lr 1.876307e-03
+epoch [18/100][1/1]	time 0.307 (0.307)	data 0.264 (0.264)	eta 0:00:25	loss 0.1806 (0.1806)	acc 100.0000 (100.0000)	lr 1.860742e-03
+epoch [19/100][1/1]	time 0.265 (0.265)	data 0.237 (0.237)	eta 0:00:21	loss 0.1044 (0.1044)	acc 100.0000 (100.0000)	lr 1.844328e-03
+epoch [20/100][1/1]	time 0.243 (0.243)	data 0.216 (0.216)	eta 0:00:19	loss 0.1056 (0.1056)	acc 100.0000 (100.0000)	lr 1.827081e-03
+epoch [21/100][1/1]	time 0.298 (0.298)	data 0.264 (0.264)	eta 0:00:23	loss 0.2428 (0.2428)	acc 75.0000 (75.0000)	lr 1.809017e-03
+epoch [22/100][1/1]	time 0.229 (0.229)	data 0.201 (0.201)	eta 0:00:17	loss 0.0191 (0.0191)	acc 100.0000 (100.0000)	lr 1.790155e-03
+epoch [23/100][1/1]	time 0.219 (0.219)	data 0.189 (0.189)	eta 0:00:16	loss 0.0418 (0.0418)	acc 100.0000 (100.0000)	lr 1.770513e-03
+epoch [24/100][1/1]	time 0.246 (0.246)	data 0.219 (0.219)	eta 0:00:18	loss 0.0586 (0.0586)	acc 100.0000 (100.0000)	lr 1.750111e-03
+epoch [25/100][1/1]	time 0.270 (0.270)	data 0.242 (0.242)	eta 0:00:20	loss 0.1137 (0.1137)	acc 100.0000 (100.0000)	lr 1.728969e-03
+epoch [26/100][1/1]	time 0.223 (0.223)	data 0.189 (0.189)	eta 0:00:16	loss 0.0095 (0.0095)	acc 100.0000 (100.0000)	lr 1.707107e-03
+epoch [27/100][1/1]	time 0.327 (0.327)	data 0.297 (0.297)	eta 0:00:23	loss 0.0353 (0.0353)	acc 100.0000 (100.0000)	lr 1.684547e-03
+epoch [28/100][1/1]	time 0.308 (0.308)	data 0.280 (0.280)	eta 0:00:22	loss 0.0564 (0.0564)	acc 100.0000 (100.0000)	lr 1.661312e-03
+epoch [29/100][1/1]	time 0.246 (0.246)	data 0.214 (0.214)	eta 0:00:17	loss 0.0256 (0.0256)	acc 100.0000 (100.0000)	lr 1.637424e-03
+epoch [30/100][1/1]	time 0.249 (0.249)	data 0.220 (0.220)	eta 0:00:17	loss 0.0222 (0.0222)	acc 100.0000 (100.0000)	lr 1.612907e-03
+epoch [31/100][1/1]	time 0.219 (0.219)	data 0.185 (0.185)	eta 0:00:15	loss 0.0146 (0.0146)	acc 100.0000 (100.0000)	lr 1.587785e-03
+epoch [32/100][1/1]	time 0.301 (0.301)	data 0.261 (0.261)	eta 0:00:20	loss 0.0225 (0.0225)	acc 100.0000 (100.0000)	lr 1.562083e-03
+epoch [33/100][1/1]	time 0.260 (0.260)	data 0.220 (0.220)	eta 0:00:17	loss 0.0594 (0.0594)	acc 100.0000 (100.0000)	lr 1.535827e-03
+epoch [34/100][1/1]	time 0.249 (0.249)	data 0.218 (0.218)	eta 0:00:16	loss 0.0266 (0.0266)	acc 100.0000 (100.0000)	lr 1.509041e-03
+epoch [35/100][1/1]	time 0.285 (0.285)	data 0.253 (0.253)	eta 0:00:18	loss 0.0160 (0.0160)	acc 100.0000 (100.0000)	lr 1.481754e-03
+epoch [36/100][1/1]	time 0.353 (0.353)	data 0.313 (0.313)	eta 0:00:22	loss 0.8198 (0.8198)	acc 75.0000 (75.0000)	lr 1.453990e-03
+epoch [37/100][1/1]	time 0.322 (0.322)	data 0.291 (0.291)	eta 0:00:20	loss 0.0142 (0.0142)	acc 100.0000 (100.0000)	lr 1.425779e-03
+epoch [38/100][1/1]	time 0.275 (0.275)	data 0.248 (0.248)	eta 0:00:17	loss 0.0186 (0.0186)	acc 100.0000 (100.0000)	lr 1.397148e-03
+epoch [39/100][1/1]	time 0.257 (0.257)	data 0.230 (0.230)	eta 0:00:15	loss 0.0393 (0.0393)	acc 100.0000 (100.0000)	lr 1.368125e-03
+epoch [40/100][1/1]	time 0.303 (0.303)	data 0.273 (0.273)	eta 0:00:18	loss 0.0353 (0.0353)	acc 100.0000 (100.0000)	lr 1.338738e-03
+epoch [41/100][1/1]	time 0.327 (0.327)	data 0.300 (0.300)	eta 0:00:19	loss 0.1779 (0.1779)	acc 100.0000 (100.0000)	lr 1.309017e-03
+epoch [42/100][1/1]	time 0.283 (0.283)	data 0.241 (0.241)	eta 0:00:16	loss 0.0960 (0.0960)	acc 100.0000 (100.0000)	lr 1.278991e-03
+epoch [43/100][1/1]	time 0.309 (0.309)	data 0.278 (0.278)	eta 0:00:17	loss 0.0330 (0.0330)	acc 100.0000 (100.0000)	lr 1.248690e-03
+epoch [44/100][1/1]	time 0.300 (0.300)	data 0.272 (0.272)	eta 0:00:16	loss 0.1100 (0.1100)	acc 100.0000 (100.0000)	lr 1.218143e-03
+epoch [45/100][1/1]	time 0.218 (0.218)	data 0.191 (0.191)	eta 0:00:12	loss 0.0091 (0.0091)	acc 100.0000 (100.0000)	lr 1.187381e-03
+epoch [46/100][1/1]	time 0.328 (0.328)	data 0.299 (0.299)	eta 0:00:17	loss 0.0220 (0.0220)	acc 100.0000 (100.0000)	lr 1.156434e-03
+epoch [47/100][1/1]	time 0.245 (0.245)	data 0.210 (0.210)	eta 0:00:12	loss 0.2051 (0.2051)	acc 100.0000 (100.0000)	lr 1.125333e-03
+epoch [48/100][1/1]	time 0.288 (0.288)	data 0.253 (0.253)	eta 0:00:14	loss 0.1595 (0.1595)	acc 100.0000 (100.0000)	lr 1.094108e-03
+epoch [49/100][1/1]	time 0.333 (0.333)	data 0.288 (0.288)	eta 0:00:16	loss 0.0484 (0.0484)	acc 100.0000 (100.0000)	lr 1.062791e-03
+epoch [50/100][1/1]	time 0.278 (0.278)	data 0.251 (0.251)	eta 0:00:13	loss 0.1342 (0.1342)	acc 100.0000 (100.0000)	lr 1.031411e-03
+epoch [51/100][1/1]	time 0.248 (0.248)	data 0.220 (0.220)	eta 0:00:12	loss 0.0688 (0.0688)	acc 100.0000 (100.0000)	lr 1.000000e-03
+epoch [52/100][1/1]	time 0.314 (0.314)	data 0.270 (0.270)	eta 0:00:15	loss 0.0321 (0.0321)	acc 100.0000 (100.0000)	lr 9.685892e-04
+epoch [53/100][1/1]	time 0.264 (0.264)	data 0.220 (0.220)	eta 0:00:12	loss 0.0294 (0.0294)	acc 100.0000 (100.0000)	lr 9.372095e-04
+epoch [54/100][1/1]	time 0.254 (0.254)	data 0.226 (0.226)	eta 0:00:11	loss 0.0543 (0.0543)	acc 100.0000 (100.0000)	lr 9.058917e-04
+epoch [55/100][1/1]	time 0.188 (0.188)	data 0.161 (0.161)	eta 0:00:08	loss 0.0176 (0.0176)	acc 100.0000 (100.0000)	lr 8.746668e-04
+epoch [56/100][1/1]	time 0.331 (0.331)	data 0.303 (0.303)	eta 0:00:14	loss 0.0611 (0.0611)	acc 100.0000 (100.0000)	lr 8.435655e-04
+epoch [57/100][1/1]	time 0.263 (0.263)	data 0.225 (0.225)	eta 0:00:11	loss 0.0078 (0.0078)	acc 100.0000 (100.0000)	lr 8.126187e-04
+epoch [58/100][1/1]	time 0.338 (0.338)	data 0.297 (0.297)	eta 0:00:14	loss 0.0399 (0.0399)	acc 100.0000 (100.0000)	lr 7.818568e-04
+epoch [59/100][1/1]	time 0.300 (0.300)	data 0.269 (0.269)	eta 0:00:12	loss 0.0634 (0.0634)	acc 100.0000 (100.0000)	lr 7.513101e-04
+epoch [60/100][1/1]	time 0.318 (0.318)	data 0.284 (0.284)	eta 0:00:12	loss 0.0102 (0.0102)	acc 100.0000 (100.0000)	lr 7.210089e-04
+epoch [61/100][1/1]	time 0.316 (0.316)	data 0.287 (0.287)	eta 0:00:12	loss 0.0406 (0.0406)	acc 100.0000 (100.0000)	lr 6.909830e-04
+epoch [62/100][1/1]	time 0.319 (0.319)	data 0.285 (0.285)	eta 0:00:12	loss 0.0158 (0.0158)	acc 100.0000 (100.0000)	lr 6.612621e-04
+epoch [63/100][1/1]	time 0.271 (0.271)	data 0.234 (0.234)	eta 0:00:10	loss 0.0201 (0.0201)	acc 100.0000 (100.0000)	lr 6.318754e-04
+epoch [64/100][1/1]	time 0.260 (0.260)	data 0.220 (0.220)	eta 0:00:09	loss 0.0290 (0.0290)	acc 100.0000 (100.0000)	lr 6.028521e-04
+epoch [65/100][1/1]	time 0.229 (0.229)	data 0.202 (0.202)	eta 0:00:08	loss 0.0429 (0.0429)	acc 100.0000 (100.0000)	lr 5.742207e-04
+epoch [66/100][1/1]	time 0.269 (0.269)	data 0.242 (0.242)	eta 0:00:09	loss 0.1366 (0.1366)	acc 100.0000 (100.0000)	lr 5.460095e-04
+epoch [67/100][1/1]	time 0.210 (0.210)	data 0.182 (0.182)	eta 0:00:06	loss 0.0072 (0.0072)	acc 100.0000 (100.0000)	lr 5.182463e-04
+epoch [68/100][1/1]	time 0.280 (0.280)	data 0.252 (0.252)	eta 0:00:08	loss 0.0315 (0.0315)	acc 100.0000 (100.0000)	lr 4.909586e-04
+epoch [69/100][1/1]	time 0.259 (0.259)	data 0.218 (0.218)	eta 0:00:08	loss 0.0097 (0.0097)	acc 100.0000 (100.0000)	lr 4.641732e-04
+epoch [70/100][1/1]	time 0.235 (0.235)	data 0.206 (0.206)	eta 0:00:07	loss 0.0207 (0.0207)	acc 100.0000 (100.0000)	lr 4.379166e-04
+epoch [71/100][1/1]	time 0.253 (0.253)	data 0.220 (0.220)	eta 0:00:07	loss 0.0214 (0.0214)	acc 100.0000 (100.0000)	lr 4.122147e-04
+epoch [72/100][1/1]	time 0.254 (0.254)	data 0.221 (0.221)	eta 0:00:07	loss 0.0334 (0.0334)	acc 100.0000 (100.0000)	lr 3.870929e-04
+epoch [73/100][1/1]	time 0.265 (0.265)	data 0.237 (0.237)	eta 0:00:07	loss 0.0262 (0.0262)	acc 100.0000 (100.0000)	lr 3.625760e-04
+epoch [74/100][1/1]	time 0.274 (0.274)	data 0.243 (0.243)	eta 0:00:07	loss 0.0098 (0.0098)	acc 100.0000 (100.0000)	lr 3.386881e-04
+epoch [75/100][1/1]	time 0.275 (0.275)	data 0.247 (0.247)	eta 0:00:06	loss 0.0244 (0.0244)	acc 100.0000 (100.0000)	lr 3.154529e-04
+epoch [76/100][1/1]	time 0.278 (0.278)	data 0.245 (0.245)	eta 0:00:06	loss 0.0225 (0.0225)	acc 100.0000 (100.0000)	lr 2.928932e-04
+epoch [77/100][1/1]	time 0.255 (0.255)	data 0.216 (0.216)	eta 0:00:05	loss 0.0074 (0.0074)	acc 100.0000 (100.0000)	lr 2.710314e-04
+epoch [78/100][1/1]	time 0.284 (0.284)	data 0.248 (0.248)	eta 0:00:06	loss 0.0112 (0.0112)	acc 100.0000 (100.0000)	lr 2.498889e-04
+epoch [79/100][1/1]	time 0.298 (0.298)	data 0.271 (0.271)	eta 0:00:06	loss 0.0330 (0.0330)	acc 100.0000 (100.0000)	lr 2.294868e-04
+epoch [80/100][1/1]	time 0.252 (0.252)	data 0.215 (0.215)	eta 0:00:05	loss 0.0161 (0.0161)	acc 100.0000 (100.0000)	lr 2.098450e-04
+epoch [81/100][1/1]	time 0.256 (0.256)	data 0.221 (0.221)	eta 0:00:04	loss 0.0710 (0.0710)	acc 100.0000 (100.0000)	lr 1.909830e-04
+epoch [82/100][1/1]	time 0.341 (0.341)	data 0.296 (0.296)	eta 0:00:06	loss 0.0054 (0.0054)	acc 100.0000 (100.0000)	lr 1.729194e-04
+epoch [83/100][1/1]	time 0.363 (0.363)	data 0.320 (0.320)	eta 0:00:06	loss 0.0467 (0.0467)	acc 100.0000 (100.0000)	lr 1.556721e-04
+epoch [84/100][1/1]	time 0.208 (0.208)	data 0.180 (0.180)	eta 0:00:03	loss 0.1419 (0.1419)	acc 100.0000 (100.0000)	lr 1.392580e-04
+epoch [85/100][1/1]	time 0.300 (0.300)	data 0.260 (0.260)	eta 0:00:04	loss 0.1608 (0.1608)	acc 100.0000 (100.0000)	lr 1.236933e-04
+epoch [86/100][1/1]	time 0.299 (0.299)	data 0.266 (0.266)	eta 0:00:04	loss 0.0221 (0.0221)	acc 100.0000 (100.0000)	lr 1.089935e-04
+epoch [87/100][1/1]	time 0.263 (0.263)	data 0.234 (0.234)	eta 0:00:03	loss 0.0304 (0.0304)	acc 100.0000 (100.0000)	lr 9.517295e-05
+epoch [88/100][1/1]	time 0.221 (0.221)	data 0.193 (0.193)	eta 0:00:02	loss 0.0101 (0.0101)	acc 100.0000 (100.0000)	lr 8.224537e-05
+epoch [89/100][1/1]	time 0.257 (0.257)	data 0.228 (0.228)	eta 0:00:02	loss 0.0106 (0.0106)	acc 100.0000 (100.0000)	lr 7.022351e-05
+epoch [90/100][1/1]	time 0.285 (0.285)	data 0.258 (0.258)	eta 0:00:02	loss 0.0685 (0.0685)	acc 100.0000 (100.0000)	lr 5.911923e-05
+epoch [91/100][1/1]	time 0.263 (0.263)	data 0.236 (0.236)	eta 0:00:02	loss 0.0168 (0.0168)	acc 100.0000 (100.0000)	lr 4.894348e-05
+epoch [92/100][1/1]	time 0.230 (0.230)	data 0.203 (0.203)	eta 0:00:01	loss 0.0605 (0.0605)	acc 100.0000 (100.0000)	lr 3.970631e-05
+epoch [93/100][1/1]	time 0.294 (0.294)	data 0.262 (0.262)	eta 0:00:02	loss 0.0924 (0.0924)	acc 100.0000 (100.0000)	lr 3.141684e-05
+epoch [94/100][1/1]	time 0.296 (0.296)	data 0.266 (0.266)	eta 0:00:01	loss 0.0320 (0.0320)	acc 100.0000 (100.0000)	lr 2.408324e-05
+epoch [95/100][1/1]	time 0.276 (0.276)	data 0.242 (0.242)	eta 0:00:01	loss 0.0392 (0.0392)	acc 100.0000 (100.0000)	lr 1.771275e-05
+epoch [96/100][1/1]	time 0.294 (0.294)	data 0.260 (0.260)	eta 0:00:01	loss 0.1077 (0.1077)	acc 100.0000 (100.0000)	lr 1.231166e-05
+epoch [97/100][1/1]	time 0.234 (0.234)	data 0.200 (0.200)	eta 0:00:00	loss 0.0043 (0.0043)	acc 100.0000 (100.0000)	lr 7.885299e-06
+epoch [98/100][1/1]	time 0.295 (0.295)	data 0.268 (0.268)	eta 0:00:00	loss 0.1055 (0.1055)	acc 100.0000 (100.0000)	lr 4.438035e-06
+epoch [99/100][1/1]	time 0.219 (0.219)	data 0.191 (0.191)	eta 0:00:00	loss 0.0367 (0.0367)	acc 100.0000 (100.0000)	lr 1.973272e-06
+epoch [100/100][1/1]	time 0.319 (0.319)	data 0.283 (0.283)	eta 0:00:00	loss 0.2859 (0.2859)	acc 75.0000 (75.0000)	lr 4.934396e-07
+Checkpoint saved to "output/derm7pt/shots_2/CoOp_BiomedCLIP/nctx4_cscFalse_ctpend/seed1/prompt_learner/model.pth.tar-100"
+Finished training
+Do evaluation on test set
+  0%|          | 0/4 [00:00<?, ?it/s] 25%|██▌       | 1/4 [00:00<00:02,  1.19it/s] 50%|█████     | 2/4 [00:01<00:00,  2.16it/s] 75%|███████▌  | 3/4 [00:01<00:00,  2.92it/s]100%|██████████| 4/4 [00:01<00:00,  3.23it/s]100%|██████████| 4/4 [00:01<00:00,  2.62it/s]
+=> result
+* total: 395
+* correct: 242
+* accuracy: 61.27%
+* error: 38.73%
+* macro_f1: 55.88%
+Elapsed: 0:00:33

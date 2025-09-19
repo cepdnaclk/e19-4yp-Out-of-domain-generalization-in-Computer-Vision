@@ -1,0 +1,20 @@
+nohup: ignoring input
+Running: nohup ./scripts/coop/few_shot_nih_chest.sh 16 > nih_chest_16_shot_coop.log 2>&1
+Completed successfully: nih_chest with coop
+Running: nohup ./scripts/coop/few_shot_wbc_att.sh 16 > wbc_att_16_shot_coop.log 2>&1
+Failed: wbc_att with coop (return code: 1)
+Running: nohup ./scripts/coop/few_shot_derm7pt.sh 16 > derm7pt_16_shot_coop.log 2>&1
+Failed: derm7pt with coop (return code: 1)
+Running: nohup ./scripts/biomedcoop/few_shot_nih_chest.sh 16 > nih_chest_16_shot_biomedcoop.log 2>&1
+Failed: nih_chest with biomedcoop (return code: 1)
+Running: nohup ./scripts/biomedcoop/few_shot_wbc_att.sh 16 > wbc_att_16_shot_biomedcoop.log 2>&1
+Failed: wbc_att with biomedcoop (return code: 1)
+Running: nohup ./scripts/biomedcoop/few_shot_derm7pt.sh 16 > derm7pt_16_shot_biomedcoop.log 2>&1
+Completed successfully: derm7pt with biomedcoop
+Running: nohup ./scripts/cocoop/few_shot_nih_chest.sh 16 > nih_chest_16_shot_cocoop.log 2>&1
+Failed: nih_chest with cocoop (return code: 132)
+Running: nohup ./scripts/cocoop/few_shot_wbc_att.sh 16 > wbc_att_16_shot_cocoop.log 2>&1
+Failed: wbc_att with cocoop (return code: 137)
+Running: nohup ./scripts/cocoop/few_shot_derm7pt.sh 16 > derm7pt_16_shot_cocoop.log 2>&1
+Failed: derm7pt with cocoop (return code: 137)
+All 9 jobs completed sequentially.
