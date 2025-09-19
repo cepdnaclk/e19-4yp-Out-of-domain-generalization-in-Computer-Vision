@@ -1,13 +1,12 @@
 #!/usr/bin/env python3
 """
-Crowd Pruning and Knee Point Analysis Script
+Crowd Pruning Analysis Script
 
 This script implements the crowd_pruning.ipynb notebook functionality as a standalone script.
 It performs the following operations:
 1. Load initial prompts and create a priority queue
 2. Perform crowding using LLM to group similar prompts
-3. Find knee point for optimal prompt selection
-4. Evaluate final performance on all test centers
+3. Evaluate final performance on all test centers
 
 Usage:
     python evaluate_by_crowding_and_knee.py [--few_shot N] [--provider PROVIDER]
@@ -221,7 +220,7 @@ def save_evaluation_results(results, center_id, filename):
 
 def main():
     parser = argparse.ArgumentParser(
-        description="Crowd Pruning and Knee Point Analysis")
+        description="Crowd Pruning Analysis")
     parser.add_argument("--few_shot", type=int, default=1,
                         help="Number of few-shot examples (default: 1)")
     parser.add_argument("--provider", type=str, default="gemini",
@@ -235,18 +234,31 @@ def main():
                         help="Number of crowding iterations (default: 3)")
     parser.add_argument("--group_size", type=int, default=30,
                         help="Number of prompts to group in each iteration (default: 30)")
+    parser.add_argument("--input_file", type=str, default=None,
+                        help="Path to input prompt file. If not specified, uses default pattern")
+    parser.add_argument("--output_dir", type=str, default="final_results",
+                        help="Output directory for results (default: final_results)")
+    parser.add_argument("--experiment_suffix", type=str, default="",
+                        help="Suffix to add to output filenames (e.g., 'ablation_study')")
 
     args = parser.parse_args()
 
     print(
-        f"Starting crowd pruning and knee point analysis with {args.few_shot}-shot configuration...")
+        f"Starting crowd pruning analysis with {args.few_shot}-shot configuration...")
     print(f"Using {args.provider} as LLM provider")
+
+    # Determine input file path
+    if args.input_file:
+        input_file_path = args.input_file
+    else:
+        # Use default pattern
+        input_file_path = f"final_results/Experiment-70-strategy-inv-bce-gemma3-{args.few_shot}shot_opt_pairs.txt"
+
+    print(f"Loading prompts from: {input_file_path}")
 
     # Step 1: Load initial prompts and create priority queue
     print("\n=== Step 1: Loading Initial Prompts ===")
-    initial_prompts = util.load_last_iteration_prompts(
-        f"final_results/Experiment-70-strategy-inv-bce-gemma3-{args.few_shot}shot_opt_pairs.txt"
-    )
+    initial_prompts = util.load_last_iteration_prompts(input_file_path)
     pq = util.PriorityQueue(
         max_capacity=args.max_capacity,
         filter_threshold=args.filter_threshold,
@@ -267,9 +279,10 @@ def main():
 
     pq = crowding_manager.perform_crowding(pq=pq)
 
-    # Save crowded results
+    # Save crowded results with flexible naming
     crowded_results = pq.get_best_n(n=100)
-    crowded_filename = f"final_results/crowded/{args.few_shot}-shot.txt"
+    suffix = f"_{args.experiment_suffix}" if args.experiment_suffix else ""
+    crowded_filename = f"{args.output_dir}/crowded/{args.few_shot}-shot{suffix}.txt"
     save_results_to_file(crowded_results, crowded_filename)
 
     print(f"Crowding completed. Reduced to {len(crowded_results)} prompts.")
@@ -295,26 +308,27 @@ def main():
     centers_features = [torch.from_numpy(feat) for feat in centers_features]
     centers_labels = [torch.from_numpy(label) for label in centers_labels]
 
-    # Step 3: Pre-Knee Point Evaluation (using all crowded prompts)
-    print("\n=== Step 3: Pre-Knee Point Evaluation ===")
+    # Step 3: Final Evaluation (using all crowded prompts)
+    print("\n=== Step 3: Final Evaluation ===")
 
     # Use all available prompts from the crowded priority queue
     all_crowded_prompts = pq.get_best_n(n=1000)  # Get all available prompts
-    pre_knee_filename = f"final_results/pre_knee_evaluation/{args.few_shot}-shot-results.txt"
+    final_filename = f"{args.output_dir}/crowded_evaluation/{args.few_shot}-shot{suffix}-results.txt"
 
     # Clear previous results file
-    os.makedirs(os.path.dirname(pre_knee_filename), exist_ok=True)
-    with open(pre_knee_filename, 'w') as f:
+    os.makedirs(os.path.dirname(final_filename), exist_ok=True)
+    with open(final_filename, 'w') as f:
         f.write(
-            f"=== {args.few_shot}-Shot Pre-Knee Point Evaluation Results ===\n")
+            f"=== {args.few_shot}-Shot Crowded Evaluation Results ===\n")
+        f.write(f"Input file: {input_file_path}\n")
         f.write(f"Number of prompts used: {len(all_crowded_prompts)}\n")
         f.write("=" * 50 + "\n")
 
     print(
-        f"Evaluating with {len(all_crowded_prompts)} crowded prompts (before knee point analysis)...")
+        f"Evaluating with {len(all_crowded_prompts)} crowded prompts...")
 
     for i, _ in enumerate(centers_features):
-        print(f"Evaluating center {i} (pre-knee point)...")
+        print(f"Evaluating center {i}...")
         results = util.evaluate_prompt_list(
             all_crowded_prompts,
             centers_features[i],
@@ -325,7 +339,7 @@ def main():
         )
 
         # Print results
-        print(f"\n--- Center {i} Pre-Knee Point Evaluation Results ---")
+        print(f"\n--- Center {i} Evaluation Results ---")
         print(f"Accuracy: {results['accuracy']:.4f}")
         print(f"AUC: {results['auc']:.4f}")
         print("Confusion Matrix:\n", results['cm'])
@@ -336,86 +350,12 @@ def main():
             print("F1_Weighted: ", results['f1_weighted'])
 
         # Save results to file
-        save_evaluation_results(results, i, pre_knee_filename)
-
-    # Step 4: Find knee point
-    print("\n=== Step 4: Finding Knee Point ===")
-    scores = [score for (_, score) in pq.get_best_n(n=1000)]
-    knee_point_analyzer = util.KneePointAnalysis(scores)
-    knee_point = knee_point_analyzer.find_knee_point()
-
-    print(f"Knee point found at: {knee_point}")
-
-    # Save knee point results
-    knee_results = pq.get_best_n(n=knee_point)
-    knee_filename = f"final_results/knee/{args.few_shot}-shot.txt"
-    save_results_to_file(knee_results, knee_filename)
-
-    # Step 5: Post-Knee Point Evaluation (using optimal number of prompts)
-    print("\n=== Step 5: Post-Knee Point Evaluation ===")
-
-    # Evaluate each center with knee point optimized prompts
-    post_knee_filename = f"final_results/post_knee_evaluation/{args.few_shot}-shot-results.txt"
-
-    # Clear previous results file
-    os.makedirs(os.path.dirname(post_knee_filename), exist_ok=True)
-    with open(post_knee_filename, 'w') as f:
-        f.write(
-            f"=== {args.few_shot}-Shot Post-Knee Point Evaluation Results ===\n")
-        f.write(f"Knee point: {knee_point}\n")
-        f.write(f"Number of prompts used: {len(knee_results)}\n")
-        f.write("=" * 50 + "\n")
-
-    print(
-        f"Evaluating with {knee_point} optimal prompts (after knee point analysis)...")
-
-    for i, _ in enumerate(centers_features):
-        print(f"Evaluating center {i} (post-knee point)...")
-        results = util.evaluate_prompt_list(
-            knee_results,
-            centers_features[i],
-            centers_labels[i],
-            model,
-            tokenizer,
-            unweighted=False
-        )
-
-        # Print results
-        print(f"\n--- Center {i} Post-Knee Point Evaluation Results ---")
-        print(f"Accuracy: {results['accuracy']:.4f}")
-        print(f"AUC: {results['auc']:.4f}")
-        print("Confusion Matrix:\n", results['cm'])
-        print("Classification Report:\n", results['report'])
-        if 'f1_macro' in results:
-            print("F1_macro: ", results['f1_macro'])
-        if 'f1_weighted' in results:
-            print("F1_Weighted: ", results['f1_weighted'])
-
-        # Save results to file
-        save_evaluation_results(results, i, post_knee_filename)
+        save_evaluation_results(results, i, final_filename)
 
     print(f"\n=== Evaluation Complete ===")
     print(f"Results saved to:")
     print(f"  - Crowded prompts: {crowded_filename}")
-    print(f"  - Knee point prompts: {knee_filename}")
-    print(f"  - Pre-knee point evaluation: {pre_knee_filename}")
-    print(f"  - Post-knee point evaluation: {post_knee_filename}")
-
-    # Create comparison summary
-    comparison_filename = f"final_results/comparison/{args.few_shot}-shot-comparison.txt"
-    os.makedirs(os.path.dirname(comparison_filename), exist_ok=True)
-    with open(comparison_filename, 'w') as f:
-        f.write(f"=== {args.few_shot}-Shot Evaluation Comparison ===\n")
-        f.write(f"Pre-knee point prompts used: {len(all_crowded_prompts)}\n")
-        f.write(f"Post-knee point prompts used: {knee_point}\n")
-        f.write(
-            f"Knee point reduction: {len(all_crowded_prompts) - knee_point} prompts removed\n")
-        f.write("=" * 50 + "\n")
-        f.write("For detailed results, see:\n")
-        f.write(f"  - Pre-knee point: {pre_knee_filename}\n")
-        f.write(f"  - Post-knee point: {post_knee_filename}\n")
-
-    print(f"  - Comparison summary: {comparison_filename}")
+    print(f"  - Final evaluation: {final_filename}")
 
 
 if __name__ == "__main__":
