@@ -13,10 +13,15 @@ Usage:
 import argparse
 import re
 import matplotlib.pyplot as plt
+import seaborn as sns
 import numpy as np
 from pathlib import Path
 from typing import List, Tuple, Dict
 import os
+
+# Set seaborn style for nicer plots
+sns.set_style("whitegrid")
+sns.set_palette("husl")
 
 
 def extract_iteration_scores(file_path: str) -> Tuple[List[int], List[float]]:
@@ -66,20 +71,21 @@ def extract_iteration_scores(file_path: str) -> Tuple[List[int], List[float]]:
 def plot_learning_curves(data: Dict[str, Tuple[List[int], List[float]]],
                          output_file: str = None,
                          title: str = "Learning Curves",
-                         figsize: Tuple[int, int] = (12, 8)):
+                         figsize: Tuple[int, int] = (6, 6)):
     """
-    Plot learning curves for multiple experiments.
+    Plot learning curves for multiple experiments using seaborn styling.
 
     Args:
         data: Dictionary mapping labels to (iterations, scores) tuples
         output_file: Optional output file path
         title: Plot title
-        figsize: Figure size tuple
+        figsize: Figure size tuple (default: square 6x6 for single column)
     """
-    plt.figure(figsize=figsize)
+    # Create figure with square aspect ratio suitable for single column
+    fig, ax = plt.subplots(figsize=figsize)
 
-    # Set up colors and styles
-    colors = plt.cm.tab10(np.linspace(0, 1, len(data)))
+    # Use seaborn color palette
+    colors = sns.color_palette("husl", len(data))
     line_styles = ['-', '--', '-.', ':', '-', '--', '-.', ':']
 
     # Plot each experiment
@@ -91,21 +97,33 @@ def plot_learning_curves(data: Dict[str, Tuple[List[int], List[float]]],
         color = colors[idx % len(colors)]
         line_style = line_styles[idx % len(line_styles)]
 
-        plt.plot(iterations, scores,
-                 label=label,
-                 color=color,
-                 linestyle=line_style,
-                 linewidth=2,
-                 marker='o' if len(iterations) <= 50 else None,
-                 markersize=4 if len(iterations) <= 50 else 0,
-                 alpha=0.8)
+        # Use seaborn lineplot style with matplotlib
+        ax.plot(iterations, scores,
+                label=label,
+                color=color,
+                linestyle=line_style,
+                linewidth=2.5,
+                marker='o' if len(iterations) <= 50 else None,
+                markersize=5 if len(iterations) <= 50 else 0,
+                markerfacecolor=color,
+                markeredgecolor='white',
+                markeredgewidth=0.5,
+                alpha=0.9)
 
-    # Customize the plot
-    plt.xlabel('Iteration', fontsize=12)
-    plt.ylabel('Mean Score of Top 10', fontsize=12)
-    plt.title(title, fontsize=14, fontweight='bold')
-    plt.grid(True, alpha=0.3)
-    plt.legend(bbox_to_anchor=(1.05, 1), loc='upper left')
+    # Customize the plot with seaborn-style formatting
+    ax.set_xlabel('Iteration', fontsize=12, fontweight='medium')
+    ax.set_ylabel('Mean Score of Top 10', fontsize=12, fontweight='medium')
+    ax.set_title(title, fontsize=14, fontweight='bold', pad=20)
+
+    # Customize grid
+    ax.grid(True, alpha=0.3, linestyle='-', linewidth=0.5)
+
+    # Legend positioning for square layout
+    ax.legend(frameon=True, fancybox=True, shadow=True,
+              loc='best', fontsize=10)
+
+    # Remove top and right spines for cleaner look
+    sns.despine(ax=ax)
 
     # Set axis limits with some padding
     all_iterations = []
@@ -127,16 +145,17 @@ def plot_learning_curves(data: Dict[str, Tuple[List[int], List[float]]],
             it for it in all_iterations if it <= min_max_iterations]
 
         # Set x-axis limit based on the minimum common range
-        plt.xlim(min(all_iterations) - 5, min_max_iterations + 5)
+        ax.set_xlim(min(all_iterations) - 5, min_max_iterations + 5)
 
         print(
             f"Setting x-axis limit to {min_max_iterations} (minimum of max iterations across experiments)")
 
         # Set y-axis limits based on all scores
         score_range = max(all_scores) - min(all_scores)
-        plt.ylim(min(all_scores) - score_range * 0.05,
-                 max(all_scores) + score_range * 0.05)
+        ax.set_ylim(min(all_scores) - score_range * 0.05,
+                    max(all_scores) + score_range * 0.05)
 
+    # Tight layout for better spacing
     plt.tight_layout()
 
     # Save or show
@@ -191,7 +210,7 @@ def main():
                         help="Output file path (if not specified, shows plot)")
     parser.add_argument("--title", type=str, default="Learning Curves",
                         help="Plot title")
-    parser.add_argument("--figsize", nargs=2, type=int, default=[12, 8],
+    parser.add_argument("--figsize", nargs=2, type=int, default=[6, 6],
                         help="Figure size as width height")
     parser.add_argument("--summary", action="store_true",
                         help="Print summary statistics")
