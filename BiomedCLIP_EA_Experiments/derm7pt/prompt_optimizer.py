@@ -6,9 +6,10 @@ import util
 import torch
 import numpy as np
 import os
+import argparse
 
-FITNESS_METRIC = 'inverted_ce'
-FEW_SHOT = 1
+FITNESS_METRIC = 'inverted_ce'  # Default value, will be overridden by command line
+FEW_SHOT = 1  # Default value, will be overridden by command line
 
 
 def get_prompt_template(iteration: int, prompt_content: str, label_type: str, generate_n: int = 10) -> str:
@@ -64,6 +65,25 @@ Only provide the output as Python code in the following format: prompts = list[t
 
 
 def main():
+    # Parse command line arguments
+    parser = argparse.ArgumentParser(description='Derm7pt Prompt Optimizer')
+    parser.add_argument('--fitness_metric', type=str, required=True,
+                       choices=['accuracy', 'f1_macro', 'f1_weighted', 'inverted_ce', 'inverted_weighted_ce'],
+                       help='Fitness metric to optimize')
+    parser.add_argument('--few_shot', type=int, required=True,
+                       help='Number of few-shot samples per class (use 0 for full dataset)')
+    
+    args = parser.parse_args()
+    
+    # Set global variables from command line arguments
+    global FITNESS_METRIC, FEW_SHOT
+    FITNESS_METRIC = args.fitness_metric
+    FEW_SHOT = args.few_shot
+    
+    print(f"Configuration:")
+    print(f"  Fitness Metric: {FITNESS_METRIC}")
+    print(f"  Few Shot: {FEW_SHOT}")
+
     # Set the dermoscopic feature to optimize prompts for
     label_type = "melanoma"
 
