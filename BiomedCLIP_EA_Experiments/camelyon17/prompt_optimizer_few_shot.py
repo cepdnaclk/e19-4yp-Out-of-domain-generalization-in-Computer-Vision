@@ -53,7 +53,7 @@ def main():
     n_shots = 16  # Number of samples per class to use for training
 
     # Name the experiment we are currently running
-    experiment_name = f"Experiment-70-strategy-inv-bce-gemma3-{n_shots}shot-SELECT_best"
+    experiment_name = f"Experiment-70-strategy-inv-bce-gemma3-{n_shots}shot-SELECT_random"
     print(f"Running {experiment_name} with {n_shots} shots per class...")
 
     # Create experiment results directory
@@ -168,7 +168,7 @@ def main():
         n = 10
         print(f"\nCurrent Top {n} prompt pairs:")
 
-        selected_prompts = pq.get_best_n(
+        selected_prompts = pq.get_random_n(
             n, isNormalizedInts=True)
         # reverse the order to set it to acsending order: Recency Bias
         selected_prompts = sorted(

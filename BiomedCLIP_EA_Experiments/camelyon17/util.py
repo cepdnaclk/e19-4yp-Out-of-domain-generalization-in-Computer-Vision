@@ -700,6 +700,34 @@ class PriorityQueue:
         best_score, best_pair = max(self._heap, key=lambda x: x[0])
         return best_pair, best_score
 
+    def get_random_n(self, n: int, isNormalizedInts: bool = False) -> List[Tuple[PromptPair, float]]:
+        if n <= 0 or not self._heap:
+            return []
+        n = min(n, len(self._heap))
+        sampled = random.sample(self._heap, n)
+
+        if isNormalizedInts:
+            # Normalize scores to [60, 90] range
+            min_score = 60
+            max_score = 90
+
+            raw_scores = [score for score, _ in sampled]
+            mn, mx = min(raw_scores), max(raw_scores)
+
+            if mx == mn:
+                # everyone identical → give all max_score
+                norm_scores = [max_score] * len(raw_scores)
+            else:
+                norm_scores = [
+                    int(round((s - mn) / (mx - mn) *
+                        (max_score - min_score) + min_score))
+                    for s in raw_scores
+                ]
+
+            return [(pair, norm) for (_, pair), norm in zip(sampled, norm_scores)]
+
+        return [(pair, score) for score, pair in sampled]
+
     def get_best_n(self, n: int, isNormalizedInts: bool = False) -> List[Tuple[PromptPair, float]]:
         if n <= 0:
             return []
