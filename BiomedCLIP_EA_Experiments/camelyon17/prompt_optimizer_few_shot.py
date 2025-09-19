@@ -53,11 +53,11 @@ def main():
     n_shots = 16  # Number of samples per class to use for training
 
     # Name the experiment we are currently running
-    experiment_name = f"Experiment-70-strategy-inv-bce-gemma3-{n_shots}shot-SELECT_random"
+    experiment_name = f"Experiment-70-strategy-inv-bce-gemma3-{n_shots}shot-GEN-50"
     print(f"Running {experiment_name} with {n_shots} shots per class...")
 
     # Create experiment results directory
-    results_dir = "ablation/prompt_selection"
+    results_dir = "ablation/generate_n/"
     os.makedirs(results_dir, exist_ok=True)
 
     # Create filename with experiment name
@@ -146,12 +146,12 @@ def main():
         max_capacity=1000, filter_threshold=0.6)
     prompt_content = ""
 
-    for j in range(500):
+    for j in range(100):
         if j == 0:
             prompts = util.get_prompt_pairs(meta_init_prompt, client)
         else:
             meta_prompt = get_prompt_template(
-                iteration_num=j, prompt_content=prompt_content, generate_n=10)
+                iteration_num=j, prompt_content=prompt_content, generate_n=50)
 
             prompts = util.get_prompt_pairs(meta_prompt, client)
 
