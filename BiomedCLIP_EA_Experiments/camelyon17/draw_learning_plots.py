@@ -71,7 +71,7 @@ def extract_iteration_scores(file_path: str) -> Tuple[List[int], List[float]]:
 def plot_learning_curves(data: Dict[str, Tuple[List[int], List[float]]],
                          output_file: str = None,
                          title: str = "Learning Curves",
-                         figsize: Tuple[float, float] = (3.25, 3.25)):
+                         figsize: Tuple[int, int] = (6, 6)):
     """
     Plot learning curves for multiple experiments using seaborn styling.
 
@@ -79,9 +79,9 @@ def plot_learning_curves(data: Dict[str, Tuple[List[int], List[float]]],
         data: Dictionary mapping labels to (iterations, scores) tuples
         output_file: Optional output file path
         title: Plot title
-        figsize: Figure size tuple (default: 3.25x3.25 inches for single column)
+        figsize: Figure size tuple (default: square 6x6 for single column)
     """
-    # Create figure sized for single column (3.25 inches wide)
+    # Create figure with square aspect ratio suitable for single column
     fig, ax = plt.subplots(figsize=figsize)
 
     # Use seaborn color palette
@@ -213,8 +213,8 @@ def main():
                         help="Output file path (if not specified, shows plot)")
     parser.add_argument("--title", type=str, default="Learning Curves",
                         help="Plot title")
-    parser.add_argument("--figsize", nargs=2, type=float, default=[3.25, 2.0],
-                        help="Figure size as width height (inches)")
+    parser.add_argument("--figsize", nargs=2, type=int, default=[6, 6],
+                        help="Figure size as width height")
     parser.add_argument("--summary", action="store_true",
                         help="Print summary statistics")
     parser.add_argument("--summary_file", type=str, default=None,
