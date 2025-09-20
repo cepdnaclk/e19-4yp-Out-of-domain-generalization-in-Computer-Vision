@@ -53,11 +53,11 @@ def main():
     n_shots = 16  # Number of samples per class to use for training
 
     # Name the experiment we are currently running
-    experiment_name = f"Experiment-70-strategy-inv-bce-gemma3-{n_shots}shot-GEN-50"
+    experiment_name = f"Experiment-{n_shots}shot-Inital-10"
     print(f"Running {experiment_name} with {n_shots} shots per class...")
 
     # Create experiment results directory
-    results_dir = "ablation/generate_n/"
+    results_dir = "ablation/initial/"
     os.makedirs(results_dir, exist_ok=True)
 
     # Create filename with experiment name
@@ -139,7 +139,7 @@ def main():
     client = util.LLMClient(provider='gemini')
 
     # Configure the prompt templates
-    meta_init_prompt = """Give 50 distinct textual descriptions of pairs of visual discriminative features to identify whether the central region of a histopathological image patch contains tumor tissue or not. The patch is extracted from an H&E‑stained whole‑slide image of a lymph node section. Only provide the output as Python code in the following format: prompts = list[tuple[negative: str, positive: str]]. Let's think step-by-step"""
+    meta_init_prompt = """Give 10 distinct textual descriptions of pairs of visual discriminative features to identify whether the central region of a histopathological image patch contains tumor tissue or not. The patch is extracted from an H&E‑stained whole‑slide image of a lymph node section. Only provide the output as Python code in the following format: prompts = list[tuple[negative: str, positive: str]]. Let's think step-by-step"""
 
     # Optimization loop
     pq = util.PriorityQueue(
@@ -151,7 +151,7 @@ def main():
             prompts = util.get_prompt_pairs(meta_init_prompt, client)
         else:
             meta_prompt = get_prompt_template(
-                iteration_num=j, prompt_content=prompt_content, generate_n=50)
+                iteration_num=j, prompt_content=prompt_content, generate_n=10)
 
             prompts = util.get_prompt_pairs(meta_prompt, client)
 
