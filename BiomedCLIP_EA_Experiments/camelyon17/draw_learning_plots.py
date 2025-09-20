@@ -110,20 +110,20 @@ def plot_learning_curves(data: Dict[str, Tuple[List[int], List[float]]],
                 markeredgewidth=0.5,
                 alpha=0.9)
 
-    # Customize the plot with seaborn-style formatting and 10pt fonts
-    ax.set_xlabel('Iteration', fontsize=10, fontweight='medium')
-    ax.set_ylabel('Mean Score of Top 10', fontsize=10, fontweight='medium')
-    ax.set_title(title, fontsize=10, pad=20)
+    # Customize the plot with seaborn-style formatting and 12pt fonts
+    ax.set_xlabel('Iteration', fontsize=12, fontweight='medium')
+    ax.set_ylabel('Mean Score of Top 10', fontsize=12, fontweight='medium')
+    ax.set_title(title, fontsize=12, pad=20)
 
-    # Set tick label font sizes to 10pt
-    ax.tick_params(axis='both', which='major', labelsize=10)
+    # Set tick label font sizes to 12pt
+    ax.tick_params(axis='both', which='major', labelsize=12)
 
     # Customize grid
     ax.grid(True, alpha=0.3, linestyle='-', linewidth=0.5)
 
-    # Legend positioning for square layout with 10pt font
+    # Legend positioning for square layout with 12pt font
     ax.legend(frameon=True, fancybox=True, shadow=True,
-              loc='best', fontsize=10)
+              loc='best', fontsize=12)
 
     # Remove top and right spines for cleaner look
     sns.despine(ax=ax)
