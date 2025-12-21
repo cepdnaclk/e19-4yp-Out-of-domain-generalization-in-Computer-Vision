@@ -1,6 +1,6 @@
 import statistics
 import uuid
-from dataclasses import dataclass, field
+from dataclasses import dataclass, field, fields
 from enum import StrEnum, auto
 from typing import Any, Iterator, Literal, NotRequired, TypedDict
 
@@ -68,7 +68,7 @@ class EncodedDataset:
 
 
 @dataclass(slots=True, kw_only=True)
-class PromptCandidate:
+class Individual:
     """
     Mutable entity (metrics update allowed once).
     """
@@ -78,10 +78,6 @@ class PromptCandidate:
     generation_born: int
     parents: list[uuid.UUID] = field(default_factory=list)
     operator: CreationOperator
-
-    # New: Track which medical concept this candidate was born to address
-    # e.g. "Cell Texture" vs "Nucleus Shape"
-    concept: str | None = None
 
     metadata: dict[str, Any] = field(default_factory=dict)
 
@@ -105,7 +101,6 @@ class PromptCandidate:
     def to_dict(self) -> dict[str, Any]:
         return {
             "id": str(self.id),
-            "concept": self.concept,
             "genotype": self.genotype,
             "metrics": self.metrics,
             "generation": self.generation_born,
@@ -132,20 +127,20 @@ class Population:
     capacity: int = 50
 
     # Internal storage
-    _candidates: list[PromptCandidate] = field(default_factory=list)
+    _candidates: list[Individual] = field(default_factory=list)
 
     def __len__(self) -> int:
         return len(self._candidates)
 
-    def __iter__(self) -> Iterator[PromptCandidate]:
+    def __iter__(self) -> Iterator[Individual]:
         return iter(self._candidates)
 
     @property
-    def candidates(self) -> list[PromptCandidate]:
+    def candidates(self) -> list[Individual]:
         """Returns a read-only view of candidates."""
         return list(self._candidates)
 
-    def add(self, candidate: PromptCandidate) -> None:
+    def add(self, candidate: Individual) -> None:
         """
         Adds a candidate. If island is full, we DO NOT evict immediately.
         We usually evict after sorting.
@@ -186,3 +181,39 @@ class Population:
             "size": len(self),
             "candidates": [c.to_dict() for c in self._candidates],
         }
+
+
+@dataclass(slots=True, frozen=True)
+class EvolutionConfig:
+    """
+    The Control Plane configuration.
+    Defines all hyperparameters for the evolutionary run.
+    """
+
+    # Global Settings
+    generations: int = 20
+    target_metric: MetricName = "inverted_bce"
+
+    # Island Settings
+    island_capacity: int = 100  # Max size of an island
+    initial_pop_size: int = 50  # How many prompts to start with
+
+    # Evolutionary Operator Settings
+    num_parents: int = 10  # How many winners to select
+    offspring_per_gen: int = 10  # How many children to create per gen
+
+    # Logging / Debugging
+    save_checkpoints: bool = True
+    log_every_n_steps: int = 1
+
+    @classmethod
+    def from_dict(cls, config: dict[str, Any]) -> "EvolutionConfig":
+        """
+        Helper to load from a raw dictionary (e.g., from YAML),
+        filtering out unknown keys to prevent crashes.
+        """
+        # Get the field names of this dataclass
+        valid_keys = {f.name for f in fields(cls)}
+        # Filter the input dict
+        filtered = {k: v for k, v in config.items() if k in valid_keys}
+        return cls(**filtered)
