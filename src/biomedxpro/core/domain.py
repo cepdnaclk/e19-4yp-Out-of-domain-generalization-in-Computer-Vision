@@ -122,10 +122,11 @@ class Population:
     It maintains a collection of candidates focused on a specific medical concept.
     """
 
-    id: uuid.UUID = field(default_factory=uuid.uuid4)
-
     # The "Concept" this island isolates (e.g., "Texture", "Shape")
     concept: str
+
+    # Unique Island ID
+    id: uuid.UUID = field(default_factory=uuid.uuid4)
 
     # Capacity limit (PromptBreeder/EvoPrompt usually limit this to 50-100)
     capacity: int = 50
