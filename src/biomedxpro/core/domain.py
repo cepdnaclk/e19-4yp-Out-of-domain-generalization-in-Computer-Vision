@@ -2,7 +2,7 @@ import statistics
 import uuid
 from dataclasses import dataclass, field, fields
 from enum import StrEnum, auto
-from typing import Any, Iterator, Literal, NotRequired, TypedDict
+from typing import Any, Iterator, Literal, NotRequired, Sequence, TypedDict
 
 import torch
 
@@ -90,12 +90,12 @@ class Individual:
 
     def update_metrics(self, metrics: EvaluationMetrics) -> None:
         if self.metrics is not None:
-            raise RuntimeError(f"Candidate {self.id} is already evaluated.")
+            raise RuntimeError(f"individual {self.id} is already evaluated.")
         self.metrics = metrics
 
     def get_fitness(self, metric: MetricName) -> float:
         if self.metrics is None:
-            raise RuntimeError(f"Candidate {self.id} has no metrics.")
+            raise RuntimeError(f"individual {self.id} has no metrics.")
         return self.metrics[metric]
 
     def to_dict(self) -> dict[str, Any]:
@@ -114,7 +114,7 @@ class Individual:
 class Population:
     """
     Represents an Island of Evolution.
-    It maintains a collection of candidates focused on a specific medical concept.
+    It maintains a collection of individuals focused on a specific medical concept.
     """
 
     # The "Concept" this island isolates (e.g., "Texture", "Shape")
@@ -127,48 +127,87 @@ class Population:
     capacity: int = 50
 
     # Internal storage
-    _candidates: list[Individual] = field(default_factory=list)
+    _individuals: list[Individual] = field(default_factory=list)
+
+    # track the generation
+    _generation: int = 0
 
     def __len__(self) -> int:
-        return len(self._candidates)
+        return len(self._individuals)
 
     def __iter__(self) -> Iterator[Individual]:
-        return iter(self._candidates)
+        return iter(self._individuals)
 
     @property
-    def candidates(self) -> list[Individual]:
-        """Returns a read-only view of candidates."""
-        return list(self._candidates)
+    def generation(self) -> int:
+        """Returns the current generation of the population."""
+        return self._generation
 
-    def add(self, candidate: Individual) -> None:
+    def increment_generation(self) -> None:
+        """Increments the generation counter by one."""
+        self._generation += 1
+
+    def is_all_evaluated(self) -> bool:
+        """Checks if all individuals in the population have been evaluated."""
+        return all(individual.is_evaluated for individual in self._individuals)
+
+    def _sort_by_metric(self, metric: MetricName) -> None:
+        """Sorts individuals in descending order based on the specified metric."""
+        if not self.is_all_evaluated():
+            raise RuntimeError(
+                "Cannot sort population: not all individuals are evaluated."
+            )
+        self._individuals.sort(key=lambda ind: ind.get_fitness(metric), reverse=True)
+
+    @property
+    def individuals(self) -> list[Individual]:
+        """Returns a read-only view of individuals."""
+        return list(self._individuals)
+
+    def add_individual(self, individual: Individual) -> None:
         """
-        Adds a candidate. If island is full, we DO NOT evict immediately.
+        Adds a individual. If island is full, we DO NOT evict immediately.
         We usually evict after sorting.
         """
-        self._candidates.append(candidate)
+        if not individual.is_evaluated:
+            raise ValueError("Cannot add unevaluated individual to population.")
 
-    def sort_and_trim(self, metric: MetricName) -> None:
+        self._individuals.append(individual)
+
+    def add_individuals(self, individuals: Sequence[Individual]) -> None:
+        for individual in individuals:
+            if not individual.is_evaluated:
+                raise ValueError("Cannot add unevaluated individual to population.")
+
+        self._individuals.extend(individuals)
+
+    def keep_elites(self, metric: MetricName) -> None:
         """
         The 'Survival of the Fittest' mechanism.
         Sorts population descending by metric and cuts to capacity.
         """
         # Sort descending (Higher is better)
-        # Note: We filter out unevaluated candidates to prevent crashes
-        evaluated = [c for c in self._candidates if c.is_evaluated]
-
-        evaluated.sort(key=lambda c: c.get_fitness(metric), reverse=True)
+        self._sort_by_metric(metric)
 
         # Trim to capacity (Elitism)
-        self._candidates = evaluated[: self.capacity]
+        self._individuals = self._individuals[: self.capacity]
+
+    def get_elite_individuals(self, k: int, metric: MetricName) -> list[Individual]:
+        """
+        Selects the top-K individuals based on the specified metric.
+        """
+        # Ensure population is sorted
+        self._sort_by_metric(metric)
+        return self._individuals[:k]
 
     def get_stats(self, metric: MetricName) -> dict[str, float]:
         """
         Returns high-level stats for the engine logs.
         """
-        if not self._candidates:
+        if not self._individuals:
             return {"max": 0.0, "mean": 0.0, "min": 0.0}
 
-        scores = [c.get_fitness(metric) for c in self._candidates if c.is_evaluated]
+        scores = [c.get_fitness(metric) for c in self._individuals if c.is_evaluated]
         if not scores:
             return {"max": 0.0, "mean": 0.0, "min": 0.0}
 
@@ -179,7 +218,7 @@ class Population:
             "island_id": str(self.id),
             "concept": self.concept,
             "size": len(self),
-            "candidates": [c.to_dict() for c in self._candidates],
+            "individuals": [c.to_dict() for c in self._individuals],
         }
 
 
