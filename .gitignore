@@ -16,3 +16,4 @@
 **/cached
 venv
 *.npy
+.venv
