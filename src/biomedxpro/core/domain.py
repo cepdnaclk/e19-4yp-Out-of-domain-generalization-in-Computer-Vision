@@ -88,6 +88,14 @@ class Individual:
     def is_evaluated(self) -> bool:
         return self.metrics is not None
 
+    @property
+    def signature(self) -> tuple[str, str]:
+        """
+        Returns a hashable representation of the Genotype.
+        Used for deduplication.
+        """
+        return (self.genotype["negative_prompt"], self.genotype["positive_prompt"])
+
     def update_metrics(self, metrics: EvaluationMetrics) -> None:
         if self.metrics is not None:
             raise RuntimeError(f"individual {self.id} is already evaluated.")
@@ -129,6 +137,9 @@ class Population:
     # Internal storage
     _individuals: list[Individual] = field(default_factory=list)
 
+    # Stores signatures of individuals for deduplication, we will not remove signatures upon deletion
+    _signatures: set[tuple[str, str]] = field(default_factory=set)
+
     # track the generation
     _generation: int = 0
 
@@ -164,22 +175,32 @@ class Population:
         """Returns a read-only view of individuals."""
         return list(self._individuals)
 
-    def add_individual(self, individual: Individual) -> None:
+    def add_individual(self, individual: Individual) -> bool:
         """
-        Adds a individual. If island is full, we DO NOT evict immediately.
-        We usually evict after sorting.
+        Adds an individual if it is evaluated and unique.
+        Returns True if added, False if it was a duplicate.
         """
         if not individual.is_evaluated:
             raise ValueError("Cannot add unevaluated individual to population.")
 
+        # 2. Deduplication Check
+        if individual.signature in self._signatures:
+            return False
+
+        # 3. Add
+        self._signatures.add(individual.signature)
         self._individuals.append(individual)
+        return True
 
-    def add_individuals(self, individuals: Sequence[Individual]) -> None:
-        for individual in individuals:
-            if not individual.is_evaluated:
-                raise ValueError("Cannot add unevaluated individual to population.")
-
-        self._individuals.extend(individuals)
+    def add_individuals(self, individuals: Sequence[Individual]) -> int:
+        """
+        Adds a batch of individuals. Returns count of actually added (non-duplicate) items.
+        """
+        count = 0
+        for ind in individuals:
+            if self.add_individual(ind):
+                count += 1
+        return count
 
     def keep_elites(self, metric: MetricName) -> None:
         """
