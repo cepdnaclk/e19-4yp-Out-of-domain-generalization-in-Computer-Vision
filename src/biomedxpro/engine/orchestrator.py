@@ -47,6 +47,7 @@ class Orchestrator:
         Creates an island for each medical concept and populates it.
         """
 
+        # Discover concepts if not provided
         if concepts is None:
             concepts = self.operator.discover_concepts()
             logger.info(f"Discovered concepts: {concepts}")
