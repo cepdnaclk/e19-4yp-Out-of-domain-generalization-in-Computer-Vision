@@ -41,13 +41,17 @@ class Orchestrator:
         # The Archipelago: A list of isolated populations
         self.islands: list[Population] = []
 
-    def initialize(self, concepts: list[str]) -> None:
+    def initialize(self, concepts: list[str] | None) -> None:
         """
         Phase 1: Genesis.
         Creates an island for each medical concept and populates it.
         """
-        logger.info(f"Initializing archipelago with {len(concepts)} islands.")
 
+        if concepts is None:
+            concepts = self.operator.discover_concepts()
+            logger.info(f"Discovered concepts: {concepts}")
+
+        logger.info(f"Initializing archipelago with {len(concepts)} islands.")
         for concept in concepts:
             # Create a logging context for this specific operation
             island_logger = logger.bind(phase="init", island=concept)

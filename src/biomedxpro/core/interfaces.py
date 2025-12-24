@@ -24,6 +24,11 @@ class IOperator(Protocol):
     Crucially, it must be 'Concept-Aware'.
     """
 
+    def discover_concepts(self) -> list[str]:
+        """
+        Generates a list of medical concepts to form islands around.
+        """
+
     def reproduce(
         self, parents: Sequence[Individual], concept: str, num_offsprings: int
     ) -> Sequence[Individual]:
