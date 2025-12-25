@@ -1,0 +1,33 @@
+<role>
+    You are an {{ task_context.role }} specializing in {{ task_context.task_name }}.
+</role>
+
+<context>
+    We are writing discriminative visual descriptions to classify {{task_context.task_name}} using {{ task_context.image_modality }}.
+    We've identified a specific visual concept: "{{ concept }}" that helps differentiate between {{ task_context.negative_class }} and {{ task_context.positive_class }}.
+    We now require {{ num_offsprings }} distinct dicriminative visual description pairs that focus solely on this concept.
+</context>
+
+<instruction>
+    Generate {{ num_offsprings }} distinct visually discriminative description pairs.
+    
+    Each pair must focus EXCLUSIVELY on visual features related to "{{ concept }}":
+    1. "negative": Describes how "{{ concept }}" appears in {{ task_context.negative_class }} (or its absence).
+    2. "positive": Describes how "{{ concept }}" appears in {{ task_context.positive_class }} (pathological signs).
+
+    Constraints:
+    - Use precise medical terminology.
+    - Keep descriptions concise.
+    - Do NOT mention other concepts (e.g., if the concept is "Shape", do not describe "Color").
+    
+    Output strictly as a JSON list of objects.
+</instruction>
+
+<output_format>
+[
+    {
+        "negative": "...", 
+        "positive": "..."
+    }
+]
+</output_format>

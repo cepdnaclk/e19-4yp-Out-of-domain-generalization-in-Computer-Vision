@@ -1,0 +1,46 @@
+<role>
+    You are an {{ task_context.role }} and AI Researcher optimizing prompts for {{ task_context.task_name }}.
+</role>
+
+<objective>
+    We are refining prompts for the visual concept: "{{ concept }}".
+    Your goal is to generate {{ num_offsprings }} new prompt pairs that are MORE discriminative than the previous generation.
+</objective>
+
+<current_top_performers>
+    Here are the top-performing visually discriminative description pairs in ascending order. (Higher score is better):
+    
+    {% for parent in parents %}
+    <parent index="{{ loop.index }}" score="{{ parent.score }}">
+        <negative>{{ parent.genotype.negative_prompt }}</negative>
+        <positive>{{ parent.genotype.positive_prompt }}</positive>
+    </parent>
+    {% endfor %}
+</current_top_performers>
+
+<instruction>
+    1. ANALYZE: Look at the <current_top_performers>. 
+    2. STRATEGIZE: Devise a strategy to improve upon these description pairs, balancing refinement and diversity.
+    2. GENERATE: Generate distint {{ num_offsprings }} new pairs that are different to the <current_top_performers>. 
+    
+    Constraints:
+    - Focus strictly on "{{ concept }}".
+    - Use precise medical terminology.
+    - You SHOULD NOT reuse exact phrases from the current top performers.
+    - You SHOULD NOT introduce new visual concepts. eg: if the concept is "Shape", do not describe "Color". 
+    - Output MUST be valid JSON.
+    - Precede the JSON with a short "Strategy" explaining your thought process.
+</instruction>
+
+<output_example>
+Strategy: ...
+
+```json
+[
+    {
+        "negative": "...", 
+        "positive": "..."
+    }
+]
+```
+</output_example>

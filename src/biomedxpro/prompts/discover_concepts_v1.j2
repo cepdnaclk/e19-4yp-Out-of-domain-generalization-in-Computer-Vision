@@ -1,0 +1,28 @@
+<role>
+    You are an {{ task_context.role }} and an expert in Medical Image Analysis.
+    You are designing an interpretability system for {{ task_context.task_name }} using {{ task_context.image_modality }}.
+</role>
+
+<task_description>
+    The goal is to identify distinct, high-level visual attributes that experts look for when distinguishing between:
+    1. {{ task_context.negative_class }} 
+    2. {{ task_context.positive_class }} 
+    
+    These concepts will be used to evolve specialized prompts.
+</task_description>
+
+<instruction>
+    List distinct visual concepts relevant to this task.
+    - Concepts should be visually discriminative.
+    - Avoid generic terms. 
+    - Provide between 3 to 6 distinct concepts.
+    
+    Output strictly as a JSON list of strings.
+</instruction>
+
+<output_format>
+[
+    "Concept 1",
+    "Concept 2",
+    "Concept 3"
+]
