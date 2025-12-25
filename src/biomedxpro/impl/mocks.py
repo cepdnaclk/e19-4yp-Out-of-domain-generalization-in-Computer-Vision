@@ -56,6 +56,7 @@ class MockOperator(IOperator):
         parents: Sequence[Individual],
         concept: str,
         num_offsprings: int,
+        current_generation: int,
         target_metric: MetricName,
     ) -> Sequence[Individual]:
         """
@@ -65,7 +66,7 @@ class MockOperator(IOperator):
             return []
 
         # Inherit generation info
-        gen_born = parents[0].generation_born + 1
+        gen_born = current_generation + 1
         parent_ids = [p.id for p in parents]
 
         offspring = []

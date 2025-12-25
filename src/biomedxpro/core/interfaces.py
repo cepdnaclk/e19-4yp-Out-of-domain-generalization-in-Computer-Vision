@@ -49,6 +49,7 @@ class IOperator(Protocol):
         parents: Sequence[Individual],
         concept: str,
         num_offsprings: int,
+        current_generation: int,
         target_metric: MetricName,
     ) -> Sequence[Individual]:
         """

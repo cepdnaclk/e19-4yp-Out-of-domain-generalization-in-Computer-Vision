@@ -139,6 +139,7 @@ class Orchestrator:
                 parents=parents,
                 concept=island.concept,
                 num_offsprings=self.params.offspring_per_gen,
+                current_generation=gen,
                 target_metric=target_metric,
             )
 
