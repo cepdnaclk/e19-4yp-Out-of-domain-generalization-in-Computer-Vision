@@ -1,0 +1,89 @@
+{
+    "description": "Example configuration for batch crowding analysis",
+    "experiments": [
+        {
+            "name": "Standard 32-shot experiment",
+            "input_file": "final_results/Experiment-70-strategy-inv-bce-gemma3-32shot_opt_pairs.txt",
+            "output_dir": "final_results",
+            "experiment_suffix": "standard",
+            "few_shot": 32,
+            "provider": "gemini",
+            "max_capacity": 1000,
+            "filter_threshold": 0.6,
+            "crowding_iterations": 3,
+            "group_size": 30
+        },
+        {
+            "name": "Strategy ablation - medical concepts",
+            "input_file": "ablation/strategy_ablation/Experiment-71-medical-concepts-inv-bce-gemma3-32shot_opt_pairs.txt",
+            "output_dir": "ablation/strategy_ablation/crowding_results",
+            "experiment_suffix": "medical_concepts",
+            "few_shot": 32,
+            "provider": "gemini"
+        },
+        {
+            "name": "Strategy ablation - similar prompts",
+            "input_file": "ablation/strategy_ablation/Experiment-72-similar-inv-bce-gemma3-32shot_opt_pairs.txt",
+            "output_dir": "ablation/strategy_ablation/crowding_results",
+            "experiment_suffix": "similar_prompts",
+            "few_shot": 32,
+            "provider": "gemini"
+        },
+        {
+            "name": "Model ablation - Claude 3",
+            "input_file": "ablation/model_ablation/Experiment-73-strategy-inv-bce-claude3-32shot_opt_pairs.txt",
+            "output_dir": "ablation/model_ablation/crowding_results",
+            "experiment_suffix": "claude3",
+            "few_shot": 32,
+            "provider": "gemini"
+        },
+        {
+            "name": "Model ablation - GPT-4",
+            "input_file": "ablation/model_ablation/Experiment-74-strategy-inv-bce-gpt4-32shot_opt_pairs.txt",
+            "output_dir": "ablation/model_ablation/crowding_results",
+            "experiment_suffix": "gpt4",
+            "few_shot": 32,
+            "provider": "gemini"
+        },
+        {
+            "name": "Metric ablation - accuracy",
+            "input_file": "ablation/metric_ablation/Experiment-75-strategy-accuracy-gemma3-32shot_opt_pairs.txt",
+            "output_dir": "ablation/metric_ablation/crowding_results",
+            "experiment_suffix": "accuracy_metric",
+            "few_shot": 32,
+            "provider": "gemini"
+        },
+        {
+            "name": "Few-shot ablation - 1 shot",
+            "input_file": "ablation/fewshot_ablation/Experiment-76-strategy-inv-bce-gemma3-1shot_opt_pairs.txt",
+            "output_dir": "ablation/fewshot_ablation/crowding_results",
+            "experiment_suffix": "1shot",
+            "few_shot": 1,
+            "provider": "gemini"
+        },
+        {
+            "name": "Few-shot ablation - 4 shots",
+            "input_file": "ablation/fewshot_ablation/Experiment-76-strategy-inv-bce-gemma3-4shot_opt_pairs.txt",
+            "output_dir": "ablation/fewshot_ablation/crowding_results",
+            "experiment_suffix": "4shot",
+            "few_shot": 4,
+            "provider": "gemini"
+        },
+        {
+            "name": "Few-shot ablation - 8 shots",
+            "input_file": "ablation/fewshot_ablation/Experiment-76-strategy-inv-bce-gemma3-8shot_opt_pairs.txt",
+            "output_dir": "ablation/fewshot_ablation/crowding_results",
+            "experiment_suffix": "8shot",
+            "few_shot": 8,
+            "provider": "gemini"
+        },
+        {
+            "name": "Few-shot ablation - 16 shots",
+            "input_file": "ablation/fewshot_ablation/Experiment-76-strategy-inv-bce-gemma3-16shot_opt_pairs.txt",
+            "output_dir": "ablation/fewshot_ablation/crowding_results",
+            "experiment_suffix": "16shot",
+            "few_shot": 16,
+            "provider": "gemini"
+        }
+    ]
+}
