@@ -83,6 +83,9 @@ class PromptConfig:
     # Paths to the external Jinja2 templates
     mutation_template_path: str = "src/biomedxpro/prompts/mutation_v1.j2"
     init_template_path: str = "src/biomedxpro/prompts/init_v1.j2"
+    discover_concepts_template_path: str = (
+        "src/biomedxpro/prompts/discover_concepts_v1.j2"
+    )
 
 
 @dataclass(slots=True, frozen=True)
