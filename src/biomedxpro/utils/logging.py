@@ -1,8 +1,9 @@
 import sys
 from datetime import datetime
 from pathlib import Path
+from typing import Any
 
-from loguru import Record, logger
+from loguru import logger
 
 
 def setup_logging(
@@ -23,7 +24,7 @@ def setup_logging(
     log_path = Path(log_dir) / filename
 
     # 3. Console Formatter (Clean)
-    def console_formatter(record: Record) -> str:
+    def console_formatter(record: Any) -> str:
         fmt = "<green>{time:HH:mm:ss}</green> | <level>{level: <8}</level> | "
         if "generation" in record["extra"]:
             fmt += "Gen <bold>{extra[generation]:02d}</bold> | "
