@@ -2,12 +2,12 @@ import sys
 from datetime import datetime
 from pathlib import Path
 
-from loguru import logger
+from loguru import Record, logger
 
 
 def setup_logging(
     experiment_name: str, console_level: str = "INFO", log_dir: str = "logs"
-):
+) -> Path:
     """
     Configures logging based on the experiment name.
 
@@ -23,7 +23,7 @@ def setup_logging(
     log_path = Path(log_dir) / filename
 
     # 3. Console Formatter (Clean)
-    def console_formatter(record):
+    def console_formatter(record: Record) -> str:
         fmt = "<green>{time:HH:mm:ss}</green> | <level>{level: <8}</level> | "
         if "generation" in record["extra"]:
             fmt += "Gen <bold>{extra[generation]:02d}</bold> | "
