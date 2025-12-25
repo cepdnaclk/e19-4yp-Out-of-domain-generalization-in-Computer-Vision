@@ -61,10 +61,6 @@ class EvolutionParams:
     num_parents: int = 10  # How many winners to select
     offspring_per_gen: int = 10  # How many children to create per gen
 
-    # Logging / Debugging
-    save_checkpoints: bool = True
-    log_every_n_steps: int = 1
-
     @classmethod
     def from_dict(cls, config: dict[str, Any]) -> "EvolutionParams":
         """

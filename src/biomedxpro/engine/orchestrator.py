@@ -32,7 +32,7 @@ class Orchestrator:
         train_dataset: EncodedDataset,
         val_dataset: EncodedDataset,
         params: EvolutionParams,
-        recorder: IHistoryRecorder | None = None,
+        recorder: IHistoryRecorder,
     ) -> None:
         self.evaluator = evaluator
         self.operator = operator
@@ -90,6 +90,8 @@ class Orchestrator:
                 f"Stats: {stats}"
             )
 
+        self.recorder.record_generation(self.islands)
+
     def run(self) -> list[Individual]:
         """
         Phase 2: The Evolutionary Loop.
@@ -99,10 +101,7 @@ class Orchestrator:
 
         for gen in range(1, self.params.generations + 1):
             self._run_generation(gen)
-
-            # Optional: Checkpoint logic could go here
-            if self.params.save_checkpoints:
-                pass  # Implementation would dump self.islands to disk
+            self.recorder.record_generation(self.islands)
 
         logger.info("Evolution complete.")
         return self._collect_best_individuals()
@@ -154,16 +153,16 @@ class Orchestrator:
             # We sort at the start to ensure we select parents from the best available
             island.keep_elites(target_metric)
 
-            # 6. Logging
+            # 6. Increment Generation Counter
+            island.increment_generation()
+
+            # 7. Logging
             stats = island.get_stats(target_metric)
             elapsed = time.time() - start_time
 
             island_logger.info(
                 f"Generation {gen} complete. Stats: {stats} | Time Elapsed: {elapsed:.2f}s"
             )
-
-            if self.recorder:
-                self.recorder.record_generation(self.islands)
 
     def _collect_best_individuals(self) -> list[Individual]:
         """
