@@ -10,7 +10,12 @@ from biomedxpro.core.domain import (
     Individual,
     Population,
 )
-from biomedxpro.core.interfaces import IFitnessEvaluator, IOperator, SelectionStrategy
+from biomedxpro.core.interfaces import (
+    IFitnessEvaluator,
+    IHistoryRecorder,
+    IOperator,
+    SelectionStrategy,
+)
 
 
 class Orchestrator:
@@ -27,6 +32,7 @@ class Orchestrator:
         train_dataset: EncodedDataset,
         val_dataset: EncodedDataset,
         params: EvolutionParams,
+        recorder: IHistoryRecorder | None = None,
     ) -> None:
         self.evaluator = evaluator
         self.operator = operator
@@ -37,6 +43,9 @@ class Orchestrator:
 
         # The Archipelago: A list of isolated populations
         self.islands: list[Population] = []
+
+        # recorder for evolutionary history
+        self.recorder = recorder
 
     def initialize(self, concepts: list[str] | None) -> None:
         """
@@ -152,6 +161,9 @@ class Orchestrator:
             island_logger.info(
                 f"Generation {gen} complete. Stats: {stats} | Time Elapsed: {elapsed:.2f}s"
             )
+
+            if self.recorder:
+                self.recorder.record_generation(self.islands)
 
     def _collect_best_individuals(self) -> list[Individual]:
         """

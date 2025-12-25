@@ -76,3 +76,16 @@ class SelectionStrategy(Protocol):
     def select(
         self, population: Population, k: int, metric: MetricName
     ) -> Sequence[Individual]: ...
+
+
+class IHistoryRecorder(Protocol):
+    """
+    Contract for persistence layers.
+    Allows swapping between JSONL files, SQL Databases, or WandB/MLflow.
+    """
+
+    def record_generation(self, islands: Sequence[Population]) -> None:
+        """
+        Persists the state of the entire archipelago for the current generation.
+        """
+        ...

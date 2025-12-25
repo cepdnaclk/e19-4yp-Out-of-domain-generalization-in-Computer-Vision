@@ -11,16 +11,20 @@ from src.biomedxpro.impl.mocks import (
     RandomSelector,
     create_dummy_dataset,
 )
+from src.biomedxpro.utils.history import HistoryRecorder
 from src.biomedxpro.utils.logging import setup_logging
 
 
-def main():
+def main() -> None:
     # 1. Setup Logging
     experiment_name = "texture_ablation_v1"
     log_path = setup_logging(experiment_name)
     print(f"Logging to: {log_path}")
 
     logger.info("Starting Mock Evolution Test...")
+
+    # 2. History Recorder (Optional)
+    recorder = HistoryRecorder(experiment_name=experiment_name)
 
     # 3. Define Domain Parameters (Science)
     # Replaces 'EvolutionConfig'
@@ -58,7 +62,8 @@ def main():
         selector=mock_selector,
         train_dataset=dummy_data,
         val_dataset=dummy_data,
-        params=evo_params,  # Injecting the Science Parameters
+        params=evo_params,
+        recorder=recorder,
     )
 
     # 6. Run the Evolutionary Loop
