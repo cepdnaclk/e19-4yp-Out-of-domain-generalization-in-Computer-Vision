@@ -11,9 +11,15 @@ from src.biomedxpro.impl.mocks import (
     RandomSelector,
     create_dummy_dataset,
 )
+from src.biomedxpro.utils.logging import setup_logging
 
 
 def main():
+    # 1. Setup Logging
+    experiment_name = "texture_ablation_v1"
+    log_path = setup_logging(experiment_name)
+    print(f"Logging to: {log_path}")
+
     logger.info("Starting Mock Evolution Test...")
 
     # 3. Define Domain Parameters (Science)
