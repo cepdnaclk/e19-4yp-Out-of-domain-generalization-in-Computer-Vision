@@ -10,6 +10,7 @@ from biomedxpro.core.domain import (
     MetricName,
     Population,
     PromptGenotype,
+    TaskDefinition,
 )
 from biomedxpro.core.interfaces import IFitnessEvaluator, IOperator, SelectionStrategy
 
@@ -20,6 +21,9 @@ class MockOperator(IOperator):
     A purely synthetic operator for smoke-testing the engine.
     It generates random strings directly, bypassing Jinja2 templates and LLM Clients.
     """
+
+    def __init__(self, task_def: TaskDefinition) -> None:
+        self.task_def = task_def
 
     def discover_concepts(self) -> list[str]:
         # Return a fixed list so the loop has something to work on
