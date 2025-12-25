@@ -6,15 +6,11 @@ from loguru import logger
 
 from biomedxpro.core.domain import (
     EncodedDataset,
-    EvolutionConfig,
+    EvolutionParams,
     Individual,
     Population,
 )
-from biomedxpro.core.interfaces import (
-    IFitnessEvaluator,
-    IOperator,
-    SelectionStrategy,
-)
+from biomedxpro.core.interfaces import IFitnessEvaluator, IOperator, SelectionStrategy
 
 
 class Orchestrator:
@@ -30,14 +26,14 @@ class Orchestrator:
         selector: SelectionStrategy,
         train_dataset: EncodedDataset,
         val_dataset: EncodedDataset,
-        config: EvolutionConfig,
+        params: EvolutionParams,
     ) -> None:
         self.evaluator = evaluator
         self.operator = operator
         self.selector = selector
         self.train_dataset = train_dataset
         self.val_dataset = val_dataset
-        self.config = config
+        self.params = params
 
         # The Archipelago: A list of isolated populations
         self.islands: list[Population] = []
@@ -60,13 +56,13 @@ class Orchestrator:
             island_logger.info("Creating island and generating initial population...")
 
             # 1. Create the Island Container
-            island = Population(concept=concept, capacity=self.config.island_capacity)
+            island = Population(concept=concept, capacity=self.params.island_capacity)
 
             # 2. Generate Adam & Eve (Initial Prompts) via LLM
             # Note: We pass the concept so the LLM knows what to generate
             initial_individuals: Sequence[Individual] = (
                 self.operator.initialize_population(
-                    num_offsprings=self.config.initial_pop_size, concept=concept
+                    num_offsprings=self.params.initial_pop_size, concept=concept
                 )
             )
 
@@ -79,7 +75,7 @@ class Orchestrator:
             self.islands.append(island)
 
             # Log initial stats
-            stats = island.get_stats(self.config.target_metric)
+            stats = island.get_stats(self.params.target_metric)
             logger.info(
                 f"Island '{concept}' initialized with {len(island.individuals)} individuals. "
                 f"Stats: {stats}"
@@ -92,11 +88,11 @@ class Orchestrator:
         """
         logger.info("Starting evolutionary run...")
 
-        for gen in range(1, self.config.generations + 1):
+        for gen in range(1, self.params.generations + 1):
             self._run_generation(gen)
 
             # Optional: Checkpoint logic could go here
-            if self.config.save_checkpoints:
+            if self.params.save_checkpoints:
                 pass  # Implementation would dump self.islands to disk
 
         logger.info("Evolution complete.")
@@ -110,9 +106,9 @@ class Orchestrator:
 
         # Bind 'generation' to all logs in this scope
         gen_logger = logger.bind(generation=gen)
-        gen_logger.info(f"=== Starting Generation {gen}/{self.config.generations} ===")
+        gen_logger.info(f"=== Starting Generation {gen}/{self.params.generations} ===")
 
-        target_metric = self.config.target_metric
+        target_metric = self.params.target_metric
 
         for island in self.islands:
             # Bind 'island' to logs so we know where we are
@@ -120,7 +116,7 @@ class Orchestrator:
 
             # 1. Parent Selection
             parents = self.selector.select(
-                island, k=self.config.num_parents, metric=target_metric
+                island, k=self.params.num_parents, metric=target_metric
             )
 
             if not parents:
@@ -134,7 +130,7 @@ class Orchestrator:
             offspring = self.operator.reproduce(
                 parents=parents,
                 concept=island.concept,
-                num_offsprings=self.config.offspring_per_gen,
+                num_offsprings=self.params.offspring_per_gen,
                 target_metric=target_metric,
             )
 
@@ -163,7 +159,7 @@ class Orchestrator:
         Gather the champions from every island to form the final ensemble.
         """
         champions: list[Individual] = []
-        target = self.config.target_metric
+        target = self.params.target_metric
 
         for island in self.islands:
             elites = island.get_elite_individuals(k=1, metric=target)

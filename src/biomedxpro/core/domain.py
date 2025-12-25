@@ -43,7 +43,7 @@ MetricName = Literal["inverted_bce", "f1_macro", "accuracy", "auc", "f1_weighted
 
 
 @dataclass(slots=True, frozen=True)
-class EvolutionConfig:
+class EvolutionParams:
     """
     The Control Plane configuration.
     Defines all hyperparameters for the evolutionary run.
@@ -66,7 +66,7 @@ class EvolutionConfig:
     log_every_n_steps: int = 1
 
     @classmethod
-    def from_dict(cls, config: dict[str, Any]) -> "EvolutionConfig":
+    def from_dict(cls, config: dict[str, Any]) -> "EvolutionParams":
         """
         Helper to load from a raw dictionary (e.g., from YAML),
         filtering out unknown keys to prevent crashes.
@@ -79,17 +79,7 @@ class EvolutionConfig:
 
 
 @dataclass(slots=True, frozen=True)
-class PromptConfig:
-    # Paths to the external Jinja2 templates
-    mutation_template_path: str = "src/biomedxpro/prompts/mutation_v1.j2"
-    init_template_path: str = "src/biomedxpro/prompts/init_v1.j2"
-    discover_concepts_template_path: str = (
-        "src/biomedxpro/prompts/discover_concepts_v1.j2"
-    )
-
-
-@dataclass(slots=True, frozen=True)
-class TaskContext:
+class TaskDefinition:
     """
     Defines the semantic domain of the problem.
     These fields are injected into the Prompt Template.
@@ -107,7 +97,7 @@ class TaskContext:
     description: str = ""
 
     @classmethod
-    def from_dict(cls, config: dict[str, Any]) -> "TaskContext":
+    def from_dict(cls, config: dict[str, Any]) -> "TaskDefinition":
         valid_keys = {f.name for f in fields(cls)}
         filtered = {k: v for k, v in config.items() if k in valid_keys}
         return cls(**filtered)
