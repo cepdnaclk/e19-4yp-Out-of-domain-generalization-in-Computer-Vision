@@ -141,7 +141,7 @@ class Individual:
     generation_born: int
     parents: list[uuid.UUID] = field(default_factory=list)
     operator: CreationOperator
-
+    concept: str  # The concept this individual belongs to
     metadata: dict[str, Any] = field(default_factory=dict)
 
     # Initially None
@@ -178,6 +178,7 @@ class Individual:
             "parents": [str(p) for p in self.parents],
             "operator": self.operator,
             "metadata": self.metadata,
+            "concept": self.concept,
         }
 
 

@@ -46,6 +46,7 @@ class MockOperator(IOperator):
                 generation_born=0,
                 operator=CreationOperator.INITIALIZATION,
                 metadata={"source": "mock_init"},
+                concept=concept,
             )
             offspring.append(ind)
         return offspring
@@ -82,6 +83,7 @@ class MockOperator(IOperator):
                 parents=parent_ids,
                 operator=CreationOperator.LLM_MUTATION,
                 metadata={"source": "mock_reproduce"},
+                concept=concept,
             )
             offspring.append(ind)
         return offspring
