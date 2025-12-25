@@ -40,6 +40,75 @@ class EvaluationMetrics(TypedDict):
 
 MetricName = Literal["inverted_bce", "f1_macro", "accuracy", "auc", "f1_weighted"]
 
+
+@dataclass(slots=True, frozen=True)
+class EvolutionConfig:
+    """
+    The Control Plane configuration.
+    Defines all hyperparameters for the evolutionary run.
+    """
+
+    # Global Settings
+    generations: int = 20
+    target_metric: MetricName = "inverted_bce"
+
+    # Island Settings
+    island_capacity: int = 100  # Max size of an island
+    initial_pop_size: int = 50  # How many prompts to start with
+
+    # Evolutionary Operator Settings
+    num_parents: int = 10  # How many winners to select
+    offspring_per_gen: int = 10  # How many children to create per gen
+
+    # Logging / Debugging
+    save_checkpoints: bool = True
+    log_every_n_steps: int = 1
+
+    @classmethod
+    def from_dict(cls, config: dict[str, Any]) -> "EvolutionConfig":
+        """
+        Helper to load from a raw dictionary (e.g., from YAML),
+        filtering out unknown keys to prevent crashes.
+        """
+        # Get the field names of this dataclass
+        valid_keys = {f.name for f in fields(cls)}
+        # Filter the input dict
+        filtered = {k: v for k, v in config.items() if k in valid_keys}
+        return cls(**filtered)
+
+
+@dataclass(slots=True, frozen=True)
+class PromptConfig:
+    # Paths to the external Jinja2 templates
+    mutation_template_path: str = "src/biomedxpro/prompts/mutation_v1.j2"
+    init_template_path: str = "src/biomedxpro/prompts/init_v1.j2"
+
+
+@dataclass(slots=True, frozen=True)
+class TaskContext:
+    """
+    Defines the semantic domain of the problem.
+    These fields are injected into the Prompt Template.
+    """
+
+    task_name: str  # e.g. "Melanoma Classification"
+    image_modality: str  # e.g. "Dermoscopy images"
+    positive_class: str  # e.g. "Malignant Melanoma"
+    negative_class: str  # e.g. "Benign Nevus"
+
+    # NEW: The Persona for the LLM
+    role: str  # e.g. "Expert Dermatologist"
+
+    # Optional: Any extra specific instructions for this dataset
+    description: str = ""
+
+    @classmethod
+    def from_dict(cls, config: dict[str, Any]) -> "TaskContext":
+        valid_keys = {f.name for f in fields(cls)}
+        filtered = {k: v for k, v in config.items() if k in valid_keys}
+        return cls(**filtered)
+
+
 # --- Core Entities ---
 
 
@@ -241,39 +310,3 @@ class Population:
             "size": len(self),
             "individuals": [c.to_dict() for c in self._individuals],
         }
-
-
-@dataclass(slots=True, frozen=True)
-class EvolutionConfig:
-    """
-    The Control Plane configuration.
-    Defines all hyperparameters for the evolutionary run.
-    """
-
-    # Global Settings
-    generations: int = 20
-    target_metric: MetricName = "inverted_bce"
-
-    # Island Settings
-    island_capacity: int = 100  # Max size of an island
-    initial_pop_size: int = 50  # How many prompts to start with
-
-    # Evolutionary Operator Settings
-    num_parents: int = 10  # How many winners to select
-    offspring_per_gen: int = 10  # How many children to create per gen
-
-    # Logging / Debugging
-    save_checkpoints: bool = True
-    log_every_n_steps: int = 1
-
-    @classmethod
-    def from_dict(cls, config: dict[str, Any]) -> "EvolutionConfig":
-        """
-        Helper to load from a raw dictionary (e.g., from YAML),
-        filtering out unknown keys to prevent crashes.
-        """
-        # Get the field names of this dataclass
-        valid_keys = {f.name for f in fields(cls)}
-        # Filter the input dict
-        filtered = {k: v for k, v in config.items() if k in valid_keys}
-        return cls(**filtered)
