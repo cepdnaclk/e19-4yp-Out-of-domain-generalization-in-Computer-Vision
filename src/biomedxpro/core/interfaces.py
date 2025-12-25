@@ -45,7 +45,11 @@ class IOperator(Protocol):
         """
 
     def reproduce(
-        self, parents: Sequence[Individual], concept: str, num_offsprings: int
+        self,
+        parents: Sequence[Individual],
+        concept: str,
+        num_offsprings: int,
+        target_metric: MetricName,
     ) -> Sequence[Individual]:
         """
         Generates offspring.

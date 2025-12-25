@@ -135,6 +135,7 @@ class Orchestrator:
                 parents=parents,
                 concept=island.concept,
                 num_offsprings=self.config.offspring_per_gen,
+                target_metric=target_metric,
             )
 
             # 3. Evaluation
