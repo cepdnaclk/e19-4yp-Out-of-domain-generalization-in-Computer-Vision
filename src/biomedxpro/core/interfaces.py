@@ -18,9 +18,23 @@ class IFitnessEvaluator(Protocol):
         ...
 
 
+class ILLMClient(Protocol):
+    """
+    Abstract contract for any Text-to-Text model provider.
+    This allows us to swap Gemini for Ollama, OpenAI, or a Mock without breaking code.
+    """
+
+    def generate(self, prompt: str) -> str:
+        """
+        Takes a raw string prompt and returns the raw string response.
+        Implementations should handle retries, timeouts, and API errors internally.
+        """
+        ...
+
+
 class IOperator(Protocol):
     """
-    The LLM Interface.
+    The Operator Interface utilizing the ILLMClient.
     Crucially, it must be 'Concept-Aware'.
     """
 
