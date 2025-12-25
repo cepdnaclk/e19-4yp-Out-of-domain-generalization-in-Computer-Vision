@@ -1,3 +1,4 @@
+# src/biomedxpro/core/interfaces.py
 from typing import Protocol, Sequence
 
 from biomedxpro.core.domain import EncodedDataset, Individual, MetricName, Population
