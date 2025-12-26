@@ -7,6 +7,7 @@ from typing import Any, Dict, List, Sequence, TypedDict
 
 from jinja2 import Template
 from loguru import logger
+from tenacity import retry, stop_after_attempt, wait_exponential
 
 from biomedxpro.core.domain import (
     CreationOperation,
@@ -17,6 +18,7 @@ from biomedxpro.core.domain import (
 )
 from biomedxpro.core.interfaces import ILLMClient, IOperator
 from biomedxpro.utils.config import PromptStrategy
+from biomedxpro.utils.logging import loguru_before_sleep
 
 
 class ParentViewModel(TypedDict):
@@ -142,6 +144,14 @@ class LLMOperator(IOperator):
 
         return view_models
 
+    _retry_policy = retry(
+        wait=wait_exponential(min=1, max=10),
+        stop=stop_after_attempt(3),
+        before_sleep=loguru_before_sleep,
+        reraise=True,
+    )
+
+    @_retry_policy
     def discover_concepts(self) -> list[str]:
         prompt = self._render(self.strategy.discover_concepts_template_path)
 
@@ -158,6 +168,7 @@ class LLMOperator(IOperator):
         # Sanitize strings
         return [str(c).strip() for c in concepts if isinstance(c, str)]
 
+    @_retry_policy
     def initialize_population(
         self, num_offsprings: int, concept: str
     ) -> Sequence[Individual]:
@@ -193,9 +204,16 @@ class LLMOperator(IOperator):
                 )
                 offspring.append(ind)
 
+        if not offspring:
+            logger.warning(
+                f"Initialization for '{concept}' produced 0 valid individuals. Retrying..."
+            )
+            raise RuntimeError("Initialization failed to produce valid individuals.")
+
         logger.debug(f"Initialized {len(offspring)} individuals for '{concept}'")
         return offspring
 
+    @_retry_policy
     def reproduce(
         self,
         parents: Sequence[Individual],
