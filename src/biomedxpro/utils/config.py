@@ -1,4 +1,4 @@
-from dataclasses import dataclass, fields
+from dataclasses import dataclass, field, fields
 from typing import Any
 
 
@@ -14,14 +14,42 @@ class PromptStrategy:
 
 @dataclass(slots=True, frozen=True)
 class LLMSettings:
-    """Infrastructure settings for the API connection."""
+    """
+    Infrastructure settings for the API connection.
+
+    Attributes:
+        provider: The service provider (e.g., 'openai', 'groq').
+        model_name: The specific model ID (e.g., 'gpt-4o').
+        base_url: Optional override for the API endpoint.
+        llm_params: A dictionary of model-specific hyperparameters (e.g., temperature,
+                    top_p, max_tokens) passed directly to the provider's API.
+    """
 
     provider: str = "gemini"
     model_name: str = "gemini-1.5-flash"
-    temperature: float = 0.7
+    base_url: str | None = None
+
+    # Renamed from 'generation_params' to avoid confusion with Evo Generations
+    llm_params: dict[str, Any] = field(default_factory=dict)
 
     @classmethod
     def from_dict(cls, config: dict[str, Any]) -> "LLMSettings":
-        valid_keys = {f.name for f in fields(cls)}
-        filtered = {k: v for k, v in config.items() if k in valid_keys}
-        return cls(**filtered)
+        """
+        Smart Loader:
+        Separates explicit infrastructure fields from implicit model parameters.
+        """
+        # 1. Identify explicit fields (provider, model_name, etc.)
+        known_fields = {f.name for f in fields(cls) if f.name != "llm_params"}
+
+        explicit_args = {}
+        implicit_params = {}
+
+        # 2. Sort input keys
+        for key, value in config.items():
+            if key in known_fields:
+                explicit_args[key] = value
+            else:
+                # e.g., "temperature", "frequency_penalty" -> llm_params
+                implicit_params[key] = value
+
+        return cls(**explicit_args, llm_params=implicit_params)
