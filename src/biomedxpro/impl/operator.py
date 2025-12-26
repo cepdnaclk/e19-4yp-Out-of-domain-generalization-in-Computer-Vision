@@ -175,15 +175,14 @@ class LLMOperator(IOperator):
         )
 
         response = self.llm.generate(prompt)
-        data_list = self._parse_llm_json(response)
+        data_list: list[list[str]] = self._parse_llm_json(response)
 
         offspring = []
         if isinstance(data_list, list):
             for data in data_list:
-                # Ensure keys exist
-                if "negative" not in data or "positive" not in data:
+                if (not isinstance(data, list)) or len(data) != 2:
                     logger.warning(
-                        f"Skipping invalid individual data during init for concept '{concept}': {data}"
+                        f"Skipping invalid individual data during initialization for concept '{concept}': {data}"
                     )
                     continue
 
@@ -191,8 +190,8 @@ class LLMOperator(IOperator):
                     id=uuid.uuid4(),
                     # We store the structured pair in genotype
                     genotype=PromptGenotype(
-                        negative_prompt=data["negative"],
-                        positive_prompt=data["positive"],
+                        negative_prompt=data[0],
+                        positive_prompt=data[1],
                     ),
                     generation_born=0,
                     parents=[],
@@ -236,18 +235,13 @@ class LLMOperator(IOperator):
         response = self.llm.generate(prompt)
 
         # 4. Parse & Create Offspring
-        data_list = self._parse_llm_json(response)
+        data_list: list[list[str]] = self._parse_llm_json(response)
         parent_ids = [p.id for p in parents]
 
         offspring: list[Individual] = []
         if isinstance(data_list, list):
             for data in data_list:
-                if not isinstance(data, dict):
-                    logger.warning(
-                        f"Skipping invalid individual data during reproduction for concept '{concept}': {data}"
-                    )
-                    continue
-                if "negative" not in data or "positive" not in data:
+                if (not isinstance(data, list)) or len(data) != 2:
                     logger.warning(
                         f"Skipping invalid individual data during reproduction for concept '{concept}': {data}"
                     )
@@ -256,8 +250,8 @@ class LLMOperator(IOperator):
                 ind = Individual(
                     id=uuid.uuid4(),
                     genotype=PromptGenotype(
-                        negative_prompt=data["negative"],
-                        positive_prompt=data["positive"],
+                        negative_prompt=data[0],
+                        positive_prompt=data[1],
                     ),
                     generation_born=current_generation,
                     parents=parent_ids,
