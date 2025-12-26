@@ -4,7 +4,7 @@ from typing import Sequence
 import torch
 
 from biomedxpro.core.domain import (
-    CreationOperator,
+    CreationOperation,
     EncodedDataset,
     Individual,
     MetricName,
@@ -44,7 +44,7 @@ class MockOperator(IOperator):
                     positive_prompt=f"init pos {concept} {suffix}",
                 ),
                 generation_born=0,
-                operator=CreationOperator.INITIALIZATION,
+                operation=CreationOperation.INITIALIZATION,
                 metadata={"source": "mock_init"},
                 concept=concept,
             )
@@ -82,7 +82,7 @@ class MockOperator(IOperator):
                 ),
                 generation_born=gen_born,
                 parents=parent_ids,
-                operator=CreationOperator.LLM_MUTATION,
+                operation=CreationOperation.LLM_MUTATION,
                 metadata={"source": "mock_reproduce"},
                 concept=concept,
             )

@@ -10,7 +10,7 @@ import torch
 # --- Enums & Value Objects ---
 
 
-class CreationOperator(StrEnum):
+class CreationOperation(StrEnum):
     INITIALIZATION = auto()
     LLM_MUTATION = auto()
 
@@ -136,7 +136,7 @@ class Individual:
     genotype: PromptGenotype
     generation_born: int
     parents: list[uuid.UUID] = field(default_factory=list)
-    operator: CreationOperator
+    operation: CreationOperation
     concept: str  # The concept this individual belongs to
     metadata: dict[str, Any] = field(default_factory=dict)
 
@@ -172,7 +172,7 @@ class Individual:
             "metrics": self.metrics,
             "generation": self.generation_born,
             "parents": [str(p) for p in self.parents],
-            "operator": self.operator,
+            "operation": self.operation,
             "metadata": self.metadata,
             "concept": self.concept,
         }
