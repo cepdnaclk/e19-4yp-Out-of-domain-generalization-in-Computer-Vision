@@ -2,6 +2,7 @@
 from loguru import logger
 
 from src.biomedxpro.core.domain import EvolutionParams, TaskDefinition
+from src.biomedxpro.engine.config import ExecutionConfig
 from src.biomedxpro.engine.orchestrator import Orchestrator
 
 # Implementation (Using mock implementations for testing)
@@ -37,6 +38,13 @@ def main() -> None:
         target_metric="inverted_bce",
     )
 
+    # Define the exucution config (Hardware/Runtime)
+    exec_config = ExecutionConfig(
+        max_workers=2,
+        device="cpu",
+        batch_size=16,
+    )
+
     # Replaces 'TaskContext' - purely informative for the MockOperator
     task_def = TaskDefinition(
         task_name="Mock Melanoma",
@@ -64,6 +72,7 @@ def main() -> None:
         val_dataset=dummy_data,
         params=evo_params,
         recorder=recorder,
+        exec_config=exec_config,
     )
 
     # 6. Run the Evolutionary Loop
@@ -87,4 +96,5 @@ def main() -> None:
 
 
 if __name__ == "__main__":
+    main()
     main()
