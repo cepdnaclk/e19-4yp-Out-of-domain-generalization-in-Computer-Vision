@@ -189,7 +189,7 @@ class Population:
     concept: str
 
     # Unique Island ID
-    id: uuid.UUID = field(default_factory=uuid.uuid4)
+    id: uuid.UUID | str = field(default_factory=uuid.uuid4)
 
     # Capacity limit (PromptBreeder/EvoPrompt usually limit this to 50-100)
     capacity: int = 50
