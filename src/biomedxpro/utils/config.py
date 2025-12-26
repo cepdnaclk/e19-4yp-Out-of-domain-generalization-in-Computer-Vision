@@ -19,7 +19,6 @@ class LLMSettings:
     provider: str = "gemini"
     model_name: str = "gemini-1.5-flash"
     temperature: float = 0.7
-    api_key: str | None = None
 
     @classmethod
     def from_dict(cls, config: dict[str, Any]) -> "LLMSettings":
