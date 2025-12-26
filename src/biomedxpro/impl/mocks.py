@@ -66,7 +66,7 @@ class MockOperator(IOperator):
             return []
 
         # Inherit generation info
-        gen_born = current_generation + 1
+        gen_born = current_generation
         parent_ids = [p.id for p in parents]
 
         offspring = []
