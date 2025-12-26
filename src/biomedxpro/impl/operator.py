@@ -132,10 +132,7 @@ class LLMOperator(IOperator):
 
             vm: ParentViewModel = {
                 "score": score,
-                "genotype": {
-                    "negative_prompt": genotype_data["negative_prompt"],
-                    "positive_prompt": genotype_data["positive_prompt"],
-                },
+                "genotype": genotype_data,
             }
             view_models.append(vm)
 
