@@ -2,7 +2,6 @@ import json
 from unittest.mock import MagicMock, patch
 
 import pytest
-from tenacity import RetryError
 
 from biomedxpro.core.domain import (
     CreationOperation,
@@ -274,4 +273,5 @@ class TestReproduce:
             )
 
         assert len(offspring) == 1
+        assert offspring[0].genotype.positive_prompt == "p1"
         assert offspring[0].genotype.positive_prompt == "p1"
