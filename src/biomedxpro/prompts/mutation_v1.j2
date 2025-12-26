@@ -29,18 +29,16 @@
     - You SHOULD NOT reuse exact phrases from the current top performers.
     - You SHOULD NOT introduce new visual concepts. eg: if the concept is "Shape", do not describe "Color". 
     - Output MUST be valid JSON.
-    - Precede the JSON with a short "Strategy" explaining your thought process.
+    - Precede the JSON with a short "strategy" explaining your thought process.
 </instruction>
 
-<output_example>
-Strategy: ...
+<output_format>
+# Strategy: ...
 
 ```json
-[
-    {
-        "negative": "...", 
-        "positive": "..."
-    }
+[   
+    ["Description of negative class...", "Description of positive class..."],
+    ["...", "..."]
 ]
 ```
-</output_example>
+</output_format>

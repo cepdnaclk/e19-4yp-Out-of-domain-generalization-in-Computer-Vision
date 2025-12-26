@@ -20,14 +20,15 @@
     - Keep descriptions concise.
     - Do NOT mention other concepts (e.g., if the concept is "Shape", do not describe "Color").
     
-    Output strictly as a JSON list of objects.
+    Output strictly as a JSON list of lists.
+    Each inner list must contain exactly two strings: [negative_description, positive_description].
 </instruction>
 
 <output_format>
+```json
 [
-    {
-        "negative": "...", 
-        "positive": "..."
-    }
+    ["Description of negative class...", "Description of positive class..."],
+    ["...", "..."]
 ]
+```
 </output_format>
