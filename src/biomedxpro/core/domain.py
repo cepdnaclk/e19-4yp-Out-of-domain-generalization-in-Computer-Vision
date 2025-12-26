@@ -21,11 +21,21 @@ class DataSplit(StrEnum):
     TEST = auto()
 
 
-class PromptGenotype(TypedDict):
-    """Immutable DNA."""
+@dataclass(slots=True, frozen=True)
+class PromptGenotype:
+    """
+    Immutable DNA.
+    Using dataclass ensures accidental mutation is impossible.
+    """
 
     negative_prompt: str
     positive_prompt: str
+
+    def to_dict(self) -> dict[str, str]:
+        return {
+            "negative_prompt": self.negative_prompt,
+            "positive_prompt": self.positive_prompt,
+        }
 
 
 class EvaluationMetrics(TypedDict):
@@ -132,10 +142,10 @@ class Individual:
     Mutable entity (metrics update allowed once).
     """
 
-    id: uuid.UUID = field(default_factory=uuid.uuid4)
+    id: uuid.UUID | str = field(default_factory=uuid.uuid4)
     genotype: PromptGenotype
     generation_born: int
-    parents: list[uuid.UUID] = field(default_factory=list)
+    parents: list[uuid.UUID | str] = field(default_factory=list)
     operation: CreationOperation
     concept: str  # The concept this individual belongs to
     metadata: dict[str, Any] = field(default_factory=dict)
@@ -153,7 +163,7 @@ class Individual:
         Returns a hashable representation of the Genotype.
         Used for deduplication.
         """
-        return (self.genotype["negative_prompt"], self.genotype["positive_prompt"])
+        return (self.genotype.negative_prompt, self.genotype.positive_prompt)
 
     def update_metrics(self, metrics: EvaluationMetrics) -> None:
         if self.metrics is not None:
