@@ -25,8 +25,8 @@ class LLMSettings:
                     top_p, max_tokens) passed directly to the provider's API.
     """
 
-    provider: str = "gemini"
-    model_name: str = "gemini-1.5-flash"
+    provider: str = "groq"
+    model_name: str = "openai/gpt-oss-20b"
     base_url: str | None = None
 
     # Renamed from 'generation_params' to avoid confusion with Evo Generations
