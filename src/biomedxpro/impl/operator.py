@@ -71,6 +71,7 @@ class LLMOperator(IOperator):
         """
         Extracts JSON from LLM response and loads it.
         Handles markdown code blocks with ```json fences using regex.
+        Falls back to parsing raw JSON if no code block is found.
         """
 
         text = raw_response.strip()
@@ -82,9 +83,7 @@ class LLMOperator(IOperator):
 
         if match:
             text = match.group(1).strip()
-        else:
-            logger.error("No JSON code block found in LLM response.")
-            raise ValueError("LLM response does not contain a JSON code block.")
+        # If no code block, use the raw text
 
         # Parse JSON
         try:
