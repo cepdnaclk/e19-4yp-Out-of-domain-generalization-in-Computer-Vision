@@ -6,15 +6,15 @@ from biomedxpro.core.domain import EncodedDataset, Individual, MetricName, Popul
 
 class IFitnessEvaluator(Protocol):
     """
-    Evaluates candidates against the ground truth.
+    Evaluates individuals against the ground truth.
     This is usually universal across all islands.
     """
 
     def evaluate(
-        self, candidates: Sequence[Individual], dataset: EncodedDataset
+        self, individuals: Sequence[Individual], dataset: EncodedDataset
     ) -> None:
         """
-        Calculates scores (e.g., F1, BCE) and calls candidate.update_metrics().
+        Calculates scores (e.g., F1, BCE) and calls individual.update_metrics().
         """
         ...
 
