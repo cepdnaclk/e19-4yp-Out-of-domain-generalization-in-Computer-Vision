@@ -77,7 +77,7 @@ class MockOperator(IOperator):
 
             ind = Individual(
                 genotype=PromptGenotype(
-                    negative_prompt=f"mutated neg {concept} {suffix} (from {parent.genotype['negative_prompt'][:10]}...)",
+                    negative_prompt=f"mutated neg {concept} {suffix} (from {parent.genotype.negative_prompt[:10]}...)",
                     positive_prompt=f"mutated pos {concept} {suffix}",
                 ),
                 generation_born=gen_born,
@@ -97,9 +97,9 @@ class MockEvaluator(IFitnessEvaluator):
     """
 
     def evaluate(
-        self, candidates: Sequence[Individual], dataset: EncodedDataset
+        self, individuals: Sequence[Individual], dataset: EncodedDataset
     ) -> None:
-        for cand in candidates:
+        for cand in individuals:
             if cand.is_evaluated:
                 continue
 
