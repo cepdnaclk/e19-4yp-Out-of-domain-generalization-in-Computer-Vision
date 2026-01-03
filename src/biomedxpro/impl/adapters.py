@@ -269,7 +269,7 @@ class Camelyon17Adapter:
                 f"patch_patient_{patient_str}_node_{node_id}_"
                 f"x_{x_coord}_y_{y_coord}.png"
             )
-            image_dir = root_path / f"patient_{patient_str}_node_{node_id}"
+            image_dir = root_path / "patches" / f"patient_{patient_str}_node_{node_id}"
             image_path = image_dir / image_filename
 
             # Only include samples with existing image files
