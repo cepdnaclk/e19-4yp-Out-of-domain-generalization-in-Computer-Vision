@@ -22,6 +22,20 @@ class DataSplit(StrEnum):
 
 
 @dataclass(slots=True, frozen=True)
+class StandardSample:
+    """
+    The standardized representation of a single data sample.
+    Adapters return lists of these; the DataLoader consumes them.
+    
+    This allows adapters to work with any dataset schema while providing
+    a unified interface to the data loading pipeline.
+    """
+
+    image_path: str
+    label: int
+
+
+@dataclass(slots=True, frozen=True)
 class PromptGenotype:
     """
     Immutable DNA.
