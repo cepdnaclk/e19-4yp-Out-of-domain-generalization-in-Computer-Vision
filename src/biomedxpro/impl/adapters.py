@@ -125,7 +125,7 @@ class Derm7ptAdapter:
             DataSplit.TEST: "test_indexes.csv",
         }
 
-        meta_path = root_path / "meta.csv"
+        meta_path = root_path / "meta"/ "meta.csv"
         split_path = root_path / split_map[split]
         image_base = root_path / "images"
 
