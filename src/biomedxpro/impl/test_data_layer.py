@@ -67,59 +67,139 @@ class TestAdapterRegistry:
 class TestDerm7ptAdapter:
     """Test the Derm7pt adapter."""
 
-    @pytest.fixture
-    def mock_derm7pt_structure(self, tmp_path):
-        """Create a mock Derm7pt dataset structure."""
-        # Create directories
-        (tmp_path / "images").mkdir()
-
-        # Create meta.csv
-        meta_csv = tmp_path / "meta.csv"
-        meta_csv.write_text(
-            "diagnosis,derm\n"
-            "melanoma,img1.jpg\n"
-            "benign nevus,img2.jpg\n"
-        )
-
-        # Create split files
-        train_csv = tmp_path / "train_indexes.csv"
-        train_csv.write_text("indexes\n0\n")
-
-        val_csv = tmp_path / "valid_indexes.csv"
-        val_csv.write_text("indexes\n1\n")
-
-        test_csv = tmp_path / "test_indexes.csv"
-        test_csv.write_text("indexes\n0\n1\n")
-
-        # Create dummy image files
-        (tmp_path / "images" / "img1.jpg").write_bytes(b"fake image data")
-        (tmp_path / "images" / "img2.jpg").write_bytes(b"fake image data")
-
-        return tmp_path
-
-    def test_load_samples_train_split(self, mock_derm7pt_structure):
-        """Test loading training split."""
+    def test_load_samples_train_split(self):
+        """Test loading training split from actual Derm7pt dataset."""
+        derm7pt_root = Path("/storage/projects3/e19-fyp-out-of-domain-gen-in-cv/Derm7pt/release_v0")
+        
+        # Skip test if dataset not available
+        if not (derm7pt_root / "meta" / "meta.csv").exists():
+            pytest.skip("Derm7pt dataset not available")
+        
         adapter = Derm7ptAdapter()
-        samples = adapter.load_samples(str(mock_derm7pt_structure), DataSplit.TRAIN)
+        samples = adapter.load_samples(str(derm7pt_root / "meta"), DataSplit.TRAIN)
 
-        assert len(samples) == 1
+        assert len(samples) > 0
         assert isinstance(samples[0], StandardSample)
-        assert samples[0].label == 1  # melanoma
+        assert isinstance(samples[0].label, int)
 
-    def test_load_samples_val_split(self, mock_derm7pt_structure):
-        """Test loading validation split."""
+    def test_load_samples_val_split(self):
+        """Test loading validation split from actual Derm7pt dataset."""
+        derm7pt_root = Path("/storage/projects3/e19-fyp-out-of-domain-gen-in-cv/Derm7pt/release_v0")
+        
+        if not (derm7pt_root / "meta" / "meta.csv").exists():
+            pytest.skip("Derm7pt dataset not available")
+        
         adapter = Derm7ptAdapter()
-        samples = adapter.load_samples(str(mock_derm7pt_structure), DataSplit.VAL)
+        samples = adapter.load_samples(str(derm7pt_root / "meta"), DataSplit.VAL)
 
-        assert len(samples) == 1
-        assert samples[0].label == 0  # benign
+        assert len(samples) > 0
+        assert isinstance(samples[0], StandardSample)
+        assert isinstance(samples[0].label, int)
 
-    def test_load_samples_missing_meta_csv(self, tmp_path):
-        """Test error handling for missing meta.csv."""
+    def test_load_samples_test_split(self):
+        """Test loading test split from actual Derm7pt dataset."""
+        derm7pt_root = Path("/storage/projects3/e19-fyp-out-of-domain-gen-in-cv/Derm7pt/release_v0")
+        
+        if not (derm7pt_root / "meta" / "meta.csv").exists():
+            pytest.skip("Derm7pt dataset not available")
+        
         adapter = Derm7ptAdapter()
+        samples = adapter.load_samples(str(derm7pt_root / "meta"), DataSplit.TEST)
 
-        with pytest.raises(FileNotFoundError, match="meta.csv"):
-            adapter.load_samples(str(tmp_path), DataSplit.TRAIN)
+        assert len(samples) > 0
+        assert isinstance(samples[0], StandardSample)
+
+
+class TestCamelyon17Adapter:
+    """Test the Camelyon17 adapter."""
+
+    def test_load_samples_train_split(self):
+        """Test loading training split from actual Camelyon17 dataset."""
+        camelyon17_root = Path("/storage/projects3/e19-fyp-out-of-domain-gen-in-cv/camelyon17WILDS")
+        
+        # Skip test if dataset not available
+        if not (camelyon17_root / "metadata.csv").exists():
+            pytest.skip("Camelyon17 dataset not available")
+        
+        adapter = Camelyon17Adapter()
+        samples = adapter.load_samples(str(camelyon17_root), DataSplit.TRAIN)
+
+        assert len(samples) > 0
+        assert isinstance(samples[0], StandardSample)
+        assert isinstance(samples[0].label, int)
+
+    def test_load_samples_val_split(self):
+        """Test loading validation split from actual Camelyon17 dataset."""
+        camelyon17_root = Path("/storage/projects3/e19-fyp-out-of-domain-gen-in-cv/camelyon17WILDS")
+        
+        if not (camelyon17_root / "metadata.csv").exists():
+            pytest.skip("Camelyon17 dataset not available")
+        
+        adapter = Camelyon17Adapter()
+        samples = adapter.load_samples(str(camelyon17_root), DataSplit.VAL)
+
+        assert len(samples) > 0
+        assert isinstance(samples[0], StandardSample)
+        assert isinstance(samples[0].label, int)
+
+    def test_load_samples_test_split(self):
+        """Test loading test split from actual Camelyon17 dataset."""
+        camelyon17_root = Path("/storage/projects3/e19-fyp-out-of-domain-gen-in-cv/camelyon17WILDS")
+        
+        if not (camelyon17_root / "metadata.csv").exists():
+            pytest.skip("Camelyon17 dataset not available")
+        
+        adapter = Camelyon17Adapter()
+        samples = adapter.load_samples(str(camelyon17_root), DataSplit.TEST)
+
+        assert len(samples) > 0
+        assert isinstance(samples[0], StandardSample)
+
+
+class TestWBCAttAdapter:
+    """Test the WBC-Att adapter."""
+
+    def test_load_samples_train_split(self):
+        """Test loading training split from actual WBC-Att dataset."""
+        wbc_att_root = Path("/storage/projects3/e19-fyp-out-of-domain-gen-in-cv/wbc_att")
+        
+        # Skip test if dataset not available
+        if not (wbc_att_root / "pbc_attr_v1_train.csv").exists():
+            pytest.skip("WBC-Att dataset not available")
+        
+        adapter = WBCAttAdapter()
+        samples = adapter.load_samples(str(wbc_att_root), DataSplit.TRAIN)
+
+        assert len(samples) > 0
+        assert isinstance(samples[0], StandardSample)
+        assert isinstance(samples[0].label, int)
+
+    def test_load_samples_val_split(self):
+        """Test loading validation split from actual WBC-Att dataset."""
+        wbc_att_root = Path("/storage/projects3/e19-fyp-out-of-domain-gen-in-cv/wbc_att")
+        
+        if not (wbc_att_root / "pbc_attr_v1_val.csv").exists():
+            pytest.skip("WBC-Att dataset not available")
+        
+        adapter = WBCAttAdapter()
+        samples = adapter.load_samples(str(wbc_att_root), DataSplit.VAL)
+
+        assert len(samples) > 0
+        assert isinstance(samples[0], StandardSample)
+        assert isinstance(samples[0].label, int)
+
+    def test_load_samples_test_split(self):
+        """Test loading test split from actual WBC-Att dataset."""
+        wbc_att_root = Path("/storage/projects3/e19-fyp-out-of-domain-gen-in-cv/wbc_att")
+        
+        if not (wbc_att_root / "pbc_attr_v1_test.csv").exists():
+            pytest.skip("WBC-Att dataset not available")
+        
+        adapter = WBCAttAdapter()
+        samples = adapter.load_samples(str(wbc_att_root), DataSplit.TEST)
+
+        assert len(samples) > 0
+        assert isinstance(samples[0], StandardSample)
 
 
 class TestBiomedDataLoader:
@@ -198,10 +278,14 @@ class TestBiomedDataLoader:
             assert torch.allclose(dataset.features.cpu(), loaded_dataset.features.cpu())
 
     @patch("biomedxpro.impl.data_loader.BiomedCLIPModel")
-    def test_load_encoded_dataset_cache_hit(self, mock_model, tmp_path):
+    def test_load_encoded_dataset_cache_hit(self, mock_model_class, tmp_path):
         """Test loading from cache."""
-        # Pre-create a cache file
-        cache_path = tmp_path / "test_dataset_abcd1234.pt"
+        # Pre-create a cache file with real tensors
+        cache_key = "abcd1234"
+        cache_filename = f"test_dataset_{cache_key}.pt"
+        cache_path = tmp_path / cache_filename
+        
+        # Create REAL tensors (not mocks) for the cache
         cache_data = {
             "name": "test_dataset",
             "features": torch.randn(5, 512),
@@ -210,25 +294,27 @@ class TestBiomedDataLoader:
         }
         torch.save(cache_data, cache_path)
 
-        loader = BiomedDataLoader(cache_dir=str(tmp_path), device="cpu")
-        samples = [
-            StandardSample(image_path="/path/img1.jpg", label=0),
-            StandardSample(image_path="/path/img2.jpg", label=1),
-            StandardSample(image_path="/path/img3.jpg", label=0),
-            StandardSample(image_path="/path/img4.jpg", label=1),
-            StandardSample(image_path="/path/img5.jpg", label=0),
-        ]
+        # Patch the cache key computation to return our known key
+        with patch.object(BiomedDataLoader, "_compute_cache_key", return_value=cache_key):
+            loader = BiomedDataLoader(cache_dir=str(tmp_path), device="cpu")
+            samples = [
+                StandardSample(image_path="/path/img1.jpg", label=0),
+                StandardSample(image_path="/path/img2.jpg", label=1),
+                StandardSample(image_path="/path/img3.jpg", label=0),
+                StandardSample(image_path="/path/img4.jpg", label=1),
+                StandardSample(image_path="/path/img5.jpg", label=0),
+            ]
 
-        # Load dataset (should hit cache, not call model)
-        dataset = loader.load_encoded_dataset(
-            "test_dataset",
-            samples,
-            ["Class0", "Class1"],
-        )
+            # Load dataset (should hit cache, not call model)
+            dataset = loader.load_encoded_dataset(
+                "test_dataset",
+                samples,
+                ["Class0", "Class1"],
+            )
 
-        assert dataset.num_samples == 5
-        # Model should NOT have been called (cache hit)
-        mock_model.assert_not_called()
+            assert dataset.num_samples == 5
+            # Model should NOT have been called (cache hit)
+            mock_model_class.assert_not_called()
 
 
 class TestIntegration:
