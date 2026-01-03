@@ -13,7 +13,7 @@ hardcoding adapter choices in the main application.
 
 import os
 from pathlib import Path
-from typing import Callable
+from typing import Callable, Any
 
 import pandas as pd
 
@@ -26,7 +26,7 @@ from biomedxpro.core.interfaces import IDatasetAdapter
 _ADAPTER_REGISTRY: dict[str, type[IDatasetAdapter]] = {}
 
 
-def register_adapter(name: str) -> Callable:
+def register_adapter(name: str) -> Callable[[type[IDatasetAdapter]], type[IDatasetAdapter]]:
     """
     Decorator to register a dataset adapter in the global registry.
     
@@ -147,7 +147,7 @@ class Derm7ptAdapter:
 
         # Create samples
         samples = []
-        label_counts = {} if self.few_shot else None
+        label_counts: dict[int, int] = {} if self.few_shot else {}
 
         for _, row in split_df_filtered.iterrows():
             # Binary classification: melanoma vs. non-melanoma
@@ -253,7 +253,7 @@ class Camelyon17Adapter:
 
         # Create samples
         samples = []
-        label_counts = {} if self.few_shot else None
+        label_counts: dict[int, int] = {} if self.few_shot else {}
 
         for _, row in filtered_df.iterrows():
             # Extract metadata
@@ -355,7 +355,7 @@ class WBCAttAdapter:
 
         # Create samples
         samples = []
-        label_counts = {} if self.few_shot else None
+        label_counts: dict[int, int] = {} if self.few_shot else {}
 
         for _, row in csv_df.iterrows():
             # Get image path and label
