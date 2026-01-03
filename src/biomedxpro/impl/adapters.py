@@ -338,7 +338,7 @@ class WBCAttAdapter:
         }
 
         csv_path = root_path / f"pbc_attr_v1_{split_map[split]}"
-        image_base = root_path / "images"
+        image_base = root_path / "PBC_dataset_normal_DIB"
 
         # Validate required files exist
         if not csv_path.exists():
