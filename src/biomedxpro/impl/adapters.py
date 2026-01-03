@@ -333,7 +333,7 @@ class WBCAttAdapter:
         # Map DataSplit enum to CSV filename
         split_map = {
             DataSplit.TRAIN: "train.csv",
-            DataSplit.VAL: "valid.csv",
+            DataSplit.VAL: "val.csv",
             DataSplit.TEST: "test.csv",
         }
 
