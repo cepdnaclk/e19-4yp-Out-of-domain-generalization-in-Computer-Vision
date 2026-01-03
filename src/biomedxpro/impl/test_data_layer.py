@@ -14,6 +14,7 @@ Run with: python -m pytest src/biomedxpro/impl/test_data_layer.py
 
 import tempfile
 from pathlib import Path
+from typing import Any
 from unittest.mock import MagicMock, patch
 
 import pytest
@@ -34,7 +35,7 @@ from biomedxpro.impl.data_loader import BiomedDataLoader
 class TestAdapterRegistry:
     """Test the adapter registration and lookup system."""
 
-    def test_list_available_adapters(self):
+    def test_list_available_adapters(self) -> None:
         """Test that registered adapters are discoverable."""
         adapters = list_available_adapters()
         assert isinstance(adapters, list)
@@ -42,22 +43,22 @@ class TestAdapterRegistry:
         assert "camelyon17" in adapters
         assert "wbc_att" in adapters
 
-    def test_get_adapter_success(self):
+    def test_get_adapter_success(self) -> None:
         """Test successful adapter retrieval."""
         adapter = get_adapter("derm7pt")
         assert isinstance(adapter, Derm7ptAdapter)
 
-    def test_get_adapter_failure(self):
+    def test_get_adapter_failure(self) -> None:
         """Test error handling for unknown adapter."""
         with pytest.raises(KeyError, match="not found"):
             get_adapter("unknown_adapter")
 
-    def test_register_custom_adapter(self):
+    def test_register_custom_adapter(self) -> None:
         """Test registering a custom adapter."""
 
         @register_adapter("test_adapter")
         class TestAdapter:
-            def load_samples(self, root: str, split: DataSplit):
+            def load_samples(self, root: str, split: DataSplit) -> list[StandardSample]:
                 return []
 
         adapter = get_adapter("test_adapter")
@@ -67,7 +68,7 @@ class TestAdapterRegistry:
 class TestDerm7ptAdapter:
     """Test the Derm7pt adapter."""
 
-    def test_load_samples_train_split(self):
+    def test_load_samples_train_split(self) -> None:
         """Test loading training split from actual Derm7pt dataset."""
         derm7pt_root = Path("/storage/projects3/e19-fyp-out-of-domain-gen-in-cv/Derm7pt/release_v0")
         
@@ -82,7 +83,7 @@ class TestDerm7ptAdapter:
         assert isinstance(samples[0], StandardSample)
         assert isinstance(samples[0].label, int)
 
-    def test_load_samples_val_split(self):
+    def test_load_samples_val_split(self) -> None:
         """Test loading validation split from actual Derm7pt dataset."""
         derm7pt_root = Path("/storage/projects3/e19-fyp-out-of-domain-gen-in-cv/Derm7pt/release_v0")
         
@@ -90,13 +91,13 @@ class TestDerm7ptAdapter:
             pytest.skip("Derm7pt dataset not available")
         
         adapter = Derm7ptAdapter()
-        samples = adapter.load_samples(str(derm7pt_root), DataSplit.VAL)
+        samples = adapter.load_samples(str(derm7pt_root / "meta"), DataSplit.VAL)
 
         assert len(samples) > 0
         assert isinstance(samples[0], StandardSample)
         assert isinstance(samples[0].label, int)
 
-    def test_load_samples_test_split(self):
+    def test_load_samples_test_split(self) -> None:
         """Test loading test split from actual Derm7pt dataset."""
         derm7pt_root = Path("/storage/projects3/e19-fyp-out-of-domain-gen-in-cv/Derm7pt/release_v0")
         
@@ -104,7 +105,7 @@ class TestDerm7ptAdapter:
             pytest.skip("Derm7pt dataset not available")
         
         adapter = Derm7ptAdapter()
-        samples = adapter.load_samples(str(derm7pt_root), DataSplit.TEST)
+        samples = adapter.load_samples(str(derm7pt_root / "meta"), DataSplit.TEST)
 
         assert len(samples) > 0
         assert isinstance(samples[0], StandardSample)
@@ -113,7 +114,7 @@ class TestDerm7ptAdapter:
 class TestCamelyon17Adapter:
     """Test the Camelyon17 adapter."""
 
-    def test_load_samples_train_split(self):
+    def test_load_samples_train_split(self) -> None:
         """Test loading training split from actual Camelyon17 dataset."""
         camelyon17_root = Path("/storage/projects3/e19-fyp-out-of-domain-gen-in-cv/camelyon17WILDS")
         
@@ -128,7 +129,7 @@ class TestCamelyon17Adapter:
         assert isinstance(samples[0], StandardSample)
         assert isinstance(samples[0].label, int)
 
-    def test_load_samples_val_split(self):
+    def test_load_samples_val_split(self) -> None:
         """Test loading validation split from actual Camelyon17 dataset."""
         camelyon17_root = Path("/storage/projects3/e19-fyp-out-of-domain-gen-in-cv/camelyon17WILDS")
         
@@ -142,7 +143,7 @@ class TestCamelyon17Adapter:
         assert isinstance(samples[0], StandardSample)
         assert isinstance(samples[0].label, int)
 
-    def test_load_samples_test_split(self):
+    def test_load_samples_test_split(self) -> None:
         """Test loading test split from actual Camelyon17 dataset."""
         camelyon17_root = Path("/storage/projects3/e19-fyp-out-of-domain-gen-in-cv/camelyon17WILDS")
         
@@ -159,7 +160,7 @@ class TestCamelyon17Adapter:
 class TestWBCAttAdapter:
     """Test the WBC-Att adapter."""
 
-    def test_load_samples_train_split(self):
+    def test_load_samples_train_split(self) -> None:
         """Test loading training split from actual WBC-Att dataset."""
         wbc_att_root = Path("/storage/projects3/e19-fyp-out-of-domain-gen-in-cv/wbc_att")
         
@@ -174,7 +175,7 @@ class TestWBCAttAdapter:
         assert isinstance(samples[0], StandardSample)
         assert isinstance(samples[0].label, int)
 
-    def test_load_samples_val_split(self):
+    def test_load_samples_val_split(self) -> None:
         """Test loading validation split from actual WBC-Att dataset."""
         wbc_att_root = Path("/storage/projects3/e19-fyp-out-of-domain-gen-in-cv/wbc_att")
         
@@ -188,7 +189,7 @@ class TestWBCAttAdapter:
         assert isinstance(samples[0], StandardSample)
         assert isinstance(samples[0].label, int)
 
-    def test_load_samples_test_split(self):
+    def test_load_samples_test_split(self) -> None:
         """Test loading test split from actual WBC-Att dataset."""
         wbc_att_root = Path("/storage/projects3/e19-fyp-out-of-domain-gen-in-cv/wbc_att")
         
@@ -205,7 +206,7 @@ class TestWBCAttAdapter:
 class TestBiomedDataLoader:
     """Test the BiomedDataLoader."""
 
-    def test_initialization(self):
+    def test_initialization(self) -> None:
         """Test loader initialization."""
         with tempfile.TemporaryDirectory() as cache_dir:
             loader = BiomedDataLoader(cache_dir=cache_dir, device="cpu")
@@ -214,7 +215,7 @@ class TestBiomedDataLoader:
             assert loader.device == torch.device("cpu")
             assert loader.batch_size == 32
 
-    def test_cache_key_computation(self):
+    def test_cache_key_computation(self) -> None:
         """Test that sample order affects cache key."""
         loader = BiomedDataLoader()
 
@@ -234,7 +235,7 @@ class TestBiomedDataLoader:
         # Different order → different keys
         assert key1 != key2
 
-    def test_cache_key_consistency(self):
+    def test_cache_key_consistency(self) -> None:
         """Test that identical samples produce identical keys."""
         loader = BiomedDataLoader()
 
@@ -248,7 +249,7 @@ class TestBiomedDataLoader:
 
         assert key1 == key2
 
-    def test_save_and_load_cache(self):
+    def test_save_and_load_cache(self) -> None:
         """Test caching mechanism."""
         with tempfile.TemporaryDirectory() as cache_dir:
             loader = BiomedDataLoader(cache_dir=cache_dir, device="cpu")
@@ -278,7 +279,7 @@ class TestBiomedDataLoader:
             assert torch.allclose(dataset.features.cpu(), loaded_dataset.features.cpu())
 
     @patch("biomedxpro.impl.data_loader.BiomedCLIPModel")
-    def test_load_encoded_dataset_cache_hit(self, mock_model_class, tmp_path):
+    def test_load_encoded_dataset_cache_hit(self, mock_model_class: Any, tmp_path: Any) -> None:
         """Test loading from cache."""
         # Pre-create a cache file with real tensors
         cache_key = "abcd1234"
@@ -320,7 +321,7 @@ class TestBiomedDataLoader:
 class TestIntegration:
     """Integration tests for the complete data pipeline."""
 
-    def test_adapter_to_loader_pipeline(self):
+    def test_adapter_to_loader_pipeline(self) -> None:
         """Test the complete adapter → loader pipeline."""
         # This is a mock test since we need real dataset files
         # In production, this would use actual datasets
