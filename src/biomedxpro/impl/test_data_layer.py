@@ -23,7 +23,7 @@ from biomedxpro.core.domain import DataSplit, StandardSample
 from biomedxpro.impl.adapters import (
     Camelyon17Adapter,
     Derm7ptAdapter,
-    ISICAdapter,
+    WBCAttAdapter,
     get_adapter,
     list_available_adapters,
     register_adapter,
@@ -40,7 +40,7 @@ class TestAdapterRegistry:
         assert isinstance(adapters, list)
         assert "derm7pt" in adapters
         assert "camelyon17" in adapters
-        assert "isic" in adapters
+        assert "wbc_att" in adapters
 
     def test_get_adapter_success(self):
         """Test successful adapter retrieval."""
