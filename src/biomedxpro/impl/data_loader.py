@@ -31,6 +31,8 @@ from torch.utils.data import Dataset, DataLoader
 from torchvision import transforms
 import tqdm
 
+from transformers import CLIPModel, CLIPProcessor
+
 from biomedxpro.core.domain import EncodedDataset, StandardSample
 
 
@@ -110,7 +112,7 @@ class BiomedCLIPModel:
             for batch in tqdm.tqdm(dataloader, desc="Encoding images"):
                 batch = batch.to(device)
                 # Get image embeddings (not text)
-                outputs = self._model.get_image_features(pixel_values=batch)
+                outputs = self._model.get_image_features(pixel_values=batch)  # type: ignore[union-attr]
                 # Normalize embeddings
                 outputs = outputs / outputs.norm(dim=-1, keepdim=True)
                 all_embeddings.append(outputs.cpu())
@@ -120,7 +122,7 @@ class BiomedCLIPModel:
         return embeddings.to(device)
 
 
-class ImagePathDataset(Dataset):
+class ImagePathDataset(Dataset[tuple[torch.Tensor, str]]):
     """
     Simple dataset that loads and transforms images from file paths.
     
@@ -144,10 +146,10 @@ class ImagePathDataset(Dataset):
     def __len__(self) -> int:
         return len(self.image_paths)
 
-    def __getitem__(self, idx: int) -> torch.Tensor:
+    def __getitem__(self, idx: int) -> tuple[torch.Tensor, str]:
         image_path = self.image_paths[idx]
         image = Image.open(image_path).convert("RGB")
-        return self.transform(image)
+        return self.transform(image), image_path
 
 
 class BiomedDataLoader:
