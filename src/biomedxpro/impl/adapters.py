@@ -332,12 +332,12 @@ class WBCAttAdapter:
 
         # Map DataSplit enum to CSV filename
         split_map = {
-            DataSplit.TRAIN: "train.csv",
-            DataSplit.VAL: "val.csv",
-            DataSplit.TEST: "test.csv",
+            DataSplit.TRAIN: "pbc_attr_v1_train.csv",
+            DataSplit.VAL: "pbc_attr_v1_val.csv",
+            DataSplit.TEST: "pbc_attr_v1_test.csv",
         }
 
-        csv_path = root_path / f"pbc_attr_v1_{split_map[split]}"
+        csv_path = root_path / split_map[split]
         image_base = root_path / "PBC_dataset_normal_DIB"
 
         # Validate required files exist
