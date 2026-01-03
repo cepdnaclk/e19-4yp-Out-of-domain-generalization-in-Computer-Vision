@@ -75,7 +75,7 @@ class EvolutionParams:
 
     # Global Settings
     generations: int = 20
-    target_metric: MetricName = "inverted_bce"
+    target_metric: MetricName = "f1_macro"
 
     # Island Settings
     island_capacity: int = 100  # Max size of an island
