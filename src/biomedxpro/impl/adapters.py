@@ -337,7 +337,7 @@ class WBCAttAdapter:
             DataSplit.TEST: "test.csv",
         }
 
-        csv_path = root_path / split_map[split]
+        csv_path = root_path / f"pbc_attr_v1_{split_map[split]}"
         image_base = root_path / "images"
 
         # Validate required files exist
