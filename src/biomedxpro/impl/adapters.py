@@ -126,7 +126,7 @@ class Derm7ptAdapter:
         }
 
         meta_path = root_path / "meta"/ "meta.csv"
-        split_path = root_path / split_map[split]
+        split_path = root_path / "meta" / split_map[split]
         image_base = root_path / "images"
 
         # Validate required files exist
