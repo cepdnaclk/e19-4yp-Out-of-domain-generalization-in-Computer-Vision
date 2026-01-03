@@ -91,7 +91,7 @@ class TestDerm7ptAdapter:
             pytest.skip("Derm7pt dataset not available")
         
         adapter = Derm7ptAdapter()
-        samples = adapter.load_samples(str(derm7pt_root / "meta"), DataSplit.VAL)
+        samples = adapter.load_samples(str(derm7pt_root), DataSplit.VAL)
 
         assert len(samples) > 0
         assert isinstance(samples[0], StandardSample)
@@ -105,7 +105,7 @@ class TestDerm7ptAdapter:
             pytest.skip("Derm7pt dataset not available")
         
         adapter = Derm7ptAdapter()
-        samples = adapter.load_samples(str(derm7pt_root / "meta"), DataSplit.TEST)
+        samples = adapter.load_samples(str(derm7pt_root), DataSplit.TEST)
 
         assert len(samples) > 0
         assert isinstance(samples[0], StandardSample)
