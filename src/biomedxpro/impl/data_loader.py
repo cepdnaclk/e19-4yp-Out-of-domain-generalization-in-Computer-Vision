@@ -28,10 +28,10 @@ from typing import Optional
 import torch
 from PIL import Image
 from torch.utils.data import Dataset, DataLoader
-from torchvision import transforms
+from torchvision import transforms  # type: ignore[import-untyped]
 import tqdm
 
-from transformers import CLIPModel, CLIPProcessor
+from transformers import CLIPModel, CLIPProcessor  # type: ignore[import-untyped]
 
 from biomedxpro.core.domain import EncodedDataset, StandardSample
 
