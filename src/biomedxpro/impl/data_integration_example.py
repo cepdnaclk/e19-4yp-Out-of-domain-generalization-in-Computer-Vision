@@ -14,7 +14,7 @@ Production code should integrate this into the main orchestrator.
 """
 
 from pathlib import Path
-from typing import Optional
+from typing import Optional, Any
 
 from biomedxpro.core.domain import DataSplit, EncodedDataset
 from biomedxpro.impl.adapters import get_adapter, list_available_adapters
@@ -22,7 +22,7 @@ from biomedxpro.impl.data_loader import BiomedDataLoader
 
 
 def load_dataset_pipeline(
-    dataset_config: dict,
+    dataset_config: dict[str, Any],
     cache_dir: str = ".biomedxpro_cache",
     device: Optional[str] = None,
 ) -> EncodedDataset:
@@ -96,7 +96,7 @@ def load_dataset_pipeline(
         sig = inspect.signature(adapter.__class__.__init__)
         if 'few_shot' in sig.parameters:
             # Reinitialize adapter with few-shot parameters
-            adapter = adapter.__class__(few_shot=few_shot, few_shot_no=few_shot_no)
+            adapter = adapter.__class__(few_shot=few_shot, few_shot_no=few_shot_no)  # type: ignore[call-arg]
     except Exception:
         # If initialization fails, use default adapter
         adapter = get_adapter(adapter_name)
@@ -122,7 +122,7 @@ def load_dataset_pipeline(
 
 
 def load_multiple_splits(
-    dataset_configs: list[dict],
+    dataset_configs: dict[str, dict[str, Any]],
     cache_dir: str = ".biomedxpro_cache",
     device: Optional[str] = None,
 ) -> dict[str, EncodedDataset]:
@@ -162,9 +162,9 @@ def load_multiple_splits(
         >>> print(datasets.keys())  # dict_keys(['derm7pt_train', 'derm7pt_val'])
     """
     datasets = {}
-    for config in dataset_configs:
+    for split_name, config in dataset_configs.items():
         dataset = load_dataset_pipeline(config, cache_dir, device)
-        datasets[config["name"]] = dataset
+        datasets[split_name] = dataset
 
     return datasets
 
