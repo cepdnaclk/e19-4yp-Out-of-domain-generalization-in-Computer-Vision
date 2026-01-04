@@ -6,7 +6,7 @@ from dotenv import load_dotenv
 
 from biomedxpro.core.domain import TaskDefinition
 from biomedxpro.impl.llm_client import create_llm_client
-from biomedxpro.impl.operator import LLMOperator
+from biomedxpro.impl.evol_operator import LLMOperator
 from biomedxpro.utils.config import LLMSettings, PromptStrategy
 
 # 1. Load Real Secrets
