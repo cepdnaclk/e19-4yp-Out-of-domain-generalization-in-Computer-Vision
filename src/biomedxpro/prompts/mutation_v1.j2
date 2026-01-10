@@ -11,10 +11,7 @@
     Here are the top-performing visually discriminative description pairs in ascending order. (Higher score is better):
     
     {% for parent in parents %}
-    <parent index="{{ loop.index }}" score="{{ parent.score }}">
-        <negative>{{ parent.genotype.negative_prompt }}</negative>
-        <positive>{{ parent.genotype.positive_prompt }}</positive>
-    </parent>
+    {{loop.index}}. Negative: {{ parent.genotype.negative_prompt }} | Positive: {{ parent.genotype.positive_prompt }} | Score: {{ parent.score }}
     {% endfor %}
 </current_top_performers>
 
