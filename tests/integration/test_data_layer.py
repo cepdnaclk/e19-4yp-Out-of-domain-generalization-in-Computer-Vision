@@ -15,7 +15,7 @@ Run with: python -m pytest src/biomedxpro/impl/test_data_layer.py
 import tempfile
 from pathlib import Path
 from typing import Any
-from unittest.mock import MagicMock, patch
+from unittest.mock import patch
 
 import pytest
 import torch
@@ -70,12 +70,14 @@ class TestDerm7ptAdapter:
 
     def test_load_samples_train_split(self) -> None:
         """Test loading training split from actual Derm7pt dataset."""
-        derm7pt_root = Path("/storage/projects3/e19-fyp-out-of-domain-gen-in-cv/Derm7pt/release_v0")
-        
+        derm7pt_root = Path(
+            "/storage/projects3/e19-fyp-out-of-domain-gen-in-cv/Derm7pt/release_v0"
+        )
+
         # Skip test if dataset not available
         if not (derm7pt_root / "meta" / "meta.csv").exists():
             pytest.skip("Derm7pt dataset not available")
-        
+
         adapter = Derm7ptAdapter()
         samples = adapter.load_samples(str(derm7pt_root), DataSplit.TRAIN)
 
@@ -85,11 +87,13 @@ class TestDerm7ptAdapter:
 
     def test_load_samples_val_split(self) -> None:
         """Test loading validation split from actual Derm7pt dataset."""
-        derm7pt_root = Path("/storage/projects3/e19-fyp-out-of-domain-gen-in-cv/Derm7pt/release_v0")
-        
+        derm7pt_root = Path(
+            "/storage/projects3/e19-fyp-out-of-domain-gen-in-cv/Derm7pt/release_v0"
+        )
+
         if not (derm7pt_root / "meta" / "meta.csv").exists():
             pytest.skip("Derm7pt dataset not available")
-        
+
         adapter = Derm7ptAdapter()
         samples = adapter.load_samples(str(derm7pt_root), DataSplit.VAL)
 
@@ -99,11 +103,13 @@ class TestDerm7ptAdapter:
 
     def test_load_samples_test_split(self) -> None:
         """Test loading test split from actual Derm7pt dataset."""
-        derm7pt_root = Path("/storage/projects3/e19-fyp-out-of-domain-gen-in-cv/Derm7pt/release_v0")
-        
+        derm7pt_root = Path(
+            "/storage/projects3/e19-fyp-out-of-domain-gen-in-cv/Derm7pt/release_v0"
+        )
+
         if not (derm7pt_root / "meta" / "meta.csv").exists():
             pytest.skip("Derm7pt dataset not available")
-        
+
         adapter = Derm7ptAdapter()
         samples = adapter.load_samples(str(derm7pt_root), DataSplit.TEST)
 
@@ -116,12 +122,14 @@ class TestCamelyon17Adapter:
 
     def test_load_samples_train_split(self) -> None:
         """Test loading training split from actual Camelyon17 dataset."""
-        camelyon17_root = Path("/storage/projects3/e19-fyp-out-of-domain-gen-in-cv/camelyon17WILDS")
-        
+        camelyon17_root = Path(
+            "/storage/projects3/e19-fyp-out-of-domain-gen-in-cv/camelyon17WILDS"
+        )
+
         # Skip test if dataset not available
         if not (camelyon17_root / "metadata.csv").exists():
             pytest.skip("Camelyon17 dataset not available")
-        
+
         adapter = Camelyon17Adapter()
         samples = adapter.load_samples(str(camelyon17_root), DataSplit.TRAIN)
 
@@ -131,11 +139,13 @@ class TestCamelyon17Adapter:
 
     def test_load_samples_val_split(self) -> None:
         """Test loading validation split from actual Camelyon17 dataset."""
-        camelyon17_root = Path("/storage/projects3/e19-fyp-out-of-domain-gen-in-cv/camelyon17WILDS")
-        
+        camelyon17_root = Path(
+            "/storage/projects3/e19-fyp-out-of-domain-gen-in-cv/camelyon17WILDS"
+        )
+
         if not (camelyon17_root / "metadata.csv").exists():
             pytest.skip("Camelyon17 dataset not available")
-        
+
         adapter = Camelyon17Adapter()
         samples = adapter.load_samples(str(camelyon17_root), DataSplit.VAL)
 
@@ -145,11 +155,13 @@ class TestCamelyon17Adapter:
 
     def test_load_samples_test_split(self) -> None:
         """Test loading test split from actual Camelyon17 dataset."""
-        camelyon17_root = Path("/storage/projects3/e19-fyp-out-of-domain-gen-in-cv/camelyon17WILDS")
-        
+        camelyon17_root = Path(
+            "/storage/projects3/e19-fyp-out-of-domain-gen-in-cv/camelyon17WILDS"
+        )
+
         if not (camelyon17_root / "metadata.csv").exists():
             pytest.skip("Camelyon17 dataset not available")
-        
+
         adapter = Camelyon17Adapter()
         samples = adapter.load_samples(str(camelyon17_root), DataSplit.TEST)
 
@@ -162,12 +174,14 @@ class TestWBCAttAdapter:
 
     def test_load_samples_train_split(self) -> None:
         """Test loading training split from actual WBC-Att dataset."""
-        wbc_att_root = Path("/storage/projects3/e19-fyp-out-of-domain-gen-in-cv/wbc_att")
-        
+        wbc_att_root = Path(
+            "/storage/projects3/e19-fyp-out-of-domain-gen-in-cv/wbc_att"
+        )
+
         # Skip test if dataset not available
         if not (wbc_att_root / "pbc_attr_v1_train.csv").exists():
             pytest.skip("WBC-Att dataset not available")
-        
+
         adapter = WBCAttAdapter()
         samples = adapter.load_samples(str(wbc_att_root), DataSplit.TRAIN)
 
@@ -177,11 +191,13 @@ class TestWBCAttAdapter:
 
     def test_load_samples_val_split(self) -> None:
         """Test loading validation split from actual WBC-Att dataset."""
-        wbc_att_root = Path("/storage/projects3/e19-fyp-out-of-domain-gen-in-cv/wbc_att")
-        
+        wbc_att_root = Path(
+            "/storage/projects3/e19-fyp-out-of-domain-gen-in-cv/wbc_att"
+        )
+
         if not (wbc_att_root / "pbc_attr_v1_val.csv").exists():
             pytest.skip("WBC-Att dataset not available")
-        
+
         adapter = WBCAttAdapter()
         samples = adapter.load_samples(str(wbc_att_root), DataSplit.VAL)
 
@@ -191,11 +207,13 @@ class TestWBCAttAdapter:
 
     def test_load_samples_test_split(self) -> None:
         """Test loading test split from actual WBC-Att dataset."""
-        wbc_att_root = Path("/storage/projects3/e19-fyp-out-of-domain-gen-in-cv/wbc_att")
-        
+        wbc_att_root = Path(
+            "/storage/projects3/e19-fyp-out-of-domain-gen-in-cv/wbc_att"
+        )
+
         if not (wbc_att_root / "pbc_attr_v1_test.csv").exists():
             pytest.skip("WBC-Att dataset not available")
-        
+
         adapter = WBCAttAdapter()
         samples = adapter.load_samples(str(wbc_att_root), DataSplit.TEST)
 
@@ -279,13 +297,15 @@ class TestBiomedDataLoader:
             assert torch.allclose(dataset.features.cpu(), loaded_dataset.features.cpu())
 
     @patch("biomedxpro.impl.data_loader.BiomedCLIPModel")
-    def test_load_encoded_dataset_cache_hit(self, mock_model_class: Any, tmp_path: Any) -> None:
+    def test_load_encoded_dataset_cache_hit(
+        self, mock_model_class: Any, tmp_path: Any
+    ) -> None:
         """Test loading from cache."""
         # Pre-create a cache file with real tensors
         cache_key = "abcd1234"
         cache_filename = f"test_dataset_{cache_key}.pt"
         cache_path = tmp_path / cache_filename
-        
+
         # Create REAL tensors (not mocks) for the cache
         cache_data = {
             "name": "test_dataset",
@@ -296,7 +316,9 @@ class TestBiomedDataLoader:
         torch.save(cache_data, cache_path)
 
         # Patch the cache key computation to return our known key
-        with patch.object(BiomedDataLoader, "_compute_cache_key", return_value=cache_key):
+        with patch.object(
+            BiomedDataLoader, "_compute_cache_key", return_value=cache_key
+        ):
             loader = BiomedDataLoader(cache_dir=str(tmp_path), device="cpu")
             samples = [
                 StandardSample(image_path="/path/img1.jpg", label=0),
