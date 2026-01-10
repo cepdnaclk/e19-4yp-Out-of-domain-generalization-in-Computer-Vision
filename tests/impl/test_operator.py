@@ -10,7 +10,7 @@ from biomedxpro.core.domain import (
     TaskDefinition,
 )
 from biomedxpro.core.interfaces import ILLMClient
-from biomedxpro.impl.evol_operator import LLMOperator
+from biomedxpro.impl.llm_operator import LLMOperator
 from biomedxpro.utils.config import PromptStrategy
 
 # --- Fixtures ---
