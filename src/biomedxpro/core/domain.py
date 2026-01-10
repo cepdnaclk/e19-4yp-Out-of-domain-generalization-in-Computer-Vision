@@ -26,7 +26,7 @@ class StandardSample:
     """
     The standardized representation of a single data sample.
     Adapters return lists of these; the DataLoader consumes them.
-    
+
     This allows adapters to work with any dataset schema while providing
     a unified interface to the data loading pipeline.
     """
@@ -109,8 +109,9 @@ class TaskDefinition:
     image_modality: str  # e.g. "Dermoscopy images"
     positive_class: str  # e.g. "Malignant Melanoma"
     negative_class: str  # e.g. "Benign Nevus"
-
-    # NEW: The Persona for the LLM
+    concepts: list[str] = field(
+        default_factory=list
+    )  # e.g. ["Texture", "Color", "Shape"]
     role: str  # e.g. "Expert Dermatologist"
 
     # Optional: Any extra specific instructions for this dataset
