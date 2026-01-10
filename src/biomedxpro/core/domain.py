@@ -109,7 +109,7 @@ class TaskDefinition:
     image_modality: str  # e.g. "Dermoscopy images"
     positive_class: str  # e.g. "Malignant Melanoma"
     negative_class: str  # e.g. "Benign Nevus"
-    concepts: list[str]  # e.g. ["Texture", "Color", "Shape"]
+    concepts: list[str] | None  # e.g. ["Texture", "Color", "Shape"]
     role: str  # e.g. "Expert Dermatologist"
 
     # Optional: Any extra specific instructions for this dataset
