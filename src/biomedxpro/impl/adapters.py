@@ -11,7 +11,6 @@ The Registry Pattern allows configuration-driven dataset selection without
 hardcoding adapter choices in the main application.
 """
 
-import os
 from pathlib import Path
 from typing import Any, Callable
 
@@ -50,12 +49,13 @@ def register_adapter(
     return decorator
 
 
-def get_adapter(name: str) -> IDatasetAdapter:
+def get_adapter(name: str, **kwargs: Any) -> IDatasetAdapter:
     """
     Factory function: Lookup an adapter by its registered name.
 
     Args:
         name: The key to look up (e.g., "derm7pt").
+        **kwargs: Optional arguments to pass to the adapter constructor.
 
     Returns:
         An instance of the registered adapter class.
@@ -66,7 +66,7 @@ def get_adapter(name: str) -> IDatasetAdapter:
     if name not in _ADAPTER_REGISTRY:
         available = ", ".join(_ADAPTER_REGISTRY.keys())
         raise KeyError(f"Adapter '{name}' not found. Available adapters: {available}")
-    return _ADAPTER_REGISTRY[name]()
+    return _ADAPTER_REGISTRY[name](**kwargs)
 
 
 def list_available_adapters() -> list[str]:
@@ -193,16 +193,29 @@ class Camelyon17Adapter(IDatasetAdapter):
     Supports few-shot learning scenarios where only N samples per class are used.
     """
 
-    def __init__(self, few_shot: bool = False, few_shot_no: int = 2):
+    def __init__(
+        self,
+        few_shot: bool = False,
+        few_shot_no: int = 2,
+        train_centers: list[int] = [0, 1, 2],
+        val_centers: list[int] = [3],
+        test_centers: list[int] = [4],
+    ):
         """
         Initialize the Camelyon17 adapter.
 
         Args:
             few_shot: Whether to enable few-shot learning.
             few_shot_no: Number of samples per class in few-shot scenarios.
+            train_centers: List of center IDs to use for training.
+            val_centers: List of center IDs to use for validation.
+            test_centers: List of center IDs to use for testing.
         """
         self.few_shot = few_shot
         self.few_shot_no = few_shot_no
+        self.train_centers = train_centers
+        self.val_centers = val_centers
+        self.test_centers = test_centers
 
     def load_samples(self, root: str, split: DataSplit) -> list[StandardSample]:
         """
@@ -225,27 +238,19 @@ class Camelyon17Adapter(IDatasetAdapter):
         # Load metadata
         metadata_df = pd.read_csv(metadata_path)
 
-        # Map splits to Camelyon17's split values
-        # Centers 0-2: Have train (split=0) and test (split=1) splits
-        # Centers 3-4: No explicit splits (val and test data)
-        split_map = {
-            DataSplit.TRAIN: 0,
-            DataSplit.VAL: None,  # Center 3 (no filter)
-            DataSplit.TEST: None,  # Center 4 (no filter)
-        }
-
         # Filter by split and center
         if split == DataSplit.TRAIN:
-            # Training: use split=0 from centers 0-2
+            # Training: use split=0 from specified centers
             filtered_df = metadata_df[
-                (metadata_df["center"].isin([0, 1, 2])) & (metadata_df["split"] == 0)
+                (metadata_df["center"].isin(self.train_centers))
+                & (metadata_df["split"] == 0)
             ]
         elif split == DataSplit.VAL:
-            # Validation: use center 3 (no split filtering)
-            filtered_df = metadata_df[metadata_df["center"] == 3]
+            # Validation: use specified validation centers
+            filtered_df = metadata_df[metadata_df["center"].isin(self.val_centers)]
         elif split == DataSplit.TEST:
-            # Test: use center 4 (no split filtering)
-            filtered_df = metadata_df[metadata_df["center"] == 4]
+            # Test: use specified test centers
+            filtered_df = metadata_df[metadata_df["center"].isin(self.test_centers)]
         else:
             raise ValueError(f"Unknown split: {split}")
 
