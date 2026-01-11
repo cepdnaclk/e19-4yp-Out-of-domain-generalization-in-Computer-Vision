@@ -33,6 +33,7 @@ evolution:
 llm:
   provider: "gemini"
   model_name: "gemma-3-27b-it"
+  temperature: 1.0
 
 execution:
   orchestrator_io_workers: 10
