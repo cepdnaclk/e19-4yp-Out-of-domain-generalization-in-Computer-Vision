@@ -31,7 +31,7 @@ evolution:
   offspring_per_gen: 5
 
 llm:
-  provider: "google"
+  provider: "gemini"
   model_name: "gemma3-37b-it"
 
 execution:
