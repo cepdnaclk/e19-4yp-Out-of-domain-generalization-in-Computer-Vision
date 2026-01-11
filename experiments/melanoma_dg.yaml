@@ -36,6 +36,6 @@ llm:
 
 execution:
   orchestrator_io_workers: 10
-  dataloader_cpu_workers: 16
+  dataloader_cpu_workers: 12
   device: "cuda" # or "cpu"
-  batch_size: 1024
+  batch_size: 512
