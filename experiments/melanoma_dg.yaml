@@ -37,6 +37,6 @@ llm:
   max_output_tokens: 1024
 
 execution:
-  max_workers: 2
+  max_workers: 8
   device: "cuda" # or "cpu"
-  batch_size: 32
+  batch_size: 256
