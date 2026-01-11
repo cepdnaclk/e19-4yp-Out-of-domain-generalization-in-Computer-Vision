@@ -1,10 +1,8 @@
 # main.py
 import sys
-import warnings
 from pathlib import Path
 from typing import Optional
 
-import torch
 import typer
 from dotenv import load_dotenv
 from loguru import logger
@@ -43,18 +41,6 @@ def run(
     """
     Executes the Concept-Driven Island Evolution pipeline based on a YAML configuration.
     """
-
-    # Suppress noisy FutureWarnings from third-party libraries
-    warnings.filterwarnings(
-        "ignore", category=FutureWarning, module="transformers.utils.generic"
-    )
-    warnings.filterwarnings(
-        "ignore", category=FutureWarning, module="timm.models.layers"
-    )
-    warnings.filterwarnings(
-        "ignore", category=FutureWarning, module="torch.utils._pytree"
-    )
-
     # 0. Load environment variables (API Keys from .env)
     load_dotenv()
 
@@ -70,31 +56,25 @@ def run(
     # 2. Setup Logging & Persistence
     setup_logging(experiment_name, console_level="DEBUG")
     recorder = HistoryRecorder(experiment_name=experiment_name)
-
-    # Log CUDA availability
-    if torch.cuda.is_available():
-        logger.info(
-            f"CUDA is available. Device: {torch.cuda.get_device_name(0)} ({torch.cuda.device_count()} GPUs)"
-        )
-    else:
-        logger.warning("CUDA is NOT available. Running on CPU.")
-        if config.execution.device == "cuda":
-            logger.error(
-                "Config requested 'cuda' but CUDA is not available. Please check drivers/toolkit."
-            )
-
     logger.info(f"Loaded config from {config_path}")
     logger.info(f"Starting experiment: {experiment_name}")
 
     # 3. Initialize Data Layer (The Translator & Processor)
     # Step 1: Get Adapter from the Registry
     logger.info(f"Initializing adapter: {config.dataset.adapter}")
-    adapter = get_adapter(config.dataset.adapter, **config.dataset.adapter_params)
+    adapter = get_adapter(
+        config.dataset.adapter,
+        root=config.dataset.root,
+        name=config.dataset.name,
+        few_shot=config.dataset.few_shot,
+        few_shot_no=config.dataset.few_shot_no,
+        **config.dataset.adapter_params,
+    )
 
     # Step 2: Load Samples (Standardization)
     logger.info(f"Loading samples from {config.dataset.root}...")
-    train_samples = adapter.load_samples(config.dataset.root, DataSplit.TRAIN)
-    val_samples = adapter.load_samples(config.dataset.root, DataSplit.VAL)
+    train_samples = adapter.load_samples(DataSplit.TRAIN)
+    val_samples = adapter.load_samples(DataSplit.VAL)
     logger.info(
         f"Found {len(train_samples)} training and {len(val_samples)} validation samples."
     )

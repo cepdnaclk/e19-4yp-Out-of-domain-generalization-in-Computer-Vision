@@ -14,25 +14,23 @@ from biomedxpro.core.domain import (
 class IDatasetAdapter(Protocol):
     """
     Strategy for standardizing a specific dataset format.
-    
+
     Different datasets have different folder structures, CSV formats, and label mappings.
     An adapter knows how to parse the "messy" raw data and convert it into a clean,
     standardized list of (filepath, label) pairs.
-    
+
     Each adapter is registered by a unique string key (e.g., "derm7pt", "camelyon17")
     so it can be selected via configuration.
     """
 
-    def load_samples(
-        self, root: str, split: DataSplit
-    ) -> list[StandardSample]:
+    def load_samples(self, split: DataSplit) -> list[StandardSample]:
         """
-        Parse the dataset at `root` for the given split and return a list of samples.
-        
+        Parse the dataset for the given split and return a list of samples.
+        Note: The dataset root path should be injected via __init__.
+
         Args:
-            root: The root directory containing the dataset files.
             split: The split to load (TRAIN, VAL, or TEST).
-        
+
         Returns:
             A list of StandardSample objects, each containing an image_path and label.
             This is the "Common Currency" that the DataLoader understands.
