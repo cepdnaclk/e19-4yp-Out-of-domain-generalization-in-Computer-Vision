@@ -10,11 +10,11 @@
 <current_top_performers>
     Here are the top-performing visually discriminative description pairs in ascending order. Higher score is better.
     <format>
-    [negative_prompt, positive_prompt], score: score_value
+    Negative: [negative prompt], Positive: [positive prompt], Score: [score]
     </format>
     
     {% for parent in parents %}
-    [{{ parent.genotype.negative_prompt }}, {{ parent.genotype.positive_prompt }}], score: {{ parent.score }}
+    Negative: {{ parent.genotype.negative_prompt }},  Positive: {{ parent.genotype.positive_prompt }}, Score: {{ parent.score }}
     {% endfor %}
 </current_top_performers>
 
