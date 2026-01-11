@@ -65,9 +65,7 @@ def run(
     adapter = get_adapter(
         config.dataset.adapter,
         root=config.dataset.root,
-        name=config.dataset.name,
-        few_shot=config.dataset.few_shot,
-        few_shot_no=config.dataset.few_shot_no,
+        shots=config.dataset.shots,
         **config.dataset.adapter_params,
     )
 

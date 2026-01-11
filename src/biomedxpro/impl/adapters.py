@@ -96,20 +96,17 @@ class Derm7ptAdapter(IDatasetAdapter):
     def __init__(
         self,
         root: str,
-        few_shot: bool = False,
-        few_shot_no: int = 2,
+        shots: int = 0,
     ) -> None:
         """
         Initialize the Derm7pt adapter.
 
         Args:
             root: Root directory of Derm7pt (must contain meta.csv and images/).
-            few_shot: Whether to enable few-shot learning.
-            few_shot_no: Number of samples per class in few-shot scenarios.
+            shots: Number of samples per class (0 = full dataset).
         """
         self.root = Path(root)
-        self.few_shot = few_shot
-        self.few_shot_no = few_shot_no
+        self.shots = shots
 
     def load_samples(self, split: DataSplit) -> list[StandardSample]:
         """
@@ -151,7 +148,7 @@ class Derm7ptAdapter(IDatasetAdapter):
         samples = []
 
         # Optimization: Pre-allocate list to avoid memory overhead if not few-shot
-        if not self.few_shot:
+        if self.shots == 0:
             for _, row in split_df_filtered.iterrows():
                 # Binary classification: melanoma vs. non-melanoma
                 diagnosis = row.get("diagnosis", "").lower()
@@ -198,7 +195,7 @@ class Derm7ptAdapter(IDatasetAdapter):
 
         # Sample k from each class
         for label, candidates in candidates_by_class.items():
-            count = min(self.few_shot_no, len(candidates))
+            count = min(self.shots, len(candidates))
             samples.extend(random.sample(candidates, count))
 
         return samples
@@ -223,8 +220,7 @@ class Camelyon17Adapter(IDatasetAdapter):
     def __init__(
         self,
         root: str,
-        few_shot: bool = False,
-        few_shot_no: int = 2,
+        shots: int = 0,
         train_centers: list[int] = [0, 1, 2],
         val_centers: list[int] = [3],
         test_centers: list[int] = [4],
@@ -234,15 +230,13 @@ class Camelyon17Adapter(IDatasetAdapter):
 
         Args:
             root: Root directory of Camelyon17 (must contain metadata.csv).
-            few_shot: Whether to enable few-shot learning.
-            few_shot_no: Number of samples per class in few-shot scenarios.
+            shots: Number of samples per class (0 = full dataset).
             train_centers: List of center IDs to use for training.
             val_centers: List of center IDs to use for validation.
             test_centers: List of center IDs to use for testing.
         """
         self.root = Path(root)
-        self.few_shot = few_shot
-        self.few_shot_no = few_shot_no
+        self.shots = shots
         self.train_centers = train_centers
         self.val_centers = val_centers
         self.test_centers = test_centers
@@ -282,7 +276,7 @@ class Camelyon17Adapter(IDatasetAdapter):
         samples = []
 
         # Optimization: Pre-allocate list to avoid memory overhead if not few-shot
-        if not self.few_shot:
+        if self.shots == 0:
             for _, row in filtered_df.iterrows():
                 # Extract metadata
                 patient_id = int(row["patient"])
@@ -342,7 +336,7 @@ class Camelyon17Adapter(IDatasetAdapter):
 
         # Sample k from each class
         for label, candidates in candidates_by_class.items():
-            count = min(self.few_shot_no, len(candidates))
+            count = min(self.shots, len(candidates))
             samples.extend(random.sample(candidates, count))
 
         return samples
@@ -363,18 +357,16 @@ class WBCAttAdapter(IDatasetAdapter):
     Supports few-shot learning scenarios where only N samples per class are used.
     """
 
-    def __init__(self, root: str, few_shot: bool = False, few_shot_no: int = 2) -> None:
+    def __init__(self, root: str, shots: int = 0) -> None:
         """
         Initialize the WBC-Att adapter.
 
         Args:
             root: Root directory of WBC-Att dataset.
-            few_shot: Whether to enable few-shot learning.
-            few_shot_no: Number of samples per class in few-shot scenarios.
+            shots: Number of samples per class (0 = full dataset).
         """
         self.root = Path(root)
-        self.few_shot = few_shot
-        self.few_shot_no = few_shot_no
+        self.shots = shots
 
     def load_samples(self, split: DataSplit) -> list[StandardSample]:
         """
@@ -457,7 +449,7 @@ class WBCAttAdapter(IDatasetAdapter):
 
         # Sample k from each class
         for label, candidates in candidates_by_class.items():
-            count = min(self.few_shot_no, len(candidates))
+            count = min(self.shots, len(candidates))
             samples.extend(random.sample(candidates, count))
 
         return samples
