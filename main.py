@@ -54,7 +54,7 @@ def run(
     experiment_name = exp_name or config.dataset.name
 
     # 2. Setup Logging & Persistence
-    setup_logging(experiment_name)
+    setup_logging(experiment_name, console_level="DEBUG")
     recorder = HistoryRecorder(experiment_name=experiment_name)
     logger.info(f"Loaded config from {config_path}")
     logger.info(f"Starting experiment: {experiment_name}")
