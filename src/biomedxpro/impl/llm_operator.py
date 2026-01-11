@@ -255,11 +255,17 @@ class LLMOperator(IOperator):
         offspring: list[Individual] = []
         if isinstance(data_list, list):
             for data in data_list:
-                if (not isinstance(data, list)) or len(data) != 2:
+                if not isinstance(data, list):
                     logger.warning(
                         f"Skipping invalid individual data during reproduction for concept '{concept}': {data}"
                     )
                     continue
+
+                if len(data) != 2:
+                    logger.warning(
+                        "Inididual data does not contain exactly two prompts. Extracting first two elements."
+                    )
+                    data = data[:2]
 
                 ind = Individual(
                     id=uuid.uuid4(),
