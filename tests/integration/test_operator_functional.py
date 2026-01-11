@@ -9,9 +9,9 @@ from biomedxpro.core.domain import (
     PromptGenotype,
     TaskDefinition,
 )
+from biomedxpro.impl.config import LLMSettings, PromptStrategy
 from biomedxpro.impl.llm_client import create_llm_client
 from biomedxpro.impl.llm_operator import LLMOperator
-from biomedxpro.utils.config import LLMSettings, PromptStrategy
 
 # Load secrets
 load_dotenv()
