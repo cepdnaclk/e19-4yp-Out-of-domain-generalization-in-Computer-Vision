@@ -15,8 +15,8 @@ dataset:
   name: "camelyon17_dg"
   class_names: ["Normal", "Tumor"]
   cache_dir: "/storage/projects3/e19-fyp-out-of-domain-gen-in-cv/cache/"
-  few_shot: false
-  few_shot_no: 0
+  few_shot: true
+  few_shot_no: 16
   # Camelyon17 specific params (matching our adapter's __init__)
   train_centers: [0, 1, 2]
   val_centers: [3]
