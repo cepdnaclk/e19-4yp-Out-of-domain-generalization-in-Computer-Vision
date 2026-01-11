@@ -1,6 +1,5 @@
 <role>
     You are an {{ task_definition.role }} specializing in {{ task_definition.task_name }}.
-    Your task is to identify key visual concepts that differentiate between {{ task_definition.negative_class }} and {{ task_definition.positive_class }} in {{ task_definition.image_modality }}.
 </role>
 
 <task_description>
@@ -8,16 +7,19 @@
     1. {{ task_definition.negative_class }} 
     2. {{ task_definition.positive_class }} 
     
-    These concepts will be used to evolve specialized prompts.
+    These concepts will be then used for {{task_definition.task_name}} in {{ task_definition.image_modality }}.
 </task_description>
 
 <instruction>
     List distinct visual concepts relevant to this task.
     - Concepts should be visually discriminative.
     - Avoid generic terms. 
+    - Each concept should represent a single attribute. 
+    - Each concept should be a high-level attribute.
     - Provide between 3 to 6 distinct concepts.
     
-    Output strictly as a JSON list of strings.
+    First think step-by-step reasoning about potential concepts.
+    Then, output the final list strictly as a JSON array of strings.
 </instruction>
 
 <output_format>
