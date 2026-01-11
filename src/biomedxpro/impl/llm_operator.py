@@ -155,6 +155,8 @@ class LLMOperator(IOperator):
         response = self.llm.generate(prompt)
         concepts = self._parse_llm_json(response)
 
+        logger.debug(f"Discovered concepts response: {response}")
+
         if not isinstance(concepts, list):
             logger.error(
                 f"Concept discovery returned non-list response.\nResponse:\n{response}"

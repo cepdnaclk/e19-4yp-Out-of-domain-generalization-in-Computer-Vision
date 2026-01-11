@@ -15,8 +15,8 @@ dataset:
   name: "camelyon17_dg"
   class_names: ["Normal", "Tumor"]
   cache_dir: "/storage/projects3/e19-fyp-out-of-domain-gen-in-cv/cache/"
-  few_shot: true
-  few_shot_no: 5
+  few_shot: false
+  few_shot_no: 0
   # Camelyon17 specific params (matching our adapter's __init__)
   train_centers: [0, 1, 2]
   val_centers: [3]
@@ -24,11 +24,11 @@ dataset:
 
 evolution:
   generations: 10
-  island_capacity: 100
+  island_capacity: 50
   target_metric: "f1_macro"
-  initial_pop_size: 20
-  num_parents: 10
-  offspring_per_gen: 10
+  initial_pop_size: 10
+  num_parents: 5
+  offspring_per_gen: 5
 
 llm:
   provider: "gemini"
@@ -36,7 +36,7 @@ llm:
   temperature: 1.0
 
 execution:
-  orchestrator_io_workers: 10
-  dataloader_cpu_workers: 12
+  orchestrator_io_workers: 16
+  dataloader_cpu_workers: 4
   device: "cuda" # or "cpu"
-  batch_size: 512
+  batch_size: 256
