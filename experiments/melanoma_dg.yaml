@@ -11,7 +11,7 @@ task:
 
 dataset:
   adapter: "camelyon17"
-  root: "data/camelyon17" # Replace with your local path
+  root: "/storage/projects3/e19-fyp-out-of-domain-gen-in-cv/camelyon17WILDS/" # Replace with your local path
   name: "camelyon17_dg"
   class_names: ["Normal", "Tumor"]
   few_shot: true
