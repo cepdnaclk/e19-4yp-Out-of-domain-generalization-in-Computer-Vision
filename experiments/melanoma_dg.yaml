@@ -22,7 +22,7 @@ dataset:
   test_centers: [4]
 
 evolution:
-  generations: 10
+  generations: 100
   island_capacity: 50
   target_metric: "f1_macro"
   initial_pop_size: 10
