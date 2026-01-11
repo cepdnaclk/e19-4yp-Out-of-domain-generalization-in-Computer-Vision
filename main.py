@@ -77,6 +77,7 @@ def run(
         cache_dir=config.dataset.cache_dir,
         batch_size=config.execution.batch_size,
         device=config.execution.device,
+        num_workers=config.execution.dataloader_cpu_workers,
     )
 
     logger.info("Encapsulating data into optimized EncodedDataset artifacts...")

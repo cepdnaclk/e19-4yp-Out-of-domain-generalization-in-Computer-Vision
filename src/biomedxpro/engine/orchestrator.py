@@ -51,7 +51,9 @@ class Orchestrator:
 
         # Configuration for hardware and concurrency
         self.exec_config = exec_config
-        self.executor = ThreadPoolExecutor(max_workers=self.exec_config.max_workers)
+        self.executor = ThreadPoolExecutor(
+            max_workers=self.exec_config.orchestrator_io_workers
+        )
 
         # The Archipelago: A collection of isolated populations evolving independently
         self.islands: list[Population] = []

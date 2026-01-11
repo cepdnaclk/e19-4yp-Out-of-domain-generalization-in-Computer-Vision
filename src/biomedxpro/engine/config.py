@@ -12,7 +12,12 @@ from biomedxpro.impl.config import DatasetConfig, LLMSettings, PromptStrategy
 class ExecutionConfig:
     """Controls the 'Physics of the Computer' (Hardware/Runtime)."""
 
-    max_workers: int = 1
+    # Threads for parallel LLM API calls (Network I/O)
+    orchestrator_io_workers: int = 10
+
+    # Processes for parallel Image Loading (CPU/Disk I/O)
+    dataloader_cpu_workers: int = 4
+
     device: str = "cuda"
     batch_size: int = 32
 

@@ -35,6 +35,7 @@ llm:
   model_name: "gemma3-37b-it"
 
 execution:
-  max_workers: 8
+  orchestrator_io_workers: 10
+  dataloader_cpu_workers: 8
   device: "cuda" # or "cpu"
   batch_size: 256
