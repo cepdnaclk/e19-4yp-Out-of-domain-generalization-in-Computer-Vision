@@ -36,6 +36,7 @@ evolution:
 llm:
   provider: "groq"
   model_name: "openai/gpt-oss-120b" # Using a standard Gemini model
+  base_url: "https://api.groq.com/openai/v1"
   temperature: 1.0
 
 execution:
