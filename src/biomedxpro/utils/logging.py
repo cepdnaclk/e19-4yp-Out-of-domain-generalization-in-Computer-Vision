@@ -31,7 +31,7 @@ def setup_logging(
             fmt += "Gen <bold>{extra[generation]:02d}</bold> | "
         if "island" in record["extra"]:
             fmt += "Island <cyan>{extra[island]: <12}</cyan> | "
-        fmt += "<cyan>{name}</cyan>:<cyan>{function}</cyan>:<cyan>{line}</cyan>"
+        fmt += "<cyan>{name}</cyan>:<cyan>{function}</cyan>:<cyan>{line}</cyan> - "
         fmt += "<level>{message}</level>\n{exception}"
         return fmt
 

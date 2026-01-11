@@ -1,8 +1,10 @@
 # main.py
 import sys
+import warnings
 from pathlib import Path
 from typing import Optional
 
+import torch
 import typer
 from dotenv import load_dotenv
 from loguru import logger
@@ -41,6 +43,18 @@ def run(
     """
     Executes the Concept-Driven Island Evolution pipeline based on a YAML configuration.
     """
+
+    # Suppress noisy FutureWarnings from third-party libraries
+    warnings.filterwarnings(
+        "ignore", category=FutureWarning, module="transformers.utils.generic"
+    )
+    warnings.filterwarnings(
+        "ignore", category=FutureWarning, module="timm.models.layers"
+    )
+    warnings.filterwarnings(
+        "ignore", category=FutureWarning, module="torch.utils._pytree"
+    )
+
     # 0. Load environment variables (API Keys from .env)
     load_dotenv()
 
@@ -56,6 +70,19 @@ def run(
     # 2. Setup Logging & Persistence
     setup_logging(experiment_name, console_level="DEBUG")
     recorder = HistoryRecorder(experiment_name=experiment_name)
+
+    # Log CUDA availability
+    if torch.cuda.is_available():
+        logger.info(
+            f"CUDA is available. Device: {torch.cuda.get_device_name(0)} ({torch.cuda.device_count()} GPUs)"
+        )
+    else:
+        logger.warning("CUDA is NOT available. Running on CPU.")
+        if config.execution.device == "cuda":
+            logger.error(
+                "Config requested 'cuda' but CUDA is not available. Please check drivers/toolkit."
+            )
+
     logger.info(f"Loaded config from {config_path}")
     logger.info(f"Starting experiment: {experiment_name}")
 
