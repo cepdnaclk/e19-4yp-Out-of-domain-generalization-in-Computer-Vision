@@ -73,7 +73,6 @@ class LLMOperator(IOperator):
         Handles markdown code blocks with ```json fences using regex.
         Falls back to parsing raw JSON if no code block is found.
         """
-
         text = raw_response.strip()
 
         # Try to extract JSON from markdown code blocks using regex
@@ -83,13 +82,23 @@ class LLMOperator(IOperator):
 
         if match:
             text = match.group(1).strip()
-        # If no code block, use the raw text
+
+        # Cleanup: LLMs often include trailing commas which break standard json.loads
+        # Regex to remove trailing commas before closing brackets or braces
+        text = re.sub(r",\s*([\]\}])", r"\1", text)
 
         # Parse JSON
         try:
             return json.loads(text)
         except json.JSONDecodeError as e:
-            logger.error(f"JSON Parse Error: {e}. Raw output: {raw_response[:200]}...")
+            # Provide more diagnostic info on failure
+            logger.error(f"JSON Parse Error at line {e.lineno} col {e.colno}: {e.msg}")
+            # Identify the problematic line
+            lines = text.splitlines()
+            if 0 < e.lineno <= len(lines):
+                logger.debug(f"Offending line {e.lineno}: {lines[e.lineno - 1]}")
+
+            logger.error(f"Raw output snippet: {raw_response[:200]}...")
             raise e
 
     def _normalize_scores_to_int(
