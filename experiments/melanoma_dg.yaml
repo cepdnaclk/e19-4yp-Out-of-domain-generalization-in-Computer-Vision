@@ -32,7 +32,7 @@ evolution:
 
 llm:
   provider: "gemini"
-  model_name: "gemma3-37b-it"
+  model_name: "gemma3-27b-it"
 
 execution:
   orchestrator_io_workers: 10
