@@ -8,10 +8,13 @@
 </objective>
 
 <current_top_performers>
-    Here are the top-performing visually discriminative description pairs in ascending order. (Higher score is better):
+    Here are the top-performing visually discriminative description pairs in ascending order. Higher score is better.
+    <format>
+    Negative: [negative prompt], Positive: [positive prompt], Score: [score]
+    </format>
     
     {% for parent in parents %}
-    {{loop.index}}. Negative: {{ parent.genotype.negative_prompt }} | Positive: {{ parent.genotype.positive_prompt }} | Score: {{ parent.score }}
+    Negative: {{ parent.genotype.negative_prompt }},  Positive: {{ parent.genotype.positive_prompt }}, Score: {{ parent.score }}
     {% endfor %}
 </current_top_performers>
 

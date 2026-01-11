@@ -31,8 +31,8 @@ evolution:
   offspring_per_gen: 10
 
 llm:
-  provider: "google"
-  model_name: "gemma3-37b-it"
+  provider: "gemini"
+  model_name: "gemma-3-27b-it"
 
 execution:
   orchestrator_io_workers: 10
