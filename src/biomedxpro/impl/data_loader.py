@@ -26,15 +26,11 @@ from pathlib import Path
 from typing import Optional
 
 import torch
-from PIL import Image
-from torch.utils.data import Dataset, DataLoader
-from torchvision import transforms  # type: ignore[import-untyped]
 import tqdm
-
-from transformers import CLIPModel, CLIPProcessor  # type: ignore[import-untyped]
+from PIL import Image
+from torch.utils.data import DataLoader, Dataset
 
 from biomedxpro.core.domain import EncodedDataset, StandardSample
-
 
 logger = logging.getLogger(__name__)
 
@@ -42,7 +38,7 @@ logger = logging.getLogger(__name__)
 class BiomedCLIPModel:
     """
     Lazy-loading wrapper for the BioMedCLIP model.
-    
+
     The model is expensive to load (600MB+), so we defer loading until
     the first encode() call. This allows the system to run without a
     loaded model if only using cached data.
@@ -50,7 +46,8 @@ class BiomedCLIPModel:
 
     _instance: Optional["BiomedCLIPModel"] = None
     _model = None
-    _processor = None
+    _preprocess = None
+    _tokenizer = None
 
     def __new__(cls) -> "BiomedCLIPModel":
         """Singleton pattern: ensure only one model instance exists."""
@@ -63,14 +60,16 @@ class BiomedCLIPModel:
         if self._model is not None:
             return  # Already loaded
 
-        logger.info("Loading BioMedCLIP model (this may take a moment)...")
+        logger.info("Loading BioMedCLIP model using open_clip...")
         try:
-            from transformers import CLIPProcessor, CLIPModel
+            from open_clip import create_model_from_pretrained, get_tokenizer
 
-            # BioMedCLIP is a specialized CLIP model fine-tuned on biomedical data
-            model_name = "microsoft/BiomedCLIP-PubMedBERT_256-vit_base_patch16_224"
-            self._processor = CLIPProcessor.from_pretrained(model_name)
-            self._model = CLIPModel.from_pretrained(model_name)
+            model_name = (
+                "hf-hub:microsoft/BiomedCLIP-PubMedBERT_256-vit_base_patch16_224"
+            )
+            self._model, self._preprocess = create_model_from_pretrained(model_name)
+            self._tokenizer = get_tokenizer(model_name)
+
             self._model.to(device)
             self._model.eval()
 
@@ -78,84 +77,102 @@ class BiomedCLIPModel:
         except ImportError:
             raise ImportError(
                 "Required libraries not installed. "
-                "Please install: pip install transformers pillow torch torchvision"
+                "Please install: pip install open_clip_torch transformers"
             )
 
     def encode_images(
-        self, image_paths: list[str], device: torch.device, batch_size: int = 32
+        self,
+        image_paths: list[str],
+        device: torch.device,
+        batch_size: int = 32,
+        num_workers: int = 4,
     ) -> torch.Tensor:
         """
         Encode a list of images into embeddings.
-        
+
         Args:
             image_paths: List of paths to image files.
             device: Device to process on (cuda or cpu).
             batch_size: Number of images per batch.
-        
+            num_workers: Number of workers for data loading.
+
         Returns:
             Tensor of shape (len(image_paths), embedding_dim) where embedding_dim=512.
         """
         self.ensure_loaded(device)
+        assert self._model is not None
+        assert self._preprocess is not None
 
         # Create a simple dataset and dataloader for batch processing
-        image_dataset = ImagePathDataset(image_paths)
+        # We pass the preprocess function from open_clip
+        image_dataset = ImagePathDataset(image_paths, transform=self._preprocess)
         dataloader = DataLoader(
             image_dataset,
             batch_size=batch_size,
             shuffle=False,
-            num_workers=0,  # Keep at 0 to avoid multiprocessing issues
-            pin_memory=True,
+            num_workers=num_workers,
+            pin_memory=(device.type == "cuda"),
+            persistent_workers=(num_workers > 0),
         )
 
         all_embeddings = []
+        is_cuda = device.type == "cuda"
+        first_batch = True
         with torch.no_grad():
-            for batch in tqdm.tqdm(dataloader, desc="Encoding images"):
-                batch = batch.to(device)
-                # Get image embeddings (not text)
-                outputs = self._model.get_image_features(pixel_values=batch)  # type: ignore[union-attr]
-                # Normalize embeddings
-                outputs = outputs / outputs.norm(dim=-1, keepdim=True)
-                all_embeddings.append(outputs.cpu())
+            for batch_images, _ in tqdm.tqdm(dataloader, desc="Encoding images"):
+                batch_images = batch_images.to(device, non_blocking=True)
 
-        # Concatenate all batches
-        embeddings = torch.cat(all_embeddings, dim=0)
-        return embeddings.to(device)
+                if first_batch:
+                    if not is_cuda:
+                        logger.warning(
+                            f"⚠️ PROCESSING ON CPU! Images are on {batch_images.device}"
+                        )
+                    else:
+                        logger.info(
+                            f"✅ Processing on GPU: {torch.cuda.get_device_name(0)}"
+                        )
+                    first_batch = False
+
+                # Mixed Precision provides a significant speedup on modern GPUs
+                with torch.cuda.amp.autocast(enabled=is_cuda):
+                    features = self._model.encode_image(batch_images)
+                    # Normalize embeddings
+                    features = features / features.norm(dim=-1, keepdim=True)
+
+                all_embeddings.append(features.cpu())
+
+        return torch.cat(all_embeddings, dim=0).to(device)
 
 
-class ImagePathDataset(Dataset[tuple[torch.Tensor, str]]):
+class ImagePathDataset(Dataset):
     """
     Simple dataset that loads and transforms images from file paths.
-    
-    Used internally by BiomedDataLoader for batch processing images.
     """
 
-    def __init__(self, image_paths: list[str]):
+    def __init__(self, image_paths: list[str], transform=None):
         self.image_paths = image_paths
-
-        # Same normalization as BioMedCLIP/CLIP
-        self.transform = transforms.Compose([
-            transforms.Resize(224),
-            transforms.CenterCrop(224),
-            transforms.ToTensor(),
-            transforms.Normalize(
-                mean=(0.48145466, 0.4578275, 0.40821073),
-                std=(0.26862954, 0.26130258, 0.27577711),
-            ),
-        ])
+        self.transform = transform
 
     def __len__(self) -> int:
         return len(self.image_paths)
 
-    def __getitem__(self, idx: int) -> tuple[torch.Tensor, str]:
-        image_path = self.image_paths[idx]
-        image = Image.open(image_path).convert("RGB")
-        return self.transform(image), image_path
+    def __getitem__(self, idx: int):
+        path = self.image_paths[idx]
+        try:
+            image = Image.open(path).convert("RGB")
+            if self.transform:
+                image = self.transform(image)
+            return image, path
+        except Exception as e:
+            logger.error(f"Error loading {path}: {e}")
+            # Return dummy tensor to keep the batch size consistent
+            return torch.zeros((3, 224, 224)), path
 
 
 class BiomedDataLoader:
     """
     The main data processing service.
-    
+
     Responsibilities:
     1. Accept a list of StandardSample objects.
     2. Check if an encoded cache exists on disk.
@@ -169,28 +186,31 @@ class BiomedDataLoader:
         cache_dir: str = ".biomedxpro_cache",
         batch_size: int = 32,
         device: Optional[str] = None,
+        num_workers: int = 4,
     ):
         """
         Initialize the data loader.
-        
+
         Args:
             cache_dir: Directory to store encoded dataset caches.
             batch_size: Batch size for encoding.
             device: Device to process on. If None, auto-detect (cuda if available, else cpu).
+            num_workers: Number of workers for data loading.
         """
         self.cache_dir = Path(cache_dir)
         self.cache_dir.mkdir(parents=True, exist_ok=True)
         self.batch_size = batch_size
+        self.num_workers = num_workers
 
         # Auto-detect device if not specified
         if device is None:
-            self.device = torch.device(
-                "cuda" if torch.cuda.is_available() else "cpu"
-            )
+            self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
         else:
             self.device = torch.device(device)
 
-        logger.info(f"BiomedDataLoader initialized with device: {self.device}")
+        logger.info(
+            f"BiomedDataLoader initialized. Device: {self.device}, Workers: {self.num_workers}"
+        )
 
     def load_encoded_dataset(
         self,
@@ -200,15 +220,15 @@ class BiomedDataLoader:
     ) -> EncodedDataset:
         """
         Load or create an encoded dataset.
-        
+
         If a cached version exists, load it. Otherwise, encode the samples,
         save to cache, and return the encoded dataset.
-        
+
         Args:
             name: Name for this dataset (used for caching and logs).
             samples: List of StandardSample objects from an adapter.
             class_names: Names of the classes (e.g., ["Benign", "Malignant"]).
-        
+
         Returns:
             An EncodedDataset ready for the evolutionary engine.
         """
@@ -222,19 +242,18 @@ class BiomedDataLoader:
             return self._load_from_cache(cache_path, name, class_names)
 
         # Cache miss: encode the samples
-        logger.info(
-            f"Cache miss for {name}. Encoding {len(samples)} samples..."
-        )
+        logger.info(f"Cache miss for {name}. Encoding {len(samples)} samples...")
 
         # Extract image paths and labels
         image_paths = [sample.image_path for sample in samples]
-        labels = torch.tensor(
-            [sample.label for sample in samples], dtype=torch.long
-        )
+        labels = torch.tensor([sample.label for sample in samples], dtype=torch.long)
 
         # Encode images using BioMedCLIP
         features = BiomedCLIPModel().encode_images(
-            image_paths, device=self.device, batch_size=self.batch_size
+            image_paths,
+            device=self.device,
+            batch_size=self.batch_size,
+            num_workers=self.num_workers,
         )
 
         # Create the encoded dataset
@@ -254,13 +273,11 @@ class BiomedDataLoader:
     def _compute_cache_key(self, samples: list[StandardSample]) -> str:
         """
         Compute a hash of the samples to use as a cache key.
-        
+
         This ensures that different sets of samples (or reordered samples)
         get different cache files.
         """
-        content = "\n".join(
-            f"{s.image_path}:{s.label}" for s in samples
-        )
+        content = "\n".join(f"{s.image_path}:{s.label}" for s in samples)
         hash_obj = hashlib.sha256(content.encode())
         return hash_obj.hexdigest()[:16]
 

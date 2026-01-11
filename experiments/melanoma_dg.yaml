@@ -11,9 +11,10 @@ task:
 
 dataset:
   adapter: "camelyon17"
-  root: "data/camelyon17" # Replace with your local path
+  root: "/storage/projects3/e19-fyp-out-of-domain-gen-in-cv/camelyon17WILDS/"
   name: "camelyon17_dg"
   class_names: ["Normal", "Tumor"]
+  cache_dir: "/storage/projects3/e19-fyp-out-of-domain-gen-in-cv/cache/"
   few_shot: true
   few_shot_no: 5
   # Camelyon17 specific params (matching our adapter's __init__)
@@ -31,11 +32,10 @@ evolution:
 
 llm:
   provider: "google"
-  model_name: "gemini-1.5-flash"
-  temperature: 0.7
-  max_output_tokens: 1024
+  model_name: "gemma3-37b-it"
 
 execution:
-  max_workers: 2
+  orchestrator_io_workers: 10
+  dataloader_cpu_workers: 12
   device: "cuda" # or "cpu"
-  batch_size: 32
+  batch_size: 512

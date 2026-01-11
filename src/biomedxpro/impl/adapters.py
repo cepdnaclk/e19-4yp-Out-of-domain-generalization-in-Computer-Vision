@@ -93,7 +93,7 @@ class Derm7ptAdapter(IDatasetAdapter):
     Supports few-shot learning scenarios where only N samples per class are used.
     """
 
-    def __init__(self, few_shot: bool = False, few_shot_no: int = 2):
+    def __init__(self, few_shot: bool = False, few_shot_no: int = 2) -> None:
         """
         Initialize the Derm7pt adapter.
 
@@ -200,7 +200,7 @@ class Camelyon17Adapter(IDatasetAdapter):
         train_centers: list[int] = [0, 1, 2],
         val_centers: list[int] = [3],
         test_centers: list[int] = [4],
-    ):
+    ) -> None:
         """
         Initialize the Camelyon17 adapter.
 
@@ -307,7 +307,7 @@ class WBCAttAdapter(IDatasetAdapter):
     Supports few-shot learning scenarios where only N samples per class are used.
     """
 
-    def __init__(self, few_shot: bool = False, few_shot_no: int = 2):
+    def __init__(self, few_shot: bool = False, few_shot_no: int = 2) -> None:
         """
         Initialize the WBC-Att adapter.
 
