@@ -161,6 +161,10 @@ class Orchestrator:
         """
         logger.info("Starting evolutionary run...")
 
+        if not self.islands:
+            logger.info("Orchestrator not initialized. Bootstrapping...")
+            self.initialize(concepts=None)
+
         for gen in range(1, self.params.generations + 1):
             self._run_generation(gen)
             self.recorder.record_generation(self.islands)

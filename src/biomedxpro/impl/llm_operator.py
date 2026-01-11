@@ -17,7 +17,7 @@ from biomedxpro.core.domain import (
     TaskDefinition,
 )
 from biomedxpro.core.interfaces import ILLMClient, IOperator
-from biomedxpro.utils.config import PromptStrategy
+from biomedxpro.impl.config import PromptStrategy
 from biomedxpro.utils.logging import loguru_before_sleep
 
 

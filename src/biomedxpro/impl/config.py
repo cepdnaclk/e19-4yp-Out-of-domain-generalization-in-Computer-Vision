@@ -1,10 +1,15 @@
+# src/biomedxpro/impl/config.py
 from dataclasses import dataclass, field, fields
 from typing import Any
 
 
 @dataclass(slots=True, frozen=True)
 class PromptStrategy:
-    # Paths to the external Jinja2 templates
+    """
+    Paths to the external Jinja2 templates.
+    This is an infrastructure detail about how prompts are stored.
+    """
+
     mutation_template_path: str = "src/biomedxpro/prompts/mutation_v1.j2"
     init_template_path: str = "src/biomedxpro/prompts/init_v1.j2"
     discover_concepts_template_path: str = (
@@ -18,7 +23,7 @@ class LLMSettings:
     Infrastructure settings for the API connection.
 
     Attributes:
-        provider: The service provider (e.g., 'openai', 'groq').
+        provider: The service provider (e.g., 'openai', 'groq', 'google').
         model_name: The specific model ID (e.g., 'gpt-4o').
         base_url: Optional override for the API endpoint.
         llm_params: A dictionary of model-specific hyperparameters (e.g., temperature,
@@ -29,7 +34,7 @@ class LLMSettings:
     model_name: str = "openai/gpt-oss-20b"
     base_url: str | None = None
 
-    # Renamed from 'generation_params' to avoid confusion with Evo Generations
+    # Hyperparameters for the text generation
     llm_params: dict[str, Any] = field(default_factory=dict)
 
     @classmethod
@@ -49,7 +54,42 @@ class LLMSettings:
             if key in known_fields:
                 explicit_args[key] = value
             else:
-                # e.g., "temperature", "frequency_penalty" -> llm_params
+                # e.g., "temperature", "top_p" -> llm_params
                 implicit_params[key] = value
 
         return cls(**explicit_args, llm_params=implicit_params)
+
+
+@dataclass(slots=True, frozen=True)
+class DatasetConfig:
+    """
+    Configuration for data loading and adaptation.
+    Defines the bridge between raw storage and the engine.
+    """
+
+    adapter: str
+    root: str
+    name: str
+    class_names: list[str]
+    few_shot: bool = False
+    few_shot_no: int = 2
+    cache_dir: str = ".biomedxpro_cache"
+    adapter_params: dict[str, Any] = field(default_factory=dict)
+
+    @classmethod
+    def from_dict(cls, config: dict[str, Any]) -> "DatasetConfig":
+        """
+        Separates core adapter fields from extra parameters passed to
+        the specific adapter implementation.
+        """
+        known_fields = {f.name for f in fields(cls) if f.name != "adapter_params"}
+        explicit_args = {}
+        extra_args = {}
+
+        for key, value in config.items():
+            if key in known_fields:
+                explicit_args[key] = value
+            else:
+                extra_args[key] = value
+
+        return cls(**explicit_args, adapter_params=extra_args)

@@ -9,7 +9,7 @@ from openai import OpenAI, OpenAIError
 from openai.types.responses.response import Response
 
 from biomedxpro.core.interfaces import ILLMClient
-from biomedxpro.utils.config import LLMSettings
+from biomedxpro.impl.config import LLMSettings
 
 
 def _get_api_keys(env_var_name: str) -> list[str]:

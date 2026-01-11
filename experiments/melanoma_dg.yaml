@@ -1,0 +1,41 @@
+# experiments/melanoma_dg.yaml
+# Melanoma Domain Generalization Experiment (Camelyon17 centers 0,1,2 -> 3 -> 4)
+
+task:
+  task_name: "Tumor Detection"
+  image_modality: "Histopathology Patches"
+  positive_class: "Tumor Tissue"
+  negative_class: "Normal Tissue"
+  role: "Expert Pathologist"
+  concepts: null # Set to null to trigger LLM Concept Discovery
+
+dataset:
+  adapter: "camelyon17"
+  root: "data/camelyon17" # Replace with your local path
+  name: "camelyon17_dg"
+  class_names: ["Normal", "Tumor"]
+  few_shot: true
+  few_shot_no: 5
+  # Camelyon17 specific params (matching our adapter's __init__)
+  train_centers: [0, 1, 2]
+  val_centers: [3]
+  test_centers: [4]
+
+evolution:
+  generations: 5
+  island_capacity: 20
+  target_metric: "f1_macro"
+  initial_pop_size: 10
+  num_parents: 5
+  offspring_per_gen: 5
+
+llm:
+  provider: "google"
+  model_name: "gemini-1.5-flash"
+  temperature: 0.7
+  max_output_tokens: 1024
+
+execution:
+  max_workers: 2
+  device: "cuda" # or "cpu"
+  batch_size: 32

@@ -22,9 +22,11 @@ class FitnessEvaluator(IFitnessEvaluator):
         model_name: str = "hf-hub:microsoft/BiomedCLIP-PubMedBERT_256-vit_base_patch16_224",
         device: str = "cuda" if torch.cuda.is_available() else "cpu",
         context_length: int = 256,
+        batch_size: int = 64,
     ) -> None:
         self.device = torch.device(device)
         self.context_length = context_length
+        self.batch_size = batch_size
 
         logger.info(f"Loading BioMedCLIP model: {model_name} on {self.device}")
 
@@ -44,16 +46,19 @@ class FitnessEvaluator(IFitnessEvaluator):
         Batched evaluation of the population.
         Updates each Individual.metrics in-place.
         """
+        if not individuals:
+            return
+
         logger.debug(
             f"Evaluating {len(individuals)} individuals on {dataset.num_samples} samples."
         )
 
-        # Note: dataset.features should be (N_samples, Embedding_Dim)
-        image_feats = dataset.features.to(self.device)
+        # 1. Prepare Image Features and Labels
+        image_feats = dataset.features.to(self.device).float()
         labels = dataset.labels.to(self.device)
+        y_true = labels.cpu().numpy()
 
-        # 3. Batch Tokenize All Prompts
-        # Structure: [Neg_1, Pos_1, Neg_2, Pos_2, ..., Neg_K, Pos_K]
+        # 2. Batch Tokenize All Prompts
         all_texts = []
         for ind in individuals:
             all_texts.append(ind.genotype.negative_prompt)
@@ -63,35 +68,43 @@ class FitnessEvaluator(IFitnessEvaluator):
             self.device
         )
 
-        # 4. Batch Encode Text (One Forward Pass)
+        # 3. Batch Encode Text (One Forward Pass)
         with torch.no_grad(), torch.cuda.amp.autocast():
-            text_feats = self.model.encode_text(text_tokens)
+            text_feats = self.model.encode_text(text_tokens).float()
             text_feats = text_feats / text_feats.norm(dim=-1, keepdim=True)
 
-            # shape: (2*K, Embed_Dim) -> (Embed_Dim, 2*K)
-            text_feats = text_feats.t()
+        # 4. Compute Metrics in chunks of individuals to prevent OOM
+        # Memory consumption is O(N_samples * batch_size) instead of O(N_samples * N_individuals)
+        num_individuals = len(individuals)
+        for start_idx in range(0, num_individuals, self.batch_size):
+            end_idx = min(start_idx + self.batch_size, num_individuals)
+            batch_count = end_idx - start_idx
 
-            # 5. Compute Logits for ALL individuals against ALL images
-            # (N_samples, Embed_Dim) @ (Embed_Dim, 2*K) -> (N_samples, 2*K)
-            all_logits = self.logit_scale * (image_feats @ text_feats)
+            # Extract text features for this batch of individuals
+            # Each individual has 2 prompts (neg, pos)
+            # Shape: (batch_count * 2, Embed_Dim)
+            batch_text_feats = text_feats[start_idx * 2 : end_idx * 2].t()
 
-        # 6. Compute Metrics for each individual
-        # Move labels to CPU for sklearn metrics to avoid synchronization overhead in loop
-        y_true = labels.cpu().numpy()
+            with torch.no_grad():
+                # Compute Logits for this batch
+                # (N_samples, Embed_Dim) @ (Embed_Dim, 2 * batch_count) -> (N_samples, 2 * batch_count)
+                batch_logits = self.logit_scale * (image_feats @ batch_text_feats)
 
-        for i, ind in enumerate(individuals):
-            # Extract logits for the i-th individual (columns 2*i and 2*i+1)
-            # Shape: (N_samples, 2)
-            individual_logits = all_logits[:, 2 * i : 2 * i + 2]
+            # Calculate and store metrics for each individual in the current batch
+            for i in range(batch_count):
+                global_ind_idx = start_idx + i
+                ind = individuals[global_ind_idx]
 
-            probs = individual_logits.softmax(dim=1)
+                # Extract logits for specific individual
+                individual_logits = batch_logits[:, 2 * i : 2 * i + 2]
+                probs = individual_logits.softmax(dim=1)
 
-            # Column 1 is the Positive Class Probability
-            y_prob = probs[:, 1].cpu().float().numpy()
-            y_pred = individual_logits.argmax(dim=1).cpu().numpy()
+                # Column 1 is the Positive Class Probability
+                y_prob = probs[:, 1].cpu().float().numpy()
+                y_pred = individual_logits.argmax(dim=1).cpu().numpy()
 
-            metrics = self._calculate_metrics(y_true, y_pred, y_prob)
-            ind.update_metrics(metrics)
+                metrics = self._calculate_metrics(y_true, y_pred, y_prob)
+                ind.update_metrics(metrics)
 
     def _calculate_metrics(
         self, y_true: np.ndarray, y_pred: np.ndarray, y_prob: np.ndarray

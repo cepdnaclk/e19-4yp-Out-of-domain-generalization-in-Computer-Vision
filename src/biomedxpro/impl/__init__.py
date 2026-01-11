@@ -18,11 +18,9 @@ from .adapters import (
     list_available_adapters,
     register_adapter,
 )
+from .data_integration_example import load_dataset_pipeline, load_multiple_splits
 from .data_loader import BiomedCLIPModel, BiomedDataLoader, ImagePathDataset
-from .data_integration_example import (
-    load_dataset_pipeline,
-    load_multiple_splits,
-)
+from .selection import ElitismSelector, RouletteWheelSelector
 
 __all__ = [
     # Adapters
@@ -39,4 +37,7 @@ __all__ = [
     # Integration
     "load_dataset_pipeline",
     "load_multiple_splits",
+    # Selection
+    "RouletteWheelSelector",
+    "ElitismSelector",
 ]

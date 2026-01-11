@@ -5,9 +5,9 @@ import pytest
 from dotenv import load_dotenv
 
 from biomedxpro.core.domain import TaskDefinition
+from biomedxpro.impl.config import LLMSettings, PromptStrategy
 from biomedxpro.impl.llm_client import create_llm_client
-from biomedxpro.impl.evol_operator import LLMOperator
-from biomedxpro.utils.config import LLMSettings, PromptStrategy
+from biomedxpro.impl.llm_operator import LLMOperator
 
 # 1. Load Real Secrets
 load_dotenv()
@@ -23,6 +23,7 @@ def basic_task_def() -> TaskDefinition:
         positive_class="Melanoma",
         negative_class="Benign",
         role="Dermatology Expert",
+        concepts=None,
     )
 
 

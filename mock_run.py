@@ -52,6 +52,7 @@ def main() -> None:
         positive_class="Malignant",
         negative_class="Benign",
         role="Tester",
+        concepts=None,
     )
 
     # 4. Initialize Mock Components
