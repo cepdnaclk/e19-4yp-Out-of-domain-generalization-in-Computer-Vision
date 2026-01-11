@@ -42,5 +42,5 @@ llm:
 execution:
   orchestrator_io_workers: 16
   dataloader_cpu_workers: 4
-  device: "cuda" # Fast evaluation is critical for Phase II Step 9
+  device: "cpu" # Fast evaluation is critical for Phase II Step 9
   batch_size: 32
