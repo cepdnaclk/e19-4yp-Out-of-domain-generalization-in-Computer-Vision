@@ -3,7 +3,7 @@
 
 task:
   task_name: "Tumor Detection"
-  image_modality: "Histopathology Patches"
+  image_modality: "histopathology image patches extracted from H&E-stained whole-slide image of lymph node sections"
   positive_class: "Tumor Tissue"
   negative_class: "Normal Tissue"
   role: "Expert Pathologist"
@@ -24,11 +24,11 @@ dataset:
 
 evolution:
   generations: 5
-  island_capacity: 20
+  island_capacity: 100
   target_metric: "f1_macro"
-  initial_pop_size: 10
-  num_parents: 5
-  offspring_per_gen: 5
+  initial_pop_size: 50
+  num_parents: 10
+  offspring_per_gen: 10
 
 llm:
   provider: "google"
