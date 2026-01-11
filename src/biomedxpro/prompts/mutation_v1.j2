@@ -14,7 +14,7 @@
     </format>
     
     {% for parent in parents %}
-    Negative: {{ parent.genotype.negative_prompt }},  Positive: {{ parent.genotype.positive_prompt }}, Score: {{ parent.score }}
+    Negative: "{{ parent.genotype.negative_prompt }}",  Positive: "{{ parent.genotype.positive_prompt }}", Score: {{ parent.score }}
     {% endfor %}
 </current_top_performers>
 
