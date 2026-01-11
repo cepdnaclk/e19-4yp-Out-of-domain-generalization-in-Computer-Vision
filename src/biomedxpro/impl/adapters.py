@@ -11,6 +11,8 @@ The Registry Pattern allows configuration-driven dataset selection without
 hardcoding adapter choices in the main application.
 """
 
+import random
+from collections import defaultdict
 from pathlib import Path
 from typing import Any, Callable
 
@@ -147,8 +149,9 @@ class Derm7ptAdapter(IDatasetAdapter):
 
         samples = []
 
-        # Optimization: Pre-allocate list to avoid memory overhead if not few-shot
-        if self.shots == 0:
+        # Logic: We only apply 'shots' to the TRAIN split.
+        # Validation and Test should be full for accurate evaluation.
+        if self.shots == 0 or split != DataSplit.TRAIN:
             for _, row in split_df_filtered.iterrows():
                 # Binary classification: melanoma vs. non-melanoma
                 diagnosis = row.get("diagnosis", "").lower()
@@ -170,8 +173,6 @@ class Derm7ptAdapter(IDatasetAdapter):
             return samples
 
         # Few-Shot Logic: Stratified Random Sampling
-        import random
-        from collections import defaultdict
 
         # Fix seed for reproducibility
         random.seed(42)
@@ -275,8 +276,9 @@ class Camelyon17Adapter(IDatasetAdapter):
         # Create samples
         samples = []
 
-        # Optimization: Pre-allocate list to avoid memory overhead if not few-shot
-        if self.shots == 0:
+        # Logic: We only apply 'shots' to the TRAIN split.
+        # Validation and Test should be full for accurate evaluation.
+        if self.shots == 0 or split != DataSplit.TRAIN:
             for _, row in filtered_df.iterrows():
                 # Extract metadata
                 patient_id = int(row["patient"])
@@ -306,9 +308,6 @@ class Camelyon17Adapter(IDatasetAdapter):
 
         # Few-Shot Logic: Stratified Random Sampling
         # Group candidates by class first
-        import random
-        from collections import defaultdict
-
         # Fix seed for reproducibility
         random.seed(42)
 
@@ -404,8 +403,9 @@ class WBCAttAdapter(IDatasetAdapter):
         # Create samples
         samples = []
 
-        # Optimization: Pre-allocate list to avoid memory overhead if not few-shot
-        if not self.few_shot:
+        # Logic: We only apply 'shots' to the TRAIN split.
+        # Validation and Test should be full for accurate evaluation.
+        if self.shots == 0 or split != DataSplit.TRAIN:
             for _, row in csv_df.iterrows():
                 # Get image path and label
                 image_filename = row.get("path")
@@ -425,8 +425,6 @@ class WBCAttAdapter(IDatasetAdapter):
             return samples
 
         # Few-Shot Logic: Stratified Random Sampling
-        import random
-        from collections import defaultdict
 
         # Fix seed for reproducibility
         random.seed(42)
