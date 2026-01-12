@@ -324,3 +324,66 @@ class Population:
             "size": len(self),
             "individuals": [c.to_dict() for c in self._individuals],
         }
+
+
+@dataclass(slots=True)
+class PromptEnsemble:
+    """
+    A Pure Domain Entity.
+    It holds the state (experts + weights) and the business logic
+    for combining them. It relies on the caller to provide the raw probabilities.
+    """
+
+    experts: list[Individual]
+    weights: torch.Tensor
+    metric: MetricName
+
+    @property
+    def prompts(self) -> list[tuple[str, str]]:
+        """Helper to extract the raw text pairs."""
+        return [
+            (ind.genotype.negative_prompt, ind.genotype.positive_prompt)
+            for ind in self.experts
+        ]
+
+    @classmethod
+    def from_individuals(
+        cls,
+        individuals: list[Individual],
+        metric: MetricName,
+        temperature: float = 0.1,
+    ) -> "PromptEnsemble":
+        """Factory: Pure logic to calculate weights based on fitness."""
+        if not individuals:
+            raise ValueError("Cannot create ensemble from empty list.")
+
+        scores = torch.tensor(
+            [ind.get_fitness(metric) for ind in individuals], dtype=torch.float32
+        )
+        # Softmax Weighting (Pure Math)
+        weights = torch.softmax(scores / temperature, dim=0)
+
+        return cls(experts=individuals, weights=weights, metric=metric)
+
+    def apply(self, expert_probs: torch.Tensor) -> torch.Tensor:
+        """
+        Applies the ensemble weights to a matrix of probabilities.
+
+        Args:
+            expert_probs: Tensor of shape (N_Samples, N_Experts).
+                          This data comes from the outside world.
+
+        Returns:
+            Tensor of shape (N_Samples,). The final weighted consensus.
+        """
+        if expert_probs.shape[1] != len(self.experts):
+            raise ValueError(
+                f"Dimension Mismatch: Ensemble has {len(self.experts)} experts, "
+                f"but input tensor has {expert_probs.shape[1]} columns."
+            )
+
+        # Move weights to the same device as the data for computation
+        w = self.weights.to(expert_probs.device)
+
+        # Weighted Sum (The Voting Logic)
+        return expert_probs @ w

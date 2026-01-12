@@ -7,7 +7,7 @@ import typer
 from dotenv import load_dotenv
 from loguru import logger
 
-from biomedxpro.core.domain import DataSplit
+from biomedxpro.core.domain import DataSplit, PromptEnsemble
 from biomedxpro.engine.config import MasterConfig
 from biomedxpro.engine.orchestrator import Orchestrator
 from biomedxpro.impl.adapters import get_adapter
@@ -18,6 +18,7 @@ from biomedxpro.impl.llm_operator import LLMOperator
 from biomedxpro.impl.selection import RouletteWheelSelector
 from biomedxpro.utils.history import HistoryRecorder
 from biomedxpro.utils.logging import setup_logging
+from biomedxpro.utils.metrics import calculate_classification_metrics
 
 app = typer.Typer(help="BioMedXPro Evolutionary Engine")
 
@@ -143,6 +144,38 @@ def run(
         logger.info(f"   Positive Prompt: {ind.genotype.positive_prompt}")
         logger.info(f"   Negative Prompt: {ind.genotype.negative_prompt}")
         print("-" * 60)
+
+    # 8. Ensemble Evaluation
+    logger.info("Constructing Prompt Ensemble from champions...")
+
+    # 1. Instantiate Domain Entity
+    ensemble = PromptEnsemble.from_individuals(
+        champions,
+        metric=config.evolution.target_metric,
+        temperature=0.05,
+    )
+
+    # 2. Infrastructure Work (Heavy Lifting)
+    logger.info("Computing expert opinions on validation set...")
+    raw_probs_matrix = evaluator.compute_batch_probabilities(
+        ensemble.prompts,
+        val_dataset,
+    )
+
+    # 3. Domain Logic (The Vote)
+    logger.info("Aggregating votes...")
+    final_probs_tensor = ensemble.apply(raw_probs_matrix)
+
+    # 4. Reporting
+    y_prob = final_probs_tensor.cpu().numpy()
+    y_true = val_dataset.labels.cpu().numpy()
+    y_pred = (y_prob >= 0.5).astype(int)
+
+    results = calculate_classification_metrics(y_true, y_pred, y_prob)
+
+    logger.success(f"Ensemble Accuracy: {results['accuracy']:.4f}")
+    logger.success(f"Ensemble F1 (Macro): {results['f1_macro']:.4f}")
+    logger.success(f"Ensemble AUROC: {results['auc']:.4f}")
 
 
 if __name__ == "__main__":
