@@ -19,29 +19,37 @@ app = typer.Typer(help="BioMedXPro Evolutionary Engine")
 
 @app.command()
 def run(
-    config_path: Path = typer.Option(
-        ...,
-        "--config",
-        "-c",
-        help="Path to the experiment YAML config (e.g., experiments/melanoma_dg.yaml)",
-        exists=True,
-        file_okay=True,
-        dir_okay=False,
-        readable=True,
+    # 1. The Problem
+    task_config: Path = typer.Option(
+        ..., "--task", "-t", help="Path to Task/Dataset config", exists=True
+    ),
+    # 2. The Method
+    algo_config: Path = typer.Option(
+        ..., "--algo", "-a", help="Path to Algorithm config", exists=True
+    ),
+    # 3. The Intelligence
+    llm_config: Path = typer.Option(
+        ..., "--llm", "-l", help="Path to LLM config", exists=True
+    ),
+    # 4. The Hardware
+    exec_config: Path = typer.Option(
+        ..., "--exec", "-e", help="Path to Execution config", exists=True
     ),
     exp_name: Optional[str] = typer.Option(
         None, "--exp-name", "-n", help="Optional experiment name override"
     ),
 ) -> None:
     """
-    Executes the Concept-Driven Island Evolution pipeline based on a YAML configuration.
+    Executes the Concept-Driven Island Evolution pipeline using composable configurations.
     """
     # 0. Load environment variables (API Keys from .env)
     load_dotenv()
 
-    # 1. Load Configuration
+    # 1. Load Configuration (Assembly Phase)
     try:
-        config = MasterConfig.from_yaml(config_path)
+        config = MasterConfig.from_composable(
+            task_config, algo_config, llm_config, exec_config
+        )
     except Exception as e:
         logger.error(f"Failed to parse config: {e}")
         sys.exit(1)
@@ -51,7 +59,10 @@ def run(
     # 2. Setup Logging & Persistence
     setup_logging(experiment_name, console_level="DEBUG")
     recorder = HistoryRecorder(experiment_name=experiment_name)
-    logger.info(f"Loaded config from {config_path}")
+    logger.info(f"Loaded task config from {task_config}")
+    logger.info(f"Loaded algo config from {algo_config}")
+    logger.info(f"Loaded LLM config from {llm_config}")
+    logger.info(f"Loaded execution config from {exec_config}")
     logger.info(f"Starting experiment: {experiment_name}")
 
     # 3. Build World (Factory)

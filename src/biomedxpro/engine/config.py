@@ -54,3 +54,48 @@ class MasterConfig:
             if "strategy" in raw_config
             else PromptStrategy(),
         )
+
+    @classmethod
+    def from_composable(
+        cls,
+        task_path: Path,
+        algo_path: Path,
+        llm_path: Path,
+        exec_path: Path,
+    ) -> "MasterConfig":
+        """
+        Assembles the MasterConfig from four distinct configuration sources.
+        """
+        combined_config: dict[str, Any] = {}
+
+        # 1. Load Task & Dataset (The Problem)
+        with open(task_path, "r") as f:
+            combined_config.update(yaml.safe_load(f) or {})
+
+        # 2. Load Algorithm (The Method)
+        with open(algo_path, "r") as f:
+            combined_config.update(yaml.safe_load(f) or {})
+
+        # 3. Load LLM Settings (The Intelligence)
+        with open(llm_path, "r") as f:
+            combined_config.update(yaml.safe_load(f) or {})
+
+        # 4. Load Execution Settings (The Hardware)
+        with open(exec_path, "r") as f:
+            combined_config.update(yaml.safe_load(f) or {})
+
+        # 5. Validate & Instantiate
+        try:
+            strategy_dict = combined_config.get("strategy", {})
+            return cls(
+                task=TaskDefinition.from_dict(combined_config["task"]),
+                dataset=DatasetConfig.from_dict(combined_config["dataset"]),
+                evolution=EvolutionParams.from_dict(combined_config["evolution"]),
+                llm=LLMSettings.from_dict(combined_config["llm"]),
+                execution=ExecutionConfig.from_dict(combined_config["execution"]),
+                strategy=PromptStrategy(**strategy_dict)
+                if strategy_dict
+                else PromptStrategy(),
+            )
+        except KeyError as e:
+            raise ValueError(f"Missing configuration section: {e}")

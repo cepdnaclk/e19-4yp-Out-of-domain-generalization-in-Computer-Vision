@@ -1,0 +1,7 @@
+evolution:
+  generations: 20
+  island_capacity: 50
+  target_metric: "f1_macro"
+  initial_pop_size: 10
+  num_parents: 10
+  offspring_per_gen: 10
