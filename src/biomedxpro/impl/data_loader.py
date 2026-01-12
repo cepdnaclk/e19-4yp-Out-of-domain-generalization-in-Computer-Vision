@@ -23,7 +23,7 @@ Design Principles:
 import hashlib
 import logging
 from pathlib import Path
-from typing import Optional
+from typing import Any, Callable, Optional
 
 import torch
 import tqdm
@@ -134,7 +134,7 @@ class BiomedCLIPModel:
                     first_batch = False
 
                 # Mixed Precision provides a significant speedup on modern GPUs
-                with torch.amp.autocast("cuda", enabled=is_cuda):
+                with torch.amp.autocast("cuda", enabled=is_cuda):  # type: ignore[attr-defined]
                     features = self._model.encode_image(batch_images)
                     # Normalize embeddings
                     features = features / features.norm(dim=-1, keepdim=True)
@@ -144,19 +144,21 @@ class BiomedCLIPModel:
         return torch.cat(all_embeddings, dim=0).to(device)
 
 
-class ImagePathDataset(Dataset):
+class ImagePathDataset(Dataset[tuple[Any, str]]):
     """
     Simple dataset that loads and transforms images from file paths.
     """
 
-    def __init__(self, image_paths: list[str], transform=None):
+    def __init__(
+        self, image_paths: list[str], transform: Optional[Callable[..., Any]] = None
+    ) -> None:
         self.image_paths = image_paths
         self.transform = transform
 
     def __len__(self) -> int:
         return len(self.image_paths)
 
-    def __getitem__(self, idx: int):
+    def __getitem__(self, idx: int) -> tuple[Any, str]:
         path = self.image_paths[idx]
         try:
             image = Image.open(path).convert("RGB")

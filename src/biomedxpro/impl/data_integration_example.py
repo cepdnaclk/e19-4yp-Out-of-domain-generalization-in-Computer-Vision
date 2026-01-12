@@ -85,25 +85,28 @@ def load_dataset_pipeline(
 
     # Step 1: Get the adapter
     print(f"[1/3] Selecting adapter: {adapter_name}")
-    adapter = get_adapter(adapter_name)
+
+    # Initialize adapter with root
+    # Note: Adapters typically require root path to find data
+    adapter = get_adapter(adapter_name, root=root)
 
     # Initialize adapter with few-shot parameters if supported
     try:
-        adapter = get_adapter(adapter_name)
         # Check if adapter supports few-shot by trying to initialize with parameters
         import inspect
 
         sig = inspect.signature(adapter.__class__.__init__)
         if "few_shot" in sig.parameters:
             # Reinitialize adapter with few-shot parameters
-            adapter = adapter.__class__(few_shot=few_shot, few_shot_no=few_shot_no)  # type: ignore[call-arg]
+            adapter = adapter.__class__(
+                root=root, few_shot=few_shot, few_shot_no=few_shot_no
+            )  # type: ignore[call-arg]
     except Exception:
-        # If initialization fails, use default adapter
-        adapter = get_adapter(adapter_name)
+        pass
 
     # Step 2: Load samples using the adapter
     print(f"[2/3] Loading samples from {root}...")
-    samples = adapter.load_samples(root, split)
+    samples = adapter.load_samples(split)
     print(f"      Found {len(samples)} samples")
 
     # Step 3: Encode samples and return dataset
