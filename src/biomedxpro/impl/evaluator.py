@@ -4,7 +4,12 @@ import torch
 from loguru import logger
 from open_clip import create_model_from_pretrained, get_tokenizer
 
-from biomedxpro.core.domain import EncodedDataset, Individual
+from biomedxpro.core.domain import (
+    EncodedDataset,
+    EvaluationMetrics,
+    Individual,
+    PromptEnsemble,
+)
 from biomedxpro.core.interfaces import IFitnessEvaluator
 from biomedxpro.utils.metrics import calculate_classification_metrics
 
@@ -135,3 +140,33 @@ class FitnessEvaluator(IFitnessEvaluator):
 
             metrics = calculate_classification_metrics(y_true, y_pred, y_prob)
             ind.update_metrics(metrics)
+
+    def evaluate_ensemble(
+        self,
+        ensemble: PromptEnsemble,
+        dataset: EncodedDataset,
+    ) -> EvaluationMetrics:
+        """
+        Orchestrates the evaluation of a Deployment Model.
+
+        Flow:
+        1. Evaluator (Infrastructure) -> Computes raw probabilities (GPU).
+        2. Ensemble (Domain) -> Applies voting weights (Pure Logic).
+        3. Metrics (Utils) -> Calculates final report.
+        """
+        logger.info("Computing expert opinions on validation set...")
+
+        # 1. GPU Compute
+        raw_probs = self.compute_batch_probabilities(ensemble.prompts, dataset)
+
+        # 2. Domain Logic
+        logger.info("Aggregating votes...")
+        final_probs = ensemble.apply(raw_probs)
+
+        # 3. Metric Calculation
+        y_prob = final_probs.cpu().numpy()
+        y_true = dataset.labels.cpu().numpy()
+        y_pred = (y_prob >= 0.5).astype(int)
+
+        # We assume 0.5 threshold for binary classification
+        return calculate_classification_metrics(y_true, y_pred, y_prob)

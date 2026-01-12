@@ -7,18 +7,12 @@ import typer
 from dotenv import load_dotenv
 from loguru import logger
 
-from biomedxpro.core.domain import DataSplit, PromptEnsemble
+from biomedxpro.core.domain import PromptEnsemble
+from biomedxpro.engine import builder
 from biomedxpro.engine.config import MasterConfig
-from biomedxpro.engine.orchestrator import Orchestrator
-from biomedxpro.impl.adapters import get_adapter
-from biomedxpro.impl.data_loader import BiomedDataLoader
-from biomedxpro.impl.evaluator import FitnessEvaluator
-from biomedxpro.impl.llm_client import create_llm_client
-from biomedxpro.impl.llm_operator import LLMOperator
-from biomedxpro.impl.selection import RouletteWheelSelector
+from biomedxpro.utils import reporting
 from biomedxpro.utils.history import HistoryRecorder
 from biomedxpro.utils.logging import setup_logging
-from biomedxpro.utils.metrics import calculate_classification_metrics
 
 app = typer.Typer(help="BioMedXPro Evolutionary Engine")
 
@@ -60,92 +54,23 @@ def run(
     logger.info(f"Loaded config from {config_path}")
     logger.info(f"Starting experiment: {experiment_name}")
 
-    # 3. Initialize Data Layer (The Translator & Processor)
-    # Step 1: Get Adapter from the Registry
-    logger.info(f"Initializing adapter: {config.dataset.adapter}")
-    adapter = get_adapter(
-        config.dataset.adapter,
-        root=config.dataset.root,
-        shots=config.dataset.shots,
-        **config.dataset.adapter_params,
+    # 3. Build World (Factory)
+    train_ds, val_ds = builder.load_datasets(config)
+    orchestrator = builder.build_orchestrator(
+        config, train_ds, val_ds, recorder=recorder
     )
 
-    # Step 2: Load Samples (Standardization)
-    logger.info(f"Loading samples from {config.dataset.root}...")
-    train_samples = adapter.load_samples(DataSplit.TRAIN)
-    val_samples = adapter.load_samples(DataSplit.VAL)
-    logger.info(
-        f"Found {len(train_samples)} training and {len(val_samples)} validation samples."
-    )
-
-    # Step 3, 4, 5: Process, Encode and Cache (The Loader)
-    loader = BiomedDataLoader(
-        cache_dir=config.dataset.cache_dir,
-        batch_size=config.execution.batch_size,
-        device=config.execution.device,
-        num_workers=config.execution.dataloader_cpu_workers,
-    )
-
-    logger.info("Encapsulating data into optimized EncodedDataset artifacts...")
-    train_dataset = loader.load_encoded_dataset(
-        name=f"{config.dataset.name}_train",
-        samples=train_samples,
-        class_names=config.dataset.class_names,
-    )
-
-    val_dataset = loader.load_encoded_dataset(
-        name=f"{config.dataset.name}_val",
-        samples=val_samples,
-        class_names=config.dataset.class_names,
-    )
-
-    # 5. Initialize Evolutionary Components
-    logger.info("Bootstrapping evolutionary components...")
-    llm_client = create_llm_client(config.llm)
-    operator = LLMOperator(
-        llm=llm_client, strategy=config.strategy, task_def=config.task
-    )
-    evaluator = FitnessEvaluator(
-        device=config.execution.device, batch_size=config.execution.batch_size
-    )
-    selector = RouletteWheelSelector()
-
-    # 6. Build & Run Orchestrator
-    orchestrator = Orchestrator(
-        evaluator=evaluator,
-        operator=operator,
-        selector=selector,
-        train_dataset=train_dataset,
-        val_dataset=val_dataset,
-        params=config.evolution,
-        recorder=recorder,
-        exec_config=config.execution,
-    )
-
-    # Phases of the Island-Model Evolutionary Algorithm
-    logger.info("Entering Phase I & II: Archipelago Initialization and Evolution")
+    # 4. Evolution Phase (Execution)
+    logger.info("Entering Phase I & II: Archipelago Evolution")
     # Initialize handles Phase I (Concept Discovery) fallback if concepts is None
     orchestrator.initialize(concepts=config.task.concepts)
 
     champions = orchestrator.run()
 
-    # 7. Final Championship Summary
-    print("\n" + "=" * 60)
-    logger.success(
-        f"Evolution complete. Discovered {len(champions)} expert concept prompts."
-    )
-    print("=" * 60)
-    for ind in champions:
-        score = ind.get_fitness(config.evolution.target_metric)
-        logger.info(f"Expert Concept: {ind.concept}")
-        logger.info(
-            f"   Validation Score ({config.evolution.target_metric}): {score:.4f}"
-        )
-        logger.info(f"   Positive Prompt: {ind.genotype.positive_prompt}")
-        logger.info(f"   Negative Prompt: {ind.genotype.negative_prompt}")
-        print("-" * 60)
+    # 5. Reporting Phase (Evolution)
+    reporting.print_champion_summary(champions, config.evolution.target_metric)
 
-    # 8. Ensemble Evaluation
+    # 6. Deployment Phase (Execution)
     logger.info("Constructing Prompt Ensemble from champions...")
 
     # 1. Instantiate Domain Entity
@@ -156,26 +81,11 @@ def run(
     )
 
     # 2. Infrastructure Work (Heavy Lifting)
-    logger.info("Computing expert opinions on validation set...")
-    raw_probs_matrix = evaluator.compute_batch_probabilities(
-        ensemble.prompts,
-        val_dataset,
-    )
+    # Note: access evaluator via orchestrator public property
+    metrics = orchestrator.evaluator.evaluate_ensemble(ensemble, val_ds)
 
-    # 3. Domain Logic (The Vote)
-    logger.info("Aggregating votes...")
-    final_probs_tensor = ensemble.apply(raw_probs_matrix)
-
-    # 4. Reporting
-    y_prob = final_probs_tensor.cpu().numpy()
-    y_true = val_dataset.labels.cpu().numpy()
-    y_pred = (y_prob >= 0.5).astype(int)
-
-    results = calculate_classification_metrics(y_true, y_pred, y_prob)
-
-    logger.success(f"Ensemble Accuracy: {results['accuracy']:.4f}")
-    logger.success(f"Ensemble F1 (Macro): {results['f1_macro']:.4f}")
-    logger.success(f"Ensemble AUROC: {results['auc']:.4f}")
+    # 7. Reporting Phase (Deployment)
+    reporting.print_ensemble_results(metrics)
 
 
 if __name__ == "__main__":

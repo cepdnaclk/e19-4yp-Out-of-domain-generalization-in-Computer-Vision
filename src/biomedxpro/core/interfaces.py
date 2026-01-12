@@ -4,9 +4,11 @@ from typing import Protocol, Sequence
 from biomedxpro.core.domain import (
     DataSplit,
     EncodedDataset,
+    EvaluationMetrics,
     Individual,
     MetricName,
     Population,
+    PromptEnsemble,
     StandardSample,
 )
 
@@ -49,6 +51,17 @@ class IFitnessEvaluator(Protocol):
     ) -> None:
         """
         Calculates scores (e.g., F1, BCE) and calls individual.update_metrics().
+        """
+        ...
+
+    def evaluate_ensemble(
+        self,
+        ensemble: PromptEnsemble,
+        dataset: EncodedDataset,
+    ) -> EvaluationMetrics:
+        """
+        Evaluates a Prompt Ensemble as a single unit.
+        Returns the ensemble-level metric (e.g., F1 score).
         """
         ...
 
