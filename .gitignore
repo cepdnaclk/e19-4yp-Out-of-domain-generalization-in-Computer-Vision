@@ -1,4 +1,8 @@
 /BioMedClip
+**/.mypy_cache
+**/.pytest_cache
+**/__pycache__
+*.log
 *.out
 /BiomedCLIP_Explorations/cached_image_feats.pt
 /BiomedCLIP_Explorations/cached/
