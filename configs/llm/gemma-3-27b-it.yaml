@@ -1,0 +1,4 @@
+llm:
+  provider: "gemini"
+  model_name: "gemini-3-27b-it"
+  temperature: 1.0
