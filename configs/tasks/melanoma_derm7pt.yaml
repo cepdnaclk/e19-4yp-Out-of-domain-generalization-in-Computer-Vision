@@ -19,4 +19,3 @@ dataset:
   name: "derm7pt"
   class_names: ["Benign", "Melanoma"]
   cache_dir: "/storage/projects3/e19-fyp-out-of-domain-gen-in-cv/cache/"
-  shots: 16
