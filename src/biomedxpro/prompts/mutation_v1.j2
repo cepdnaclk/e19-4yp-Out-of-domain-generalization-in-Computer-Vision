@@ -14,7 +14,7 @@
     </format>
     
     {% for parent in parents %}
-    Negative: {{ parent.genotype.negative_prompt }},  Positive: {{ parent.genotype.positive_prompt }}, Score: {{ parent.score }}
+    Negative: "{{ parent.genotype.negative_prompt }}",  Positive: "{{ parent.genotype.positive_prompt }}", Score: {{ parent.score }}
     {% endfor %}
 </current_top_performers>
 
@@ -28,7 +28,8 @@
     - Use precise medical terminology.
     - You SHOULD NOT reuse exact phrases from the current top performers.
     - You SHOULD NOT introduce new visual concepts. eg: if the concept is "Shape", do not describe "Color". 
-    - Output MUST be valid JSON.
+    - Output MUST be valid JSON, a list of lists.
+    - Each inner list MUST contain exactly two strings: [negative_description, positive_description].
     - Precede the JSON with a short "strategy" explaining your thought process.
 </instruction>
 

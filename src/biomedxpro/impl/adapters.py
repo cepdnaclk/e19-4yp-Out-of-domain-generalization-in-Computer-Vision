@@ -11,6 +11,8 @@ The Registry Pattern allows configuration-driven dataset selection without
 hardcoding adapter choices in the main application.
 """
 
+import random
+from collections import defaultdict
 from pathlib import Path
 from typing import Any, Callable
 
@@ -93,30 +95,31 @@ class Derm7ptAdapter(IDatasetAdapter):
     Supports few-shot learning scenarios where only N samples per class are used.
     """
 
-    def __init__(self, few_shot: bool = False, few_shot_no: int = 2) -> None:
+    def __init__(
+        self,
+        root: str,
+        shots: int = 0,
+    ) -> None:
         """
         Initialize the Derm7pt adapter.
 
         Args:
-            few_shot: Whether to enable few-shot learning.
-            few_shot_no: Number of samples per class in few-shot scenarios.
+            root: Root directory of Derm7pt (must contain meta.csv and images/).
+            shots: Number of samples per class (0 = full dataset).
         """
-        self.few_shot = few_shot
-        self.few_shot_no = few_shot_no
+        self.root = Path(root)
+        self.shots = shots
 
-    def load_samples(self, root: str, split: DataSplit) -> list[StandardSample]:
+    def load_samples(self, split: DataSplit) -> list[StandardSample]:
         """
         Load Derm7pt samples for the specified split.
 
         Args:
-            root: Root directory of Derm7pt (must contain meta.csv and images/).
             split: The split to load (TRAIN, VAL, or TEST).
 
         Returns:
             List of StandardSample objects (image_path, label).
         """
-        root_path = Path(root)
-
         # Map DataSplit enum to filename
         split_map = {
             DataSplit.TRAIN: "train_indexes.csv",
@@ -124,9 +127,9 @@ class Derm7ptAdapter(IDatasetAdapter):
             DataSplit.TEST: "test_indexes.csv",
         }
 
-        meta_path = root_path / "meta" / "meta.csv"
-        split_path = root_path / "meta" / split_map[split]
-        image_base = root_path / "images"
+        meta_path = self.root / "meta" / "meta.csv"
+        split_path = self.root / "meta" / split_map[split]
+        image_base = self.root / "images"
 
         # Validate required files exist
         if not meta_path.exists():
@@ -144,35 +147,57 @@ class Derm7ptAdapter(IDatasetAdapter):
         # Filter metadata by split indexes
         split_df_filtered = meta_df.iloc[indexes].reset_index(drop=True)
 
-        # Create samples
         samples = []
-        label_counts: dict[int, int] = {} if self.few_shot else {}
+
+        # Logic: We only apply 'shots' to the TRAIN split.
+        # Validation and Test should be full for accurate evaluation.
+        if self.shots == 0 or split != DataSplit.TRAIN:
+            for _, row in split_df_filtered.iterrows():
+                # Binary classification: melanoma vs. non-melanoma
+                diagnosis = row.get("diagnosis", "").lower()
+                label = 1 if "melanoma" in diagnosis else 0
+
+                # Get image filename and construct full path
+                image_filename = row.get("derm")
+                if not image_filename:
+                    continue
+
+                image_path = image_base / image_filename
+
+                # Only include samples with existing image files
+                if not image_path.exists():
+                    continue
+
+                samples.append(StandardSample(image_path=str(image_path), label=label))
+
+            return samples
+
+        # Few-Shot Logic: Stratified Random Sampling
+
+        # Fix seed for reproducibility
+        random.seed(42)
+
+        candidates_by_class = defaultdict(list)
 
         for _, row in split_df_filtered.iterrows():
-            # Binary classification: melanoma vs. non-melanoma
             diagnosis = row.get("diagnosis", "").lower()
             label = 1 if "melanoma" in diagnosis else 0
 
-            # Get image filename and construct full path
             image_filename = row.get("derm")
             if not image_filename:
                 continue
 
             image_path = image_base / image_filename
 
-            # Only include samples with existing image files
-            if not image_path.exists():
-                continue
+            if image_path.exists():
+                candidates_by_class[label].append(
+                    StandardSample(image_path=str(image_path), label=label)
+                )
 
-            # Few-shot: limit samples per class
-            if self.few_shot:
-                if label not in label_counts:
-                    label_counts[label] = 0
-                if label_counts[label] >= self.few_shot_no:
-                    continue
-                label_counts[label] += 1
-
-            samples.append(StandardSample(image_path=str(image_path), label=label))
+        # Sample k from each class
+        for label, candidates in candidates_by_class.items():
+            count = min(self.shots, len(candidates))
+            samples.extend(random.sample(candidates, count))
 
         return samples
 
@@ -195,8 +220,8 @@ class Camelyon17Adapter(IDatasetAdapter):
 
     def __init__(
         self,
-        few_shot: bool = False,
-        few_shot_no: int = 2,
+        root: str,
+        shots: int = 0,
         train_centers: list[int] = [0, 1, 2],
         val_centers: list[int] = [3],
         test_centers: list[int] = [4],
@@ -205,35 +230,29 @@ class Camelyon17Adapter(IDatasetAdapter):
         Initialize the Camelyon17 adapter.
 
         Args:
-            few_shot: Whether to enable few-shot learning.
-            few_shot_no: Number of samples per class in few-shot scenarios.
+            root: Root directory of Camelyon17 (must contain metadata.csv).
+            shots: Number of samples per class (0 = full dataset).
             train_centers: List of center IDs to use for training.
             val_centers: List of center IDs to use for validation.
             test_centers: List of center IDs to use for testing.
         """
-        self.few_shot = few_shot
-        self.few_shot_no = few_shot_no
+        self.root = Path(root)
+        self.shots = shots
         self.train_centers = train_centers
         self.val_centers = val_centers
         self.test_centers = test_centers
 
-    def load_samples(self, root: str, split: DataSplit) -> list[StandardSample]:
+    def load_samples(self, split: DataSplit) -> list[StandardSample]:
         """
         Load Camelyon17 samples for the specified split.
 
         Args:
-            root: Root directory of Camelyon17 (must contain metadata.csv).
             split: The split to load (TRAIN, VAL, or TEST).
 
         Returns:
             List of StandardSample objects (image_path, label).
         """
-        root_path = Path(root)
-        metadata_path = root_path / "metadata.csv"
-
-        # Validate metadata exists
-        if not metadata_path.exists():
-            raise FileNotFoundError(f"metadata.csv not found at {metadata_path}")
+        metadata_path = self.root / "metadata.csv"
 
         # Load metadata
         metadata_df = pd.read_csv(metadata_path)
@@ -256,38 +275,68 @@ class Camelyon17Adapter(IDatasetAdapter):
 
         # Create samples
         samples = []
-        label_counts: dict[int, int] = {} if self.few_shot else {}
+
+        # Logic: We only apply 'shots' to the TRAIN split.
+        # Validation and Test should be full for accurate evaluation.
+        if self.shots == 0 or split != DataSplit.TRAIN:
+            for _, row in filtered_df.iterrows():
+                # Extract metadata
+                patient_id = int(row["patient"])
+                node_id = int(row["node"])
+                x_coord = int(row["x_coord"])
+                y_coord = int(row["y_coord"])
+                label = int(row["tumor"])  # Binary: tumor (1) or non-tumor (0)
+
+                # Construct image filename and path
+                patient_str = f"{patient_id:03d}"
+                image_filename = (
+                    f"patch_patient_{patient_str}_node_{node_id}_"
+                    f"x_{x_coord}_y_{y_coord}.png"
+                )
+                image_dir = (
+                    self.root / "patches" / f"patient_{patient_str}_node_{node_id}"
+                )
+                image_path = image_dir / image_filename
+
+                # Only include samples with existing image files
+                if not image_path.exists():
+                    continue
+
+                samples.append(StandardSample(image_path=str(image_path), label=label))
+
+            return samples
+
+        # Few-Shot Logic: Stratified Random Sampling
+        # Group candidates by class first
+        # Fix seed for reproducibility
+        random.seed(42)
+
+        candidates_by_class = defaultdict(list)
 
         for _, row in filtered_df.iterrows():
-            # Extract metadata
             patient_id = int(row["patient"])
             node_id = int(row["node"])
             x_coord = int(row["x_coord"])
             y_coord = int(row["y_coord"])
-            label = int(row["tumor"])  # Binary: tumor (1) or non-tumor (0)
+            label = int(row["tumor"])
 
-            # Construct image filename and path
             patient_str = f"{patient_id:03d}"
             image_filename = (
                 f"patch_patient_{patient_str}_node_{node_id}_"
                 f"x_{x_coord}_y_{y_coord}.png"
             )
-            image_dir = root_path / "patches" / f"patient_{patient_str}_node_{node_id}"
+            image_dir = self.root / "patches" / f"patient_{patient_str}_node_{node_id}"
             image_path = image_dir / image_filename
 
-            # Only include samples with existing image files
-            if not image_path.exists():
-                continue
+            if image_path.exists():
+                candidates_by_class[label].append(
+                    StandardSample(image_path=str(image_path), label=label)
+                )
 
-            # Few-shot: limit samples per class
-            if self.few_shot:
-                if label not in label_counts:
-                    label_counts[label] = 0
-                if label_counts[label] >= self.few_shot_no:
-                    continue
-                label_counts[label] += 1
-
-            samples.append(StandardSample(image_path=str(image_path), label=label))
+        # Sample k from each class
+        for label, candidates in candidates_by_class.items():
+            count = min(self.shots, len(candidates))
+            samples.extend(random.sample(candidates, count))
 
         return samples
 
@@ -307,32 +356,27 @@ class WBCAttAdapter(IDatasetAdapter):
     Supports few-shot learning scenarios where only N samples per class are used.
     """
 
-    def __init__(self, few_shot: bool = False, few_shot_no: int = 2) -> None:
+    def __init__(self, root: str, shots: int = 0) -> None:
         """
         Initialize the WBC-Att adapter.
 
         Args:
-            few_shot: Whether to enable few-shot learning.
-            few_shot_no: Number of samples per class in few-shot scenarios.
+            root: Root directory of WBC-Att dataset.
+            shots: Number of samples per class (0 = full dataset).
         """
-        self.few_shot = few_shot
-        self.few_shot_no = few_shot_no
+        self.root = Path(root)
+        self.shots = shots
 
-    def load_samples(self, root: str, split: DataSplit) -> list[StandardSample]:
+    def load_samples(self, split: DataSplit) -> list[StandardSample]:
         """
         Load WBC-Att samples for the specified split.
 
         Args:
-            root: Root directory of WBC-Att dataset.
             split: The split to load (TRAIN, VAL, or TEST).
-            few_shot: Whether to use few-shot learning.
-            few_shot_no: Number of samples per class in few-shot mode.
 
         Returns:
             List of StandardSample objects (image_path, label).
         """
-        root_path = Path(root)
-
         # Map DataSplit enum to CSV filename
         split_map = {
             DataSplit.TRAIN: "pbc_attr_v1_train.csv",
@@ -340,8 +384,8 @@ class WBCAttAdapter(IDatasetAdapter):
             DataSplit.TEST: "pbc_attr_v1_test.csv",
         }
 
-        csv_path = root_path / split_map[split]
-        image_base = root_path
+        csv_path = self.root / split_map[split]
+        image_base = self.root
 
         # Validate required files exist
         if not csv_path.exists():
@@ -358,10 +402,36 @@ class WBCAttAdapter(IDatasetAdapter):
 
         # Create samples
         samples = []
-        label_counts: dict[int, int] = {} if self.few_shot else {}
+
+        # Logic: We only apply 'shots' to the TRAIN split.
+        # Validation and Test should be full for accurate evaluation.
+        if self.shots == 0 or split != DataSplit.TRAIN:
+            for _, row in csv_df.iterrows():
+                # Get image path and label
+                image_filename = row.get("path")
+                if not image_filename:
+                    continue
+
+                image_path = image_base / image_filename
+                label_str = row.get("label")
+                label = label_to_idx[label_str]
+
+                # Only include samples with existing image files
+                if not image_path.exists():
+                    continue
+
+                samples.append(StandardSample(image_path=str(image_path), label=label))
+
+            return samples
+
+        # Few-Shot Logic: Stratified Random Sampling
+
+        # Fix seed for reproducibility
+        random.seed(42)
+
+        candidates_by_class = defaultdict(list)
 
         for _, row in csv_df.iterrows():
-            # Get image path and label
             image_filename = row.get("path")
             if not image_filename:
                 continue
@@ -370,18 +440,14 @@ class WBCAttAdapter(IDatasetAdapter):
             label_str = row.get("label")
             label = label_to_idx[label_str]
 
-            # Only include samples with existing image files
-            if not image_path.exists():
-                continue
+            if image_path.exists():
+                candidates_by_class[label].append(
+                    StandardSample(image_path=str(image_path), label=label)
+                )
 
-            # Few-shot: limit samples per class
-            if self.few_shot:
-                if label not in label_counts:
-                    label_counts[label] = 0
-                if label_counts[label] >= self.few_shot_no:
-                    continue
-                label_counts[label] += 1
-
-            samples.append(StandardSample(image_path=str(image_path), label=label))
+        # Sample k from each class
+        for label, candidates in candidates_by_class.items():
+            count = min(self.shots, len(candidates))
+            samples.extend(random.sample(candidates, count))
 
         return samples

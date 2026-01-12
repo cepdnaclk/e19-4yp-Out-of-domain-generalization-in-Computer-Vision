@@ -69,7 +69,8 @@ class FitnessEvaluator(IFitnessEvaluator):
         )
 
         # 3. Batch Encode Text (One Forward Pass)
-        with torch.no_grad(), torch.cuda.amp.autocast():
+        is_cuda = self.device.type == "cuda"
+        with torch.no_grad(), torch.amp.autocast("cuda", enabled=is_cuda):
             text_feats = self.model.encode_text(text_tokens).float()
             text_feats = text_feats / text_feats.norm(dim=-1, keepdim=True)
 

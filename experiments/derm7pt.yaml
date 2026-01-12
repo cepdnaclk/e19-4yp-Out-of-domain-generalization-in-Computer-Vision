@@ -1,0 +1,46 @@
+# experiments/derm7pt.yaml
+# Derm7pt Melanoma Detection Experiment
+
+task:
+  task_name: "Melanoma Diagnosis"
+  image_modality: "clinical and dermoscopic images of skin lesions"
+  positive_class: "Melanoma"
+  negative_class: "Benign Skin Lesion"
+  role: "Expert Dermatologist"
+  # Providing explicit concepts to bypass LLM discovery as per Phase I
+  concepts: 
+    - "Pigment Network"
+    - "Blue Whitish Veil"
+    - "Vascular Structures"
+    - "Pigmentation"
+    - "Streaks"
+    - "Dots and Globules"
+    - "Regression Structures"
+
+dataset:
+  adapter: "derm7pt"
+  root: "/storage/projects3/e19-fyp-out-of-domain-gen-in-cv/Derm7pt/release_v0/"
+  name: "derm7pt"
+  class_names: ["Benign", "Melanoma"]
+  cache_dir: "/storage/projects3/e19-fyp-out-of-domain-gen-in-cv/cache/"
+  shots: 16
+
+evolution:
+  generations: 20
+  island_capacity: 50
+  target_metric: "f1_macro"
+  initial_pop_size: 10
+  num_parents: 5
+  offspring_per_gen: 5
+
+llm:
+  provider: "groq"
+  model_name: "openai/gpt-oss-120b" # Using a standard Gemini model
+  base_url: "https://api.groq.com/openai/v1"
+  temperature: 1.0
+
+execution:
+  orchestrator_io_workers: 16
+  dataloader_cpu_workers: 4
+  device: "cpu" # Fast evaluation is critical for Phase II Step 9
+  batch_size: 32

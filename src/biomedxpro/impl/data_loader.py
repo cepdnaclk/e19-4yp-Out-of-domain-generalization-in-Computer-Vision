@@ -134,7 +134,7 @@ class BiomedCLIPModel:
                     first_batch = False
 
                 # Mixed Precision provides a significant speedup on modern GPUs
-                with torch.cuda.amp.autocast(enabled=is_cuda):
+                with torch.amp.autocast("cuda", enabled=is_cuda):
                     features = self._model.encode_image(batch_images)
                     # Normalize embeddings
                     features = features / features.norm(dim=-1, keepdim=True)

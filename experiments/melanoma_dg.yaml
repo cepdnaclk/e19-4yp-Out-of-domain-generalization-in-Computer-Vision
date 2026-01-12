@@ -3,7 +3,7 @@
 
 task:
   task_name: "Tumor Detection"
-  image_modality: "Histopathology Patches"
+  image_modality: "histopathology image patches extracted from H&E-stained whole-slide image of lymph node sections"
   positive_class: "Tumor Tissue"
   negative_class: "Normal Tissue"
   role: "Expert Pathologist"
@@ -15,16 +15,15 @@ dataset:
   name: "camelyon17_dg"
   class_names: ["Normal", "Tumor"]
   cache_dir: "/storage/projects3/e19-fyp-out-of-domain-gen-in-cv/cache/"
-  few_shot: true
-  few_shot_no: 5
+  shots: 16
   # Camelyon17 specific params (matching our adapter's __init__)
   train_centers: [0, 1, 2]
   val_centers: [3]
   test_centers: [4]
 
 evolution:
-  generations: 5
-  island_capacity: 20
+  generations: 100
+  island_capacity: 50
   target_metric: "f1_macro"
   initial_pop_size: 10
   num_parents: 5
@@ -33,9 +32,10 @@ evolution:
 llm:
   provider: "gemini"
   model_name: "gemma-3-27b-it"
+  temperature: 1.0
 
 execution:
-  orchestrator_io_workers: 10
-  dataloader_cpu_workers: 12
-  device: "cuda" # or "cpu"
-  batch_size: 512
+  orchestrator_io_workers: 16
+  dataloader_cpu_workers: 4
+  device: "cpu" # or "cpu"
+  batch_size: 32

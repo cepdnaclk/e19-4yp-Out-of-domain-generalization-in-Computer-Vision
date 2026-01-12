@@ -73,7 +73,6 @@ class LLMOperator(IOperator):
         Handles markdown code blocks with ```json fences using regex.
         Falls back to parsing raw JSON if no code block is found.
         """
-
         text = raw_response.strip()
 
         # Try to extract JSON from markdown code blocks using regex
@@ -83,13 +82,23 @@ class LLMOperator(IOperator):
 
         if match:
             text = match.group(1).strip()
-        # If no code block, use the raw text
+
+        # Cleanup: LLMs often include trailing commas which break standard json.loads
+        # Regex to remove trailing commas before closing brackets or braces
+        text = re.sub(r",\s*([\]\}])", r"\1", text)
 
         # Parse JSON
         try:
             return json.loads(text)
         except json.JSONDecodeError as e:
-            logger.error(f"JSON Parse Error: {e}. Raw output: {raw_response[:200]}...")
+            # Provide more diagnostic info on failure
+            logger.error(f"JSON Parse Error at line {e.lineno} col {e.colno}: {e.msg}")
+            # Identify the problematic line
+            lines = text.splitlines()
+            if 0 < e.lineno <= len(lines):
+                logger.debug(f"Offending line {e.lineno}: {lines[e.lineno - 1]}")
+
+            logger.error(f"Raw output snippet: {raw_response[:200]}...")
             raise e
 
     def _normalize_scores_to_int(
@@ -155,6 +164,8 @@ class LLMOperator(IOperator):
         response = self.llm.generate(prompt)
         concepts = self._parse_llm_json(response)
 
+        logger.debug(f"Discovered concepts response: {response}")
+
         if not isinstance(concepts, list):
             logger.error(
                 f"Concept discovery returned non-list response.\nResponse:\n{response}"
@@ -174,6 +185,8 @@ class LLMOperator(IOperator):
         )
 
         response = self.llm.generate(prompt)
+        logger.debug(f"Initialization response: {response}")
+
         data_list: list[list[str]] = self._parse_llm_json(response)
 
         offspring = []
@@ -233,6 +246,8 @@ class LLMOperator(IOperator):
         # 3. LLM Generation
         response = self.llm.generate(prompt)
 
+        logger.debug(f"Reproduction response: {response}")
+
         # 4. Parse & Create Offspring
         data_list: list[list[str]] = self._parse_llm_json(response)
         parent_ids = [p.id for p in parents]
@@ -240,11 +255,17 @@ class LLMOperator(IOperator):
         offspring: list[Individual] = []
         if isinstance(data_list, list):
             for data in data_list:
-                if (not isinstance(data, list)) or len(data) != 2:
+                if not isinstance(data, list):
                     logger.warning(
                         f"Skipping invalid individual data during reproduction for concept '{concept}': {data}"
                     )
                     continue
+
+                if len(data) != 2:
+                    logger.warning(
+                        "Inididual data does not contain exactly two prompts. Extracting first two elements."
+                    )
+                    data = data[:2]
 
                 ind = Individual(
                     id=uuid.uuid4(),

@@ -54,7 +54,7 @@ def run(
     experiment_name = exp_name or config.dataset.name
 
     # 2. Setup Logging & Persistence
-    setup_logging(experiment_name)
+    setup_logging(experiment_name, console_level="DEBUG")
     recorder = HistoryRecorder(experiment_name=experiment_name)
     logger.info(f"Loaded config from {config_path}")
     logger.info(f"Starting experiment: {experiment_name}")
@@ -62,12 +62,17 @@ def run(
     # 3. Initialize Data Layer (The Translator & Processor)
     # Step 1: Get Adapter from the Registry
     logger.info(f"Initializing adapter: {config.dataset.adapter}")
-    adapter = get_adapter(config.dataset.adapter, **config.dataset.adapter_params)
+    adapter = get_adapter(
+        config.dataset.adapter,
+        root=config.dataset.root,
+        shots=config.dataset.shots,
+        **config.dataset.adapter_params,
+    )
 
     # Step 2: Load Samples (Standardization)
     logger.info(f"Loading samples from {config.dataset.root}...")
-    train_samples = adapter.load_samples(config.dataset.root, DataSplit.TRAIN)
-    val_samples = adapter.load_samples(config.dataset.root, DataSplit.VAL)
+    train_samples = adapter.load_samples(DataSplit.TRAIN)
+    val_samples = adapter.load_samples(DataSplit.VAL)
     logger.info(
         f"Found {len(train_samples)} training and {len(val_samples)} validation samples."
     )

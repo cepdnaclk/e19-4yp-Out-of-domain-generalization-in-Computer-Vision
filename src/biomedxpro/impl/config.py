@@ -71,8 +71,7 @@ class DatasetConfig:
     root: str
     name: str
     class_names: list[str]
-    few_shot: bool = False
-    few_shot_no: int = 2
+    shots: int = 0  # 0 = Full Dataset, >0 = Few-Shot (samples per class)
     cache_dir: str = ".biomedxpro_cache"
     adapter_params: dict[str, Any] = field(default_factory=dict)
 
