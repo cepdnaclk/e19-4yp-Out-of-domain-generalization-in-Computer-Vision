@@ -29,7 +29,7 @@ def print_ensemble_results(metrics: EvaluationMetrics) -> None:
     Prints the final report card for the deployed model.
     """
     print("\n" + "=" * 60)
-    logger.success("FINAL ENSEMBLE RESULTS (VALIDATION SET)")
+    logger.success("FINAL ENSEMBLE RESULTS (TEST SET)")
     print("=" * 60)
 
     # Use direct keys using the TypedDict
