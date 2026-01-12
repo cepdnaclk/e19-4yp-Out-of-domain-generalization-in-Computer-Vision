@@ -10,8 +10,10 @@ def calculate_classification_metrics(
     """
     Computes standard classification metrics and fitness.
     """
-    epsilon = 1e-15
-    y_prob_clipped = np.clip(y_prob, epsilon, 1 - epsilon)
+    # Use float64 for stability and a larger epsilon to avoid log(0) in float32
+    epsilon = 1e-7
+    y_prob = y_prob.astype(np.float64)
+    y_prob_clipped = np.clip(y_prob, epsilon, 1.0 - epsilon)
 
     # Inverted BCE Fitness
     bce_loss = -np.mean(
