@@ -1,4 +1,4 @@
 llm:
-  provider: "qwen"
+  provider: "groq"
   model_name: "qwen/qwen3-32b"
   temperature: 1.0
