@@ -88,7 +88,7 @@ def run(
     ensemble = PromptEnsemble.from_individuals(
         champions,
         metric=config.evolution.target_metric,
-        temperature=0.05,
+        temperature=1.0,
     )
 
     # 2. Infrastructure Work (Heavy Lifting)
