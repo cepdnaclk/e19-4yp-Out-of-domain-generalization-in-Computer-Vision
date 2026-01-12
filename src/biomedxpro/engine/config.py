@@ -28,6 +28,15 @@ class ExecutionConfig:
         return cls(**filtered)
 
 
+def _deep_update(base: dict[str, Any], update: dict[str, Any]) -> None:
+    """Recursively updates a dictionary."""
+    for key, value in update.items():
+        if key in base and isinstance(base[key], dict) and isinstance(value, dict):
+            _deep_update(base[key], value)
+        else:
+            base[key] = value
+
+
 @dataclass(slots=True, frozen=True)
 class MasterConfig:
     """The Root of the configuration tree."""
@@ -70,19 +79,19 @@ class MasterConfig:
 
         # 1. Load Task & Dataset (The Problem)
         with open(task_path, "r") as f:
-            combined_config.update(yaml.safe_load(f) or {})
+            _deep_update(combined_config, yaml.safe_load(f) or {})
 
         # 2. Load Algorithm (The Method)
         with open(algo_path, "r") as f:
-            combined_config.update(yaml.safe_load(f) or {})
+            _deep_update(combined_config, yaml.safe_load(f) or {})
 
         # 3. Load LLM Settings (The Intelligence)
         with open(llm_path, "r") as f:
-            combined_config.update(yaml.safe_load(f) or {})
+            _deep_update(combined_config, yaml.safe_load(f) or {})
 
         # 4. Load Execution Settings (The Hardware)
         with open(exec_path, "r") as f:
-            combined_config.update(yaml.safe_load(f) or {})
+            _deep_update(combined_config, yaml.safe_load(f) or {})
 
         # 5. Validate & Instantiate
         try:
