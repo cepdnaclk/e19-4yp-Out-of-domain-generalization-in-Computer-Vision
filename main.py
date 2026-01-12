@@ -37,7 +37,7 @@ def run(
     exp_name: Optional[str] = typer.Option(
         None, "--exp-name", "-n", help="Optional experiment name override"
     ),
-):
+) -> None:
     """
     Executes the Concept-Driven Island Evolution pipeline based on a YAML configuration.
     """
