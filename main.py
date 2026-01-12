@@ -55,7 +55,7 @@ def run(
     logger.info(f"Starting experiment: {experiment_name}")
 
     # 3. Build World (Factory)
-    train_ds, val_ds = builder.load_datasets(config)
+    train_ds, val_ds, test_ds = builder.load_datasets(config)
     orchestrator = builder.build_orchestrator(
         config, train_ds, val_ds, recorder=recorder
     )
@@ -82,7 +82,7 @@ def run(
 
     # 2. Infrastructure Work (Heavy Lifting)
     # Note: access evaluator via orchestrator public property
-    metrics = orchestrator.evaluator.evaluate_ensemble(ensemble, val_ds)
+    metrics = orchestrator.evaluator.evaluate_ensemble(ensemble, test_ds)
 
     # 7. Reporting Phase (Deployment)
     reporting.print_ensemble_results(metrics)

@@ -14,7 +14,9 @@ from biomedxpro.impl.selection import RouletteWheelSelector
 from biomedxpro.utils.history import HistoryRecorder
 
 
-def load_datasets(config: MasterConfig) -> tuple[EncodedDataset, EncodedDataset]:
+def load_datasets(
+    config: MasterConfig,
+) -> tuple[EncodedDataset, EncodedDataset, EncodedDataset]:
     """
     Factory method for Data Layer artifacts.
     Handles Adapter resolution, raw loading, and GPU encoding/caching.
@@ -51,7 +53,13 @@ def load_datasets(config: MasterConfig) -> tuple[EncodedDataset, EncodedDataset]
         class_names=config.dataset.class_names,
     )
 
-    return train_ds, val_ds
+    test_ds = loader.load_encoded_dataset(
+        name=f"{config.dataset.name}_test",
+        samples=adapter.load_samples(DataSplit.TEST),
+        class_names=config.dataset.class_names,
+    )
+
+    return train_ds, val_ds, test_ds
 
 
 def build_orchestrator(
