@@ -1,0 +1,13 @@
+task:
+  task_name: "Melanoma Diagnosis"
+  image_modality: "clinical and dermoscopic images of skin lesions"
+  positive_class: "Melanoma"
+  negative_class: "Benign Skin Lesion"
+  role: "Expert Dermatologist"
+
+dataset:
+  adapter: "derm7pt"
+  root: "/storage/projects3/e19-fyp-out-of-domain-gen-in-cv/Derm7pt/release_v0/"
+  name: "derm7pt"
+  class_names: ["Benign", "Melanoma"]
+  cache_dir: "/storage/projects3/e19-fyp-out-of-domain-gen-in-cv/cache/"
