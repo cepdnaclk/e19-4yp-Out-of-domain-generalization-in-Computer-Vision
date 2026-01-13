@@ -76,7 +76,6 @@ def run(
     logger.info(f"Override: Shots = {shots}")
     logger.info(f"Override: Metric = {metric}")
     logger.info(f"Starting experiment: {experiment_name}")
-    logger.info(f"Starting experiment: {experiment_name}")
 
     # 3. Build World (Factory)
     train_ds, val_ds, test_ds = builder.load_datasets(config)
