@@ -24,8 +24,8 @@ def run(
         ..., "--task", "-t", help="Path to Task/Dataset config", exists=True
     ),
     # 2. The Method
-    algo_config: Path = typer.Option(
-        ..., "--algo", "-a", help="Path to Algorithm config", exists=True
+    evo_config: Path = typer.Option(
+        ..., "--evolution", "-e", help="Path to Evolution params", exists=True
     ),
     # 3. The Intelligence
     llm_config: Path = typer.Option(
@@ -33,7 +33,12 @@ def run(
     ),
     # 4. The Hardware
     exec_config: Path = typer.Option(
-        ..., "--exec", "-e", help="Path to Execution config", exists=True
+        ..., "--exec", "-x", help="Path to Execution config", exists=True
+    ),
+    # 5. Overrides
+    shots: int = typer.Option(16, "--shots", "-s", help="Number of few-shot examples"),
+    metric: str = typer.Option(
+        "f1_macro", "--metric", "-m", help="Optimization target metric"
     ),
     exp_name: Optional[str] = typer.Option(
         None, "--exp-name", "-n", help="Optional experiment name override"
@@ -48,7 +53,12 @@ def run(
     # 1. Load Configuration (Assembly Phase)
     try:
         config = MasterConfig.from_composable(
-            task_config, algo_config, llm_config, exec_config
+            task_path=task_config,
+            evo_path=evo_config,
+            llm_path=llm_config,
+            exec_path=exec_config,
+            target_metric=metric,
+            shots=shots,
         )
     except Exception as e:
         logger.error(f"Failed to parse config: {e}")
@@ -60,9 +70,12 @@ def run(
     setup_logging(experiment_name, console_level="DEBUG")
     recorder = HistoryRecorder(experiment_name=experiment_name)
     logger.info(f"Loaded task config from {task_config}")
-    logger.info(f"Loaded algo config from {algo_config}")
+    logger.info(f"Loaded evolution config from {evo_config}")
     logger.info(f"Loaded LLM config from {llm_config}")
     logger.info(f"Loaded execution config from {exec_config}")
+    logger.info(f"Override: Shots = {shots}")
+    logger.info(f"Override: Metric = {metric}")
+    logger.info(f"Starting experiment: {experiment_name}")
     logger.info(f"Starting experiment: {experiment_name}")
 
     # 3. Build World (Factory)

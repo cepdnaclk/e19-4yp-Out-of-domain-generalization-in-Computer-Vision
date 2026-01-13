@@ -68,9 +68,11 @@ class MasterConfig:
     def from_composable(
         cls,
         task_path: Path,
-        algo_path: Path,
+        evo_path: Path,
         llm_path: Path,
         exec_path: Path,
+        target_metric: str,
+        shots: int,
     ) -> "MasterConfig":
         """
         Assembles the MasterConfig from four distinct configuration sources.
@@ -81,8 +83,8 @@ class MasterConfig:
         with open(task_path, "r") as f:
             _deep_update(combined_config, yaml.safe_load(f) or {})
 
-        # 2. Load Algorithm (The Method)
-        with open(algo_path, "r") as f:
+        # 2. Load Evolution (The Method)
+        with open(evo_path, "r") as f:
             _deep_update(combined_config, yaml.safe_load(f) or {})
 
         # 3. Load LLM Settings (The Intelligence)
@@ -93,7 +95,15 @@ class MasterConfig:
         with open(exec_path, "r") as f:
             _deep_update(combined_config, yaml.safe_load(f) or {})
 
-        # 5. Validate & Instantiate
+        # 5. Inject CLI Overrides
+        # Ensure mandatory sections exist before injecting
+        combined_config.setdefault("evolution", {})
+        combined_config.setdefault("dataset", {})
+
+        combined_config["evolution"]["target_metric"] = target_metric
+        combined_config["dataset"]["shots"] = shots
+
+        # 6. Validate & Instantiate
         try:
             strategy_dict = combined_config.get("strategy", {})
             return cls(
