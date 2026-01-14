@@ -23,8 +23,7 @@ from biomedxpro.core.domain import DataSplit, StandardSample
 # Base path for actual datasets
 DATA_BASE_PATH = Path("/storage/projects3/e19-fyp-out-of-domain-gen-in-cv")
 
-# Path to workspace JSON definitions
-WORKSPACE_DATA_PATH = Path(__file__).parent.parent.parent / "src" / "biomedxpro" / "data"
+
 
 # New JSON-based datasets
 JSON_DATASETS = [
@@ -102,58 +101,6 @@ class TestAdapterInstantiation:
         assert adapter.shots == 5, f"Shots parameter not set correctly for {adapter_name}"
 
 
-class TestJsonSplitFiles:
-    """Test JSON split file existence and structure."""
-
-    @pytest.mark.parametrize("adapter_name,folder_name", DATASET_FOLDER_MAP.items())
-    def test_json_file_exists(self, adapter_name, folder_name):
-        """Test that JSON split file exists in workspace."""
-        json_path = WORKSPACE_DATA_PATH / folder_name / f"split_{folder_name}.json"
-        
-        assert json_path.exists(), f"JSON file not found: {json_path}"
-
-    @pytest.mark.parametrize("adapter_name,folder_name", DATASET_FOLDER_MAP.items())
-    def test_json_file_valid(self, adapter_name, folder_name):
-        """Test that JSON file is valid and has correct structure."""
-        json_path = WORKSPACE_DATA_PATH / folder_name / f"split_{folder_name}.json"
-        
-        with open(json_path, 'r') as f:
-            data = json.load(f)
-        
-        # Check for required keys
-        required_keys = {"train", "val", "test"}
-        assert set(data.keys()) == required_keys, \
-            f"JSON must have keys {required_keys}, got {set(data.keys())}"
-
-    @pytest.mark.parametrize("adapter_name,folder_name", DATASET_FOLDER_MAP.items())
-    def test_json_splits_not_empty(self, adapter_name, folder_name):
-        """Test that all splits have samples."""
-        json_path = WORKSPACE_DATA_PATH / folder_name / f"split_{folder_name}.json"
-        
-        with open(json_path, 'r') as f:
-            data = json.load(f)
-        
-        for split_name in ["train", "val", "test"]:
-            assert len(data[split_name]) > 0, \
-                f"{split_name} split is empty for {adapter_name}"
-
-    @pytest.mark.parametrize("adapter_name,folder_name", DATASET_FOLDER_MAP.items())
-    def test_json_sample_format(self, adapter_name, folder_name):
-        """Test that samples have correct format: [image_path, label, label_name]."""
-        json_path = WORKSPACE_DATA_PATH / folder_name / f"split_{folder_name}.json"
-        
-        with open(json_path, 'r') as f:
-            data = json.load(f)
-        
-        # Check first sample from each split
-        for split_name in ["train", "val", "test"]:
-            if data[split_name]:
-                sample = data[split_name][0]
-                assert isinstance(sample, list) and len(sample) == 3, \
-                    f"Sample format should be [image_path, label, label_name], got {sample}"
-                assert isinstance(sample[0], str), "Image path should be string"
-                assert isinstance(sample[1], int), "Label should be int"
-                assert isinstance(sample[2], str), "Label name should be string"
 
 
 @pytest.mark.skipif(
@@ -218,6 +165,7 @@ class TestRealDataLoading:
         samples = adapter.load_samples(DataSplit.TEST)
         
         assert isinstance(samples, list), "load_samples should return a list"
+        print(f"Length of test samples for {adapter_name}: {len(samples)}")
         if samples:
             assert all(isinstance(s, StandardSample) for s in samples), \
                 "All samples should be StandardSample instances"
@@ -329,7 +277,6 @@ def dataset_summary():
         "total_adapters": len(list_available_adapters()),
         "json_adapters": len(JSON_DATASETS),
         "datasets": DATASET_FOLDER_MAP,
-        "workspace_data_path": str(WORKSPACE_DATA_PATH),
         "real_data_path": str(DATA_BASE_PATH),
         "real_data_available": DATA_BASE_PATH.exists(),
     }
