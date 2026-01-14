@@ -189,7 +189,7 @@ class TestFewShotLearning:
         # Full dataset
         adapter_full = get_adapter("kvasir", root=str(dataset_path), shots=0)
         train_full = adapter_full.load_samples(DataSplit.TRAIN)
-        
+        print(f"Length of full training samples: {len(train_full)}")
         if not train_full:
             pytest.skip("No training samples found in Kvasir dataset")
         
@@ -197,7 +197,7 @@ class TestFewShotLearning:
         shots = 5
         adapter_few = get_adapter("kvasir", root=str(dataset_path), shots=shots)
         train_few = adapter_few.load_samples(DataSplit.TRAIN)
-        
+        print(f"Length of few-shot training samples (shots={shots}): {len(train_few)}")
         assert len(train_few) <= len(train_full), \
             "Few-shot dataset should be smaller than full dataset"
 
