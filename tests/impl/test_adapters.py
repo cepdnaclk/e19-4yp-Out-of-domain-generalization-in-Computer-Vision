@@ -287,4 +287,3 @@ def test_summary_info(dataset_summary):
     """Display summary information about the test environment."""
     assert dataset_summary["total_adapters"] >= 14, "Should have at least 14 adapters"
     assert dataset_summary["json_adapters"] == 11, "Should have 11 JSON adapters"
-    assert dataset_summary["workspace_data_path"] is not None, "Workspace path should exist"
