@@ -11,6 +11,7 @@ The Registry Pattern allows configuration-driven dataset selection without
 hardcoding adapter choices in the main application.
 """
 
+import json
 import random
 from collections import defaultdict
 from pathlib import Path
@@ -451,3 +452,273 @@ class WBCAttAdapter(IDatasetAdapter):
             samples.extend(random.sample(candidates, count))
 
         return samples
+
+
+# --- JSON-based Dataset Adapters ---
+# Generic adapter for datasets using JSON split files
+# Each dataset has a split_<DATASET>.json file with format:
+# {
+#     "train": [[image_path, label, label_name], ...],
+#     "val": [[image_path, label, label_name], ...],
+#     "test": [[image_path, label, label_name], ...]
+# }
+
+
+class JsonDatasetAdapter(IDatasetAdapter):
+    """
+    Generic adapter for JSON-based biomedical datasets.
+
+    This adapter works with datasets that define their splits in JSON files
+    with the structure: {train, val, test}, each containing [image_path, label, label_name].
+
+    Base path: /storage/projects3/e19-fyp-out-of-domain-gen-in-cv/<DATASET_NAME>/
+    """
+
+    def __init__(self, root: str, shots: int = 0) -> None:
+        """
+        Initialize the JSON dataset adapter.
+
+        Args:
+            root: Root directory of the dataset (contains images and split JSON).
+            shots: Number of samples per class (0 = full dataset).
+        """
+        self.root = Path(root)
+        self.shots = shots
+        self.split_data = None
+
+    def _load_split_data(self) -> dict:
+        """Load split data from JSON file if not already loaded."""
+        if self.split_data is None:
+            # Find the JSON split file
+            json_files = list(self.root.glob("split_*.json"))
+            if not json_files:
+                raise FileNotFoundError(f"No split_*.json file found in {self.root}")
+            
+            json_path = json_files[0]
+            with open(json_path, 'r') as f:
+                self.split_data = json.load(f)
+        
+        return self.split_data
+
+    def load_samples(self, split: DataSplit) -> list[StandardSample]:
+        """
+        Load samples for the specified split from JSON.
+
+        Args:
+            split: The split to load (TRAIN, VAL, or TEST).
+
+        Returns:
+            List of StandardSample objects (image_path, label).
+        """
+        split_data = self._load_split_data()
+
+        # Map DataSplit enum to JSON key
+        split_map = {
+            DataSplit.TRAIN: "train",
+            DataSplit.VAL: "val",
+            DataSplit.TEST: "test",
+        }
+
+        split_key = split_map[split]
+        if split_key not in split_data:
+            raise ValueError(f"Split '{split_key}' not found in JSON")
+
+        split_samples = split_data[split_key]
+        samples = []
+
+        # Logic: We only apply 'shots' to the TRAIN split.
+        # Validation and Test should be full for accurate evaluation.
+        if self.shots == 0 or split != DataSplit.TRAIN:
+            for item in split_samples:
+                # Format: [image_path, label, label_name]
+                image_path_rel = item[0]
+                label = item[1]
+
+                image_path = self.root / image_path_rel
+
+                # Only include samples with existing image files
+                if not image_path.exists():
+                    continue
+
+                samples.append(StandardSample(image_path=str(image_path), label=label))
+
+            return samples
+
+        # Few-Shot Logic: Stratified Random Sampling
+
+        # Fix seed for reproducibility
+        random.seed(42)
+
+        candidates_by_class = defaultdict(list)
+
+        for item in split_samples:
+            image_path_rel = item[0]
+            label = item[1]
+
+            image_path = self.root / image_path_rel
+
+            if image_path.exists():
+                candidates_by_class[label].append(
+                    StandardSample(image_path=str(image_path), label=label)
+                )
+
+        # Sample k from each class
+        for label, candidates in candidates_by_class.items():
+            count = min(self.shots, len(candidates))
+            samples.extend(random.sample(candidates, count))
+
+        return samples
+
+
+@register_adapter("btmri")
+class BTMRIAdapter(JsonDatasetAdapter):
+    """
+    Adapter for the BTMRI dataset (Brain Tumor MRI).
+
+    Dataset structure:
+    - split_BTMRI.json: Contains train/val/test splits
+    - Images organized by tumor type: glioma_tumor/, meningioma_tumor/, pituitary_tumor/
+    
+    Base path: /storage/projects3/e19-fyp-out-of-domain-gen-in-cv/BTMRI/
+    """
+    pass
+
+
+@register_adapter("busi")
+class BUSIAdapter(JsonDatasetAdapter):
+    """
+    Adapter for the BUSI dataset (Breast Ultrasound Images).
+
+    Dataset structure:
+    - split_BUSI.json: Contains train/val/test splits
+    - Images organized by category: benign_tumor/, malignant_tumor/, normal/
+    
+    Base path: /storage/projects3/e19-fyp-out-of-domain-gen-in-cv/BUSI/
+    """
+    pass
+
+
+@register_adapter("chmnist")
+class CHMNISTAdapter(JsonDatasetAdapter):
+    """
+    Adapter for the CHMNIST dataset (Colorectal Histology MNIST).
+
+    Dataset structure:
+    - split_CHMNIST.json: Contains train/val/test splits
+    - Images organized by tissue type: adipose_tissue/, background/, connective_tissue/, etc.
+    
+    Base path: /storage/projects3/e19-fyp-out-of-domain-gen-in-cv/CHMNIST/
+    """
+    pass
+
+
+@register_adapter("covid_19")
+class COVID19Adapter(JsonDatasetAdapter):
+    """
+    Adapter for the COVID-19 Chest X-Ray dataset.
+
+    Dataset structure:
+    - split_COVID_19.json: Contains train/val/test splits
+    - Images organized by condition: covid_lungs/, normal_lungs/, viral_pneumonia_lungs/
+    
+    Base path: /storage/projects3/e19-fyp-out-of-domain-gen-in-cv/COVID_19/
+    """
+    pass
+
+
+@register_adapter("ctkidney")
+class CTKidneyAdapter(JsonDatasetAdapter):
+    """
+    Adapter for the CT Kidney dataset.
+
+    Dataset structure:
+    - split_CTKidney.json: Contains train/val/test splits
+    - Images organized by kidney condition
+    
+    Base path: /storage/projects3/e19-fyp-out-of-domain-gen-in-cv/CTKidney/
+    """
+    pass
+
+
+@register_adapter("dermamnist")
+class DermaMNISTAdapter(JsonDatasetAdapter):
+    """
+    Adapter for the DermaMNIST dataset (Skin Lesion MNIST).
+
+    Dataset structure:
+    - split_DermaMNIST.json: Contains train/val/test splits
+    - Images organized by skin lesion type
+    
+    Base path: /storage/projects3/e19-fyp-out-of-domain-gen-in-cv/DermaMNIST/
+    """
+    pass
+
+
+@register_adapter("kneexray")
+class KneeXrayAdapter(JsonDatasetAdapter):
+    """
+    Adapter for the KneeXray dataset.
+
+    Dataset structure:
+    - split_KneeXray.json: Contains train/val/test splits
+    - X-ray images of knees organized by condition
+    
+    Base path: /storage/projects3/e19-fyp-out-of-domain-gen-in-cv/KneeXray/
+    """
+    pass
+
+
+@register_adapter("kvasir")
+class KvasirAdapter(JsonDatasetAdapter):
+    """
+    Adapter for the Kvasir dataset (Gastrointestinal Endoscopy).
+
+    Dataset structure:
+    - split_Kvasir.json: Contains train/val/test splits
+    - Endoscopy images organized by finding type
+    
+    Base path: /storage/projects3/e19-fyp-out-of-domain-gen-in-cv/Kvasir/
+    """
+    pass
+
+
+@register_adapter("lungcolon")
+class LungColonAdapter(JsonDatasetAdapter):
+    """
+    Adapter for the LungColon dataset.
+
+    Dataset structure:
+    - split_LungColon.json: Contains train/val/test splits
+    - Histopathology images of lung and colon tissues
+    
+    Base path: /storage/projects3/e19-fyp-out-of-domain-gen-in-cv/LungColon/
+    """
+    pass
+
+
+@register_adapter("octmnist")
+class OCTMNISTAdapter(JsonDatasetAdapter):
+    """
+    Adapter for the OCTMNIST dataset (Optical Coherence Tomography MNIST).
+
+    Dataset structure:
+    - split_OCTMNIST.json: Contains train/val/test splits
+    - OCT images of retinal conditions
+    
+    Base path: /storage/projects3/e19-fyp-out-of-domain-gen-in-cv/OCTMNIST/
+    """
+    pass
+
+
+@register_adapter("retina")
+class RETINAAdapter(JsonDatasetAdapter):
+    """
+    Adapter for the RETINA dataset (Retinal Fundus Images).
+
+    Dataset structure:
+    - split_RETINA.json: Contains train/val/test splits
+    - Retinal fundus images organized by condition
+    
+    Base path: /storage/projects3/e19-fyp-out-of-domain-gen-in-cv/RETINA/
+    """
+    pass
