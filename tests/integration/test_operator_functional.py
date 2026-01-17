@@ -27,6 +27,7 @@ def functional_task_def() -> TaskDefinition:
         positive_class="Pneumonia",
         negative_class="Normal",
         role="Radiologist",
+        concepts=None,
     )
 
 
