@@ -38,6 +38,7 @@ def mock_task_def() -> TaskDefinition:
         positive_class="Pos",
         negative_class="Neg",
         role="Tester",
+        concepts=None,
     )
 
 
