@@ -310,7 +310,7 @@ class Camelyon17Adapter(IDatasetAdapter):
         # Few-Shot Logic: Stratified Random Sampling
         # Group candidates by class first
         # Fix seed for reproducibility
-        random.seed(42)
+        random.seed(20)
 
         candidates_by_class = defaultdict(list)
 
@@ -428,7 +428,7 @@ class WBCAttAdapter(IDatasetAdapter):
         # Few-Shot Logic: Stratified Random Sampling
 
         # Fix seed for reproducibility
-        random.seed(42)
+        (42)
 
         candidates_by_class = defaultdict(list)
 
