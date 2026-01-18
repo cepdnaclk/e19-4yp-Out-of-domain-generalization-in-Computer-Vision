@@ -12,7 +12,7 @@ from biomedxpro.impl.llm_client import create_llm_client
 from biomedxpro.impl.llm_operator import LLMOperator
 from biomedxpro.impl.selection import RouletteWheelSelector
 from biomedxpro.utils.history import HistoryRecorder
-
+from biomedxpro.utils.token_logging import TokenUsageLogger
 
 def load_datasets(
     config: MasterConfig,
@@ -67,13 +67,18 @@ def build_orchestrator(
     train_ds: EncodedDataset,
     val_ds: EncodedDataset,
     recorder: HistoryRecorder,
+    token_logger: TokenUsageLogger 
 ) -> Orchestrator:
     """
     Dependency Injection container for the Engine.
     """
     logger.info("Bootstrapping evolutionary components...")
+    
+    if token_logger is None:
+        raise ValueError("TokenUsageLogger must be provided to build_orchestrator")
 
-    llm_client = create_llm_client(config.llm)
+
+    llm_client = create_llm_client(config.llm, token_logger=token_logger)
 
     operator = LLMOperator(
         llm=llm_client, strategy=config.strategy, task_def=config.task
