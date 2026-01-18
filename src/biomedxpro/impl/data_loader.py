@@ -240,8 +240,14 @@ class BiomedDataLoader:
 
         # Try to load from cache
         if cache_path.exists():
-            logger.info(f"Loading encoded dataset from cache: {cache_path}")
-            return self._load_from_cache(cache_path, name, class_names)
+            try:
+                logger.info(f"Loading encoded dataset from cache: {cache_path}")
+                return self._load_from_cache(cache_path, name, class_names)
+            except Exception as e:
+                logger.warning(
+                    f"Failed to load cache {cache_path}. Will re-encode. Reason: {e}"
+                )
+
 
         # Cache miss: encode the samples
         logger.info(f"Cache miss for {name}. Encoding {len(samples)} samples...")
@@ -284,15 +290,18 @@ class BiomedDataLoader:
         return hash_obj.hexdigest()[:16]
 
     def _save_to_cache(self, dataset: EncodedDataset, cache_path: Path) -> None:
-        """Save an encoded dataset to disk."""
+        """Save an encoded dataset to disk safely."""
         cache_data = {
             "name": dataset.name,
-            "features": dataset.features.cpu(),  # Save on CPU to reduce file size
+            "features": dataset.features.cpu(),
             "labels": dataset.labels.cpu(),
             "class_names": dataset.class_names,
         }
-        torch.save(cache_data, cache_path)
-        logger.info(f"Dataset cached: {cache_path}")
+        tmp_path = cache_path.with_suffix(".tmp")
+        torch.save(cache_data, tmp_path)
+        tmp_path.rename(cache_path)  # atomic rename
+        logger.info(f"Dataset cached safely: {cache_path}")
+
 
     def _load_from_cache(
         self, cache_path: Path, name: str, class_names: list[str]
