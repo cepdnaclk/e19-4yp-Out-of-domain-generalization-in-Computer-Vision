@@ -111,6 +111,7 @@ def run(
 
     # 7. Reporting Phase (Deployment)
     reporting.print_ensemble_results(metrics)
+    token_logger.dump_summary()
 
 
 if __name__ == "__main__":

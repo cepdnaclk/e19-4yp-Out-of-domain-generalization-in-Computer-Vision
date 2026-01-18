@@ -23,7 +23,6 @@ def _get_api_keys(env_var_name: str) -> list[str]:
         return []
     return keys
 
-
 class OpenAIClient(ILLMClient):
     def __init__(self, settings: LLMSettings, keys: list[str], token_logger: TokenUsageLogger) -> None:
         self.model_name = settings.model_name
@@ -51,32 +50,53 @@ class OpenAIClient(ILLMClient):
                 input=prompt,
                 **self.llm_params,
             )
+
+            output_text = response.output_text or ""
             usage = getattr(response, "usage", None)
 
-            if usage:
-                record = {
-                    "provider": self.provider,
-                    "model": self.model_name,
-                    "prompt_tokens": usage.input_tokens,
-                    "completion_tokens": usage.output_tokens,
-                    "total_tokens": usage.total_tokens,
-                }
+            # Prompt tokens
+            if usage and usage.input_tokens is not None:
+                prompt_tokens = usage.input_tokens
+                prompt_estimated = False
             else:
-                record = {
-                    "provider": self.provider,
-                    "model": self.model_name,
-                    "estimated": True,
-                    "prompt_tokens": len(prompt) // 4,
-                    "completion_tokens": len(response.output_text) // 4,
-                    "total_tokens": (len(prompt) + len(response.output_text)) // 4,
-                }
+                prompt_tokens = len(prompt) // 4
+                prompt_estimated = True
 
+            # Completion tokens
+            if usage and usage.completion_tokens is not None:
+                completion_tokens = usage.completion_tokens
+                completion_estimated = False
+            else:
+                completion_tokens = len(output_text) // 4
+                completion_estimated = True
+
+            # Total tokens
+            if usage and usage.total_tokens is not None:
+                total_tokens = usage.total_tokens
+                total_estimated = False
+            else:
+                total_tokens = prompt_tokens + completion_tokens
+                total_estimated = True
+
+            record = {
+                "provider": self.provider,
+                "model": self.model_name,
+                "prompt_tokens": prompt_tokens,
+                "prompt_estimated": prompt_estimated,
+                "completion_tokens": completion_tokens,
+                "completion_estimated": completion_estimated,
+                "total_tokens": total_tokens,
+                "total_estimated": total_estimated,
+            }
+
+            # Log to TokenUsageLogger
             self.token_logger.log(record)
             return str(response.output_text)
 
         except OpenAIError as e:
             logger.error(f"LLM Error ({self.model_name}): {e}")
             raise e
+
 
 
 class GeminiClient(ILLMClient):
@@ -111,34 +131,61 @@ class GeminiClient(ILLMClient):
                 config=types.GenerateContentConfig(**self.llm_params),
             )
 
+            output_text = response.text or ""
             usage = getattr(response, "usage_metadata", None)
 
+            # Initialize token counts and estimated flags
             if usage:
-                record = {
-                    "provider": self.provider,
-                    "model": self.model_name,
-                    "prompt_tokens": usage.prompt_token_count,
-                    "completion_tokens": usage.candidates_token_count,
-                    "total_tokens": usage.total_token_count,
-                }
+                # Prompt tokens
+                if usage.prompt_token_count is not None:
+                    prompt_tokens = usage.prompt_token_count
+                    prompt_estimated = False
+                else:
+                    prompt_tokens = len(prompt) // 4
+                    prompt_estimated = True
+
+                # Completion tokens
+                if usage.candidates_token_count is not None:
+                    completion_tokens = usage.candidates_token_count
+                    completion_estimated = False
+                else:
+                    completion_tokens = len(output_text) // 4
+                    completion_estimated = True
+
+                # Total tokens
+                if usage.total_token_count is not None:
+                    total_tokens = usage.total_token_count
+                    total_estimated = False
+                else:
+                    total_tokens = prompt_tokens + completion_tokens
+                    total_estimated = True
+
             else:
-                # Safe fallback (same heuristic as OpenAI)
-                output_text = response.text or ""
-                record = {
-                    "provider": self.provider,
-                    "model": self.model_name,
-                    "estimated": True,
-                    "prompt_tokens": len(prompt) // 4,
-                    "completion_tokens": len(output_text) // 4,
-                    "total_tokens": (len(prompt) + len(output_text)) // 4,
-                }
+                # Fallback heuristic
+                prompt_tokens = len(prompt) // 4
+                completion_tokens = len(output_text) // 4
+                total_tokens = prompt_tokens + completion_tokens
+                prompt_estimated = completion_estimated = total_estimated = True
+
+            record = {
+                "provider": self.provider,
+                "model": self.model_name,
+                "prompt_tokens": prompt_tokens,
+                "prompt_estimated": prompt_estimated,
+                "completion_tokens": completion_tokens,
+                "completion_estimated": completion_estimated,
+                "total_tokens": total_tokens,
+                "total_estimated": total_estimated,
+            }
 
             self.token_logger.log(record)
-            return response.text or ""
+            return str(response.text) or ""
 
         except Exception as e:
             logger.error(f"Gemini Error ({self.model_name}): {e}")
             raise e
+
+
 
 
 
