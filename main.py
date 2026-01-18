@@ -13,6 +13,7 @@ from biomedxpro.engine.config import MasterConfig
 from biomedxpro.utils import reporting
 from biomedxpro.utils.history import HistoryRecorder
 from biomedxpro.utils.logging import setup_logging
+from biomedxpro.utils.token_logging import TokenUsageLogger
 
 app = typer.Typer(help="BioMedXPro Evolutionary Engine")
 
@@ -69,6 +70,7 @@ def run(
     # 2. Setup Logging & Persistence
     setup_logging(experiment_name, console_level="DEBUG")
     recorder = HistoryRecorder(experiment_name=experiment_name)
+    token_logger = TokenUsageLogger(experiment_name=experiment_name)
     logger.info(f"Loaded task config from {task_config}")
     logger.info(f"Loaded evolution config from {evo_config}")
     logger.info(f"Loaded LLM config from {llm_config}")
@@ -80,7 +82,7 @@ def run(
     # 3. Build World (Factory)
     train_ds, val_ds, test_ds = builder.load_datasets(config)
     orchestrator = builder.build_orchestrator(
-        config, train_ds, val_ds, recorder=recorder
+        config, train_ds, val_ds, recorder=recorder, token_logger=token_logger
     )
 
     # 4. Evolution Phase (Execution)
