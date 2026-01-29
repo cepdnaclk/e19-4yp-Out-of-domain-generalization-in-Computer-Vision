@@ -428,7 +428,7 @@ class WBCAttAdapter(IDatasetAdapter):
         # Few-Shot Logic: Stratified Random Sampling
 
         # Fix seed for reproducibility
-        random.seed(42)
+        (42)
 
         candidates_by_class = defaultdict(list)
 

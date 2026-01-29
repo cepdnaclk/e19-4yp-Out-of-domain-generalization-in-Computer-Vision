@@ -1,3 +1,4 @@
+# src/biomedxpro/impl/llm_client.py
 import os
 from itertools import cycle
 from typing import Iterator
@@ -10,6 +11,7 @@ from openai.types.responses.response import Response
 
 from biomedxpro.core.interfaces import ILLMClient
 from biomedxpro.impl.config import LLMSettings
+from biomedxpro.utils.token_logging import TokenUsageLogger
 
 
 def _get_api_keys(env_var_name: str) -> list[str]:
@@ -21,11 +23,12 @@ def _get_api_keys(env_var_name: str) -> list[str]:
         return []
     return keys
 
-
 class OpenAIClient(ILLMClient):
-    def __init__(self, settings: LLMSettings, keys: list[str]) -> None:
+    def __init__(self, settings: LLMSettings, keys: list[str], token_logger: TokenUsageLogger) -> None:
         self.model_name = settings.model_name
         self.llm_params = settings.llm_params
+        self.provider = settings.provider
+        self.token_logger = token_logger
 
         final_base_url = settings.base_url or None
         if not keys:
@@ -47,16 +50,66 @@ class OpenAIClient(ILLMClient):
                 input=prompt,
                 **self.llm_params,
             )
+
+            output_text = response.output_text or ""
+            usage = getattr(response, "usage", None)
+
+            # Prompt tokens
+            if usage and usage.input_tokens is not None:
+                prompt_tokens = usage.input_tokens
+                prompt_estimated = False
+            else:
+                prompt_tokens = len(prompt) // 4
+                prompt_estimated = True
+
+            # Completion tokens
+            if usage and usage.completion_tokens is not None:
+                completion_tokens = usage.completion_tokens
+                completion_estimated = False
+            else:
+                completion_tokens = len(output_text) // 4
+                completion_estimated = True
+
+            # Total tokens
+            if usage and usage.total_tokens is not None:
+                total_tokens = usage.total_tokens
+                total_estimated = False
+            else:
+                total_tokens = prompt_tokens + completion_tokens
+                total_estimated = True
+
+            record = {
+                "provider": self.provider,
+                "model": self.model_name,
+                "prompt_tokens": prompt_tokens,
+                "prompt_estimated": prompt_estimated,
+                "completion_tokens": completion_tokens,
+                "completion_estimated": completion_estimated,
+                "total_tokens": total_tokens,
+                "total_estimated": total_estimated,
+            }
+
+            # Log to TokenUsageLogger
+            self.token_logger.log(record)
             return str(response.output_text)
+
         except OpenAIError as e:
             logger.error(f"LLM Error ({self.model_name}): {e}")
             raise e
 
 
+
 class GeminiClient(ILLMClient):
-    def __init__(self, settings: LLMSettings, keys: list[str]) -> None:
+    def __init__(
+        self,
+        settings: LLMSettings,
+        keys: list[str],
+        token_logger: TokenUsageLogger,
+    ) -> None:
         self.model_name = settings.model_name
         self.llm_params = settings.llm_params
+        self.provider = settings.provider
+        self.token_logger = token_logger
 
         if not keys:
             raise ValueError("GeminiClient requires at least one API key.")
@@ -68,6 +121,7 @@ class GeminiClient(ILLMClient):
             f"Initialized Gemini client. Model: {self.model_name}. Params: {self.llm_params}"
         )
 
+
     def generate(self, prompt: str) -> str:
         client = next(self._pool)
         try:
@@ -76,13 +130,66 @@ class GeminiClient(ILLMClient):
                 contents={"text": prompt},
                 config=types.GenerateContentConfig(**self.llm_params),
             )
-            return response.text or ""
+
+            output_text = response.text or ""
+            usage = getattr(response, "usage_metadata", None)
+
+            # Initialize token counts and estimated flags
+            if usage:
+                # Prompt tokens
+                if usage.prompt_token_count is not None:
+                    prompt_tokens = usage.prompt_token_count
+                    prompt_estimated = False
+                else:
+                    prompt_tokens = len(prompt) // 4
+                    prompt_estimated = True
+
+                # Completion tokens
+                if usage.candidates_token_count is not None:
+                    completion_tokens = usage.candidates_token_count
+                    completion_estimated = False
+                else:
+                    completion_tokens = len(output_text) // 4
+                    completion_estimated = True
+
+                # Total tokens
+                if usage.total_token_count is not None:
+                    total_tokens = usage.total_token_count
+                    total_estimated = False
+                else:
+                    total_tokens = prompt_tokens + completion_tokens
+                    total_estimated = True
+
+            else:
+                # Fallback heuristic
+                prompt_tokens = len(prompt) // 4
+                completion_tokens = len(output_text) // 4
+                total_tokens = prompt_tokens + completion_tokens
+                prompt_estimated = completion_estimated = total_estimated = True
+
+            record = {
+                "provider": self.provider,
+                "model": self.model_name,
+                "prompt_tokens": prompt_tokens,
+                "prompt_estimated": prompt_estimated,
+                "completion_tokens": completion_tokens,
+                "completion_estimated": completion_estimated,
+                "total_tokens": total_tokens,
+                "total_estimated": total_estimated,
+            }
+
+            self.token_logger.log(record)
+            return str(response.text) or ""
+
         except Exception as e:
-            logger.error(f"Gemini Error: {e}")
+            logger.error(f"Gemini Error ({self.model_name}): {e}")
             raise e
 
 
-def create_llm_client(settings: LLMSettings) -> ILLMClient:
+
+
+
+def create_llm_client(settings: LLMSettings, token_logger: TokenUsageLogger) -> ILLMClient:
     """
     Factory: Maps provider string to concrete client.
     """
@@ -90,18 +197,19 @@ def create_llm_client(settings: LLMSettings) -> ILLMClient:
 
     if provider == "openai":
         keys = _get_api_keys("OPENAI_API_KEYS")
-        return OpenAIClient(settings, keys=keys)  # Uses default OpenAI URL
+        return OpenAIClient(settings, keys=keys, token_logger=token_logger)  # Uses default OpenAI URL
 
     elif provider == "groq":
         keys = _get_api_keys("GROQ_API_KEYS")
         return OpenAIClient(
             settings,
             keys=keys,
+            token_logger=token_logger
         )
 
     elif provider == "gemini":
         keys = _get_api_keys("GEMINI_API_KEYS")
-        return GeminiClient(settings, keys=keys)
+        return GeminiClient(settings, keys=keys, token_logger=token_logger)
 
     else:
         # Fallback: If unknown provider (e.g. "deepseek"), try generic OpenAI client
@@ -115,6 +223,6 @@ def create_llm_client(settings: LLMSettings) -> ILLMClient:
                 raise ValueError(
                     f"No API keys found for provider '{provider}' in environment variable '{provider.upper()}_API_KEYS'"
                 )
-            return OpenAIClient(settings, keys=keys)
+            return OpenAIClient(settings, keys=keys, token_logger = token_logger)
 
         raise ValueError(f"Unsupported LLM provider: {provider}")
