@@ -38,11 +38,13 @@ class MockOperator(IOperator):
         offspring = []
         for _ in range(num_offsprings):
             suffix = random.randint(1000, 9999)
+            # Create prompts dict from task definition's class names
+            prompts = {
+                class_name: f"init {class_name} {concept} {suffix}"
+                for class_name in self.task_def.class_names
+            }
             ind = Individual(
-                genotype=PromptGenotype(
-                    negative_prompt=f"init neg {concept} {suffix}",
-                    positive_prompt=f"init pos {concept} {suffix}",
-                ),
+                genotype=PromptGenotype(prompts=prompts),
                 generation_born=0,
                 operation=CreationOperation.INITIALIZATION,
                 metadata={"source": "mock_init"},
@@ -75,11 +77,18 @@ class MockOperator(IOperator):
             # Simulate inheritance by picking a random parent to mention in debug text
             parent = random.choice(parents)
 
+            # Get first class name from parent for debug text
+            first_class = parent.genotype.class_names[0]
+            parent_prompt_snippet = parent.genotype.prompts[first_class][:10]
+
+            # Create mutated prompts for all classes
+            prompts = {
+                class_name: f"mutated {class_name} {concept} {suffix} (from {parent_prompt_snippet}...)"
+                for class_name in self.task_def.class_names
+            }
+
             ind = Individual(
-                genotype=PromptGenotype(
-                    negative_prompt=f"mutated neg {concept} {suffix} (from {parent.genotype.negative_prompt[:10]}...)",
-                    positive_prompt=f"mutated pos {concept} {suffix}",
-                ),
+                genotype=PromptGenotype(prompts=prompts),
                 generation_born=gen_born,
                 parents=parent_ids,
                 operation=CreationOperation.LLM_MUTATION,
@@ -136,13 +145,25 @@ class RandomSelector(SelectionStrategy):
 
 
 # --- Helper for Mock Data ---
-def create_dummy_dataset() -> EncodedDataset:
+def create_dummy_dataset(
+    class_names: list[str] | None = None,
+    num_samples: int = 10,
+) -> EncodedDataset:
     """
     Creates fake tensors so the Orchestrator doesn't crash on init.
+
+    Args:
+        class_names: Optional list of class names. Defaults to binary ["Benign", "Malignant"].
+        num_samples: Number of samples to generate.
     """
+    if class_names is None:
+        class_names = ["Benign", "Malignant"]
+
+    num_classes = len(class_names)
+
     return EncodedDataset(
         name="MockDataset",
-        features=torch.randn(10, 512),
-        labels=torch.randint(0, 2, (10,)),
-        class_names=["Benign", "Malignant"],
+        features=torch.randn(num_samples, 512),
+        labels=torch.randint(0, num_classes, (num_samples,)),
+        class_names=class_names,
     )
