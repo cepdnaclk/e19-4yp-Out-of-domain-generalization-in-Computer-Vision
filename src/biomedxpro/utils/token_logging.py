@@ -5,6 +5,8 @@ import time
 from datetime import datetime
 from pathlib import Path
 from typing import Any, Dict
+
+
 class TokenUsageLogger:
     def __init__(self, experiment_name: str, log_dir: str = "logs"):
         timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
@@ -22,7 +24,7 @@ class TokenUsageLogger:
         self.estimated_completion = 0
         self.estimated_calls = 0
 
-    def log(self, record: dict):
+    def log(self, record: dict[str, Any]) -> None:
         # Append the record
         with open(self.file_path, "a", encoding="utf-8") as f:
             f.write(json.dumps(record) + "\n")
@@ -39,10 +41,12 @@ class TokenUsageLogger:
             self.estimated_completion += record.get("completion_tokens", 0) or 0
 
         self.total_calls += 1
-        if record.get("prompt_estimated", False) or record.get("completion_estimated", False):
+        if record.get("prompt_estimated", False) or record.get(
+            "completion_estimated", False
+        ):
             self.estimated_calls += 1
 
-    def summary(self):
+    def summary(self) -> dict[str, int]:
         return {
             "total_calls": self.total_calls,
             "total_prompt_tokens": self.total_prompt,
@@ -53,8 +57,10 @@ class TokenUsageLogger:
             "total_estimated_calls": self.estimated_calls,
         }
 
-    def dump_summary(self):
+    def dump_summary(self) -> None:
         # Add a final record at the end of the log
         summary_record = {"event": "token_summary", **self.summary()}
+        with open(self.file_path, "a", encoding="utf-8") as f:
+            f.write(json.dumps(summary_record) + "\n")
         with open(self.file_path, "a", encoding="utf-8") as f:
             f.write(json.dumps(summary_record) + "\n")

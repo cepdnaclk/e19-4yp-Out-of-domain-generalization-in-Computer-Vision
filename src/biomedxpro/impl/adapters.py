@@ -484,20 +484,20 @@ class JsonDatasetAdapter(IDatasetAdapter):
         """
         self.root = Path(root)
         self.shots = shots
-        self.split_data = None
+        self.split_data: dict[str, Any] | None = None
 
-    def _load_split_data(self) -> dict:
+    def _load_split_data(self) -> dict[str, Any]:
         """Load split data from JSON file if not already loaded."""
         if self.split_data is None:
             # Find the JSON split file
             json_files = list(self.root.glob("split_*.json"))
             if not json_files:
                 raise FileNotFoundError(f"No split_*.json file found in {self.root}")
-            
+
             json_path = json_files[0]
-            with open(json_path, 'r') as f:
+            with open(json_path, "r") as f:
                 self.split_data = json.load(f)
-        
+
         return self.split_data
 
     def load_samples(self, split: DataSplit) -> list[StandardSample]:
@@ -578,9 +578,10 @@ class BTMRIAdapter(JsonDatasetAdapter):
     Dataset structure:
     - split_BTMRI.json: Contains train/val/test splits
     - Images organized by tumor type: glioma_tumor/, meningioma_tumor/, pituitary_tumor/
-    
+
     Base path: /storage/projects3/e19-fyp-out-of-domain-gen-in-cv/BTMRI/
     """
+
     pass
 
 
@@ -592,9 +593,10 @@ class BUSIAdapter(JsonDatasetAdapter):
     Dataset structure:
     - split_BUSI.json: Contains train/val/test splits
     - Images organized by category: benign_tumor/, malignant_tumor/, normal/
-    
+
     Base path: /storage/projects3/e19-fyp-out-of-domain-gen-in-cv/BUSI/
     """
+
     pass
 
 
@@ -606,9 +608,10 @@ class CHMNISTAdapter(JsonDatasetAdapter):
     Dataset structure:
     - split_CHMNIST.json: Contains train/val/test splits
     - Images organized by tissue type: adipose_tissue/, background/, connective_tissue/, etc.
-    
+
     Base path: /storage/projects3/e19-fyp-out-of-domain-gen-in-cv/CHMNIST/
     """
+
     pass
 
 
@@ -620,9 +623,10 @@ class COVID19Adapter(JsonDatasetAdapter):
     Dataset structure:
     - split_COVID_19.json: Contains train/val/test splits
     - Images organized by condition: covid_lungs/, normal_lungs/, viral_pneumonia_lungs/
-    
+
     Base path: /storage/projects3/e19-fyp-out-of-domain-gen-in-cv/COVID_19/
     """
+
     pass
 
 
@@ -634,9 +638,10 @@ class CTKidneyAdapter(JsonDatasetAdapter):
     Dataset structure:
     - split_CTKidney.json: Contains train/val/test splits
     - Images organized by kidney condition
-    
+
     Base path: /storage/projects3/e19-fyp-out-of-domain-gen-in-cv/CTKidney/
     """
+
     pass
 
 
@@ -648,9 +653,10 @@ class DermaMNISTAdapter(JsonDatasetAdapter):
     Dataset structure:
     - split_DermaMNIST.json: Contains train/val/test splits
     - Images organized by skin lesion type
-    
+
     Base path: /storage/projects3/e19-fyp-out-of-domain-gen-in-cv/DermaMNIST/
     """
+
     pass
 
 
@@ -662,9 +668,10 @@ class KneeXrayAdapter(JsonDatasetAdapter):
     Dataset structure:
     - split_KneeXray.json: Contains train/val/test splits
     - X-ray images of knees organized by condition
-    
+
     Base path: /storage/projects3/e19-fyp-out-of-domain-gen-in-cv/KneeXray/
     """
+
     pass
 
 
@@ -676,9 +683,10 @@ class KvasirAdapter(JsonDatasetAdapter):
     Dataset structure:
     - split_Kvasir.json: Contains train/val/test splits
     - Endoscopy images organized by finding type
-    
+
     Base path: /storage/projects3/e19-fyp-out-of-domain-gen-in-cv/Kvasir/
     """
+
     pass
 
 
@@ -690,9 +698,10 @@ class LungColonAdapter(JsonDatasetAdapter):
     Dataset structure:
     - split_LungColon.json: Contains train/val/test splits
     - Histopathology images of lung and colon tissues
-    
+
     Base path: /storage/projects3/e19-fyp-out-of-domain-gen-in-cv/LungColon/
     """
+
     pass
 
 
@@ -704,9 +713,10 @@ class OCTMNISTAdapter(JsonDatasetAdapter):
     Dataset structure:
     - split_OCTMNIST.json: Contains train/val/test splits
     - OCT images of retinal conditions
-    
+
     Base path: /storage/projects3/e19-fyp-out-of-domain-gen-in-cv/OCTMNIST/
     """
+
     pass
 
 
@@ -718,7 +728,8 @@ class RETINAAdapter(JsonDatasetAdapter):
     Dataset structure:
     - split_RETINA.json: Contains train/val/test splits
     - Retinal fundus images organized by condition
-    
+
     Base path: /storage/projects3/e19-fyp-out-of-domain-gen-in-cv/RETINA/
     """
+
     pass
