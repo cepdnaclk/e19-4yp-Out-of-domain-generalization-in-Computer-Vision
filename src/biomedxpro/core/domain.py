@@ -38,18 +38,27 @@ class StandardSample:
 @dataclass(slots=True, frozen=True)
 class PromptGenotype:
     """
-    Immutable DNA.
-    Using dataclass ensures accidental mutation is impossible.
+    DNA expanded for N-classes.
+    Maps Class Names (or IDs) to their respective descriptive prompts.
+
+    Immutable structure ensures accidental mutation is impossible.
     """
 
-    negative_prompt: str
-    positive_prompt: str
+    # Key: Class Name/Identifier, Value: The descriptive prompt for that class
+    prompts: dict[str, str]
 
-    def to_dict(self) -> dict[str, str]:
-        return {
-            "negative_prompt": self.negative_prompt,
-            "positive_prompt": self.positive_prompt,
-        }
+    def to_dict(self) -> dict[str, Any]:
+        return {"prompts": self.prompts}
+
+    @property
+    def class_names(self) -> list[str]:
+        """Returns ordered list of class names."""
+        return list(self.prompts.keys())
+
+    @property
+    def num_classes(self) -> int:
+        """Returns the number of classes in this genotype."""
+        return len(self.prompts)
 
 
 class EvaluationMetrics(TypedDict):
@@ -107,13 +116,18 @@ class TaskDefinition:
 
     task_name: str  # e.g. "Melanoma Classification"
     image_modality: str  # e.g. "Dermoscopy images"
-    positive_class: str  # e.g. "Malignant Melanoma"
-    negative_class: str  # e.g. "Benign Nevus"
+    # Replaces positive/negative_class - supports N classes
+    class_names: list[str]  # e.g. ["Benign", "Malignant", "In-Situ"]
     concepts: list[str] | None  # e.g. ["Texture", "Color", "Shape"]
     role: str  # e.g. "Expert Dermatologist"
 
     # Optional: Any extra specific instructions for this dataset
     description: str = ""
+
+    @property
+    def num_classes(self) -> int:
+        """Returns the number of classes in this task."""
+        return len(self.class_names)
 
     @classmethod
     def from_dict(cls, config: dict[str, Any]) -> "TaskDefinition":
@@ -171,12 +185,16 @@ class Individual:
         return self.metrics is not None
 
     @property
-    def signature(self) -> tuple[str, str]:
+    def signature(self) -> tuple[str, ...]:
         """
         Returns a hashable representation of the Genotype.
         Used for deduplication.
+
+        Returns variable-length tuple of prompts in class name order.
         """
-        return (self.genotype.negative_prompt, self.genotype.positive_prompt)
+        return tuple(
+            self.genotype.prompts[cls_name] for cls_name in self.genotype.class_names
+        )
 
     def update_metrics(self, metrics: EvaluationMetrics) -> None:
         if self.metrics is not None:
@@ -221,7 +239,8 @@ class Population:
     _individuals: list[Individual] = field(default_factory=list)
 
     # Stores signatures of individuals for deduplication, we will not remove signatures upon deletion
-    _signatures: set[tuple[str, str]] = field(default_factory=set)
+    # Variable-length tuples for multi-class support
+    _signatures: set[tuple[str, ...]] = field(default_factory=set)
 
     # track the generation
     _generation: int = 0
@@ -339,10 +358,14 @@ class PromptEnsemble:
     metric: MetricName
 
     @property
-    def prompts(self) -> list[tuple[str, str]]:
-        """Helper to extract the raw text pairs."""
+    def prompts(self) -> list[list[str]]:
+        """
+        Helper to extract the raw text prompts for all experts.
+        Returns list of prompt lists, one per expert.
+        Each inner list contains prompts for all classes in order.
+        """
         return [
-            (ind.genotype.negative_prompt, ind.genotype.positive_prompt)
+            [ind.genotype.prompts[cls_name] for cls_name in ind.genotype.class_names]
             for ind in self.experts
         ]
 
@@ -370,20 +393,23 @@ class PromptEnsemble:
         Applies the ensemble weights to a matrix of probabilities.
 
         Args:
-            expert_probs: Tensor of shape (N_Samples, N_Experts).
+            expert_probs: Tensor of shape (N_Samples, N_Experts, N_Classes).
                           This data comes from the outside world.
 
         Returns:
-            Tensor of shape (N_Samples,). The final weighted consensus.
+            Tensor of shape (N_Samples, N_Classes). The final weighted class probabilities.
         """
         if expert_probs.shape[1] != len(self.experts):
             raise ValueError(
                 f"Dimension Mismatch: Ensemble has {len(self.experts)} experts, "
-                f"but input tensor has {expert_probs.shape[1]} columns."
+                f"but input tensor has {expert_probs.shape[1]} experts in dim 1."
             )
 
         # Move weights to the same device as the data for computation
-        w = self.weights.to(expert_probs.device)
+        # Broadcast weights: (N_experts,) -> (1, N_experts, 1)
+        w = self.weights.to(expert_probs.device).view(1, -1, 1)
 
-        # Weighted Sum (The Voting Logic)
-        return expert_probs @ w
+        # Weighted Sum across experts dimension
+        # (N_samples, N_experts, N_classes) * (1, N_experts, 1) -> sum(dim=1) -> (N_samples, N_classes)
+        weighted = expert_probs * w
+        return weighted.sum(dim=1)
