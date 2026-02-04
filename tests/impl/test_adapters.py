@@ -7,9 +7,7 @@ Tests the newly implemented adapters with actual data located at:
 Run with: pytest tests/impl/test_adapters.py -v
 """
 
-import json
 from pathlib import Path
-from typing import Optional
 
 import pytest
 
