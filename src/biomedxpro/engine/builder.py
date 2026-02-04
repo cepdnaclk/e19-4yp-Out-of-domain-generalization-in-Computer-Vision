@@ -96,4 +96,3 @@ def build_orchestrator(
         recorder=recorder,
         exec_config=config.execution,
     )
-    )
