@@ -19,7 +19,7 @@ from rich.console import Console
 from rich.table import Table
 
 from biomedxpro.analysis import EvolutionHistory, HistoryRecord
-from biomedxpro.core.domain import Individual, PromptEnsemble
+from biomedxpro.core.domain import Individual, MetricName, PromptEnsemble
 from biomedxpro.engine import builder
 from biomedxpro.engine.config import MasterConfig
 
@@ -28,13 +28,14 @@ console = Console()
 
 
 def reconstruct_individuals_from_champions(
-    champions: dict[str, HistoryRecord],
+    champions: dict[str, HistoryRecord], metric: MetricName
 ) -> list[Individual]:
     """
     Reconstruct Individual domain objects from history records.
 
     Args:
         champions: Dictionary mapping concept -> champion HistoryRecord
+        metric: Metric name to use for logging
 
     Returns:
         List of Individual objects with metrics loaded
@@ -60,7 +61,7 @@ def reconstruct_individuals_from_champions(
 
         # Load metrics
         from biomedxpro.core.domain import EvaluationMetrics
-        
+
         # Cast to EvaluationMetrics for type safety
         metrics: EvaluationMetrics = record.metrics  # type: ignore[assignment]
         individual.update_metrics(metrics)
@@ -68,7 +69,7 @@ def reconstruct_individuals_from_champions(
         individuals.append(individual)
         logger.info(
             f"✓ Loaded champion '{concept}': "
-            f"margin_score={metrics['margin_score']:.4f}, "
+            f"margin_score={metrics[metric]:.4f}, "
             f"accuracy={metrics['accuracy']:.4f}"
         )
 
@@ -102,7 +103,7 @@ def evaluate(
         "-T",
         help="Temperature values to test",
     ),
-    metric: str = typer.Option(
+    metric: MetricName = typer.Option(
         "margin_score",
         "--metric",
         "-m",
@@ -147,7 +148,9 @@ def evaluate(
 
     # Step 3: Reconstruct Individuals
     logger.info("Reconstructing Individual objects from champions...")
-    individuals = reconstruct_individuals_from_champions(champion_records)
+    individuals = reconstruct_individuals_from_champions(
+        champion_records, metric=metric
+    )
 
     if not individuals:
         logger.error("Could not reconstruct any valid individuals!")
@@ -212,9 +215,6 @@ def evaluate(
         logger.info(f"Testing Temperature = {temp}")
         logger.info(f"{'=' * 60}")
 
-        # Construct ensemble with this temperature
-        from biomedxpro.core.domain import MetricName
-        
         ensemble = PromptEnsemble.from_individuals(
             individuals=individuals,
             metric=metric,  # type: ignore[arg-type]
@@ -230,7 +230,9 @@ def evaluate(
             )
 
         # Evaluate
-        logger.info(f"Evaluating ensemble on test set ({test_ds.num_samples} samples)...")
+        logger.info(
+            f"Evaluating ensemble on test set ({test_ds.num_samples} samples)..."
+        )
         metrics = evaluator.evaluate_ensemble(ensemble, test_ds)
 
         # Store results
@@ -280,7 +282,7 @@ def evaluate(
         temp = result["temperature"]
         acc = result["accuracy"]
         f1 = result["f1_score"]
-        margin = result["metrics"]["margin_score"]
+        margin = result["metrics"][metric]
         delta = acc - baseline_acc
 
         delta_str = f"{delta:+.4f}" if temp != 1.0 else "baseline"
