@@ -2,6 +2,7 @@
 
 import json
 import math
+import random
 import re
 import uuid
 from pathlib import Path
@@ -222,6 +223,14 @@ class LLMOperator(IOperator):
             )
             raise RuntimeError("Initialization failed to produce valid individuals.")
 
+        extra_offspring = self._perform_crossover(
+            individuals=offspring,
+            concept=concept,
+            current_generation=0,
+        )
+
+        offspring.extend(extra_offspring)
+
         logger.debug(f"Initialized {len(offspring)} individuals for '{concept}'")
         return offspring
 
@@ -297,4 +306,81 @@ class LLMOperator(IOperator):
         if len(offspring) > num_offsprings:
             offspring = offspring[:num_offsprings]  # Trim excess
 
+        extra_offspring = self._perform_crossover(
+            individuals=offspring,
+            concept=concept,
+            current_generation=current_generation,
+        )
+
+        offspring.extend(extra_offspring)
         return offspring
+
+    def _perform_crossover(
+        self,
+        individuals: Sequence[Individual],
+        concept: str,
+        current_generation: int,
+        limit: int = 100,
+    ) -> List[Individual]:
+        """
+        Aggressively breeds new variants by mixing the descriptions found in the input individuals.
+        Does not use LLM. Pure combinatorial logic.
+        """
+        # Need at least 2 individuals to mix useful traits
+        if len(individuals) < 2:
+            return []
+
+        num_classes = len(self.task_def.class_names)
+
+        # 1. Extract Gene Pools
+        # pool[0] = {all descriptions for class 0}
+        gene_pools: List[List[str]] = [[] for _ in range(num_classes)]
+        for ind in individuals:
+            if len(ind.genotype.prompts) == num_classes:
+                for i, prompt in enumerate(ind.genotype.prompts):
+                    gene_pools[i].append(prompt)
+
+        # 2. Track existing genotypes to ensure uniqueness
+        # Start with the input individuals so we don't duplicate them
+        existing_genotypes = {ind.genotype.prompts for ind in individuals}
+        new_offspring: List[Individual] = []
+
+        # 3. Generate Combinations
+        # Safety break: 500 attempts to find 'limit' unique children
+        attempts = 0
+        max_attempts = limit * 5
+
+        while len(new_offspring) < limit and attempts < max_attempts:
+            attempts += 1
+
+            # Construct a random genotype from the pools
+            new_prompts_list = []
+            for i in range(num_classes):
+                new_prompts_list.append(random.choice(gene_pools[i]))
+
+            new_genotype = tuple(new_prompts_list)
+
+            # Skip if we already have this specific combination
+            if new_genotype in existing_genotypes:
+                continue
+
+            # Found a unique child!
+            existing_genotypes.add(new_genotype)
+
+            # Map all source individuals as parents (Pool Parentage)
+            parent_ids = [ind.id for ind in individuals]
+
+            ind = Individual(
+                id=uuid.uuid4(),
+                genotype=PromptGenotype(prompts=new_genotype),
+                generation_born=current_generation,
+                parents=parent_ids,
+                # Ideally, add CROSSOVER to your CreationOperation enum.
+                # If not, LLM_MUTATION is acceptable for now.
+                operation=CreationOperation.LLM_MUTATION,
+                concept=concept,
+            )
+            new_offspring.append(ind)
+
+        logger.debug(f"Crossover generated {len(new_offspring)} unique recombinations.")
+        return new_offspring
