@@ -50,7 +50,6 @@ class StrategyResult(TypedDict):
     strategy: EnsembleStrategy
     accuracy: float
     f1_macro: float
-    margin_score: float
     auc: float
     metrics: EvaluationMetrics
 
@@ -210,8 +209,8 @@ def reconstruct_individuals_from_champions(
         individuals.append(individual)
         logger.info(
             f"✓ Loaded champion '{concept}': "
-            f"margin_score={metrics['margin_score']:.4f}, "
-            f"accuracy={metrics['accuracy']:.4f}"
+            f"accuracy={metrics['accuracy']:.4f}, "
+            f"f1={metrics['f1_macro']:.4f}"
         )
 
     return individuals
@@ -245,7 +244,7 @@ def evaluate(
         help="Temperature for softmax weighting (lower = more meritocratic)",
     ),
     metric: str = typer.Option(
-        "margin_score",
+        "accuracy",
         "--metric",
         "-m",
         help="Metric to use for ensemble weighting",
@@ -261,7 +260,7 @@ def evaluate(
         uv run experiments/evaluate_ensemble_strategies.py \\
             logs/texture_ablation_v1_20260204_085949_history.jsonl \\
             --temperature 0.1 \\
-            --metric margin_score
+            --metric accuracy
     """
     logger.info("=" * 80)
     logger.info("ENSEMBLE STRATEGY COMPARISON EXPERIMENT")
@@ -329,7 +328,7 @@ def evaluate(
     for ind, weight in zip(individuals, weights):
         logger.info(
             f"  {ind.concept:20s}: weight={weight.item():.6f}, "
-            f"margin_score={ind.get_fitness('margin_score'):.4f}"
+            f"accuracy={ind.get_fitness('accuracy'):.4f}"
         )
 
     # Step 6: Build evaluator
@@ -386,7 +385,6 @@ def evaluate(
                 "strategy": strategy,
                 "accuracy": metrics["accuracy"],
                 "f1_macro": metrics["f1_macro"],
-                "margin_score": metrics["margin_score"],
                 "auc": metrics["auc"],
                 "metrics": metrics,
             }
@@ -396,7 +394,6 @@ def evaluate(
         logger.success(f"Results for {strategy.upper()}:")
         logger.info(f"  Accuracy:     {metrics['accuracy']:.4f}")
         logger.info(f"  F1 Score:     {metrics['f1_macro']:.4f}")
-        logger.info(f"  Margin Score: {metrics['margin_score']:.4f}")
         logger.info(f"  AUROC:        {metrics['auc']:.4f}")
 
         # Show confusion matrix
@@ -420,7 +417,6 @@ def evaluate(
     table.add_column("Strategy", style="cyan", justify="left")
     table.add_column("Accuracy", justify="center")
     table.add_column("F1 Score", justify="center")
-    table.add_column("Margin Score", justify="center")
     table.add_column("AUROC", justify="center")
     table.add_column("Δ Acc vs Linear", justify="center")
 
@@ -430,7 +426,6 @@ def evaluate(
         strategy = result["strategy"]
         acc = result["accuracy"]
         f1 = result["f1_macro"]
-        margin = result["margin_score"]
         auc = result["auc"]
         delta = acc - baseline_acc
 
@@ -441,7 +436,6 @@ def evaluate(
             strategy.upper(),
             f"{acc:.4f}",
             f"{f1:.4f}",
-            f"{margin:.4f}",
             f"{auc:.4f}",
             f"[{delta_style}]{delta_str}[/{delta_style}]",
         )
@@ -454,7 +448,6 @@ def evaluate(
     logger.success(f"🏆 BEST STRATEGY: {best_result['strategy'].upper()}")
     logger.success(f"   Accuracy:     {best_result['accuracy']:.4f}")
     logger.success(f"   F1 Score:     {best_result['f1_macro']:.4f}")
-    logger.success(f"   Margin Score: {best_result['margin_score']:.4f}")
     logger.info("=" * 80)
 
     # Step 10: Hypothesis validation

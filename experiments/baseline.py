@@ -114,7 +114,7 @@ def evaluate(
         evolution=EvolutionParams(
             initial_pop_size=10,
             generations=1,
-            target_metric="margin_score",
+            target_metric="accuracy",
         ),
         llm=None,  # type: ignore[arg-type]
         execution=ExecutionConfig.from_dict(exec_data.get("execution", {})),
@@ -182,7 +182,6 @@ def evaluate(
     table.add_row("F1 Score (Macro)", f"{metrics['f1_macro']:.4f}")
     table.add_row("F1 Score (Weighted)", f"{metrics['f1_weighted']:.4f}")
     table.add_row("AUROC", f"{metrics['auc']:.4f}")
-    table.add_row("Margin Score", f"{metrics['margin_score']:.4f}")
     table.add_row("Inverted BCE", f"{metrics['inverted_bce']:.4f}")
 
     console.print(table)
@@ -216,7 +215,6 @@ def evaluate(
     logger.info("Baseline Strategy: 'An {{image_modality}} of a {{class_name}}'")
     logger.success(f"✅ Baseline Accuracy: {metrics['accuracy']:.4f}")
     logger.success(f"✅ Baseline F1 Score: {metrics['f1_macro']:.4f}")
-    logger.success(f"✅ Baseline Margin Score: {metrics['margin_score']:.4f}")
     logger.success(f"✅ Baseline Inverted BCE: {metrics['inverted_bce']:.4f}")
     print("=" * 80)
 

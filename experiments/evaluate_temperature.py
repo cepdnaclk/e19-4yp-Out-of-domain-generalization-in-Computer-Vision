@@ -104,7 +104,7 @@ def evaluate(
         help="Temperature values to test",
     ),
     metric: MetricName = typer.Option(
-        "margin_score",
+        "accuracy",
         "--metric",
         "-m",
         help="Metric to use for ensemble weighting",
@@ -126,7 +126,7 @@ def evaluate(
         uv run experiments/evaluate_temperature.py \\
             logs/texture_ablation_v1_20260204_085949_history.jsonl \\
             --temperatures 1.0 0.5 0.1 0.05 \\
-            --metric margin_score
+            --metric accuracy
     """
     logger.info("=" * 80)
     logger.info("ENSEMBLE TEMPERATURE SWEEP EXPERIMENT")
