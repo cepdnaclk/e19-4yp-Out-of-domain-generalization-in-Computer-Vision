@@ -40,7 +40,8 @@ def main() -> None:
 
     # Define the exucution config (Hardware/Runtime)
     exec_config = ExecutionConfig(
-        max_workers=2,
+        dataloader_cpu_workers=2,
+        orchestrator_io_workers=2,
         device="cpu",
         batch_size=16,
     )
@@ -49,8 +50,7 @@ def main() -> None:
     task_def = TaskDefinition(
         task_name="Mock Melanoma",
         image_modality="Synthetic Embeddings",
-        positive_class="Malignant",
-        negative_class="Benign",
+        class_names=["Benign", "Malignant"],  # Multi-class support (order matters!)
         role="Tester",
         concepts=None,
     )
