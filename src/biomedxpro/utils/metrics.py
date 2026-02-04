@@ -64,7 +64,35 @@ def calculate_classification_metrics(
     except ValueError:
         inverted_bce = 0.0
 
-    # 5. Confusion Matrix
+    # 5. --- MARGIN SCORE IMPLEMENTATION ---
+    # Goal: Calculate mean( Prob(Correct Class) - Max_Prob(Incorrect Class) )
+
+    # A. Get indices for the True Class
+    n_samples = len(y_true)
+    row_indices = np.arange(n_samples)
+
+    # B. Extract probability of the correct class
+    # y_prob[0, label_0], y_prob[1, label_1], ...
+    p_correct = y_prob[row_indices, y_true]
+
+    # C. Find max probability of incorrect classes
+    # We create a copy so we don't mutate the original array used for AUC
+    y_prob_masked = y_prob.copy()
+
+    # Mask the true class by setting it to -1.0 (since probs are [0,1], -1 is always lower)
+    y_prob_masked[row_indices, y_true] = -1.0
+
+    # Now the max() along the axis will naturally find the runner-up
+    p_max_incorrect = np.max(y_prob_masked, axis=1)
+
+    # D. Compute Margin (-1.0 to 1.0)
+    # High positive = Confident Correct
+    # Negative = Confident Incorrect
+    # Near Zero = Confused / Decision Boundary
+    margins = p_correct - p_max_incorrect
+    margin_score = float(np.mean(margins))
+
+    # 6. Confusion Matrix
     cm = confusion_matrix(y_true, y_pred).tolist()
 
     return {
@@ -73,5 +101,6 @@ def calculate_classification_metrics(
         "accuracy": float(accuracy),
         "auc": float(auc),
         "f1_weighted": float(f1_weighted),
+        "margin_score": margin_score,
         "confusion_matrix": cm,
     }

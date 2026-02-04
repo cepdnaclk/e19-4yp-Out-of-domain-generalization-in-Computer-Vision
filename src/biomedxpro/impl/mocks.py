@@ -121,6 +121,7 @@ class MockEvaluator(IFitnessEvaluator):
                     "accuracy": score,
                     "auc": score,
                     "f1_weighted": score,
+                    "margin_score": score,
                 }
             )
 

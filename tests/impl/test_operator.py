@@ -210,6 +210,7 @@ class TestReproduce:
             "auc": 0.88,
             "f1_macro": 0.82,
             "f1_weighted": 0.84,
+            "margin_score": 0.81,
         }
 
         p2 = Individual(
@@ -226,6 +227,7 @@ class TestReproduce:
             "auc": 0.93,
             "f1_macro": 0.91,
             "f1_weighted": 0.89,
+            "margin_score": 0.90,
         }
         return [p1, p2]
 

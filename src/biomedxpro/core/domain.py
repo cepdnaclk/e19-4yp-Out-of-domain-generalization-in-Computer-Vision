@@ -71,10 +71,13 @@ class EvaluationMetrics(TypedDict):
     accuracy: float
     auc: float
     f1_weighted: float
+    margin_score: float
     confusion_matrix: NotRequired[list[list[int]]]
 
 
-MetricName = Literal["inverted_bce", "f1_macro", "accuracy", "auc", "f1_weighted"]
+MetricName = Literal[
+    "inverted_bce", "f1_macro", "accuracy", "auc", "f1_weighted", "margin_score"
+]
 
 
 @dataclass(slots=True, frozen=True)
@@ -86,7 +89,7 @@ class EvolutionParams:
 
     # Global Settings
     generations: int = 20
-    target_metric: MetricName = "f1_macro"
+    target_metric: MetricName = "margin_score"
 
     # Island Settings
     island_capacity: int = 100  # Max size of an island
