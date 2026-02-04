@@ -12,6 +12,7 @@ Usage:
 """
 
 from pathlib import Path
+from typing import TypedDict
 
 import typer
 from loguru import logger
@@ -19,9 +20,27 @@ from rich.console import Console
 from rich.table import Table
 
 from biomedxpro.analysis import EvolutionHistory, HistoryRecord
-from biomedxpro.core.domain import Individual, MetricName, PromptEnsemble
+from biomedxpro.core.domain import (
+    EvaluationMetrics,
+    Individual,
+    MetricName,
+    PromptEnsemble,
+)
 from biomedxpro.engine import builder
 from biomedxpro.engine.config import MasterConfig
+
+
+class TemperatureResult(TypedDict):
+    """Type definition for temperature experiment results."""
+
+    temperature: float
+    accuracy: float
+    f1_score: float
+    precision: float
+    recall: float
+    metric_value: float
+    metrics: EvaluationMetrics
+
 
 app = typer.Typer(help="Ensemble Temperature Evaluation Experiment")
 console = Console()
@@ -185,7 +204,7 @@ def evaluate(
         evolution=EvolutionParams(
             initial_pop_size=10,
             generations=1,
-            target_metric=metric,  # type: ignore[arg-type]
+            target_metric=metric,
         ),
         llm=None,  # type: ignore[arg-type]  # Not needed for evaluation
         execution=ExecutionConfig.from_dict(exec_data.get("execution", {})),
@@ -208,7 +227,7 @@ def evaluate(
     logger.info("BEGINNING TEMPERATURE SWEEP")
     logger.info("=" * 80)
 
-    results = []
+    results: list[TemperatureResult] = []
 
     for temp in temperatures:
         logger.info(f"\n{'=' * 60}")
@@ -217,7 +236,7 @@ def evaluate(
 
         ensemble = PromptEnsemble.from_individuals(
             individuals=individuals,
-            metric=metric,  # type: ignore[arg-type]
+            metric=metric,
             temperature=temp,
         )
 
@@ -236,23 +255,24 @@ def evaluate(
         metrics = evaluator.evaluate_ensemble(ensemble, test_ds)
 
         # Store results
-        results.append(
-            {
-                "temperature": temp,
-                "accuracy": metrics["accuracy"],
-                "f1_score": metrics["f1_macro"],
-                "precision": metrics.get("precision", 0.0),
-                "recall": metrics.get("recall", 0.0),
-                "metrics": metrics,
-            }
-        )
+        metric_value = float(metrics.get(metric, 0.0))
+        result: TemperatureResult = {
+            "temperature": temp,
+            "accuracy": metrics["accuracy"],
+            "f1_score": metrics["f1_macro"],
+            "precision": metrics.get("precision", 0.0),
+            "recall": metrics.get("recall", 0.0),
+            "metric_value": metric_value,
+            "metrics": metrics,
+        }
+        results.append(result)
 
         # Print immediate results
         logger.success(f"Results for T={temp}:")
         logger.info(f"  Accuracy:  {metrics['accuracy']:.4f}")
         logger.info(f"  F1 Score:  {metrics['f1_macro']:.4f}")
         logger.info(f"  AUC:       {metrics.get('auc', 0.0):.4f}")
-        logger.info(f"  {metric}:    {metrics[metric]:.4f}")
+        logger.info(f"  {metric}:    {metric_value:.4f}")
 
         # Show confusion matrix
         logger.info("  Confusion Matrix:")
@@ -279,10 +299,10 @@ def evaluate(
     baseline_acc = next(r["accuracy"] for r in results if r["temperature"] == 1.0)
 
     for result in results:
-        temp = result["temperature"]
-        acc = result["accuracy"]
-        f1 = result["f1_score"]
-        margin = result["metrics"][metric]
+        temp = float(result["temperature"])
+        acc = float(result["accuracy"])
+        f1 = float(result["f1_score"])
+        metric_val = float(result["metric_value"])
         delta = acc - baseline_acc
 
         delta_str = f"{delta:+.4f}" if temp != 1.0 else "baseline"
@@ -292,14 +312,14 @@ def evaluate(
             f"{temp:.2f}",
             f"{acc:.4f}",
             f"{f1:.4f}",
-            f"{margin:.4f}",
+            f"{metric_val:.4f}",
             f"[{delta_style}]{delta_str}[/{delta_style}]",
         )
 
     console.print(table)
 
     # Step 8: Print best configuration
-    best_result = max(results, key=lambda r: r["accuracy"])
+    best_result = max(results, key=lambda r: float(r["accuracy"]))
     logger.info("\n" + "=" * 80)
     logger.success(f"🏆 BEST CONFIGURATION: Temperature = {best_result['temperature']}")
     logger.success(f"   Accuracy: {best_result['accuracy']:.4f}")
@@ -311,8 +331,8 @@ def evaluate(
     logger.info("HYPOTHESIS VALIDATION")
     logger.info("=" * 80)
 
-    if best_result["temperature"] < 1.0:
-        improvement = best_result["accuracy"] - baseline_acc
+    if float(best_result["temperature"]) < 1.0:
+        improvement = float(best_result["accuracy"]) - baseline_acc
         logger.success(
             f"✅ HYPOTHESIS CONFIRMED: Lowering temperature from 1.0 to "
             f"{best_result['temperature']} improved accuracy by {improvement:+.4f}"
