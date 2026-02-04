@@ -117,7 +117,6 @@ def test_binary_classification() -> None:
 
     metrics = calculate_classification_metrics(y_true, y_pred, y_prob)
 
-    print(f"✓ Binary Classification Test")
     print(f"  Margin Score: {metrics['margin_score']:.4f}")
     print(f"  Expected: ~0.77 (avg of 0.70, 0.84, 0.80, 0.70)")
     assert metrics["margin_score"] > 0.7, "Binary should work correctly"
