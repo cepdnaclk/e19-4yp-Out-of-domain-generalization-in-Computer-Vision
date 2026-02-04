@@ -20,7 +20,7 @@ from .adapters import (
 )
 from .data_integration_example import load_dataset_pipeline, load_multiple_splits
 from .data_loader import BiomedCLIPModel, BiomedDataLoader, ImagePathDataset
-from .selection import ElitismSelector, RouletteWheelSelector
+from .selection import ElitismSelector, RankSelector, RouletteWheelSelector
 
 __all__ = [
     # Adapters
@@ -40,4 +40,5 @@ __all__ = [
     # Selection
     "RouletteWheelSelector",
     "ElitismSelector",
+    "RankSelector",
 ]

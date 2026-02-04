@@ -58,3 +58,38 @@ class ElitismSelector(SelectionStrategy):
         """
         # Population.get_elite_individuals already implements sorted top-k logic
         return population.get_elite_individuals(k=k, metric=metric)
+
+
+class RankSelector(SelectionStrategy):
+    """
+    Selects individuals based on their rank rather than raw fitness.
+    - Solves the 'Negative Fitness' problem (Margin Score).
+    - Prevents 'Super Individuals' from dominating (Roulette problem).
+    - Maintains constant selection pressure.
+    """
+
+    def select(
+        self, population: Population, k: int, metric: MetricName
+    ) -> Sequence[Individual]:
+        # 1. Filter valid candidates
+        candidates = [ind for ind in population.individuals if ind.is_evaluated]
+        if not candidates:
+            logger.warning("No evaluated individuals available for selection.")
+            return []
+
+        # 2. Sort by Fitness (Ascending: Worst -> Best)
+        # We sort ascending so the index corresponds to 'weight'
+        # (index 0 = worst = weight 1, index N = best = weight N+1)
+        sorted_candidates = sorted(candidates, key=lambda ind: ind.get_fitness(metric))
+
+        n = len(sorted_candidates)
+
+        # 3. Assign Rank Weights (Linear Ranking)
+        # Simplest approach: Weight = Rank Index (1 to N)
+        # Worst gets weight 1, Best gets weight N.
+        # This ensures positive probabilities regardless of negative fitness.
+        rank_weights = [i + 1 for i in range(n)]
+
+        # 4. Select k parents
+        # random.choices uses the weights to build the cumulative distribution
+        return random.choices(sorted_candidates, weights=rank_weights, k=k)
