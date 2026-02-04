@@ -92,7 +92,11 @@ def main() -> None:
         score = ind.get_fitness("inverted_bce")
         print(f"\n🏆 Concept Island: {ind.concept}")
         print(f"   Fitness Score: {score:.4f}")
-        print(f"   Genotype: {ind.genotype}")
+        print("   Genotype (Prompts):")
+        for _, (class_name, prompt) in enumerate(
+            zip(task_def.class_names, ind.genotype.prompts)
+        ):
+            print(f"     [{class_name}]: {prompt}")
         print(f"   Source: {ind.metadata.get('source', 'unknown')}")
 
 
