@@ -146,11 +146,9 @@ class FitnessEvaluator(IFitnessEvaluator):
             # For multi-class: use argmax instead of threshold
             y_pred = y_prob_dist.argmax(axis=1)
 
-            # For metrics calculation, we need the probability of the predicted class
-            # This is used for metrics like AUC in multi-class settings
-            y_prob = y_prob_dist.max(axis=1)
-
-            metrics = calculate_classification_metrics(y_true, y_pred, y_prob)
+            # CRITICAL FIX: Pass the full distribution `y_prob_dist` for AUC calculation
+            # Do NOT pass `y_prob_dist.max(axis=1)`
+            metrics = calculate_classification_metrics(y_true, y_pred, y_prob_dist)
             ind.update_metrics(metrics)
 
     def evaluate_ensemble(
@@ -184,7 +182,5 @@ class FitnessEvaluator(IFitnessEvaluator):
         # Multi-class: use argmax for predictions
         y_pred = y_prob_dist.argmax(axis=1)
 
-        # For metrics, use the max probability (predicted class confidence)
-        y_prob = y_prob_dist.max(axis=1)
-
-        return calculate_classification_metrics(y_true, y_pred, y_prob)
+        # CRITICAL FIX: Pass full distribution
+        return calculate_classification_metrics(y_true, y_pred, y_prob_dist)
