@@ -25,7 +25,7 @@ from biomedxpro.utils.logging import loguru_before_sleep
 
 class ParentViewModel(TypedDict):
     overall_score: int
-    per_class_margins: list[float]
+    per_class_margins: list[int]
     class_names: list[str]
     genotype: PromptGenotype
 
@@ -146,7 +146,9 @@ class LLMOperator(IOperator):
             # Extract per-class margins from metrics
             per_class_margins = []
             if parent.metrics is not None:
-                per_class_margins = parent.metrics.get("per_class_margins", [])
+                raw_margins = parent.metrics.get("per_class_margins", [])
+                # Convert to percentage integers: 0.5 -> 50, -0.5 -> -50
+                per_class_margins = [round(m * 100) for m in raw_margins]
 
             vm: ParentViewModel = {
                 "overall_score": score,

@@ -14,10 +14,10 @@
     
     EVALUATION METRICS EXPLAINED:
     - Overall Score: A score (0-100) representing the overall discriminative quality of the entire description set.
-    - Per-Class Margin Scores: Individual margin scores for each class, ranging from -1.0 to 1.0.
-      * High positive (>0.5): The description for this class is highly discriminative and confident.
-      * Near zero (~0.0): The description struggles to differentiate this class from others.
-      * Negative (<0.0): The description is actively confusing the model for this class.
+    - Per-Class Margin Scores: Individual margin scores for each class, ranging from -100 to 100
+      * High positive (>50): The description for this class is highly discriminative and confident.
+      * Near zero (~0): The description struggles to differentiate this class from others.
+      * Negative (<0): The description is actively confusing the model for this class.
     
     Use these per-class margins to identify which class descriptions need the most improvement.
 </context>
