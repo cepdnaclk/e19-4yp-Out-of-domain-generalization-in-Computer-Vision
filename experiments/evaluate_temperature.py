@@ -176,7 +176,7 @@ def evaluate(
         task=TaskDefinition.from_dict(task_data["task"]),
         dataset=DatasetConfig.from_dict(task_data["dataset"]),
         evolution=EvolutionParams(
-            pop_size=10,
+            initial_pop_size=10,
             num_generations=1,
             target_metric=metric,
         ),
