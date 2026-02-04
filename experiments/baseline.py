@@ -78,16 +78,10 @@ def evaluate(
         help="Path to execution config",
         exists=True,
     ),
-    shots: int = typer.Option(
-        16,
-        "--shots",
-        "-s",
-        help="Number of few-shot examples for dataset loading",
-    ),
     split: str = typer.Option(
         "test",
         "--split",
-        help="Which split to evaluate on: train, val, or test",
+        help="Which split to evaluate on: val or test",
     ),
 ) -> None:
     """
@@ -109,10 +103,6 @@ def evaluate(
 
     with open(exec_config, "r") as f:
         exec_data = yaml.safe_load(f)
-
-    # Inject shots
-    task_data.setdefault("dataset", {})
-    task_data["dataset"]["shots"] = shots
 
     # Build minimal config
     from biomedxpro.core.domain import EvolutionParams, TaskDefinition
@@ -136,13 +126,12 @@ def evaluate(
 
     # Select evaluation split
     split_map = {
-        "train": train_ds,
         "val": val_ds,
         "test": test_ds,
     }
 
     if split not in split_map:
-        logger.error(f"Invalid split '{split}'. Choose from: train, val, test")
+        logger.error(f"Invalid split '{split}'. Choose from: val, test")
         raise typer.Exit(code=1)
 
     eval_ds = split_map[split]
