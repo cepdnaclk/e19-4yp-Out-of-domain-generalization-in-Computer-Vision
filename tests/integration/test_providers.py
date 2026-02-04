@@ -58,8 +58,7 @@ def test_groq_integration(
     )
 
     # 1. Create Real Client (loads keys from env)
-    mock_logger = MagicMock()
-    client = create_llm_client(settings, token_logger=mock_logger)
+    client = create_llm_client(settings)
 
     # 2. Create Real Operator
     operator = LLMOperator(client, basic_strategy, basic_task_def)
@@ -90,8 +89,7 @@ def test_gemini_integration(
         llm_params={"temperature": 0.0},
     )
 
-    mock_logger = MagicMock()
-    client = create_llm_client(settings, token_logger=mock_logger)
+    client = create_llm_client(settings)
     operator = LLMOperator(client, basic_strategy, basic_task_def)
 
     concepts = operator.discover_concepts()

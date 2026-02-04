@@ -11,7 +11,7 @@ from openai.types.responses.response import Response
 
 from biomedxpro.core.interfaces import ILLMClient
 from biomedxpro.impl.config import LLMSettings
-from biomedxpro.utils.token_logging import TokenUsageLogger
+from biomedxpro.utils.usage import record_usage
 
 
 def _get_api_keys(env_var_name: str) -> list[str]:
@@ -25,13 +25,10 @@ def _get_api_keys(env_var_name: str) -> list[str]:
 
 
 class OpenAIClient(ILLMClient):
-    def __init__(
-        self, settings: LLMSettings, keys: list[str], token_logger: TokenUsageLogger
-    ) -> None:
+    def __init__(self, settings: LLMSettings, keys: list[str]) -> None:
         self.model_name = settings.model_name
         self.llm_params = settings.llm_params
         self.provider = settings.provider
-        self.token_logger = token_logger
 
         final_base_url = settings.base_url or None
         if not keys:
@@ -73,15 +70,13 @@ class OpenAIClient(ILLMClient):
                 getattr(usage, "reasoning_tokens", 0) if usage else 0
             ) or 0
 
-            record = {
-                "provider": self.provider,
-                "model": self.model_name,
-                "input_tokens": input_tokens,
-                "output_tokens": output_tokens,
-                "reasoning_tokens": reasoning_tokens,
-            }
-
-            self.token_logger.log(record)
+            record_usage(
+                provider=self.provider,
+                model=self.model_name,
+                input_tokens=input_tokens,
+                output_tokens=output_tokens,
+                reasoning_tokens=reasoning_tokens,
+            )
             return str(response.output_text)
 
         except OpenAIError as e:
@@ -94,12 +89,10 @@ class GeminiClient(ILLMClient):
         self,
         settings: LLMSettings,
         keys: list[str],
-        token_logger: TokenUsageLogger,
     ) -> None:
         self.model_name = settings.model_name
         self.llm_params = settings.llm_params
         self.provider = settings.provider
-        self.token_logger = token_logger
 
         if not keys:
             raise ValueError("GeminiClient requires at least one API key.")
@@ -137,15 +130,13 @@ class GeminiClient(ILLMClient):
             # Gemini doesn't typically report reasoning tokens separately
             reasoning_tokens = 0
 
-            record = {
-                "provider": self.provider,
-                "model": self.model_name,
-                "input_tokens": input_tokens,
-                "output_tokens": output_tokens,
-                "reasoning_tokens": reasoning_tokens,
-            }
-
-            self.token_logger.log(record)
+            record_usage(
+                provider=self.provider,
+                model=self.model_name,
+                input_tokens=input_tokens,
+                output_tokens=output_tokens,
+                reasoning_tokens=reasoning_tokens,
+            )
             return str(response.text) or ""
 
         except Exception as e:
@@ -153,9 +144,7 @@ class GeminiClient(ILLMClient):
             raise e
 
 
-def create_llm_client(
-    settings: LLMSettings, token_logger: TokenUsageLogger
-) -> ILLMClient:
+def create_llm_client(settings: LLMSettings) -> ILLMClient:
     """
     Factory: Maps provider string to concrete client.
     """
@@ -163,17 +152,15 @@ def create_llm_client(
 
     if provider == "openai":
         keys = _get_api_keys("OPENAI_API_KEYS")
-        return OpenAIClient(
-            settings, keys=keys, token_logger=token_logger
-        )  # Uses default OpenAI URL
+        return OpenAIClient(settings, keys=keys)  # Uses default OpenAI URL
 
     elif provider == "groq":
         keys = _get_api_keys("GROQ_API_KEYS")
-        return OpenAIClient(settings, keys=keys, token_logger=token_logger)
+        return OpenAIClient(settings, keys=keys)
 
     elif provider == "gemini":
         keys = _get_api_keys("GEMINI_API_KEYS")
-        return GeminiClient(settings, keys=keys, token_logger=token_logger)
+        return GeminiClient(settings, keys=keys)
 
     else:
         # Fallback: If unknown provider (e.g. "deepseek"), try generic OpenAI client
@@ -187,6 +174,6 @@ def create_llm_client(
                 raise ValueError(
                     f"No API keys found for provider '{provider}' in environment variable '{provider.upper()}_API_KEYS'"
                 )
-            return OpenAIClient(settings, keys=keys, token_logger=token_logger)
+            return OpenAIClient(settings, keys=keys)
 
         raise ValueError(f"Unsupported LLM provider: {provider}")

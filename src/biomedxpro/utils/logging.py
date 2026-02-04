@@ -1,4 +1,5 @@
 # src/biomedxpro/utils/logging.py
+import json
 import sys
 from datetime import datetime
 from pathlib import Path
@@ -10,20 +11,25 @@ from tenacity import RetryCallState
 
 def setup_logging(
     experiment_name: str, console_level: str = "INFO", log_dir: str = "logs"
-) -> Path:
+) -> tuple[Path, Path]:
     """
-    Configures logging based on the experiment name.
+    Configures logging with two sinks:
+    1. Main Trace: Captures everything (DEBUG/TRACE) for debugging.
+    2. Usage Sidecar: Captures only usage metrics for accounting.
 
-    Output File: logs/{experiment_name}_{timestamp}.jsonl
+    Returns:
+        Tuple of (trace_log_path, usage_log_path)
     """
 
     # 1. Reset
     logger.remove()
 
-    # 2. Generate a filename that includes the name + exact time
+    # 2. Generate filenames with timestamps
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-    filename = f"{experiment_name}_{timestamp}.jsonl"
-    log_path = Path(log_dir) / filename
+    trace_filename = f"{experiment_name}_{timestamp}_trace.jsonl"
+    usage_filename = f"{experiment_name}_{timestamp}_usage.jsonl"
+    trace_log_path = Path(log_dir) / trace_filename
+    usage_log_path = Path(log_dir) / usage_filename
 
     # 3. Console Formatter (Clean)
     def console_formatter(record: Any) -> str:
@@ -38,18 +44,33 @@ def setup_logging(
 
     logger.add(sys.stderr, format=console_formatter, level=console_level, colorize=True)
 
-    # 4. File Formatter (Machine Readable)
-    # We serialize to JSONL so you can parse it later.
+    # 4. Main Trace Sink (Captures everything including usage events for context)
     logger.add(
-        log_path,
+        trace_log_path,
         serialize=True,
         level="TRACE",
         rotation="100 MB",
         retention="30 days",
+        enqueue=True,  # Thread-safe async writes
     )
 
-    # Return the path so we can print it to the user
-    return log_path  # Return the path so we can print it to the user
+    # 5. Usage Sidecar Sink (Filters strictly for usage events, writes pure JSON)
+    def usage_filter(record: Any) -> bool:
+        return "usage_data" in record["extra"]
+
+    def usage_formatter(record: Any) -> str:
+        # Extract ONLY the payload, ignore log levels/timestamps/messages
+        return json.dumps(record["extra"]["usage_data"]) + "\n"
+
+    logger.add(
+        usage_log_path,
+        filter=usage_filter,
+        format=usage_formatter,
+        level="INFO",
+        enqueue=True,  # Critical for async writing
+    )
+
+    return trace_log_path, usage_log_path
 
 
 def loguru_before_sleep(retry_state: RetryCallState) -> None:

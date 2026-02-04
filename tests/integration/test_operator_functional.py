@@ -55,9 +55,7 @@ def real_operator(functional_task_def: TaskDefinition) -> LLMOperator:
     else:
         pytest.skip("No API keys available for functional integration test.")
 
-    # Mock token logger for tests
-    mock_logger = MagicMock()
-    client = create_llm_client(settings, token_logger=mock_logger)
+    client = create_llm_client(settings)
 
     # Ensure strategy paths are correct relative to where pytest is run
     strategy = PromptStrategy(

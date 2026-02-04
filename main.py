@@ -13,7 +13,7 @@ from biomedxpro.engine.config import MasterConfig
 from biomedxpro.utils import reporting
 from biomedxpro.utils.history import HistoryRecorder
 from biomedxpro.utils.logging import setup_logging
-from biomedxpro.utils.token_logging import TokenUsageLogger
+from biomedxpro.utils.usage import get_usage_stats
 
 app = typer.Typer(help="BioMedXPro Evolutionary Engine")
 
@@ -68,9 +68,10 @@ def run(
     experiment_name = exp_name or config.dataset.name
 
     # 2. Setup Logging & Persistence
-    setup_logging(experiment_name, console_level="DEBUG")
+    trace_log, usage_log = setup_logging(experiment_name, console_level="DEBUG")
     recorder = HistoryRecorder(experiment_name=experiment_name)
-    token_logger = TokenUsageLogger(experiment_name=experiment_name)
+    logger.info(f"Trace log: {trace_log}")
+    logger.info(f"Usage log: {usage_log}")
     logger.info(f"Loaded task config from {task_config}")
     logger.info(f"Loaded evolution config from {evo_config}")
     logger.info(f"Loaded LLM config from {llm_config}")
@@ -82,7 +83,7 @@ def run(
     # 3. Build World (Factory)
     train_ds, val_ds, test_ds = builder.load_datasets(config)
     orchestrator = builder.build_orchestrator(
-        config, train_ds, val_ds, recorder=recorder, token_logger=token_logger
+        config, train_ds, val_ds, recorder=recorder
     )
 
     # 4. Evolution Phase (Execution)
@@ -111,7 +112,14 @@ def run(
 
     # 7. Reporting Phase (Deployment)
     reporting.print_ensemble_results(metrics)
-    token_logger.dump_summary()
+
+    # 8. Usage Summary
+    stats = get_usage_stats()
+    logger.info(
+        f"Token usage summary: {stats.total_calls} calls, "
+        f"{stats.input_tokens + stats.output_tokens + stats.reasoning_tokens} total tokens "
+        f"(Input: {stats.input_tokens}, Output: {stats.output_tokens}, Reasoning: {stats.reasoning_tokens})"
+    )
 
 
 if __name__ == "__main__":
