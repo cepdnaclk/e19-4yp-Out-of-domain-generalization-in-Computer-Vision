@@ -1,0 +1,13 @@
+task:
+  task_name: "Retinal Disease Classification"
+  image_modality: "color fundus photographs of retina"
+  class_names: ["Cataract", "Diabetic Retinopathy", "Glaucoma", "Normal"]
+  role: "Expert Ophthalmologist"
+  concepts: null # Set to null to trigger LLM Concept Discovery
+
+dataset:
+  adapter: "retina"
+  root: "/storage/projects3/e19-fyp-out-of-domain-gen-in-cv/RETINA/"
+  name: "retina"
+  class_names: ["Cataract", "Diabetic Retinopathy", "Glaucoma", "Normal"]
+  cache_dir: "/storage/projects3/e19-fyp-out-of-domain-gen-in-cv/cache/"

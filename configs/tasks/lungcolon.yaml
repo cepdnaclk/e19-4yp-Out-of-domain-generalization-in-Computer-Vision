@@ -1,0 +1,13 @@
+task:
+  task_name: "Lung and Colon Cancer Histopathology Classification"
+  image_modality: "hematoxylin and eosin (H&E) stained histopathological images of lung and colon tissue"
+  class_names: ["Colon Adenocarcinoma", "Colon Benign Tissue", "Lung Adenocarcinoma", "Lung Benign Tissue", "Lung Squamous Cell Carcinoma"]
+  role: "Expert Pathologist"
+  concepts: null # Set to null to trigger LLM Concept Discovery
+
+dataset:
+  adapter: "lungcolon"
+  root: "/storage/projects3/e19-fyp-out-of-domain-gen-in-cv/LungColon/"
+  name: "lungcolon"
+  class_names: ["Colon Adenocarcinoma", "Colon Benign Tissue", "Lung Adenocarcinoma", "Lung Benign Tissue", "Lung Squamous Cell Carcinoma"]
+  cache_dir: "/storage/projects3/e19-fyp-out-of-domain-gen-in-cv/cache/"

@@ -1,0 +1,13 @@
+task:
+  task_name: "Gastrointestinal Endoscopy Finding Classification"
+  image_modality: "endoscopic images of gastrointestinal tract"
+  class_names: ["Dyed Lifted Polyps", "Dyed Resection Margins", "Esophagitis", "Normal Cecum", "Normal Pylorus", "Normal Z-Line", "Polyps", "Ulcerative Colitis"]
+  role: "Expert Gastroenterologist"
+  concepts: null # Set to null to trigger LLM Concept Discovery
+
+dataset:
+  adapter: "kvasir"
+  root: "/storage/projects3/e19-fyp-out-of-domain-gen-in-cv/Kvasir/"
+  name: "kvasir"
+  class_names: ["Dyed Lifted Polyps", "Dyed Resection Margins", "Esophagitis", "Normal Cecum", "Normal Pylorus", "Normal Z-Line", "Polyps", "Ulcerative Colitis"]
+  cache_dir: "/storage/projects3/e19-fyp-out-of-domain-gen-in-cv/cache/"

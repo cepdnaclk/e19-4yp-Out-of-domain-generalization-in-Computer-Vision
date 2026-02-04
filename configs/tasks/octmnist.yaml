@@ -1,0 +1,13 @@
+task:
+  task_name: "Retinal OCT Disease Classification"
+  image_modality: "optical coherence tomography (OCT) images of retina"
+  class_names: ["Choroidal Neovascularization", "Diabetic Macular Edema", "Drusen", "Normal"]
+  role: "Expert Ophthalmologist"
+  concepts: null # Set to null to trigger LLM Concept Discovery
+
+dataset:
+  adapter: "octmnist"
+  root: "/storage/projects3/e19-fyp-out-of-domain-gen-in-cv/OCTMNIST/"
+  name: "octmnist"
+  class_names: ["Choroidal Neovascularization", "Diabetic Macular Edema", "Drusen", "Normal"]
+  cache_dir: "/storage/projects3/e19-fyp-out-of-domain-gen-in-cv/cache/"

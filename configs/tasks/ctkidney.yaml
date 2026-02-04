@@ -1,0 +1,13 @@
+task:
+  task_name: "Kidney Condition Classification"
+  image_modality: "computed tomography (CT) scans of kidneys"
+  class_names: ["Cyst", "Normal", "Stone", "Tumor"]
+  role: "Expert Radiologist"
+  concepts: null # Set to null to trigger LLM Concept Discovery
+
+dataset:
+  adapter: "ctkidney"
+  root: "/storage/projects3/e19-fyp-out-of-domain-gen-in-cv/CTKidney/"
+  name: "ctkidney"
+  class_names: ["Cyst", "Normal", "Stone", "Tumor"]
+  cache_dir: "/storage/projects3/e19-fyp-out-of-domain-gen-in-cv/cache/"

@@ -1,0 +1,13 @@
+task:
+  task_name: "COVID-19 Lung Condition Classification"
+  image_modality: "chest X-ray images"
+  class_names: ["COVID-19", "Lung Opacity", "Normal", "Viral Pneumonia"]
+  role: "Expert Radiologist"
+  concepts: null # Set to null to trigger LLM Concept Discovery
+
+dataset:
+  adapter: "covid_19"
+  root: "/storage/projects3/e19-fyp-out-of-domain-gen-in-cv/COVID_19/"
+  name: "covid_19"
+  class_names: ["COVID-19", "Lung Opacity", "Normal", "Viral Pneumonia"]
+  cache_dir: "/storage/projects3/e19-fyp-out-of-domain-gen-in-cv/cache/"

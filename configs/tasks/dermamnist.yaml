@@ -1,0 +1,13 @@
+task:
+  task_name: "Skin Lesion Classification"
+  image_modality: "dermatoscopic images of skin lesions"
+  class_names: ["Actinic Keratosis", "Basal Cell Carcinoma", "Benign Keratosis", "Dermatofibroma", "Melanocytic Nevus", "Melanoma", "Vascular Lesion"]
+  role: "Expert Dermatologist"
+  concepts: null # Set to null to trigger LLM Concept Discovery
+
+dataset:
+  adapter: "dermamnist"
+  root: "/storage/projects3/e19-fyp-out-of-domain-gen-in-cv/DermaMNIST/"
+  name: "dermamnist"
+  class_names: ["Actinic Keratosis", "Basal Cell Carcinoma", "Benign Keratosis", "Dermatofibroma", "Melanocytic Nevus", "Melanoma", "Vascular Lesion"]
+  cache_dir: "/storage/projects3/e19-fyp-out-of-domain-gen-in-cv/cache/"

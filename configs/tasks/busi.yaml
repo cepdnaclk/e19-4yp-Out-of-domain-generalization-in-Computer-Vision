@@ -1,0 +1,13 @@
+task:
+  task_name: "Breast Tumor Classification"
+  image_modality: "grayscale breast ultrasound images"
+  class_names: ["Benign", "Malignant", "Normal"]
+  role: "Expert Radiologist"
+  concepts: null # Set to null to trigger LLM Concept Discovery
+
+dataset:
+  adapter: "busi"
+  root: "/storage/projects3/e19-fyp-out-of-domain-gen-in-cv/BUSI/"
+  name: "busi"
+  class_names: ["Benign", "Malignant", "Normal"]
+  cache_dir: "/storage/projects3/e19-fyp-out-of-domain-gen-in-cv/cache/"

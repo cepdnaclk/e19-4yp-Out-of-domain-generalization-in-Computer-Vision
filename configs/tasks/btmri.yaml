@@ -1,0 +1,13 @@
+task:
+  task_name: "Brain Tumor Classification"
+  image_modality: "T1-weighted contrast-enhanced magnetic resonance imaging (MRI) scans of brain"
+  class_names: ["Glioma", "Meningioma", "No Tumor", "Pituitary"]
+  role: "Expert Neuroradiologist"
+  concepts: null # Set to null to trigger LLM Concept Discovery
+
+dataset:
+  adapter: "btmri"
+  root: "/storage/projects3/e19-fyp-out-of-domain-gen-in-cv/BTMRI/"
+  name: "btmri"
+  class_names: ["Glioma", "Meningioma", "No Tumor", "Pituitary"]
+  cache_dir: "/storage/projects3/e19-fyp-out-of-domain-gen-in-cv/cache/"

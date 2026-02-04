@@ -1,0 +1,13 @@
+task:
+  task_name: "Colorectal Tissue Classification"
+  image_modality: "hematoxylin and eosin (H&E) stained histopathology images of colorectal tissue"
+  class_names: ["Adipose", "Background", "Debris", "Lymphocytes", "Mucus", "Smooth Muscle", "Normal Colon Mucosa", "Cancer-Associated Stroma", "Colorectal Adenocarcinoma Epithelium"]
+  role: "Expert Pathologist"
+  concepts: null # Set to null to trigger LLM Concept Discovery
+
+dataset:
+  adapter: "chmnist"
+  root: "/storage/projects3/e19-fyp-out-of-domain-gen-in-cv/CHMNIST/"
+  name: "chmnist"
+  class_names: ["Adipose", "Background", "Debris", "Lymphocytes", "Mucus", "Smooth Muscle", "Normal Colon Mucosa", "Cancer-Associated Stroma", "Colorectal Adenocarcinoma Epithelium"]
+  cache_dir: "/storage/projects3/e19-fyp-out-of-domain-gen-in-cv/cache/"
