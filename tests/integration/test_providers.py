@@ -1,6 +1,5 @@
 # tests/integration/test_providers.py
 import os
-from unittest.mock import MagicMock
 
 import pytest
 from dotenv import load_dotenv

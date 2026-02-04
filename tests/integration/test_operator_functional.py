@@ -1,5 +1,4 @@
 import os
-from unittest.mock import MagicMock
 
 import pytest
 from dotenv import load_dotenv
@@ -139,4 +138,5 @@ class TestOperatorFunctional:
         assert child.parents  # Should track lineage
         assert child.operation == CreationOperation.LLM_MUTATION
 
+        print("--- Functional Test Complete: Cycle Verified ---")
         print("--- Functional Test Complete: Cycle Verified ---")
