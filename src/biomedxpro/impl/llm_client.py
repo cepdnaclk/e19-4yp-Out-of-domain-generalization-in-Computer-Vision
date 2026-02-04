@@ -21,6 +21,7 @@ def _get_api_keys(env_var_name: str) -> list[str]:
     if not keys:
         logger.warning(f"SECURITY WARNING: No keys found in '{env_var_name}'")
         return []
+    logger.info(f"LLM Client: Loaded {len(keys)} API keys from '{env_var_name}'")
     return keys
 
 
