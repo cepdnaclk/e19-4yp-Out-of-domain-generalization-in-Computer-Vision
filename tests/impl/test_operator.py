@@ -255,8 +255,12 @@ class TestReproduce:
             view_models = context["parents"]
 
             # Verify Sorting (Lowest score first) and Normalization
-            assert view_models[0]["score"] == 60  # 0.8
-            assert view_models[1]["score"] == 90  # 0.9
+            assert view_models[0]["overall_score"] == 60  # 0.8
+            assert view_models[1]["overall_score"] == 90  # 0.9
+
+            # Verify per-class margins are included
+            assert "per_class_margins" in view_models[0]
+            assert "class_names" in view_models[0]
 
     def test_truncates_excess_offspring(
         self,

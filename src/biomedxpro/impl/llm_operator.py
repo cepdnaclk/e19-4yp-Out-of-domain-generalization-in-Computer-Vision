@@ -24,7 +24,9 @@ from biomedxpro.utils.logging import loguru_before_sleep
 
 
 class ParentViewModel(TypedDict):
-    score: int
+    overall_score: int
+    per_class_margins: list[float]
+    class_names: list[str]
     genotype: PromptGenotype
 
 
@@ -133,6 +135,7 @@ class LLMOperator(IOperator):
     ) -> List[ParentViewModel]:
         """
         Transforms Domain Entities (Individuals) into View Models for the Template.
+        Now includes per-class margin scores for surgical feedback.
         """
         norm_scores: List[int] = self._normalize_scores_to_int(parents, metric)
         view_models: List[ParentViewModel] = []
@@ -140,14 +143,21 @@ class LLMOperator(IOperator):
         for parent, score in zip(parents, norm_scores):
             genotype_data = parent.genotype
 
+            # Extract per-class margins from metrics
+            per_class_margins = []
+            if parent.metrics is not None:
+                per_class_margins = parent.metrics.get("per_class_margins", [])
+
             vm: ParentViewModel = {
-                "score": score,
+                "overall_score": score,
+                "per_class_margins": per_class_margins,
+                "class_names": self.task_def.class_names,
                 "genotype": genotype_data,
             }
             view_models.append(vm)
 
-        # Sort by score ascending (lowest to highest)
-        view_models.sort(key=lambda x: x["score"])
+        # Sort by overall_score ascending (lowest to highest)
+        view_models.sort(key=lambda x: x["overall_score"])
 
         return view_models
 
