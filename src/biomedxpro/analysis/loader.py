@@ -199,16 +199,33 @@ class EvolutionHistory:
 
     def get_champions(self) -> dict[str, HistoryRecord]:
         """
-        Get the final champion from each island (best individual in last generation).
+        Get the best individual from each island across ALL generations.
+
+        CRITICAL: We find the absolute best individual that ever existed on each island,
+        not just the final generation (which might not have the champion due to
+        population dynamics, extinction, or recording issues).
 
         Returns:
-            Dictionary mapping island concept -> best individual
+            Dictionary mapping island concept -> best individual ever
         """
         champions = {}
         for island in self.islands:
-            snapshot = self.get_island_at_generation(island, self._max_generation)
-            if snapshot.champion:
-                champions[island] = snapshot.champion
+            island_records = self.get_island(island)
+
+            # Filter to only records with valid fitness
+            valid_records = [rec for rec in island_records if rec.fitness is not None]
+
+            if not valid_records:
+                logger.warning(
+                    f"No individuals with fitness found for island '{island}' "
+                    f"across all {self.num_generations} generations!"
+                )
+                continue
+
+            # Find the absolute best
+            champion = max(valid_records, key=lambda rec: rec.fitness)  # type: ignore[arg-type, return-value]
+            champions[island] = champion
+
         return champions
 
     def get_lineage(self, individual_id: str) -> list[str]:
