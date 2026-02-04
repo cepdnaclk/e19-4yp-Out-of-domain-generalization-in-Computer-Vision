@@ -23,8 +23,11 @@ def _get_api_keys(env_var_name: str) -> list[str]:
         return []
     return keys
 
+
 class OpenAIClient(ILLMClient):
-    def __init__(self, settings: LLMSettings, keys: list[str], token_logger: TokenUsageLogger) -> None:
+    def __init__(
+        self, settings: LLMSettings, keys: list[str], token_logger: TokenUsageLogger
+    ) -> None:
         self.model_name = settings.model_name
         self.llm_params = settings.llm_params
         self.provider = settings.provider
@@ -63,8 +66,8 @@ class OpenAIClient(ILLMClient):
                 prompt_estimated = True
 
             # Completion tokens
-            if usage and usage.completion_tokens is not None:
-                completion_tokens = usage.completion_tokens
+            if usage and usage.output_tokens is not None:
+                completion_tokens = usage.output_tokens
                 completion_estimated = False
             else:
                 completion_tokens = len(output_text) // 4
@@ -98,7 +101,6 @@ class OpenAIClient(ILLMClient):
             raise e
 
 
-
 class GeminiClient(ILLMClient):
     def __init__(
         self,
@@ -120,7 +122,6 @@ class GeminiClient(ILLMClient):
         logger.info(
             f"Initialized Gemini client. Model: {self.model_name}. Params: {self.llm_params}"
         )
-
 
     def generate(self, prompt: str) -> str:
         client = next(self._pool)
@@ -186,10 +187,9 @@ class GeminiClient(ILLMClient):
             raise e
 
 
-
-
-
-def create_llm_client(settings: LLMSettings, token_logger: TokenUsageLogger) -> ILLMClient:
+def create_llm_client(
+    settings: LLMSettings, token_logger: TokenUsageLogger
+) -> ILLMClient:
     """
     Factory: Maps provider string to concrete client.
     """
@@ -197,15 +197,13 @@ def create_llm_client(settings: LLMSettings, token_logger: TokenUsageLogger) -> 
 
     if provider == "openai":
         keys = _get_api_keys("OPENAI_API_KEYS")
-        return OpenAIClient(settings, keys=keys, token_logger=token_logger)  # Uses default OpenAI URL
+        return OpenAIClient(
+            settings, keys=keys, token_logger=token_logger
+        )  # Uses default OpenAI URL
 
     elif provider == "groq":
         keys = _get_api_keys("GROQ_API_KEYS")
-        return OpenAIClient(
-            settings,
-            keys=keys,
-            token_logger=token_logger
-        )
+        return OpenAIClient(settings, keys=keys, token_logger=token_logger)
 
     elif provider == "gemini":
         keys = _get_api_keys("GEMINI_API_KEYS")
@@ -223,6 +221,6 @@ def create_llm_client(settings: LLMSettings, token_logger: TokenUsageLogger) -> 
                 raise ValueError(
                     f"No API keys found for provider '{provider}' in environment variable '{provider.upper()}_API_KEYS'"
                 )
-            return OpenAIClient(settings, keys=keys, token_logger = token_logger)
+            return OpenAIClient(settings, keys=keys, token_logger=token_logger)
 
         raise ValueError(f"Unsupported LLM provider: {provider}")
