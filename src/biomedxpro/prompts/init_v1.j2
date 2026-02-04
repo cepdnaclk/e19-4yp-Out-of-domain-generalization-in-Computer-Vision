@@ -6,7 +6,7 @@
     We are writing discriminative visual descriptions to classify {{task_definition.task_name}} using {{ task_definition.image_modality }}.
     We've identified a specific visual concept: "{{ concept }}" that helps differentiate between the following classes:
     {% for class_name in task_definition.class_names %}
-    - {{ class_name }}
+    {{loop.index}}. {{ class_name }} {{task_definition.image_modality}} image
     {% endfor %}
     We now require {{ num_offsprings }} distinct discriminative visual description sets that focus solely on this concept.
 </context>

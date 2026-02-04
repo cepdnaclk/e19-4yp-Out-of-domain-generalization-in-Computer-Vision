@@ -1,22 +1,24 @@
 <role>
-    You are an {{ task_definition.role }} writing visually discriminative descriptions for {{ task_definition.task_name }}.
+    You are an {{ task_definition.role }} specializing in {{ task_definition.task_name }}.
 </role>
 
 <objective>
-    We are refining prompts for the visual concept: "{{ concept }}".
-    Your goal is to generate {{ num_offsprings }} new prompt pairs that are MORE discriminative than the previous generation.
+    We are refining discriminative visual descriptions for the concept: "{{ concept }}".
+    Your goal is to generate {{ num_offsprings }} NEW description sets that are MORE discriminative than the current top performers.
 </objective>
 
+<context>
+    The task involves {{ task_definition.class_names|length }} classes. 
+    Any list of descriptions below STRICTLY follows this order:
+    [{% for name in task_definition.class_names %}"{{ name }}"{% if not loop.last %}, {% endif %}{% endfor %}]
+</context>
+
 <current_top_performers>
-    Here are the top-performing visually discriminative description sets in ascending order. Higher score is better.
-    
+    Here are the highest-scoring ancestors from the previous generation.
+    Format: [List of descriptions matching class order], Score: <fitness>
+
     {% for parent in parents %}
-    Description Set {{ loop.index }}:
-    {% for i in range(parent.genotype.prompts|length) %}
-      Class "{{ task_definition.class_names[i] }}": "{{ parent.genotype.prompts[i] }}"
-    {% endfor %}
-    Score: {{ parent.score }}
-    ---
+    {{ parent.genotype.prompts | list }}, Score: {{ parent.score }}
     {% endfor %}
 </current_top_performers>
 
@@ -27,11 +29,11 @@
     
     Constraints:
     - Focus strictly on "{{ concept }}".
+    - Maintain the EXACT class order defined in <context>.
     - Use precise medical terminology.
     - You SHOULD NOT reuse exact phrases from the current top performers.
     - You SHOULD NOT introduce new visual concepts. eg: if the concept is "Shape", do not describe "Color". 
     - Output MUST be valid JSON, a list of lists.
-    - Each inner list MUST contain exactly {{ task_definition.class_names|length }} strings in the EXACT order: {% for class_name in task_definition.class_names %}{{ class_name }}{% if not loop.last %}, {% endif %}{% endfor %}.
     - Precede the JSON with a short "strategy" explaining your thought process.
 </instruction>
 
@@ -39,8 +41,8 @@
 # Strategy: ...
 
 ```json
-[   
-    ["Description for {{ task_definition.class_names[0] }}...", "Description for {{ task_definition.class_names[1] }}..."{% if task_definition.class_names|length > 2 %}, "..."{% endif %}],
+[
+    ["Description for {{ task_definition.class_names[0] }}", "Description for {{ task_definition.class_names[1] }}"{% if task_definition.class_names|length > 2 %}, "..."{% endif %}],
     ["...", "..."{% if task_definition.class_names|length > 2 %}, "..."{% endif %}]
 ]
 ```
