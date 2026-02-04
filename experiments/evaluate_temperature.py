@@ -91,7 +91,7 @@ def evaluate(
         exists=True,
     ),
     exec_config: Path = typer.Option(
-        Path("configs/execution/gpu_default.yaml"),
+        Path("configs/execution/cpu_local.yaml"),
         "--exec",
         "-x",
         help="Path to execution config",
