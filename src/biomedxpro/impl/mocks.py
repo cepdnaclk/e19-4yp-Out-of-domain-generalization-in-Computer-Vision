@@ -114,9 +114,6 @@ class MockEvaluator(IFitnessEvaluator):
             # Generate a random score skewed slightly high to simulate "learning"
             score = random.uniform(0.5, 0.95)
 
-            # Get number of classes from dataset
-            num_classes = len(dataset.class_names)
-
             cand.update_metrics(
                 {
                     "inverted_bce": score,
@@ -125,7 +122,6 @@ class MockEvaluator(IFitnessEvaluator):
                     "auc": score,
                     "f1_weighted": score,
                     "margin_score": score,
-                    "per_class_margins": [score] * num_classes,
                 }
             )
 

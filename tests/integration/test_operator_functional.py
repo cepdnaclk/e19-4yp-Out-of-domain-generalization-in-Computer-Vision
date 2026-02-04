@@ -117,7 +117,6 @@ class TestOperatorFunctional:
                 "auc": score,
                 "f1_weighted": score,
                 "margin_score": score,
-                "per_class_margins": [score, score],
             }
 
         # 4. REPRODUCTION (Mutation)

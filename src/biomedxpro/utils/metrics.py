@@ -90,26 +90,8 @@ def calculate_classification_metrics(
     # High positive = Confident Correct
     # Negative = Confident Incorrect
     # Near Zero = Confused / Decision Boundary
-    sample_margins = p_correct - p_max_incorrect
-    margin_score = float(np.mean(sample_margins))
-
-    # E. --- PER-CLASS MARGINS ---
-    # Group margins by class to provide per-class report card
-    num_classes = y_prob.shape[1]
-    per_class_margins = []
-
-    for class_idx in range(num_classes):
-        # Find all samples belonging to this class
-        indices = np.where(y_true == class_idx)[0]
-
-        if len(indices) > 0:
-            # Average margin for this class
-            score = float(np.mean(sample_margins[indices]))
-        else:
-            # Handle edge case: This class wasn't in the batch
-            score = 0.0
-
-        per_class_margins.append(score)
+    margins = p_correct - p_max_incorrect
+    margin_score = float(np.mean(margins))
 
     # 6. Confusion Matrix
     cm = confusion_matrix(y_true, y_pred).tolist()
@@ -121,6 +103,5 @@ def calculate_classification_metrics(
         "auc": float(auc),
         "f1_weighted": float(f1_weighted),
         "margin_score": margin_score,
-        "per_class_margins": per_class_margins,
         "confusion_matrix": cm,
     }

@@ -11,29 +11,20 @@
     The task involves {{ task_definition.class_names|length }} classes. 
     Any list of descriptions below STRICTLY follows this order:
     [{% for name in task_definition.class_names %}"{{ name }}"{% if not loop.last %}, {% endif %}{% endfor %}]
-    
-    EVALUATION METRICS EXPLAINED:
-    - Overall Score: A score (0-100) representing the overall discriminative quality of the entire description set.
-    - Per-Class Margin Scores: Individual margin scores for each class, ranging from -100 to 100
-      * High positive (>50): The description for this class is highly discriminative and confident.
-      * Near zero (~0): The description struggles to differentiate this class from others.
-      * Negative (<0): The description is actively confusing the model for this class.
-    
-    Use these per-class margins to identify which class descriptions need the most improvement.
 </context>
 
 <current_top_performers>
-    Here are the current best description sets in the ascending order of overall score.
-    Format: [List of descriptions matching class order], Overall Score: <normalized fitness 0-100>, Per-Class Margins: [Class 1 margin, Class 2 margin, ...]
+    Here are the highest-scoring ancestors from the previous generation.
+    Format: [List of descriptions matching class order], Score: <fitness>
 
     {% for parent in parents %}
-    {{ parent.genotype.prompts | list }}, Overall Score: {{ parent.overall_score }}, Per-Class Margins: {{ parent.per_class_margins }}
+    {{ parent.genotype.prompts | list }}, Score: {{ parent.score }}
     {% endfor %}
 </current_top_performers>
 
 <instruction>
     1. ANALYZE: Analyze at the <current_top_performers>. 
-    2. STRATEGIZE: Devise a strategy to improve upon these description sets. Give special attention to classes with low or negative margin scores.
+    2. STRATEGIZE: Devise a strategy to improve upon these description sets. Give closer attention to how the most similar classes are described, these are often the hardest to distinguish. Discriminating between these similar classes will lead to a higher overall score.
     3. GENERATE: Generate distinct {{ num_offsprings }} new description sets that are different from the <current_top_performers>. 
     
     Constraints:

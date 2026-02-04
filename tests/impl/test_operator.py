@@ -211,7 +211,6 @@ class TestReproduce:
             "f1_macro": 0.82,
             "f1_weighted": 0.84,
             "margin_score": 0.81,
-            "per_class_margins": [0.81, 0.81],
         }
 
         p2 = Individual(
@@ -229,7 +228,6 @@ class TestReproduce:
             "f1_macro": 0.91,
             "f1_weighted": 0.89,
             "margin_score": 0.90,
-            "per_class_margins": [0.90, 0.90],
         }
         return [p1, p2]
 
@@ -255,12 +253,8 @@ class TestReproduce:
             view_models = context["parents"]
 
             # Verify Sorting (Lowest score first) and Normalization
-            assert view_models[0]["overall_score"] == 60  # 0.8
-            assert view_models[1]["overall_score"] == 90  # 0.9
-
-            # Verify per-class margins are included
-            assert "per_class_margins" in view_models[0]
-            assert "class_names" in view_models[0]
+            assert view_models[0]["score"] == 60  # 0.8
+            assert view_models[1]["score"] == 90  # 0.9
 
     def test_truncates_excess_offspring(
         self,
