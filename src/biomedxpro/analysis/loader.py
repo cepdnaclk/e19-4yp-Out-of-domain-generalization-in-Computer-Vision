@@ -232,11 +232,15 @@ class EvolutionHistory:
         """
         Trace ancestry back to generation 0.
 
+        Returns all unique ancestors (parents, grandparents, great-grandparents, etc.).
+        With crossover, an individual can have 2+ parents per generation, so the total
+        ancestor count can be much larger than the number of generations.
+
         Args:
             individual_id: ID of individual to trace
 
         Returns:
-            List of ancestor IDs from oldest to youngest (excluding self)
+            List of unique ancestor IDs
         """
         # Get the record (take first appearance)
         records = self.get_individual_history(individual_id)
@@ -244,22 +248,24 @@ class EvolutionHistory:
             return []
 
         record = records[0]
-        lineage: list[str] = []
 
-        # Recursively trace parents
-        for parent_id in record.parents:
-            lineage.extend(self.get_lineage(parent_id))
-            lineage.append(parent_id)
+        # Use BFS to collect all ancestors without duplicates
+        ancestors = set()
+        to_visit = list(record.parents)
 
-        # Remove duplicates while preserving order
-        seen = set()
-        unique_lineage = []
-        for ancestor_id in lineage:
-            if ancestor_id not in seen:
-                seen.add(ancestor_id)
-                unique_lineage.append(ancestor_id)
+        while to_visit:
+            parent_id = to_visit.pop(0)
+            if parent_id in ancestors:
+                continue
 
-        return unique_lineage
+            ancestors.add(parent_id)
+
+            # Get this parent's parents
+            parent_records = self.get_individual_history(parent_id)
+            if parent_records:
+                to_visit.extend(parent_records[0].parents)
+
+        return list(ancestors)
 
     def iter_island_snapshots(self, concept: str) -> list[IslandSnapshot]:
         """

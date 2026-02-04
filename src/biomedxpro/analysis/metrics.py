@@ -144,7 +144,7 @@ class ChampionAnalyzer:
         first = appearances[0]
         last = appearances[-1]
 
-        # Get lineage
+        # Get lineage (all unique ancestors)
         lineage = self.history.get_lineage(individual_id)
 
         return ChampionInfo(
