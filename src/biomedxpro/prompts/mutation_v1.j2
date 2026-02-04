@@ -23,8 +23,8 @@
 </current_top_performers>
 
 <instruction>
-    1. ANALYZE: Look at the <current_top_performers>. 
-    2. STRATEGIZE: Devise a strategy to improve upon these description sets, balancing refinement and diversity.
+    1. ANALYZE: Analyze at the <current_top_performers>. 
+    2. STRATEGIZE: Devise a strategy to improve upon these description sets. Give closer attention to how the most similar classes are described, these are often the hardest to distinguish. Discriminating between these similar classes will lead to a higher overall score.
     3. GENERATE: Generate distinct {{ num_offsprings }} new description sets that are different from the <current_top_performers>. 
     
     Constraints:
@@ -32,7 +32,8 @@
     - Maintain the EXACT class order defined in <context>.
     - Use precise medical terminology.
     - You SHOULD NOT reuse exact phrases from the current top performers.
-    - You SHOULD NOT introduce new visual concepts. eg: if the concept is "Shape", do not describe "Color". 
+    - You SHOULD NOT introduce new visual concepts. eg: if the concept is "Shape", do not describe "Color".
+    - Give closer attention to differentiating the most similar classes. 
     - Output MUST be valid JSON, a list of lists.
     - Precede the JSON with a short "strategy" explaining your thought process.
 </instruction>
