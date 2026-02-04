@@ -55,17 +55,15 @@ def setup_logging(
     )
 
     # 5. Usage Sidecar Sink (Filters strictly for usage events, writes pure JSON)
-    def usage_filter(record: Any) -> bool:
-        return "usage_data" in record["extra"]
-
-    def usage_formatter(record: Any) -> str:
-        # Extract ONLY the payload, ignore log levels/timestamps/messages
-        return json.dumps(record["extra"]["usage_data"]) + "\n"
+    def usage_sink(message: Any) -> None:
+        """Custom sink that writes only the usage_data payload as JSON."""
+        record = message.record
+        if "usage_data" in record["extra"]:
+            with open(usage_log_path, "a", encoding="utf-8") as f:
+                f.write(json.dumps(record["extra"]["usage_data"]) + "\n")
 
     logger.add(
-        usage_log_path,
-        filter=usage_filter,
-        format=usage_formatter,
+        usage_sink,
         level="INFO",
         enqueue=True,  # Critical for async writing
     )
