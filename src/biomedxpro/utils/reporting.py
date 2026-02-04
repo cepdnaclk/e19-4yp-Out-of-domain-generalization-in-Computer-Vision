@@ -3,9 +3,16 @@ from loguru import logger
 from biomedxpro.core.domain import EvaluationMetrics, Individual, MetricName
 
 
-def print_champion_summary(champions: list[Individual], metric: MetricName) -> None:
+def print_champion_summary(
+    champions: list[Individual], metric: MetricName, class_names: list[str]
+) -> None:
     """
     Prints a formatted summary of the discovered experts.
+
+    Args:
+        champions: List of champion individuals
+        metric: Metric used for scoring
+        class_names: List of class names to display with prompts
     """
     print("\n" + "=" * 60)
     logger.success(
@@ -16,12 +23,10 @@ def print_champion_summary(champions: list[Individual], metric: MetricName) -> N
     for ind in champions:
         score = ind.get_fitness(metric)
         logger.info(f"Expert Concept: {ind.concept}")
-        # Assuming metric is a valid key in the metrics dict, otherwise might crash if key not found
-        # But Indivudal.get_fitness handles it.
         logger.info(f"    Validation Score ({metric}): {score:.4f}")
         logger.info("    Prompts:")
         for i, prompt in enumerate(ind.genotype.prompts):
-            logger.info(f"        Class {i}: {prompt}")
+            logger.info(f"        {class_names[i]}: {prompt}")
         print("-" * 60)
 
 

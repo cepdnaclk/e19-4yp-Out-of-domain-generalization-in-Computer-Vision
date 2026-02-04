@@ -94,7 +94,9 @@ def run(
     champions = orchestrator.run()
 
     # 5. Reporting Phase (Evolution)
-    reporting.print_champion_summary(champions, config.evolution.target_metric)
+    reporting.print_champion_summary(
+        champions, config.evolution.target_metric, config.dataset.class_names
+    )
 
     # 6. Deployment Phase (Execution)
     logger.info("Constructing Prompt Ensemble from champions...")
