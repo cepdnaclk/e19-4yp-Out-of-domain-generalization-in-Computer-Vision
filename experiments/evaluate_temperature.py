@@ -47,7 +47,7 @@ def reconstruct_individuals_from_champions(
             continue
 
         # Reconstruct Individual
-        from biomedxpro.core.domain import Individual, PromptGenotype
+        from biomedxpro.core.domain import CreationOperation, Individual, PromptGenotype
 
         genotype = PromptGenotype(prompts=tuple(record.prompts))
         individual = Individual(
@@ -55,6 +55,7 @@ def reconstruct_individuals_from_champions(
             genotype=genotype,
             concept=concept,
             generation_born=record.generation_born,
+            operation=CreationOperation.LLM_MUTATION,  # Historical record
         )
 
         # Load metrics
