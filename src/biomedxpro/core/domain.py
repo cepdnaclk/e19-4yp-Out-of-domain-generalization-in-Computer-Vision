@@ -71,10 +71,13 @@ class EvaluationMetrics(TypedDict):
     accuracy: float
     auc: float
     f1_weighted: float
+    soft_f1_macro: float
     confusion_matrix: NotRequired[list[list[int]]]
 
 
-MetricName = Literal["inverted_bce", "f1_macro", "accuracy", "auc", "f1_weighted"]
+MetricName = Literal[
+    "inverted_bce", "f1_macro", "accuracy", "auc", "f1_weighted", "soft_f1_macro"
+]
 
 
 @dataclass(slots=True, frozen=True)

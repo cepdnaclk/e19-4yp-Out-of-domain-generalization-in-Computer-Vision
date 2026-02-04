@@ -116,6 +116,7 @@ class TestOperatorFunctional:
                 "f1_macro": score,
                 "auc": score,
                 "f1_weighted": score,
+                "soft_f1_macro": score,
             }
 
         # 4. REPRODUCTION (Mutation)

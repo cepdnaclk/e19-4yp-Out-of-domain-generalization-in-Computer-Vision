@@ -39,7 +39,7 @@ def run(
     # 5. Overrides
     shots: int = typer.Option(16, "--shots", "-s", help="Number of few-shot examples"),
     metric: str = typer.Option(
-        "f1_score", "--metric", "-m", help="Optimization target metric"
+        "soft_f1_macro", "--metric", "-m", help="Optimization target metric"
     ),
     exp_name: Optional[str] = typer.Option(
         None, "--exp-name", "-n", help="Optional experiment name override"
