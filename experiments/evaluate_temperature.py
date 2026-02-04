@@ -69,7 +69,7 @@ def reconstruct_individuals_from_champions(
         individuals.append(individual)
         logger.info(
             f"✓ Loaded champion '{concept}': "
-            f"{metric.value}={metrics[metric]:.4f}, "
+            f"{metric}={metrics[metric]:.4f}, "
             f"accuracy={metrics['accuracy']:.4f}"
         )
 
@@ -226,7 +226,7 @@ def evaluate(
         for ind, weight in zip(individuals, ensemble.weights):
             logger.info(
                 f"  {ind.concept:20s}: weight={weight.item():.6f}, "
-                f"{metric.value}={ind.get_fitness(metric):.4f}"
+                f"{metric}={ind.get_fitness(metric):.4f}"
             )
 
         # Evaluate
@@ -252,7 +252,7 @@ def evaluate(
         logger.info(f"  Accuracy:  {metrics['accuracy']:.4f}")
         logger.info(f"  F1 Score:  {metrics['f1_macro']:.4f}")
         logger.info(f"  AUC:       {metrics.get('auc', 0.0):.4f}")
-        logger.info(f"  {metric.value}:    {metrics[metric]:.4f}")
+        logger.info(f"  {metric}:    {metrics[metric]:.4f}")
 
         # Show confusion matrix
         logger.info("  Confusion Matrix:")
@@ -273,7 +273,7 @@ def evaluate(
     table.add_column("Temperature", style="cyan", justify="center")
     table.add_column("Accuracy", justify="center")
     table.add_column("F1 Score", justify="center")
-    table.add_column(f"{metric.value}", justify="center")
+    table.add_column(f"{metric}", justify="center")
     table.add_column("Δ Acc vs T=1.0", justify="center")
 
     baseline_acc = next(r["accuracy"] for r in results if r["temperature"] == 1.0)
