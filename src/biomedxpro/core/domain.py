@@ -72,6 +72,7 @@ class EvaluationMetrics(TypedDict):
     auc: float
     f1_weighted: float
     margin_score: float
+    per_class_margins: list[float]  # Ordered list matching task_definition.class_names
     confusion_matrix: NotRequired[list[list[int]]]
 
 
