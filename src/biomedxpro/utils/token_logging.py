@@ -1,10 +1,11 @@
 # src/biomedxpro/utils/token_logging.py
 
 import json
-import time
 from datetime import datetime
 from pathlib import Path
-from typing import Any, Dict
+from typing import Any
+
+from loguru import logger
 
 
 class TokenUsageLogger:
@@ -16,45 +17,41 @@ class TokenUsageLogger:
         self.file_path.touch()
 
         # Running totals
-        self.total_prompt = 0
-        self.total_completion = 0
+        self.total_input = 0
+        self.total_output = 0
+        self.total_reasoning = 0
         self.total_calls = 0
 
-        self.estimated_prompt = 0
-        self.estimated_completion = 0
-        self.estimated_calls = 0
+        logger.info(f"Initialized token logger: {self.file_path}")
 
     def log(self, record: dict[str, Any]) -> None:
         # Append the record
         with open(self.file_path, "a", encoding="utf-8") as f:
             f.write(json.dumps(record) + "\n")
 
-        # Update totals only if numeric
-        if not record.get("prompt_estimated", False):
-            self.total_prompt += record.get("prompt_tokens", 0) or 0
-        else:
-            self.estimated_prompt += record.get("prompt_tokens", 0) or 0
+        # Update totals
+        input_tokens = record.get("input_tokens", 0)
+        output_tokens = record.get("output_tokens", 0)
+        reasoning_tokens = record.get("reasoning_tokens", 0)
 
-        if not record.get("completion_estimated", False):
-            self.total_completion += record.get("completion_tokens", 0) or 0
-        else:
-            self.estimated_completion += record.get("completion_tokens", 0) or 0
-
+        self.total_input += input_tokens
+        self.total_output += output_tokens
+        self.total_reasoning += reasoning_tokens
         self.total_calls += 1
-        if record.get("prompt_estimated", False) or record.get(
-            "completion_estimated", False
-        ):
-            self.estimated_calls += 1
+
+        logger.debug(
+            f"LLM call #{self.total_calls}: "
+            f"{record.get('provider')}/{record.get('model')} - "
+            f"Input: {input_tokens}, Output: {output_tokens}, Reasoning: {reasoning_tokens}"
+        )
 
     def summary(self) -> dict[str, int]:
         return {
             "total_calls": self.total_calls,
-            "total_prompt_tokens": self.total_prompt,
-            "total_completion_tokens": self.total_completion,
-            "estimated_prompt_tokens": self.estimated_prompt,
-            "estimated_completion_tokens": self.estimated_completion,
-            "total_tokens": self.total_prompt + self.total_completion,
-            "total_estimated_calls": self.estimated_calls,
+            "total_input_tokens": self.total_input,
+            "total_output_tokens": self.total_output,
+            "total_reasoning_tokens": self.total_reasoning,
+            "total_tokens": self.total_input + self.total_output + self.total_reasoning,
         }
 
     def dump_summary(self) -> None:
@@ -62,5 +59,9 @@ class TokenUsageLogger:
         summary_record = {"event": "token_summary", **self.summary()}
         with open(self.file_path, "a", encoding="utf-8") as f:
             f.write(json.dumps(summary_record) + "\n")
-        with open(self.file_path, "a", encoding="utf-8") as f:
-            f.write(json.dumps(summary_record) + "\n")
+
+        logger.info(
+            f"Token usage summary: {self.total_calls} calls, "
+            f"{self.total_input + self.total_output + self.total_reasoning} total tokens "
+            f"(Input: {self.total_input}, Output: {self.total_output}, Reasoning: {self.total_reasoning})"
+        )

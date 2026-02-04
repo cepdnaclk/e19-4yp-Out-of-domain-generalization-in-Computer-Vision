@@ -57,42 +57,30 @@ class OpenAIClient(ILLMClient):
             output_text = response.output_text or ""
             usage = getattr(response, "usage", None)
 
-            # Prompt tokens
-            if usage and usage.input_tokens is not None:
-                prompt_tokens = usage.input_tokens
-                prompt_estimated = False
-            else:
-                prompt_tokens = len(prompt) // 4
-                prompt_estimated = True
-
-            # Completion tokens
-            if usage and usage.output_tokens is not None:
-                completion_tokens = usage.output_tokens
-                completion_estimated = False
-            else:
-                completion_tokens = len(output_text) // 4
-                completion_estimated = True
-
-            # Total tokens
-            if usage and usage.total_tokens is not None:
-                total_tokens = usage.total_tokens
-                total_estimated = False
-            else:
-                total_tokens = prompt_tokens + completion_tokens
-                total_estimated = True
+            # Extract token counts from API response or estimate
+            input_tokens = (
+                usage.input_tokens
+                if usage and usage.input_tokens is not None
+                else len(prompt) // 4
+            )
+            output_tokens = (
+                usage.output_tokens
+                if usage and usage.output_tokens is not None
+                else len(output_text) // 4
+            )
+            # Reasoning tokens are provider-specific (e.g., o1 models)
+            reasoning_tokens = (
+                getattr(usage, "reasoning_tokens", 0) if usage else 0
+            ) or 0
 
             record = {
                 "provider": self.provider,
                 "model": self.model_name,
-                "prompt_tokens": prompt_tokens,
-                "prompt_estimated": prompt_estimated,
-                "completion_tokens": completion_tokens,
-                "completion_estimated": completion_estimated,
-                "total_tokens": total_tokens,
-                "total_estimated": total_estimated,
+                "input_tokens": input_tokens,
+                "output_tokens": output_tokens,
+                "reasoning_tokens": reasoning_tokens,
             }
 
-            # Log to TokenUsageLogger
             self.token_logger.log(record)
             return str(response.output_text)
 
@@ -135,48 +123,26 @@ class GeminiClient(ILLMClient):
             output_text = response.text or ""
             usage = getattr(response, "usage_metadata", None)
 
-            # Initialize token counts and estimated flags
-            if usage:
-                # Prompt tokens
-                if usage.prompt_token_count is not None:
-                    prompt_tokens = usage.prompt_token_count
-                    prompt_estimated = False
-                else:
-                    prompt_tokens = len(prompt) // 4
-                    prompt_estimated = True
-
-                # Completion tokens
-                if usage.candidates_token_count is not None:
-                    completion_tokens = usage.candidates_token_count
-                    completion_estimated = False
-                else:
-                    completion_tokens = len(output_text) // 4
-                    completion_estimated = True
-
-                # Total tokens
-                if usage.total_token_count is not None:
-                    total_tokens = usage.total_token_count
-                    total_estimated = False
-                else:
-                    total_tokens = prompt_tokens + completion_tokens
-                    total_estimated = True
-
-            else:
-                # Fallback heuristic
-                prompt_tokens = len(prompt) // 4
-                completion_tokens = len(output_text) // 4
-                total_tokens = prompt_tokens + completion_tokens
-                prompt_estimated = completion_estimated = total_estimated = True
+            # Extract token counts from API response or estimate
+            input_tokens = (
+                usage.prompt_token_count
+                if usage and usage.prompt_token_count is not None
+                else len(prompt) // 4
+            )
+            output_tokens = (
+                usage.candidates_token_count
+                if usage and usage.candidates_token_count is not None
+                else len(output_text) // 4
+            )
+            # Gemini doesn't typically report reasoning tokens separately
+            reasoning_tokens = 0
 
             record = {
                 "provider": self.provider,
                 "model": self.model_name,
-                "prompt_tokens": prompt_tokens,
-                "prompt_estimated": prompt_estimated,
-                "completion_tokens": completion_tokens,
-                "completion_estimated": completion_estimated,
-                "total_tokens": total_tokens,
-                "total_estimated": total_estimated,
+                "input_tokens": input_tokens,
+                "output_tokens": output_tokens,
+                "reasoning_tokens": reasoning_tokens,
             }
 
             self.token_logger.log(record)
