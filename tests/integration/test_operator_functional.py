@@ -1,4 +1,5 @@
 import os
+from unittest.mock import MagicMock
 
 import pytest
 from dotenv import load_dotenv
@@ -24,8 +25,7 @@ def functional_task_def() -> TaskDefinition:
     return TaskDefinition(
         task_name="Pneumonia Detection",
         image_modality="Chest X-Ray",
-        positive_class="Pneumonia",
-        negative_class="Normal",
+        class_names=["Normal", "Pneumonia"],
         role="Radiologist",
         concepts=None,
     )
@@ -55,7 +55,9 @@ def real_operator(functional_task_def: TaskDefinition) -> LLMOperator:
     else:
         pytest.skip("No API keys available for functional integration test.")
 
-    client = create_llm_client(settings)
+    # Mock token logger for tests
+    mock_logger = MagicMock()
+    client = create_llm_client(settings, token_logger=mock_logger)
 
     # Ensure strategy paths are correct relative to where pytest is run
     strategy = PromptStrategy(
@@ -102,8 +104,8 @@ class TestOperatorFunctional:
         first_born = population[0]
         assert isinstance(first_born, Individual)
         assert isinstance(first_born.genotype, PromptGenotype)  # Dataclass check
-        assert first_born.genotype.negative_prompt  # Should not be empty
-        assert first_born.genotype.positive_prompt  # Should not be empty
+        assert len(first_born.genotype.prompts) == 2  # Should have 2 class prompts
+        assert all(prompt for prompt in first_born.genotype.prompts)  # All non-empty
 
         # 3. SIMULATE EVALUATION (The "Mock" Step)
         # We can't integrate the GPU here easily, so we manually assign fitness

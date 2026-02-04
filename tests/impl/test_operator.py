@@ -35,8 +35,7 @@ def mock_task_def() -> TaskDefinition:
     return TaskDefinition(
         task_name="Test Task",
         image_modality="Test Modality",
-        positive_class="Pos",
-        negative_class="Neg",
+        class_names=["Neg", "Pos"],
         role="Tester",
         concepts=None,
     )
@@ -152,17 +151,18 @@ class TestInitializePopulation:
             offspring = operator_with_mocks.initialize_population(2, "Shape")
 
         assert len(offspring) == 2
-        assert offspring[0].genotype.positive_prompt == "p1"
+        assert offspring[0].genotype.prompts[1] == "p1"  # Index 1 = Pos class
         assert offspring[0].concept == "Shape"
 
     def test_filters_invalid_items(
         self, operator_with_mocks: LLMOperator, mock_llm: MagicMock
     ) -> None:
         # One valid, one invalid (wrong length)
+        # Expected length = 2 (from mock_task_def.class_names)
         response = json.dumps(
             [
-                ["n1", "p1"],  # Valid
-                ["n2"],  # Invalid
+                ["n1", "p1"],  # Valid - length matches class count
+                ["n2"],  # Invalid - wrong length
             ]
         )
         mock_llm.generate.return_value = response
@@ -198,7 +198,7 @@ class TestReproduce:
         #   0.9 -> Max -> 90
         p1 = Individual(
             id="1",
-            genotype=PromptGenotype(negative_prompt="n", positive_prompt="p"),
+            genotype=PromptGenotype(prompts=("n", "p")),
             generation_born=0,
             parents=[],
             concept="C",
@@ -214,7 +214,7 @@ class TestReproduce:
 
         p2 = Individual(
             id="2",
-            genotype=PromptGenotype(negative_prompt="n", positive_prompt="p"),
+            genotype=PromptGenotype(prompts=("n", "p")),
             generation_born=0,
             parents=[],
             concept="C",
@@ -274,5 +274,4 @@ class TestReproduce:
             )
 
         assert len(offspring) == 1
-        assert offspring[0].genotype.positive_prompt == "p1"
-        assert offspring[0].genotype.positive_prompt == "p1"
+        assert offspring[0].genotype.prompts[1] == "p1"  # Index 1 = Pos class

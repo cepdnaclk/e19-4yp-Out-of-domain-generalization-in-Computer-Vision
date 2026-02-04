@@ -1,5 +1,6 @@
 # tests/integration/test_providers.py
 import os
+from unittest.mock import MagicMock
 
 import pytest
 from dotenv import load_dotenv
@@ -20,8 +21,7 @@ def basic_task_def() -> TaskDefinition:
     return TaskDefinition(
         task_name="Melanoma Classification",
         image_modality="Dermoscopic Images",
-        positive_class="Melanoma",
-        negative_class="Benign",
+        class_names=["Benign", "Melanoma"],
         role="Dermatology Expert",
         concepts=None,
     )
@@ -58,7 +58,8 @@ def test_groq_integration(
     )
 
     # 1. Create Real Client (loads keys from env)
-    client = create_llm_client(settings)
+    mock_logger = MagicMock()
+    client = create_llm_client(settings, token_logger=mock_logger)
 
     # 2. Create Real Operator
     operator = LLMOperator(client, basic_strategy, basic_task_def)
@@ -89,7 +90,8 @@ def test_gemini_integration(
         llm_params={"temperature": 0.0},
     )
 
-    client = create_llm_client(settings)
+    mock_logger = MagicMock()
+    client = create_llm_client(settings, token_logger=mock_logger)
     operator = LLMOperator(client, basic_strategy, basic_task_def)
 
     concepts = operator.discover_concepts()
