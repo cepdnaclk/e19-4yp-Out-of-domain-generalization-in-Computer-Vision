@@ -56,10 +56,11 @@ def calculate_classification_metrics(
 
     # 4. Compute Inverted BCE (Log Loss)
     # We invert it because the evolutionary algorithm MAXIMIZES fitness.
+    # Use 1/(1+loss) to keep result bounded in [0, 1] range.
     try:
         # log_loss handles both binary and multi-class automatically
         loss = log_loss(y_true, y_prob)
-        inverted_bce = 1.0 / (loss + 1e-6)
+        inverted_bce = 1.0 / (1.0 + loss)
     except ValueError:
         inverted_bce = 0.0
 
