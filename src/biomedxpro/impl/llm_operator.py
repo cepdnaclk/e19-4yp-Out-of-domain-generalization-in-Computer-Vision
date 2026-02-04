@@ -194,19 +194,19 @@ class LLMOperator(IOperator):
         offspring = []
         if isinstance(data_list, list):
             for data in data_list:
-                if (not isinstance(data, list)) or len(data) != 2:
+                # Validate: LLM should return list with length = num_classes
+                expected_len = len(self.task_def.class_names)
+                if (not isinstance(data, list)) or len(data) != expected_len:
                     logger.warning(
-                        f"Skipping invalid individual data during initialization for concept '{concept}': {data}"
+                        f"Skipping invalid individual data during initialization for concept '{concept}': "
+                        f"Expected {expected_len} prompts, got {data}"
                     )
                     continue
 
                 ind = Individual(
                     id=uuid.uuid4(),
-                    # We store the structured pair in genotype
-                    genotype=PromptGenotype(
-                        negative_prompt=data[0],
-                        positive_prompt=data[1],
-                    ),
+                    # Store as ordered tuple matching task_def.class_names order
+                    genotype=PromptGenotype(prompts=tuple(data)),
                     generation_born=0,
                     parents=[],
                     concept=concept,
@@ -263,18 +263,17 @@ class LLMOperator(IOperator):
                     )
                     continue
 
-                if len(data) != 2:
+                expected_len = len(self.task_def.class_names)
+                if len(data) != expected_len:
                     logger.warning(
-                        "Inididual data does not contain exactly two prompts. Extracting first two elements."
+                        f"Individual data does not contain exactly {expected_len} prompts. "
+                        f"Expected {expected_len}, got {len(data)}. Skipping."
                     )
-                    data = data[:2]
+                    continue
 
                 ind = Individual(
                     id=uuid.uuid4(),
-                    genotype=PromptGenotype(
-                        negative_prompt=data[0],
-                        positive_prompt=data[1],
-                    ),
+                    genotype=PromptGenotype(prompts=tuple(data)),
                     generation_born=current_generation,
                     parents=parent_ids,
                     operation=CreationOperation.LLM_MUTATION,

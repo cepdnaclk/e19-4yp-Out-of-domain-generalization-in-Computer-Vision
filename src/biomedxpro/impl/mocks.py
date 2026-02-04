@@ -38,11 +38,11 @@ class MockOperator(IOperator):
         offspring = []
         for _ in range(num_offsprings):
             suffix = random.randint(1000, 9999)
-            # Create prompts dict from task definition's class names
-            prompts = {
-                class_name: f"init {class_name} {concept} {suffix}"
+            # Create ordered tuple following task_def.class_names order
+            prompts = tuple(
+                f"init {class_name} {concept} {suffix}"
                 for class_name in self.task_def.class_names
-            }
+            )
             ind = Individual(
                 genotype=PromptGenotype(prompts=prompts),
                 generation_born=0,
@@ -77,15 +77,14 @@ class MockOperator(IOperator):
             # Simulate inheritance by picking a random parent to mention in debug text
             parent = random.choice(parents)
 
-            # Get first class name from parent for debug text
-            first_class = parent.genotype.class_names[0]
-            parent_prompt_snippet = parent.genotype.prompts[first_class][:10]
+            # Get first prompt from parent for debug text (index 0)
+            parent_prompt_snippet = parent.genotype.prompts[0][:10]
 
-            # Create mutated prompts for all classes
-            prompts = {
-                class_name: f"mutated {class_name} {concept} {suffix} (from {parent_prompt_snippet}...)"
+            # Create ordered tuple following task_def.class_names order
+            prompts = tuple(
+                f"mutated {class_name} {concept} {suffix} (from {parent_prompt_snippet}...)"
                 for class_name in self.task_def.class_names
-            }
+            )
 
             ind = Individual(
                 genotype=PromptGenotype(prompts=prompts),

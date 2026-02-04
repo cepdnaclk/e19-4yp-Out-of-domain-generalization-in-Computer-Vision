@@ -41,9 +41,8 @@ class HistoryRecorder(IHistoryRecorder):
                     "concept": island.concept,
                     "id": str(ind.id),
                     "parents": [str(p) for p in ind.parents],
-                    # The Genotype (Input)
-                    "negative_prompt": ind.genotype.negative_prompt,
-                    "positive_prompt": ind.genotype.positive_prompt,
+                    # The Genotype (Input) - prompts as ordered list
+                    "prompts": list(ind.genotype.prompts),
                     # The Results (Output) - Dumping the full dictionary
                     "metrics": ind.metrics if ind.metrics else None,
                     "metadata": ind.metadata,

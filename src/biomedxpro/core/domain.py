@@ -38,26 +38,28 @@ class StandardSample:
 @dataclass(slots=True, frozen=True)
 class PromptGenotype:
     """
-    DNA expanded for N-classes.
-    Maps Class Names (or IDs) to their respective descriptive prompts.
+    DNA as a pure ordered sequence.
+
+    Mathematical invariant: prompts[i] corresponds to task_def.class_names[i]
+    and aligns with label tensor indices.
 
     Immutable structure ensures accidental mutation is impossible.
     """
 
-    # Key: Class Name/Identifier, Value: The descriptive prompt for that class
-    prompts: dict[str, str]
+    # Ordered prompts: Index i = class i from TaskDefinition.class_names
+    prompts: tuple[str, ...]
 
     def to_dict(self) -> dict[str, Any]:
-        return {"prompts": self.prompts}
-
-    @property
-    def class_names(self) -> list[str]:
-        """Returns ordered list of class names."""
-        return list(self.prompts.keys())
+        """Serialize as list (order preserved)."""
+        return {"prompts": list(self.prompts)}
 
     @property
     def num_classes(self) -> int:
         """Returns the number of classes in this genotype."""
+        return len(self.prompts)
+
+    def __len__(self) -> int:
+        """Support len() for convenience."""
         return len(self.prompts)
 
 
@@ -190,11 +192,9 @@ class Individual:
         Returns a hashable representation of the Genotype.
         Used for deduplication.
 
-        Returns variable-length tuple of prompts in class name order.
+        The genotype.prompts is already a tuple, so we return it directly.
         """
-        return tuple(
-            self.genotype.prompts[cls_name] for cls_name in self.genotype.class_names
-        )
+        return self.genotype.prompts
 
     def update_metrics(self, metrics: EvaluationMetrics) -> None:
         if self.metrics is not None:
@@ -362,12 +362,9 @@ class PromptEnsemble:
         """
         Helper to extract the raw text prompts for all experts.
         Returns list of prompt lists, one per expert.
-        Each inner list contains prompts for all classes in order.
+        Each inner list contains prompts in canonical order (index = class).
         """
-        return [
-            [ind.genotype.prompts[cls_name] for cls_name in ind.genotype.class_names]
-            for ind in self.experts
-        ]
+        return [list(ind.genotype.prompts) for ind in self.experts]
 
     @classmethod
     def from_individuals(

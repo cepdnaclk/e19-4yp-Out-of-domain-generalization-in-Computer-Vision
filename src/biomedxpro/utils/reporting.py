@@ -19,8 +19,9 @@ def print_champion_summary(champions: list[Individual], metric: MetricName) -> N
         # Assuming metric is a valid key in the metrics dict, otherwise might crash if key not found
         # But Indivudal.get_fitness handles it.
         logger.info(f"    Validation Score ({metric}): {score:.4f}")
-        logger.info(f"    Positive Prompt: {ind.genotype.positive_prompt}")
-        logger.info(f"    Negative Prompt: {ind.genotype.negative_prompt}")
+        logger.info("    Prompts:")
+        for i, prompt in enumerate(ind.genotype.prompts):
+            logger.info(f"        Class {i}: {prompt}")
         print("-" * 60)
 
 

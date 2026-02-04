@@ -127,10 +127,7 @@ class FitnessEvaluator(IFitnessEvaluator):
             return
 
         # 1. Extract Prompts
-        prompts = [
-            [ind.genotype.prompts[cls_name] for cls_name in ind.genotype.class_names]
-            for ind in individuals
-        ]
+        prompts = [list(ind.genotype.prompts) for ind in individuals]
 
         # 2. Get the Physics (Reuse the core logic!)
         # Shape: (N_samples, N_individuals, N_classes)
