@@ -89,7 +89,7 @@ class EvolutionParams:
 
     # Global Settings
     generations: int = 20
-    target_metric: MetricName = "accuracy"
+    target_metric: MetricName = "soft_f1_macro"
 
     # Island Settings
     island_capacity: int = 100  # Max size of an island
