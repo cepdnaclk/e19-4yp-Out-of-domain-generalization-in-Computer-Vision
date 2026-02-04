@@ -17,6 +17,14 @@ from biomedxpro.analysis.metrics import (
     FitnessProgressionAnalyzer,
     FitnessStats,
 )
+from biomedxpro.analysis.reports import AnalysisReport, generate_report
+from biomedxpro.analysis.visualizations import (
+    generate_all_plots,
+    plot_champion_timeline,
+    plot_convergence_heatmap,
+    plot_fitness_curves,
+    plot_improvement_rates,
+)
 
 __all__ = [
     # Loader
@@ -31,4 +39,13 @@ __all__ = [
     "FitnessStats",
     "ChampionInfo",
     "ConvergenceInfo",
+    # Reports
+    "AnalysisReport",
+    "generate_report",
+    # Visualizations
+    "plot_fitness_curves",
+    "plot_champion_timeline",
+    "plot_convergence_heatmap",
+    "plot_improvement_rates",
+    "generate_all_plots",
 ]
