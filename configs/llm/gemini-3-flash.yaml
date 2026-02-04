@@ -1,4 +1,0 @@
-llm:
-  provider: "gemini"
-  model_name: "gemini-3-flash-preview"
-  temperature: 1.0
