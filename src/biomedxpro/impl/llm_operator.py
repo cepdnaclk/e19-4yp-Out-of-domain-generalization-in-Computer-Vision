@@ -186,8 +186,10 @@ class LLMOperator(IOperator):
             context={"concept": concept, "num_offsprings": num_offsprings},
         )
 
+        logger.debug(f"Initialization prompt:\n{prompt}")
+
         response = self.llm.generate(prompt)
-        logger.debug(f"Initialization response: {response}")
+        logger.debug(f"Initialization response:\n{response}")
 
         data_list: list[list[str]] = self._parse_llm_json(response)
 
@@ -245,10 +247,11 @@ class LLMOperator(IOperator):
             },
         )
 
+        logger.debug(f"Reproduction prompt:\n{prompt}")
         # 3. LLM Generation
         response = self.llm.generate(prompt)
 
-        logger.debug(f"Reproduction response: {response}")
+        logger.debug(f"Reproduction response:\n{response}")
 
         # 4. Parse & Create Offspring
         data_list: list[list[str]] = self._parse_llm_json(response)
