@@ -59,13 +59,17 @@ def reconstruct_individuals_from_champions(
         )
 
         # Load metrics
-        individual.update_metrics(record.metrics)
+        from biomedxpro.core.domain import EvaluationMetrics
+        
+        # Cast to EvaluationMetrics for type safety
+        metrics: EvaluationMetrics = record.metrics  # type: ignore[assignment]
+        individual.update_metrics(metrics)
 
         individuals.append(individual)
         logger.info(
             f"✓ Loaded champion '{concept}': "
-            f"margin_score={record.metrics.get('margin_score', 'N/A'):.4f}, "
-            f"accuracy={record.metrics.get('accuracy', 'N/A'):.4f}"
+            f"margin_score={metrics['margin_score']:.4f}, "
+            f"accuracy={metrics['accuracy']:.4f}"
         )
 
     return individuals
@@ -169,7 +173,7 @@ def evaluate(
     task_data["dataset"]["shots"] = shots
 
     # Build minimal config
-    from biomedxpro.core.domain import EvolutionParams, TaskDefinition
+    from biomedxpro.core.domain import EvolutionParams, MetricName, TaskDefinition
     from biomedxpro.impl.config import DatasetConfig
 
     config = MasterConfig(
@@ -177,8 +181,8 @@ def evaluate(
         dataset=DatasetConfig.from_dict(task_data["dataset"]),
         evolution=EvolutionParams(
             initial_pop_size=10,
-            num_generations=1,
-            target_metric=metric,
+            generations=1,
+            target_metric=metric,  # type: ignore[arg-type]
         ),
         llm=None,  # type: ignore[arg-type]  # Not needed for evaluation
         execution=ExecutionConfig.from_dict(exec_data.get("execution", {})),
@@ -192,7 +196,6 @@ def evaluate(
     from biomedxpro.impl.evaluator import FitnessEvaluator
 
     evaluator = FitnessEvaluator(
-        class_names=config.dataset.class_names,
         device=config.execution.device,
         batch_size=config.execution.batch_size,
     )
@@ -210,9 +213,11 @@ def evaluate(
         logger.info(f"{'=' * 60}")
 
         # Construct ensemble with this temperature
+        from biomedxpro.core.domain import MetricName
+        
         ensemble = PromptEnsemble.from_individuals(
             individuals=individuals,
-            metric=metric,
+            metric=metric,  # type: ignore[arg-type]
             temperature=temp,
         )
 
@@ -225,34 +230,35 @@ def evaluate(
             )
 
         # Evaluate
-        logger.info(f"Evaluating ensemble on test set ({len(test_ds)} samples)...")
+        logger.info(f"Evaluating ensemble on test set ({test_ds.num_samples} samples)...")
         metrics = evaluator.evaluate_ensemble(ensemble, test_ds)
 
         # Store results
         results.append(
             {
                 "temperature": temp,
-                "accuracy": metrics.accuracy,
-                "f1_score": metrics.f1_score,
-                "precision": metrics.precision,
-                "recall": metrics.recall,
+                "accuracy": metrics["accuracy"],
+                "f1_score": metrics["f1_macro"],
+                "precision": metrics.get("precision", 0.0),
+                "recall": metrics.get("recall", 0.0),
                 "metrics": metrics,
             }
         )
 
         # Print immediate results
         logger.success(f"Results for T={temp}:")
-        logger.info(f"  Accuracy:  {metrics.accuracy:.4f}")
-        logger.info(f"  F1 Score:  {metrics.f1_score:.4f}")
-        logger.info(f"  Precision: {metrics.precision:.4f}")
-        logger.info(f"  Recall:    {metrics.recall:.4f}")
+        logger.info(f"  Accuracy:  {metrics['accuracy']:.4f}")
+        logger.info(f"  F1 Score:  {metrics['f1_macro']:.4f}")
+        logger.info(f"  AUC:       {metrics.get('auc', 0.0):.4f}")
+        logger.info(f"  Margin:    {metrics['margin_score']:.4f}")
 
         # Show confusion matrix
         logger.info("  Confusion Matrix:")
-        cm = metrics.confusion_matrix
-        for i, row in enumerate(cm):
-            row_str = "    " + " ".join(f"{val:5d}" for val in row)
-            logger.info(f"    Class {i}: {row_str}")
+        cm = metrics.get("confusion_matrix")
+        if cm is not None:
+            for i, row in enumerate(cm):
+                row_str = "    " + " ".join(f"{val:5d}" for val in row)
+                logger.info(f"    Class {i}: {row_str}")
 
     # Step 7: Generate comparison table
     logger.info("\n" + "=" * 80)
@@ -265,8 +271,7 @@ def evaluate(
     table.add_column("Temperature", style="cyan", justify="center")
     table.add_column("Accuracy", justify="center")
     table.add_column("F1 Score", justify="center")
-    table.add_column("Precision", justify="center")
-    table.add_column("Recall", justify="center")
+    table.add_column("Margin Score", justify="center")
     table.add_column("Δ Acc vs T=1.0", justify="center")
 
     baseline_acc = next(r["accuracy"] for r in results if r["temperature"] == 1.0)
@@ -275,8 +280,7 @@ def evaluate(
         temp = result["temperature"]
         acc = result["accuracy"]
         f1 = result["f1_score"]
-        prec = result["precision"]
-        rec = result["recall"]
+        margin = result["metrics"]["margin_score"]
         delta = acc - baseline_acc
 
         delta_str = f"{delta:+.4f}" if temp != 1.0 else "baseline"
@@ -286,8 +290,7 @@ def evaluate(
             f"{temp:.2f}",
             f"{acc:.4f}",
             f"{f1:.4f}",
-            f"{prec:.4f}",
-            f"{rec:.4f}",
+            f"{margin:.4f}",
             f"[{delta_style}]{delta_str}[/{delta_style}]",
         )
 
