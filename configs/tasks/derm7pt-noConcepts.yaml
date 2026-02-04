@@ -1,8 +1,7 @@
 task:
   task_name: "Melanoma Diagnosis"
   image_modality: "clinical and dermoscopic images of skin lesions"
-  positive_class: "Melanoma"
-  negative_class: "Benign Skin Lesion"
+  class_names: ["Benign", "Melanoma"]
   role: "Expert Dermatologist"
 
 dataset:

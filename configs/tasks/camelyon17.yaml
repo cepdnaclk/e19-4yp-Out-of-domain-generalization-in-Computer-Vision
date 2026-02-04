@@ -1,8 +1,7 @@
 task:
   task_name: "Tumor Detection"
   image_modality: "histopathology image patches extracted from H&E-stained whole-slide image of lymph node sections"
-  positive_class: "Tumor Tissue"
-  negative_class: "Normal Tissue"
+  class_names: ["Normal", "Tumor"]
   role: "Expert Pathologist"
   concepts: null # Set to null to trigger LLM Concept Discovery
 
