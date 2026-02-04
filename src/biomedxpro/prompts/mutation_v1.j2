@@ -8,20 +8,22 @@
 </objective>
 
 <current_top_performers>
-    Here are the top-performing visually discriminative description pairs in ascending order. Higher score is better.
-    <format>
-    Negative: [negative prompt], Positive: [positive prompt], Score: [score]
-    </format>
+    Here are the top-performing visually discriminative description sets in ascending order. Higher score is better.
     
     {% for parent in parents %}
-    Negative: "{{ parent.genotype.negative_prompt }}",  Positive: "{{ parent.genotype.positive_prompt }}", Score: {{ parent.score }}
+    Description Set {{ loop.index }}:
+    {% for i in range(parent.genotype.prompts|length) %}
+      Class "{{ task_definition.class_names[i] }}": "{{ parent.genotype.prompts[i] }}"
+    {% endfor %}
+    Score: {{ parent.score }}
+    ---
     {% endfor %}
 </current_top_performers>
 
 <instruction>
     1. ANALYZE: Look at the <current_top_performers>. 
-    2. STRATEGIZE: Devise a strategy to improve upon these description pairs, balancing refinement and diversity.
-    2. GENERATE: Generate distint {{ num_offsprings }} new pairs that are different to the <current_top_performers>. 
+    2. STRATEGIZE: Devise a strategy to improve upon these description sets, balancing refinement and diversity.
+    3. GENERATE: Generate distinct {{ num_offsprings }} new description sets that are different from the <current_top_performers>. 
     
     Constraints:
     - Focus strictly on "{{ concept }}".
@@ -29,7 +31,7 @@
     - You SHOULD NOT reuse exact phrases from the current top performers.
     - You SHOULD NOT introduce new visual concepts. eg: if the concept is "Shape", do not describe "Color". 
     - Output MUST be valid JSON, a list of lists.
-    - Each inner list MUST contain exactly two strings: [negative_description, positive_description].
+    - Each inner list MUST contain exactly {{ task_definition.class_names|length }} strings in the EXACT order: {% for class_name in task_definition.class_names %}{{ class_name }}{% if not loop.last %}, {% endif %}{% endfor %}.
     - Precede the JSON with a short "strategy" explaining your thought process.
 </instruction>
 
@@ -38,8 +40,8 @@
 
 ```json
 [   
-    ["Description of negative class...", "Description of positive class..."],
-    ["...", "..."]
+    ["Description for {{ task_definition.class_names[0] }}...", "Description for {{ task_definition.class_names[1] }}..."{% if task_definition.class_names|length > 2 %}, "..."{% endif %}],
+    ["...", "..."{% if task_definition.class_names|length > 2 %}, "..."{% endif %}]
 ]
 ```
 </output_format>

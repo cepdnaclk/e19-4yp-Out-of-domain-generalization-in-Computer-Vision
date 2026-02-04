@@ -4,8 +4,9 @@
 
 <task_description>
     The goal is to identify distinct, high-level visual attributes that experts look for when distinguishing between:
-    1. {{ task_definition.negative_class }} 
-    2. {{ task_definition.positive_class }} 
+    {% for class_name in task_definition.class_names %}
+    {{ loop.index }}. {{ class_name }}
+    {% endfor %}
     
     These concepts will be then used for {{task_definition.task_name}} in {{ task_definition.image_modality }}.
 </task_description>
