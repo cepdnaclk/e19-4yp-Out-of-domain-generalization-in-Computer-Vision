@@ -9,9 +9,26 @@ Load evolutionary history from JSONL logs and compute insights about:
 """
 
 from biomedxpro.analysis.loader import EvolutionHistory, HistoryRecord, IslandSnapshot
+from biomedxpro.analysis.metrics import (
+    ChampionAnalyzer,
+    ChampionInfo,
+    ConvergenceDetector,
+    ConvergenceInfo,
+    FitnessProgressionAnalyzer,
+    FitnessStats,
+)
 
 __all__ = [
+    # Loader
     "EvolutionHistory",
     "HistoryRecord",
     "IslandSnapshot",
+    # Analyzers
+    "FitnessProgressionAnalyzer",
+    "ChampionAnalyzer",
+    "ConvergenceDetector",
+    # Data classes
+    "FitnessStats",
+    "ChampionInfo",
+    "ConvergenceInfo",
 ]
