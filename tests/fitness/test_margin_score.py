@@ -26,9 +26,9 @@ def test_margin_score_perfect_predictions() -> None:
 
     metrics = calculate_classification_metrics(y_true, y_pred, y_prob)
 
-    print(f"✓ Perfect Predictions Test")
+    print("✓ Perfect Predictions Test")
     print(f"  Margin Score: {metrics['margin_score']:.4f}")
-    print(f"  Expected: Close to 0.92 (0.95-0.03 avg)")
+    print("  Expected: Close to 0.92 (0.95-0.03 avg)")
     assert metrics["margin_score"] > 0.85, "High confidence should yield high margin"
     assert metrics["accuracy"] == 1.0, "All predictions correct"
     print()
@@ -48,9 +48,9 @@ def test_margin_score_confused_predictions() -> None:
 
     metrics = calculate_classification_metrics(y_true, y_pred, y_prob)
 
-    print(f"✓ Confused Predictions Test")
+    print("✓ Confused Predictions Test")
     print(f"  Margin Score: {metrics['margin_score']:.4f}")
-    print(f"  Expected: Close to 0.03-0.05 (weak margins)")
+    print("  Expected: Close to 0.03-0.05 (weak margins)")
     assert -0.1 < metrics["margin_score"] < 0.15, "Confusion should yield low margin"
     print()
 
@@ -69,9 +69,9 @@ def test_margin_score_wrong_predictions() -> None:
 
     metrics = calculate_classification_metrics(y_true, y_pred, y_prob)
 
-    print(f"✓ Wrong Predictions Test")
+    print("✓ Wrong Predictions Test")
     print(f"  Margin Score: {metrics['margin_score']:.4f}")
-    print(f"  Expected: Negative (wrong predictions)")
+    print("  Expected: Negative (wrong predictions)")
     assert metrics["margin_score"] < 0, "Wrong predictions should have negative margin"
     assert metrics["accuracy"] == 0.0, "All predictions wrong"
     print()
@@ -94,10 +94,10 @@ def test_margin_score_mixed() -> None:
 
     metrics = calculate_classification_metrics(y_true, y_pred, y_prob)
 
-    print(f"✓ Mixed Predictions Test")
+    print("✓ Mixed Predictions Test")
     print(f"  Margin Score: {metrics['margin_score']:.4f}")
     print(f"  Accuracy: {metrics['accuracy']:.2f}")
-    print(f"  Expected: Moderate positive (mixed results)")
+    print("  Expected: Moderate positive (mixed results)")
     # With 50% accuracy but varied confidence, margin should be moderate
     print()
 
@@ -117,8 +117,9 @@ def test_binary_classification() -> None:
 
     metrics = calculate_classification_metrics(y_true, y_pred, y_prob)
 
+    print("✓ Binary Classification Test")
     print(f"  Margin Score: {metrics['margin_score']:.4f}")
-    print(f"  Expected: ~0.77 (avg of 0.70, 0.84, 0.80, 0.70)")
+    print("  Expected: ~0.77 (avg of 0.70, 0.84, 0.80, 0.70)")
     assert metrics["margin_score"] > 0.7, "Binary should work correctly"
     print()
 
