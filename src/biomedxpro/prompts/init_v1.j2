@@ -24,6 +24,11 @@
     - Keep descriptions concise.
     - Do NOT mention other concepts (e.g., if the concept is "Shape", do not describe "Color").
     - Maintain the EXACT order of classes as listed above.
+    - Each description in a set should have the same template for consistency, 
+        -- eg: "A {image_modality} of a {class_name} typically shows {concept} as [description]."
+        -- you can vary the template across different sets, but within a set, the structure should be consistent. 
+        -- there should be minimal change in the template across classes within the same set, to ensure the focus is on describing the concept rather than varying the structure of the description.
+        -- you can try without {image_modality} or {class_name} if it fits better.
     First think step-by-step about how to describe "{{ concept }}" across all {{ task_definition.class_names|length }} classes.
     Then, output strictly as a JSON list of lists.
     Each inner list must contain exactly {{ task_definition.class_names|length }} strings in the same order as the classes listed above.
