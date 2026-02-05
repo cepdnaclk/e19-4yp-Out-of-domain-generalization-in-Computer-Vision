@@ -10,7 +10,7 @@ from biomedxpro.impl.data_loader import BiomedDataLoader
 from biomedxpro.impl.evaluator import FitnessEvaluator
 from biomedxpro.impl.llm_client import create_llm_client
 from biomedxpro.impl.llm_operator import LLMOperator
-from biomedxpro.impl.selection import RankSelector
+from biomedxpro.impl.selection import RouletteWheelSelector
 from biomedxpro.utils.history import HistoryRecorder
 
 
@@ -84,7 +84,7 @@ def build_orchestrator(
         device=config.execution.device, batch_size=config.execution.batch_size
     )
 
-    selector = RankSelector()
+    selector = RouletteWheelSelector()
 
     return Orchestrator(
         evaluator=evaluator,
