@@ -34,11 +34,6 @@
     - You SHOULD NOT reuse exact phrases from the current top performers.
     - You SHOULD NOT introduce new visual concepts. eg: if the concept is "Shape", do not describe "Color".
     - Give closer attention to differentiating the most similar classes. 
-    - Each description in a set should have the same template for consistency, 
-        -- eg: "A {image_modality} of a {class_name} typically shows {concept} as [description]."
-        -- you can vary the template across different sets, but within a set, the structure should be consistent. 
-        -- there should be minimal change in the template across classes within the same set, to ensure the focus is on describing the concept rather than varying the structure of the description.
-    - Include the class name, and the image modality in each description for clarity.
     - Output MUST be valid JSON, a list of lists.
     - Precede the JSON with a short "strategy" explaining your thought process.
 </instruction>
