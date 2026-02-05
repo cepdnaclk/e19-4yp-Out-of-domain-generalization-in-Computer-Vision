@@ -13,6 +13,7 @@ import torch
 class CreationOperation(StrEnum):
     INITIALIZATION = auto()
     LLM_MUTATION = auto()
+    CROSSOVER = auto()
 
 
 class DataSplit(StrEnum):
@@ -97,7 +98,8 @@ class EvolutionParams:
 
     # Evolutionary Operator Settings
     num_parents: int = 10  # How many winners to select
-    offspring_per_gen: int = 10  # How many children to create per gen
+    offspring_mutated: int = 5  # How many children to create via mutation
+    offspring_crossover: int = 5  # How many children to create via crossover
 
     @classmethod
     def from_dict(cls, config: dict[str, Any]) -> "EvolutionParams":

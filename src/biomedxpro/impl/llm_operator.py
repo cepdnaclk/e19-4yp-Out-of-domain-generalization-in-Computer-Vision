@@ -223,19 +223,11 @@ class LLMOperator(IOperator):
             )
             raise RuntimeError("Initialization failed to produce valid individuals.")
 
-        extra_offspring = self._perform_crossover(
-            individuals=offspring,
-            concept=concept,
-            current_generation=0,
-        )
-
-        offspring.extend(extra_offspring)
-
         logger.debug(f"Initialized {len(offspring)} individuals for '{concept}'")
         return offspring
 
     @_retry_policy
-    def reproduce(
+    def mutate(
         self,
         parents: Sequence[Individual],
         concept: str,
@@ -301,33 +293,41 @@ class LLMOperator(IOperator):
             logger.error(
                 f"No valid offsprings generated for concept '{concept}'. LLM Response: {response[:200]}..."
             )
-            raise RuntimeError("Reproduction failed to produce any valid individuals.")
+            raise RuntimeError("Mutation failed to produce any valid individuals.")
 
         if len(offspring) > num_offsprings:
             offspring = offspring[:num_offsprings]  # Trim excess
 
-        extra_offspring = self._perform_crossover(
-            individuals=offspring,
-            concept=concept,
-            current_generation=current_generation,
-        )
-
-        offspring.extend(extra_offspring)
         return offspring
 
-    def _perform_crossover(
+    def crossover(
         self,
-        individuals: Sequence[Individual],
+        parents: Sequence[Individual],
         concept: str,
+        num_offsprings: int,
         current_generation: int,
-        limit: int = 100,
-    ) -> List[Individual]:
+        target_metric: MetricName,
+    ) -> Sequence[Individual]:
         """
-        Aggressively breeds new variants by mixing the descriptions found in the input individuals.
-        Does not use LLM. Pure combinatorial logic.
+        Generates offspring via crossover (genetic recombination).
+
+        Pure combinatorial logic - no LLM needed.
+        Creates new prompt combinations by randomly mixing class-specific
+        prompts from the parent population.
+
+        Args:
+            parents: Source individuals to recombine
+            concept: The concept this crossover is focused on
+            num_offsprings: Target number of offspring to generate
+            current_generation: Current generation number
+            target_metric: Unused (kept for interface compatibility)
+
+        Returns:
+            List of new individuals created via crossover
         """
         # Need at least 2 individuals to mix useful traits
-        if len(individuals) < 2:
+        if len(parents) < 2:
+            logger.warning(f"Crossover needs at least 2 parents, got {len(parents)}")
             return []
 
         num_classes = len(self.task_def.class_names)
@@ -335,22 +335,27 @@ class LLMOperator(IOperator):
         # 1. Extract Gene Pools
         # pool[0] = {all descriptions for class 0}
         gene_pools: List[List[str]] = [[] for _ in range(num_classes)]
-        for ind in individuals:
+        for ind in parents:
             if len(ind.genotype.prompts) == num_classes:
                 for i, prompt in enumerate(ind.genotype.prompts):
                     gene_pools[i].append(prompt)
 
+        # Validate we have genetic material
+        if any(len(pool) == 0 for pool in gene_pools):
+            logger.warning(f"Crossover for '{concept}' has empty gene pools")
+            return []
+
         # 2. Track existing genotypes to ensure uniqueness
         # Start with the input individuals so we don't duplicate them
-        existing_genotypes = {ind.genotype.prompts for ind in individuals}
+        existing_genotypes = {ind.genotype.prompts for ind in parents}
         new_offspring: List[Individual] = []
 
         # 3. Generate Combinations
-        # Safety break: 500 attempts to find 'limit' unique children
+        # Safety break: 5x attempts to find num_offsprings unique children
         attempts = 0
-        max_attempts = limit * 5
+        max_attempts = num_offsprings * 5
 
-        while len(new_offspring) < limit and attempts < max_attempts:
+        while len(new_offspring) < num_offsprings and attempts < max_attempts:
             attempts += 1
 
             # Construct a random genotype from the pools
@@ -368,19 +373,21 @@ class LLMOperator(IOperator):
             existing_genotypes.add(new_genotype)
 
             # Map all source individuals as parents (Pool Parentage)
-            parent_ids = [ind.id for ind in individuals]
+            parent_ids = [ind.id for ind in parents]
 
             ind = Individual(
                 id=uuid.uuid4(),
                 genotype=PromptGenotype(prompts=new_genotype),
                 generation_born=current_generation,
                 parents=parent_ids,
-                # Ideally, add CROSSOVER to your CreationOperation enum.
-                # If not, LLM_MUTATION is acceptable for now.
-                operation=CreationOperation.LLM_MUTATION,
+                operation=CreationOperation.CROSSOVER,
                 concept=concept,
             )
             new_offspring.append(ind)
 
-        logger.debug(f"Crossover generated {len(new_offspring)} unique recombinations.")
+        logger.debug(
+            f"Crossover generated {len(new_offspring)}/{num_offsprings} unique recombinations "
+            f"for concept '{concept}' (attempts: {attempts})"
+        )
+
         return new_offspring

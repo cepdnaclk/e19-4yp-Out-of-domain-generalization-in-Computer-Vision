@@ -91,7 +91,7 @@ class IOperator(Protocol):
         Generates a list of medical concepts to form islands around.
         """
 
-    def reproduce(
+    def mutate(
         self,
         parents: Sequence[Individual],
         concept: str,
@@ -100,9 +100,24 @@ class IOperator(Protocol):
         target_metric: MetricName,
     ) -> Sequence[Individual]:
         """
-        Generates offspring.
+        Generates offspring via LLM-based mutation.
         The LLM prompt must explicitly include instructions like:
         'Focus strictly on visual features related to {concept}.'
+        """
+        ...
+
+    def crossover(
+        self,
+        parents: Sequence[Individual],
+        concept: str,
+        num_offsprings: int,
+        current_generation: int,
+        target_metric: MetricName,
+    ) -> Sequence[Individual]:
+        """
+        Generates offspring via crossover (genetic recombination).
+        Pure combinatorial logic - no LLM needed.
+        Mixes prompts from different parents to create new combinations.
         """
         ...
 

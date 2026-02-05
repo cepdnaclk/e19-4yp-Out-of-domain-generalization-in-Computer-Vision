@@ -63,13 +63,13 @@ class Orchestrator:
 
     def _process_futures_and_evaluate(
         self, future_map: dict[Future[Sequence[Individual]], str]
-    ) -> dict[str, Sequence[Individual]]:
+    ) -> dict[str, list[Individual]]:
         """
         Synchronizes parallel tasks and performs vectorized fitness evaluation.
 
         This method acts as a synchronization barrier, collecting results from
-        asynchronous LLM tasks. Once collected, it aggregates all new individuals
-        into a single batch for high-throughput GPU evaluation.
+        asynchronous tasks (mutation and crossover). Once collected, it aggregates
+        all new individuals into a single batch for high-throughput GPU evaluation.
 
         Args:
             future_map: A dictionary mapping pending Futures to their corresponding
@@ -77,8 +77,9 @@ class Orchestrator:
 
         Returns:
             A dictionary mapping concept names to their evaluated individuals.
+            Note: Now accumulates multiple results per island (mutation + crossover).
         """
-        results_map: dict[str, Sequence[Individual]] = {}
+        results_map: dict[str, list[Individual]] = {}
         all_individuals_flat: list[Individual] = []
 
         # Collect results from the thread pool as they complete
@@ -87,8 +88,11 @@ class Orchestrator:
             try:
                 individuals = future.result()
                 if individuals:
-                    results_map[concept] = individuals
-                    all_individuals_flat.extend(individuals)
+                    # Accumulate individuals for the same concept
+                    if concept not in results_map:
+                        results_map[concept] = []
+                    results_map[concept].extend(list(individuals))
+                    all_individuals_flat.extend(list(individuals))
                 else:
                     logger.warning(
                         f"Task for island '{concept}' returned no individuals."
@@ -190,7 +194,7 @@ class Orchestrator:
 
         target_metric = self.params.target_metric
 
-        # Fan-Out: Submit reproduction tasks to the thread pool
+        # Fan-Out: Submit BOTH mutation and crossover tasks to the thread pool
         future_to_concept: dict[Future[Sequence[Individual]], str] = {}
 
         for island in self.islands:
@@ -202,17 +206,29 @@ class Orchestrator:
                 gen_logger.warning(f"Island '{island.concept}' skipped (no parents).")
                 continue
 
-            # Submit reproduction task (Network I/O bound operation)
-            future = self.executor.submit(
-                self.operator.reproduce,
-                parents=parents,
-                concept=island.concept,
-                num_offsprings=self.params.offspring_per_gen,
-                target_metric=target_metric,
-                current_generation=gen,
-            )
-            # Map Future to Concept for tracking results
-            future_to_concept[future] = island.concept
+            # Submit MUTATION task (LLM-based, Network I/O bound)
+            if self.params.offspring_mutated > 0:
+                mutation_future = self.executor.submit(
+                    self.operator.mutate,
+                    parents=parents,
+                    concept=island.concept,
+                    num_offsprings=self.params.offspring_mutated,
+                    target_metric=target_metric,
+                    current_generation=gen,
+                )
+                future_to_concept[mutation_future] = island.concept
+
+            # Submit CROSSOVER task (Combinatorial, CPU-bound but fast)
+            if self.params.offspring_crossover > 0:
+                crossover_future = self.executor.submit(
+                    self.operator.crossover,
+                    parents=parents,
+                    concept=island.concept,
+                    num_offsprings=self.params.offspring_crossover,
+                    target_metric=target_metric,
+                    current_generation=gen,
+                )
+                future_to_concept[crossover_future] = island.concept
 
         # Barrier & Evaluation: Synchronize threads and batch evaluate
         results_map = self._process_futures_and_evaluate(future_to_concept)
