@@ -24,6 +24,7 @@
     - Keep descriptions concise.
     - Do NOT mention other concepts (e.g., if the concept is "Shape", do not describe "Color").
     - Maintain the EXACT order of classes as listed above.
+    - Utilize the <description_templates> to draft initial ideas
 
     First think step-by-step about how to describe "{{ concept }}" across all {{ task_definition.class_names|length }} classes.
     Then, output strictly as a JSON list of lists.
@@ -36,8 +37,6 @@
     "A {image_modality} of a {class_name} characterized by {concept-specific description}."
     "An image depicting a {class_name} with {concept-specific description}."
     "A {image_modality} illustrating a {class_name} featuring {concept-specific description}."
-
-    - You can deviate from these templates as long as the descriptions remain discriminative. 
 </description_templates>
 
 
