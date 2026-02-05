@@ -34,7 +34,8 @@ def main() -> None:
         island_capacity=10,
         initial_pop_size=5,
         num_parents=2,
-        offspring_per_gen=2,
+        offspring_mutated=1,
+        offspring_crossover=1,
         target_metric="inverted_bce",
     )
 

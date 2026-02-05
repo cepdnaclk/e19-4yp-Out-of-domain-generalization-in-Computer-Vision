@@ -4,7 +4,8 @@ evolution:
   target_metric: "accuracy"
   initial_pop_size: 10
   num_parents: 5
-  offspring_per_gen: 5
+  offspring_mutated: 3
+  offspring_crossover: 2
 
 dataset:
   shots: 1

@@ -53,7 +53,7 @@ class MockOperator(IOperator):
             offspring.append(ind)
         return offspring
 
-    def reproduce(
+    def mutate(
         self,
         parents: Sequence[Individual],
         concept: str,
@@ -92,6 +92,40 @@ class MockOperator(IOperator):
                 parents=parent_ids,
                 operation=CreationOperation.LLM_MUTATION,
                 metadata={"source": "mock_reproduce"},
+                concept=concept,
+            )
+            offspring.append(ind)
+        return offspring
+
+    def crossover(
+        self,
+        parents: Sequence[Individual],
+        concept: str,
+        num_offsprings: int,
+        current_generation: int,
+        target_metric: MetricName,
+    ) -> Sequence[Individual]:
+        """
+        Simulates crossover by mixing parent prompts.
+        """
+        if len(parents) < 2:
+            return []
+
+        offspring = []
+        for _ in range(num_offsprings):
+            # Pick random prompts from different parents for each class
+            num_classes = len(parents[0].genotype.prompts)
+            new_prompts = []
+            for class_idx in range(num_classes):
+                parent = random.choice(parents)
+                new_prompts.append(parent.genotype.prompts[class_idx])
+
+            ind = Individual(
+                genotype=PromptGenotype(prompts=tuple(new_prompts)),
+                generation_born=current_generation,
+                parents=[p.id for p in parents],
+                operation=CreationOperation.CROSSOVER,
+                metadata={"source": "mock_crossover"},
                 concept=concept,
             )
             offspring.append(ind)

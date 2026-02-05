@@ -3,4 +3,5 @@ evolution:
   island_capacity: 100
   initial_pop_size: 20
   num_parents: 10
-  offspring_per_gen: 5
+  offspring_mutated: 10
+  offspring_crossover: 20
