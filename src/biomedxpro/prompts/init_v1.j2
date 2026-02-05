@@ -24,29 +24,11 @@
     - Keep descriptions concise.
     - Do NOT mention other concepts (e.g., if the concept is "Shape", do not describe "Color").
     - Maintain the EXACT order of classes as listed above.
-    - Utilize the <description_templates> to draft initial ideas
-
+    - Each description should be in the format of: "A {image_modality} of a {class_name} shows {description of concept}.", or a similar structure. 
     First think step-by-step about how to describe "{{ concept }}" across all {{ task_definition.class_names|length }} classes.
     Then, output strictly as a JSON list of lists.
     Each inner list must contain exactly {{ task_definition.class_names|length }} strings in the same order as the classes listed above.
 </instruction>
-
-<description_templates>
-    The following are some examples of a description in a set focusing on a specific concept:
-    "A photo of a {class_name} showing {concept-specific description}."
-    "A {image_modality} of a {class_name} characterized by {concept-specific description}."
-    "An image depicting a {class_name} with {concept-specific description}."
-    "A {image_modality} illustrating a {class_name} featuring {concept-specific description}."
-
-    A trivial description set would be:
-    [
-        {% for class_name in task_definition.class_names %}
-        "A photo of a {{ class_name }}."{% if not loop.last %}, {% endif %}
-        {% endfor %}
-    ]
- 
-</description_templates>
-
 
 <output_format>
 ```json
