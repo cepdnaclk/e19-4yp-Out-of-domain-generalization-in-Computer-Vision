@@ -37,6 +37,14 @@
     "A {image_modality} of a {class_name} characterized by {concept-specific description}."
     "An image depicting a {class_name} with {concept-specific description}."
     "A {image_modality} illustrating a {class_name} featuring {concept-specific description}."
+
+    A trivial description set would be:
+    [
+        {% for class_name in task_definition.class_names %}
+        "A photo of a {{ class_name }}."{% if not loop.last %}, {% endif %}
+        {% endfor %}
+    ]
+ 
 </description_templates>
 
 
