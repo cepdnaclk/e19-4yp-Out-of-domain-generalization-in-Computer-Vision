@@ -121,10 +121,14 @@ class LLMOperator(IOperator):
         if math.isclose(min_s, max_s, abs_tol=1e-9):
             return [85] * len(parents)  # Return a generic 'good' score
 
-        # Linear Mapping: 60 + (score - min) * (30 / range)
+        # Linear Mapping: configurable range for normalized scores
+        lower_bound = 30
+        upper_bound = 70
+
+        score_range = upper_bound - lower_bound
         normalized = []
         for s in raw_scores:
-            norm = 60 + (s - min_s) * (30 / (max_s - min_s))
+            norm = lower_bound + (s - min_s) * (score_range / (max_s - min_s))
             normalized.append(int(round(norm)))
 
         return normalized
