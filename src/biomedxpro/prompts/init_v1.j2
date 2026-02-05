@@ -30,6 +30,18 @@
     Each inner list must contain exactly {{ task_definition.class_names|length }} strings in the same order as the classes listed above.
 </instruction>
 
+<reference_templates>
+    The following are some examples of a description in a set focusing on a specific concept:
+    "A photo of a {class_name} showing {concept-specific description}."
+    "A {image_modality} of a {class_name} characterized by {concept-specific description}."
+    "An image depicting a {class_name} with {concept-specific description}."
+    "A {image_modality} illustrating a {class_name} featuring {concept-specific description}."
+
+    - But remember, your descriptions must be MORE discriminative and FOCUSED on "{{ concept }}" compared to these examples.
+    - You can deviate from these templates as long as the descriptions remain clear, concise, and medically accurate.
+</reference_templates>
+
+
 <output_format>
 ```json
 [
