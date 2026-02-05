@@ -1,6 +1,6 @@
 task:
   task_name: "Breast Tumor Classification"
-  image_modality: "grayscale breast ultrasound images"
+  image_modality: "grayscale breast ultrasound image"
   class_names: ["Benign Tumor", "Malignant Tumor", "Normal"]
   role: "Expert Radiologist"
   concepts: null # Set to null to trigger LLM Concept Discovery
