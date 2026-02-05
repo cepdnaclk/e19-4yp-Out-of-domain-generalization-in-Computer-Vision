@@ -44,7 +44,7 @@ def create_baseline_individual(
         Individual with baseline prompts
     """
     # Generate simple baseline prompts
-    prompts = [f"A photo of a {class_name}" for class_name in class_names]
+    prompts = [f"A {image_modality} of a {class_name}" for class_name in class_names]
 
     genotype = PromptGenotype(prompts=tuple(prompts))
     individual = Individual(
