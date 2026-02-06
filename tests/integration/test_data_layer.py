@@ -45,7 +45,7 @@ class TestAdapterRegistry:
 
     def test_get_adapter_success(self) -> None:
         """Test successful adapter retrieval."""
-        adapter = get_adapter("derm7pt")
+        adapter = get_adapter("derm7pt", root="")
         assert isinstance(adapter, Derm7ptAdapter)
 
     def test_get_adapter_failure(self) -> None:
@@ -348,7 +348,7 @@ class TestIntegration:
         # This is a mock test since we need real dataset files
         # In production, this would use actual datasets
 
-        adapter = get_adapter("derm7pt")
+        adapter = get_adapter("derm7pt", root=" ")
         assert adapter is not None
 
         loader = BiomedDataLoader(device="cpu")

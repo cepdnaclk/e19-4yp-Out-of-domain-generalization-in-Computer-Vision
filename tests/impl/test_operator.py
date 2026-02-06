@@ -53,7 +53,7 @@ def operator_with_mocks(
         # We replace the wait strategy with a fixed 0 seconds
         op.discover_concepts.retry.wait = lambda *args, **kwargs: 0  # type: ignore[attr-defined]
         op.initialize_population.retry.wait = lambda *args, **kwargs: 0  # type: ignore[attr-defined]
-        op.reproduce.retry.wait = lambda *args, **kwargs: 0  # type: ignore[attr-defined]
+        op.mutate.retry.wait = lambda *args, **kwargs: 0  # type: ignore[attr-defined]
 
         return op
 
@@ -188,7 +188,7 @@ class TestInitializePopulation:
         assert mock_llm.generate.call_count == 2  # Retry triggered
 
 
-class TestReproduce:
+class TestMutate:
     @pytest.fixture
     def parents(self) -> list[Individual]:
         # Create parents with specific scores to test normalization
@@ -245,7 +245,7 @@ class TestReproduce:
             # or just mock parse to return valid empty list and catch the Runtime error
             mock_llm.generate.return_value = json.dumps([["n", "p"]])
 
-            operator_with_mocks.reproduce(parents, "Shape", 1, 1, "inverted_bce")
+            operator_with_mocks.mutate(parents, "Shape", 1, 1, "inverted_bce")
 
             # Extract arguments passed to _render
             call_args = mock_render.call_args[1]  # kwargs
@@ -253,8 +253,8 @@ class TestReproduce:
             view_models = context["parents"]
 
             # Verify Sorting (Lowest score first) and Normalization
-            assert view_models[0]["score"] == 60  # 0.8
-            assert view_models[1]["score"] == 90  # 0.9
+            assert view_models[0]["score"] == 30  # 0.8
+            assert view_models[1]["score"] == 70  # 0.9
 
     def test_truncates_excess_offspring(
         self,
@@ -267,7 +267,7 @@ class TestReproduce:
         mock_llm.generate.return_value = response
 
         with patch.object(operator_with_mocks, "_render", return_value="prompt"):
-            offspring = operator_with_mocks.reproduce(
+            offspring = operator_with_mocks.mutate(
                 parents,
                 "Shape",
                 num_offsprings=1,

@@ -123,7 +123,7 @@ class TestOperatorFunctional:
         # Does the Operator correctly normalize those scores (0.8 -> 60)?
         # Does the LLM understand the mutation task?
         offspring_count = 2
-        offspring = real_operator.reproduce(
+        offspring = real_operator.mutate(
             parents=population,
             concept=target_concept,
             num_offsprings=offspring_count,
