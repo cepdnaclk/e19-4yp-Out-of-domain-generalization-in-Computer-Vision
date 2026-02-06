@@ -60,6 +60,7 @@ class MockOperator(IOperator):
         num_offsprings: int,
         current_generation: int,
         target_metric: MetricName,
+        cross_concept_exemplars: Sequence[Individual] | None = None,
     ) -> Sequence[Individual]:
         """
         Generates random mutations.

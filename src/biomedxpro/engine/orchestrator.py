@@ -194,6 +194,14 @@ class Orchestrator:
 
         target_metric = self.params.target_metric
 
+        # Collect cross-island exemplars: top individual from each island
+        # This enables knowledge transfer across concepts
+        island_champions: dict[str, Individual] = {}
+        for island in self.islands:
+            elites = island.get_elite_individuals(k=1, metric=target_metric)
+            if elites:
+                island_champions[island.concept] = elites[0]
+
         # Fan-Out: Submit BOTH mutation and crossover tasks to the thread pool
         future_to_concept: dict[Future[Sequence[Individual]], str] = {}
 
@@ -206,6 +214,13 @@ class Orchestrator:
                 gen_logger.warning(f"Island '{island.concept}' skipped (no parents).")
                 continue
 
+            # Prepare cross-concept exemplars: top individuals from OTHER islands (exclude current concept)
+            cross_concept_exemplars = [
+                champion
+                for concept, champion in island_champions.items()
+                if concept != island.concept
+            ]
+
             # Submit MUTATION task (LLM-based, Network I/O bound)
             if self.params.offspring_mutated > 0:
                 mutation_future = self.executor.submit(
@@ -215,6 +230,9 @@ class Orchestrator:
                     num_offsprings=self.params.offspring_mutated,
                     target_metric=target_metric,
                     current_generation=gen,
+                    cross_concept_exemplars=cross_concept_exemplars
+                    if cross_concept_exemplars
+                    else None,
                 )
                 future_to_concept[mutation_future] = island.concept
 

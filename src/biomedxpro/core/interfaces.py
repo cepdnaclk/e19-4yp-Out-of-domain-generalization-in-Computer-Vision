@@ -98,11 +98,16 @@ class IOperator(Protocol):
         num_offsprings: int,
         current_generation: int,
         target_metric: MetricName,
+        cross_concept_exemplars: Sequence[Individual] | None = None,
     ) -> Sequence[Individual]:
         """
         Generates offspring via LLM-based mutation.
         The LLM prompt must explicitly include instructions like:
         'Focus strictly on visual features related to {concept}.'
+
+        Args:
+            cross_concept_exemplars: Optional top individuals from OTHER islands to provide
+                      cross-concept context and formatting examples.
         """
         ...
 

@@ -238,9 +238,17 @@ class LLMOperator(IOperator):
         num_offsprings: int,
         current_generation: int,
         target_metric: MetricName,
+        cross_concept_exemplars: Sequence[Individual] | None = None,
     ) -> Sequence[Individual]:
         # 1. Prepare View Models (Normalized Scores)
         parent_view_models = self._create_parent_view_models(parents, target_metric)
+
+        # Prepare exemplar view models from other islands
+        cross_concept_exemplar_view_models = None
+        if cross_concept_exemplars:
+            cross_concept_exemplar_view_models = self._create_parent_view_models(
+                cross_concept_exemplars, target_metric
+            )
 
         # 2. Render Template
         prompt = self._render(
@@ -249,6 +257,7 @@ class LLMOperator(IOperator):
                 "parents": parent_view_models,
                 "concept": concept,
                 "num_offsprings": num_offsprings,
+                "cross_concept_exemplars": cross_concept_exemplar_view_models,
             },
         )
 

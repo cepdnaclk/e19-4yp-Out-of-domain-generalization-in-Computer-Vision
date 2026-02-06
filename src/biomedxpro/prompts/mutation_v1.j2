@@ -22,6 +22,18 @@
     {% endfor %}
 </current_top_performers>
 
+{% if cross_concept_exemplars %}
+<examples_from_other_concepts>
+    Below are top-performing descriptions from OTHER concepts for reference.
+    Use these to understand the expected STYLE, FORMATTING, and MEDICAL TERMINOLOGY,
+    but DO NOT copy their focus - they address different visual concepts than "{{ concept }}".
+
+    {% for exemplar in cross_concept_exemplars %}
+    {{ exemplar.individual.concept }}: {{ exemplar.genotype.prompts | list }}
+    {% endfor %}
+</examples_from_other_concepts>
+{% endif %}
+
 <instructions>
     1. DIFFERENTIAL ANALYSIS: Examine the <current_top_performers>. Identify where descriptions are "medically overlapping": if a description for one class could accidentally apply to another, it lacks discriminative power. 
     2. PATHOGNOMONIC STRATEGY: Devise a strategy to emphasize pathognomonic features (features specifically characteristic of one disease). Focus on "Hard Pairs" (clinically similar classes). Your strategy must focus on describing the unique presentation of "{{ concept }}" that allows a clinician to rule out the other possibilities. 
