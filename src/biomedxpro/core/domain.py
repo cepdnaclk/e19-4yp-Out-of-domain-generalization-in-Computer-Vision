@@ -558,3 +558,65 @@ class PromptEnsemble:
 
         # Re-normalize back to probability distribution
         return F.softmax(weighted_log_sum, dim=1)
+
+    def to_dict(self) -> dict[str, Any]:
+        """
+        Serializes the ensemble to a pure Python dictionary.
+        Converts the Tensor weights to a list for JSON/pickle compatibility.
+
+        Returns:
+            Dictionary with experts, weights (as list), and metric name.
+        """
+        return {
+            "experts": [ind.to_dict() for ind in self.experts],
+            # CRITICAL: Tensor -> List for JSON serialization
+            "weights": self.weights.tolist(),
+            "metric": self.metric,
+        }
+
+    @classmethod
+    def from_dict(cls, data: dict[str, Any]) -> "PromptEnsemble":
+        """
+        Reconstructs the ensemble from a dictionary.
+
+        Args:
+            data: Dictionary containing serialized ensemble data
+
+        Returns:
+            Reconstructed PromptEnsemble instance
+
+        Raises:
+            KeyError: If required keys are missing from data
+            ValueError: If data is malformed
+        """
+        # Reconstruct Individuals from serialized data
+        experts = []
+        for ind_data in data["experts"]:
+            # Reconstruct genotype from prompts list
+            genotype = PromptGenotype(prompts=tuple(ind_data["genotype"]["prompts"]))
+
+            # Reconstruct individual
+            ind = Individual(
+                id=ind_data["id"],
+                genotype=genotype,
+                generation_born=ind_data["generation"],
+                parents=ind_data["parents"],
+                operation=CreationOperation(ind_data["operation"]),
+                concept=ind_data["concept"],
+                metadata=ind_data.get("metadata", {}),
+            )
+
+            # Re-attach metrics if they exist
+            if ind_data.get("metrics"):
+                ind.update_metrics(ind_data["metrics"])
+
+            experts.append(ind)
+
+        # CRITICAL: List -> Tensor reconstruction
+        weights = torch.tensor(data["weights"], dtype=torch.float32)
+
+        return cls(
+            experts=experts,
+            weights=weights,
+            metric=data["metric"],
+        )
