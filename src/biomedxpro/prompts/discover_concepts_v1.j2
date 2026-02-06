@@ -1,27 +1,35 @@
 <role>
-    You are an {{ task_definition.role }} specializing in {{ task_definition.task_name }}.
+    You are an {{ task_definition.role }} specializing in differential diagnosis of {{ task_definition.task_name }}.
 </role>
 
 <task_description>
-    The goal is to identify distinct, high-level visual attributes that experts look for when distinguishing between:
+    The goal is to identify distinct, high-level visual attributes that experts use for **differential diagnosis** to distinguish between:
     {% for class_name in task_definition.class_names %}
     {{ loop.index }}. {{ class_name }}
     {% endfor %}
     
-    These concepts will be then used for {{task_definition.task_name}} in {{ task_definition.image_modality }}.
+    These concepts will be used for {{task_definition.task_name}} in {{ task_definition.image_modality }}.
 </task_description>
 
 <instruction>
-    List distinct visual concepts relevant to this task.
-    - Concepts should be visually discriminative.
-    - Avoid generic terms. 
-    - Each concept should be a high-level attribute.
-    - A concept should be able to discriminate between all the classes listed above.
-    First think step-by-step reasoning about potential concepts.
-    Then, output the final list strictly as a JSON array of strings.
+    List distinct visual concepts that are essential for differentiating these specific classes.
+    
+    - **Differential Power**: Each concept must be able to distinguish between all the classes listed above.
+    - **Discriminative Utility**: Avoid generic descriptions (like "shape" or "color"). Instead, use high-level attributes that encapsulate expert-level observations.
+    - **Combined Concepts**: You may combine related visual features into a single concept if that specific combination is required for a definitive differential diagnosis.
+    - **Strict Pruning**: If a concept is present across at least two classes in the same way, it must be excluded.
+
+    **Step-by-Step Reasoning:**
+    1. Analyze the unique morphology and visual signatures of each class.
+    2. Perform a mental "pairwise comparison" for all classes.
+    3. Identify which attributes act as the "deciding factor" when choosing one class over another.
+    
+    Output the final list strictly as a JSON array of strings.
 </instruction>
 
 <output_format>
+# Strategy: Reason step-by-step to identify high-level visual concepts that distinctly differentiate between the classes for differential diagnosis.
+
 [
     "Concept 1",
     "Concept 2",
