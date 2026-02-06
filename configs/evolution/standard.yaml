@@ -4,4 +4,4 @@ evolution:
   initial_pop_size: 50
   num_parents: 10
   offspring_mutated: 5
-  offspring_crossover: 50
+  offspring_crossover: 5
