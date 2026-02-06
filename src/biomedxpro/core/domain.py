@@ -6,6 +6,7 @@ from enum import StrEnum, auto
 from typing import Any, Iterator, Literal, NotRequired, Sequence, TypedDict
 
 import torch
+import torch.nn.functional as F
 
 # --- Enums & Value Objects ---
 
@@ -392,7 +393,7 @@ class PromptEnsemble:
 
     def apply(self, expert_probs: torch.Tensor) -> torch.Tensor:
         """
-        Applies the ensemble weights to a matrix of probabilities.
+        Applies the ensemble weights using Logarithmic Opinion Pool (LogOP).
 
         Args:
             expert_probs: Tensor of shape (N_Samples, N_Experts, N_Classes).
@@ -407,11 +408,28 @@ class PromptEnsemble:
                 f"but input tensor has {expert_probs.shape[1]} experts in dim 1."
             )
 
-        # Move weights to the same device as the data for computation
-        # Broadcast weights: (N_experts,) -> (1, N_experts, 1)
+        return self._apply_logarithmic(expert_probs)
+
+    def _apply_logarithmic(self, expert_probs: torch.Tensor) -> torch.Tensor:
+        """
+        Logarithmic Opinion Pool (LogOP) - Geometric Mean.
+
+        Good for: Consensus enforcement, veto power
+        Bad for: Can be overly conservative if one expert is wrong
+
+        Math: P_final = Softmax(Sum(w_i * Log(P_i)))
+
+        Why: If one expert says prob=0, the ensemble respects that veto.
+        All experts must agree for high confidence.
+        """
+        # Numerical stability: avoid log(0)
+        eps = 1e-9
+        log_probs = torch.log(expert_probs + eps)
+
         w = self.weights.to(expert_probs.device).view(1, -1, 1)
 
-        # Weighted Sum across experts dimension
-        # (N_samples, N_experts, N_classes) * (1, N_experts, 1) -> sum(dim=1) -> (N_samples, N_classes)
-        weighted = expert_probs * w
-        return weighted.sum(dim=1)
+        # Weighted sum of LOG probabilities
+        weighted_log_sum = (log_probs * w).sum(dim=1)
+
+        # Re-normalize back to probability distribution
+        return F.softmax(weighted_log_sum, dim=1)
