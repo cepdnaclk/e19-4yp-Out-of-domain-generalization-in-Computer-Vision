@@ -1,8 +1,9 @@
 # src/biomedxpro/core/interfaces.py
-from typing import Protocol, Sequence
+from typing import Any, Protocol, Sequence
 
 from biomedxpro.core.domain import (
     DataSplit,
+    DecisionNode,
     EncodedDataset,
     EvaluationMetrics,
     Individual,
@@ -155,5 +156,134 @@ class IHistoryRecorder(Protocol):
     def record_generation(self, islands: Sequence[Population]) -> None:
         """
         Persists the state of the entire archipelago for the current generation.
+        """
+        ...
+
+
+class ITaxonomyBuilder(Protocol):
+    """
+    Constructs hierarchical taxonomies from flat class lists.
+
+    The Architect: This component leverages LLM semantic reasoning to organize
+    classes into a binary decision tree based on visual and pathological similarity.
+
+    Implementations:
+    - LLMTaxonomyBuilder: Uses an ILLMClient to discover structure
+    - ManualTaxonomyBuilder: Loads predefined JSON tree (clinician-specified)
+    - HeuristicTaxonomyBuilder: Uses rule-based clustering
+
+    Critical Requirement: The builder MUST enforce set-theory validation.
+    The union of all leaf nodes must equal the input class set (bijective mapping).
+    """
+
+    def build_taxonomy(
+        self,
+        class_names: list[str],
+        max_depth: int | None = None,
+    ) -> "DecisionNode":
+        """
+        Constructs a binary decision tree from a flat list of class names.
+
+        Args:
+            class_names: The complete list of classes to organize (e.g., ["BCC", "Melanoma", "Nevus"])
+            max_depth: Optional maximum tree depth (for controlling granularity)
+
+        Returns:
+            The root DecisionNode of the constructed taxonomy.
+
+        Raises:
+            ValueError: If the tree fails set-theory validation (hallucinations, omissions, overlaps)
+
+        Example:
+            Input: ["BCC", "SCC", "Melanoma", "Nevus"]
+            Output Tree:
+                Root [All Classes]
+                ├─ Left: Carcinomas ["BCC", "SCC"]
+                │  ├─ Left: ["BCC"]
+                │  └─ Right: ["SCC"]
+                └─ Right: Melanocytic ["Melanoma", "Nevus"]
+                   ├─ Left: ["Melanoma"]
+                   └─ Right: ["Nevus"]
+        """
+        ...
+
+
+class IArtifactStore(Protocol):
+    """
+    Persists and retrieves node-specific trained artifacts.
+
+    The Archive: In a production taxonomy with 50+ nodes, we cannot keep all
+    PromptEnsembles in RAM. This interface provides standardized save/load
+    operations for node artifacts.
+
+    Each node's artifact includes:
+    - The trained PromptEnsemble (top individuals)
+    - Node metadata (label mappings, binary metrics, parent lineage)
+    - Evaluation metrics from validation
+
+    Storage Strategy:
+    - File-based: artifacts/{experiment_id}/{node_id}/
+    - Database: SQL table with BLOB columns
+    - Cloud: S3/Azure Blob with node_id as key
+    """
+
+    def save_node_artifacts(
+        self,
+        node_id: str,
+        ensemble: "PromptEnsemble",
+        metadata: dict[str, Any],
+    ) -> str:
+        """
+        Persists the trained artifacts for a specific node.
+
+        Args:
+            node_id: Unique identifier for this decision node
+            ensemble: The trained PromptEnsemble (collection of top Individuals)
+            metadata: Node-specific metadata including:
+                - label_mapping: {class_name: binary_index} for this node
+                - metrics: Binary classification metrics (accuracy, F1, AUC)
+                - parent_node_id: For provenance tracking
+                - group_name: Semantic label for this decision
+
+        Returns:
+            artifact_id: A unique identifier or path for retrieval (e.g., file path or UUID)
+
+        Example:
+            artifact_id = store.save_node_artifacts(
+                node_id="node_1_left",
+                ensemble=trained_ensemble,
+                metadata={
+                    "label_mapping": {"BCC": 0, "SCC": 1},
+                    "metrics": {"f1_macro": 0.92, "auc": 0.95},
+                    "parent_node_id": "root",
+                    "group_name": "Carcinomas"
+                }
+            )
+        """
+        ...
+
+    def load_node_artifacts(
+        self,
+        artifact_id: str,
+    ) -> tuple["PromptEnsemble", dict[str, Any]]:
+        """
+        Retrieves the trained artifacts for a specific node.
+
+        Args:
+            artifact_id: The identifier returned by save_node_artifacts()
+
+        Returns:
+            (ensemble, metadata) tuple:
+                - ensemble: The reconstructed PromptEnsemble
+                - metadata: The original metadata dictionary
+
+        Raises:
+            FileNotFoundError: If the artifact does not exist
+            ValueError: If the artifact is corrupted or incompatible
+
+        Example:
+            ensemble, metadata = store.load_node_artifacts("artifacts/exp1/node_1_left")
+            print(metadata["group_name"])  # "Carcinomas"
+            predictions = ensemble.apply(expert_probs)
         """
         ...

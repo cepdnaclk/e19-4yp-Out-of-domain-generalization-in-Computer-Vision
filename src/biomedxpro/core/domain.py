@@ -64,6 +64,23 @@ class PromptGenotype:
         """Support len() for convenience."""
         return len(self.prompts)
 
+    def validate_against_task(self, task_def: "TaskDefinition") -> None:
+        """
+        Runtime contract enforcement: Ensures this genotype is compatible with the task.
+
+        Raises:
+            ValueError: If the number of prompts doesn't match the task's class count.
+
+        This prevents bugs where a binary-trained genotype is accidentally used
+        for a multiclass task, or vice versa.
+        """
+        if len(self.prompts) != task_def.num_classes:
+            raise ValueError(
+                f"Genotype validation failed: Expected {task_def.num_classes} prompts "
+                f"for task '{task_def.task_name}' with classes {task_def.class_names}, "
+                f"but genotype has {len(self.prompts)} prompts."
+            )
+
 
 class EvaluationMetrics(TypedDict):
     """The Report Card."""
@@ -142,6 +159,114 @@ class TaskDefinition:
         valid_keys = {f.name for f in fields(cls)}
         filtered = {k: v for k, v in config.items() if k in valid_keys}
         return cls(**filtered)
+
+
+@dataclass(slots=True, frozen=True)
+class DecisionNode:
+    """
+    Represents a binary decision point in the taxonomic hierarchy.
+
+    The Composite Pattern: Each node is either:
+    - A Leaf (terminal classification)
+    - A Branch (splits data into left_child and right_child)
+
+    This is the skeleton of the Taxonomic Evolutionary Solver.
+    Each node will have its own trained PromptEnsemble artifact.
+    """
+
+    # Unique identifier for this node (e.g., "root", "node_1_left", "melanocytic_vs_nonmelanocytic")
+    node_id: str
+
+    # Semantic label for this decision (e.g., "Melanocytic Lesions", "Solid Renal Neoplasms")
+    # This is CRITICAL: guides the LLM during prompt evolution by providing biological context
+    group_name: str
+
+    # The partition of the universe at this node
+    # These are class names (strings), NOT indices
+    left_classes: list[str]  # Maps to binary target 0 during training
+    right_classes: list[str]  # Maps to binary target 1 during training
+
+    # Tree structure (None for leaf nodes)
+    left_child: "DecisionNode | None" = None
+    right_child: "DecisionNode | None" = None
+
+    # Reference to the trained artifact (ensemble ID or file path)
+    # None until this node has been trained
+    ensemble_artifact_id: str | None = None
+
+    @property
+    def is_leaf(self) -> bool:
+        """Returns True if this is a terminal node (no children)."""
+        return self.left_child is None and self.right_child is None
+
+    @property
+    def is_binary(self) -> bool:
+        """Returns True if this node represents a binary decision (has children)."""
+        return not self.is_leaf
+
+    def get_all_classes(self) -> list[str]:
+        """
+        Returns the union of left_classes and right_classes.
+        Used for validation during tree construction.
+        """
+        return self.left_classes + self.right_classes
+
+    def get_binary_class_names(self) -> tuple[str, str]:
+        """
+        Generates semantic binary class names for this node's decision.
+
+        Instead of returning generic "Left" vs "Right", this method creates
+        biologically meaningful labels by:
+        1. Using group_name if this is a leaf-vs-group split
+        2. Extracting common prefixes/suffixes from class lists
+        3. Falling back to concatenated class lists
+
+        Returns:
+            (left_label, right_label) tuple for TaskDefinition.class_names
+
+        Example:
+            Node splitting ["BCC", "SCC"] vs ["Melanoma", "Nevus"]
+            Returns: ("Carcinomas", "Melanocytic")
+        """
+        # Simple heuristic: use first class name as representative
+        # A more sophisticated implementation could use an LLM to generate semantic names
+        left_label = (
+            self.left_classes[0]
+            if len(self.left_classes) == 1
+            else f"{self.left_classes[0]}_group"
+        )
+        right_label = (
+            self.right_classes[0]
+            if len(self.right_classes) == 1
+            else f"{self.right_classes[0]}_group"
+        )
+        return (left_label, right_label)
+
+    def __post_init__(self) -> None:
+        """Validation: Ensure node is self-consistent."""
+        # Validate that left and right classes are disjoint sets
+        left_set = set(self.left_classes)
+        right_set = set(self.right_classes)
+
+        if left_set & right_set:
+            raise ValueError(
+                f"Node {self.node_id}: left_classes and right_classes must be disjoint. "
+                f"Found overlap: {left_set & right_set}"
+            )
+
+        # Validate that we have at least one class on each side
+        if not self.left_classes or not self.right_classes:
+            raise ValueError(
+                f"Node {self.node_id}: Both left_classes and right_classes must be non-empty."
+            )
+
+        # Validate child consistency
+        if (self.left_child is None) != (self.right_child is None):
+            raise ValueError(
+                f"Node {self.node_id}: Must have either both children or no children. "
+                f"Found: left_child={self.left_child is not None}, "
+                f"right_child={self.right_child is not None}"
+            )
 
 
 # --- Core Entities ---
