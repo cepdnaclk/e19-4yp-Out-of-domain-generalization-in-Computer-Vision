@@ -32,7 +32,6 @@ from biomedxpro.core.domain import (
     CreationOperation,
     EvaluationMetrics,
     Individual,
-    PromptEnsemble,
     PromptGenotype,
 )
 from biomedxpro.engine import builder
