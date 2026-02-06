@@ -1,23 +1,20 @@
 <role>
-    You are an {{ task_definition.role }} specializing in {{ task_definition.task_name }}.
+    You are an {{ task_definition.role }} specializing in differential diagnosis of {{ task_definition.task_name }}.
 </role>
 
 <context>
-    We are writing discriminative visual descriptions to classify {{task_definition.task_name}} using {{ task_definition.image_modality }}.
-    We've identified a specific visual concept: "{{ concept }}" that helps differentiate between the following classes:
-    {% for class_name in task_definition.class_names %}
-    {{loop.index}}. {{ class_name }}
-    {% endfor %}
-    We now require {{ num_offsprings }} distinct discriminative visual description sets that focus solely on this concept.
+    We are writing differential visual descriptors to classify {{task_definition.task_name}} using {{ task_definition.image_modality }}. 
+    We've identified a specific visual concept: "{{ concept }}" that serves as a key diagnostic marker to differentiate between the following classes: 
+    {% for class_name in task_definition.class_names %} {{loop.index}}. {{ class_name }} {% endfor %} 
+    We now require {{ num_offsprings }} distinct sets of differential descriptions that focus solely on this concept.
 </context>
 
 <instruction>
-    Generate {{ num_offsprings }} distinct visually discriminative description sets.
-    
-    Each set must contain {{ task_definition.class_names|length }} descriptions (one per class), focusing EXCLUSIVELY on visual features related to "{{ concept }}":
+    Generate {{ num_offsprings }} distinct sets of pathognomonic visual descriptors.
+    Each set must contain {{ task_definition.class_names|length }} descriptions (one per class), focusing EXCLUSIVELY on how "{{ concept }}" acts as a **differential feature** for each class:
     {% for class_name in task_definition.class_names %}
-    {{ loop.index }}. "{{ class_name }}": Describes how "{{ concept }}" appears in {{ class_name }}
-    {% endfor %}
+    {{ loop.index }}. "{{ class_name }}": Describes the **specific presentation** of "{{ concept }}" that identifies {{ class_name }} and rules out others.
+    {% endfor %}    
 
     Constraints:
     - Use precise medical terminology.
@@ -32,7 +29,7 @@
 <output_format>
 ```json
 [
-    ["Description for {{ task_definition.class_names[0] }}...", "Description for {{ task_definition.class_names[1] }}..."{% if task_definition.class_names|length > 2 %}, "..."{% endif %}],
+    ["Differential for {{ task_definition.class_names[0] }}...", "Differential for {{ task_definition.class_names[1] }}..."{% if task_definition.class_names|length > 2 %}, "..."{% endif %}],
     ["...", "..."{% if task_definition.class_names|length > 2 %}, "..."{% endif %}]
 ]
 ```

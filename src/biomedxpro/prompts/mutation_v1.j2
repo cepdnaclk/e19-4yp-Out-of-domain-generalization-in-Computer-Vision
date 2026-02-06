@@ -1,10 +1,10 @@
 <role>
-    You are an {{ task_definition.role }} specializing in {{ task_definition.task_name }}.
+    You are an {{ task_definition.role }} specializing in differential diagnosis of {{ task_definition.task_name }}.
 </role>
 
 <objective>
-    We are refining discriminative visual descriptions for the concept: "{{ concept }}".
-    Your goal is to generate {{ num_offsprings }} NEW description sets that are MORE discriminative than the current top performers.
+   We are refining differential visual descriptors to classify {{task_definition.task_name}} using {{ task_definition.image_modality }}. 
+    Your goal is to generate {{ num_offsprings }} NEW distinct sets of differential descriptions that are MORE discriminative than the current top performers.
 </objective>
 
 <context>
@@ -22,25 +22,22 @@
     {% endfor %}
 </current_top_performers>
 
-<instruction>
-    1. ANALYZE: Analyze at the <current_top_performers>. 
-    2. STRATEGIZE: Devise a strategy to improve upon these description sets. Give closer attention to how the most similar classes are described, these are often the hardest to distinguish. Discriminating between these similar classes will lead to a higher overall score.
-    3. GENERATE: Generate distinct {{ num_offsprings }} new description sets that are different from the <current_top_performers>. 
-    
-    Constraints:
-    - Focus strictly on "{{ concept }}".
-    - Maintain the EXACT class order defined in <context>.
-    - Use precise medical terminology.
-    - Even minor changes in punctuation, grammar, or word choice can significantly impact discriminative power.
-    - You SHOULD NOT reuse exact phrases from the current top performers.
-    - You SHOULD NOT introduce new visual concepts. eg: if the concept is "Shape", do not describe "Color".
-    - Give closer attention to differentiating the most similar classes. 
-    - Output MUST be valid JSON, a list of lists.
-    - Precede the JSON with a short "strategy" explaining your thought process.
-</instruction>
+<instructions>
+    1. DIFFERENTIAL ANALYSIS: Examine the <current_top_performers>. Identify where descriptions are "medically overlapping": if a description for one class could accidentally apply to another, it lacks discriminative power. 
+    2. PATHOGNOMONIC STRATEGY: Devise a strategy to emphasize pathognomonic features (features specifically characteristic of one disease). Focus on "Hard Pairs" (clinically similar classes). Your strategy must focus on describing the unique presentation of "{{ concept }}" that allows a clinician to rule out the other possibilities. 
+    3. GENERATION: Generate {{ num_offsprings }} new sets of differential notes.
+
+    **Constraints:**
+    - **Differential Framing**: Write each description as a clinical finding that distinguishes the class from its mimics. Explain *why* the appearance of "{{ concept }}" confirms this specific diagnosis.
+    - **Concept Purity**: Focus EXCLUSIVELY on "{{ concept }}". Do not allow "concept drift" (e.g., do not mention "Shape" if the concept is "Color").
+    - **Clinical Precision**: Use high-utility medical terminology. Avoid vague descriptors.
+    - **Linguistic Sensitivity**: Even minor changes in medical descriptors, grammar, sentence structure can significantly shift the model's confidence.
+    - **Order**: Maintain the EXACT class order defined in `<context>`.
+    - **Format**: Output MUST be a valid JSON list of lists, preceded by your "Strategy" section.
+</instructions>
 
 <output_format>
-# Strategy: ...
+# Strategy: Identify the clinical mimicry in the current performers and explain how the new descriptors maximize the visual distance between them for the concept "{{ concept }}"
 
 ```json
 [
