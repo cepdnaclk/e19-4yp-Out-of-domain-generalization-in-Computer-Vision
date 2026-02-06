@@ -28,8 +28,8 @@
     Use these to understand the expected STYLE, FORMATTING, and MEDICAL TERMINOLOGY,
     but DO NOT copy their focus - they address different visual concepts than "{{ concept }}".
 
-    {% for exemplar in cross_concept_exemplars %}
-    {{ exemplar.individual.concept }}: {{ exemplar.genotype.prompts | list }}
+    {% for individual in cross_concept_exemplars %}
+    {{ individual.concept }}: {{ individual.genotype.prompts | list }}
     {% endfor %}
 </examples_from_other_concepts>
 {% endif %}
