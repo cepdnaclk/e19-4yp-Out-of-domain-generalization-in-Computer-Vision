@@ -5,6 +5,7 @@ Tests the recursive orchestrator that trains hierarchical decision trees
 by coordinating dataset slicing, orchestrator instantiation, and artifact persistence.
 """
 
+from pathlib import Path
 from typing import Callable
 from unittest.mock import Mock
 
@@ -74,7 +75,9 @@ class TestTaxonomicSolver:
         Factory that returns mock orchestrators producing fake champions.
         """
 
-        def factory(dataset: EncodedDataset, task: TaskDefinition) -> Mock:
+        def factory(
+            dataset: EncodedDataset, task: TaskDefinition, log_dir: Path
+        ) -> Mock:
             mock_orch = Mock()
             # Create fake champions for this node
             champions = [
@@ -313,7 +316,9 @@ class TestTaxonomicSolver:
         """Test that node-specific task definitions are created correctly."""
         captured_tasks = []
 
-        def capturing_factory(dataset: EncodedDataset, task: TaskDefinition) -> Mock:
+        def capturing_factory(
+            dataset: EncodedDataset, task: TaskDefinition, log_dir: Path
+        ) -> Mock:
             captured_tasks.append(task)
             # Return mock orchestrator
             mock_orch = Mock()
@@ -431,7 +436,7 @@ class TestTaxonomicSolver:
         training_order = []
 
         def order_tracking_factory(
-            dataset: EncodedDataset, task: TaskDefinition
+            dataset: EncodedDataset, task: TaskDefinition, log_dir: Path
         ) -> Mock:
             training_order.append(task.task_name)
             mock_orch = Mock()

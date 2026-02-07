@@ -50,9 +50,10 @@ class MockLLM(ILLMClient):
 class MockOrchestrator:
     """Simulates the evolutionary engine finding a good prompt."""
 
-    def __init__(self, dataset, task) -> None:
+    def __init__(self, dataset, task, log_dir) -> None:
         self.task = task
         self.dataset = dataset
+        self.log_dir = log_dir
 
     def run(self):
         logger.info(f"    [MockEngine] Evolving for task: {self.task.class_names}")
@@ -123,11 +124,12 @@ def main() -> None:
         offspring_mutated=2,
     )
     # 4. Initialize Components
-    store = JSONArtifactStore(base_path=str(work_dir / "artifacts"))
+    session_root = work_dir / "session"
+    store = JSONArtifactStore(base_path=str(session_root / "artifacts"))
 
     # Factory that returns our Mock Engine
-    def orchestrator_factory(ds, t) -> MockOrchestrator:
-        return MockOrchestrator(ds, t)
+    def orchestrator_factory(ds, t, log_dir) -> MockOrchestrator:
+        return MockOrchestrator(ds, t, log_dir)
 
     # 5. Run Solver
     logger.info(">>> 3. Running Taxonomic Solver...")
@@ -138,6 +140,7 @@ def main() -> None:
         orchestrator_factory=orchestrator_factory,
         base_task_def=task,
         evolution_params=evolution_params,
+        session_root=session_root,
     )
     solver.run()
 
@@ -150,7 +153,7 @@ def main() -> None:
 
     expected_nodes = ["root", "pathology"]
     for node_id in expected_nodes:
-        path = work_dir / "artifacts" / node_id / "ensemble.json"
+        path = session_root / "artifacts" / node_id / "ensemble.json"
         if path.exists():
             logger.success(f"✅ Found artifact for {node_id}")
             with open(path) as f:

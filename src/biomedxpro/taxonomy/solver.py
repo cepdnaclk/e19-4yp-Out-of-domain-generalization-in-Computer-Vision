@@ -7,6 +7,7 @@ problems into focused binary decisions.
 """
 
 from datetime import datetime
+from pathlib import Path
 from typing import Any, Callable
 
 from loguru import logger
@@ -24,8 +25,8 @@ from biomedxpro.engine.orchestrator import Orchestrator
 from biomedxpro.taxonomy.dataset_slicer import DatasetSlicer
 
 # Type alias for the factory that creates the inner Orchestrator
-# It takes a Dataset and a TaskDefinition, and returns a runnable Orchestrator instance
-OrchestratorFactory = Callable[[EncodedDataset, TaskDefinition], Orchestrator]
+# It takes a Dataset, TaskDefinition, and log_dir Path, and returns a runnable Orchestrator instance
+OrchestratorFactory = Callable[[EncodedDataset, TaskDefinition, Path], Orchestrator]
 
 
 class TaxonomicSolver:
@@ -57,6 +58,7 @@ class TaxonomicSolver:
         orchestrator_factory: OrchestratorFactory,
         base_task_def: TaskDefinition,
         evolution_params: EvolutionParams,
+        session_root: Path | None = None,
     ):
         """
         Initialize the Taxonomic Solver.
@@ -68,6 +70,8 @@ class TaxonomicSolver:
             orchestrator_factory: Factory function to create Orchestrator instances
             base_task_def: Base task configuration (inherited by all nodes)
             evolution_params: Evolution hyperparameters (shared across nodes)
+            session_root: Optional root directory for session artifacts/logs.
+                         If None, auto-generates timestamped session directory.
         """
         self.root_node = root_node
         self.store = artifact_store
@@ -76,10 +80,31 @@ class TaxonomicSolver:
         self.base_task_def = base_task_def
         self.evolution_params = evolution_params
 
+        # Session Directory Management
+        if session_root is None:
+            timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+            task_slug = base_task_def.task_name.lower().replace(" ", "_")
+            session_root = Path(f"sessions/{task_slug}_{timestamp}")
+
+        self.session_root = session_root
+        self.artifacts_dir = session_root / "artifacts"
+        self.logs_dir = session_root / "logs"
+
+        # Create directory structure
+        self.artifacts_dir.mkdir(parents=True, exist_ok=True)
+        self.logs_dir.mkdir(parents=True, exist_ok=True)
+
+        logger.info(f"Session root: {self.session_root}")
+        logger.info(f"Artifacts: {self.artifacts_dir}")
+        logger.info(f"Logs: {self.logs_dir}")
+
         # Track training statistics
         self.nodes_trained = 0
         self.nodes_skipped = 0
         self.nodes_failed = 0
+
+        # Track node-specific log directories for usage aggregation
+        self.node_log_dirs: dict[str, Path] = {}
 
     def run(self) -> dict[str, str]:
         """
@@ -115,6 +140,9 @@ class TaxonomicSolver:
             f"Summary: {self.nodes_trained} trained, {self.nodes_skipped} skipped, {self.nodes_failed} failed"
         )
         logger.info("=" * 80)
+
+        # Aggregate usage metrics across all nodes
+        self._aggregate_usage()
 
         return self._collect_artifact_manifest()
 
@@ -200,8 +228,16 @@ class TaxonomicSolver:
         # B. Define Task & C. Instantiate Engine
         try:
             task_def = self._create_node_task_definition(node)
+
+            # Create node-specific log directory
+            node_log_dir = self.logs_dir / node.node_id
+            node_log_dir.mkdir(parents=True, exist_ok=True)
+            self.node_log_dirs[node.node_id] = node_log_dir
+
             logger.info(f"{indent}  🔧 Initializing Orchestrator...")
-            orchestrator = self.orchestrator_factory(node_dataset, task_def)
+            orchestrator = self.orchestrator_factory(
+                node_dataset, task_def, node_log_dir
+            )
 
             # D. Evolve
             logger.info(f"{indent}  🧬 Starting evolution...")
@@ -331,6 +367,12 @@ class TaxonomicSolver:
             # Provenance
             "timestamp": datetime.now().isoformat(),
             "concepts": [ind.concept for ind in best_individuals],
+            # Telemetry Linking
+            "telemetry": {
+                "history_log": f"logs/{node.node_id}/history.jsonl",
+                "trace_log": f"logs/{node.node_id}/trace.log",
+                "usage_log": f"logs/{node.node_id}/usage.json",
+            },
         }
 
     def _collect_artifact_manifest(self) -> dict[str, str]:
@@ -355,3 +397,59 @@ class TaxonomicSolver:
 
         _traverse(self.root_node)
         return manifest
+
+    def _aggregate_usage(self) -> None:
+        """
+        Aggregate token usage across all node-specific usage.json files.
+
+        Sums tokens from all trained nodes and writes a global usage summary
+        to the session root for cost attribution and auditing.
+        """
+        import json
+
+        total_prompt_tokens = 0
+        total_completion_tokens = 0
+        total_tokens = 0
+        node_usage = {}
+
+        for node_id, log_dir in self.node_log_dirs.items():
+            usage_file = log_dir / "usage.json"
+            if usage_file.exists():
+                try:
+                    with open(usage_file, "r") as f:
+                        usage_data = json.load(f)
+
+                    prompt_tokens = usage_data.get("prompt_tokens", 0)
+                    completion_tokens = usage_data.get("completion_tokens", 0)
+                    tokens = usage_data.get("total_tokens", 0)
+
+                    total_prompt_tokens += prompt_tokens
+                    total_completion_tokens += completion_tokens
+                    total_tokens += tokens
+
+                    node_usage[node_id] = {
+                        "prompt_tokens": prompt_tokens,
+                        "completion_tokens": completion_tokens,
+                        "total_tokens": tokens,
+                    }
+
+                except Exception as e:
+                    logger.warning(f"Failed to parse usage file for {node_id}: {e}")
+
+        summary = {
+            "session_root": str(self.session_root),
+            "task_name": self.base_task_def.task_name,
+            "timestamp": datetime.now().isoformat(),
+            "nodes_trained": self.nodes_trained,
+            "total_prompt_tokens": total_prompt_tokens,
+            "total_completion_tokens": total_completion_tokens,
+            "total_tokens": total_tokens,
+            "node_usage": node_usage,
+        }
+
+        summary_file = self.session_root / "global_usage_summary.json"
+        with open(summary_file, "w") as f:
+            json.dump(summary, f, indent=2)
+
+        logger.success(f"Usage summary written to {summary_file}")
+        logger.info(f"Total tokens used: {total_tokens:,}")
