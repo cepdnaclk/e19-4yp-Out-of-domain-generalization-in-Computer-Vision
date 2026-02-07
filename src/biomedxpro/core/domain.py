@@ -334,16 +334,49 @@ class Individual:
         return self.metrics[metric]
 
     def to_dict(self) -> dict[str, Any]:
+        """Serializes to a JSON-safe dictionary."""
         return {
             "id": str(self.id),
-            "genotype": self.genotype,
+            "genotype": self.genotype.to_dict(),
             "metrics": self.metrics,
             "generation": self.generation_born,
             "parents": [str(p) for p in self.parents],
-            "operation": self.operation,
+            "operation": self.operation.value,
             "metadata": self.metadata,
             "concept": self.concept,
         }
+
+    @classmethod
+    def from_dict(cls, data: dict[str, Any]) -> "Individual":
+        """
+        Reconstructs an Individual from a dictionary.
+        """
+        # 1. Reconstruct Genotype
+        # Handle cases where genotype might be a raw dict vs object
+        geno_data = data["genotype"]
+        if isinstance(geno_data, dict):
+            # "prompts" key matches PromptGenotype.to_dict()
+            genotype = PromptGenotype(prompts=tuple(geno_data["prompts"]))
+        else:
+            raise ValueError(f"Invalid genotype format: {geno_data}")
+
+        # 2. Reconstruct Individual
+        ind = cls(
+            id=data["id"],
+            genotype=genotype,
+            generation_born=data["generation"],
+            parents=data.get("parents", []),
+            # Convert string back to Enum
+            operation=CreationOperation(data["operation"]),
+            concept=data["concept"],
+            metadata=data.get("metadata", {}),
+        )
+
+        # 3. Restore Metrics (if any)
+        if data.get("metrics"):
+            ind.update_metrics(data["metrics"])
+
+        return ind
 
 
 @dataclass(slots=True)
