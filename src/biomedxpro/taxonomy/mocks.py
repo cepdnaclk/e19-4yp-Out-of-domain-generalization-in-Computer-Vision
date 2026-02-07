@@ -8,7 +8,7 @@ without requiring LLM API calls or persistent storage systems.
 import uuid
 from typing import Any
 
-from biomedxpro.core.domain import DecisionNode, PromptEnsemble
+from biomedxpro.core.domain import DecisionNode, PromptEnsemble, TaskDefinition
 from biomedxpro.core.interfaces import IArtifactStore, ITaxonomyBuilder
 
 
@@ -32,25 +32,24 @@ class MockTaxonomyBuilder(ITaxonomyBuilder):
 
     def build_taxonomy(
         self,
-        class_names: list[str],
-        max_depth: int | None = None,
+        task_definition: TaskDefinition,
     ) -> DecisionNode:
         """
         Returns a fixed tree structure for testing.
 
-        Ignores max_depth parameter in mock implementation.
-        Validates that class_names has sufficient classes for the chosen structure.
+        Validates that task has sufficient classes for the chosen structure.
 
         Args:
-            class_names: The complete list of classes to organize
-            max_depth: Ignored in mock implementation
+            task_definition: The complete task specification containing class_names
 
         Returns:
             DecisionNode root with deterministic structure
 
         Raises:
-            ValueError: If class_names doesn't have enough classes for the structure
+            ValueError: If task doesn't have enough classes for the structure
         """
+        class_names = task_definition.class_names
+
         if not self.use_complex_tree:
             # Simple Case: Root with one binary split, terminating in leaf nodes
             # This creates ONE trainable node (the root)

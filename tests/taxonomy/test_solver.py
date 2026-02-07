@@ -112,7 +112,7 @@ class TestTaxonomicSolver:
         """Test training a tree with trainable nodes."""
         # Complex tree has nodes with children (trainable)
         builder = MockTaxonomyBuilder(use_complex_tree=True)
-        root = builder.build_taxonomy(sample_dataset.class_names)
+        root = builder.build_taxonomy(base_task_def)
 
         store = MemoryArtifactStore()
 
@@ -149,7 +149,7 @@ class TestTaxonomicSolver:
         """Test training a multi-level tree with internal nodes."""
         # Create complex tree with depth 2
         builder = MockTaxonomyBuilder(use_complex_tree=True)
-        root = builder.build_taxonomy(sample_dataset.class_names)
+        root = builder.build_taxonomy(base_task_def)
 
         store = MemoryArtifactStore()
 
@@ -190,7 +190,7 @@ class TestTaxonomicSolver:
     ) -> None:
         """Test that solver skips nodes that already have artifacts."""
         builder = MockTaxonomyBuilder(use_complex_tree=True)
-        root = builder.build_taxonomy(sample_dataset.class_names)
+        root = builder.build_taxonomy(base_task_def)
 
         # Simulate pre-existing artifact on root
         object.__setattr__(root, "ensemble_artifact_id", "existing_artifact_123")
@@ -266,9 +266,16 @@ class TestTaxonomicSolver:
         """Test that solver handles nodes with no data gracefully."""
         # Create tree with children so it's trainable, but dataset has no matching classes
         builder = MockTaxonomyBuilder(use_complex_tree=True)
-        root = builder.build_taxonomy(
-            ["ClassC", "ClassD", "ClassE", "ClassF"]
-        )  # 4 classes not in dataset
+
+        # Create a task with classes not in the dataset
+        empty_task = TaskDefinition(
+            task_name="Empty Test",
+            image_modality="Test Images",
+            class_names=["ClassC", "ClassD", "ClassE", "ClassF"],
+            concepts=None,
+            role="Test Expert",
+        )
+        root = builder.build_taxonomy(empty_task)
 
         # Dataset has different classes (0=ClassA, 1=ClassB)
         empty_dataset = EncodedDataset(
@@ -330,7 +337,7 @@ class TestTaxonomicSolver:
             return mock_orch
 
         builder = MockTaxonomyBuilder(use_complex_tree=True)
-        root = builder.build_taxonomy(sample_dataset.class_names)
+        root = builder.build_taxonomy(base_task_def)
 
         store = MemoryArtifactStore()
 
@@ -363,7 +370,7 @@ class TestTaxonomicSolver:
     ) -> None:
         """Test that artifact metadata contains all required fields."""
         builder = MockTaxonomyBuilder(use_complex_tree=True)
-        root = builder.build_taxonomy(sample_dataset.class_names)
+        root = builder.build_taxonomy(base_task_def)
 
         store = MemoryArtifactStore()
 
@@ -448,7 +455,7 @@ class TestTaxonomicSolver:
             return mock_orch
 
         builder = MockTaxonomyBuilder(use_complex_tree=True)
-        root = builder.build_taxonomy(sample_dataset.class_names)
+        root = builder.build_taxonomy(base_task_def)
 
         store = MemoryArtifactStore()
 

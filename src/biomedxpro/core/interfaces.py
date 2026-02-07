@@ -11,6 +11,7 @@ from biomedxpro.core.domain import (
     Population,
     PromptEnsemble,
     StandardSample,
+    TaskDefinition,
 )
 
 
@@ -178,15 +179,14 @@ class ITaxonomyBuilder(Protocol):
 
     def build_taxonomy(
         self,
-        class_names: list[str],
-        max_depth: int | None = None,
+        task_definition: "TaskDefinition",
     ) -> "DecisionNode":
         """
-        Constructs a binary decision tree from a flat list of class names.
+        Constructs a binary decision tree from the task's class list.
 
         Args:
-            class_names: The complete list of classes to organize (e.g., ["BCC", "Melanoma", "Nevus"])
-            max_depth: Optional maximum tree depth (for controlling granularity)
+            task_definition: The complete task specification containing class_names,
+                           task_name, modality, and other semantic context
 
         Returns:
             The root DecisionNode of the constructed taxonomy.
@@ -195,7 +195,7 @@ class ITaxonomyBuilder(Protocol):
             ValueError: If the tree fails set-theory validation (hallucinations, omissions, overlaps)
 
         Example:
-            Input: ["BCC", "SCC", "Melanoma", "Nevus"]
+            Input: TaskDefinition with class_names=["BCC", "SCC", "Melanoma", "Nevus"]
             Output Tree:
                 Root [All Classes]
                 ├─ Left: Carcinomas ["BCC", "SCC"]
