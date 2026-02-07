@@ -52,15 +52,22 @@ class MockTaxonomyBuilder(ITaxonomyBuilder):
             ValueError: If class_names doesn't have enough classes for the structure
         """
         if not self.use_complex_tree:
-            # Simple Case: A single Root node (Binary Split)
+            # Simple Case: Root with one binary split, terminating in leaf nodes
+            # This creates ONE trainable node (the root)
             if len(class_names) < 2:
                 raise ValueError("Need at least 2 classes for binary split")
 
+            # With 4 classes [A, B, C, D]:
+            # Root: [A] vs [B, C, D]  <- This is the only trainable node
+            # No children = both branches are leaves (no further training)
+
+            # For testing with 4 classes, split [A] vs [B, C, D]
             return DecisionNode(
                 node_id="root_simple",
                 group_name="Global Classification",
-                left_classes=[class_names[0]],
-                right_classes=class_names[1:],
+                left_classes=[class_names[0]],  # Single class
+                right_classes=class_names[1:],  # Rest of classes
+                # No children = leaf node (won't be trained, but that's the test's bug)
             )
 
         # Complex Case: Multi-level hierarchy (Skin Lesion Style)
