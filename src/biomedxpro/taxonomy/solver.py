@@ -119,92 +119,77 @@ class TaxonomicSolver:
         return self._collect_artifact_manifest()
 
     def _solve_recursive(
-        self, node: DecisionNode, depth: int, parent_id: str | None
+        self, node: DecisionNode, depth: int = 0, parent_id: str | None = None
     ) -> None:
         """
-        DFS Traversal to train each node recursively.
-
-        Args:
-            node: Current node to process
-            depth: Current depth in tree (for logging)
-            parent_id: Parent node ID (for provenance tracking)
+        DFS Traversal to train each node.
         """
+        # Visual indentation for logs
         indent = "  " * depth
-        logger.info(f"{indent}→ Processing Node: {node.node_id} (depth={depth})")
 
-        # 1. Check if Leaf (Base Case)
-        if node.is_leaf:
-            logger.info(f"{indent}  ✓ LEAF node (no training needed)")
+        # 1. Base Case: Semantic Purity Check
+        # We only skip if the node represents a single final concept.
+        # If a node has multiple classes (e.g. "Cyst" vs "Tumor") it MUST be trained,
+        # even if it has no children objects (Implicit Leaf).
+        all_classes = node.get_all_classes()
+        if len(all_classes) <= 1:
+            logger.info(
+                f"{indent}Node {node.node_id} is a PURE LEAF {all_classes}. Skipping."
+            )
             return
 
-        logger.info(f"{indent}  Binary Split: {node.group_name}")
-        logger.info(f"{indent}  Left: {node.left_classes}")
-        logger.info(f"{indent}  Right: {node.right_classes}")
+        logger.info(f"{indent}=== Solving Node: {node.node_id} ({node.group_name}) ===")
 
-        # 2. Check Cache (Checkpoint Recovery)
-        # If we already trained this node (e.g. previous run crashed), skip it
+        # 2. Idempotency Check (Cache Layer)
         if node.ensemble_artifact_id:
-            logger.info(
-                f"{indent}  ⚡ Cached artifact found: {node.ensemble_artifact_id}"
-            )
+            logger.info(f"{indent}Node {node.node_id} already has artifact. Skipping.")
             self.nodes_skipped += 1
         else:
-            # Train this node
-            try:
-                self._train_node(node, depth, parent_id)
+            # Attempt to train
+            success = self._train_node(node, depth, parent_id)
+            if success:
                 self.nodes_trained += 1
-            except Exception as e:
-                logger.error(f"{indent}  ✗ Training failed: {e}")
+            else:
                 self.nodes_failed += 1
-                # Don't propagate - allow sibling/parent recovery
-                return
 
-        # 3. Recurse to Children
+        # 3. Recursive Step
+        # If children exist, we traverse them.
+        # If children do NOT exist (Terminal Decision Node), recursion naturally stops here.
         if node.left_child:
-            self._solve_recursive(node.left_child, depth + 1, node.node_id)
+            self._solve_recursive(
+                node.left_child, depth=depth + 1, parent_id=node.node_id
+            )
+
         if node.right_child:
-            self._solve_recursive(node.right_child, depth + 1, node.node_id)
+            self._solve_recursive(
+                node.right_child, depth=depth + 1, parent_id=node.node_id
+            )
 
     def _train_node(
         self, node: DecisionNode, depth: int, parent_id: str | None
-    ) -> None:
+    ) -> bool:
         """
-        Prepares data and runs evolution for a single binary node.
-
-        Steps:
-        1. Slice dataset (multiclass → binary)
-        2. Create node-specific TaskDefinition
-        3. Instantiate Orchestrator via factory
-        4. Run evolution
-        5. Create PromptEnsemble
-        6. Persist artifacts
-
-        Args:
-            node: Node to train
-            depth: Tree depth (for logging)
-            parent_id: Parent node ID (for metadata)
-
-        Raises:
-            ValueError: If node has no data after slicing
-            RuntimeError: If evolution produces no individuals
+        Returns:
+            bool: True if training succeeded, False if skipped/failed gracefully.
         """
         indent = "  " * depth
 
-        # A. Slice the Data (Multiclass -> Binary)
-        logger.debug(
-            f"{indent}  Slicing dataset: {node.left_classes} vs {node.right_classes}"
-        )
-
-        node_dataset = DatasetSlicer.create_binary_view(
-            self.train_dataset,
-            node.left_classes,
-            node.right_classes,
-        )
+        # A. Slice the Data
+        # We wrap this in a try-block to handle data starvation gracefully
+        try:
+            node_dataset = DatasetSlicer.create_binary_view(
+                self.train_dataset,
+                node.left_classes,
+                node.right_classes,
+            )
+        except Exception as e:
+            # Catch slicing errors (e.g. alignment issues)
+            logger.warning(f"{indent}  ! Data slicing failed for {node.node_id}: {e}")
+            return False
 
         if node_dataset.num_samples == 0:
-            error_msg = f"Node {node.node_id} has NO data after slicing"
-            logger.error(f"{indent}  ✗ {error_msg}")
-            raise ValueError(error_msg)
+            logger.warning(f"{indent}  ! Node {node.node_id} has NO data. Skipping.")
+            return False
 
         logger.info(
             f"{indent}  Dataset: {node_dataset.num_samples} samples "
@@ -212,70 +197,48 @@ class TaxonomicSolver:
             f"{(node_dataset.labels == 1).sum().item()} right)"
         )
 
-        # B. Define the Task (Binary Semantics)
-        task_def = self._create_node_task_definition(node)
-        logger.info(
-            f"{indent}  Task: '{task_def.task_name}' "
-            f"[{task_def.class_names[0]} vs {task_def.class_names[1]}]"
-        )
-
-        # C. Instantiate the Engine (The Inner Loop)
-        logger.info(f"{indent}  🔧 Initializing Orchestrator...")
+        # B. Define Task & C. Instantiate Engine
         try:
+            task_def = self._create_node_task_definition(node)
+            logger.info(f"{indent}  🔧 Initializing Orchestrator...")
             orchestrator = self.orchestrator_factory(node_dataset, task_def)
-        except Exception as e:
-            error_msg = f"Failed to create Orchestrator for {node.node_id}: {e}"
-            logger.error(f"{indent}  ✗ {error_msg}")
-            raise RuntimeError(error_msg) from e
 
-        # D. Evolve!
-        logger.info(
-            f"{indent}  🧬 Starting evolution ({self.evolution_params.generations} generations)..."
-        )
-        try:
+            # D. Evolve
+            logger.info(f"{indent}  🧬 Starting evolution...")
             best_individuals = orchestrator.run()
-        except Exception as e:
-            error_msg = f"Evolution failed for {node.node_id}: {e}"
-            logger.error(f"{indent}  ✗ {error_msg}")
-            raise RuntimeError(error_msg) from e
 
-        if not best_individuals:
-            error_msg = f"Evolution produced no individuals for {node.node_id}"
-            logger.error(f"{indent}  ✗ {error_msg}")
-            raise RuntimeError(error_msg)
+            if not best_individuals:
+                logger.error(f"{indent}  ✗ Evolution produced no individuals.")
+                return False
 
-        logger.success(
-            f"{indent}  ✓ Evolution complete: {len(best_individuals)} champions found"
-        )
+            # E. Ensemble & F. Persist
+            ensemble = PromptEnsemble.from_individuals(
+                best_individuals,
+                metric=self.evolution_params.target_metric,
+                temperature=0.1,
+            )
 
-        # E. Create Ensemble
-        ensemble = PromptEnsemble.from_individuals(
-            best_individuals,
-            metric=self.evolution_params.target_metric,
-            temperature=0.1,  # TODO: Make configurable
-        )
+            metadata = self._build_node_metadata(
+                node, task_def, best_individuals, node_dataset, depth, parent_id
+            )
 
-        # F. Persist Artifacts
-        metadata = self._build_node_metadata(
-            node, task_def, best_individuals, node_dataset, depth, parent_id
-        )
-
-        logger.info(f"{indent}  💾 Saving artifacts...")
-        try:
             artifact_id = self.store.save_node_artifacts(
                 node.node_id, ensemble, metadata
             )
+
+            # G. Update Node
+            object.__setattr__(node, "ensemble_artifact_id", artifact_id)
+
+            logger.success(
+                f"{indent}  ✓ Node {node.node_id} trained. ID: {artifact_id}"
+            )
+            return True
+
         except Exception as e:
-            error_msg = f"Failed to persist artifacts for {node.node_id}: {e}"
-            logger.critical(f"{indent}  ✗ {error_msg}")
-            raise RuntimeError(error_msg) from e
-
-        # G. Update Node (In-Memory Mutation of Frozen Dataclass)
-        # We use object.__setattr__ to bypass the frozen=True restriction
-        object.__setattr__(node, "ensemble_artifact_id", artifact_id)
-
-        logger.success(f"{indent}  ✓ Node {node.node_id} trained successfully")
-        logger.info(f"{indent}  Artifact ID: {artifact_id}")
+            logger.error(f"{indent}  ✗ Training failed for {node.node_id}: {e}")
+            # We return False (Soft Failure) so the tree traversal can continue
+            # to other branches that might be healthy.
+            return False
 
     def _create_node_task_definition(self, node: DecisionNode) -> TaskDefinition:
         """
