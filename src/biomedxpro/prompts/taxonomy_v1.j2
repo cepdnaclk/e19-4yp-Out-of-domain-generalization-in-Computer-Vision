@@ -1,0 +1,70 @@
+<role>
+You are a senior {{ task_defition.role }} with extensive expertise in {{ task_defition.image_modality }}.
+You are architecting a decision support system for {{ task_defition.task_name }}.
+</role>
+
+<objective>
+Your goal is to organize the input list of diagnostic classes into a HIERARCHICAL BINARY DECISION TREE.
+
+Why?
+Generalist classifiers fail to capture subtle features. By breaking the problem into a binary tree, we can train specialized "Expert Models" at each node.
+
+Strategy:
+1. Prioritize VISUAL SEPARABILITY. Group classes that look similar together, so they can be distinguished deeper in the tree.
+2. The Root Node should represent the most fundamental visual or clinical split (e.g., Normal vs. Abnormal, Fluid vs. Solid).
+3. Child nodes should handle increasingly specific distinctions.
+</objective>
+
+<input_data>
+Task Name: {{ task_defition.task_name }}
+Modality: {{ task_defition.image_modality }}
+Classes to Organize: {{ task_defition.class_names | tojson }}
+</input_data>
+
+<constraints>
+1. Output MUST be valid JSON.
+2. The structure MUST be a Binary Tree (each node has 0 or 2 children).
+3. Every node object must have:
+   - "node_id": A unique snake_case string ID (e.g., "root", "node_cystic_lesions").
+   - "group_name": A descriptive medical label for the decision context (e.g., "Focal Renal Lesions").
+   - "left_classes": List of class names mapping to the Left Branch.
+   - "right_classes": List of class names mapping to the Right Branch.
+   - "children": An object containing "left" and "right" sub-nodes.
+4. Leaf Nodes: If a branch contains only specific classes and needs no further split, "children" for that side must be null.
+5. BIJECTIVE MAPPING: The Union of "left_classes" and "right_classes" at any node MUST exactly equal the list of classes assigned to that branch.
+6. DO NOT invent new classes. DO NOT rename input classes. Use the strings exactly as provided.
+</constraints>
+
+<examples>
+Here is an example of how you should structure the JSON for a Kidney Dataset (Normal, Cyst, Stone, Tumor):
+
+{
+  "node_id": "ROOT_RENAL",
+  "group_name": "Renal Parenchymal Analysis",
+  "left_classes": ["Normal Kidney"],
+  "right_classes": ["Kidney Cyst", "Kidney Stone", "Kidney Tumor"],
+  "children": {
+    "left": null,
+    "right": {
+      "node_id": "FOCAL_PATHOLOGY",
+      "group_name": "Focal Renal Lesions",
+      "left_classes": ["Kidney Cyst"],
+      "right_classes": ["Kidney Stone", "Kidney Tumor"],
+      "children": {
+        "left": null,
+        "right": {
+          "node_id": "SOLID_MASSES",
+          "group_name": "Solid & Calcified Findings",
+          "left_classes": ["Kidney Stone"],
+          "right_classes": ["Kidney Tumor"],
+          "children": { "left": null, "right": null }
+        }
+      }
+    }
+  }
+}
+</examples>
+
+<output_format>
+Return ONLY the JSON object. Do not include markdown formatting or explanation.
+</output_format>
