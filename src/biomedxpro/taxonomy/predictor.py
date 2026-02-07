@@ -52,7 +52,7 @@ class TaxonomicPredictor:
         current_node = self.root
         path_trace: List[Dict[str, str]] = []
 
-        logger.info(f"🚀 Starting inference traversal from root: {self.root.node_id}")
+        logger.info(f"Starting inference traversal from root: {self.root.node_id}")
 
         while True:
             # 1. Base Case: Are we at a Semantic Leaf?
