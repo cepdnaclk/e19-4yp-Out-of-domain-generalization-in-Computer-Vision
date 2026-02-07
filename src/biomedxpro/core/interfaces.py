@@ -287,24 +287,3 @@ class IArtifactStore(Protocol):
             predictions = ensemble.apply(expert_probs)
         """
         ...
-
-
-class ITaxonomicPredictor(Protocol):
-    """
-    Abstract contract for any system that can perform taxonomic inference.
-
-    This decouples the API/Consumer layer from the specific implementation
-    (Tree Traversal, Flat Ensemble, Remote Service, etc.).
-    """
-
-    def predict(self, input_text: str) -> dict[str, Any]:
-        """
-        Classifies the input and returns the decision path.
-
-        Args:
-            input_text: The content to classify.
-
-        Returns:
-            Dictionary containing 'final_class', 'path', and 'status'.
-        """
-        pass
