@@ -11,10 +11,10 @@ from typing import Any, Dict, List
 from loguru import logger
 
 from biomedxpro.core.domain import DecisionNode, PromptEnsemble
-from biomedxpro.core.interfaces import IArtifactStore
+from biomedxpro.core.interfaces import IArtifactStore, ITaxonomicPredictor
 
 
-class TaxonomicPredictor:
+class TaxonomicPredictor(ITaxonomicPredictor):
     """
     Routes input samples through a trained DecisionNode tree.
 
@@ -24,7 +24,7 @@ class TaxonomicPredictor:
     - Robust Routing: Validates model predictions against the tree structure.
     """
 
-    def __init__(self, root_node: DecisionNode, artifact_store: IArtifactStore):
+    def __init__(self, root_node: DecisionNode, artifact_store: IArtifactStore) -> None:
         """
         Args:
             root_node: The root of the trained taxonomy.
