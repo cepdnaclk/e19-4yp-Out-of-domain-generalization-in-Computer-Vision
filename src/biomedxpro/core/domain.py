@@ -244,7 +244,12 @@ class DecisionNode:
 
     def __post_init__(self) -> None:
         """Validation: Ensure node is self-consistent."""
-        # Validate that left and right classes are disjoint sets
+
+        # IF LEAF: We are done. No need to validate class splits.
+        if self.is_leaf:
+            return
+
+        # IF BRANCH: Validate that left and right classes are valid split
         left_set = set(self.left_classes)
         right_set = set(self.right_classes)
 
@@ -254,18 +259,9 @@ class DecisionNode:
                 f"Found overlap: {left_set & right_set}"
             )
 
-        # Validate that we have at least one class on each side
         if not self.left_classes or not self.right_classes:
             raise ValueError(
                 f"Node {self.node_id}: Both left_classes and right_classes must be non-empty."
-            )
-
-        # Validate child consistency
-        if (self.left_child is None) != (self.right_child is None):
-            raise ValueError(
-                f"Node {self.node_id}: Must have either both children or no children. "
-                f"Found: left_child={self.left_child is not None}, "
-                f"right_child={self.right_child is not None}"
             )
 
 
