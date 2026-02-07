@@ -167,19 +167,22 @@ class TestTaxonomicSolver:
 
         manifest = solver.run()
 
-        # Complex tree should have root + 2 intermediate nodes (left and right subtrees)
-        # Count non-leaf nodes
-        def count_non_leaves(node: DecisionNode) -> int:
-            if node.is_leaf:
+        # Complex tree should train all nodes with 2+ classes
+        # This includes root + 2 child nodes (node_benign, node_malignant)
+        # Each child node has 2 classes and needs a classifier even without children
+        def count_trainable_nodes(node: DecisionNode) -> int:
+            # Count nodes that need training (2+ classes)
+            all_classes = node.get_all_classes()
+            if len(all_classes) <= 1:
                 return 0
-            count = 1  # This node
+            count = 1  # This node is trainable
             if node.left_child:
-                count += count_non_leaves(node.left_child)
+                count += count_trainable_nodes(node.left_child)
             if node.right_child:
-                count += count_non_leaves(node.right_child)
+                count += count_trainable_nodes(node.right_child)
             return count
 
-        expected_trained = count_non_leaves(root)
+        expected_trained = count_trainable_nodes(root)
         assert solver.nodes_trained == expected_trained
         assert len(store.list_artifacts()) == expected_trained
         assert len(manifest) == expected_trained
@@ -231,14 +234,13 @@ class TestTaxonomicSolver:
         evolution_params: EvolutionParams,
         mock_orchestrator_factory: Callable[..., Mock],
     ) -> None:
-        """Test that leaf nodes are correctly identified and skipped."""
-        # Create a leaf node
+        """Test that pure leaf nodes (single class) are correctly skipped."""
+        # Create a pure leaf node (single class = semantic purity)
         leaf = DecisionNode(
             node_id="leaf",
-            group_name="Leaf Node",
+            group_name="Pure Leaf Node",
             left_classes=["ClassA"],
-            right_classes=["ClassB"],
-            # No children = leaf
+            right_classes=[],  # Only one class = pure leaf
         )
 
         store = MemoryArtifactStore()
@@ -254,7 +256,7 @@ class TestTaxonomicSolver:
 
         manifest = solver.run()
 
-        # Leaf should not be trained
+        # Pure leaf (single class) should not be trained
         assert solver.nodes_trained == 0
         assert len(store.list_artifacts()) == 0
         assert len(manifest) == 0
