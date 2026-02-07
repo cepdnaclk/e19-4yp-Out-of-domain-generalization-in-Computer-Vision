@@ -1,6 +1,6 @@
 <role>
-You are a senior {{ task_defition.role }} with extensive expertise in {{ task_defition.image_modality }}.
-You are architecting a decision support system for {{ task_defition.task_name }}.
+You are a senior {{ task_definition.role }} with extensive expertise in {{ task_definition.image_modality }}.
+You are architecting a decision support system for {{ task_definition.task_name }}.
 </role>
 
 <objective>
@@ -16,9 +16,9 @@ Strategy:
 </objective>
 
 <input_data>
-Task Name: {{ task_defition.task_name }}
-Modality: {{ task_defition.image_modality }}
-Classes to Organize: {{ task_defition.class_names | tojson }}
+Task Name: {{ task_definition.task_name }}
+Modality: {{ task_definition.image_modality }}
+Classes to Organize: {{ task_definition.class_names | tojson }}
 </input_data>
 
 <constraints>
