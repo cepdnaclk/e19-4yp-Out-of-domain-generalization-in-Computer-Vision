@@ -19,7 +19,7 @@ class LLMTaxonomyBuilder(ITaxonomyBuilder):
     def __init__(
         self,
         llm_client: ILLMClient,
-        prompt_template_path: str = "src/biomedxpro/prompts/taxonomy_v1.j2",
+        prompt_template_path: str = "src/biomedxpro/prompts/taxonomy.j2",
     ):
         self.llm = llm_client
         self.template_path = Path(prompt_template_path)
@@ -34,15 +34,12 @@ class LLMTaxonomyBuilder(ITaxonomyBuilder):
 
     def build_taxonomy(
         self,
-        task_definition: TaskDefinition,  # UPDATED: Accepts full TaskDefinition
+        task_definition: TaskDefinition,
     ) -> DecisionNode:
         """
         Orchestrates the creation of the decision tree.
         """
         logger.info(f"Architecting taxonomy for task: '{task_definition.task_name}'")
-        logger.debug(
-            f"Input Classes ({len(task_definition.class_names)}): {task_definition.class_names}"
-        )
 
         # 1. Render Prompt with Task Context
         prompt = self.template.render(task=task_definition)
@@ -67,10 +64,12 @@ class LLMTaxonomyBuilder(ITaxonomyBuilder):
             logger.error(f"Failed to construct DecisionNode tree: {e}")
             raise
 
-        # 5. The "Senior Architect" Check (Set Theory Validation)
-        # We ensure the tree perfectly covers the Task's class list
+        # 5. Validation
         logger.info("Validating taxonomy integrity...")
         self._verify_bijective_integrity(root_node, set(task_definition.class_names))
+
+        # 6. CRITICAL: Verify Leafs are Pure (Singleton)
+        self._verify_pure_leaves(root_node)
 
         logger.success(
             f"Taxonomy constructed successfully. Root: {root_node.group_name}"
@@ -78,9 +77,7 @@ class LLMTaxonomyBuilder(ITaxonomyBuilder):
         return root_node
 
     def _clean_json_markdown(self, text: str) -> str:
-        """
-        Strips markdown code blocks (```json ... ```) if present.
-        """
+        """Strips markdown code blocks (```json ... ```) if present."""
         pattern = r"```(?:json)?\s*(.*?)\s*```"
         match = re.search(pattern, text, re.DOTALL)
         if match:
@@ -91,7 +88,6 @@ class LLMTaxonomyBuilder(ITaxonomyBuilder):
         """
         Recursive factory to convert raw dictionary -> DecisionNode object.
         """
-        # 1. Extract Fields
         node_id = data.get("node_id")
         group_name = data.get("group_name")
         left_classes = data.get("left_classes", [])
@@ -100,22 +96,19 @@ class LLMTaxonomyBuilder(ITaxonomyBuilder):
         if not node_id or not group_name:
             raise ValueError("Node missing required fields 'node_id' or 'group_name'")
 
-        # 2. Recursively Build Children
         children_data = data.get("children")
         left_child = None
         right_child = None
 
         if children_data:
-            # If "left" is present and not null, recurse
+            # If JSON has "left": {...}, recurse. If "left": null, keep it None.
             if children_data.get("left"):
                 left_child = self._deserialize_node(children_data["left"])
 
-            # If "right" is present and not null, recurse
+            # If JSON has "right": {...}, recurse. If "right": null, keep it None.
             if children_data.get("right"):
                 right_child = self._deserialize_node(children_data["right"])
 
-        # 3. Construct Node
-        # Note: __post_init__ in DecisionNode handles overlap/empty checks
         return DecisionNode(
             node_id=node_id,
             group_name=group_name,
@@ -129,11 +122,8 @@ class LLMTaxonomyBuilder(ITaxonomyBuilder):
         self, node: DecisionNode, expected_universe: Set[str]
     ) -> None:
         """
-        Recursively verifies that:
-        1. The node covers exactly the expected universe of classes.
-        2. The children (if any) cover exactly the classes assigned to their branch.
+        Verifies that the tree perfectly covers the input classes.
         """
-        # 1. Check current node's coverage
         current_coverage = set(node.left_classes) | set(node.right_classes)
 
         if current_coverage != expected_universe:
@@ -144,18 +134,42 @@ class LLMTaxonomyBuilder(ITaxonomyBuilder):
                 f" - Expected: {expected_universe}\n"
                 f" - Got: {current_coverage}\n"
                 f" - Missing: {missing}\n"
-                f" - Extra (Hallucinated): {extra}"
+                f" - Extra: {extra}"
             )
 
-        # 2. Check Left Child Consistency
         if node.left_child:
             self._verify_bijective_integrity(node.left_child, set(node.left_classes))
-        elif len(node.left_classes) > 0 and node.is_binary:
-            # Logic Check: If it's a binary node, but left child is missing
-            # despite having classes assigned, that's ambiguous structure.
-            # However, DecisionNode logic allows leaves.
-            pass
 
-        # 3. Check Right Child Consistency
         if node.right_child:
             self._verify_bijective_integrity(node.right_child, set(node.right_classes))
+
+    def _verify_pure_leaves(self, node: DecisionNode) -> None:
+        """
+        Ensures that every branch ends in a SINGLE class.
+        If a branch stops (child is None) but has > 1 class, the taxonomy is incomplete.
+        """
+        # Check Left Branch
+        if node.left_child is None:
+            # If no child, we must have exactly 1 class
+            if len(node.left_classes) != 1:
+                raise ValueError(
+                    f"Taxonomy Error at Node '{node.node_id}': "
+                    f"Left branch is a leaf but contains {len(node.left_classes)} classes "
+                    f"{node.left_classes}. A leaf must contain exactly 1 class."
+                )
+        else:
+            # Recurse
+            self._verify_pure_leaves(node.left_child)
+
+        # Check Right Branch
+        if node.right_child is None:
+            # If no child, we must have exactly 1 class
+            if len(node.right_classes) != 1:
+                raise ValueError(
+                    f"Taxonomy Error at Node '{node.node_id}': "
+                    f"Right branch is a leaf but contains {len(node.right_classes)} classes "
+                    f"{node.right_classes}. A leaf must contain exactly 1 class."
+                )
+        else:
+            # Recurse
+            self._verify_pure_leaves(node.right_child)
