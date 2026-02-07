@@ -19,7 +19,7 @@ class LLMTaxonomyBuilder(ITaxonomyBuilder):
     def __init__(
         self,
         llm_client: ILLMClient,
-        prompt_template_path: str = "src/biomedxpro/prompts/taxonomy.j2",
+        prompt_template_path: str = "src/biomedxpro/prompts/taxonomy_v1.j2",
     ):
         self.llm = llm_client
         self.template_path = Path(prompt_template_path)
@@ -42,7 +42,7 @@ class LLMTaxonomyBuilder(ITaxonomyBuilder):
         logger.info(f"Architecting taxonomy for task: '{task_definition.task_name}'")
 
         # 1. Render Prompt with Task Context
-        prompt = self.template.render(task=task_definition)
+        prompt = self.template.render(task_definition=task_definition)
 
         # 2. Query LLM
         logger.info("Querying LLM for structural analysis...")
