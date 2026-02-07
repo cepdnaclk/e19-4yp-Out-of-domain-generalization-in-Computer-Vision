@@ -195,7 +195,7 @@ def evaluate(
     task_data["dataset"]["shots"] = shots
 
     # Build minimal config
-    from biomedxpro.core.domain import EvolutionParams, MetricName, TaskDefinition
+    from biomedxpro.core.domain import EvolutionParams, TaskDefinition
     from biomedxpro.impl.config import DatasetConfig
 
     config = MasterConfig(
